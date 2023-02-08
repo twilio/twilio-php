@@ -16,8 +16,11 @@ use Twilio\Rest\FlexApi\V1\AssessmentsList;
 use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
+use Twilio\Rest\FlexApi\V1\InsightsAssessmentsCommentList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryList;
+use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionList;
+use Twilio\Rest\FlexApi\V1\InsightsSegmentsList;
 use Twilio\Rest\FlexApi\V1\InsightsSessionList;
 use Twilio\Rest\FlexApi\V1\InsightsSettingsAnswerSetsList;
 use Twilio\Rest\FlexApi\V1\InsightsSettingsCommentList;
@@ -31,8 +34,11 @@ use Twilio\Version;
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
  * @property AssessmentsList $assessments
+ * @property InsightsAssessmentsCommentList $insightsAssessmentsComment
+ * @property InsightsQuestionnairesList $insightsQuestionnaires
  * @property InsightsQuestionnairesCategoryList $insightsQuestionnairesCategory
  * @property InsightsQuestionnairesQuestionList $insightsQuestionnairesQuestion
+ * @property InsightsSegmentsList $insightsSegments
  * @property InsightsSessionList $insightsSession
  * @property InsightsSettingsAnswerSetsList $insightsSettingsAnswerSets
  * @property InsightsSettingsCommentList $insightsSettingsComment
@@ -41,8 +47,10 @@ use Twilio\Version;
  * @property WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesContext insightsQuestionnaires(string $id)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryContext insightsQuestionnairesCategory(string $categoryId)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionContext insightsQuestionnairesQuestion(string $questionId)
+ * @method \Twilio\Rest\FlexApi\V1\InsightsSegmentsContext insightsSegments(string $segmentId)
  * @method \Twilio\Rest\FlexApi\V1\InteractionContext interaction(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\WebChannelContext webChannel(string $sid)
  */
@@ -51,8 +59,11 @@ class V1 extends Version {
     protected $_configuration;
     protected $_flexFlow;
     protected $_assessments;
+    protected $_insightsAssessmentsComment;
+    protected $_insightsQuestionnaires;
     protected $_insightsQuestionnairesCategory;
     protected $_insightsQuestionnairesQuestion;
+    protected $_insightsSegments;
     protected $_insightsSession;
     protected $_insightsSettingsAnswerSets;
     protected $_insightsSettingsComment;
@@ -98,6 +109,20 @@ class V1 extends Version {
         return $this->_assessments;
     }
 
+    protected function getInsightsAssessmentsComment(): InsightsAssessmentsCommentList {
+        if (!$this->_insightsAssessmentsComment) {
+            $this->_insightsAssessmentsComment = new InsightsAssessmentsCommentList($this);
+        }
+        return $this->_insightsAssessmentsComment;
+    }
+
+    protected function getInsightsQuestionnaires(): InsightsQuestionnairesList {
+        if (!$this->_insightsQuestionnaires) {
+            $this->_insightsQuestionnaires = new InsightsQuestionnairesList($this);
+        }
+        return $this->_insightsQuestionnaires;
+    }
+
     protected function getInsightsQuestionnairesCategory(): InsightsQuestionnairesCategoryList {
         if (!$this->_insightsQuestionnairesCategory) {
             $this->_insightsQuestionnairesCategory = new InsightsQuestionnairesCategoryList($this);
@@ -110,6 +135,13 @@ class V1 extends Version {
             $this->_insightsQuestionnairesQuestion = new InsightsQuestionnairesQuestionList($this);
         }
         return $this->_insightsQuestionnairesQuestion;
+    }
+
+    protected function getInsightsSegments(): InsightsSegmentsList {
+        if (!$this->_insightsSegments) {
+            $this->_insightsSegments = new InsightsSegmentsList($this);
+        }
+        return $this->_insightsSegments;
     }
 
     protected function getInsightsSession(): InsightsSessionList {

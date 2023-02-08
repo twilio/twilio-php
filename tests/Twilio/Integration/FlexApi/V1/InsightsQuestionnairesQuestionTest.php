@@ -61,6 +61,7 @@ class InsightsQuestionnairesQuestionTest extends HolodeckTestCase {
                 },
                 "answer_set_id": "a6a8a54f-5305-4aec-b92c-a6e429932f58",
                 "allow_na": false,
+                "usage": 0,
                 "url": "https://flex-api.twilio.com/v1/Insights/QM/Questions/945ac7ff-8afc-4606-be76-e94b1a80cd72"
             }
             '
@@ -77,16 +78,11 @@ class InsightsQuestionnairesQuestionTest extends HolodeckTestCase {
         $options = ['token' => "token", ];
 
         try {
-            $this->twilio->flexApi->v1->insightsQuestionnairesQuestion("question_id")->update("question", "description", "answer_set_id", True, $options);
+            $this->twilio->flexApi->v1->insightsQuestionnairesQuestion("question_id")->update(True, $options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $values = [
-            'Question' => "question",
-            'Description' => "description",
-            'AnswerSetId' => "answer_set_id",
-            'AllowNa' => Serialize::booleanToString(True),
-        ];
+        $values = ['AllowNa' => Serialize::booleanToString(True), ];
 
         $headers = ['Token' => "token", ];
 
@@ -114,14 +110,99 @@ class InsightsQuestionnairesQuestionTest extends HolodeckTestCase {
                 },
                 "answer_set_id": "a6a8a54f-5305-4aec-b92c-a6e429932f58",
                 "allow_na": false,
+                "usage": 0,
                 "url": "https://flex-api.twilio.com/v1/Insights/QM/Questions/945ac7ff-8afc-4606-be76-e94b1a80cd72"
             }
             '
         ));
 
-        $actual = $this->twilio->flexApi->v1->insightsQuestionnairesQuestion("question_id")->update("question", "description", "answer_set_id", True);
+        $actual = $this->twilio->flexApi->v1->insightsQuestionnairesQuestion("question_id")->update(True);
 
         $this->assertNotNull($actual);
+    }
+
+    public function testReadRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        $options = ['token' => "token", ];
+
+        try {
+            $this->twilio->flexApi->v1->insightsQuestionnairesQuestion->read($options);
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $headers = ['Token' => "token", ];
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://flex-api.twilio.com/v1/Insights/QM/Questions',
+            [],
+            [],
+            $headers
+        ));
+    }
+
+    public function testReadEmptyResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "questions": [],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://flex-api.twilio.com/v1/Insights/QM/Questions?CategoryId=4b4e78e4-4f05-49e2-bf52-0973c5cde419&PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://flex-api.twilio.com/v1/Insights/QM/Questions?CategoryId=4b4e78e4-4f05-49e2-bf52-0973c5cde419&PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "questions"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->flexApi->v1->insightsQuestionnairesQuestion->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "questions": [
+                    {
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "question": "What is the total time",
+                        "question_id": "945ac7ff-8afc-4606-be76-e94b1a80cd72",
+                        "description": "time spent",
+                        "category": {
+                            "category_name": "test cat",
+                            "category_id": "4b4e78e4-4f05-49e2-bf52-0973c5cde418"
+                        },
+                        "answer_set_id": "a6a8a54f-5305-4aec-b92c-a6e429932f58",
+                        "allow_na": false,
+                        "usage": 0,
+                        "url": "https://flex-api.twilio.com/v1/Insights/QM/Questions/945ac7ff-8afc-4606-be76-e94b1a80cd72"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://flex-api.twilio.com/v1/Insights/QM/Questions?CategoryId=4b4e78e4-4f05-49e2-bf52-0973c5cde419&PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://flex-api.twilio.com/v1/Insights/QM/Questions?CategoryId=4b4e78e4-4f05-49e2-bf52-0973c5cde419&PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "questions"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->flexApi->v1->insightsQuestionnairesQuestion->read();
+
+        $this->assertGreaterThan(0, \count($actual));
     }
 
     public function testDeleteRequest(): void {

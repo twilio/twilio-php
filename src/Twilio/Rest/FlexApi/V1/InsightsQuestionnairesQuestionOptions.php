@@ -26,11 +26,23 @@ abstract class InsightsQuestionnairesQuestionOptions {
 
     /**
      * @param string $categoryId Category ID
+     * @param string $question The question.
+     * @param string $description The question description.
+     * @param string $answerSetId The answer_set for question.
      * @param string $token The Token HTTP request header
      * @return UpdateInsightsQuestionnairesQuestionOptions Options builder
      */
-    public static function update(string $categoryId = Values::NONE, string $token = Values::NONE): UpdateInsightsQuestionnairesQuestionOptions {
-        return new UpdateInsightsQuestionnairesQuestionOptions($categoryId, $token);
+    public static function update(string $categoryId = Values::NONE, string $question = Values::NONE, string $description = Values::NONE, string $answerSetId = Values::NONE, string $token = Values::NONE): UpdateInsightsQuestionnairesQuestionOptions {
+        return new UpdateInsightsQuestionnairesQuestionOptions($categoryId, $question, $description, $answerSetId, $token);
+    }
+
+    /**
+     * @param string[] $categoryId List of category Ids
+     * @param string $token The Token HTTP request header
+     * @return ReadInsightsQuestionnairesQuestionOptions Options builder
+     */
+    public static function read(array $categoryId = Values::ARRAY_NONE, string $token = Values::NONE): ReadInsightsQuestionnairesQuestionOptions {
+        return new ReadInsightsQuestionnairesQuestionOptions($categoryId, $token);
     }
 
     /**
@@ -75,10 +87,16 @@ class CreateInsightsQuestionnairesQuestionOptions extends Options {
 class UpdateInsightsQuestionnairesQuestionOptions extends Options {
     /**
      * @param string $categoryId Category ID
+     * @param string $question The question.
+     * @param string $description The question description.
+     * @param string $answerSetId The answer_set for question.
      * @param string $token The Token HTTP request header
      */
-    public function __construct(string $categoryId = Values::NONE, string $token = Values::NONE) {
+    public function __construct(string $categoryId = Values::NONE, string $question = Values::NONE, string $description = Values::NONE, string $answerSetId = Values::NONE, string $token = Values::NONE) {
         $this->options['categoryId'] = $categoryId;
+        $this->options['question'] = $question;
+        $this->options['description'] = $description;
+        $this->options['answerSetId'] = $answerSetId;
         $this->options['token'] = $token;
     }
 
@@ -90,6 +108,39 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options {
      */
     public function setCategoryId(string $categoryId): self {
         $this->options['categoryId'] = $categoryId;
+        return $this;
+    }
+
+    /**
+     * The question.
+     *
+     * @param string $question The question.
+     * @return $this Fluent Builder
+     */
+    public function setQuestion(string $question): self {
+        $this->options['question'] = $question;
+        return $this;
+    }
+
+    /**
+     * The description for the question.
+     *
+     * @param string $description The question description.
+     * @return $this Fluent Builder
+     */
+    public function setDescription(string $description): self {
+        $this->options['description'] = $description;
+        return $this;
+    }
+
+    /**
+     * The answer_set for the question.
+     *
+     * @param string $answerSetId The answer_set for question.
+     * @return $this Fluent Builder
+     */
+    public function setAnswerSetId(string $answerSetId): self {
+        $this->options['answerSetId'] = $answerSetId;
         return $this;
     }
 
@@ -112,6 +163,49 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options {
     public function __toString(): string {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateInsightsQuestionnairesQuestionOptions ' . $options . ']';
+    }
+}
+
+class ReadInsightsQuestionnairesQuestionOptions extends Options {
+    /**
+     * @param string[] $categoryId List of category Ids
+     * @param string $token The Token HTTP request header
+     */
+    public function __construct(array $categoryId = Values::ARRAY_NONE, string $token = Values::NONE) {
+        $this->options['categoryId'] = $categoryId;
+        $this->options['token'] = $token;
+    }
+
+    /**
+     * The list of category IDs
+     *
+     * @param string[] $categoryId List of category Ids
+     * @return $this Fluent Builder
+     */
+    public function setCategoryId(array $categoryId): self {
+        $this->options['categoryId'] = $categoryId;
+        return $this;
+    }
+
+    /**
+     * The Token HTTP request header
+     *
+     * @param string $token The Token HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setToken(string $token): self {
+        $this->options['token'] = $token;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.ReadInsightsQuestionnairesQuestionOptions ' . $options . ']';
     }
 }
 

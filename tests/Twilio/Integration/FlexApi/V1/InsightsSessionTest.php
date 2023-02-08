@@ -19,14 +19,14 @@ class InsightsSessionTest extends HolodeckTestCase {
     public function testCreateRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 
-        $options = ['token' => "token", ];
+        $options = ['authorization' => "authorization", ];
 
         try {
             $this->twilio->flexApi->v1->insightsSession()->create($options);
         } catch (DeserializeException $e) {}
           catch (TwilioException $e) {}
 
-        $headers = ['Token' => "token", ];
+        $headers = ['Authorization' => "authorization", ];
 
         $this->assertRequest(new Request(
             'post',

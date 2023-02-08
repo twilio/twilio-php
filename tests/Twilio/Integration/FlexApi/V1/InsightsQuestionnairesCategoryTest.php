@@ -98,6 +98,82 @@ class InsightsQuestionnairesCategoryTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testReadRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        $options = ['token' => "token", ];
+
+        try {
+            $this->twilio->flexApi->v1->insightsQuestionnairesCategory->read($options);
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $headers = ['Token' => "token", ];
+
+        $this->assertRequest(new Request(
+            'get',
+            'https://flex-api.twilio.com/v1/Insights/QM/Categories',
+            [],
+            [],
+            $headers
+        ));
+    }
+
+    public function testReadEmptyResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "categories": [],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://flex-api.twilio.com/v1/Insights/QM/Categories?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://flex-api.twilio.com/v1/Insights/QM/Categories?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "categories"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->flexApi->v1->insightsQuestionnairesCategory->read();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testReadFullResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "categories": [
+                    {
+                        "category_id": "4b4e78e4-4f05-49e2-bf52-0973c5cde418",
+                        "name": "Test1",
+                        "account_sid": "ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        "url": "https://flex-api.twilio.com/v1/Insights/QM/Categories/4b4e78e4-4f05-49e2-bf52-0973c5cde418"
+                    }
+                ],
+                "meta": {
+                    "page": 0,
+                    "page_size": 50,
+                    "first_page_url": "https://flex-api.twilio.com/v1/Insights/QM/Categories?PageSize=50&Page=0",
+                    "previous_page_url": null,
+                    "url": "https://flex-api.twilio.com/v1/Insights/QM/Categories?PageSize=50&Page=0",
+                    "next_page_url": null,
+                    "key": "categories"
+                }
+            }
+            '
+        ));
+
+        $actual = $this->twilio->flexApi->v1->insightsQuestionnairesCategory->read();
+
+        $this->assertGreaterThan(0, \count($actual));
+    }
+
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

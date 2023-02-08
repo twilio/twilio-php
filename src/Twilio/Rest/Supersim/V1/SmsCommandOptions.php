@@ -112,7 +112,7 @@ class ReadSmsCommandOptions extends Options {
     }
 
     /**
-     * The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/wireless/api/smscommand-resource#status-values) for a description of each.
+     * The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/iot/supersim/api/smscommand-resource#status-values) for a description of each.
      *
      * @param string $status The status of the SMS Command
      * @return $this Fluent Builder

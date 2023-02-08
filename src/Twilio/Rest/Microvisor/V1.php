@@ -12,17 +12,25 @@ namespace Twilio\Rest\Microvisor;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Microvisor\V1\AccountConfigList;
+use Twilio\Rest\Microvisor\V1\AccountSecretList;
 use Twilio\Rest\Microvisor\V1\AppList;
 use Twilio\Rest\Microvisor\V1\DeviceList;
 use Twilio\Version;
 
 /**
+ * @property AccountConfigList $accountConfigs
+ * @property AccountSecretList $accountSecrets
  * @property AppList $apps
  * @property DeviceList $devices
+ * @method \Twilio\Rest\Microvisor\V1\AccountConfigContext accountConfigs(string $key)
+ * @method \Twilio\Rest\Microvisor\V1\AccountSecretContext accountSecrets(string $key)
  * @method \Twilio\Rest\Microvisor\V1\AppContext apps(string $sid)
  * @method \Twilio\Rest\Microvisor\V1\DeviceContext devices(string $sid)
  */
 class V1 extends Version {
+    protected $_accountConfigs;
+    protected $_accountSecrets;
     protected $_apps;
     protected $_devices;
 
@@ -34,6 +42,20 @@ class V1 extends Version {
     public function __construct(Domain $domain) {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getAccountConfigs(): AccountConfigList {
+        if (!$this->_accountConfigs) {
+            $this->_accountConfigs = new AccountConfigList($this);
+        }
+        return $this->_accountConfigs;
+    }
+
+    protected function getAccountSecrets(): AccountSecretList {
+        if (!$this->_accountSecrets) {
+            $this->_accountSecrets = new AccountSecretList($this);
+        }
+        return $this->_accountSecrets;
     }
 
     protected function getApps(): AppList {

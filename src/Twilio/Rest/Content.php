@@ -16,6 +16,7 @@ use Twilio\Rest\Content\V1;
 /**
  * @property \Twilio\Rest\Content\V1 $v1
  * @property \Twilio\Rest\Content\V1\ContentList $contents
+ * @property \Twilio\Rest\Content\V1\LegacyContentList $legacyContents
  * @method \Twilio\Rest\Content\V1\ContentContext contents(string $sid)
  */
 class Content extends Domain {
@@ -84,6 +85,10 @@ class Content extends Domain {
      */
     protected function contextContents(string $sid): \Twilio\Rest\Content\V1\ContentContext {
         return $this->v1->contents($sid);
+    }
+
+    protected function getLegacyContents(): \Twilio\Rest\Content\V1\LegacyContentList {
+        return $this->v1->legacyContents;
     }
 
     /**

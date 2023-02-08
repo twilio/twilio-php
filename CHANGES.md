@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2023-02-08] Version 6.44.3
+---------------------------
+**Library - Fix**
+- [PR #770](https://github.com/twilio/twilio-php/pull/770): test failures for PhpUnit >=10. Thanks to [@isha689](https://github.com/isha689)!
+
+**Lookups**
+- Add `disposable_phone_number_risk` package to the lookup response
+- Add `sms_pumping_risk` package to the lookup response
+
+
 [2023-01-25] Version 6.44.2
 ---------------------------
 **Api**

@@ -47,6 +47,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+14159929960"
             }
             '
@@ -76,6 +78,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+141599299600"
             }
             '
@@ -107,6 +111,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+14159929960"
             }
             '
@@ -144,6 +150,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -181,6 +189,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -218,6 +228,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -251,6 +263,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -294,6 +308,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 "live_activity": null,
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -333,6 +349,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 },
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -376,6 +394,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 },
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -420,6 +440,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                 },
                 "line_type_intelligence": null,
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+447772000001"
             }
             '
@@ -453,6 +475,8 @@ class PhoneNumberTest extends HolodeckTestCase {
                     "type": "nonFixedVoip"
                 },
                 "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+14159929960"
             }
             '
@@ -492,6 +516,95 @@ class PhoneNumberTest extends HolodeckTestCase {
                     "summary_score": 90,
                     "error_code": null,
                     "error_message": null
+                },
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": null,
+                "url": "https://lookups.twilio.com/v2/PhoneNumbers/+14159929960"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->lookups->v2->phoneNumbers("phone_number")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchSmsPumpingRiskResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "calling_country_code": "1",
+                "country_code": "US",
+                "phone_number": "+14159929960",
+                "national_format": "(415) 992-9960",
+                "valid": true,
+                "validation_errors": [],
+                "caller_name": null,
+                "sim_swap": null,
+                "call_forwarding": null,
+                "live_activity": null,
+                "line_type_intelligence": null,
+                "identity_match": null,
+                "sms_pumping_risk": {
+                    "carrier": {
+                        "name": "Twilio Carrier",
+                        "mobile_country_code": "214",
+                        "mobile_network_code": "07",
+                        "carrier_risk_score": 69,
+                        "carrier_risk_category": "moderate"
+                    },
+                    "number_blocked": false,
+                    "number_blocked_date": null,
+                    "number_blocked_last_3_months": null,
+                    "error_code": null
+                },
+                "disposable_phone_number_risk": null,
+                "url": "https://lookups.twilio.com/v2/PhoneNumbers/+14159929960"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->lookups->v2->phoneNumbers("phone_number")->fetch();
+
+        $this->assertNotNull($actual);
+    }
+
+    public function testFetchDisposablePhoneNumberRiskResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "calling_country_code": "1",
+                "country_code": "US",
+                "phone_number": "+14159929960",
+                "national_format": "(415) 992-9960",
+                "valid": true,
+                "validation_errors": [],
+                "caller_name": null,
+                "sim_swap": null,
+                "call_forwarding": null,
+                "live_activity": null,
+                "line_type_intelligence": null,
+                "identity_match": null,
+                "sms_pumping_risk": null,
+                "disposable_phone_number_risk": {
+                    "carrier": {
+                        "mobile_country_code": "452",
+                        "mobile_network_code": "05",
+                        "carrier_risk_score": 17,
+                        "carrier_risk_category": "low",
+                        "line_type": "mobile",
+                        "name": "Twilio Carrier"
+                    },
+                    "is_disposable": false,
+                    "disposable_phone_risk_score": 0,
+                    "disposable_phone_risk_category": "low",
+                    "velocity_risk_score": 0,
+                    "velocity_risk_category": "low",
+                    "summary_risk_score": 0,
+                    "summary_risk_category": "low",
+                    "error_code": null
                 },
                 "url": "https://lookups.twilio.com/v2/PhoneNumbers/+14159929960"
             }

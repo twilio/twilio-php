@@ -15,8 +15,12 @@ use Twilio\Rest\Microvisor\V1;
 
 /**
  * @property \Twilio\Rest\Microvisor\V1 $v1
+ * @property \Twilio\Rest\Microvisor\V1\AccountConfigList $accountConfigs
+ * @property \Twilio\Rest\Microvisor\V1\AccountSecretList $accountSecrets
  * @property \Twilio\Rest\Microvisor\V1\AppList $apps
  * @property \Twilio\Rest\Microvisor\V1\DeviceList $devices
+ * @method \Twilio\Rest\Microvisor\V1\AccountConfigContext accountConfigs(string $key)
+ * @method \Twilio\Rest\Microvisor\V1\AccountSecretContext accountSecrets(string $key)
  * @method \Twilio\Rest\Microvisor\V1\AppContext apps(string $sid)
  * @method \Twilio\Rest\Microvisor\V1\DeviceContext devices(string $sid)
  */
@@ -75,6 +79,28 @@ class Microvisor extends Domain {
         }
 
         throw new TwilioException('Unknown context ' . $name);
+    }
+
+    protected function getAccountConfigs(): \Twilio\Rest\Microvisor\V1\AccountConfigList {
+        return $this->v1->accountConfigs;
+    }
+
+    /**
+     * @param string $key The config key.
+     */
+    protected function contextAccountConfigs(string $key): \Twilio\Rest\Microvisor\V1\AccountConfigContext {
+        return $this->v1->accountConfigs($key);
+    }
+
+    protected function getAccountSecrets(): \Twilio\Rest\Microvisor\V1\AccountSecretList {
+        return $this->v1->accountSecrets;
+    }
+
+    /**
+     * @param string $key The secret key.
+     */
+    protected function contextAccountSecrets(string $key): \Twilio\Rest\Microvisor\V1\AccountSecretContext {
+        return $this->v1->accountSecrets($key);
     }
 
     protected function getApps(): \Twilio\Rest\Microvisor\V1\AppList {

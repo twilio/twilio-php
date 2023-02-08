@@ -15,6 +15,9 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
 class InsightsSessionContext extends InstanceContext {
     /**
      * Initialize the InsightsSessionContext
@@ -40,7 +43,7 @@ class InsightsSessionContext extends InstanceContext {
     public function create(array $options = []): InsightsSessionInstance {
         $options = new Values($options);
 
-        $headers = Values::of(['Token' => $options['token'], ]);
+        $headers = Values::of(['Authorization' => $options['authorization'], ]);
 
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 

@@ -17,6 +17,7 @@ use Twilio\Rest\Taskrouter\V1\Workspace\ActivityList;
 use Twilio\Rest\Taskrouter\V1\Workspace\EventList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskList;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueBulkRealTimeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkerList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList;
@@ -38,6 +39,7 @@ use Twilio\Version;
  * @property WorkspaceRealTimeStatisticsList $realTimeStatistics
  * @property WorkspaceCumulativeStatisticsList $cumulativeStatistics
  * @property TaskChannelList $taskChannels
+ * @property TaskQueueBulkRealTimeStatisticsList $bulkRealTimeStatistics
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\ActivityContext activities(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\EventContext events(string $sid)
  * @method \Twilio\Rest\Taskrouter\V1\Workspace\TaskContext tasks(string $sid)
@@ -60,6 +62,7 @@ class WorkspaceContext extends InstanceContext {
     protected $_realTimeStatistics;
     protected $_cumulativeStatistics;
     protected $_taskChannels;
+    protected $_bulkRealTimeStatistics;
 
     /**
      * Initialize the WorkspaceContext
@@ -237,6 +240,20 @@ class WorkspaceContext extends InstanceContext {
         }
 
         return $this->_taskChannels;
+    }
+
+    /**
+     * Access the bulkRealTimeStatistics
+     */
+    protected function getBulkRealTimeStatistics(): TaskQueueBulkRealTimeStatisticsList {
+        if (!$this->_bulkRealTimeStatistics) {
+            $this->_bulkRealTimeStatistics = new TaskQueueBulkRealTimeStatisticsList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_bulkRealTimeStatistics;
     }
 
     /**
