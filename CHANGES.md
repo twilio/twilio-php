@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2023-02-22] Version 6.44.4
+---------------------------
+**Api**
+- Remove `scheduled_for` property from message resource
+- Add `scheduled_for` property to message resource
+
+
 [2023-02-08] Version 6.44.3
 ---------------------------
 **Library - Fix**

@@ -52,6 +52,26 @@ class DeviceSecretContext extends InstanceContext {
     }
 
     /**
+     * Update the DeviceSecretInstance
+     *
+     * @param string $value The secret value.
+     * @return DeviceSecretInstance Updated DeviceSecretInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceSecretInstance {
+        $data = Values::of(['Value' => $value, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new DeviceSecretInstance(
+            $this->version,
+            $payload,
+            $this->solution['deviceSid'],
+            $this->solution['key']
+        );
+    }
+
+    /**
      * Delete the DeviceSecretInstance
      *
      * @return bool True if delete succeeds, false otherwise

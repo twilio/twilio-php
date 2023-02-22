@@ -36,7 +36,7 @@ use Twilio\Rest\FlexApi\V2;
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\ConfigurationContext configuration()
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
- * @method \Twilio\Rest\FlexApi\V1\AssessmentsContext assessments()
+ * @method \Twilio\Rest\FlexApi\V1\AssessmentsContext assessments(string $assessmentId)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesContext insightsQuestionnaires(string $id)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryContext insightsQuestionnairesCategory(string $categoryId)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionContext insightsQuestionnairesQuestion(string $questionId)
@@ -149,8 +149,11 @@ class FlexApi extends Domain {
         return $this->v1->assessments;
     }
 
-    protected function contextAssessments(): \Twilio\Rest\FlexApi\V1\AssessmentsContext {
-        return $this->v1->assessments();
+    /**
+     * @param string $assessmentId Assessment Id
+     */
+    protected function contextAssessments(string $assessmentId): \Twilio\Rest\FlexApi\V1\AssessmentsContext {
+        return $this->v1->assessments($assessmentId);
     }
 
     protected function getInsightsAssessmentsComment(): \Twilio\Rest\FlexApi\V1\InsightsAssessmentsCommentList {

@@ -46,6 +46,21 @@ class AccountConfigContext extends InstanceContext {
     }
 
     /**
+     * Update the AccountConfigInstance
+     *
+     * @param string $value The config value.
+     * @return AccountConfigInstance Updated AccountConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountConfigInstance {
+        $data = Values::of(['Value' => $value, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new AccountConfigInstance($this->version, $payload, $this->solution['key']);
+    }
+
+    /**
      * Delete the AccountConfigInstance
      *
      * @return bool True if delete succeeds, false otherwise

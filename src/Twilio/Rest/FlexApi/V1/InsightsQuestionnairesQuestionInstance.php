@@ -26,6 +26,7 @@ use Twilio\Version;
  * @property string $answerSetId
  * @property bool $allowNa
  * @property int $usage
+ * @property array $answerSet
  * @property string $url
  */
 class InsightsQuestionnairesQuestionInstance extends InstanceResource {
@@ -49,6 +50,7 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource {
             'answerSetId' => Values::array_get($payload, 'answer_set_id'),
             'allowNa' => Values::array_get($payload, 'allow_na'),
             'usage' => Values::array_get($payload, 'usage'),
+            'answerSet' => Values::array_get($payload, 'answer_set'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

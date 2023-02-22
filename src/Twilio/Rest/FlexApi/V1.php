@@ -47,6 +47,7 @@ use Twilio\Version;
  * @property WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
+ * @method \Twilio\Rest\FlexApi\V1\AssessmentsContext assessments(string $assessmentId)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesContext insightsQuestionnaires(string $id)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryContext insightsQuestionnairesCategory(string $categoryId)
  * @method \Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionContext insightsQuestionnairesQuestion(string $questionId)

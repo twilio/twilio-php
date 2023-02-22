@@ -75,6 +75,17 @@ class DeviceSecretInstance extends InstanceResource {
     }
 
     /**
+     * Update the DeviceSecretInstance
+     *
+     * @param string $value The secret value.
+     * @return DeviceSecretInstance Updated DeviceSecretInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceSecretInstance {
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Delete the DeviceSecretInstance
      *
      * @return bool True if delete succeeds, false otherwise

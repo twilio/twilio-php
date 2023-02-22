@@ -11,34 +11,48 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
+/**
+ * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
+ */
 class AssessmentsContext extends InstanceContext {
     /**
      * Initialize the AssessmentsContext
      *
      * @param Version $version Version that contains the resource
+     * @param string $assessmentId Assessment Id
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version, $assessmentId) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = [];
+        $this->solution = ['assessmentId' => $assessmentId, ];
 
-        $this->uri = '/Accounts/Assessments';
+        $this->uri = '/Insights/QM/Assessments/' . \rawurlencode($assessmentId) . '';
     }
 
     /**
-     * Create the AssessmentsInstance
+     * Update the AssessmentsInstance
      *
-     * @return AssessmentsInstance Created AssessmentsInstance
+     * @param string $offset offset
+     * @param string $answerText Answer text
+     * @param string $answerId Answer Id
+     * @param array|Options $options Optional Arguments
+     * @return AssessmentsInstance Updated AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): AssessmentsInstance {
-        $payload = $this->version->create('POST', $this->uri);
+    public function update(string $offset, string $answerText, string $answerId, array $options = []): AssessmentsInstance {
+        $options = new Values($options);
 
-        return new AssessmentsInstance($this->version, $payload);
+        $data = Values::of(['Offset' => $offset, 'AnswerText' => $answerText, 'AnswerId' => $answerId, ]);
+        $headers = Values::of(['Token' => $options['token'], ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+
+        return new AssessmentsInstance($this->version, $payload, $this->solution['assessmentId']);
     }
 
     /**

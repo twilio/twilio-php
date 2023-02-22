@@ -46,6 +46,21 @@ class AccountSecretContext extends InstanceContext {
     }
 
     /**
+     * Update the AccountSecretInstance
+     *
+     * @param string $value The secret value.
+     * @return AccountSecretInstance Updated AccountSecretInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountSecretInstance {
+        $data = Values::of(['Value' => $value, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new AccountSecretInstance($this->version, $payload, $this->solution['key']);
+    }
+
+    /**
      * Delete the AccountSecretInstance
      *
      * @return bool True if delete succeeds, false otherwise

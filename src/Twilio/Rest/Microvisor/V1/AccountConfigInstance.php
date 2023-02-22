@@ -70,6 +70,17 @@ class AccountConfigInstance extends InstanceResource {
     }
 
     /**
+     * Update the AccountConfigInstance
+     *
+     * @param string $value The config value.
+     * @return AccountConfigInstance Updated AccountConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountConfigInstance {
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Delete the AccountConfigInstance
      *
      * @return bool True if delete succeeds, false otherwise

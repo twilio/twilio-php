@@ -36,7 +36,7 @@ use Twilio\Version;
  * @property string $customerName
  * @property string $customerLink
  * @property string $segmentRecordingOffset
- * @property string $media
+ * @property array $media
  * @property array $assessmentType
  * @property array $assessmentPercentage
  * @property string $url

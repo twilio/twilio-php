@@ -170,6 +170,45 @@ class DeviceConfigTest extends HolodeckTestCase {
         $this->assertNotNull($actual);
     }
 
+    public function testUpdateRequest(): void {
+        $this->holodeck->mock(new Response(500, ''));
+
+        try {
+            $this->twilio->microvisor->v1->devices("UVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                         ->deviceConfigs("key")->update("value");
+        } catch (DeserializeException $e) {}
+          catch (TwilioException $e) {}
+
+        $values = ['Value' => "value", ];
+
+        $this->assertRequest(new Request(
+            'post',
+            'https://microvisor.twilio.com/v1/Devices/UVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Configs/key',
+            null,
+            $values
+        ));
+    }
+
+    public function testUpdateResponse(): void {
+        $this->holodeck->mock(new Response(
+            200,
+            '
+            {
+                "device_sid": "UVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "key": "first",
+                "value": "place",
+                "date_updated": "2021-01-01T12:34:56Z",
+                "url": "https://microvisor.twilio.com/v1/Devices/UVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Configs/first"
+            }
+            '
+        ));
+
+        $actual = $this->twilio->microvisor->v1->devices("UVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+                                               ->deviceConfigs("key")->update("value");
+
+        $this->assertNotNull($actual);
+    }
+
     public function testDeleteRequest(): void {
         $this->holodeck->mock(new Response(500, ''));
 

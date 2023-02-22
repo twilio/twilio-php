@@ -77,6 +77,17 @@ class DeviceConfigInstance extends InstanceResource {
     }
 
     /**
+     * Update the DeviceConfigInstance
+     *
+     * @param string $value The config value.
+     * @return DeviceConfigInstance Updated DeviceConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceConfigInstance {
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Delete the DeviceConfigInstance
      *
      * @return bool True if delete succeeds, false otherwise

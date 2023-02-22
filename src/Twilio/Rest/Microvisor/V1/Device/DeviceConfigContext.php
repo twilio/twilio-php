@@ -52,6 +52,26 @@ class DeviceConfigContext extends InstanceContext {
     }
 
     /**
+     * Update the DeviceConfigInstance
+     *
+     * @param string $value The config value.
+     * @return DeviceConfigInstance Updated DeviceConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceConfigInstance {
+        $data = Values::of(['Value' => $value, ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
+
+        return new DeviceConfigInstance(
+            $this->version,
+            $payload,
+            $this->solution['deviceSid'],
+            $this->solution['key']
+        );
+    }
+
+    /**
      * Delete the DeviceConfigInstance
      *
      * @return bool True if delete succeeds, false otherwise
