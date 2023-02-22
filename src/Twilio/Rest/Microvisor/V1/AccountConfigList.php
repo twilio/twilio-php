@@ -46,7 +46,7 @@ class AccountConfigList extends ListResource
      * Create the AccountConfigInstance
      *
      * @param string $key The config key; up to 100 characters.
-     * @param string $value The config value;  up to 4096 characters.
+     * @param string $value The config value; up to 4096 characters.
      * @return AccountConfigInstance Created AccountConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */

@@ -99,6 +99,19 @@ class DeviceSecretInstance extends InstanceResource
     }
 
     /**
+     * Update the DeviceSecretInstance
+     *
+     * @param string $value The secret value; up to 4096 characters.
+     * @return DeviceSecretInstance Updated DeviceSecretInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceSecretInstance
+    {
+
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access

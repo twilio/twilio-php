@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Microvisor\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -69,6 +70,31 @@ class AccountSecretContext extends InstanceContext
     {
 
         $payload = $this->version->fetch('GET', $this->uri);
+
+        return new AccountSecretInstance(
+            $this->version,
+            $payload,
+            $this->solution['key']
+        );
+    }
+
+
+    /**
+     * Update the AccountSecretInstance
+     *
+     * @param string $value The secret value; up to 4096 characters.
+     * @return AccountSecretInstance Updated AccountSecretInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountSecretInstance
+    {
+
+        $data = Values::of([
+            'Value' =>
+                $value,
+        ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AccountSecretInstance(
             $this->version,

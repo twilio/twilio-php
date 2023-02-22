@@ -101,6 +101,19 @@ class DeviceConfigInstance extends InstanceResource
     }
 
     /**
+     * Update the DeviceConfigInstance
+     *
+     * @param string $value The config value; up to 4096 characters.
+     * @return DeviceConfigInstance Updated DeviceConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceConfigInstance
+    {
+
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access

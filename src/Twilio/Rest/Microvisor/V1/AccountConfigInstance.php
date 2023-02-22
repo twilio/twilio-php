@@ -97,6 +97,19 @@ class AccountConfigInstance extends InstanceResource
     }
 
     /**
+     * Update the AccountConfigInstance
+     *
+     * @param string $value The config value; up to 4096 characters.
+     * @return AccountConfigInstance Updated AccountConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountConfigInstance
+    {
+
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access

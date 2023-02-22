@@ -18,44 +18,41 @@ namespace Twilio\Rest\FlexApi\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class InsightsSegmentsOptions
+abstract class AssessmentsOptions
 {
     /**
      * @param string $token The Token HTTP request header
-     * @return FetchInsightsSegmentsOptions Options builder
+     * @return CreateAssessmentsOptions Options builder
      */
-    public static function fetch(
+    public static function create(
         
         string $token = Values::NONE
 
-    ): FetchInsightsSegmentsOptions
+    ): CreateAssessmentsOptions
     {
-        return new FetchInsightsSegmentsOptions(
+        return new CreateAssessmentsOptions(
             $token
         );
     }
 
     /**
-     * @param string[] $reservationId The list of reservation Ids
      * @param string $token The Token HTTP request header
-     * @return ReadInsightsSegmentsOptions Options builder
+     * @return UpdateAssessmentsOptions Options builder
      */
-    public static function read(
+    public static function update(
         
-        array $reservationId = Values::ARRAY_NONE,
         string $token = Values::NONE
 
-    ): ReadInsightsSegmentsOptions
+    ): UpdateAssessmentsOptions
     {
-        return new ReadInsightsSegmentsOptions(
-            $reservationId,
+        return new UpdateAssessmentsOptions(
             $token
         );
     }
 
 }
 
-class FetchInsightsSegmentsOptions extends Options
+class CreateAssessmentsOptions extends Options
     {
     /**
      * @param string $token The Token HTTP request header
@@ -88,36 +85,21 @@ class FetchInsightsSegmentsOptions extends Options
     public function __toString(): string
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.FlexApi.V1.FetchInsightsSegmentsOptions ' . $options . ']';
+        return '[Twilio.FlexApi.V1.CreateAssessmentsOptions ' . $options . ']';
     }
 }
 
-class ReadInsightsSegmentsOptions extends Options
+class UpdateAssessmentsOptions extends Options
     {
     /**
-     * @param string[] $reservationId The list of reservation Ids
      * @param string $token The Token HTTP request header
      */
     public function __construct(
         
-        array $reservationId = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ) {
-        $this->options['reservationId'] = $reservationId;
         $this->options['token'] = $token;
-    }
-
-    /**
-     * The list of reservation Ids
-     *
-     * @param string[] $reservationId The list of reservation Ids
-     * @return $this Fluent Builder
-     */
-    public function setReservationId(array $reservationId): self
-    {
-        $this->options['reservationId'] = $reservationId;
-        return $this;
     }
 
     /**
@@ -140,7 +122,7 @@ class ReadInsightsSegmentsOptions extends Options
     public function __toString(): string
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.FlexApi.V1.ReadInsightsSegmentsOptions ' . $options . ']';
+        return '[Twilio.FlexApi.V1.UpdateAssessmentsOptions ' . $options . ']';
     }
 }
 

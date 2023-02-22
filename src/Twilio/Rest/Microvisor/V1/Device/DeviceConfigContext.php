@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Microvisor\V1\Device;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -74,6 +75,32 @@ class DeviceConfigContext extends InstanceContext
     {
 
         $payload = $this->version->fetch('GET', $this->uri);
+
+        return new DeviceConfigInstance(
+            $this->version,
+            $payload,
+            $this->solution['deviceSid'],
+            $this->solution['key']
+        );
+    }
+
+
+    /**
+     * Update the DeviceConfigInstance
+     *
+     * @param string $value The config value; up to 4096 characters.
+     * @return DeviceConfigInstance Updated DeviceConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): DeviceConfigInstance
+    {
+
+        $data = Values::of([
+            'Value' =>
+                $value,
+        ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new DeviceConfigInstance(
             $this->version,

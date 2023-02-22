@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Microvisor\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -69,6 +70,31 @@ class AccountConfigContext extends InstanceContext
     {
 
         $payload = $this->version->fetch('GET', $this->uri);
+
+        return new AccountConfigInstance(
+            $this->version,
+            $payload,
+            $this->solution['key']
+        );
+    }
+
+
+    /**
+     * Update the AccountConfigInstance
+     *
+     * @param string $value The config value; up to 4096 characters.
+     * @return AccountConfigInstance Updated AccountConfigInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountConfigInstance
+    {
+
+        $data = Values::of([
+            'Value' =>
+                $value,
+        ]);
+
+        $payload = $this->version->update('POST', $this->uri, [], $data);
 
         return new AccountConfigInstance(
             $this->version,

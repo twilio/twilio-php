@@ -95,6 +95,19 @@ class AccountSecretInstance extends InstanceResource
     }
 
     /**
+     * Update the AccountSecretInstance
+     *
+     * @param string $value The secret value; up to 4096 characters.
+     * @return AccountSecretInstance Updated AccountSecretInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $value): AccountSecretInstance
+    {
+
+        return $this->proxy()->update($value);
+    }
+
+    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access

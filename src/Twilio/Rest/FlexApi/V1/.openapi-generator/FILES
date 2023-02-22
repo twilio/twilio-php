@@ -20,6 +20,7 @@
 AssessmentsContext.php
 AssessmentsInstance.php
 AssessmentsList.php
+AssessmentsOptions.php
 AssessmentsPage.php
 ChannelContext.php
 ChannelInstance.php

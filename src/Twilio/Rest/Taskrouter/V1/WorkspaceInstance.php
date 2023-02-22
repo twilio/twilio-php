@@ -33,7 +33,6 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceRealTimeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsList;
-use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueBulkRealTimeStatisticsList;
 
 
 /**
@@ -65,7 +64,6 @@ class WorkspaceInstance extends InstanceResource
     protected $_cumulativeStatistics;
     protected $_realTimeStatistics;
     protected $_statistics;
-    protected $_bulkRealTimeStatistics;
 
     /**
      * Initialize the WorkspaceInstance
@@ -233,14 +231,6 @@ class WorkspaceInstance extends InstanceResource
     protected function getStatistics(): WorkspaceStatisticsList
     {
         return $this->proxy()->statistics;
-    }
-
-    /**
-     * Access the bulkRealTimeStatistics
-     */
-    protected function getBulkRealTimeStatistics(): TaskQueueBulkRealTimeStatisticsList
-    {
-        return $this->proxy()->bulkRealTimeStatistics;
     }
 
     /**

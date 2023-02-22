@@ -43,7 +43,7 @@ use Twilio\Version;
  * @property string|null $customerName
  * @property string|null $customerLink
  * @property string|null $segmentRecordingOffset
- * @property string|null $media
+ * @property array|null $media
  * @property array|null $assessmentType
  * @property array|null $assessmentPercentage
  * @property string|null $url

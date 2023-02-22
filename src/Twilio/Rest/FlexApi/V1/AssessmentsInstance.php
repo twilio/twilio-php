@@ -19,11 +19,25 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 
 /**
+ * @property string|null $accountSid
+ * @property string|null $assessmentId
+ * @property string|null $offset
+ * @property bool|null $report
+ * @property string|null $weight
+ * @property string|null $agentId
+ * @property string|null $segmentId
+ * @property string|null $userName
+ * @property string|null $userEmail
+ * @property string|null $answerText
+ * @property string|null $answerId
+ * @property array|null $assessment
+ * @property string|null $timestamp
  * @property string|null $url
  */
 class AssessmentsInstance extends InstanceResource
@@ -33,17 +47,31 @@ class AssessmentsInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $assessmentId The id of the assessment to be modified
      */
-    public function __construct(Version $version, array $payload)
+    public function __construct(Version $version, array $payload, string $assessmentId = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'assessmentId' => Values::array_get($payload, 'assessment_id'),
+            'offset' => Values::array_get($payload, 'offset'),
+            'report' => Values::array_get($payload, 'report'),
+            'weight' => Values::array_get($payload, 'weight'),
+            'agentId' => Values::array_get($payload, 'agent_id'),
+            'segmentId' => Values::array_get($payload, 'segment_id'),
+            'userName' => Values::array_get($payload, 'user_name'),
+            'userEmail' => Values::array_get($payload, 'user_email'),
+            'answerText' => Values::array_get($payload, 'answer_text'),
+            'answerId' => Values::array_get($payload, 'answer_id'),
+            'assessment' => Values::array_get($payload, 'assessment'),
+            'timestamp' => Values::array_get($payload, 'timestamp'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [];
+        $this->solution = ['assessmentId' => $assessmentId ?: $this->properties['assessmentId'], ];
     }
 
     /**
@@ -56,7 +84,8 @@ class AssessmentsInstance extends InstanceResource
     {
         if (!$this->context) {
             $this->context = new AssessmentsContext(
-                $this->version
+                $this->version,
+                $this->solution['assessmentId']
             );
         }
 
@@ -64,15 +93,19 @@ class AssessmentsInstance extends InstanceResource
     }
 
     /**
-     * Create the AssessmentsInstance
+     * Update the AssessmentsInstance
      *
-     * @return AssessmentsInstance Created AssessmentsInstance
+     * @param string $offset The offset of the conversation
+     * @param string $answerText The answer text selected by user
+     * @param string $answerId The id of the answer selected by user
+     * @param array|Options $options Optional Arguments
+     * @return AssessmentsInstance Updated AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): AssessmentsInstance
+    public function update(string $offset, string $answerText, string $answerId, array $options = []): AssessmentsInstance
     {
 
-        return $this->proxy()->create();
+        return $this->proxy()->update($offset, $answerText, $answerId, $options);
     }
 
     /**

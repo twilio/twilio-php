@@ -16,7 +16,10 @@
 
 namespace Twilio\Rest\FlexApi\V1;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -35,17 +38,85 @@ class AssessmentsList extends ListResource
         // Path Solution
         $this->solution = [
         ];
+
+        $this->uri = '/Insights/QM/Assessments';
     }
 
     /**
+     * Create the AssessmentsInstance
+     *
+     * @param string $categoryId The id of the category
+     * @param string $categoryName The name of the category
+     * @param string $segmentId Segment Id of the conversation
+     * @param string $userName Name of the user assessing conversation
+     * @param string $userEmail Email of the user assessing conversation
+     * @param string $agentId The id of the Agent
+     * @param string $offset The offset of the conversation.
+     * @param string $metricId The question Id selected for assessment
+     * @param string $metricName The question name of the assessment
+     * @param string $answerText The answer text selected by user
+     * @param string $answerId The id of the answer selected by user
+     * @param string $questionnaireId Questionnaire Id of the associated question
+     * @param array|Options $options Optional Arguments
+     * @return AssessmentsInstance Created AssessmentsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $categoryId, string $categoryName, string $segmentId, string $userName, string $userEmail, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireId, array $options = []): AssessmentsInstance
+    {
+
+        $options = new Values($options);
+
+        $data = Values::of([
+            'CategoryId' =>
+                $categoryId,
+            'CategoryName' =>
+                $categoryName,
+            'SegmentId' =>
+                $segmentId,
+            'UserName' =>
+                $userName,
+            'UserEmail' =>
+                $userEmail,
+            'AgentId' =>
+                $agentId,
+            'Offset' =>
+                $offset,
+            'MetricId' =>
+                $metricId,
+            'MetricName' =>
+                $metricName,
+            'AnswerText' =>
+                $answerText,
+            'AnswerId' =>
+                $answerId,
+            'QuestionnaireId' =>
+                $questionnaireId,
+        ]);
+
+        $headers = Values::of(['Token' => $options['token']]);
+
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+
+        return new AssessmentsInstance(
+            $this->version,
+            $payload
+        );
+    }
+
+
+    /**
      * Constructs a AssessmentsContext
+     *
+     * @param string $assessmentId The id of the assessment to be modified
      */
     public function getContext(
+        string $assessmentId
         
     ): AssessmentsContext
     {
         return new AssessmentsContext(
-            $this->version
+            $this->version,
+            $assessmentId
         );
     }
 
