@@ -1,50 +1,6 @@
 twilio-php Changelog
 ====================
 
-[2023-02-22] Version 6.44.4
----------------------------
-**Api**
-- Remove `scheduled_for` property from message resource
-- Add `scheduled_for` property to message resource
-
-
-[2023-02-08] Version 6.44.3
----------------------------
-**Library - Fix**
-- [PR #770](https://github.com/twilio/twilio-php/pull/770): test failures for PhpUnit >=10. Thanks to [@isha689](https://github.com/isha689)!
-
-**Lookups**
-- Add `disposable_phone_number_risk` package to the lookup response
-- Add `sms_pumping_risk` package to the lookup response
-
-
-[2023-01-25] Version 6.44.2
----------------------------
-**Api**
-- Add `public_application_connect_enabled` param to Application resource
-
-**Messaging**
-- Add new tollfree verification API property (ExternalReferenceId)]
-
-**Verify**
-- Add `device_ip` parameter and channel `auto` for sna/sms orchestration
-
-**Twiml**
-- Add support for `<Application>` noun and `<ApplicationSid>` noun, nested `<Parameter>` to `<Hangup>` and `<Leave>` verb
-
-
-[2023-01-11] Version 6.44.1
----------------------------
-**Conversations**
-- Add support for creating Multi-Channel Rich Content Messages
-
-**Lookups**
-- Changed the no data message for match postal code from `no_data` to `data_not_available` in identity match package
-
-**Messaging**
-- Add update/edit tollfree verification API
-
-
 [2022-12-14] Version 6.44.0
 ---------------------------
 **Api**
