@@ -1,38 +1,25 @@
 twilio-php Changelog
 ====================
-[2023-02-22] Version 7.0.0-rc.4
--------------------------------
+
+[2023-02-22] Version 6.44.4
+---------------------------
 **Api**
 - Remove `scheduled_for` property from message resource
 - Add `scheduled_for` property to message resource
 
 
-[2023-02-08] Version 7.0.0-rc.3
--------------------------------
+[2023-02-08] Version 6.44.3
+---------------------------
 **Library - Fix**
-- [PR #769](https://github.com/twilio/twilio-php/pull/769): test failures for PhpUnit >=10. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #767](https://github.com/twilio/twilio-php/pull/767): correct indentation and camelCase version. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #768](https://github.com/twilio/twilio-php/pull/768): correct default values for different data types. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #766](https://github.com/twilio/twilio-php/pull/766): drop removed APIs. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #765](https://github.com/twilio/twilio-php/pull/765): correct version. Thanks to [@isha689](https://github.com/isha689)!
-
-**Library - Chore**
-- [PR #763](https://github.com/twilio/twilio-php/pull/763): add examples for calling common apis. Thanks to [@isha689](https://github.com/isha689)!
+- [PR #770](https://github.com/twilio/twilio-php/pull/770): test failures for PhpUnit >=10. Thanks to [@isha689](https://github.com/isha689)!
 
 **Lookups**
 - Add `disposable_phone_number_risk` package to the lookup response
 - Add `sms_pumping_risk` package to the lookup response
 
 
-[2023-01-25] Version 7.0.0-rc.2
--------------------------------
-**Library - Chore**
-- [PR #762](https://github.com/twilio/twilio-php/pull/762): remove code smells. Thanks to [@isha689](https://github.com/isha689)!
-
-**Library - Fix**
-- [PR #760](https://github.com/twilio/twilio-php/pull/760): type hint for $capabilities to PhoneNumberCapabilities. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #759](https://github.com/twilio/twilio-php/pull/759): support array parameters for Guzzle GETs. Thanks to [@isha689](https://github.com/isha689)!
-
+[2023-01-25] Version 6.44.2
+---------------------------
 **Api**
 - Add `public_application_connect_enabled` param to Application resource
 
@@ -46,74 +33,17 @@ twilio-php Changelog
 - Add support for `<Application>` noun and `<ApplicationSid>` noun, nested `<Parameter>` to `<Hangup>` and `<Leave>` verb
 
 
-[2023-01-11] Version 7.0.0-rc.1
--------------------------------
-**Library - Chore**
-- [PR #758](https://github.com/twilio/twilio-php/pull/758): sync up with main branch. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #751](https://github.com/twilio/twilio-php/pull/751): create BaseClient in Base folder. Thanks to [@rohith-prakash](https://github.com/rohith-prakash)!
-
-**Library - Fix**
-- [PR #757](https://github.com/twilio/twilio-php/pull/757): base file name. Thanks to [@isha689](https://github.com/isha689)!
-- [PR #756](https://github.com/twilio/twilio-php/pull/756): Add handcrafted domain files. Thanks to [@rohith-prakash](https://github.com/rohith-prakash)!
-- [PR #755](https://github.com/twilio/twilio-php/pull/755): Add Cluster test. Thanks to [@rohith-prakash](https://github.com/rohith-prakash)!
-
-**Api**
-- Add `street_secondary` param to address create and update
-- Make `method` optional for user defined message subscription **(breaking change)**
-- Set the Content resource to have public visibility as Preview
-
+[2023-01-11] Version 6.44.1
+---------------------------
 **Conversations**
 - Add support for creating Multi-Channel Rich Content Messages
 
-**Flex**
-- Flex Conversations is now Generally Available
-- Adding the ie1 mapping for authorization api, updating service base uri and base url response attribute **(breaking change)**
-- Change web channels to GA and library visibility to public
-- Changing the uri for authorization api from using Accounts to Insights **(breaking change)**
-- Adding new `assessments` api in version `v1`
-- Adding new parameter `base_url` to 'gooddata' response in version `v1`
-- Adding two new authorization API 'user_roles' and 'gooddata' in version `v1`
-
-**Insights**
-- Added `answered_by` field in List Call Summary
-- Added `answered_by` field in call summary
-
 **Lookups**
 - Changed the no data message for match postal code from `no_data` to `data_not_available` in identity match package
-- Add `identity_match` package to the lookup response
-
-**Media**
-- Gate Twilio Live endpoints behind beta_feature for EOS
 
 **Messaging**
 - Add update/edit tollfree verification API
-- Mark `MessageFlow` as a required field for Campaign Creation **(breaking change)**
-- Added `validated` parameter to Link Shortening API
-- Add new Campaign properties (MessageFlow, OptInMessage, OptInKeywords, OptOutMessage, OptOutKeywords, HelpMessage, HelpKeywords)
 
-**Oauth**
-- updated openid discovery endpoint uri **(breaking change)**
-- Added device code authorization endpoint
-
-**Serverless**
-- Add node16 as a valid Build runtime
-- Add ie1 and au1 as supported regions for all endpoints.
-
-**Supersim**
-- Allow filtering the SettingsUpdates resource by `status`
-
-**Twiml**
-- Add new Polly Neural voices
-- Add tr-TR, ar-AE, yue-CN, fi-FI languages to SSML `<lang>` element.
-- Add x-amazon-jyutping, x-amazon-pinyin, x-amazon-pron-kana, x-amazon-yomigana alphabets to SSML `<phoneme>` element.
-- Rename `character` value for SSML `<say-as>` `interpret-as` attribute to `characters`. **(breaking change)**
-- Rename `role` attribute to `format` in SSML `<say-as>` element. **(breaking change)**
-- Add new speech models to `Gather`.
-
-
-[2022-11-16] Version 7.0.0-rc.0
----------------------------
-- Release Candidate prep
 
 [2022-12-14] Version 6.44.0
 ---------------------------
@@ -2706,8 +2636,8 @@ twilio-php Changelog
 ----------------------------
 **Sync**
 - Add TTL support for Sync objects *(breaking change)*
-  - The required `data` parameter on the following actions is now optional: "Update Document", "Update Map Item", "Update List Item"
-  - New actions available for updating TTL of Sync objects: "Update List", "Update Map", "Update Stream"
+    - The required `data` parameter on the following actions is now optional: "Update Document", "Update Map Item", "Update List Item"
+    - New actions available for updating TTL of Sync objects: "Update List", "Update Map", "Update Stream"
 
 **Video**
 - [bi] Rename `RoomParticipant` to `Participant`
@@ -2969,24 +2899,24 @@ artifacts per library.
 - Add `WRAPPING` entry to Status for Task
 
 - **Twilio Chat**
-  - Add `limits` map to Service
-  - Add `limitsChannelMembers` and `limitsUserChannels` field to ServiceUpdater
+    - Add `limits` map to Service
+    - Add `limitsChannelMembers` and `limitsUserChannels` field to ServiceUpdater
 
 [2017-03-13] Version 5.7.0
 --------------------------
 Breaking Changes, refer to [Upgrade Guide][upgrade]
 
- - Restore ability to transfer IncomingPhoneNumbers between accounts.
+- Restore ability to transfer IncomingPhoneNumbers between accounts.
 
 [2017-03-03] Version 5.6.0
 -------------------------
 Breaking Changes, refer to [Upgrade Guide][upgrade]
 
- - Remove end of life Sandbox resource (backwards incompatible).
- - Support new `accounts.twilio.com` subdomain and products.
+- Remove end of life Sandbox resource (backwards incompatible).
+- Support new `accounts.twilio.com` subdomain and products.
     - `client->accounts` now references `accounts.twilio.com` instead of Accounts resource (backwards incompatible).
- - Fix resources throwing error on instantiation when response is missing a field.
- - Chat:
+- Fix resources throwing error on instantiation when response is missing a field.
+- Chat:
     - Add `order` as filter when listing Messages.
     - Messages `.read()`, `.stream()`, `.page()` now accept options array as first parameter (backwards incompatible).
 
@@ -2995,27 +2925,27 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
 -------------------------
 Breaking Changes, refer to [Upgrade Guide][upgrade]
 
- - Fix broken default page size for all reads, thanks @rtek! Issue [#388] (https://github.com/twilio/twilio-php/issues/388)
+- Fix broken default page size for all reads, thanks @rtek! Issue [#388] (https://github.com/twilio/twilio-php/issues/388)
     - Credential List Mappings, IP ACL Mappings, SIP Domains.
- - Fix incorrect types documentation of `links`/`subresourceUri` fields on various resources. Was incorrectly documented as string, actual type was an array.
- - Fix some properties incorrectly documented as `string` when actually were `array` types.
- - Fix boolean parameters did not accept boolean values, now accept both boolean and strings for backwards compatibility.
- - Add `emergencyEnabled` field to Addresses.
- - Add `price` and `callSid` fields to Recordings.
+- Fix incorrect types documentation of `links`/`subresourceUri` fields on various resources. Was incorrectly documented as string, actual type was an array.
+- Fix some properties incorrectly documented as `string` when actually were `array` types.
+- Fix boolean parameters did not accept boolean values, now accept both boolean and strings for backwards compatibility.
+- Add `emergencyEnabled` field to Addresses.
+- Add `price` and `callSid` fields to Recordings.
     - Allow filtering recordings list by call sid.
- - Add `trunkSid`, `emergencyStatus`, and `emergencyAddressSid` fields to IncomingPhoneNumbers.
- - Add `messagingServiceSid` field to Messages.
- - Add `url` and/or `links` fields to various resources which were missing them.
+- Add `trunkSid`, `emergencyStatus`, and `emergencyAddressSid` fields to IncomingPhoneNumbers.
+- Add `messagingServiceSid` field to Messages.
+- Add `url` and/or `links` fields to various resources which were missing them.
     - Lookups PhoneNumber, Monitor Events.
- - Add `subresourceUri` fields to resources where missing.
- - Accept DateTime inputs for date parameters for various resources, previously expected strings.
- - Remove `uri` field from Pricing Phone Number Countries resource (backwards incompatible).
- - Properly deserialize date times for various resources (backwards incompatible).
- - Remove library support for date inquality for resources that don't support them (backwards incompatible).
- - Message `body` parameter now required on update (backwards incompatible).
- - Require `friendlyName` on Queue creation (backwards incompatible).
+- Add `subresourceUri` fields to resources where missing.
+- Accept DateTime inputs for date parameters for various resources, previously expected strings.
+- Remove `uri` field from Pricing Phone Number Countries resource (backwards incompatible).
+- Properly deserialize date times for various resources (backwards incompatible).
+- Remove library support for date inquality for resources that don't support them (backwards incompatible).
+- Message `body` parameter now required on update (backwards incompatible).
+- Require `friendlyName` on Queue creation (backwards incompatible).
 
- - Taskrouter
+- Taskrouter
     - Add `url` and/or `links` fields to resources where missing.
         - Activities, Reservations, TaskQueue Statistics, WorkerStatistics, WorkersStatistics, Worker, Workflow, WorkflowStatistics, WorkspaceStatistics, Tasks, TaskQueues, Workspaces.
     - Add `addons`, `taskQueueFriendlyName`, `workflowFriendlyName` fields to Tasks.
@@ -3031,7 +2961,7 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
     - Remove `friendlyName` as optional parameter when fetching Task Queue Statistics (backwards incompatible).
     - WorkspaceStatistics now take `DateTime` objects when filtering by `startDate` and `endDate` (backwards incompatible).
 
- - Chat
+- Chat
     - Add `Secret` field to Chat credentials and allow setting on create and update.
     - Add Channel Invite resource.
     - Add `lastConsumedMessageIndex` and `lastConsumptionTimestamp` fields to Channel Members.
@@ -3045,13 +2975,13 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
     - Remove ability to update `type` on Channels, was never supported by api (backwards incompatible).
     - Demote update Message `body` to optional parameter (backwards incompatible).
 
- - Conferences
+- Conferences
     - Add `status` field to Participants.
     - Add ability to add/remove Participants via the API.
     - Add ability to end Conferences via the API.
     - Add `region` and `subresourceUri` fields to Conference.
 
- - Marketplace
+- Marketplace
     - Add resources for Recording AddOns.
         - AddOnResults.
         - AddOnResultPayloads.
@@ -3061,45 +2991,45 @@ Breaking Changes, refer to [Upgrade Guide][upgrade]
 [2016-10-12] Version 5.4.2
 --------------------------
 
- - Add `InstanceResource::toArray()`
+- Add `InstanceResource::toArray()`
 
 Thanks to @johnpaulmedina for this suggestion.
 
 [2016-09-19] Version 5.4.1
 --------------------------
 
-  - Add Video Grant
+- Add Video Grant
 
 [2016-09-15] Version 5.4.0
 --------------------------
 **Breaking Changes, refer to [Upgrade Guide][upgrade]**
 
-  - Remove required parameter `friendlyName` on IP Messaging/Chat Role update.
-  - Alphabetize domain mounts
-  - Better exceptions when an error is encountered loading a page of records,
-    the exception class has been corrected from `DeserializeException` to
-    `RestException`.
+- Remove required parameter `friendlyName` on IP Messaging/Chat Role update.
+- Alphabetize domain mounts
+- Better exceptions when an error is encountered loading a page of records,
+  the exception class has been corrected from `DeserializeException` to
+  `RestException`.
 
 [2016-08-30] Version 5.3.0
 --------------------------
 **Breaking Changes, refer to [Upgrade Guide][upgrade]**
 
-  - Demote `password` to optional and remove unsupported `username` on
-    SIP Credential Update
-  - Demote `RoleSid` to optional and add optional `attributes`, `friendlyName`
-    parameters on IP Messaging/Chat User creation
-  - Add optional `attributes` parameter on IP Messaging/Chat message creation
+- Demote `password` to optional and remove unsupported `username` on
+  SIP Credential Update
+- Demote `RoleSid` to optional and add optional `attributes`, `friendlyName`
+  parameters on IP Messaging/Chat User creation
+- Add optional `attributes` parameter on IP Messaging/Chat message creation
 
 
 [2016-08-29] Version 5.2.0
 --------------------------
 **Breaking Changes, refer to [Upgrade Guide][upgrade]**
 
-  - New options for Conference Participant management.
-     - Adds support for `hold`, `holdUrl`, `holdMethod`
-  - Mount `ip-messaging` under the new `chat` domain
-  - Demote `assignmentCallbackUrl` from a required argument to optional for
-    Taskrouter Workflows to better support client managed reservations.
+- New options for Conference Participant management.
+    - Adds support for `hold`, `holdUrl`, `holdMethod`
+- Mount `ip-messaging` under the new `chat` domain
+- Demote `assignmentCallbackUrl` from a required argument to optional for
+  Taskrouter Workflows to better support client managed reservations.
 
 [2016-08-29] Version 5.1.1
 --------------------------
@@ -3273,9 +3203,9 @@ Version 4.3.0
 Released August 11, 2015
 
 - Add support for new Taskrouter JWT Functionality, JWTs now grant access to
-  - Workspace
-  - Worker
-  - TaskQueue
+    - Workspace
+    - Worker
+    - TaskQueue
 
 Version 4.2.1
 -------------
@@ -3411,7 +3341,7 @@ Released on October 21, 2013
 
 - Add support for filtering by type for IncomingPhoneNumbers.
 - Add support for searching for mobile numbers for both
-IncomingPhoneNumbers and AvailablePhoneNumbers.
+  IncomingPhoneNumbers and AvailablePhoneNumbers.
 
 Version 3.12.0
 --------------
@@ -3424,7 +3354,7 @@ Released on September 18, 2013
 
         array("Twilio" => array('foo', 'bar'))
 
-    will turn into Twilio=foo&Twilio=bar when sent to the API.
+  will turn into Twilio=foo&Twilio=bar when sent to the API.
 
 - Update the documentation to use php-autodoc and Sphinx.
 
@@ -3441,7 +3371,7 @@ Version 3.10.0
 Released on February 2, 2013
 
 - Uses the [HTTP status code for error reporting][http], instead of the
-`status` attribute of the JSON response. (Reporter: [Ruud Kamphuis](/ruudk))
+  `status` attribute of the JSON response. (Reporter: [Ruud Kamphuis](/ruudk))
 
 [http]: https://github.com/twilio/twilio-php/pull/116
 
@@ -3451,8 +3381,8 @@ Version 3.9.1
 Released on December 30, 2012
 
 - Adds a `$last_response` parameter to the `$client` object that can be
-used to [retrieve the raw API response][last-response]. (Reporter: [David
-Jones](/dxjones))
+  used to [retrieve the raw API response][last-response]. (Reporter: [David
+  Jones](/dxjones))
 
 [last-response]: https://github.com/twilio/twilio-php/pull/112/files
 
@@ -3474,7 +3404,7 @@ Released on December 15, 2012
 
 - [Fixes the ShortCode resource][shortcode] so it is queryable via the PHP library.
 
- [shortcode]: https://github.com/twilio/twilio-php/pull/108
+[shortcode]: https://github.com/twilio/twilio-php/pull/108
 
 Version 3.8.2
 -------------
@@ -3482,7 +3412,7 @@ Version 3.8.2
 Released on November 26, 2012
 
 - Fixes an issue where you [could not iterate over the members in a
-queue][queue-members]. (Reporter: [Alex Chan](/alexcchan))
+  queue][queue-members]. (Reporter: [Alex Chan](/alexcchan))
 
 [queue-members]: https://github.com/twilio/twilio-php/pull/107
 
@@ -3500,7 +3430,7 @@ Internally:
 
 - Adds [unit tests for url encoding of Unicode characters][unicode-tests].
 - Updates [Travis CI configuration to use Composer][travis-composer],
-shortening build time from 83 seconds to 21 seconds.
+  shortening build time from 83 seconds to 21 seconds.
 
 [countable]: https://twilio-php.readthedocs.org/en/latest/usage/rest.html#retrieving-the-total-number-of-resources
 [get-number]: https://twilio-php.readthedocs.org/en/latest/usage/rest/phonenumbers.html#retrieving-all-of-a-number-s-properties
@@ -3522,10 +3452,10 @@ Version 3.7.2
 -------------
 
 - The library will now [use a standard CA cert whitelist][whitelist] for SSL
-    validation, replacing a file that contained only Twilio's SSL certificate.
-    (Reporter: [Andrew Benton](/andrewmbenton))
+  validation, replacing a file that contained only Twilio's SSL certificate.
+  (Reporter: [Andrew Benton](/andrewmbenton))
 
- [whitelist]: https://github.com/twilio/twilio-php/issues/88
+[whitelist]: https://github.com/twilio/twilio-php/issues/88
 
 Version 3.7.1
 -------------
@@ -3566,8 +3496,8 @@ Released on July 23, 2012
   (Reporter: [Alex Chan](/alexcchan))
 
 - Fix an issue introduced in the 3.5.0 release where [filtering an iterator
-with parameters would not work properly][paging-request] on subsequent HTTP
-requests. (Reporters: [Alex Chan](/alexcchan), Ivor O'Connor)
+  with parameters would not work properly][paging-request] on subsequent HTTP
+  requests. (Reporters: [Alex Chan](/alexcchan), Ivor O'Connor)
 
 [mute-request]: /twilio/twilio-php/pull/74
 [paging-request]: /twilio/twilio-php/pull/75
@@ -3578,7 +3508,7 @@ Version 3.5.1
 Released on July 2, 2012
 
 - Fix an issue introduced in the 3.5.0 release that would cause a second HTTP
-request for an instance resource [to request an incorrect URI][issue-71].
+  request for an instance resource [to request an incorrect URI][issue-71].
 
 [issue-71]: https://github.com/twilio/twilio-php/pull/71
 
@@ -3588,9 +3518,9 @@ Version 3.5.0
 Released on June 30, 2012
 
 - Support paging through resources using the `next_page_uri` parameter instead
-of manually constructing parameters using the `Page` and `PageSize` parameters.
-Specifically, this allows the library to use the `AfterSid` parameter, which
-leads to improved performance when paging deep into your resource list.
+  of manually constructing parameters using the `Page` and `PageSize` parameters.
+  Specifically, this allows the library to use the `AfterSid` parameter, which
+  leads to improved performance when paging deep into your resource list.
 
 This involved a major refactor of the library. The documented interface to
 twilio-php will not change. However, some undocumented public methods are no
@@ -3604,8 +3534,8 @@ In addition, the following public methods have been removed:
 
 - `setProxy`, in `Services/Twilio/InstanceResource.php`
 - `getSchema`, in `Services/Twilio/ListResource.php`,
-    `Services/Twilio/Rest/AvailablePhoneNumbers.php`,
-    `Services/Twilio/Rest/SMSMessages.php`
+  `Services/Twilio/Rest/AvailablePhoneNumbers.php`,
+  `Services/Twilio/Rest/SMSMessages.php`
 
 - `retrieveData`, in `Services/Twilio/Resource.php`
 - `deleteData`, in `Services/Twilio/Resource.php`
@@ -3628,8 +3558,8 @@ Version 3.3.1
 Released on May 1, 2012
 
 - Use the 'Accept-Charset' header to specify we want to receive UTF-8 encoded
-data from the Twilio API. Remove unused XML parsing logic, as the library never
-requests XML data.
+  data from the Twilio API. Remove unused XML parsing logic, as the library never
+  requests XML data.
 
 Version 3.2.4
 -------------
