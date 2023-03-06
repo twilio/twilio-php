@@ -1,7 +1,0 @@
-../V3.php
-.openapi-generator-ignore
-ChannelContext.php
-ChannelInstance.php
-ChannelList.php
-ChannelOptions.php
-ChannelPage.php
