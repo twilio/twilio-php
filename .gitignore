@@ -18,3 +18,5 @@ nbproject
 
 # This is used by the documentation generator
 venv
+**/.openapi-generator*
+**/.openapi-generator-ignore*

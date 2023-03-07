@@ -28,6 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "": "src/Twilio/",
             "Twilio\\Tests\\": "tests/Twilio/"
         }
     },

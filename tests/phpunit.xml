@@ -5,9 +5,6 @@
       <directory>./Twilio/Unit</directory>
       <exclude>WorkflowTest.php</exclude>
     </testsuite>
-    <testsuite name="Twilio Integration Test Suite">
-      <directory>./Twilio/Integration</directory>
-    </testsuite>
   </testsuites>
   <coverage>
     <include>

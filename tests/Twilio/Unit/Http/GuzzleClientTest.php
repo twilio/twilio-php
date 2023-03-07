@@ -116,4 +116,17 @@ final class GuzzleClientTest extends UnitTest {
 
         $this->assertSame('https://www.whatever.com?foo=bar', (string)$request->getUri());
     }
+
+    public function testGetMethodArray(): void {
+        $this->mockHandler->append(new Response());
+        $response = $this->client->request('GET', 'https://www.whatever.com', ['key' => ['value1']]);
+        $this->assertNull($response->getContent());
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame([], $response->getHeaders());
+
+        $request = $this->mockHandler->getLastRequest();
+
+        $this->assertSame('GET', $request->getMethod());
+        $this->assertSame('https://www.whatever.com?key=value1', (string)$request->getUri());
+    }
 }
