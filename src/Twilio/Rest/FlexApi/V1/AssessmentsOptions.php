@@ -36,6 +36,24 @@ abstract class AssessmentsOptions
     }
 
     /**
+     * @param string $segmentId The id of the segment.
+     * @param string $token The Token HTTP request header
+     * @return ReadAssessmentsOptions Options builder
+     */
+    public static function read(
+        
+        string $segmentId = Values::NONE,
+        string $token = Values::NONE
+
+    ): ReadAssessmentsOptions
+    {
+        return new ReadAssessmentsOptions(
+            $segmentId,
+            $token
+        );
+    }
+
+    /**
      * @param string $token The Token HTTP request header
      * @return UpdateAssessmentsOptions Options builder
      */
@@ -86,6 +104,58 @@ class CreateAssessmentsOptions extends Options
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateAssessmentsOptions ' . $options . ']';
+    }
+}
+
+class ReadAssessmentsOptions extends Options
+    {
+    /**
+     * @param string $segmentId The id of the segment.
+     * @param string $token The Token HTTP request header
+     */
+    public function __construct(
+        
+        string $segmentId = Values::NONE,
+        string $token = Values::NONE
+
+    ) {
+        $this->options['segmentId'] = $segmentId;
+        $this->options['token'] = $token;
+    }
+
+    /**
+     * The id of the segment.
+     *
+     * @param string $segmentId The id of the segment.
+     * @return $this Fluent Builder
+     */
+    public function setSegmentId(string $segmentId): self
+    {
+        $this->options['segmentId'] = $segmentId;
+        return $this;
+    }
+
+    /**
+     * The Token HTTP request header
+     *
+     * @param string $token The Token HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setToken(string $token): self
+    {
+        $this->options['token'] = $token;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.FlexApi.V1.ReadAssessmentsOptions ' . $options . ']';
     }
 }
 

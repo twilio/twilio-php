@@ -22,6 +22,7 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Serialize;
 
 
 class EsimProfileList extends ListResource
@@ -60,6 +61,8 @@ class EsimProfileList extends ListResource
                 $options['callbackUrl'],
             'CallbackMethod' =>
                 $options['callbackMethod'],
+            'GenerateMatchingId' =>
+                Serialize::booleanToString($options['generateMatchingId']),
             'Eid' =>
                 $options['eid'],
         ]);

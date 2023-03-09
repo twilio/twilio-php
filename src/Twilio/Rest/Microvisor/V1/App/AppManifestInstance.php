@@ -15,68 +15,56 @@
  */
 
 
-namespace Twilio\Rest\Microvisor\V1;
+namespace Twilio\Rest\Microvisor\V1\App;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\Deserialize;
-use Twilio\Rest\Microvisor\V1\App\AppManifestList;
 
 
 /**
- * @property string|null $sid
- * @property string|null $accountSid
+ * @property string|null $appSid
  * @property string|null $hash
- * @property string|null $uniqueName
- * @property \DateTime|null $dateCreated
- * @property \DateTime|null $dateUpdated
+ * @property string|null $encodedBytes
  * @property string|null $url
- * @property array|null $links
  */
-class AppInstance extends InstanceResource
+class AppManifestInstance extends InstanceResource
 {
-    protected $_appManifests;
-
     /**
-     * Initialize the AppInstance
+     * Initialize the AppManifestInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid A 34-character string that uniquely identifies this App.
+     * @param string $appSid A 34-character string that uniquely identifies this App.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, string $appSid)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'appSid' => Values::array_get($payload, 'app_sid'),
             'hash' => Values::array_get($payload, 'hash'),
-            'uniqueName' => Values::array_get($payload, 'unique_name'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'encodedBytes' => Values::array_get($payload, 'encoded_bytes'),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['appSid' => $appSid, ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return AppContext Context for this AppInstance
+     * @return AppManifestContext Context for this AppManifestInstance
      */
-    protected function proxy(): AppContext
+    protected function proxy(): AppManifestContext
     {
         if (!$this->context) {
-            $this->context = new AppContext(
+            $this->context = new AppManifestContext(
                 $this->version,
-                $this->solution['sid']
+                $this->solution['appSid']
             );
         }
 
@@ -84,35 +72,15 @@ class AppInstance extends InstanceResource
     }
 
     /**
-     * Delete the AppInstance
+     * Fetch the AppManifestInstance
      *
-     * @return bool True if delete succeeds, false otherwise
+     * @return AppManifestInstance Fetched AppManifestInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool
-    {
-
-        return $this->proxy()->delete();
-    }
-
-    /**
-     * Fetch the AppInstance
-     *
-     * @return AppInstance Fetched AppInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): AppInstance
+    public function fetch(): AppManifestInstance
     {
 
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Access the appManifests
-     */
-    protected function getAppManifests(): AppManifestList
-    {
-        return $this->proxy()->appManifests;
     }
 
     /**
@@ -147,7 +115,7 @@ class AppInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Microvisor.V1.AppInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Microvisor.V1.AppManifestInstance ' . \implode(' ', $context) . ']';
     }
 }
 

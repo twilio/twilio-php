@@ -18,12 +18,20 @@
 namespace Twilio\Rest\Microvisor\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Rest\Microvisor\V1\App\AppManifestList;
 
 
+/**
+ * @property AppManifestList $appManifests
+ * @method \Twilio\Rest\Microvisor\V1\App\AppManifestContext appManifests()
+ */
 class AppContext extends InstanceContext
     {
+    protected $_appManifests;
+
     /**
      * Initialize the AppContext
      *
@@ -77,6 +85,56 @@ class AppContext extends InstanceContext
         );
     }
 
+
+    /**
+     * Access the appManifests
+     */
+    protected function getAppManifests(): AppManifestList
+    {
+        if (!$this->_appManifests) {
+            $this->_appManifests = new AppManifestList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_appManifests;
+    }
+
+    /**
+     * Magic getter to lazy load subresources
+     *
+     * @param string $name Subresource to return
+     * @return ListResource The requested subresource
+     * @throws TwilioException For unknown subresources
+     */
+    public function __get(string $name): ListResource
+    {
+        if (\property_exists($this, '_' . $name)) {
+            $method = 'get' . \ucfirst($name);
+            return $this->$method();
+        }
+
+        throw new TwilioException('Unknown subresource ' . $name);
+    }
+
+    /**
+     * Magic caller to get resource contexts
+     *
+     * @param string $name Resource to return
+     * @param array $arguments Context parameters
+     * @return InstanceContext The requested resource context
+     * @throws TwilioException For unknown resource
+     */
+    public function __call(string $name, array $arguments): InstanceContext
+    {
+        $property = $this->$name;
+        if (\method_exists($property, 'getContext')) {
+            return \call_user_func_array(array($property, 'getContext'), $arguments);
+        }
+
+        throw new TwilioException('Resource does not have a context');
+    }
 
     /**
      * Provide a friendly representation

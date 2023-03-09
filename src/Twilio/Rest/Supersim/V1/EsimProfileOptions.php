@@ -23,6 +23,7 @@ abstract class EsimProfileOptions
     /**
      * @param string $callbackUrl The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
+     * @param bool $generateMatchingId When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.
      * @param string $eid Identifier of the eUICC that will claim the eSIM Profile.
      * @return CreateEsimProfileOptions Options builder
      */
@@ -30,6 +31,7 @@ abstract class EsimProfileOptions
         
         string $callbackUrl = Values::NONE,
         string $callbackMethod = Values::NONE,
+        bool $generateMatchingId = Values::BOOL_NONE,
         string $eid = Values::NONE
 
     ): CreateEsimProfileOptions
@@ -37,6 +39,7 @@ abstract class EsimProfileOptions
         return new CreateEsimProfileOptions(
             $callbackUrl,
             $callbackMethod,
+            $generateMatchingId,
             $eid
         );
     }
@@ -70,17 +73,20 @@ class CreateEsimProfileOptions extends Options
     /**
      * @param string $callbackUrl The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.
+     * @param bool $generateMatchingId When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.
      * @param string $eid Identifier of the eUICC that will claim the eSIM Profile.
      */
     public function __construct(
         
         string $callbackUrl = Values::NONE,
         string $callbackMethod = Values::NONE,
+        bool $generateMatchingId = Values::BOOL_NONE,
         string $eid = Values::NONE
 
     ) {
         $this->options['callbackUrl'] = $callbackUrl;
         $this->options['callbackMethod'] = $callbackMethod;
+        $this->options['generateMatchingId'] = $generateMatchingId;
         $this->options['eid'] = $eid;
     }
 
@@ -105,6 +111,18 @@ class CreateEsimProfileOptions extends Options
     public function setCallbackMethod(string $callbackMethod): self
     {
         $this->options['callbackMethod'] = $callbackMethod;
+        return $this;
+    }
+
+    /**
+     * When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.
+     *
+     * @param bool $generateMatchingId When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.
+     * @return $this Fluent Builder
+     */
+    public function setGenerateMatchingId(bool $generateMatchingId): self
+    {
+        $this->options['generateMatchingId'] = $generateMatchingId;
         return $this;
     }
 

@@ -32,6 +32,8 @@ use Twilio\Deserialize;
  * @property string $status
  * @property string|null $eid
  * @property string|null $smdpPlusAddress
+ * @property string|null $matchingId
+ * @property string|null $activationCode
  * @property string|null $errorCode
  * @property string|null $errorMessage
  * @property \DateTime|null $dateCreated
@@ -60,6 +62,8 @@ class EsimProfileInstance extends InstanceResource
             'status' => Values::array_get($payload, 'status'),
             'eid' => Values::array_get($payload, 'eid'),
             'smdpPlusAddress' => Values::array_get($payload, 'smdp_plus_address'),
+            'matchingId' => Values::array_get($payload, 'matching_id'),
+            'activationCode' => Values::array_get($payload, 'activation_code'),
             'errorCode' => Values::array_get($payload, 'error_code'),
             'errorMessage' => Values::array_get($payload, 'error_message'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

@@ -21,16 +21,19 @@ use Twilio\Values;
 abstract class InsightsQuestionnairesQuestionOptions
 {
     /**
+     * @param string $description The description for the question.
      * @param string $token The Token HTTP request header
      * @return CreateInsightsQuestionnairesQuestionOptions Options builder
      */
     public static function create(
         
+        string $description = Values::NONE,
         string $token = Values::NONE
 
     ): CreateInsightsQuestionnairesQuestionOptions
     {
         return new CreateInsightsQuestionnairesQuestionOptions(
+            $description,
             $token
         );
     }
@@ -100,14 +103,29 @@ abstract class InsightsQuestionnairesQuestionOptions
 class CreateInsightsQuestionnairesQuestionOptions extends Options
     {
     /**
+     * @param string $description The description for the question.
      * @param string $token The Token HTTP request header
      */
     public function __construct(
         
+        string $description = Values::NONE,
         string $token = Values::NONE
 
     ) {
+        $this->options['description'] = $description;
         $this->options['token'] = $token;
+    }
+
+    /**
+     * The description for the question.
+     *
+     * @param string $description The description for the question.
+     * @return $this Fluent Builder
+     */
+    public function setDescription(string $description): self
+    {
+        $this->options['description'] = $description;
+        return $this;
     }
 
     /**

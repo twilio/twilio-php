@@ -49,14 +49,13 @@ class InsightsQuestionnairesQuestionList extends ListResource
      *
      * @param string $categoryId The ID of the category
      * @param string $question The question.
-     * @param string $description The description for the question.
      * @param string $answerSetId The answer_set for the question.
      * @param bool $allowNa The flag to enable for disable NA for answer.
      * @param array|Options $options Optional Arguments
      * @return InsightsQuestionnairesQuestionInstance Created InsightsQuestionnairesQuestionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categoryId, string $question, string $description, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
+    public function create(string $categoryId, string $question, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
     {
 
         $options = new Values($options);
@@ -66,12 +65,12 @@ class InsightsQuestionnairesQuestionList extends ListResource
                 $categoryId,
             'Question' =>
                 $question,
-            'Description' =>
-                $description,
             'AnswerSetId' =>
                 $answerSetId,
             'AllowNa' =>
                 Serialize::booleanToString($allowNa),
+            'Description' =>
+                $options['description'],
         ]);
 
         $headers = Values::of(['Token' => $options['token']]);

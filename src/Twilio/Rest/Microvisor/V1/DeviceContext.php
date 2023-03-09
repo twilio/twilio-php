@@ -31,8 +31,8 @@ use Twilio\Rest\Microvisor\V1\Device\DeviceSecretList;
 /**
  * @property DeviceConfigList $deviceConfigs
  * @property DeviceSecretList $deviceSecrets
- * @method \Twilio\Rest\Microvisor\V1\Device\DeviceConfigContext deviceConfigs(string $key)
  * @method \Twilio\Rest\Microvisor\V1\Device\DeviceSecretContext deviceSecrets(string $key)
+ * @method \Twilio\Rest\Microvisor\V1\Device\DeviceConfigContext deviceConfigs(string $key)
  */
 class DeviceContext extends InstanceContext
     {
