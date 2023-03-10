@@ -4,8 +4,11 @@ _MAJOR version bumps will have upgrade notes posted here._
 
 [2023-03-08] 6.x.x to 7.x.x
 ---------------------------
-Twilio Php Helper Library’s major version 7.0.1 is now available. We ensured that you can upgrade to Php helper Library 7.0.1 version without any breaking changes.
-Behind the scenes Php Helper is now auto-generated via OpenAPI with this release. This enables us to rapidly add new features and enhance consistency across versions and languages.
+Twilio PHP Helper Library’s major version 7.0.0 is now available. With this major version we changed the process of generating PHP helpers from internal API Spec to open API specs.
+From now on we will use custom [Twilio OAI generator](https://github.com/twilio/twilio-oai-generator) and [OpenAPI spec](https://github.com/twilio/twilio-oai) to auto-generate PHP SDK.
+
+This migration enables us to rapidly add new features and enhance consistency across versions and languages.
+This will also enable open source community to have better visibility and contribute to our SDK helpers.
 
 To learn more about the Php Helper Library, check out [our docs](https://www.twilio.com/docs/libraries/php).
 
