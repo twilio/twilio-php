@@ -26,54 +26,54 @@ use Twilio\Deserialize;
 
 /**
  * @property string|null $domainSid
- * @property \DateTime|null $dateUpdated
- * @property \DateTime|null $dateExpires
+ * @property string|null $configSid
+ * @property string|null $messagingServiceSid
+ * @property string|null $fallbackUrl
+ * @property string|null $callbackUrl
  * @property \DateTime|null $dateCreated
- * @property string|null $domainName
- * @property string|null $certificateSid
+ * @property \DateTime|null $dateUpdated
  * @property string|null $url
- * @property array|null $certInValidation
  */
-class DomainCertsInstance extends InstanceResource
+class DomainConfigMessagingServiceInstance extends InstanceResource
 {
     /**
-     * Initialize the DomainCertsInstance
+     * Initialize the DomainConfigMessagingServiceInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $domainSid Unique string used to identify the domain that this certificate should be associated with.
+     * @param string $messagingServiceSid Unique string used to identify the Messaging service that this domain should be associated with.
      */
-    public function __construct(Version $version, array $payload, string $domainSid = null)
+    public function __construct(Version $version, array $payload, string $messagingServiceSid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'domainSid' => Values::array_get($payload, 'domain_sid'),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'dateExpires' => Deserialize::dateTime(Values::array_get($payload, 'date_expires')),
+            'configSid' => Values::array_get($payload, 'config_sid'),
+            'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
+            'fallbackUrl' => Values::array_get($payload, 'fallback_url'),
+            'callbackUrl' => Values::array_get($payload, 'callback_url'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'domainName' => Values::array_get($payload, 'domain_name'),
-            'certificateSid' => Values::array_get($payload, 'certificate_sid'),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-            'certInValidation' => Values::array_get($payload, 'cert_in_validation'),
         ];
 
-        $this->solution = ['domainSid' => $domainSid ?: $this->properties['domainSid'], ];
+        $this->solution = ['messagingServiceSid' => $messagingServiceSid ?: $this->properties['messagingServiceSid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return DomainCertsContext Context for this DomainCertsInstance
+     * @return DomainConfigMessagingServiceContext Context for this DomainConfigMessagingServiceInstance
      */
-    protected function proxy(): DomainCertsContext
+    protected function proxy(): DomainConfigMessagingServiceContext
     {
         if (!$this->context) {
-            $this->context = new DomainCertsContext(
+            $this->context = new DomainConfigMessagingServiceContext(
                 $this->version,
-                $this->solution['domainSid']
+                $this->solution['messagingServiceSid']
             );
         }
 
@@ -81,40 +81,15 @@ class DomainCertsInstance extends InstanceResource
     }
 
     /**
-     * Delete the DomainCertsInstance
+     * Fetch the DomainConfigMessagingServiceInstance
      *
-     * @return bool True if delete succeeds, false otherwise
+     * @return DomainConfigMessagingServiceInstance Fetched DomainConfigMessagingServiceInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool
-    {
-
-        return $this->proxy()->delete();
-    }
-
-    /**
-     * Fetch the DomainCertsInstance
-     *
-     * @return DomainCertsInstance Fetched DomainCertsInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): DomainCertsInstance
+    public function fetch(): DomainConfigMessagingServiceInstance
     {
 
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the DomainCertsInstance
-     *
-     * @param string $tlsCert Contains the full TLS certificate and private for this domain in PEM format: https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail. Twilio uses this information to process HTTPS traffic sent to your domain.
-     * @return DomainCertsInstance Updated DomainCertsInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(string $tlsCert): DomainCertsInstance
-    {
-
-        return $this->proxy()->update($tlsCert);
     }
 
     /**
@@ -149,7 +124,7 @@ class DomainCertsInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.DomainCertsInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.DomainConfigMessagingServiceInstance ' . \implode(' ', $context) . ']';
     }
 }
 

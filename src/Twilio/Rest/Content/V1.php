@@ -19,17 +19,20 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Content\V1\ContentList;
+use Twilio\Rest\Content\V1\ContentAndApprovalsList;
 use Twilio\Rest\Content\V1\LegacyContentList;
 use Twilio\Version;
 
 /**
  * @property ContentList $contents
+ * @property ContentAndApprovalsList $contentAndApprovals
  * @property LegacyContentList $legacyContents
  * @method \Twilio\Rest\Content\V1\ContentContext contents(string $sid)
  */
 class V1 extends Version
 {
     protected $_contents;
+    protected $_contentAndApprovals;
     protected $_legacyContents;
 
     /**
@@ -49,6 +52,14 @@ class V1 extends Version
             $this->_contents = new ContentList($this);
         }
         return $this->_contents;
+    }
+
+    protected function getContentAndApprovals(): ContentAndApprovalsList
+    {
+        if (!$this->_contentAndApprovals) {
+            $this->_contentAndApprovals = new ContentAndApprovalsList($this);
+        }
+        return $this->_contentAndApprovals;
     }
 
     protected function getLegacyContents(): LegacyContentList

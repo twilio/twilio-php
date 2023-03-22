@@ -33,7 +33,7 @@ abstract class VerificationOptions
      * @param string $appHash Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.
      * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
-     * @param string $deviceIp The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @param string $deviceIp Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
      * @return CreateVerificationOptions Options builder
      */
     public static function create(
@@ -90,7 +90,7 @@ class CreateVerificationOptions extends Options
      * @param string $appHash Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `<#> Your AppName verification code is: 1234 He42w354ol9`.
      * @param string $templateSid The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.
      * @param string $templateCustomSubstitutions A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.
-     * @param string $deviceIp The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @param string $deviceIp Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
      */
     public function __construct(
         
@@ -269,9 +269,9 @@ class CreateVerificationOptions extends Options
     }
 
     /**
-     * The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
      *
-     * @param string $deviceIp The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
+     * @param string $deviceIp Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.
      * @return $this Fluent Builder
      */
     public function setDeviceIp(string $deviceIp): self

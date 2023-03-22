@@ -22,7 +22,9 @@ use Twilio\Rest\Messaging\V1\BrandRegistrationList;
 use Twilio\Rest\Messaging\V1\DeactivationsList;
 use Twilio\Rest\Messaging\V1\DomainCertsList;
 use Twilio\Rest\Messaging\V1\DomainConfigList;
+use Twilio\Rest\Messaging\V1\DomainConfigMessagingServiceList;
 use Twilio\Rest\Messaging\V1\ExternalCampaignList;
+use Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceList;
 use Twilio\Rest\Messaging\V1\ServiceList;
 use Twilio\Rest\Messaging\V1\TollfreeVerificationList;
 use Twilio\Rest\Messaging\V1\UsecaseList;
@@ -33,11 +35,14 @@ use Twilio\Version;
  * @property DeactivationsList $deactivations
  * @property DomainCertsList $domainCerts
  * @property DomainConfigList $domainConfig
+ * @property DomainConfigMessagingServiceList $domainConfigMessagingService
  * @property ExternalCampaignList $externalCampaign
+ * @property LinkshorteningMessagingServiceList $linkshorteningMessagingService
  * @property ServiceList $services
  * @property TollfreeVerificationList $tollfreeVerifications
  * @property UsecaseList $usecases
  * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceContext linkshorteningMessagingService(string $domainSid, string $messagingServiceSid)
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Messaging\V1\TollfreeVerificationContext tollfreeVerifications(string $sid)
  */
@@ -47,7 +52,9 @@ class V1 extends Version
     protected $_deactivations;
     protected $_domainCerts;
     protected $_domainConfig;
+    protected $_domainConfigMessagingService;
     protected $_externalCampaign;
+    protected $_linkshorteningMessagingService;
     protected $_services;
     protected $_tollfreeVerifications;
     protected $_usecases;
@@ -95,12 +102,28 @@ class V1 extends Version
         return $this->_domainConfig;
     }
 
+    protected function getDomainConfigMessagingService(): DomainConfigMessagingServiceList
+    {
+        if (!$this->_domainConfigMessagingService) {
+            $this->_domainConfigMessagingService = new DomainConfigMessagingServiceList($this);
+        }
+        return $this->_domainConfigMessagingService;
+    }
+
     protected function getExternalCampaign(): ExternalCampaignList
     {
         if (!$this->_externalCampaign) {
             $this->_externalCampaign = new ExternalCampaignList($this);
         }
         return $this->_externalCampaign;
+    }
+
+    protected function getLinkshorteningMessagingService(): LinkshorteningMessagingServiceList
+    {
+        if (!$this->_linkshorteningMessagingService) {
+            $this->_linkshorteningMessagingService = new LinkshorteningMessagingServiceList($this);
+        }
+        return $this->_linkshorteningMessagingService;
     }
 
     protected function getServices(): ServiceList

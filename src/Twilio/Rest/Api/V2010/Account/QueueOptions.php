@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class QueueOptions
 {
     /**
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      * @return CreateQueueOptions Options builder
      */
     public static function create(
@@ -40,7 +40,7 @@ abstract class QueueOptions
 
     /**
      * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      * @return UpdateQueueOptions Options builder
      */
     public static function update(
@@ -61,7 +61,7 @@ abstract class QueueOptions
 class CreateQueueOptions extends Options
     {
     /**
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      */
     public function __construct(
         
@@ -72,9 +72,9 @@ class CreateQueueOptions extends Options
     }
 
     /**
-     * The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      *
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      * @return $this Fluent Builder
      */
     public function setMaxSize(int $maxSize): self
@@ -102,7 +102,7 @@ class UpdateQueueOptions extends Options
     {
     /**
      * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      */
     public function __construct(
         
@@ -127,9 +127,9 @@ class UpdateQueueOptions extends Options
     }
 
     /**
-     * The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      *
-     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
+     * @param int $maxSize The maximum number of calls allowed to be in the queue. The default is 1000. The maximum is 5000.
      * @return $this Fluent Builder
      */
     public function setMaxSize(int $maxSize): self

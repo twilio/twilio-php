@@ -23,6 +23,7 @@ use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Rest\FlexApi\V1\InsightsAssessmentsCommentList;
+use Twilio\Rest\FlexApi\V1\InsightsConversationsList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionList;
@@ -41,6 +42,7 @@ use Twilio\Version;
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
  * @property InsightsAssessmentsCommentList $insightsAssessmentsComment
+ * @property InsightsConversationsList $insightsConversations
  * @property InsightsQuestionnairesList $insightsQuestionnaires
  * @property InsightsQuestionnairesCategoryList $insightsQuestionnairesCategory
  * @property InsightsQuestionnairesQuestionList $insightsQuestionnairesQuestion
@@ -68,6 +70,7 @@ class V1 extends Version
     protected $_configuration;
     protected $_flexFlow;
     protected $_insightsAssessmentsComment;
+    protected $_insightsConversations;
     protected $_insightsQuestionnaires;
     protected $_insightsQuestionnairesCategory;
     protected $_insightsQuestionnairesQuestion;
@@ -128,6 +131,14 @@ class V1 extends Version
             $this->_insightsAssessmentsComment = new InsightsAssessmentsCommentList($this);
         }
         return $this->_insightsAssessmentsComment;
+    }
+
+    protected function getInsightsConversations(): InsightsConversationsList
+    {
+        if (!$this->_insightsConversations) {
+            $this->_insightsConversations = new InsightsConversationsList($this);
+        }
+        return $this->_insightsConversations;
     }
 
     protected function getInsightsQuestionnaires(): InsightsQuestionnairesList
