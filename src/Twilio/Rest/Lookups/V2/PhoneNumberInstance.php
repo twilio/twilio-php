@@ -38,7 +38,6 @@ use Twilio\Version;
  * @property array|null $lineTypeIntelligence
  * @property array|null $identityMatch
  * @property array|null $smsPumpingRisk
- * @property array|null $disposablePhoneNumberRisk
  * @property string|null $url
  */
 class PhoneNumberInstance extends InstanceResource
@@ -69,7 +68,6 @@ class PhoneNumberInstance extends InstanceResource
             'lineTypeIntelligence' => Values::array_get($payload, 'line_type_intelligence'),
             'identityMatch' => Values::array_get($payload, 'identity_match'),
             'smsPumpingRisk' => Values::array_get($payload, 'sms_pumping_risk'),
-            'disposablePhoneNumberRisk' => Values::array_get($payload, 'disposable_phone_number_risk'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

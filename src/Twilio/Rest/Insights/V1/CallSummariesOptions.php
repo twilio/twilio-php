@@ -39,6 +39,7 @@ abstract class CallSummariesOptions
      * @param string $sortBy 
      * @param string $subaccount 
      * @param bool $abnormalSession 
+     * @param string $answeredBy 
      * @return ReadCallSummariesOptions Options builder
      */
     public static function read(
@@ -60,7 +61,8 @@ abstract class CallSummariesOptions
         string $processingState = Values::NONE,
         string $sortBy = Values::NONE,
         string $subaccount = Values::NONE,
-        bool $abnormalSession = Values::BOOL_NONE
+        bool $abnormalSession = Values::BOOL_NONE,
+        string $answeredBy = Values::NONE
 
     ): ReadCallSummariesOptions
     {
@@ -82,7 +84,8 @@ abstract class CallSummariesOptions
             $processingState,
             $sortBy,
             $subaccount,
-            $abnormalSession
+            $abnormalSession,
+            $answeredBy
         );
     }
 
@@ -109,6 +112,7 @@ class ReadCallSummariesOptions extends Options
      * @param string $sortBy 
      * @param string $subaccount 
      * @param bool $abnormalSession 
+     * @param string $answeredBy 
      */
     public function __construct(
         
@@ -129,7 +133,8 @@ class ReadCallSummariesOptions extends Options
         string $processingState = Values::NONE,
         string $sortBy = Values::NONE,
         string $subaccount = Values::NONE,
-        bool $abnormalSession = Values::BOOL_NONE
+        bool $abnormalSession = Values::BOOL_NONE,
+        string $answeredBy = Values::NONE
 
     ) {
         $this->options['from'] = $from;
@@ -150,6 +155,7 @@ class ReadCallSummariesOptions extends Options
         $this->options['sortBy'] = $sortBy;
         $this->options['subaccount'] = $subaccount;
         $this->options['abnormalSession'] = $abnormalSession;
+        $this->options['answeredBy'] = $answeredBy;
     }
 
     /**
@@ -365,6 +371,18 @@ class ReadCallSummariesOptions extends Options
     public function setAbnormalSession(bool $abnormalSession): self
     {
         $this->options['abnormalSession'] = $abnormalSession;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param string $answeredBy 
+     * @return $this Fluent Builder
+     */
+    public function setAnsweredBy(string $answeredBy): self
+    {
+        $this->options['answeredBy'] = $answeredBy;
         return $this;
     }
 

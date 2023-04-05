@@ -22,6 +22,7 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistrationOtpList;
 use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
 
 
@@ -49,6 +50,7 @@ use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
  */
 class BrandRegistrationInstance extends InstanceResource
 {
+    protected $_brandRegistrationOtps;
     protected $_brandVettings;
 
     /**
@@ -129,6 +131,14 @@ class BrandRegistrationInstance extends InstanceResource
     {
 
         return $this->proxy()->update();
+    }
+
+    /**
+     * Access the brandRegistrationOtps
+     */
+    protected function getBrandRegistrationOtps(): BrandRegistrationOtpList
+    {
+        return $this->proxy()->brandRegistrationOtps;
     }
 
     /**

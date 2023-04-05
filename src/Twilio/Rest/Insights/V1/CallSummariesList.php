@@ -147,6 +147,8 @@ class CallSummariesList extends ListResource
                 $options['subaccount'],
             'AbnormalSession' =>
                 Serialize::booleanToString($options['abnormalSession']),
+            'AnsweredBy' =>
+                $options['answeredBy'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

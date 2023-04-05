@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class BrandRegistrationOptions
 {
     /**
-     * @param string $brandType Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases.
+     * @param string $brandType Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases.
      * @param bool $mock A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
      * @param bool $skipAutomaticSecVet A flag to disable automatic secondary vetting for brands which it would otherwise be done.
      * @return CreateBrandRegistrationOptions Options builder
@@ -49,7 +49,7 @@ abstract class BrandRegistrationOptions
 class CreateBrandRegistrationOptions extends Options
     {
     /**
-     * @param string $brandType Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases.
+     * @param string $brandType Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases.
      * @param bool $mock A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
      * @param bool $skipAutomaticSecVet A flag to disable automatic secondary vetting for brands which it would otherwise be done.
      */
@@ -66,9 +66,9 @@ class CreateBrandRegistrationOptions extends Options
     }
 
     /**
-     * Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases.
+     * Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases.
      *
-     * @param string $brandType Type of brand being created. One of: \\\"STANDARD\\\", \\\"STARTER\\\". STARTER is for low volume, starter use cases. STANDARD is for all other use cases.
+     * @param string $brandType Type of brand being created. One of: \\\"STANDARD\\\", \\\"SOLE_PROPRIETOR\\\". SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases.
      * @return $this Fluent Builder
      */
     public function setBrandType(string $brandType): self

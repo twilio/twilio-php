@@ -21,15 +21,18 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistrationOtpList;
 use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
 
 
 /**
+ * @property BrandRegistrationOtpList $brandRegistrationOtps
  * @property BrandVettingList $brandVettings
  * @method \Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingContext brandVettings(string $brandVettingSid)
  */
 class BrandRegistrationContext extends InstanceContext
     {
+    protected $_brandRegistrationOtps;
     protected $_brandVettings;
 
     /**
@@ -91,6 +94,21 @@ class BrandRegistrationContext extends InstanceContext
         );
     }
 
+
+    /**
+     * Access the brandRegistrationOtps
+     */
+    protected function getBrandRegistrationOtps(): BrandRegistrationOtpList
+    {
+        if (!$this->_brandRegistrationOtps) {
+            $this->_brandRegistrationOtps = new BrandRegistrationOtpList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_brandRegistrationOtps;
+    }
 
     /**
      * Access the brandVettings
