@@ -94,6 +94,8 @@ $client->messages->create(
 );
 ```
 
+## Usage
+
 ### Make a Call
 
 ```php
@@ -114,6 +116,9 @@ $call = $client->calls->create(
     ]
 );
 ```
+
+> **Warning**
+> It's okay to hardcode your credentials when testing locally, but you should use environment variables to keep them secret before committing any code or deploying to production. Check out [How to Set Environment Variables](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) for more information.
 
 ### Get an existing Call
 
