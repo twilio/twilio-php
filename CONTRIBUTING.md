@@ -22,7 +22,7 @@ it can be.
 ## <a name="question"></a> Got an API/Product Question or Problem?
 
 If you have questions about how to use `twilio-php`, please see our
-[docs][docs-link], and if you don't find the answer there, please contact
+[docs](./README.md), and if you don't find the answer there, please contact
 [help@twilio.com](mailto:help@twilio.com) with any issues you have.
 
 ## <a name="issue"></a> Found an Issue?
@@ -80,10 +80,6 @@ you're working on.
 
 For large fixes, please build and test the documentation before submitting the
 PR to be sure you haven't accidentally introduced layout or formatting issues.
-
-If you want to help improve the docs at
-[https://www.twilio.com/docs/libraries/php][docs-link], please contact
-[help@twilio.com](mailto:help@twilio.com).
 
 ## <a name="submit"></a> Submission Guidelines
 
@@ -182,6 +178,5 @@ Sample simple workflow:
 
 Tested versions: 7.1.32, 7.2.22, 7.3.9 and 7.4-rc. A complete list of supported PHP versions can be found at the [Docker docs page](https://docs.docker.com/samples/library/php).
 
-[docs-link]: https://www.twilio.com/docs/libraries/php
 [issue-link]: https://github.com/twilio/twilio-php/issues/new
 [github]: https://github.com/twilio/twilio-php

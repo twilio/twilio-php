@@ -7,8 +7,6 @@ _MAJOR version bumps will have upgrade notes posted here._
 Twilio Php Helper Library’s major version 7.0.1 is now available. We ensured that you can upgrade to Php helper Library 7.0.1 version without any breaking changes.
 Behind the scenes Php Helper is now auto-generated via OpenAPI with this release. This enables us to rapidly add new features and enhance consistency across versions and languages.
 
-To learn more about the Php Helper Library, check out [our docs](https://www.twilio.com/docs/libraries/php).
-
 [2020-04-15] 6.2.x to 6.3.x
 ---------------------------
 ### CHANGED - Optional header parameters added to `Authy` endpoints
