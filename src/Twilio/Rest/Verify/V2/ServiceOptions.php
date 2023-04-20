@@ -84,7 +84,7 @@ abstract class ServiceOptions
 
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
+     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.**
      * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
      * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
@@ -416,7 +416,7 @@ class CreateServiceOptions extends Options
 class UpdateServiceOptions extends Options
     {
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
+     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.**
      * @param int $codeLength The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive.
      * @param bool $lookupEnabled Whether to perform a lookup with each verification started and return info about the phone number.
      * @param bool $skipSmsToLandlines Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
@@ -475,9 +475,9 @@ class UpdateServiceOptions extends Options
     }
 
     /**
-     * A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
+     * A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.**
      *
-     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
+     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.**
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self

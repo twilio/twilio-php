@@ -79,8 +79,8 @@ abstract class ConversationOptions
 
 
     /**
-     * @param string $startDate Start date in ISO8601 format for sorting and filtering list of Conversations.
-     * @param string $endDate End date in ISO8601 format for sorting and filtering list of Conversations.
+     * @param string $startDate Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
+     * @param string $endDate End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
      * @param string $state State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed`
      * @return ReadConversationOptions Options builder
      */
@@ -354,8 +354,8 @@ class DeleteConversationOptions extends Options
 class ReadConversationOptions extends Options
     {
     /**
-     * @param string $startDate Start date in ISO8601 format for sorting and filtering list of Conversations.
-     * @param string $endDate End date in ISO8601 format for sorting and filtering list of Conversations.
+     * @param string $startDate Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
+     * @param string $endDate End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
      * @param string $state State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed`
      */
     public function __construct(
@@ -371,9 +371,9 @@ class ReadConversationOptions extends Options
     }
 
     /**
-     * Start date in ISO8601 format for sorting and filtering list of Conversations.
+     * Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
      *
-     * @param string $startDate Start date in ISO8601 format for sorting and filtering list of Conversations.
+     * @param string $startDate Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
      * @return $this Fluent Builder
      */
     public function setStartDate(string $startDate): self
@@ -383,9 +383,9 @@ class ReadConversationOptions extends Options
     }
 
     /**
-     * End date in ISO8601 format for sorting and filtering list of Conversations.
+     * End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
      *
-     * @param string $endDate End date in ISO8601 format for sorting and filtering list of Conversations.
+     * @param string $endDate End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
      * @return $this Fluent Builder
      */
     public function setEndDate(string $endDate): self

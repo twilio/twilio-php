@@ -56,6 +56,8 @@ use Twilio\Deserialize;
  * @property string|null $tollfreePhoneNumberSid
  * @property string $status
  * @property string|null $url
+ * @property string|null $rejectionReason
+ * @property int|null $errorCode
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
  */
@@ -104,6 +106,8 @@ class TollfreeVerificationInstance extends InstanceResource
             'tollfreePhoneNumberSid' => Values::array_get($payload, 'tollfree_phone_number_sid'),
             'status' => Values::array_get($payload, 'status'),
             'url' => Values::array_get($payload, 'url'),
+            'rejectionReason' => Values::array_get($payload, 'rejection_reason'),
+            'errorCode' => Values::array_get($payload, 'error_code'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
             'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),
         ];

@@ -47,7 +47,7 @@ class ServiceList extends ListResource
     /**
      * Create the ServiceInstance
      *
-     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 30 characters long. **This value should not contain PII.**
+     * @param string $friendlyName A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII.**
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Created ServiceInstance
      * @throws TwilioException When an HTTP error occurs.

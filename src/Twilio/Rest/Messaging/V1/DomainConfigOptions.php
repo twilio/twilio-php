@@ -24,21 +24,18 @@ abstract class DomainConfigOptions
     /**
      * @param string $fallbackUrl Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping.
      * @param string $callbackUrl URL to receive click events to your webhook whenever the recipients click on the shortened links
-     * @param string $messagingServiceSidsAction An action type for messaging_service_sids operation (ADD, DELETE, REPLACE)
      * @return UpdateDomainConfigOptions Options builder
      */
     public static function update(
         
         string $fallbackUrl = Values::NONE,
-        string $callbackUrl = Values::NONE,
-        string $messagingServiceSidsAction = Values::NONE
+        string $callbackUrl = Values::NONE
 
     ): UpdateDomainConfigOptions
     {
         return new UpdateDomainConfigOptions(
             $fallbackUrl,
-            $callbackUrl,
-            $messagingServiceSidsAction
+            $callbackUrl
         );
     }
 
@@ -50,18 +47,15 @@ class UpdateDomainConfigOptions extends Options
     /**
      * @param string $fallbackUrl Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping.
      * @param string $callbackUrl URL to receive click events to your webhook whenever the recipients click on the shortened links
-     * @param string $messagingServiceSidsAction An action type for messaging_service_sids operation (ADD, DELETE, REPLACE)
      */
     public function __construct(
         
         string $fallbackUrl = Values::NONE,
-        string $callbackUrl = Values::NONE,
-        string $messagingServiceSidsAction = Values::NONE
+        string $callbackUrl = Values::NONE
 
     ) {
         $this->options['fallbackUrl'] = $fallbackUrl;
         $this->options['callbackUrl'] = $callbackUrl;
-        $this->options['messagingServiceSidsAction'] = $messagingServiceSidsAction;
     }
 
     /**
@@ -85,18 +79,6 @@ class UpdateDomainConfigOptions extends Options
     public function setCallbackUrl(string $callbackUrl): self
     {
         $this->options['callbackUrl'] = $callbackUrl;
-        return $this;
-    }
-
-    /**
-     * An action type for messaging_service_sids operation (ADD, DELETE, REPLACE)
-     *
-     * @param string $messagingServiceSidsAction An action type for messaging_service_sids operation (ADD, DELETE, REPLACE)
-     * @return $this Fluent Builder
-     */
-    public function setMessagingServiceSidsAction(string $messagingServiceSidsAction): self
-    {
-        $this->options['messagingServiceSidsAction'] = $messagingServiceSidsAction;
         return $this;
     }
 

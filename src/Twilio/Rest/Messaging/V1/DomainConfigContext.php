@@ -22,7 +22,6 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Serialize;
 
 
 class DomainConfigContext extends InstanceContext
@@ -71,25 +70,20 @@ class DomainConfigContext extends InstanceContext
     /**
      * Update the DomainConfigInstance
      *
-     * @param string[] $messagingServiceSids A list of messagingServiceSids (with prefix MG)
      * @param array|Options $options Optional Arguments
      * @return DomainConfigInstance Updated DomainConfigInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $messagingServiceSids, array $options = []): DomainConfigInstance
+    public function update(array $options = []): DomainConfigInstance
     {
 
         $options = new Values($options);
 
         $data = Values::of([
-            'MessagingServiceSids' =>
-                Serialize::map($messagingServiceSids,function ($e) { return $e; }),
             'FallbackUrl' =>
                 $options['fallbackUrl'],
             'CallbackUrl' =>
                 $options['callbackUrl'],
-            'MessagingServiceSidsAction' =>
-                $options['messagingServiceSidsAction'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

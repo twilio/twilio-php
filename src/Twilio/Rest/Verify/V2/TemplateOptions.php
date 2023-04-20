@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class TemplateOptions
 {
     /**
-     * @param string $friendlyName String filter used to query templates with a given friendly name
+     * @param string $friendlyName String filter used to query templates with a given friendly name.
      * @return ReadTemplateOptions Options builder
      */
     public static function read(
@@ -40,7 +40,7 @@ abstract class TemplateOptions
 class ReadTemplateOptions extends Options
     {
     /**
-     * @param string $friendlyName String filter used to query templates with a given friendly name
+     * @param string $friendlyName String filter used to query templates with a given friendly name.
      */
     public function __construct(
         
@@ -51,9 +51,9 @@ class ReadTemplateOptions extends Options
     }
 
     /**
-     * String filter used to query templates with a given friendly name
+     * String filter used to query templates with a given friendly name.
      *
-     * @param string $friendlyName String filter used to query templates with a given friendly name
+     * @param string $friendlyName String filter used to query templates with a given friendly name.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self
