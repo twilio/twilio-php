@@ -12,11 +12,11 @@
         }
     ],
     "require": {
-        "php": ">=7.1.0"
+        "php": "^7.2.5 || ^8.0"
     },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "phpunit/phpunit": ">=7.0 < 10"
+        "guzzlehttp/guzzle": "^7.5.1",
+        "phpunit/phpunit": "^8.5.33 || ^9.6.7"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
