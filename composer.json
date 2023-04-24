@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.5.1",
+        "guzzlehttp/psr7": "^2.4.5",
         "phpunit/phpunit": "^8.5.33 || ^9.6.7"
     },
     "suggest": {
