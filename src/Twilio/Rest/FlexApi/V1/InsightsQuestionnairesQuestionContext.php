@@ -31,21 +31,21 @@ class InsightsQuestionnairesQuestionContext extends InstanceContext
      * Initialize the InsightsQuestionnairesQuestionContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $questionId The unique ID of the question
+     * @param string $questionSid The SID of the question
      */
     public function __construct(
         Version $version,
-        $questionId
+        $questionSid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'questionId' =>
-            $questionId,
+        'questionSid' =>
+            $questionSid,
         ];
 
-        $this->uri = '/Insights/QM/Questions/' . \rawurlencode($questionId)
+        $this->uri = '/Insights/QualityManagement/Questions/' . \rawurlencode($questionSid)
         .'';
     }
 
@@ -83,8 +83,8 @@ class InsightsQuestionnairesQuestionContext extends InstanceContext
         $data = Values::of([
             'AllowNa' =>
                 Serialize::booleanToString($allowNa),
-            'CategoryId' =>
-                $options['categoryId'],
+            'CategorySid' =>
+                $options['categorySid'],
             'Question' =>
                 $options['question'],
             'Description' =>
@@ -100,7 +100,7 @@ class InsightsQuestionnairesQuestionContext extends InstanceContext
         return new InsightsQuestionnairesQuestionInstance(
             $this->version,
             $payload,
-            $this->solution['questionId']
+            $this->solution['questionSid']
         );
     }
 

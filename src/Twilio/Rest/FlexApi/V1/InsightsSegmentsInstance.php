@@ -19,7 +19,6 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -55,9 +54,8 @@ class InsightsSegmentsInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $segmentId To unique id of the segment
      */
-    public function __construct(Version $version, array $payload, string $segmentId = null)
+    public function __construct(Version $version, array $payload)
     {
         parent::__construct($version);
 
@@ -87,38 +85,7 @@ class InsightsSegmentsInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['segmentId' => $segmentId ?: $this->properties['segmentId'], ];
-    }
-
-    /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return InsightsSegmentsContext Context for this InsightsSegmentsInstance
-     */
-    protected function proxy(): InsightsSegmentsContext
-    {
-        if (!$this->context) {
-            $this->context = new InsightsSegmentsContext(
-                $this->version,
-                $this->solution['segmentId']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Fetch the InsightsSegmentsInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return InsightsSegmentsInstance Fetched InsightsSegmentsInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(array $options = []): InsightsSegmentsInstance
-    {
-
-        return $this->proxy()->fetch($options);
+        $this->solution = [];
     }
 
     /**
@@ -149,11 +116,7 @@ class InsightsSegmentsInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.FlexApi.V1.InsightsSegmentsInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InsightsSegmentsInstance]';
     }
 }
 

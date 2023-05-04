@@ -111,6 +111,8 @@ class InsightsSegmentsList extends ListResource
         $options = new Values($options);
 
         $params = Values::of([
+            'SegmentId' =>
+                $options['segmentId'],
             'ReservationId' =>
                 Serialize::map($options['reservationId'], function ($e) { return $e; }),
             'Token' =>
@@ -142,22 +144,6 @@ class InsightsSegmentsList extends ListResource
         return new InsightsSegmentsPage($this->version, $response, $this->solution);
     }
 
-
-    /**
-     * Constructs a InsightsSegmentsContext
-     *
-     * @param string $segmentId To unique id of the segment
-     */
-    public function getContext(
-        string $segmentId
-        
-    ): InsightsSegmentsContext
-    {
-        return new InsightsSegmentsContext(
-            $this->version,
-            $segmentId
-        );
-    }
 
     /**
      * Provide a friendly representation

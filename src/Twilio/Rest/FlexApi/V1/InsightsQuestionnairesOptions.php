@@ -23,7 +23,7 @@ abstract class InsightsQuestionnairesOptions
     /**
      * @param string $description The description of this questionnaire
      * @param bool $active The flag to enable or disable questionnaire
-     * @param string[] $questionIds The list of questions ids under a questionnaire
+     * @param string[] $questionSids The list of questions sids under a questionnaire
      * @param string $token The Token HTTP request header
      * @return CreateInsightsQuestionnairesOptions Options builder
      */
@@ -31,7 +31,7 @@ abstract class InsightsQuestionnairesOptions
         
         string $description = Values::NONE,
         bool $active = Values::BOOL_NONE,
-        array $questionIds = Values::ARRAY_NONE,
+        array $questionSids = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ): CreateInsightsQuestionnairesOptions
@@ -39,7 +39,7 @@ abstract class InsightsQuestionnairesOptions
         return new CreateInsightsQuestionnairesOptions(
             $description,
             $active,
-            $questionIds,
+            $questionSids,
             $token
         );
     }
@@ -95,7 +95,7 @@ abstract class InsightsQuestionnairesOptions
     /**
      * @param string $name The name of this questionnaire
      * @param string $description The description of this questionnaire
-     * @param string[] $questionIds The list of questions ids under a questionnaire
+     * @param string[] $questionSids The list of questions sids under a questionnaire
      * @param string $token The Token HTTP request header
      * @return UpdateInsightsQuestionnairesOptions Options builder
      */
@@ -103,7 +103,7 @@ abstract class InsightsQuestionnairesOptions
         
         string $name = Values::NONE,
         string $description = Values::NONE,
-        array $questionIds = Values::ARRAY_NONE,
+        array $questionSids = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ): UpdateInsightsQuestionnairesOptions
@@ -111,7 +111,7 @@ abstract class InsightsQuestionnairesOptions
         return new UpdateInsightsQuestionnairesOptions(
             $name,
             $description,
-            $questionIds,
+            $questionSids,
             $token
         );
     }
@@ -123,20 +123,20 @@ class CreateInsightsQuestionnairesOptions extends Options
     /**
      * @param string $description The description of this questionnaire
      * @param bool $active The flag to enable or disable questionnaire
-     * @param string[] $questionIds The list of questions ids under a questionnaire
+     * @param string[] $questionSids The list of questions sids under a questionnaire
      * @param string $token The Token HTTP request header
      */
     public function __construct(
         
         string $description = Values::NONE,
         bool $active = Values::BOOL_NONE,
-        array $questionIds = Values::ARRAY_NONE,
+        array $questionSids = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ) {
         $this->options['description'] = $description;
         $this->options['active'] = $active;
-        $this->options['questionIds'] = $questionIds;
+        $this->options['questionSids'] = $questionSids;
         $this->options['token'] = $token;
     }
 
@@ -165,14 +165,14 @@ class CreateInsightsQuestionnairesOptions extends Options
     }
 
     /**
-     * The list of questions ids under a questionnaire
+     * The list of questions sids under a questionnaire
      *
-     * @param string[] $questionIds The list of questions ids under a questionnaire
+     * @param string[] $questionSids The list of questions sids under a questionnaire
      * @return $this Fluent Builder
      */
-    public function setQuestionIds(array $questionIds): self
+    public function setQuestionSids(array $questionSids): self
     {
-        $this->options['questionIds'] = $questionIds;
+        $this->options['questionSids'] = $questionSids;
         return $this;
     }
 
@@ -331,20 +331,20 @@ class UpdateInsightsQuestionnairesOptions extends Options
     /**
      * @param string $name The name of this questionnaire
      * @param string $description The description of this questionnaire
-     * @param string[] $questionIds The list of questions ids under a questionnaire
+     * @param string[] $questionSids The list of questions sids under a questionnaire
      * @param string $token The Token HTTP request header
      */
     public function __construct(
         
         string $name = Values::NONE,
         string $description = Values::NONE,
-        array $questionIds = Values::ARRAY_NONE,
+        array $questionSids = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ) {
         $this->options['name'] = $name;
         $this->options['description'] = $description;
-        $this->options['questionIds'] = $questionIds;
+        $this->options['questionSids'] = $questionSids;
         $this->options['token'] = $token;
     }
 
@@ -373,14 +373,14 @@ class UpdateInsightsQuestionnairesOptions extends Options
     }
 
     /**
-     * The list of questions ids under a questionnaire
+     * The list of questions sids under a questionnaire
      *
-     * @param string[] $questionIds The list of questions ids under a questionnaire
+     * @param string[] $questionSids The list of questions sids under a questionnaire
      * @return $this Fluent Builder
      */
-    public function setQuestionIds(array $questionIds): self
+    public function setQuestionSids(array $questionSids): self
     {
-        $this->options['questionIds'] = $questionIds;
+        $this->options['questionSids'] = $questionSids;
         return $this;
     }
 

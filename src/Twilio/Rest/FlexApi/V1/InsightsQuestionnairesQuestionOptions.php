@@ -54,25 +54,25 @@ abstract class InsightsQuestionnairesQuestionOptions
     }
 
     /**
-     * @param string[] $categoryId The list of category IDs
+     * @param string[] $categorySid The list of category SIDs
      * @param string $token The Token HTTP request header
      * @return ReadInsightsQuestionnairesQuestionOptions Options builder
      */
     public static function read(
         
-        array $categoryId = Values::ARRAY_NONE,
+        array $categorySid = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ): ReadInsightsQuestionnairesQuestionOptions
     {
         return new ReadInsightsQuestionnairesQuestionOptions(
-            $categoryId,
+            $categorySid,
             $token
         );
     }
 
     /**
-     * @param string $categoryId The ID of the category
+     * @param string $categorySid The SID of the category
      * @param string $question The question.
      * @param string $description The description for the question.
      * @param string $answerSetId The answer_set for the question.
@@ -81,7 +81,7 @@ abstract class InsightsQuestionnairesQuestionOptions
      */
     public static function update(
         
-        string $categoryId = Values::NONE,
+        string $categorySid = Values::NONE,
         string $question = Values::NONE,
         string $description = Values::NONE,
         string $answerSetId = Values::NONE,
@@ -90,7 +90,7 @@ abstract class InsightsQuestionnairesQuestionOptions
     ): UpdateInsightsQuestionnairesQuestionOptions
     {
         return new UpdateInsightsQuestionnairesQuestionOptions(
-            $categoryId,
+            $categorySid,
             $question,
             $description,
             $answerSetId,
@@ -192,28 +192,28 @@ class DeleteInsightsQuestionnairesQuestionOptions extends Options
 class ReadInsightsQuestionnairesQuestionOptions extends Options
     {
     /**
-     * @param string[] $categoryId The list of category IDs
+     * @param string[] $categorySid The list of category SIDs
      * @param string $token The Token HTTP request header
      */
     public function __construct(
         
-        array $categoryId = Values::ARRAY_NONE,
+        array $categorySid = Values::ARRAY_NONE,
         string $token = Values::NONE
 
     ) {
-        $this->options['categoryId'] = $categoryId;
+        $this->options['categorySid'] = $categorySid;
         $this->options['token'] = $token;
     }
 
     /**
-     * The list of category IDs
+     * The list of category SIDs
      *
-     * @param string[] $categoryId The list of category IDs
+     * @param string[] $categorySid The list of category SIDs
      * @return $this Fluent Builder
      */
-    public function setCategoryId(array $categoryId): self
+    public function setCategorySid(array $categorySid): self
     {
-        $this->options['categoryId'] = $categoryId;
+        $this->options['categorySid'] = $categorySid;
         return $this;
     }
 
@@ -244,7 +244,7 @@ class ReadInsightsQuestionnairesQuestionOptions extends Options
 class UpdateInsightsQuestionnairesQuestionOptions extends Options
     {
     /**
-     * @param string $categoryId The ID of the category
+     * @param string $categorySid The SID of the category
      * @param string $question The question.
      * @param string $description The description for the question.
      * @param string $answerSetId The answer_set for the question.
@@ -252,14 +252,14 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options
      */
     public function __construct(
         
-        string $categoryId = Values::NONE,
+        string $categorySid = Values::NONE,
         string $question = Values::NONE,
         string $description = Values::NONE,
         string $answerSetId = Values::NONE,
         string $token = Values::NONE
 
     ) {
-        $this->options['categoryId'] = $categoryId;
+        $this->options['categorySid'] = $categorySid;
         $this->options['question'] = $question;
         $this->options['description'] = $description;
         $this->options['answerSetId'] = $answerSetId;
@@ -267,14 +267,14 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options
     }
 
     /**
-     * The ID of the category
+     * The SID of the category
      *
-     * @param string $categoryId The ID of the category
+     * @param string $categorySid The SID of the category
      * @return $this Fluent Builder
      */
-    public function setCategoryId(string $categoryId): self
+    public function setCategorySid(string $categorySid): self
     {
-        $this->options['categoryId'] = $categoryId;
+        $this->options['categorySid'] = $categorySid;
         return $this;
     }
 

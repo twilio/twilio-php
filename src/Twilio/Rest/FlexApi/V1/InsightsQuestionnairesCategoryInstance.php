@@ -26,7 +26,7 @@ use Twilio\Version;
 
 /**
  * @property string|null $accountSid
- * @property string|null $categoryId
+ * @property string|null $categorySid
  * @property string|null $name
  * @property string|null $url
  */
@@ -37,21 +37,21 @@ class InsightsQuestionnairesCategoryInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $categoryId The ID of the category to be deleted
+     * @param string $categorySid The SID of the category to be deleted
      */
-    public function __construct(Version $version, array $payload, string $categoryId = null)
+    public function __construct(Version $version, array $payload, string $categorySid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'categoryId' => Values::array_get($payload, 'category_id'),
+            'categorySid' => Values::array_get($payload, 'category_sid'),
             'name' => Values::array_get($payload, 'name'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['categoryId' => $categoryId ?: $this->properties['categoryId'], ];
+        $this->solution = ['categorySid' => $categorySid ?: $this->properties['categorySid'], ];
     }
 
     /**
@@ -65,7 +65,7 @@ class InsightsQuestionnairesCategoryInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new InsightsQuestionnairesCategoryContext(
                 $this->version,
-                $this->solution['categoryId']
+                $this->solution['categorySid']
             );
         }
 

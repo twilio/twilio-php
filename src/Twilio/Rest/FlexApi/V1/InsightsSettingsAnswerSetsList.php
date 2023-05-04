@@ -39,7 +39,7 @@ class InsightsSettingsAnswerSetsList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Settings/AnswerSets';
+        $this->uri = '/Insights/QualityManagement/Settings/AnswerSets';
     }
 
     /**

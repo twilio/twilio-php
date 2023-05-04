@@ -26,7 +26,7 @@ use Twilio\Version;
 
 /**
  * @property string|null $accountSid
- * @property string|null $id
+ * @property string|null $questionnaireSid
  * @property string|null $name
  * @property string|null $description
  * @property bool|null $active
@@ -40,16 +40,16 @@ class InsightsQuestionnairesInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $id The unique ID of the questionnaire
+     * @param string $questionnaireSid The SID of the questionnaire
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, string $questionnaireSid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'id' => Values::array_get($payload, 'id'),
+            'questionnaireSid' => Values::array_get($payload, 'questionnaire_sid'),
             'name' => Values::array_get($payload, 'name'),
             'description' => Values::array_get($payload, 'description'),
             'active' => Values::array_get($payload, 'active'),
@@ -57,7 +57,7 @@ class InsightsQuestionnairesInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['id' => $id ?: $this->properties['id'], ];
+        $this->solution = ['questionnaireSid' => $questionnaireSid ?: $this->properties['questionnaireSid'], ];
     }
 
     /**
@@ -71,7 +71,7 @@ class InsightsQuestionnairesInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new InsightsQuestionnairesContext(
                 $this->version,
-                $this->solution['id']
+                $this->solution['questionnaireSid']
             );
         }
 

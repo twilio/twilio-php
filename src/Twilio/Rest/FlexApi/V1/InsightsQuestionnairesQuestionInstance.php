@@ -26,7 +26,7 @@ use Twilio\Version;
 
 /**
  * @property string|null $accountSid
- * @property string|null $questionId
+ * @property string|null $questionSid
  * @property string|null $question
  * @property string|null $description
  * @property array|null $category
@@ -43,16 +43,16 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $questionId The unique ID of the question
+     * @param string $questionSid The SID of the question
      */
-    public function __construct(Version $version, array $payload, string $questionId = null)
+    public function __construct(Version $version, array $payload, string $questionSid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'questionId' => Values::array_get($payload, 'question_id'),
+            'questionSid' => Values::array_get($payload, 'question_sid'),
             'question' => Values::array_get($payload, 'question'),
             'description' => Values::array_get($payload, 'description'),
             'category' => Values::array_get($payload, 'category'),
@@ -63,7 +63,7 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['questionId' => $questionId ?: $this->properties['questionId'], ];
+        $this->solution = ['questionSid' => $questionSid ?: $this->properties['questionSid'], ];
     }
 
     /**
@@ -77,7 +77,7 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new InsightsQuestionnairesQuestionContext(
                 $this->version,
-                $this->solution['questionId']
+                $this->solution['questionSid']
             );
         }
 

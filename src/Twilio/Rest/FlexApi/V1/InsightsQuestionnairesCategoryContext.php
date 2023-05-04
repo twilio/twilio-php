@@ -30,21 +30,21 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
      * Initialize the InsightsQuestionnairesCategoryContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $categoryId The ID of the category to be deleted
+     * @param string $categorySid The SID of the category to be deleted
      */
     public function __construct(
         Version $version,
-        $categoryId
+        $categorySid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'categoryId' =>
-            $categoryId,
+        'categorySid' =>
+            $categorySid,
         ];
 
-        $this->uri = '/Insights/QM/Categories/' . \rawurlencode($categoryId)
+        $this->uri = '/Insights/QualityManagement/Categories/' . \rawurlencode($categorySid)
         .'';
     }
 
@@ -91,7 +91,7 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
         return new InsightsQuestionnairesCategoryInstance(
             $this->version,
             $payload,
-            $this->solution['categoryId']
+            $this->solution['categorySid']
         );
     }
 

@@ -93,7 +93,6 @@ class ConversationList extends ListResource
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -104,9 +103,9 @@ class ConversationList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ConversationInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    public function read(int $limit = null, $pageSize = null): array
     {
-        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
+        return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
@@ -117,7 +116,6 @@ class ConversationList extends ListResource
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
-     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -128,11 +126,11 @@ class ConversationList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    public function stream(int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($options, $limits['pageSize']);
+        $page = $this->page($limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -147,21 +145,13 @@ class ConversationList extends ListResource
      * @return ConversationPage Page of ConversationInstance
      */
     public function page(
-        array $options = [],
         $pageSize = Values::NONE,
         string $pageToken = Values::NONE,
         $pageNumber = Values::NONE
     ): ConversationPage
     {
-        $options = new Values($options);
 
         $params = Values::of([
-            'StartDate' =>
-                $options['startDate'],
-            'EndDate' =>
-                $options['endDate'],
-            'State' =>
-                $options['state'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

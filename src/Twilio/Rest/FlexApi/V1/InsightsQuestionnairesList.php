@@ -41,7 +41,7 @@ class InsightsQuestionnairesList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Questionnaires';
+        $this->uri = '/Insights/QualityManagement/Questionnaires';
     }
 
     /**
@@ -64,8 +64,8 @@ class InsightsQuestionnairesList extends ListResource
                 $options['description'],
             'Active' =>
                 Serialize::booleanToString($options['active']),
-            'QuestionIds' =>
-                Serialize::map($options['questionIds'], function ($e) { return $e; }),
+            'QuestionSids' =>
+                Serialize::map($options['questionSids'], function ($e) { return $e; }),
         ]);
 
         $headers = Values::of(['Token' => $options['token']]);
@@ -182,16 +182,16 @@ class InsightsQuestionnairesList extends ListResource
     /**
      * Constructs a InsightsQuestionnairesContext
      *
-     * @param string $id The unique ID of the questionnaire
+     * @param string $questionnaireSid The SID of the questionnaire
      */
     public function getContext(
-        string $id
+        string $questionnaireSid
         
     ): InsightsQuestionnairesContext
     {
         return new InsightsQuestionnairesContext(
             $this->version,
-            $id
+            $questionnaireSid
         );
     }
 

@@ -26,7 +26,7 @@ use Twilio\Version;
 
 /**
  * @property string|null $accountSid
- * @property string|null $assessmentId
+ * @property string|null $assessmentSid
  * @property string|null $offset
  * @property bool|null $report
  * @property string|null $weight
@@ -47,16 +47,16 @@ class AssessmentsInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $assessmentId The id of the assessment to be modified
+     * @param string $assessmentSid The SID of the assessment to be modified
      */
-    public function __construct(Version $version, array $payload, string $assessmentId = null)
+    public function __construct(Version $version, array $payload, string $assessmentSid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'assessmentId' => Values::array_get($payload, 'assessment_id'),
+            'assessmentSid' => Values::array_get($payload, 'assessment_sid'),
             'offset' => Values::array_get($payload, 'offset'),
             'report' => Values::array_get($payload, 'report'),
             'weight' => Values::array_get($payload, 'weight'),
@@ -71,7 +71,7 @@ class AssessmentsInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['assessmentId' => $assessmentId ?: $this->properties['assessmentId'], ];
+        $this->solution = ['assessmentSid' => $assessmentSid ?: $this->properties['assessmentSid'], ];
     }
 
     /**
@@ -85,7 +85,7 @@ class AssessmentsInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new AssessmentsContext(
                 $this->version,
-                $this->solution['assessmentId']
+                $this->solution['assessmentSid']
             );
         }
 

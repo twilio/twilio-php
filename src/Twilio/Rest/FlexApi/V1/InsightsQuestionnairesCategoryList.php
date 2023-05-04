@@ -40,7 +40,7 @@ class InsightsQuestionnairesCategoryList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Categories';
+        $this->uri = '/Insights/QualityManagement/Categories';
     }
 
     /**
@@ -169,16 +169,16 @@ class InsightsQuestionnairesCategoryList extends ListResource
     /**
      * Constructs a InsightsQuestionnairesCategoryContext
      *
-     * @param string $categoryId The ID of the category to be deleted
+     * @param string $categorySid The SID of the category to be deleted
      */
     public function getContext(
-        string $categoryId
+        string $categorySid
         
     ): InsightsQuestionnairesCategoryContext
     {
         return new InsightsQuestionnairesCategoryContext(
             $this->version,
-            $categoryId
+            $categorySid
         );
     }
 

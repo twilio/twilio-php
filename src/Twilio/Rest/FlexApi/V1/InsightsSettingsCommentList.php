@@ -39,7 +39,7 @@ class InsightsSettingsCommentList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Settings/CommentTags';
+        $this->uri = '/Insights/QualityManagement/Settings/CommentTags';
     }
 
     /**

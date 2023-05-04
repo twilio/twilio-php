@@ -40,36 +40,36 @@ class AssessmentsList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Assessments';
+        $this->uri = '/Insights/QualityManagement/Assessments';
     }
 
     /**
      * Create the AssessmentsInstance
      *
-     * @param string $categoryId The id of the category
+     * @param string $categorySid The SID of the category
      * @param string $categoryName The name of the category
      * @param string $segmentId Segment Id of the conversation
      * @param string $userName Name of the user assessing conversation
      * @param string $userEmail Email of the user assessing conversation
      * @param string $agentId The id of the Agent
      * @param string $offset The offset of the conversation.
-     * @param string $metricId The question Id selected for assessment
+     * @param string $metricId The question SID selected for assessment
      * @param string $metricName The question name of the assessment
      * @param string $answerText The answer text selected by user
      * @param string $answerId The id of the answer selected by user
-     * @param string $questionnaireId Questionnaire Id of the associated question
+     * @param string $questionnaireSid Questionnaire SID of the associated question
      * @param array|Options $options Optional Arguments
      * @return AssessmentsInstance Created AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categoryId, string $categoryName, string $segmentId, string $userName, string $userEmail, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireId, array $options = []): AssessmentsInstance
+    public function create(string $categorySid, string $categoryName, string $segmentId, string $userName, string $userEmail, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): AssessmentsInstance
     {
 
         $options = new Values($options);
 
         $data = Values::of([
-            'CategoryId' =>
-                $categoryId,
+            'CategorySid' =>
+                $categorySid,
             'CategoryName' =>
                 $categoryName,
             'SegmentId' =>
@@ -90,8 +90,8 @@ class AssessmentsList extends ListResource
                 $answerText,
             'AnswerId' =>
                 $answerId,
-            'QuestionnaireId' =>
-                $questionnaireId,
+            'QuestionnaireSid' =>
+                $questionnaireSid,
         ]);
 
         $headers = Values::of(['Token' => $options['token']]);
@@ -208,16 +208,16 @@ class AssessmentsList extends ListResource
     /**
      * Constructs a AssessmentsContext
      *
-     * @param string $assessmentId The id of the assessment to be modified
+     * @param string $assessmentSid The SID of the assessment to be modified
      */
     public function getContext(
-        string $assessmentId
+        string $assessmentSid
         
     ): AssessmentsContext
     {
         return new AssessmentsContext(
             $this->version,
-            $assessmentId
+            $assessmentSid
         );
     }
 

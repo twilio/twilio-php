@@ -41,13 +41,13 @@ class InsightsQuestionnairesQuestionList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Questions';
+        $this->uri = '/Insights/QualityManagement/Questions';
     }
 
     /**
      * Create the InsightsQuestionnairesQuestionInstance
      *
-     * @param string $categoryId The ID of the category
+     * @param string $categorySid The SID of the category
      * @param string $question The question.
      * @param string $answerSetId The answer_set for the question.
      * @param bool $allowNa The flag to enable for disable NA for answer.
@@ -55,14 +55,14 @@ class InsightsQuestionnairesQuestionList extends ListResource
      * @return InsightsQuestionnairesQuestionInstance Created InsightsQuestionnairesQuestionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categoryId, string $question, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
+    public function create(string $categorySid, string $question, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
     {
 
         $options = new Values($options);
 
         $data = Values::of([
-            'CategoryId' =>
-                $categoryId,
+            'CategorySid' =>
+                $categorySid,
             'Question' =>
                 $question,
             'AnswerSetId' =>
@@ -152,8 +152,8 @@ class InsightsQuestionnairesQuestionList extends ListResource
         $options = new Values($options);
 
         $params = Values::of([
-            'CategoryId' =>
-                Serialize::map($options['categoryId'], function ($e) { return $e; }),
+            'CategorySid' =>
+                Serialize::map($options['categorySid'], function ($e) { return $e; }),
             'Token' =>
                 $options['token'],
             'PageToken' => $pageToken,
@@ -187,16 +187,16 @@ class InsightsQuestionnairesQuestionList extends ListResource
     /**
      * Constructs a InsightsQuestionnairesQuestionContext
      *
-     * @param string $questionId The unique ID of the question
+     * @param string $questionSid The SID of the question
      */
     public function getContext(
-        string $questionId
+        string $questionSid
         
     ): InsightsQuestionnairesQuestionContext
     {
         return new InsightsQuestionnairesQuestionContext(
             $this->version,
-            $questionId
+            $questionSid
         );
     }
 

@@ -25,7 +25,7 @@ use Twilio\Version;
 
 /**
  * @property string|null $accountSid
- * @property string|null $assessmentId
+ * @property string|null $assessmentSid
  * @property array|null $comment
  * @property string|null $offset
  * @property bool|null $report
@@ -52,7 +52,7 @@ class InsightsAssessmentsCommentInstance extends InstanceResource
         // Marshaled Properties
         $this->properties = [
             'accountSid' => Values::array_get($payload, 'account_sid'),
-            'assessmentId' => Values::array_get($payload, 'assessment_id'),
+            'assessmentSid' => Values::array_get($payload, 'assessment_sid'),
             'comment' => Values::array_get($payload, 'comment'),
             'offset' => Values::array_get($payload, 'offset'),
             'report' => Values::array_get($payload, 'report'),

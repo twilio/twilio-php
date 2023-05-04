@@ -40,7 +40,7 @@ class InsightsAssessmentsCommentList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/Insights/QM/Assessments/Comments';
+        $this->uri = '/Insights/QualityManagement/Assessments/Comments';
     }
 
     /**
