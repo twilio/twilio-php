@@ -35,6 +35,7 @@ use Twilio\Deserialize;
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
+ * @property string|null $addressCountry
  */
 class AddressConfigurationInstance extends InstanceResource
 {
@@ -60,6 +61,7 @@ class AddressConfigurationInstance extends InstanceResource
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'addressCountry' => Values::array_get($payload, 'address_country'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

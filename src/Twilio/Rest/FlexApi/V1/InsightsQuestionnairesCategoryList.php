@@ -61,7 +61,7 @@ class InsightsQuestionnairesCategoryList extends ListResource
                 $name,
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
@@ -136,8 +136,8 @@ class InsightsQuestionnairesCategoryList extends ListResource
     {
 
         $params = Values::of([
-            'Token' =>
-                $options['token'],
+            'Authorization' =>
+                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

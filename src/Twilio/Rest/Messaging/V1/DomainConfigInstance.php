@@ -30,9 +30,11 @@ use Twilio\Deserialize;
  * @property string|null $configSid
  * @property string|null $fallbackUrl
  * @property string|null $callbackUrl
+ * @property bool|null $continueOnFailure
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
+ * @property bool|null $disableHttps
  */
 class DomainConfigInstance extends InstanceResource
 {
@@ -53,9 +55,11 @@ class DomainConfigInstance extends InstanceResource
             'configSid' => Values::array_get($payload, 'config_sid'),
             'fallbackUrl' => Values::array_get($payload, 'fallback_url'),
             'callbackUrl' => Values::array_get($payload, 'callback_url'),
+            'continueOnFailure' => Values::array_get($payload, 'continue_on_failure'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
+            'disableHttps' => Values::array_get($payload, 'disable_https'),
         ];
 
         $this->solution = ['domainSid' => $domainSid ?: $this->properties['domainSid'], ];

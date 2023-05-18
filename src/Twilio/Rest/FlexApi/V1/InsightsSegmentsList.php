@@ -115,8 +115,8 @@ class InsightsSegmentsList extends ListResource
                 $options['segmentId'],
             'ReservationId' =>
                 Serialize::map($options['reservationId'], function ($e) { return $e; }),
-            'Token' =>
-                $options['token'],
+            'Authorization' =>
+                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

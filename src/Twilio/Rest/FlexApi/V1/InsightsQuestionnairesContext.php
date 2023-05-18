@@ -61,7 +61,7 @@ class InsightsQuestionnairesContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
@@ -79,7 +79,7 @@ class InsightsQuestionnairesContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
@@ -115,7 +115,7 @@ class InsightsQuestionnairesContext extends InstanceContext
                 Serialize::map($options['questionSids'], function ($e) { return $e; }),
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 

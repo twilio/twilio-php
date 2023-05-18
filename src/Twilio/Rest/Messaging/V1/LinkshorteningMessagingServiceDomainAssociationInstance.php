@@ -21,24 +21,17 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\Deserialize;
 
 
 /**
  * @property string|null $domainSid
- * @property string|null $configSid
  * @property string|null $messagingServiceSid
- * @property string|null $fallbackUrl
- * @property string|null $callbackUrl
- * @property bool|null $continueOnFailure
- * @property \DateTime|null $dateCreated
- * @property \DateTime|null $dateUpdated
  * @property string|null $url
  */
-class DomainConfigMessagingServiceInstance extends InstanceResource
+class LinkshorteningMessagingServiceDomainAssociationInstance extends InstanceResource
 {
     /**
-     * Initialize the DomainConfigMessagingServiceInstance
+     * Initialize the LinkshorteningMessagingServiceDomainAssociationInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -51,13 +44,7 @@ class DomainConfigMessagingServiceInstance extends InstanceResource
         // Marshaled Properties
         $this->properties = [
             'domainSid' => Values::array_get($payload, 'domain_sid'),
-            'configSid' => Values::array_get($payload, 'config_sid'),
             'messagingServiceSid' => Values::array_get($payload, 'messaging_service_sid'),
-            'fallbackUrl' => Values::array_get($payload, 'fallback_url'),
-            'callbackUrl' => Values::array_get($payload, 'callback_url'),
-            'continueOnFailure' => Values::array_get($payload, 'continue_on_failure'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
         ];
 
@@ -68,12 +55,12 @@ class DomainConfigMessagingServiceInstance extends InstanceResource
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return DomainConfigMessagingServiceContext Context for this DomainConfigMessagingServiceInstance
+     * @return LinkshorteningMessagingServiceDomainAssociationContext Context for this LinkshorteningMessagingServiceDomainAssociationInstance
      */
-    protected function proxy(): DomainConfigMessagingServiceContext
+    protected function proxy(): LinkshorteningMessagingServiceDomainAssociationContext
     {
         if (!$this->context) {
-            $this->context = new DomainConfigMessagingServiceContext(
+            $this->context = new LinkshorteningMessagingServiceDomainAssociationContext(
                 $this->version,
                 $this->solution['messagingServiceSid']
             );
@@ -83,12 +70,12 @@ class DomainConfigMessagingServiceInstance extends InstanceResource
     }
 
     /**
-     * Fetch the DomainConfigMessagingServiceInstance
+     * Fetch the LinkshorteningMessagingServiceDomainAssociationInstance
      *
-     * @return DomainConfigMessagingServiceInstance Fetched DomainConfigMessagingServiceInstance
+     * @return LinkshorteningMessagingServiceDomainAssociationInstance Fetched LinkshorteningMessagingServiceDomainAssociationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): DomainConfigMessagingServiceInstance
+    public function fetch(): LinkshorteningMessagingServiceDomainAssociationInstance
     {
 
         return $this->proxy()->fetch();
@@ -126,7 +113,7 @@ class DomainConfigMessagingServiceInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Messaging.V1.DomainConfigMessagingServiceInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Messaging.V1.LinkshorteningMessagingServiceDomainAssociationInstance ' . \implode(' ', $context) . ']';
     }
 }
 

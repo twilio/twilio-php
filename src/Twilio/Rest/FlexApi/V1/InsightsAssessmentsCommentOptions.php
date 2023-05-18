@@ -21,38 +21,38 @@ use Twilio\Values;
 abstract class InsightsAssessmentsCommentOptions
 {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return CreateInsightsAssessmentsCommentOptions Options builder
      */
     public static function create(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): CreateInsightsAssessmentsCommentOptions
     {
         return new CreateInsightsAssessmentsCommentOptions(
-            $token
+            $authorization
         );
     }
 
     /**
      * @param string $segmentId The id of the segment.
      * @param string $agentId The id of the agent.
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return ReadInsightsAssessmentsCommentOptions Options builder
      */
     public static function read(
         
         string $segmentId = Values::NONE,
         string $agentId = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): ReadInsightsAssessmentsCommentOptions
     {
         return new ReadInsightsAssessmentsCommentOptions(
             $segmentId,
             $agentId,
-            $token
+            $authorization
         );
     }
 
@@ -61,25 +61,25 @@ abstract class InsightsAssessmentsCommentOptions
 class CreateInsightsAssessmentsCommentOptions extends Options
     {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -100,18 +100,18 @@ class ReadInsightsAssessmentsCommentOptions extends Options
     /**
      * @param string $segmentId The id of the segment.
      * @param string $agentId The id of the agent.
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         string $segmentId = Values::NONE,
         string $agentId = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['segmentId'] = $segmentId;
         $this->options['agentId'] = $agentId;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -139,14 +139,14 @@ class ReadInsightsAssessmentsCommentOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

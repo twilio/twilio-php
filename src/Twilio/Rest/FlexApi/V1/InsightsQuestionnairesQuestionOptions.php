@@ -22,52 +22,52 @@ abstract class InsightsQuestionnairesQuestionOptions
 {
     /**
      * @param string $description The description for the question.
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return CreateInsightsQuestionnairesQuestionOptions Options builder
      */
     public static function create(
         
         string $description = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): CreateInsightsQuestionnairesQuestionOptions
     {
         return new CreateInsightsQuestionnairesQuestionOptions(
             $description,
-            $token
+            $authorization
         );
     }
 
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return DeleteInsightsQuestionnairesQuestionOptions Options builder
      */
     public static function delete(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): DeleteInsightsQuestionnairesQuestionOptions
     {
         return new DeleteInsightsQuestionnairesQuestionOptions(
-            $token
+            $authorization
         );
     }
 
     /**
      * @param string[] $categorySid The list of category SIDs
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return ReadInsightsQuestionnairesQuestionOptions Options builder
      */
     public static function read(
         
         array $categorySid = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): ReadInsightsQuestionnairesQuestionOptions
     {
         return new ReadInsightsQuestionnairesQuestionOptions(
             $categorySid,
-            $token
+            $authorization
         );
     }
 
@@ -76,7 +76,7 @@ abstract class InsightsQuestionnairesQuestionOptions
      * @param string $question The question.
      * @param string $description The description for the question.
      * @param string $answerSetId The answer_set for the question.
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return UpdateInsightsQuestionnairesQuestionOptions Options builder
      */
     public static function update(
@@ -85,7 +85,7 @@ abstract class InsightsQuestionnairesQuestionOptions
         string $question = Values::NONE,
         string $description = Values::NONE,
         string $answerSetId = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): UpdateInsightsQuestionnairesQuestionOptions
     {
@@ -94,7 +94,7 @@ abstract class InsightsQuestionnairesQuestionOptions
             $question,
             $description,
             $answerSetId,
-            $token
+            $authorization
         );
     }
 
@@ -104,16 +104,16 @@ class CreateInsightsQuestionnairesQuestionOptions extends Options
     {
     /**
      * @param string $description The description for the question.
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         string $description = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['description'] = $description;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -129,14 +129,14 @@ class CreateInsightsQuestionnairesQuestionOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -155,25 +155,25 @@ class CreateInsightsQuestionnairesQuestionOptions extends Options
 class DeleteInsightsQuestionnairesQuestionOptions extends Options
     {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -193,16 +193,16 @@ class ReadInsightsQuestionnairesQuestionOptions extends Options
     {
     /**
      * @param string[] $categorySid The list of category SIDs
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         array $categorySid = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['categorySid'] = $categorySid;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -218,14 +218,14 @@ class ReadInsightsQuestionnairesQuestionOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -248,7 +248,7 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options
      * @param string $question The question.
      * @param string $description The description for the question.
      * @param string $answerSetId The answer_set for the question.
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
@@ -256,14 +256,14 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options
         string $question = Values::NONE,
         string $description = Values::NONE,
         string $answerSetId = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['categorySid'] = $categorySid;
         $this->options['question'] = $question;
         $this->options['description'] = $description;
         $this->options['answerSetId'] = $answerSetId;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -315,14 +315,14 @@ class UpdateInsightsQuestionnairesQuestionOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

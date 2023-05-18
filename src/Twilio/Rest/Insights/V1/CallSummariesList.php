@@ -149,6 +149,14 @@ class CallSummariesList extends ListResource
                 Serialize::booleanToString($options['abnormalSession']),
             'AnsweredBy' =>
                 $options['answeredBy'],
+            'ConnectivityIssues' =>
+                $options['connectivityIssues'],
+            'QualityIssues' =>
+                $options['qualityIssues'],
+            'Spam' =>
+                Serialize::booleanToString($options['spam']),
+            'CallScores' =>
+                $options['callScores'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

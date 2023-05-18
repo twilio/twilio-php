@@ -81,6 +81,8 @@ class AddressConfigurationList extends ListResource
                 $options['autoCreationStudioFlowSid'],
             'AutoCreation.StudioRetryCount' =>
                 $options['autoCreationStudioRetryCount'],
+            'AddressCountry' =>
+                $options['addressCountry'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

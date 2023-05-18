@@ -22,19 +22,19 @@ abstract class InsightsConversationsOptions
 {
     /**
      * @param string $segmentId Unique Id of the segment for which conversation details needs to be fetched
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return ReadInsightsConversationsOptions Options builder
      */
     public static function read(
         
         string $segmentId = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): ReadInsightsConversationsOptions
     {
         return new ReadInsightsConversationsOptions(
             $segmentId,
-            $token
+            $authorization
         );
     }
 
@@ -44,16 +44,16 @@ class ReadInsightsConversationsOptions extends Options
     {
     /**
      * @param string $segmentId Unique Id of the segment for which conversation details needs to be fetched
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         string $segmentId = Values::NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['segmentId'] = $segmentId;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -69,14 +69,14 @@ class ReadInsightsConversationsOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

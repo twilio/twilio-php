@@ -54,7 +54,7 @@ class InsightsSettingsCommentList extends ListResource
 
         $options = new Values($options);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 

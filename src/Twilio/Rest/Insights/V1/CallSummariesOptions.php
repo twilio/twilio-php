@@ -40,6 +40,10 @@ abstract class CallSummariesOptions
      * @param string $subaccount 
      * @param bool $abnormalSession 
      * @param string $answeredBy 
+     * @param string $connectivityIssues 
+     * @param string $qualityIssues 
+     * @param bool $spam 
+     * @param string $callScores 
      * @return ReadCallSummariesOptions Options builder
      */
     public static function read(
@@ -62,7 +66,11 @@ abstract class CallSummariesOptions
         string $sortBy = Values::NONE,
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::BOOL_NONE,
-        string $answeredBy = Values::NONE
+        string $answeredBy = Values::NONE,
+        string $connectivityIssues = Values::NONE,
+        string $qualityIssues = Values::NONE,
+        bool $spam = Values::BOOL_NONE,
+        string $callScores = Values::NONE
 
     ): ReadCallSummariesOptions
     {
@@ -85,7 +93,11 @@ abstract class CallSummariesOptions
             $sortBy,
             $subaccount,
             $abnormalSession,
-            $answeredBy
+            $answeredBy,
+            $connectivityIssues,
+            $qualityIssues,
+            $spam,
+            $callScores
         );
     }
 
@@ -113,6 +125,10 @@ class ReadCallSummariesOptions extends Options
      * @param string $subaccount 
      * @param bool $abnormalSession 
      * @param string $answeredBy 
+     * @param string $connectivityIssues 
+     * @param string $qualityIssues 
+     * @param bool $spam 
+     * @param string $callScores 
      */
     public function __construct(
         
@@ -134,7 +150,11 @@ class ReadCallSummariesOptions extends Options
         string $sortBy = Values::NONE,
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::BOOL_NONE,
-        string $answeredBy = Values::NONE
+        string $answeredBy = Values::NONE,
+        string $connectivityIssues = Values::NONE,
+        string $qualityIssues = Values::NONE,
+        bool $spam = Values::BOOL_NONE,
+        string $callScores = Values::NONE
 
     ) {
         $this->options['from'] = $from;
@@ -156,6 +176,10 @@ class ReadCallSummariesOptions extends Options
         $this->options['subaccount'] = $subaccount;
         $this->options['abnormalSession'] = $abnormalSession;
         $this->options['answeredBy'] = $answeredBy;
+        $this->options['connectivityIssues'] = $connectivityIssues;
+        $this->options['qualityIssues'] = $qualityIssues;
+        $this->options['spam'] = $spam;
+        $this->options['callScores'] = $callScores;
     }
 
     /**
@@ -383,6 +407,54 @@ class ReadCallSummariesOptions extends Options
     public function setAnsweredBy(string $answeredBy): self
     {
         $this->options['answeredBy'] = $answeredBy;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param string $connectivityIssues 
+     * @return $this Fluent Builder
+     */
+    public function setConnectivityIssues(string $connectivityIssues): self
+    {
+        $this->options['connectivityIssues'] = $connectivityIssues;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param string $qualityIssues 
+     * @return $this Fluent Builder
+     */
+    public function setQualityIssues(string $qualityIssues): self
+    {
+        $this->options['qualityIssues'] = $qualityIssues;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param bool $spam 
+     * @return $this Fluent Builder
+     */
+    public function setSpam(bool $spam): self
+    {
+        $this->options['spam'] = $spam;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param string $callScores 
+     * @return $this Fluent Builder
+     */
+    public function setCallScores(string $callScores): self
+    {
+        $this->options['callScores'] = $callScores;
         return $this;
     }
 

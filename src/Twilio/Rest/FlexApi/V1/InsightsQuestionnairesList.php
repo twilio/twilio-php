@@ -68,7 +68,7 @@ class InsightsQuestionnairesList extends ListResource
                 Serialize::map($options['questionSids'], function ($e) { return $e; }),
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
@@ -149,8 +149,8 @@ class InsightsQuestionnairesList extends ListResource
         $params = Values::of([
             'IncludeInactive' =>
                 Serialize::booleanToString($options['includeInactive']),
-            'Token' =>
-                $options['token'],
+            'Authorization' =>
+                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

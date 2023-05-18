@@ -72,7 +72,7 @@ class AssessmentsContext extends InstanceContext
                 $answerId,
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 

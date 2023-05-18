@@ -112,8 +112,8 @@ class InsightsConversationsList extends ListResource
         $params = Values::of([
             'SegmentId' =>
                 $options['segmentId'],
-            'Token' =>
-                $options['token'],
+            'Authorization' =>
+                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

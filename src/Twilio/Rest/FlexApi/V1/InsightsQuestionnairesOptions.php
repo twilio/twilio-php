@@ -24,7 +24,7 @@ abstract class InsightsQuestionnairesOptions
      * @param string $description The description of this questionnaire
      * @param bool $active The flag to enable or disable questionnaire
      * @param string[] $questionSids The list of questions sids under a questionnaire
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return CreateInsightsQuestionnairesOptions Options builder
      */
     public static function create(
@@ -32,7 +32,7 @@ abstract class InsightsQuestionnairesOptions
         string $description = Values::NONE,
         bool $active = Values::BOOL_NONE,
         array $questionSids = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): CreateInsightsQuestionnairesOptions
     {
@@ -40,55 +40,55 @@ abstract class InsightsQuestionnairesOptions
             $description,
             $active,
             $questionSids,
-            $token
+            $authorization
         );
     }
 
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return DeleteInsightsQuestionnairesOptions Options builder
      */
     public static function delete(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): DeleteInsightsQuestionnairesOptions
     {
         return new DeleteInsightsQuestionnairesOptions(
-            $token
+            $authorization
         );
     }
 
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return FetchInsightsQuestionnairesOptions Options builder
      */
     public static function fetch(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): FetchInsightsQuestionnairesOptions
     {
         return new FetchInsightsQuestionnairesOptions(
-            $token
+            $authorization
         );
     }
 
     /**
      * @param bool $includeInactive Flag indicating whether to include inactive questionnaires or not
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return ReadInsightsQuestionnairesOptions Options builder
      */
     public static function read(
         
         bool $includeInactive = Values::BOOL_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): ReadInsightsQuestionnairesOptions
     {
         return new ReadInsightsQuestionnairesOptions(
             $includeInactive,
-            $token
+            $authorization
         );
     }
 
@@ -96,7 +96,7 @@ abstract class InsightsQuestionnairesOptions
      * @param string $name The name of this questionnaire
      * @param string $description The description of this questionnaire
      * @param string[] $questionSids The list of questions sids under a questionnaire
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return UpdateInsightsQuestionnairesOptions Options builder
      */
     public static function update(
@@ -104,7 +104,7 @@ abstract class InsightsQuestionnairesOptions
         string $name = Values::NONE,
         string $description = Values::NONE,
         array $questionSids = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): UpdateInsightsQuestionnairesOptions
     {
@@ -112,7 +112,7 @@ abstract class InsightsQuestionnairesOptions
             $name,
             $description,
             $questionSids,
-            $token
+            $authorization
         );
     }
 
@@ -124,20 +124,20 @@ class CreateInsightsQuestionnairesOptions extends Options
      * @param string $description The description of this questionnaire
      * @param bool $active The flag to enable or disable questionnaire
      * @param string[] $questionSids The list of questions sids under a questionnaire
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         string $description = Values::NONE,
         bool $active = Values::BOOL_NONE,
         array $questionSids = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['description'] = $description;
         $this->options['active'] = $active;
         $this->options['questionSids'] = $questionSids;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -177,14 +177,14 @@ class CreateInsightsQuestionnairesOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -203,25 +203,25 @@ class CreateInsightsQuestionnairesOptions extends Options
 class DeleteInsightsQuestionnairesOptions extends Options
     {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -240,25 +240,25 @@ class DeleteInsightsQuestionnairesOptions extends Options
 class FetchInsightsQuestionnairesOptions extends Options
     {
     /**
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -278,16 +278,16 @@ class ReadInsightsQuestionnairesOptions extends Options
     {
     /**
      * @param bool $includeInactive Flag indicating whether to include inactive questionnaires or not
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         bool $includeInactive = Values::BOOL_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['includeInactive'] = $includeInactive;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -303,14 +303,14 @@ class ReadInsightsQuestionnairesOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 
@@ -332,20 +332,20 @@ class UpdateInsightsQuestionnairesOptions extends Options
      * @param string $name The name of this questionnaire
      * @param string $description The description of this questionnaire
      * @param string[] $questionSids The list of questions sids under a questionnaire
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         string $name = Values::NONE,
         string $description = Values::NONE,
         array $questionSids = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['name'] = $name;
         $this->options['description'] = $description;
         $this->options['questionSids'] = $questionSids;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -385,14 +385,14 @@ class UpdateInsightsQuestionnairesOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

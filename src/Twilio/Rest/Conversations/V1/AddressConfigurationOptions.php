@@ -30,6 +30,7 @@ abstract class AddressConfigurationOptions
      * @param string[] $autoCreationWebhookFilters The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated`
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow SID where the webhook should be sent to.
      * @param int $autoCreationStudioRetryCount For type `studio`, number of times to retry the webhook request
+     * @param string $addressCountry An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses.
      * @return CreateAddressConfigurationOptions Options builder
      */
     public static function create(
@@ -42,7 +43,8 @@ abstract class AddressConfigurationOptions
         string $autoCreationWebhookMethod = Values::NONE,
         array $autoCreationWebhookFilters = Values::ARRAY_NONE,
         string $autoCreationStudioFlowSid = Values::NONE,
-        int $autoCreationStudioRetryCount = Values::INT_NONE
+        int $autoCreationStudioRetryCount = Values::INT_NONE,
+        string $addressCountry = Values::NONE
 
     ): CreateAddressConfigurationOptions
     {
@@ -55,7 +57,8 @@ abstract class AddressConfigurationOptions
             $autoCreationWebhookMethod,
             $autoCreationWebhookFilters,
             $autoCreationStudioFlowSid,
-            $autoCreationStudioRetryCount
+            $autoCreationStudioRetryCount,
+            $addressCountry
         );
     }
 
@@ -129,6 +132,7 @@ class CreateAddressConfigurationOptions extends Options
      * @param string[] $autoCreationWebhookFilters The list of events, firing webhook event for this Conversation. Values can be any of the following: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onConversationUpdated`, `onConversationStateUpdated`, `onConversationRemoved`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onDeliveryUpdated`
      * @param string $autoCreationStudioFlowSid For type `studio`, the studio flow SID where the webhook should be sent to.
      * @param int $autoCreationStudioRetryCount For type `studio`, number of times to retry the webhook request
+     * @param string $addressCountry An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses.
      */
     public function __construct(
         
@@ -140,7 +144,8 @@ class CreateAddressConfigurationOptions extends Options
         string $autoCreationWebhookMethod = Values::NONE,
         array $autoCreationWebhookFilters = Values::ARRAY_NONE,
         string $autoCreationStudioFlowSid = Values::NONE,
-        int $autoCreationStudioRetryCount = Values::INT_NONE
+        int $autoCreationStudioRetryCount = Values::INT_NONE,
+        string $addressCountry = Values::NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -152,6 +157,7 @@ class CreateAddressConfigurationOptions extends Options
         $this->options['autoCreationWebhookFilters'] = $autoCreationWebhookFilters;
         $this->options['autoCreationStudioFlowSid'] = $autoCreationStudioFlowSid;
         $this->options['autoCreationStudioRetryCount'] = $autoCreationStudioRetryCount;
+        $this->options['addressCountry'] = $addressCountry;
     }
 
     /**
@@ -255,6 +261,18 @@ class CreateAddressConfigurationOptions extends Options
     public function setAutoCreationStudioRetryCount(int $autoCreationStudioRetryCount): self
     {
         $this->options['autoCreationStudioRetryCount'] = $autoCreationStudioRetryCount;
+        return $this;
+    }
+
+    /**
+     * An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses.
+     *
+     * @param string $addressCountry An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses.
+     * @return $this Fluent Builder
+     */
+    public function setAddressCountry(string $addressCountry): self
+    {
+        $this->options['addressCountry'] = $addressCountry;
         return $this;
     }
 

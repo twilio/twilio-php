@@ -22,6 +22,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 
 
 class DomainConfigContext extends InstanceContext
@@ -84,6 +85,10 @@ class DomainConfigContext extends InstanceContext
                 $options['fallbackUrl'],
             'CallbackUrl' =>
                 $options['callbackUrl'],
+            'ContinueOnFailure' =>
+                Serialize::booleanToString($options['continueOnFailure']),
+            'DisableHttps' =>
+                Serialize::booleanToString($options['disableHttps']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

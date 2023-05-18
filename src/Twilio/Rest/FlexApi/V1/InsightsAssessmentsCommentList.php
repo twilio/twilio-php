@@ -50,15 +50,13 @@ class InsightsAssessmentsCommentList extends ListResource
      * @param string $categoryName The name of the category
      * @param string $comment The Assessment comment.
      * @param string $segmentId The id of the segment.
-     * @param string $userName The name of the user.
-     * @param string $userEmail The email id of the user.
      * @param string $agentId The id of the agent.
      * @param string $offset The offset
      * @param array|Options $options Optional Arguments
      * @return InsightsAssessmentsCommentInstance Created InsightsAssessmentsCommentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categoryId, string $categoryName, string $comment, string $segmentId, string $userName, string $userEmail, string $agentId, string $offset, array $options = []): InsightsAssessmentsCommentInstance
+    public function create(string $categoryId, string $categoryName, string $comment, string $segmentId, string $agentId, string $offset, array $options = []): InsightsAssessmentsCommentInstance
     {
 
         $options = new Values($options);
@@ -72,17 +70,13 @@ class InsightsAssessmentsCommentList extends ListResource
                 $comment,
             'SegmentId' =>
                 $segmentId,
-            'UserName' =>
-                $userName,
-            'UserEmail' =>
-                $userEmail,
             'AgentId' =>
                 $agentId,
             'Offset' =>
                 $offset,
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
@@ -165,8 +159,8 @@ class InsightsAssessmentsCommentList extends ListResource
                 $options['segmentId'],
             'AgentId' =>
                 $options['agentId'],
-            'Token' =>
-                $options['token'],
+            'Authorization' =>
+                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

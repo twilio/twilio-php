@@ -23,21 +23,21 @@ abstract class InsightsSegmentsOptions
     /**
      * @param string $segmentId To unique id of the segment
      * @param string[] $reservationId The list of reservation Ids
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return ReadInsightsSegmentsOptions Options builder
      */
     public static function read(
         
         string $segmentId = Values::NONE,
         array $reservationId = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ): ReadInsightsSegmentsOptions
     {
         return new ReadInsightsSegmentsOptions(
             $segmentId,
             $reservationId,
-            $token
+            $authorization
         );
     }
 
@@ -48,18 +48,18 @@ class ReadInsightsSegmentsOptions extends Options
     /**
      * @param string $segmentId To unique id of the segment
      * @param string[] $reservationId The list of reservation Ids
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      */
     public function __construct(
         
         string $segmentId = Values::NONE,
         array $reservationId = Values::ARRAY_NONE,
-        string $token = Values::NONE
+        string $authorization = Values::NONE
 
     ) {
         $this->options['segmentId'] = $segmentId;
         $this->options['reservationId'] = $reservationId;
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
     }
 
     /**
@@ -87,14 +87,14 @@ class ReadInsightsSegmentsOptions extends Options
     }
 
     /**
-     * The Token HTTP request header
+     * The Authorization HTTP request header
      *
-     * @param string $token The Token HTTP request header
+     * @param string $authorization The Authorization HTTP request header
      * @return $this Fluent Builder
      */
-    public function setToken(string $token): self
+    public function setAuthorization(string $authorization): self
     {
-        $this->options['token'] = $token;
+        $this->options['authorization'] = $authorization;
         return $this;
     }
 

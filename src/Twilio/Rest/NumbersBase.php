@@ -14,12 +14,15 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Numbers\V1;
 use Twilio\Rest\Numbers\V2;
 
 /**
+ * @property \Twilio\Rest\Numbers\V1 $v1
  * @property \Twilio\Rest\Numbers\V2 $v2
  */
 class NumbersBase extends Domain {
+    protected $_v1;
     protected $_v2;
 
     /**
@@ -33,6 +36,16 @@ class NumbersBase extends Domain {
         $this->baseUrl = 'https://numbers.twilio.com';
     }
 
+
+    /**
+     * @return V1 Version v1 of numbers
+     */
+    protected function getV1(): V1 {
+        if (!$this->_v1) {
+            $this->_v1 = new V1($this);
+        }
+        return $this->_v1;
+    }
 
     /**
      * @return V2 Version v2 of numbers

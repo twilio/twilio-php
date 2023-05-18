@@ -60,7 +60,7 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
@@ -84,7 +84,7 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
                 $name,
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 

@@ -78,6 +78,26 @@ abstract class ConversationOptions
     }
 
 
+    /**
+     * @param string $startDate Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
+     * @param string $endDate End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
+     * @param string $state State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed`
+     * @return ReadConversationOptions Options builder
+     */
+    public static function read(
+        
+        string $startDate = Values::NONE,
+        string $endDate = Values::NONE,
+        string $state = Values::NONE
+
+    ): ReadConversationOptions
+    {
+        return new ReadConversationOptions(
+            $startDate,
+            $endDate,
+            $state
+        );
+    }
 
     /**
      * @param string $friendlyName The human-readable name of this conversation, limited to 256 characters. Optional.
@@ -331,6 +351,72 @@ class DeleteConversationOptions extends Options
 }
 
 
+class ReadConversationOptions extends Options
+    {
+    /**
+     * @param string $startDate Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
+     * @param string $endDate End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
+     * @param string $state State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed`
+     */
+    public function __construct(
+        
+        string $startDate = Values::NONE,
+        string $endDate = Values::NONE,
+        string $state = Values::NONE
+
+    ) {
+        $this->options['startDate'] = $startDate;
+        $this->options['endDate'] = $endDate;
+        $this->options['state'] = $state;
+    }
+
+    /**
+     * Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
+     *
+     * @param string $startDate Start date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the start time of the date is used (YYYY-MM-DDT00:00:00Z). Can be combined with other filters.
+     * @return $this Fluent Builder
+     */
+    public function setStartDate(string $startDate): self
+    {
+        $this->options['startDate'] = $startDate;
+        return $this;
+    }
+
+    /**
+     * End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
+     *
+     * @param string $endDate End date or time in ISO8601 format for filtering list of Conversations. If a date is provided, the end time of the date is used (YYYY-MM-DDT23:59:59Z). Can be combined with other filters.
+     * @return $this Fluent Builder
+     */
+    public function setEndDate(string $endDate): self
+    {
+        $this->options['endDate'] = $endDate;
+        return $this;
+    }
+
+    /**
+     * State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed`
+     *
+     * @param string $state State for sorting and filtering list of Conversations. Can be `active`, `inactive` or `closed`
+     * @return $this Fluent Builder
+     */
+    public function setState(string $state): self
+    {
+        $this->options['state'] = $state;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Conversations.V1.ReadConversationOptions ' . $options . ']';
+    }
+}
 
 class UpdateConversationOptions extends Options
     {

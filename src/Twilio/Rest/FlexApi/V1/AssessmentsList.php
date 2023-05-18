@@ -49,8 +49,6 @@ class AssessmentsList extends ListResource
      * @param string $categorySid The SID of the category
      * @param string $categoryName The name of the category
      * @param string $segmentId Segment Id of the conversation
-     * @param string $userName Name of the user assessing conversation
-     * @param string $userEmail Email of the user assessing conversation
      * @param string $agentId The id of the Agent
      * @param string $offset The offset of the conversation.
      * @param string $metricId The question SID selected for assessment
@@ -62,7 +60,7 @@ class AssessmentsList extends ListResource
      * @return AssessmentsInstance Created AssessmentsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categorySid, string $categoryName, string $segmentId, string $userName, string $userEmail, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): AssessmentsInstance
+    public function create(string $categorySid, string $categoryName, string $segmentId, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): AssessmentsInstance
     {
 
         $options = new Values($options);
@@ -74,10 +72,6 @@ class AssessmentsList extends ListResource
                 $categoryName,
             'SegmentId' =>
                 $segmentId,
-            'UserName' =>
-                $userName,
-            'UserEmail' =>
-                $userEmail,
             'AgentId' =>
                 $agentId,
             'Offset' =>
@@ -94,7 +88,7 @@ class AssessmentsList extends ListResource
                 $questionnaireSid,
         ]);
 
-        $headers = Values::of(['Token' => $options['token']]);
+        $headers = Values::of(['Authorization' => $options['authorization']]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
@@ -175,8 +169,8 @@ class AssessmentsList extends ListResource
         $params = Values::of([
             'SegmentId' =>
                 $options['segmentId'],
-            'Token' =>
-                $options['token'],
+            'Authorization' =>
+                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
