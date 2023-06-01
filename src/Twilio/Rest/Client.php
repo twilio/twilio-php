@@ -29,6 +29,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property FlexApi $flexApi
  * @property FrontlineApi $frontlineApi
  * @property Insights $insights
+ * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
  * @property Lookups $lookups
  * @property Media $media
@@ -108,6 +109,7 @@ class Client extends BaseClient {
     protected $_flexApi;
     protected $_frontlineApi;
     protected $_insights;
+    protected $_intelligence;
     protected $_ipMessaging;
     protected $_lookups;
     protected $_media;
@@ -253,6 +255,17 @@ class Client extends BaseClient {
             $this->_insights = new Insights($this);
         }
         return $this->_insights;
+    }
+    /**
+     * Access the Intelligence Twilio Domain
+     *
+     * @return Intelligence Intelligence Twilio Domain
+     */
+    protected function getIntelligence(): Intelligence {
+        if (!$this->_intelligence) {
+            $this->_intelligence = new Intelligence($this);
+        }
+        return $this->_intelligence;
     }
     /**
      * Access the IpMessaging Twilio Domain

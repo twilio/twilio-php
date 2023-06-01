@@ -49,6 +49,7 @@ use Twilio\Deserialize;
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
  * @property bool|null $mock
+ * @property array[]|null $errors
  */
 class UsAppToPersonInstance extends InstanceResource
 {
@@ -90,6 +91,7 @@ class UsAppToPersonInstance extends InstanceResource
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'mock' => Values::array_get($payload, 'mock'),
+            'errors' => Values::array_get($payload, 'errors'),
         ];
 
         $this->solution = ['messagingServiceSid' => $messagingServiceSid, 'sid' => $sid ?: $this->properties['sid'], ];

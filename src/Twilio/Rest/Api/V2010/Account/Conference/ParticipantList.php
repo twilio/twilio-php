@@ -163,6 +163,8 @@ class ParticipantList extends ListResource
                 $options['amdStatusCallback'],
             'AmdStatusCallbackMethod' =>
                 $options['amdStatusCallbackMethod'],
+            'Trim' =>
+                $options['trim'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
