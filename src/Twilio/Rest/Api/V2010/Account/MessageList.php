@@ -96,8 +96,6 @@ class MessageList extends ListResource
                 Serialize::iso8601DateTime($options['sendAt']),
             'SendAsMms' =>
                 Serialize::booleanToString($options['sendAsMms']),
-            'ContentSid' =>
-                $options['contentSid'],
             'ContentVariables' =>
                 $options['contentVariables'],
             'From' =>
@@ -108,6 +106,8 @@ class MessageList extends ListResource
                 $options['body'],
             'MediaUrl' =>
                 Serialize::map($options['mediaUrl'], function ($e) { return $e; }),
+            'ContentSid' =>
+                $options['contentSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
