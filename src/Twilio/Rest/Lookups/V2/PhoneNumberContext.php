@@ -85,6 +85,8 @@ class PhoneNumberContext extends InstanceContext
                 $options['nationalId'],
             'DateOfBirth' =>
                 $options['dateOfBirth'],
+            'LastVerifiedDate' =>
+                $options['lastVerifiedDate'],
         ]);
 
         $payload = $this->version->fetch('GET', $this->uri, $params);

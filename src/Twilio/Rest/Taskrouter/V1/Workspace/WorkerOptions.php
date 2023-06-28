@@ -59,7 +59,7 @@ abstract class WorkerOptions
      * @param string $activitySid The `activity_sid` of the Worker resources to read.
      * @param string $available Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available.
      * @param string $friendlyName The `friendly_name` of the Worker resources to read.
-     * @param string $targetWorkersExpression Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue.
+     * @param string $targetWorkersExpression Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name`
      * @param string $taskQueueName The `friendly_name` of the TaskQueue that the Workers to read are eligible for.
      * @param string $taskQueueSid The SID of the TaskQueue that the Workers to read are eligible for.
      * @param string $ordering Sorting parameter for Workers
@@ -216,7 +216,7 @@ class ReadWorkerOptions extends Options
      * @param string $activitySid The `activity_sid` of the Worker resources to read.
      * @param string $available Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available.
      * @param string $friendlyName The `friendly_name` of the Worker resources to read.
-     * @param string $targetWorkersExpression Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue.
+     * @param string $targetWorkersExpression Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name`
      * @param string $taskQueueName The `friendly_name` of the TaskQueue that the Workers to read are eligible for.
      * @param string $taskQueueSid The SID of the TaskQueue that the Workers to read are eligible for.
      * @param string $ordering Sorting parameter for Workers
@@ -292,9 +292,9 @@ class ReadWorkerOptions extends Options
     }
 
     /**
-     * Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue.
+     * Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name`
      *
-     * @param string $targetWorkersExpression Filter by Workers that would match an expression on a TaskQueue. This is helpful for debugging which Workers would match a potential queue.
+     * @param string $targetWorkersExpression Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name`
      * @return $this Fluent Builder
      */
     public function setTargetWorkersExpression(string $targetWorkersExpression): self

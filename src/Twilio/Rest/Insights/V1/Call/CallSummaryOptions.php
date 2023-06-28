@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class CallSummaryOptions
 {
     /**
-     * @param string $processingState 
+     * @param string $processingState The Processing State of this Call Summary. One of `complete`, `partial` or `all`.
      * @return FetchCallSummaryOptions Options builder
      */
     public static function fetch(
@@ -40,7 +40,7 @@ abstract class CallSummaryOptions
 class FetchCallSummaryOptions extends Options
     {
     /**
-     * @param string $processingState 
+     * @param string $processingState The Processing State of this Call Summary. One of `complete`, `partial` or `all`.
      */
     public function __construct(
         
@@ -51,9 +51,9 @@ class FetchCallSummaryOptions extends Options
     }
 
     /**
-     * 
+     * The Processing State of this Call Summary. One of `complete`, `partial` or `all`.
      *
-     * @param string $processingState 
+     * @param string $processingState The Processing State of this Call Summary. One of `complete`, `partial` or `all`.
      * @return $this Fluent Builder
      */
     public function setProcessingState(string $processingState): self

@@ -18,14 +18,22 @@ namespace Twilio\Rest\Numbers;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Numbers\V2\AuthorizationDocumentList;
+use Twilio\Rest\Numbers\V2\HostedNumberOrderList;
 use Twilio\Rest\Numbers\V2\RegulatoryComplianceList;
 use Twilio\Version;
 
 /**
+ * @property AuthorizationDocumentList $authorizationDocuments
+ * @property HostedNumberOrderList $hostedNumberOrders
  * @property RegulatoryComplianceList $regulatoryCompliance
+ * @method \Twilio\Rest\Numbers\V2\AuthorizationDocumentContext authorizationDocuments(string $sid)
+ * @method \Twilio\Rest\Numbers\V2\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */
 class V2 extends Version
 {
+    protected $_authorizationDocuments;
+    protected $_hostedNumberOrders;
     protected $_regulatoryCompliance;
 
     /**
@@ -37,6 +45,22 @@ class V2 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getAuthorizationDocuments(): AuthorizationDocumentList
+    {
+        if (!$this->_authorizationDocuments) {
+            $this->_authorizationDocuments = new AuthorizationDocumentList($this);
+        }
+        return $this->_authorizationDocuments;
+    }
+
+    protected function getHostedNumberOrders(): HostedNumberOrderList
+    {
+        if (!$this->_hostedNumberOrders) {
+            $this->_hostedNumberOrders = new HostedNumberOrderList($this);
+        }
+        return $this->_hostedNumberOrders;
     }
 
     protected function getRegulatoryCompliance(): RegulatoryComplianceList

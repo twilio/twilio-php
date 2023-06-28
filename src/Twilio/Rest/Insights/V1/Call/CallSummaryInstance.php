@@ -57,7 +57,7 @@ class CallSummaryInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $callSid 
+     * @param string $callSid The unique SID identifier of the Call.
      */
     public function __construct(Version $version, array $payload, string $callSid)
     {

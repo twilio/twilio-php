@@ -21,29 +21,29 @@ use Twilio\Values;
 abstract class CallSummariesOptions
 {
     /**
-     * @param string $from 
-     * @param string $to 
-     * @param string $fromCarrier 
-     * @param string $toCarrier 
-     * @param string $fromCountryCode 
-     * @param string $toCountryCode 
-     * @param bool $branded 
-     * @param bool $verifiedCaller 
-     * @param bool $hasTag 
-     * @param string $startTime 
-     * @param string $endTime 
-     * @param string $callType 
-     * @param string $callState 
-     * @param string $direction 
-     * @param string $processingState 
-     * @param string $sortBy 
-     * @param string $subaccount 
-     * @param bool $abnormalSession 
-     * @param string $answeredBy 
-     * @param string $connectivityIssue 
-     * @param string $qualityIssue 
-     * @param bool $spam 
-     * @param string $callScore 
+     * @param string $from A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $to A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $fromCarrier An origination carrier.
+     * @param string $toCarrier A destination carrier.
+     * @param string $fromCountryCode A source country code based on phone number in From.
+     * @param string $toCountryCode A destination country code. Based on phone number in To.
+     * @param bool $branded A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls.
+     * @param bool $verifiedCaller A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.
+     * @param bool $hasTag A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
+     * @param string $startTime A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
+     * @param string $endTime An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
+     * @param string $callType A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
+     * @param string $callState A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
+     * @param string $direction A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
+     * @param string $processingState A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
+     * @param string $sortBy A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
+     * @param string $subaccount A unique SID identifier of a Subaccount.
+     * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
+     * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
+     * @param string $connectivityIssue A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $qualityIssue A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param bool $spam A boolean flag indicating spam calls.
+     * @param string $callScore A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      * @return ReadCallSummariesOptions Options builder
      */
     public static function read(
@@ -106,29 +106,29 @@ abstract class CallSummariesOptions
 class ReadCallSummariesOptions extends Options
     {
     /**
-     * @param string $from 
-     * @param string $to 
-     * @param string $fromCarrier 
-     * @param string $toCarrier 
-     * @param string $fromCountryCode 
-     * @param string $toCountryCode 
-     * @param bool $branded 
-     * @param bool $verifiedCaller 
-     * @param bool $hasTag 
-     * @param string $startTime 
-     * @param string $endTime 
-     * @param string $callType 
-     * @param string $callState 
-     * @param string $direction 
-     * @param string $processingState 
-     * @param string $sortBy 
-     * @param string $subaccount 
-     * @param bool $abnormalSession 
-     * @param string $answeredBy 
-     * @param string $connectivityIssue 
-     * @param string $qualityIssue 
-     * @param bool $spam 
-     * @param string $callScore 
+     * @param string $from A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $to A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $fromCarrier An origination carrier.
+     * @param string $toCarrier A destination carrier.
+     * @param string $fromCountryCode A source country code based on phone number in From.
+     * @param string $toCountryCode A destination country code. Based on phone number in To.
+     * @param bool $branded A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls.
+     * @param bool $verifiedCaller A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.
+     * @param bool $hasTag A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
+     * @param string $startTime A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
+     * @param string $endTime An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
+     * @param string $callType A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
+     * @param string $callState A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
+     * @param string $direction A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
+     * @param string $processingState A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
+     * @param string $sortBy A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
+     * @param string $subaccount A unique SID identifier of a Subaccount.
+     * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
+     * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
+     * @param string $connectivityIssue A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $qualityIssue A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param bool $spam A boolean flag indicating spam calls.
+     * @param string $callScore A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      */
     public function __construct(
         
@@ -183,9 +183,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      *
-     * @param string $from 
+     * @param string $from A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      * @return $this Fluent Builder
      */
     public function setFrom(string $from): self
@@ -195,9 +195,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      *
-     * @param string $to 
+     * @param string $to A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      * @return $this Fluent Builder
      */
     public function setTo(string $to): self
@@ -207,9 +207,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * An origination carrier.
      *
-     * @param string $fromCarrier 
+     * @param string $fromCarrier An origination carrier.
      * @return $this Fluent Builder
      */
     public function setFromCarrier(string $fromCarrier): self
@@ -219,9 +219,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A destination carrier.
      *
-     * @param string $toCarrier 
+     * @param string $toCarrier A destination carrier.
      * @return $this Fluent Builder
      */
     public function setToCarrier(string $toCarrier): self
@@ -231,9 +231,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A source country code based on phone number in From.
      *
-     * @param string $fromCountryCode 
+     * @param string $fromCountryCode A source country code based on phone number in From.
      * @return $this Fluent Builder
      */
     public function setFromCountryCode(string $fromCountryCode): self
@@ -243,9 +243,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A destination country code. Based on phone number in To.
      *
-     * @param string $toCountryCode 
+     * @param string $toCountryCode A destination country code. Based on phone number in To.
      * @return $this Fluent Builder
      */
     public function setToCountryCode(string $toCountryCode): self
@@ -255,9 +255,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls.
      *
-     * @param bool $branded 
+     * @param bool $branded A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls.
      * @return $this Fluent Builder
      */
     public function setBranded(bool $branded): self
@@ -267,9 +267,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.
      *
-     * @param bool $verifiedCaller 
+     * @param bool $verifiedCaller A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.
      * @return $this Fluent Builder
      */
     public function setVerifiedCaller(bool $verifiedCaller): self
@@ -279,9 +279,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
      *
-     * @param bool $hasTag 
+     * @param bool $hasTag A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
      * @return $this Fluent Builder
      */
     public function setHasTag(bool $hasTag): self
@@ -291,9 +291,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
      *
-     * @param string $startTime 
+     * @param string $startTime A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
      * @return $this Fluent Builder
      */
     public function setStartTime(string $startTime): self
@@ -303,9 +303,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
      *
-     * @param string $endTime 
+     * @param string $endTime An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
      * @return $this Fluent Builder
      */
     public function setEndTime(string $endTime): self
@@ -315,9 +315,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
      *
-     * @param string $callType 
+     * @param string $callType A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
      * @return $this Fluent Builder
      */
     public function setCallType(string $callType): self
@@ -327,9 +327,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
      *
-     * @param string $callState 
+     * @param string $callState A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
      * @return $this Fluent Builder
      */
     public function setCallState(string $callState): self
@@ -339,9 +339,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
      *
-     * @param string $direction 
+     * @param string $direction A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
      * @return $this Fluent Builder
      */
     public function setDirection(string $direction): self
@@ -351,9 +351,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
      *
-     * @param string $processingState 
+     * @param string $processingState A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
      * @return $this Fluent Builder
      */
     public function setProcessingState(string $processingState): self
@@ -363,9 +363,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
      *
-     * @param string $sortBy 
+     * @param string $sortBy A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
      * @return $this Fluent Builder
      */
     public function setSortBy(string $sortBy): self
@@ -375,9 +375,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A unique SID identifier of a Subaccount.
      *
-     * @param string $subaccount 
+     * @param string $subaccount A unique SID identifier of a Subaccount.
      * @return $this Fluent Builder
      */
     public function setSubaccount(string $subaccount): self
@@ -387,9 +387,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
      *
-     * @param bool $abnormalSession 
+     * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
      * @return $this Fluent Builder
      */
     public function setAbnormalSession(bool $abnormalSession): self
@@ -399,9 +399,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
      *
-     * @param string $answeredBy 
+     * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
      * @return $this Fluent Builder
      */
     public function setAnsweredBy(string $answeredBy): self
@@ -411,9 +411,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
      *
-     * @param string $connectivityIssue 
+     * @param string $connectivityIssue A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
      * @return $this Fluent Builder
      */
     public function setConnectivityIssue(string $connectivityIssue): self
@@ -423,9 +423,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
      *
-     * @param string $qualityIssue 
+     * @param string $qualityIssue A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
      * @return $this Fluent Builder
      */
     public function setQualityIssue(string $qualityIssue): self
@@ -435,9 +435,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating spam calls.
      *
-     * @param bool $spam 
+     * @param bool $spam A boolean flag indicating spam calls.
      * @return $this Fluent Builder
      */
     public function setSpam(bool $spam): self
@@ -447,9 +447,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      *
-     * @param string $callScore 
+     * @param string $callScore A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      * @return $this Fluent Builder
      */
     public function setCallScore(string $callScore): self
