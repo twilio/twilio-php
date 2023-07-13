@@ -18,6 +18,7 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Serialize;
@@ -47,17 +48,22 @@ class InteractionList extends ListResource
      *
      * @param array $channel The Interaction's channel.
      * @param array $routing The Interaction's routing logic.
+     * @param array|Options $options Optional Arguments
      * @return InteractionInstance Created InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $channel, array $routing): InteractionInstance
+    public function create(array $channel, array $routing, array $options = []): InteractionInstance
     {
+
+        $options = new Values($options);
 
         $data = Values::of([
             'Channel' =>
                 Serialize::jsonObject($channel),
             'Routing' =>
                 Serialize::jsonObject($routing),
+            'InteractionContextSid' =>
+                $options['interactionContextSid'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

@@ -37,7 +37,6 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property string $status
  * @property string|null $failureReason
  * @property \DateTime|null $dateCreated
- * @property bool|null $smsCapability
  * @property \DateTime|null $dateUpdated
  * @property string|null $email
  * @property string[]|null $ccEmails
@@ -73,7 +72,6 @@ class HostedNumberOrderInstance extends InstanceResource
             'status' => Values::array_get($payload, 'status'),
             'failureReason' => Values::array_get($payload, 'failure_reason'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'smsCapability' => Values::array_get($payload, 'sms_capability'),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'email' => Values::array_get($payload, 'email'),
             'ccEmails' => Values::array_get($payload, 'cc_emails'),

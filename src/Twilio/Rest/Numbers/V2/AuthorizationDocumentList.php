@@ -50,11 +50,12 @@ class AuthorizationDocumentList extends ListResource
      * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
      * @param string $email Email that this AuthorizationDocument will be sent to for signing.
      * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
+     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
      * @param array|Options $options Optional Arguments
      * @return AuthorizationDocumentInstance Created AuthorizationDocumentInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $addressSid, string $email, string $contactPhoneNumber, array $options = []): AuthorizationDocumentInstance
+    public function create(string $addressSid, string $email, string $contactPhoneNumber, array $hostedNumberOrderSids, array $options = []): AuthorizationDocumentInstance
     {
 
         $options = new Values($options);
@@ -66,6 +67,8 @@ class AuthorizationDocumentList extends ListResource
                 $email,
             'ContactPhoneNumber' =>
                 $contactPhoneNumber,
+            'HostedNumberOrderSids' =>
+                Serialize::map($hostedNumberOrderSids,function ($e) { return $e; }),
             'ContactTitle' =>
                 $options['contactTitle'],
             'CcEmails' =>

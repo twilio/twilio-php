@@ -99,6 +99,8 @@ class DeviceContext extends InstanceContext
                 $options['targetApp'],
             'LoggingEnabled' =>
                 Serialize::booleanToString($options['loggingEnabled']),
+            'RestartApp' =>
+                Serialize::booleanToString($options['restartApp']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

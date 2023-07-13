@@ -25,9 +25,9 @@ use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Messaging\V1\Service\AlphaSenderList;
 use Twilio\Rest\Messaging\V1\Service\PhoneNumberList;
+use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 use Twilio\Rest\Messaging\V1\Service\ShortCodeList;
 use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
-use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 
 
 /**
@@ -59,9 +59,9 @@ class ServiceInstance extends InstanceResource
 {
     protected $_alphaSenders;
     protected $_phoneNumbers;
+    protected $_usAppToPersonUsecases;
     protected $_shortCodes;
     protected $_usAppToPerson;
-    protected $_usAppToPersonUsecases;
 
     /**
      * Initialize the ServiceInstance
@@ -176,6 +176,14 @@ class ServiceInstance extends InstanceResource
     }
 
     /**
+     * Access the usAppToPersonUsecases
+     */
+    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList
+    {
+        return $this->proxy()->usAppToPersonUsecases;
+    }
+
+    /**
      * Access the shortCodes
      */
     protected function getShortCodes(): ShortCodeList
@@ -189,14 +197,6 @@ class ServiceInstance extends InstanceResource
     protected function getUsAppToPerson(): UsAppToPersonList
     {
         return $this->proxy()->usAppToPerson;
-    }
-
-    /**
-     * Access the usAppToPersonUsecases
-     */
-    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList
-    {
-        return $this->proxy()->usAppToPersonUsecases;
     }
 
     /**
