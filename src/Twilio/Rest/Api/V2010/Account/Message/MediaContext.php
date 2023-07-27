@@ -28,9 +28,9 @@ class MediaContext extends InstanceContext
      * Initialize the MediaContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete.
-     * @param string $messageSid The SID of the Message resource that this Media resource belongs to.
-     * @param string $sid The Twilio-provided string that uniquely identifies the Media resource to delete
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resource.
+     * @param string $messageSid The SID of the Message resource that is associated with the Media resource.
+     * @param string $sid The unique identifier of the to-be-deleted Media resource.
      */
     public function __construct(
         Version $version,

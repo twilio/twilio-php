@@ -619,7 +619,7 @@ class Client extends BaseClient {
         return $this->api->v2010->account->messages;
     }
     /**
-     * @param string $sid The Twilio-provided string that uniquely identifies the Message resource to fetch.
+     * @param string $sid The SID of the Message resource to be fetched
     */
     protected function contextMessages(string $sid): \Twilio\Rest\Api\V2010\Account\MessageContext {
         return $this->api->v2010->account->messages($sid);

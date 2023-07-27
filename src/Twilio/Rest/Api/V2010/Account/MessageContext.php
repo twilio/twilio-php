@@ -41,8 +41,8 @@ class MessageContext extends InstanceContext
      * Initialize the MessageContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
-     * @param string $sid The Twilio-provided string that uniquely identifies the Message resource to delete.
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) creating the Message resource.
+     * @param string $sid The SID of the Message resource you wish to delete
      */
     public function __construct(
         Version $version,

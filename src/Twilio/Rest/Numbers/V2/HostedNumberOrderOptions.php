@@ -22,7 +22,7 @@ abstract class HostedNumberOrderOptions
 {
     /**
      * @param string $accountSid This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to.
-     * @param string $friendlyName A 64 character string that is a human readable text that describes this resource.
+     * @param string $friendlyName A 128 character string that is a human readable text that describes this resource.
      * @param string[] $ccEmails Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.
      * @param string $smsUrl The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource.
      * @param string $smsMethod The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource.
@@ -75,7 +75,7 @@ abstract class HostedNumberOrderOptions
      * @param bool $smsCapability Whether the SMS capability will be hosted on our platform. Can be `true` of `false`.
      * @param string $phoneNumber An E164 formatted phone number hosted by this HostedNumberOrder.
      * @param string $incomingPhoneNumberSid A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
+     * @param string $friendlyName A human readable description of this resource, up to 128 characters.
      * @return ReadHostedNumberOrderOptions Options builder
      */
     public static function read(
@@ -103,7 +103,7 @@ class CreateHostedNumberOrderOptions extends Options
     {
     /**
      * @param string $accountSid This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to.
-     * @param string $friendlyName A 64 character string that is a human readable text that describes this resource.
+     * @param string $friendlyName A 128 character string that is a human readable text that describes this resource.
      * @param string[] $ccEmails Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to.
      * @param string $smsUrl The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource.
      * @param string $smsMethod The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource.
@@ -158,9 +158,9 @@ class CreateHostedNumberOrderOptions extends Options
     }
 
     /**
-     * A 64 character string that is a human readable text that describes this resource.
+     * A 128 character string that is a human readable text that describes this resource.
      *
-     * @param string $friendlyName A 64 character string that is a human readable text that describes this resource.
+     * @param string $friendlyName A 128 character string that is a human readable text that describes this resource.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self
@@ -310,7 +310,7 @@ class ReadHostedNumberOrderOptions extends Options
      * @param bool $smsCapability Whether the SMS capability will be hosted on our platform. Can be `true` of `false`.
      * @param string $phoneNumber An E164 formatted phone number hosted by this HostedNumberOrder.
      * @param string $incomingPhoneNumberSid A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
+     * @param string $friendlyName A human readable description of this resource, up to 128 characters.
      */
     public function __construct(
         
@@ -377,9 +377,9 @@ class ReadHostedNumberOrderOptions extends Options
     }
 
     /**
-     * A human readable description of this resource, up to 64 characters.
+     * A human readable description of this resource, up to 128 characters.
      *
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
+     * @param string $friendlyName A human readable description of this resource, up to 128 characters.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self

@@ -30,8 +30,8 @@ class MediaList extends ListResource
      * Construct the MediaList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete.
-     * @param string $messageSid The SID of the Message resource that this Media resource belongs to.
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resource.
+     * @param string $messageSid The SID of the Message resource that is associated with the Media resource.
      */
     public function __construct(
         Version $version,
@@ -160,7 +160,7 @@ class MediaList extends ListResource
     /**
      * Constructs a MediaContext
      *
-     * @param string $sid The Twilio-provided string that uniquely identifies the Media resource to delete
+     * @param string $sid The unique identifier of the to-be-deleted Media resource.
      */
     public function getContext(
         string $sid

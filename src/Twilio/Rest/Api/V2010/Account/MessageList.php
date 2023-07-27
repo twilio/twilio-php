@@ -31,7 +31,7 @@ class MessageList extends ListResource
      * Construct the MessageList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) creating the Message resource.
      */
     public function __construct(
         Version $version,
@@ -53,7 +53,7 @@ class MessageList extends ListResource
     /**
      * Create the MessageInstance
      *
-     * @param string $to The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.
+     * @param string $to The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/sms/channels#channel-addresses), e.g. `whatsapp:+15552229999`.
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -229,7 +229,7 @@ class MessageList extends ListResource
     /**
      * Constructs a MessageContext
      *
-     * @param string $sid The Twilio-provided string that uniquely identifies the Message resource to delete.
+     * @param string $sid The SID of the Message resource you wish to delete
      */
     public function getContext(
         string $sid
