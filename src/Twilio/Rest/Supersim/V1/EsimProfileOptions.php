@@ -47,7 +47,7 @@ abstract class EsimProfileOptions
 
     /**
      * @param string $eid List the eSIM Profiles that have been associated with an EId.
-     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
+     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
      * @param string $status List the eSIM Profiles that are in a given status.
      * @return ReadEsimProfileOptions Options builder
      */
@@ -155,7 +155,7 @@ class ReadEsimProfileOptions extends Options
     {
     /**
      * @param string $eid List the eSIM Profiles that have been associated with an EId.
-     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
+     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
      * @param string $status List the eSIM Profiles that are in a given status.
      */
     public function __construct(
@@ -183,9 +183,9 @@ class ReadEsimProfileOptions extends Options
     }
 
     /**
-     * Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
+     * Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
      *
-     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
+     * @param string $simSid Find the eSIM Profile resource related to a [Sim](https://www.twilio.com/docs/iot/wireless/api/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
      * @return $this Fluent Builder
      */
     public function setSimSid(string $simSid): self

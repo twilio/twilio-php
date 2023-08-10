@@ -18,6 +18,8 @@
 namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -49,13 +51,21 @@ class PortingPortabilityContext extends InstanceContext
     /**
      * Fetch the PortingPortabilityInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return PortingPortabilityInstance Fetched PortingPortabilityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PortingPortabilityInstance
+    public function fetch(array $options = []): PortingPortabilityInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $options = new Values($options);
+
+        $params = Values::of([
+            'TargetAccountSid' =>
+                $options['targetAccountSid'],
+        ]);
+
+        $payload = $this->version->fetch('GET', $this->uri, $params);
 
         return new PortingPortabilityInstance(
             $this->version,

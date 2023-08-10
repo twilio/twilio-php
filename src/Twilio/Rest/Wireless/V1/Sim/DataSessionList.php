@@ -28,7 +28,7 @@ class DataSessionList extends ListResource
      * Construct the DataSessionList
      *
      * @param Version $version Version that contains the resource
-     * @param string $simSid The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource) with the Data Sessions to read.
+     * @param string $simSid The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) with the Data Sessions to read.
      */
     public function __construct(
         Version $version,

@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class CommandOptions
 {
     /**
-     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.
+     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to.
      * @param string $callbackMethod The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.
      * @param string $callbackUrl The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.
      * @param string $commandMode
@@ -53,7 +53,7 @@ abstract class CommandOptions
 
 
     /**
-     * @param string $sim The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.
+     * @param string $sim The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read.
      * @param string $status The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.
      * @param string $direction Only return Commands with this direction value.
      * @param string $transport Only return Commands with this transport value. Can be: `sms` or `ip`.
@@ -81,7 +81,7 @@ abstract class CommandOptions
 class CreateCommandOptions extends Options
     {
     /**
-     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.
+     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to.
      * @param string $callbackMethod The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.
      * @param string $callbackUrl The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.
      * @param string $commandMode
@@ -107,9 +107,9 @@ class CreateCommandOptions extends Options
     }
 
     /**
-     * The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.
+     * The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to.
      *
-     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/wireless/api/sim-resource) to send the Command to.
+     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to.
      * @return $this Fluent Builder
      */
     public function setSim(string $sim): self
@@ -193,7 +193,7 @@ class CreateCommandOptions extends Options
 class ReadCommandOptions extends Options
     {
     /**
-     * @param string $sim The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.
+     * @param string $sim The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read.
      * @param string $status The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.
      * @param string $direction Only return Commands with this direction value.
      * @param string $transport Only return Commands with this transport value. Can be: `sms` or `ip`.
@@ -213,9 +213,9 @@ class ReadCommandOptions extends Options
     }
 
     /**
-     * The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.
+     * The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read.
      *
-     * @param string $sim The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/wireless/api/sim-resource) to read.
+     * @param string $sim The `sid` or `unique_name` of the [Sim resources](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to read.
      * @return $this Fluent Builder
      */
     public function setSim(string $sim): self

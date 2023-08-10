@@ -24,7 +24,7 @@ abstract class ConversationOptions
      * @param string $friendlyName The human-readable name of this conversation, limited to 256 characters. Optional.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $state
@@ -104,7 +104,7 @@ abstract class ConversationOptions
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      * @param string $state
      * @param string $timersInactive ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
@@ -149,7 +149,7 @@ class CreateConversationOptions extends Options
      * @param string $friendlyName The human-readable name of this conversation, limited to 256 characters. Optional.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $state
@@ -220,9 +220,9 @@ class CreateConversationOptions extends Options
     }
 
     /**
-     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      *
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self
@@ -425,7 +425,7 @@ class UpdateConversationOptions extends Options
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      * @param string $state
      * @param string $timersInactive ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
@@ -507,9 +507,9 @@ class UpdateConversationOptions extends Options
     }
 
     /**
-     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      *
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/sms/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self

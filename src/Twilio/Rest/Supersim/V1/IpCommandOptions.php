@@ -45,7 +45,7 @@ abstract class IpCommandOptions
     /**
      * @param string $sim The SID or unique name of the Sim resource that IP Command was sent to or from.
      * @param string $simIccid The ICCID of the Sim resource that IP Command was sent to or from.
-     * @param string $status The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each.
+     * @param string $status The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each.
      * @param string $direction The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
      * @return ReadIpCommandOptions Options builder
      */
@@ -139,7 +139,7 @@ class ReadIpCommandOptions extends Options
     /**
      * @param string $sim The SID or unique name of the Sim resource that IP Command was sent to or from.
      * @param string $simIccid The ICCID of the Sim resource that IP Command was sent to or from.
-     * @param string $status The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each.
+     * @param string $status The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each.
      * @param string $direction The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
      */
     public function __construct(
@@ -181,9 +181,9 @@ class ReadIpCommandOptions extends Options
     }
 
     /**
-     * The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each.
+     * The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each.
      *
-     * @param string $status The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/wireless/api/ipcommand-resource#status-values) for a description of each.
+     * @param string $status The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each.
      * @return $this Fluent Builder
      */
     public function setStatus(string $status): self

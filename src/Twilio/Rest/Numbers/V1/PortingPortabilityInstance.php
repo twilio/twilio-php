@@ -19,12 +19,14 @@ namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 
 /**
  * @property string|null $phoneNumber
+ * @property string|null $accountSid
  * @property bool|null $portable
  * @property bool|null $pinAndAccountNumberRequired
  * @property string|null $notPortableReason
@@ -51,6 +53,7 @@ class PortingPortabilityInstance extends InstanceResource
         // Marshaled Properties
         $this->properties = [
             'phoneNumber' => Values::array_get($payload, 'phone_number'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
             'portable' => Values::array_get($payload, 'portable'),
             'pinAndAccountNumberRequired' => Values::array_get($payload, 'pin_and_account_number_required'),
             'notPortableReason' => Values::array_get($payload, 'not_portable_reason'),
@@ -86,13 +89,14 @@ class PortingPortabilityInstance extends InstanceResource
     /**
      * Fetch the PortingPortabilityInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return PortingPortabilityInstance Fetched PortingPortabilityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PortingPortabilityInstance
+    public function fetch(array $options = []): PortingPortabilityInstance
     {
 
-        return $this->proxy()->fetch();
+        return $this->proxy()->fetch($options);
     }
 
     /**
