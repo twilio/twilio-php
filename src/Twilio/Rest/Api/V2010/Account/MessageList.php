@@ -53,7 +53,7 @@ class MessageList extends ListResource
     /**
      * Create the MessageInstance
      *
-     * @param string $to The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/sms/channels#channel-addresses), e.g. `whatsapp:+15552229999`.
+     * @param string $to The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/messaging/channels), e.g. `whatsapp:+15552229999`.
      * @param array|Options $options Optional Arguments
      * @return MessageInstance Created MessageInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -98,6 +98,8 @@ class MessageList extends ListResource
                 Serialize::booleanToString($options['sendAsMms']),
             'ContentVariables' =>
                 $options['contentVariables'],
+            'RiskCheck' =>
+                $options['riskCheck'],
             'From' =>
                 $options['from'],
             'MessagingServiceSid' =>

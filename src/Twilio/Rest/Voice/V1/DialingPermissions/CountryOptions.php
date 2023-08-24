@@ -27,7 +27,7 @@ abstract class CountryOptions
      * @param string $countryCode Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
      * @param bool $lowRiskNumbersEnabled Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`.
      * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`
-     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
+     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers enabled. Can be: `true` or `false`.
      * @return ReadCountryOptions Options builder
      */
     public static function read(
@@ -62,7 +62,7 @@ class ReadCountryOptions extends Options
      * @param string $countryCode Filter the results by specified [country codes](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
      * @param bool $lowRiskNumbersEnabled Filter to retrieve the country permissions with dialing to low-risk numbers enabled. Can be: `true` or `false`.
      * @param bool $highRiskSpecialNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled. Can be: `true` or `false`
-     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
+     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers enabled. Can be: `true` or `false`.
      */
     public function __construct(
         
@@ -143,9 +143,9 @@ class ReadCountryOptions extends Options
     }
 
     /**
-     * Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
+     * Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers enabled. Can be: `true` or `false`.
      *
-     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/learn/voice-and-video/toll-fraud) numbers enabled. Can be: `true` or `false`.
+     * @param bool $highRiskTollfraudNumbersEnabled Filter to retrieve the country permissions with dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers enabled. Can be: `true` or `false`.
      * @return $this Fluent Builder
      */
     public function setHighRiskTollfraudNumbersEnabled(bool $highRiskTollfraudNumbersEnabled): self

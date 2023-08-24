@@ -23,25 +23,25 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ReplaceItemsList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
 
 
 /**
- * @property BundleCopyList $bundleCopies
  * @property ReplaceItemsList $replaceItems
  * @property EvaluationList $evaluations
+ * @property BundleCopyList $bundleCopies
  * @property ItemAssignmentList $itemAssignments
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentContext itemAssignments(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationContext evaluations(string $sid)
  */
 class BundleContext extends InstanceContext
     {
-    protected $_bundleCopies;
     protected $_replaceItems;
     protected $_evaluations;
+    protected $_bundleCopies;
     protected $_itemAssignments;
 
     /**
@@ -132,21 +132,6 @@ class BundleContext extends InstanceContext
 
 
     /**
-     * Access the bundleCopies
-     */
-    protected function getBundleCopies(): BundleCopyList
-    {
-        if (!$this->_bundleCopies) {
-            $this->_bundleCopies = new BundleCopyList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_bundleCopies;
-    }
-
-    /**
      * Access the replaceItems
      */
     protected function getReplaceItems(): ReplaceItemsList
@@ -174,6 +159,21 @@ class BundleContext extends InstanceContext
         }
 
         return $this->_evaluations;
+    }
+
+    /**
+     * Access the bundleCopies
+     */
+    protected function getBundleCopies(): BundleCopyList
+    {
+        if (!$this->_bundleCopies) {
+            $this->_bundleCopies = new BundleCopyList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_bundleCopies;
     }
 
     /**

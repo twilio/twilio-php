@@ -22,7 +22,7 @@ abstract class PlayerStreamerOptions
 {
     /**
      * @param bool $video Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`.
-     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
+     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details.
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
      * @param int $maxDuration The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
      * @return CreatePlayerStreamerOptions Options builder
@@ -70,7 +70,7 @@ class CreatePlayerStreamerOptions extends Options
     {
     /**
      * @param bool $video Specifies whether the PlayerStreamer is configured to stream video. Defaults to `true`.
-     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
+     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details.
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call the `status_callback` URL. Can be `POST` or `GET` and the default is `POST`.
      * @param int $maxDuration The maximum time, in seconds, that the PlayerStreamer is active (`created` or `started`) before automatically ends. The default value is 300 seconds, and the maximum value is 90000 seconds. Once this maximum duration is reached, Twilio will end the PlayerStreamer, regardless of whether media is still streaming.
      */
@@ -101,9 +101,9 @@ class CreatePlayerStreamerOptions extends Options
     }
 
     /**
-     * The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
+     * The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details.
      *
-     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/status-callbacks) for more details.
+     * @param string $statusCallback The URL to which Twilio will send asynchronous webhook requests for every PlayerStreamer event. See [Status Callbacks](/docs/live/api/status-callbacks) for more details.
      * @return $this Fluent Builder
      */
     public function setStatusCallback(string $statusCallback): self

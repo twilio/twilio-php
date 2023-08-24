@@ -19,20 +19,24 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Numbers\V2\AuthorizationDocumentList;
+use Twilio\Rest\Numbers\V2\BulkHostedNumberOrderList;
 use Twilio\Rest\Numbers\V2\HostedNumberOrderList;
 use Twilio\Rest\Numbers\V2\RegulatoryComplianceList;
 use Twilio\Version;
 
 /**
  * @property AuthorizationDocumentList $authorizationDocuments
+ * @property BulkHostedNumberOrderList $bulkHostedNumberOrders
  * @property HostedNumberOrderList $hostedNumberOrders
  * @property RegulatoryComplianceList $regulatoryCompliance
  * @method \Twilio\Rest\Numbers\V2\AuthorizationDocumentContext authorizationDocuments(string $sid)
+ * @method \Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext bulkHostedNumberOrders(string $sid)
  * @method \Twilio\Rest\Numbers\V2\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */
 class V2 extends Version
 {
     protected $_authorizationDocuments;
+    protected $_bulkHostedNumberOrders;
     protected $_hostedNumberOrders;
     protected $_regulatoryCompliance;
 
@@ -53,6 +57,14 @@ class V2 extends Version
             $this->_authorizationDocuments = new AuthorizationDocumentList($this);
         }
         return $this->_authorizationDocuments;
+    }
+
+    protected function getBulkHostedNumberOrders(): BulkHostedNumberOrderList
+    {
+        if (!$this->_bulkHostedNumberOrders) {
+            $this->_bulkHostedNumberOrders = new BulkHostedNumberOrderList($this);
+        }
+        return $this->_bulkHostedNumberOrders;
     }
 
     protected function getHostedNumberOrders(): HostedNumberOrderList
