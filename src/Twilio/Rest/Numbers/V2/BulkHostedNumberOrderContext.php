@@ -30,21 +30,21 @@ class BulkHostedNumberOrderContext extends InstanceContext
      * Initialize the BulkHostedNumberOrderContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
+     * @param string $bulkHostingSid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
      */
     public function __construct(
         Version $version,
-        $sid
+        $bulkHostingSid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'sid' =>
-            $sid,
+        'bulkHostingSid' =>
+            $bulkHostingSid,
         ];
 
-        $this->uri = '/HostedNumber/Orders/Bulk/' . \rawurlencode($sid)
+        $this->uri = '/HostedNumber/Orders/Bulk/' . \rawurlencode($bulkHostingSid)
         .'';
     }
 
@@ -70,7 +70,7 @@ class BulkHostedNumberOrderContext extends InstanceContext
         return new BulkHostedNumberOrderInstance(
             $this->version,
             $payload,
-            $this->solution['sid']
+            $this->solution['bulkHostingSid']
         );
     }
 

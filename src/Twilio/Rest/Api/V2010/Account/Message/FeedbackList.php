@@ -29,8 +29,8 @@ class FeedbackList extends ListResource
      * Construct the FeedbackList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
-     * @param string $messageSid The SID of the Message resource for which the feedback was provided.
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) associated with the Message resource for which to create MessageFeedback.
+     * @param string $messageSid The SID of the Message resource for which to create MessageFeedback.
      */
     public function __construct(
         Version $version,

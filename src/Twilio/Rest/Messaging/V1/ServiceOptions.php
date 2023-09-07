@@ -30,7 +30,7 @@ abstract class ServiceOptions
      * @param bool $mmsConverter Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance.
      * @param bool $smartEncoding Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance.
      * @param string $scanMessageContent
-     * @param bool $fallbackToLongCode Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
@@ -91,7 +91,7 @@ abstract class ServiceOptions
      * @param bool $mmsConverter Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance.
      * @param bool $smartEncoding Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance.
      * @param string $scanMessageContent
-     * @param bool $fallbackToLongCode Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
@@ -154,7 +154,7 @@ class CreateServiceOptions extends Options
      * @param bool $mmsConverter Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance.
      * @param bool $smartEncoding Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance.
      * @param string $scanMessageContent
-     * @param bool $fallbackToLongCode Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
@@ -304,9 +304,9 @@ class CreateServiceOptions extends Options
     }
 
     /**
-     * Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      *
-     * @param bool $fallbackToLongCode Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @return $this Fluent Builder
      */
     public function setFallbackToLongCode(bool $fallbackToLongCode): self
@@ -403,7 +403,7 @@ class UpdateServiceOptions extends Options
      * @param bool $mmsConverter Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance.
      * @param bool $smartEncoding Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance.
      * @param string $scanMessageContent
-     * @param bool $fallbackToLongCode Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
@@ -567,9 +567,9 @@ class UpdateServiceOptions extends Options
     }
 
     /**
-     * Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      *
-     * @param bool $fallbackToLongCode Whether to enable [Fallback to Long Code](https://www.twilio.com/docs/messaging/services#fallback-to-long-code) for messages sent through the Service instance.
+     * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @return $this Fluent Builder
      */
     public function setFallbackToLongCode(bool $fallbackToLongCode): self

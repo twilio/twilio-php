@@ -48,6 +48,7 @@ use Twilio\Rest\Api\V2010\Account\Message\MediaList;
  * @property string|null $priceUnit
  * @property string|null $apiVersion
  * @property array|null $subresourceUris
+ * @property array|null $tags
  */
 class MessageInstance extends InstanceResource
 {
@@ -88,6 +89,7 @@ class MessageInstance extends InstanceResource
             'priceUnit' => Values::array_get($payload, 'price_unit'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),
+            'tags' => Values::array_get($payload, 'tags'),
         ];
 
         $this->solution = ['accountSid' => $accountSid, 'sid' => $sid ?: $this->properties['sid'], ];

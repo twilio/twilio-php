@@ -30,7 +30,7 @@ use Twilio\Version;
  * @property HostedNumberOrderList $hostedNumberOrders
  * @property RegulatoryComplianceList $regulatoryCompliance
  * @method \Twilio\Rest\Numbers\V2\AuthorizationDocumentContext authorizationDocuments(string $sid)
- * @method \Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext bulkHostedNumberOrders(string $sid)
+ * @method \Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext bulkHostedNumberOrders(string $bulkHostingSid)
  * @method \Twilio\Rest\Numbers\V2\HostedNumberOrderContext hostedNumberOrders(string $sid)
  */
 class V2 extends Version

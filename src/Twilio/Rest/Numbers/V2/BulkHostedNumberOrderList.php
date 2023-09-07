@@ -40,16 +40,16 @@ class BulkHostedNumberOrderList extends ListResource
     /**
      * Constructs a BulkHostedNumberOrderContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
+     * @param string $bulkHostingSid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
      */
     public function getContext(
-        string $sid
+        string $bulkHostingSid
         
     ): BulkHostedNumberOrderContext
     {
         return new BulkHostedNumberOrderContext(
             $this->version,
-            $sid
+            $bulkHostingSid
         );
     }
 

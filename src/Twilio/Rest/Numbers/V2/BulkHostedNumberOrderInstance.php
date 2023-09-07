@@ -26,8 +26,7 @@ use Twilio\Deserialize;
 
 
 /**
- * @property string|null $sid
- * @property string|null $accountSid
+ * @property string|null $bulkHostingSid
  * @property string $requestStatus
  * @property string|null $friendlyName
  * @property string|null $notificationEmail
@@ -44,16 +43,15 @@ class BulkHostedNumberOrderInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
+     * @param string $bulkHostingSid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, string $bulkHostingSid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'bulkHostingSid' => Values::array_get($payload, 'bulk_hosting_sid'),
             'requestStatus' => Values::array_get($payload, 'request_status'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'notificationEmail' => Values::array_get($payload, 'notification_email'),
@@ -64,7 +62,7 @@ class BulkHostedNumberOrderInstance extends InstanceResource
             'results' => Values::array_get($payload, 'results'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['bulkHostingSid' => $bulkHostingSid ?: $this->properties['bulkHostingSid'], ];
     }
 
     /**
@@ -78,7 +76,7 @@ class BulkHostedNumberOrderInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new BulkHostedNumberOrderContext(
                 $this->version,
-                $this->solution['sid']
+                $this->solution['bulkHostingSid']
             );
         }
 
