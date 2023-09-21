@@ -34,7 +34,7 @@ abstract class ServiceOptions
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
-     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..].
+     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
      * @return CreateServiceOptions Options builder
      */
@@ -95,7 +95,7 @@ abstract class ServiceOptions
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
-     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]
+     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
      * @return UpdateServiceOptions Options builder
      */
@@ -158,7 +158,7 @@ class CreateServiceOptions extends Options
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
-     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..].
+     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
      */
     public function __construct(
@@ -352,9 +352,9 @@ class CreateServiceOptions extends Options
     }
 
     /**
-     * A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..].
+     * A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      *
-     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..].
+     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @return $this Fluent Builder
      */
     public function setUsecase(string $usecase): self
@@ -407,7 +407,7 @@ class UpdateServiceOptions extends Options
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
      * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
      * @param bool $synchronousValidation Reserved.
-     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]
+     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
      */
     public function __construct(
@@ -615,9 +615,9 @@ class UpdateServiceOptions extends Options
     }
 
     /**
-     * A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]
+     * A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      *
-     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Examples: [notification, marketing, verification, poll ..]
+     * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @return $this Fluent Builder
      */
     public function setUsecase(string $usecase): self

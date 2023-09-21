@@ -58,7 +58,7 @@ class UsAppToPersonInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
+     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from.
      * @param string $sid The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`.
      */
     public function __construct(Version $version, array $payload, string $messagingServiceSid, string $sid = null)

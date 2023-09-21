@@ -23,7 +23,7 @@ abstract class InteractionChannelOptions
 
 
     /**
-     * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
+     * @param array $routing It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`.
      * @return UpdateInteractionChannelOptions Options builder
      */
     public static function update(
@@ -44,7 +44,7 @@ abstract class InteractionChannelOptions
 class UpdateInteractionChannelOptions extends Options
     {
     /**
-     * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
+     * @param array $routing It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`.
      */
     public function __construct(
         
@@ -55,9 +55,9 @@ class UpdateInteractionChannelOptions extends Options
     }
 
     /**
-     * Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
+     * It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`.
      *
-     * @param array $routing Optional. The state of associated tasks. If not specified, all tasks will be set to `wrapping`.
+     * @param array $routing It changes the state of associated tasks. Routing status is required, When the channel status is set to `inactive`. Allowed Value for routing status is `closed`. Otherwise Optional, if not specified, all tasks will be set to `wrapping`.
      * @return $this Fluent Builder
      */
     public function setRouting(array $routing): self

@@ -72,6 +72,7 @@ use Twilio\Deserialize;
  * @property array|null $debuggerIntegration
  * @property array|null $flexUiStatusReport
  * @property array|null $agentConvEndMethods
+ * @property array|null $citrixVoiceVdi
  */
 class ConfigurationInstance extends InstanceResource
 {
@@ -133,6 +134,7 @@ class ConfigurationInstance extends InstanceResource
             'debuggerIntegration' => Values::array_get($payload, 'debugger_integration'),
             'flexUiStatusReport' => Values::array_get($payload, 'flex_ui_status_report'),
             'agentConvEndMethods' => Values::array_get($payload, 'agent_conv_end_methods'),
+            'citrixVoiceVdi' => Values::array_get($payload, 'citrix_voice_vdi'),
         ];
 
         $this->solution = [];

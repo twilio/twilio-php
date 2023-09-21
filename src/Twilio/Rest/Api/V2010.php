@@ -20,11 +20,13 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Api\V2010\AccountInstance;
 use Twilio\Rest\Api\V2010\AccountList;
+use Twilio\Rest\Api\V2010\SafelistList;
 use Twilio\Rest\Api\V2010\AccountContext;
 use Twilio\Version;
 
 /**
  * @property AccountList $accounts
+ * @property SafelistList $safelist
  * @property AccountContext $account
  * @property \Twilio\Rest\Api\V2010\Account\RecordingList $recordings
  * @property \Twilio\Rest\Api\V2010\Account\UsageList $usage
@@ -72,6 +74,7 @@ use Twilio\Version;
 class V2010 extends Version
 {
     protected $_accounts;
+    protected $_safelist;
     protected $_account = null;
     protected $_recordings = null;
     protected $_usage = null;
@@ -115,6 +118,14 @@ class V2010 extends Version
             $this->_accounts = new AccountList($this);
         }
         return $this->_accounts;
+    }
+
+    protected function getSafelist(): SafelistList
+    {
+        if (!$this->_safelist) {
+            $this->_safelist = new SafelistList($this);
+        }
+        return $this->_safelist;
     }
 
     /**

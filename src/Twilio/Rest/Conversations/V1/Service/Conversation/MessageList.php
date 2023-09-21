@@ -85,6 +85,8 @@ class MessageList extends ListResource
                 $options['contentSid'],
             'ContentVariables' =>
                 $options['contentVariables'],
+            'Subject' =>
+                $options['subject'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);

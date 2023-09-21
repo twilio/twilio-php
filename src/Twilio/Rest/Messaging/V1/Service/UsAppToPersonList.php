@@ -31,7 +31,7 @@ class UsAppToPersonList extends ListResource
      * Construct the UsAppToPersonList
      *
      * @param Version $version Version that contains the resource
-     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
+     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from.
      */
     public function __construct(
         Version $version,
