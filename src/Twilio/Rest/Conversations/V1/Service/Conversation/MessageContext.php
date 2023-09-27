@@ -129,6 +129,8 @@ class MessageContext extends InstanceContext
                 Serialize::iso8601DateTime($options['dateUpdated']),
             'Attributes' =>
                 $options['attributes'],
+            'Subject' =>
+                $options['subject'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);

@@ -23,7 +23,7 @@ abstract class ConfigurationOptions
 
     /**
      * @param string $defaultChatServiceSid The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation.
-     * @param string $defaultMessagingServiceSid The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to use when creating a conversation.
+     * @param string $defaultMessagingServiceSid The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation.
      * @param string $defaultInactiveTimer Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $defaultClosedTimer Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
      * @return UpdateConfigurationOptions Options builder
@@ -52,7 +52,7 @@ class UpdateConfigurationOptions extends Options
     {
     /**
      * @param string $defaultChatServiceSid The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation.
-     * @param string $defaultMessagingServiceSid The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to use when creating a conversation.
+     * @param string $defaultMessagingServiceSid The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation.
      * @param string $defaultInactiveTimer Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $defaultClosedTimer Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
      */
@@ -83,9 +83,9 @@ class UpdateConfigurationOptions extends Options
     }
 
     /**
-     * The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to use when creating a conversation.
+     * The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation.
      *
-     * @param string $defaultMessagingServiceSid The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to use when creating a conversation.
+     * @param string $defaultMessagingServiceSid The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation.
      * @return $this Fluent Builder
      */
     public function setDefaultMessagingServiceSid(string $defaultMessagingServiceSid): self

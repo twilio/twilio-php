@@ -56,7 +56,7 @@ class DependentHostedNumberOrderInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $signingDocumentSid 
+     * @param string $signingDocumentSid A 34 character string that uniquely identifies the LOA document associated with this HostedNumberOrder.
      */
     public function __construct(Version $version, array $payload, string $signingDocumentSid)
     {

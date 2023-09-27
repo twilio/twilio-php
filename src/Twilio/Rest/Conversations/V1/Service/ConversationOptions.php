@@ -24,12 +24,14 @@ abstract class ConversationOptions
      * @param string $friendlyName The human-readable name of this conversation, limited to 256 characters. Optional.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $state
      * @param string $timersInactive ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
+     * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
+     * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return CreateConversationOptions Options builder
      */
@@ -44,6 +46,8 @@ abstract class ConversationOptions
         string $state = Values::NONE,
         string $timersInactive = Values::NONE,
         string $timersClosed = Values::NONE,
+        string $bindingsEmailAddress = Values::NONE,
+        string $bindingsEmailName = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ): CreateConversationOptions
@@ -58,6 +62,8 @@ abstract class ConversationOptions
             $state,
             $timersInactive,
             $timersClosed,
+            $bindingsEmailAddress,
+            $bindingsEmailName,
             $xTwilioWebhookEnabled
         );
     }
@@ -104,11 +110,13 @@ abstract class ConversationOptions
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      * @param string $state
      * @param string $timersInactive ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+     * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
+     * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return UpdateConversationOptions Options builder
      */
@@ -123,6 +131,8 @@ abstract class ConversationOptions
         string $timersInactive = Values::NONE,
         string $timersClosed = Values::NONE,
         string $uniqueName = Values::NONE,
+        string $bindingsEmailAddress = Values::NONE,
+        string $bindingsEmailName = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ): UpdateConversationOptions
@@ -137,6 +147,8 @@ abstract class ConversationOptions
             $timersInactive,
             $timersClosed,
             $uniqueName,
+            $bindingsEmailAddress,
+            $bindingsEmailName,
             $xTwilioWebhookEnabled
         );
     }
@@ -149,12 +161,14 @@ class CreateConversationOptions extends Options
      * @param string $friendlyName The human-readable name of this conversation, limited to 256 characters. Optional.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $state
      * @param string $timersInactive ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
+     * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
+     * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
     public function __construct(
@@ -168,6 +182,8 @@ class CreateConversationOptions extends Options
         string $state = Values::NONE,
         string $timersInactive = Values::NONE,
         string $timersClosed = Values::NONE,
+        string $bindingsEmailAddress = Values::NONE,
+        string $bindingsEmailName = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ) {
@@ -180,6 +196,8 @@ class CreateConversationOptions extends Options
         $this->options['state'] = $state;
         $this->options['timersInactive'] = $timersInactive;
         $this->options['timersClosed'] = $timersClosed;
+        $this->options['bindingsEmailAddress'] = $bindingsEmailAddress;
+        $this->options['bindingsEmailName'] = $bindingsEmailName;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -220,9 +238,9 @@ class CreateConversationOptions extends Options
     }
 
     /**
-     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      *
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self
@@ -286,6 +304,30 @@ class CreateConversationOptions extends Options
     public function setTimersClosed(string $timersClosed): self
     {
         $this->options['timersClosed'] = $timersClosed;
+        return $this;
+    }
+
+    /**
+     * The default email address that will be used when sending outbound emails in this conversation.
+     *
+     * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
+     * @return $this Fluent Builder
+     */
+    public function setBindingsEmailAddress(string $bindingsEmailAddress): self
+    {
+        $this->options['bindingsEmailAddress'] = $bindingsEmailAddress;
+        return $this;
+    }
+
+    /**
+     * The default name that will be used when sending outbound emails in this conversation.
+     *
+     * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
+     * @return $this Fluent Builder
+     */
+    public function setBindingsEmailName(string $bindingsEmailName): self
+    {
+        $this->options['bindingsEmailName'] = $bindingsEmailName;
         return $this;
     }
 
@@ -425,11 +467,13 @@ class UpdateConversationOptions extends Options
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated.
      * @param string $attributes An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      * @param string $state
      * @param string $timersInactive ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+     * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
+     * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
     public function __construct(
@@ -443,6 +487,8 @@ class UpdateConversationOptions extends Options
         string $timersInactive = Values::NONE,
         string $timersClosed = Values::NONE,
         string $uniqueName = Values::NONE,
+        string $bindingsEmailAddress = Values::NONE,
+        string $bindingsEmailName = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ) {
@@ -455,6 +501,8 @@ class UpdateConversationOptions extends Options
         $this->options['timersInactive'] = $timersInactive;
         $this->options['timersClosed'] = $timersClosed;
         $this->options['uniqueName'] = $uniqueName;
+        $this->options['bindingsEmailAddress'] = $bindingsEmailAddress;
+        $this->options['bindingsEmailName'] = $bindingsEmailName;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -507,9 +555,9 @@ class UpdateConversationOptions extends Options
     }
 
     /**
-     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      *
-     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) this conversation belongs to.
+     * @param string $messagingServiceSid The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
      * @return $this Fluent Builder
      */
     public function setMessagingServiceSid(string $messagingServiceSid): self
@@ -561,6 +609,30 @@ class UpdateConversationOptions extends Options
     public function setUniqueName(string $uniqueName): self
     {
         $this->options['uniqueName'] = $uniqueName;
+        return $this;
+    }
+
+    /**
+     * The default email address that will be used when sending outbound emails in this conversation.
+     *
+     * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
+     * @return $this Fluent Builder
+     */
+    public function setBindingsEmailAddress(string $bindingsEmailAddress): self
+    {
+        $this->options['bindingsEmailAddress'] = $bindingsEmailAddress;
+        return $this;
+    }
+
+    /**
+     * The default name that will be used when sending outbound emails in this conversation.
+     *
+     * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
+     * @return $this Fluent Builder
+     */
+    public function setBindingsEmailName(string $bindingsEmailName): self
+    {
+        $this->options['bindingsEmailName'] = $bindingsEmailName;
         return $this;
     }
 

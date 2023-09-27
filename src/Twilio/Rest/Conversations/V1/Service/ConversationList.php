@@ -81,6 +81,10 @@ class ConversationList extends ListResource
                 $options['timersInactive'],
             'Timers.Closed' =>
                 $options['timersClosed'],
+            'Bindings.Email.Address' =>
+                $options['bindingsEmailAddress'],
+            'Bindings.Email.Name' =>
+                $options['bindingsEmailName'],
         ]);
 
         $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);

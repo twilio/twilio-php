@@ -29,6 +29,7 @@ abstract class MessageOptions
      * @param string $mediaSid The Media SID to be attached to the new Message.
      * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
      * @param string $contentVariables A structurally valid JSON string that contains values to resolve Rich Content template variables.
+     * @param string $subject The subject of the message, can be up to 256 characters long.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return CreateMessageOptions Options builder
      */
@@ -42,6 +43,7 @@ abstract class MessageOptions
         string $mediaSid = Values::NONE,
         string $contentSid = Values::NONE,
         string $contentVariables = Values::NONE,
+        string $subject = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ): CreateMessageOptions
@@ -55,6 +57,7 @@ abstract class MessageOptions
             $mediaSid,
             $contentSid,
             $contentVariables,
+            $subject,
             $xTwilioWebhookEnabled
         );
     }
@@ -96,6 +99,7 @@ abstract class MessageOptions
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated. `null` if the message has not been edited.
      * @param string $attributes A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
+     * @param string $subject The subject of the message, can be up to 256 characters long.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return UpdateMessageOptions Options builder
      */
@@ -106,6 +110,7 @@ abstract class MessageOptions
         \DateTime $dateCreated = null,
         \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
+        string $subject = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ): UpdateMessageOptions
@@ -116,6 +121,7 @@ abstract class MessageOptions
             $dateCreated,
             $dateUpdated,
             $attributes,
+            $subject,
             $xTwilioWebhookEnabled
         );
     }
@@ -133,6 +139,7 @@ class CreateMessageOptions extends Options
      * @param string $mediaSid The Media SID to be attached to the new Message.
      * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
      * @param string $contentVariables A structurally valid JSON string that contains values to resolve Rich Content template variables.
+     * @param string $subject The subject of the message, can be up to 256 characters long.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
     public function __construct(
@@ -145,6 +152,7 @@ class CreateMessageOptions extends Options
         string $mediaSid = Values::NONE,
         string $contentSid = Values::NONE,
         string $contentVariables = Values::NONE,
+        string $subject = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ) {
@@ -156,6 +164,7 @@ class CreateMessageOptions extends Options
         $this->options['mediaSid'] = $mediaSid;
         $this->options['contentSid'] = $contentSid;
         $this->options['contentVariables'] = $contentVariables;
+        $this->options['subject'] = $subject;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -252,6 +261,18 @@ class CreateMessageOptions extends Options
     public function setContentVariables(string $contentVariables): self
     {
         $this->options['contentVariables'] = $contentVariables;
+        return $this;
+    }
+
+    /**
+     * The subject of the message, can be up to 256 characters long.
+     *
+     * @param string $subject The subject of the message, can be up to 256 characters long.
+     * @return $this Fluent Builder
+     */
+    public function setSubject(string $subject): self
+    {
+        $this->options['subject'] = $subject;
         return $this;
     }
 
@@ -362,6 +383,7 @@ class UpdateMessageOptions extends Options
      * @param \DateTime $dateCreated The date that this resource was created.
      * @param \DateTime $dateUpdated The date that this resource was last updated. `null` if the message has not been edited.
      * @param string $attributes A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
+     * @param string $subject The subject of the message, can be up to 256 characters long.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
     public function __construct(
@@ -371,6 +393,7 @@ class UpdateMessageOptions extends Options
         \DateTime $dateCreated = null,
         \DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
+        string $subject = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
     ) {
@@ -379,6 +402,7 @@ class UpdateMessageOptions extends Options
         $this->options['dateCreated'] = $dateCreated;
         $this->options['dateUpdated'] = $dateUpdated;
         $this->options['attributes'] = $attributes;
+        $this->options['subject'] = $subject;
         $this->options['xTwilioWebhookEnabled'] = $xTwilioWebhookEnabled;
     }
 
@@ -439,6 +463,18 @@ class UpdateMessageOptions extends Options
     public function setAttributes(string $attributes): self
     {
         $this->options['attributes'] = $attributes;
+        return $this;
+    }
+
+    /**
+     * The subject of the message, can be up to 256 characters long.
+     *
+     * @param string $subject The subject of the message, can be up to 256 characters long.
+     * @return $this Fluent Builder
+     */
+    public function setSubject(string $subject): self
+    {
+        $this->options['subject'] = $subject;
         return $this;
     }
 

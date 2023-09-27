@@ -52,7 +52,7 @@ class MessagingConfigurationList extends ListResource
      * Create the MessagingConfigurationInstance
      *
      * @param string $country The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.
-     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to be used to send SMS to the country of this configuration.
+     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration.
      * @return MessagingConfigurationInstance Created MessagingConfigurationInstance
      * @throws TwilioException When an HTTP error occurs.
      */

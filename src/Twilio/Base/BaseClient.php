@@ -270,7 +270,7 @@ class BaseClient
      */
     public function validateSslCertificate(CurlClient $client): void
     {
-        $response = $client->request('GET', 'https://api.twilio.com:8443');
+        $response = $client->request('GET', 'https://tls-test.twilio.com:443');
 
         if ($response->getStatusCode() < 200 || $response->getStatusCode() > 300) {
             throw new TwilioException('Failed to validate SSL certificate');
