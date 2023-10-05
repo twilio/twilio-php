@@ -18,6 +18,7 @@ namespace Twilio\Rest\Trusthub;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Trusthub\V1\ComplianceInquiriesList;
 use Twilio\Rest\Trusthub\V1\CustomerProfilesList;
 use Twilio\Rest\Trusthub\V1\EndUserList;
 use Twilio\Rest\Trusthub\V1\EndUserTypeList;
@@ -28,6 +29,7 @@ use Twilio\Rest\Trusthub\V1\TrustProductsList;
 use Twilio\Version;
 
 /**
+ * @property ComplianceInquiriesList $complianceInquiries
  * @property CustomerProfilesList $customerProfiles
  * @property EndUserList $endUsers
  * @property EndUserTypeList $endUserTypes
@@ -45,6 +47,7 @@ use Twilio\Version;
  */
 class V1 extends Version
 {
+    protected $_complianceInquiries;
     protected $_customerProfiles;
     protected $_endUsers;
     protected $_endUserTypes;
@@ -62,6 +65,14 @@ class V1 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getComplianceInquiries(): ComplianceInquiriesList
+    {
+        if (!$this->_complianceInquiries) {
+            $this->_complianceInquiries = new ComplianceInquiriesList($this);
+        }
+        return $this->_complianceInquiries;
     }
 
     protected function getCustomerProfiles(): CustomerProfilesList

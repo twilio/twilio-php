@@ -42,7 +42,6 @@ abstract class MessageOptions
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be in ISO 8601 format.
      * @param bool $sendAsMms If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media.
      * @param string $contentVariables For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used.
-     * @param string $tags A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
      * @param string $riskCheck
      * @return CreateMessageOptions Options builder
      */
@@ -69,7 +68,6 @@ abstract class MessageOptions
         \DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
-        string $tags = Values::NONE,
         string $riskCheck = Values::NONE
 
     ): CreateMessageOptions
@@ -96,7 +94,6 @@ abstract class MessageOptions
             $sendAt,
             $sendAsMms,
             $contentVariables,
-            $tags,
             $riskCheck
         );
     }
@@ -174,7 +171,6 @@ class CreateMessageOptions extends Options
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be in ISO 8601 format.
      * @param bool $sendAsMms If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media.
      * @param string $contentVariables For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used.
-     * @param string $tags A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
      * @param string $riskCheck
      */
     public function __construct(
@@ -200,7 +196,6 @@ class CreateMessageOptions extends Options
         \DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
-        string $tags = Values::NONE,
         string $riskCheck = Values::NONE
 
     ) {
@@ -225,7 +220,6 @@ class CreateMessageOptions extends Options
         $this->options['sendAt'] = $sendAt;
         $this->options['sendAsMms'] = $sendAsMms;
         $this->options['contentVariables'] = $contentVariables;
-        $this->options['tags'] = $tags;
         $this->options['riskCheck'] = $riskCheck;
     }
 
@@ -472,18 +466,6 @@ class CreateMessageOptions extends Options
     public function setContentVariables(string $contentVariables): self
     {
         $this->options['contentVariables'] = $contentVariables;
-        return $this;
-    }
-
-    /**
-     * A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
-     *
-     * @param string $tags A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.
-     * @return $this Fluent Builder
-     */
-    public function setTags(string $tags): self
-    {
-        $this->options['tags'] = $tags;
         return $this;
     }
 

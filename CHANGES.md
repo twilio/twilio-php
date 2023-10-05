@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2023-10-05] Version 7.11.1
+---------------------------
+**Library - Chore**
+- [PR #785](https://github.com/twilio/twilio-php/pull/785): twilio help changes. Thanks to [@kridai](https://github.com/kridai)!
+
+**Library - Fix**
+- [PR #786](https://github.com/twilio/twilio-php/pull/786): Update ValidateSslCertificate method with security testing method. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+
+**Lookups**
+- Add test api support for Lookup v2
+
+
 [2023-09-21] Version 7.11.0
 ---------------------------
 **Conversations**
