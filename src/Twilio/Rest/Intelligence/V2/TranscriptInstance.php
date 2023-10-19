@@ -19,7 +19,6 @@ namespace Twilio\Rest\Intelligence\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
@@ -117,14 +116,13 @@ class TranscriptInstance extends InstanceResource
     /**
      * Fetch the TranscriptInstance
      *
-     * @param array|Options $options Optional Arguments
      * @return TranscriptInstance Fetched TranscriptInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): TranscriptInstance
+    public function fetch(): TranscriptInstance
     {
 
-        return $this->proxy()->fetch($options);
+        return $this->proxy()->fetch();
     }
 
     /**

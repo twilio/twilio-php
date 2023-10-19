@@ -73,6 +73,8 @@ class TaskList extends ListResource
                 $options['workflowSid'],
             'Attributes' =>
                 $options['attributes'],
+            'VirtualStartTime' =>
+                Serialize::iso8601DateTime($options['virtualStartTime']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

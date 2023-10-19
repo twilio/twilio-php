@@ -56,7 +56,7 @@ class UsAppToPersonList extends ListResource
      * @param string $brandRegistrationSid A2P Brand Registration SID
      * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
      * @param string $messageFlow Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
-     * @param string[] $messageSamples Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each.
+     * @param string[] $messageSamples An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars.
      * @param string $usAppToPersonUsecase A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..]
      * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
      * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.

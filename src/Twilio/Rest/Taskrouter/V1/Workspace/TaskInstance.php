@@ -48,6 +48,7 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
  * @property string|null $workspaceSid
  * @property string|null $url
  * @property array|null $links
+ * @property \DateTime|null $virtualStartTime
  */
 class TaskInstance extends InstanceResource
 {
@@ -88,6 +89,7 @@ class TaskInstance extends InstanceResource
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'virtualStartTime' => Deserialize::dateTime(Values::array_get($payload, 'virtual_start_time')),
         ];
 
         $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];

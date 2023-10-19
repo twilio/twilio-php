@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
 
 
@@ -122,6 +123,8 @@ class TaskContext extends InstanceContext
                 $options['priority'],
             'TaskChannel' =>
                 $options['taskChannel'],
+            'VirtualStartTime' =>
+                Serialize::iso8601DateTime($options['virtualStartTime']),
         ]);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
