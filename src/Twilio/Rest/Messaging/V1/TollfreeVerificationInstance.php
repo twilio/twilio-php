@@ -136,6 +136,18 @@ class TollfreeVerificationInstance extends InstanceResource
     }
 
     /**
+     * Delete the TollfreeVerificationInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+
+        return $this->proxy()->delete();
+    }
+
+    /**
      * Fetch the TollfreeVerificationInstance
      *
      * @return TollfreeVerificationInstance Fetched TollfreeVerificationInstance

@@ -72,6 +72,7 @@ abstract class TollfreeVerificationOptions
     }
 
 
+
     /**
      * @param string $tollfreePhoneNumberSid The SID of the Phone Number associated with the Tollfree Verification.
      * @param string $status The compliance status of the Tollfree Verification record.
@@ -380,6 +381,7 @@ class CreateTollfreeVerificationOptions extends Options
         return '[Twilio.Messaging.V1.CreateTollfreeVerificationOptions ' . $options . ']';
     }
 }
+
 
 
 class ReadTollfreeVerificationOptions extends Options

@@ -37,6 +37,7 @@ use Twilio\Version;
  * @property string|null $predictedProbability
  * @property array|null $labelProbabilities
  * @property array|null $extractResults
+ * @property array|null $textGenerationResults
  * @property string|null $transcriptSid
  * @property string|null $url
  */
@@ -68,6 +69,7 @@ class OperatorResultInstance extends InstanceResource
             'predictedProbability' => Values::array_get($payload, 'predicted_probability'),
             'labelProbabilities' => Values::array_get($payload, 'label_probabilities'),
             'extractResults' => Values::array_get($payload, 'extract_results'),
+            'textGenerationResults' => Values::array_get($payload, 'text_generation_results'),
             'transcriptSid' => Values::array_get($payload, 'transcript_sid'),
             'url' => Values::array_get($payload, 'url'),
         ];

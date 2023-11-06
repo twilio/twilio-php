@@ -50,6 +50,19 @@ class TollfreeVerificationContext extends InstanceContext
     }
 
     /**
+     * Delete the TollfreeVerificationInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+
+        return $this->version->delete('DELETE', $this->uri);
+    }
+
+
+    /**
      * Fetch the TollfreeVerificationInstance
      *
      * @return TollfreeVerificationInstance Fetched TollfreeVerificationInstance
