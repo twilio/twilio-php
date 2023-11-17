@@ -134,6 +134,8 @@ class TollfreeVerificationContext extends InstanceContext
                 $options['businessContactEmail'],
             'BusinessContactPhone' =>
                 $options['businessContactPhone'],
+            'EditReason' =>
+                $options['editReason'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

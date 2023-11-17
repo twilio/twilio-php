@@ -24,14 +24,17 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueBulkRealTimeStatisticsList;
 
 
 /**
  * @property TaskQueuesStatisticsList $statistics
+ * @property TaskQueueBulkRealTimeStatisticsList $bulkRealTimeStatistics
  */
 class TaskQueueList extends ListResource
     {
     protected $_statistics = null;
+    protected $_bulkRealTimeStatistics = null;
 
     /**
      * Construct the TaskQueueList
@@ -227,6 +230,20 @@ class TaskQueueList extends ListResource
             );
         }
         return $this->_statistics;
+    }
+
+    /**
+     * Access the bulkRealTimeStatistics
+     */
+    protected function getBulkRealTimeStatistics(): TaskQueueBulkRealTimeStatisticsList
+    {
+        if (!$this->_bulkRealTimeStatistics) {
+            $this->_bulkRealTimeStatistics = new TaskQueueBulkRealTimeStatisticsList(
+                $this->version,
+                $this->solution['workspaceSid']
+            );
+        }
+        return $this->_bulkRealTimeStatistics;
     }
 
     /**

@@ -38,7 +38,6 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Monitor $monitor
  * @property Notify $notify
  * @property Numbers $numbers
- * @property Oauth $oauth
  * @property Preview $preview
  * @property Pricing $pricing
  * @property Proxy $proxy
@@ -118,7 +117,6 @@ class Client extends BaseClient {
     protected $_monitor;
     protected $_notify;
     protected $_numbers;
-    protected $_oauth;
     protected $_preview;
     protected $_pricing;
     protected $_proxy;
@@ -354,17 +352,6 @@ class Client extends BaseClient {
             $this->_numbers = new Numbers($this);
         }
         return $this->_numbers;
-    }
-    /**
-     * Access the Oauth Twilio Domain
-     *
-     * @return Oauth Oauth Twilio Domain
-     */
-    protected function getOauth(): Oauth {
-        if (!$this->_oauth) {
-            $this->_oauth = new Oauth($this);
-        }
-        return $this->_oauth;
     }
     /**
      * Access the Preview Twilio Domain

@@ -44,16 +44,19 @@ class ComplianceTollfreeInquiriesList extends ListResource
     /**
      * Create the ComplianceTollfreeInquiriesInstance
      *
-     * @param string $did The Tollfree phone number to be verified
+     * @param string $tollfreePhoneNumber The Tollfree phone number to be verified
+     * @param string $notificationEmail The notification email to be triggered when verification status is changed
      * @return ComplianceTollfreeInquiriesInstance Created ComplianceTollfreeInquiriesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $did): ComplianceTollfreeInquiriesInstance
+    public function create(string $tollfreePhoneNumber, string $notificationEmail): ComplianceTollfreeInquiriesInstance
     {
 
         $data = Values::of([
-            'Did' =>
-                $did,
+            'TollfreePhoneNumber' =>
+                $tollfreePhoneNumber,
+            'NotificationEmail' =>
+                $notificationEmail,
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
@@ -64,22 +67,6 @@ class ComplianceTollfreeInquiriesList extends ListResource
         );
     }
 
-
-    /**
-     * Constructs a ComplianceTollfreeInquiriesContext
-     *
-     * @param string $tollfreeId The unique TolfreeId matching the Compliance Tollfree Verification Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Tollfree Verification Inquiry creation call.
-     */
-    public function getContext(
-        string $tollfreeId
-        
-    ): ComplianceTollfreeInquiriesContext
-    {
-        return new ComplianceTollfreeInquiriesContext(
-            $this->version,
-            $tollfreeId
-        );
-    }
 
     /**
      * Provide a friendly representation

@@ -26,7 +26,7 @@ use Twilio\Version;
 /**
  * @property string|null $inquiryId
  * @property string|null $inquirySessionToken
- * @property string|null $tollfreeId
+ * @property string|null $registrationId
  * @property string|null $url
  */
 class ComplianceTollfreeInquiriesInstance extends InstanceResource
@@ -36,9 +36,8 @@ class ComplianceTollfreeInquiriesInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $tollfreeId The unique TolfreeId matching the Compliance Tollfree Verification Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Tollfree Verification Inquiry creation call.
      */
-    public function __construct(Version $version, array $payload, string $tollfreeId = null)
+    public function __construct(Version $version, array $payload)
     {
         parent::__construct($version);
 
@@ -46,42 +45,11 @@ class ComplianceTollfreeInquiriesInstance extends InstanceResource
         $this->properties = [
             'inquiryId' => Values::array_get($payload, 'inquiry_id'),
             'inquirySessionToken' => Values::array_get($payload, 'inquiry_session_token'),
-            'tollfreeId' => Values::array_get($payload, 'tollfree_id'),
+            'registrationId' => Values::array_get($payload, 'registration_id'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['tollfreeId' => $tollfreeId ?: $this->properties['tollfreeId'], ];
-    }
-
-    /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return ComplianceTollfreeInquiriesContext Context for this ComplianceTollfreeInquiriesInstance
-     */
-    protected function proxy(): ComplianceTollfreeInquiriesContext
-    {
-        if (!$this->context) {
-            $this->context = new ComplianceTollfreeInquiriesContext(
-                $this->version,
-                $this->solution['tollfreeId']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Update the ComplianceTollfreeInquiriesInstance
-     *
-     * @param string $did The Tollfree phone number to be verified
-     * @return ComplianceTollfreeInquiriesInstance Updated ComplianceTollfreeInquiriesInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(string $did): ComplianceTollfreeInquiriesInstance
-    {
-
-        return $this->proxy()->update($did);
+        $this->solution = [];
     }
 
     /**
@@ -112,11 +80,7 @@ class ComplianceTollfreeInquiriesInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Trusthub.V1.ComplianceTollfreeInquiriesInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Trusthub.V1.ComplianceTollfreeInquiriesInstance]';
     }
 }
 
