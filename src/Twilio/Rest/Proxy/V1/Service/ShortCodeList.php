@@ -51,7 +51,7 @@ class ShortCodeList extends ListResource
     /**
      * Create the ShortCodeInstance
      *
-     * @param string $sid The SID of a Twilio [ShortCode](https://www.twilio.com/docs/sms/api/short-code) resource that represents the short code you would like to assign to your Proxy Service.
+     * @param string $sid The SID of a Twilio [ShortCode](https://www.twilio.com/en-us/messaging/channels/sms/short-codes) resource that represents the short code you would like to assign to your Proxy Service.
      * @return ShortCodeInstance Created ShortCodeInstance
      * @throws TwilioException When an HTTP error occurs.
      */

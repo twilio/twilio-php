@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2023-12-01] Version 7.12.3
+---------------------------
+**Verify**
+- Add `VerifyEventSubscriptionEnabled` parameter to service create and update endpoints.
+
+
 [2023-11-17] Version 7.12.2
 ---------------------------
 **Api**
