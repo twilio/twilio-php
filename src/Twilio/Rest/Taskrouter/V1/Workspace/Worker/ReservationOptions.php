@@ -88,6 +88,7 @@ abstract class ReservationOptions
      * @param string $postWorkActivitySid The new worker activity SID after executing a Conference instruction.
      * @param bool $endConferenceOnCustomerExit Whether to end the conference when the customer leaves.
      * @param bool $beepOnCustomerEntrance Whether to play a notification beep when the customer joins.
+     * @param string $jitterBufferSize The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`.
      * @param string $ifMatch The If-Match HTTP request header
      * @return UpdateReservationOptions Options builder
      */
@@ -144,6 +145,7 @@ abstract class ReservationOptions
         string $postWorkActivitySid = Values::NONE,
         bool $endConferenceOnCustomerExit = Values::BOOL_NONE,
         bool $beepOnCustomerEntrance = Values::BOOL_NONE,
+        string $jitterBufferSize = Values::NONE,
         string $ifMatch = Values::NONE
 
     ): UpdateReservationOptions
@@ -200,6 +202,7 @@ abstract class ReservationOptions
             $postWorkActivitySid,
             $endConferenceOnCustomerExit,
             $beepOnCustomerEntrance,
+            $jitterBufferSize,
             $ifMatch
         );
     }
@@ -298,6 +301,7 @@ class UpdateReservationOptions extends Options
      * @param string $postWorkActivitySid The new worker activity SID after executing a Conference instruction.
      * @param bool $endConferenceOnCustomerExit Whether to end the conference when the customer leaves.
      * @param bool $beepOnCustomerEntrance Whether to play a notification beep when the customer joins.
+     * @param string $jitterBufferSize The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`.
      * @param string $ifMatch The If-Match HTTP request header
      */
     public function __construct(
@@ -353,6 +357,7 @@ class UpdateReservationOptions extends Options
         string $postWorkActivitySid = Values::NONE,
         bool $endConferenceOnCustomerExit = Values::BOOL_NONE,
         bool $beepOnCustomerEntrance = Values::BOOL_NONE,
+        string $jitterBufferSize = Values::NONE,
         string $ifMatch = Values::NONE
 
     ) {
@@ -407,6 +412,7 @@ class UpdateReservationOptions extends Options
         $this->options['postWorkActivitySid'] = $postWorkActivitySid;
         $this->options['endConferenceOnCustomerExit'] = $endConferenceOnCustomerExit;
         $this->options['beepOnCustomerEntrance'] = $beepOnCustomerEntrance;
+        $this->options['jitterBufferSize'] = $jitterBufferSize;
         $this->options['ifMatch'] = $ifMatch;
     }
 
@@ -1017,6 +1023,18 @@ class UpdateReservationOptions extends Options
     public function setBeepOnCustomerEntrance(bool $beepOnCustomerEntrance): self
     {
         $this->options['beepOnCustomerEntrance'] = $beepOnCustomerEntrance;
+        return $this;
+    }
+
+    /**
+     * The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`.
+     *
+     * @param string $jitterBufferSize The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`.
+     * @return $this Fluent Builder
+     */
+    public function setJitterBufferSize(string $jitterBufferSize): self
+    {
+        $this->options['jitterBufferSize'] = $jitterBufferSize;
         return $this;
     }
 
