@@ -58,7 +58,7 @@ abstract class Domain {
     public function request(string $method, string $uri,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null): Response {
+                            int $timeout = null, string $jsonData = null): Response {
         $url = $this->absoluteUrl($uri);
         return $this->client->request(
             $method,
@@ -68,7 +68,8 @@ abstract class Domain {
             $headers,
             $user,
             $password,
-            $timeout
+            $timeout,
+            $jsonData
         );
     }
 

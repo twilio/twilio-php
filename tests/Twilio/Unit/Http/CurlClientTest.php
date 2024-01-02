@@ -319,4 +319,18 @@ class CurlClientTest extends UnitTest {
             ],
         ];
     }
+
+    public function testUserAddedJsonData(): void{
+        $client = new CurlClient();
+        $actual =  $client->options('POST',
+            'dummyurl',
+            [],
+            [],
+            [],
+            'test-user',
+            'test-password',0, 'jsondata');
+        $this->assertEquals('jsondata',$actual[CURLOPT_POSTFIELDS]);
+
+
+    }
 }

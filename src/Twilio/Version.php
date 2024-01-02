@@ -51,7 +51,7 @@ abstract class Version {
     public function request(string $method, string $uri,
                             array $params = [], array $data = [], array $headers = [],
                             string $username = null, string $password = null,
-                            int $timeout = null): Response {
+                            int $timeout = null, string $jsonData = null): Response {
         $uri = $this->relativeUri($uri);
         return $this->getDomain()->request(
             $method,
@@ -61,7 +61,8 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            $jsonData
         );
     }
 
@@ -207,7 +208,7 @@ abstract class Version {
     public function create(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
                            string $username = null, string $password = null,
-                           int $timeout = null) {
+                           int $timeout = null,string $jsonData = null) {
         $response = $this->request(
             $method,
             $uri,
@@ -216,7 +217,8 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            $jsonData
         );
 
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {

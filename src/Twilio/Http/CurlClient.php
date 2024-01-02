@@ -21,9 +21,9 @@ class CurlClient implements Client {
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null): Response {
+                            int $timeout = null, string $jsonData = null): Response {
         $options = $this->options($method, $url, $params, $data, $headers,
-                                  $user, $password, $timeout);
+                                  $user, $password, $timeout, $jsonData);
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
@@ -86,7 +86,7 @@ class CurlClient implements Client {
     public function options(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             string $user = null, string $password = null,
-                            int $timeout = null): array {
+                            int $timeout = null, string $jsonData = null): array {
         $timeout = $timeout ?? self::DEFAULT_TIMEOUT;
         $options = $this->curlOptions + [
             CURLOPT_URL => $url,
@@ -120,7 +120,10 @@ class CurlClient implements Client {
                     [$headers, $body] = $this->buildMultipartOptions($data);
                     $options[CURLOPT_POSTFIELDS] = $body;
                     $options[CURLOPT_HTTPHEADER] = \array_merge($options[CURLOPT_HTTPHEADER], $headers);
-                } else {
+                } elseif($jsonData != null){
+                    $options[CURLOPT_POSTFIELDS] = $jsonData;
+                    $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/json';
+                } else{
                     $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
                     $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/x-www-form-urlencoded';
                 }

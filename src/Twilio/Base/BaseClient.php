@@ -121,7 +121,8 @@ class BaseClient
         array $headers = [],
         string $username = null,
         string $password = null,
-        int $timeout = null
+        int $timeout = null,
+        string $jsonData = null
     ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
@@ -169,7 +170,8 @@ class BaseClient
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            $jsonData
         );
 
         if ($logLevel === 'debug') {
