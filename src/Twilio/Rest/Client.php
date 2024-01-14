@@ -20,7 +20,6 @@ use Twilio\Base\BaseClient as BaseClient;
  *
  * @property Accounts $accounts
  * @property Api $api
- * @property Autopilot $autopilot
  * @property Bulkexports $bulkexports
  * @property Chat $chat
  * @property Content $content
@@ -99,7 +98,6 @@ use Twilio\Base\BaseClient as BaseClient;
 class Client extends BaseClient {
     protected $_accounts;
     protected $_api;
-    protected $_autopilot;
     protected $_bulkexports;
     protected $_chat;
     protected $_content;
@@ -154,17 +152,6 @@ class Client extends BaseClient {
             $this->_api = new Api($this);
         }
         return $this->_api;
-    }
-    /**
-     * Access the Autopilot Twilio Domain
-     *
-     * @return Autopilot Autopilot Twilio Domain
-     */
-    protected function getAutopilot(): Autopilot {
-        if (!$this->_autopilot) {
-            $this->_autopilot = new Autopilot($this);
-        }
-        return $this->_autopilot;
     }
     /**
      * Access the Bulkexports Twilio Domain
