@@ -20,6 +20,7 @@ use Twilio\Base\BaseClient as BaseClient;
  *
  * @property Accounts $accounts
  * @property Api $api
+ * @property Autopilot $autopilot
  * @property Bulkexports $bulkexports
  * @property Chat $chat
  * @property Content $content
@@ -37,6 +38,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Monitor $monitor
  * @property Notify $notify
  * @property Numbers $numbers
+ * @property Oauth $oauth
  * @property Preview $preview
  * @property Pricing $pricing
  * @property Proxy $proxy
@@ -98,6 +100,7 @@ use Twilio\Base\BaseClient as BaseClient;
 class Client extends BaseClient {
     protected $_accounts;
     protected $_api;
+    protected $_autopilot;
     protected $_bulkexports;
     protected $_chat;
     protected $_content;
@@ -115,6 +118,7 @@ class Client extends BaseClient {
     protected $_monitor;
     protected $_notify;
     protected $_numbers;
+    protected $_oauth;
     protected $_preview;
     protected $_pricing;
     protected $_proxy;
@@ -152,6 +156,17 @@ class Client extends BaseClient {
             $this->_api = new Api($this);
         }
         return $this->_api;
+    }
+    /**
+     * Access the Autopilot Twilio Domain
+     *
+     * @return Autopilot Autopilot Twilio Domain
+     */
+    protected function getAutopilot(): Autopilot {
+        if (!$this->_autopilot) {
+            $this->_autopilot = new Autopilot($this);
+        }
+        return $this->_autopilot;
     }
     /**
      * Access the Bulkexports Twilio Domain
@@ -339,6 +354,17 @@ class Client extends BaseClient {
             $this->_numbers = new Numbers($this);
         }
         return $this->_numbers;
+    }
+    /**
+     * Access the Oauth Twilio Domain
+     *
+     * @return Oauth Oauth Twilio Domain
+     */
+    protected function getOauth(): Oauth {
+        if (!$this->_oauth) {
+            $this->_oauth = new Oauth($this);
+        }
+        return $this->_oauth;
     }
     /**
      * Access the Preview Twilio Domain

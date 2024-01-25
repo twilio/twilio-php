@@ -159,8 +159,6 @@ class ServiceContext extends InstanceContext
                 $options['totpSkew'],
             'DefaultTemplateSid' =>
                 $options['defaultTemplateSid'],
-            'VerifyEventSubscriptionEnabled' =>
-                Serialize::booleanToString($options['verifyEventSubscriptionEnabled']),
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

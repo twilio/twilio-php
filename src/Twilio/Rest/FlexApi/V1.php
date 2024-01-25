@@ -33,7 +33,6 @@ use Twilio\Rest\FlexApi\V1\InsightsSettingsAnswerSetsList;
 use Twilio\Rest\FlexApi\V1\InsightsSettingsCommentList;
 use Twilio\Rest\FlexApi\V1\InsightsUserRolesList;
 use Twilio\Rest\FlexApi\V1\InteractionList;
-use Twilio\Rest\FlexApi\V1\ProvisioningStatusList;
 use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
@@ -53,7 +52,6 @@ use Twilio\Version;
  * @property InsightsSettingsCommentList $insightsSettingsComment
  * @property InsightsUserRolesList $insightsUserRoles
  * @property InteractionList $interaction
- * @property ProvisioningStatusList $provisioningStatus
  * @property WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
@@ -81,7 +79,6 @@ class V1 extends Version
     protected $_insightsSettingsComment;
     protected $_insightsUserRoles;
     protected $_interaction;
-    protected $_provisioningStatus;
     protected $_webChannel;
 
     /**
@@ -213,14 +210,6 @@ class V1 extends Version
             $this->_interaction = new InteractionList($this);
         }
         return $this->_interaction;
-    }
-
-    protected function getProvisioningStatus(): ProvisioningStatusList
-    {
-        if (!$this->_provisioningStatus) {
-            $this->_provisioningStatus = new ProvisioningStatusList($this);
-        }
-        return $this->_provisioningStatus;
     }
 
     protected function getWebChannel(): WebChannelList

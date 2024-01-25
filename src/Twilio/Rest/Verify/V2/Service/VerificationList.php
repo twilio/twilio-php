@@ -96,8 +96,6 @@ class VerificationList extends ListResource
                 $options['deviceIp'],
             'RiskCheck' =>
                 $options['riskCheck'],
-            'Tags' =>
-                $options['tags'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

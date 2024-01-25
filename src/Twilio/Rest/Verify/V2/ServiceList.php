@@ -92,8 +92,6 @@ class ServiceList extends ListResource
                 $options['totpSkew'],
             'DefaultTemplateSid' =>
                 $options['defaultTemplateSid'],
-            'VerifyEventSubscriptionEnabled' =>
-                Serialize::booleanToString($options['verifyEventSubscriptionEnabled']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

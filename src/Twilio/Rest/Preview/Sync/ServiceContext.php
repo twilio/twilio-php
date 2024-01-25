@@ -25,23 +25,23 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Rest\Preview\Sync\Service\SyncListList;
-use Twilio\Rest\Preview\Sync\Service\SyncMapList;
 use Twilio\Rest\Preview\Sync\Service\DocumentList;
+use Twilio\Rest\Preview\Sync\Service\SyncMapList;
 
 
 /**
  * @property SyncListList $syncLists
- * @property SyncMapList $syncMaps
  * @property DocumentList $documents
+ * @property SyncMapList $syncMaps
+ * @method \Twilio\Rest\Preview\Sync\Service\SyncListContext syncLists(string $sid)
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMapContext syncMaps(string $sid)
  * @method \Twilio\Rest\Preview\Sync\Service\DocumentContext documents(string $sid)
- * @method \Twilio\Rest\Preview\Sync\Service\SyncListContext syncLists(string $sid)
  */
 class ServiceContext extends InstanceContext
     {
     protected $_syncLists;
-    protected $_syncMaps;
     protected $_documents;
+    protected $_syncMaps;
 
     /**
      * Initialize the ServiceContext
@@ -146,21 +146,6 @@ class ServiceContext extends InstanceContext
     }
 
     /**
-     * Access the syncMaps
-     */
-    protected function getSyncMaps(): SyncMapList
-    {
-        if (!$this->_syncMaps) {
-            $this->_syncMaps = new SyncMapList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_syncMaps;
-    }
-
-    /**
      * Access the documents
      */
     protected function getDocuments(): DocumentList
@@ -173,6 +158,21 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_documents;
+    }
+
+    /**
+     * Access the syncMaps
+     */
+    protected function getSyncMaps(): SyncMapList
+    {
+        if (!$this->_syncMaps) {
+            $this->_syncMaps = new SyncMapList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_syncMaps;
     }
 
     /**

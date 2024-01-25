@@ -195,8 +195,6 @@ class ReservationContext extends InstanceContext
                 Serialize::booleanToString($options['endConferenceOnCustomerExit']),
             'BeepOnCustomerEntrance' =>
                 Serialize::booleanToString($options['beepOnCustomerEntrance']),
-            'JitterBufferSize' =>
-                $options['jitterBufferSize'],
         ]);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);

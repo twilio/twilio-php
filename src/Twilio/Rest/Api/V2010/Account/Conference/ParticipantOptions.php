@@ -66,7 +66,6 @@ abstract class ParticipantOptions
      * @param string $amdStatusCallback The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
      * @param string $amdStatusCallbackMethod The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
      * @param string $trim Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
-     * @param string $callToken A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
      * @return CreateParticipantOptions Options builder
      */
     public static function create(
@@ -115,8 +114,7 @@ abstract class ParticipantOptions
         int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $amdStatusCallback = Values::NONE,
         string $amdStatusCallbackMethod = Values::NONE,
-        string $trim = Values::NONE,
-        string $callToken = Values::NONE
+        string $trim = Values::NONE
 
     ): CreateParticipantOptions
     {
@@ -165,8 +163,7 @@ abstract class ParticipantOptions
             $machineDetectionSilenceTimeout,
             $amdStatusCallback,
             $amdStatusCallbackMethod,
-            $trim,
-            $callToken
+            $trim
         );
     }
 
@@ -291,7 +288,6 @@ class CreateParticipantOptions extends Options
      * @param string $amdStatusCallback The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
      * @param string $amdStatusCallbackMethod The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
      * @param string $trim Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
-     * @param string $callToken A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
      */
     public function __construct(
         
@@ -339,8 +335,7 @@ class CreateParticipantOptions extends Options
         int $machineDetectionSilenceTimeout = Values::INT_NONE,
         string $amdStatusCallback = Values::NONE,
         string $amdStatusCallbackMethod = Values::NONE,
-        string $trim = Values::NONE,
-        string $callToken = Values::NONE
+        string $trim = Values::NONE
 
     ) {
         $this->options['statusCallback'] = $statusCallback;
@@ -388,7 +383,6 @@ class CreateParticipantOptions extends Options
         $this->options['amdStatusCallback'] = $amdStatusCallback;
         $this->options['amdStatusCallbackMethod'] = $amdStatusCallbackMethod;
         $this->options['trim'] = $trim;
-        $this->options['callToken'] = $callToken;
     }
 
     /**
@@ -928,18 +922,6 @@ class CreateParticipantOptions extends Options
     public function setTrim(string $trim): self
     {
         $this->options['trim'] = $trim;
-        return $this;
-    }
-
-    /**
-     * A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
-     *
-     * @param string $callToken A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
-     * @return $this Fluent Builder
-     */
-    public function setCallToken(string $callToken): self
-    {
-        $this->options['callToken'] = $callToken;
         return $this;
     }
 

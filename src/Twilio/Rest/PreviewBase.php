@@ -18,6 +18,7 @@ use Twilio\Rest\Preview\DeployedDevices;
 use Twilio\Rest\Preview\HostedNumbers;
 use Twilio\Rest\Preview\Sync;
 use Twilio\Rest\Preview\Marketplace;
+use Twilio\Rest\Preview\Understand;
 use Twilio\Rest\Preview\Wireless;
 
 /**
@@ -25,6 +26,7 @@ use Twilio\Rest\Preview\Wireless;
  * @property \Twilio\Rest\Preview\HostedNumbers $hostedNumbers
  * @property \Twilio\Rest\Preview\Sync $sync
  * @property \Twilio\Rest\Preview\Marketplace $marketplace
+ * @property \Twilio\Rest\Preview\Understand $understand
  * @property \Twilio\Rest\Preview\Wireless $wireless
  */
 class PreviewBase extends Domain {
@@ -32,6 +34,7 @@ class PreviewBase extends Domain {
     protected $_hostedNumbers;
     protected $_sync;
     protected $_marketplace;
+    protected $_understand;
     protected $_wireless;
 
     /**
@@ -84,6 +87,16 @@ class PreviewBase extends Domain {
             $this->_marketplace = new Marketplace($this);
         }
         return $this->_marketplace;
+    }
+
+    /**
+     * @return Understand Version understand of preview
+     */
+    protected function getUnderstand(): Understand {
+        if (!$this->_understand) {
+            $this->_understand = new Understand($this);
+        }
+        return $this->_understand;
     }
 
     /**

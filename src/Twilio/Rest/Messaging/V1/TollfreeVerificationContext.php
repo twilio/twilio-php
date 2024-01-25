@@ -50,19 +50,6 @@ class TollfreeVerificationContext extends InstanceContext
     }
 
     /**
-     * Delete the TollfreeVerificationInstance
-     *
-     * @return bool True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete(): bool
-    {
-
-        return $this->version->delete('DELETE', $this->uri);
-    }
-
-
-    /**
      * Fetch the TollfreeVerificationInstance
      *
      * @return TollfreeVerificationInstance Fetched TollfreeVerificationInstance
@@ -134,8 +121,6 @@ class TollfreeVerificationContext extends InstanceContext
                 $options['businessContactEmail'],
             'BusinessContactPhone' =>
                 $options['businessContactPhone'],
-            'EditReason' =>
-                $options['editReason'],
         ]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data);

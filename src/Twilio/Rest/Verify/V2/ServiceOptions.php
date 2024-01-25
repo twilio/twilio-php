@@ -37,7 +37,6 @@ abstract class ServiceOptions
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
-     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      * @return CreateServiceOptions Options builder
      */
     public static function create(
@@ -57,8 +56,7 @@ abstract class ServiceOptions
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE,
-        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
+        string $defaultTemplateSid = Values::NONE
 
     ): CreateServiceOptions
     {
@@ -78,8 +76,7 @@ abstract class ServiceOptions
             $totpTimeStep,
             $totpCodeLength,
             $totpSkew,
-            $defaultTemplateSid,
-            $verifyEventSubscriptionEnabled
+            $defaultTemplateSid
         );
     }
 
@@ -104,7 +101,6 @@ abstract class ServiceOptions
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
-     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      * @return UpdateServiceOptions Options builder
      */
     public static function update(
@@ -125,8 +121,7 @@ abstract class ServiceOptions
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE,
-        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
+        string $defaultTemplateSid = Values::NONE
 
     ): UpdateServiceOptions
     {
@@ -147,8 +142,7 @@ abstract class ServiceOptions
             $totpTimeStep,
             $totpCodeLength,
             $totpSkew,
-            $defaultTemplateSid,
-            $verifyEventSubscriptionEnabled
+            $defaultTemplateSid
         );
     }
 
@@ -173,7 +167,6 @@ class CreateServiceOptions extends Options
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
-     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      */
     public function __construct(
         
@@ -192,8 +185,7 @@ class CreateServiceOptions extends Options
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE,
-        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
+        string $defaultTemplateSid = Values::NONE
 
     ) {
         $this->options['codeLength'] = $codeLength;
@@ -212,7 +204,6 @@ class CreateServiceOptions extends Options
         $this->options['totpCodeLength'] = $totpCodeLength;
         $this->options['totpSkew'] = $totpSkew;
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
-        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
     }
 
     /**
@@ -408,18 +399,6 @@ class CreateServiceOptions extends Options
     }
 
     /**
-     * Whether to allow verifications from the service to reach the stream-events sinks if configured
-     *
-     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
-     * @return $this Fluent Builder
-     */
-    public function setVerifyEventSubscriptionEnabled(bool $verifyEventSubscriptionEnabled): self
-    {
-        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
-        return $this;
-    }
-
-    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -454,7 +433,6 @@ class UpdateServiceOptions extends Options
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
-     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      */
     public function __construct(
         
@@ -474,8 +452,7 @@ class UpdateServiceOptions extends Options
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE,
-        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
+        string $defaultTemplateSid = Values::NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -495,7 +472,6 @@ class UpdateServiceOptions extends Options
         $this->options['totpCodeLength'] = $totpCodeLength;
         $this->options['totpSkew'] = $totpSkew;
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
-        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
     }
 
     /**
@@ -699,18 +675,6 @@ class UpdateServiceOptions extends Options
     public function setDefaultTemplateSid(string $defaultTemplateSid): self
     {
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
-        return $this;
-    }
-
-    /**
-     * Whether to allow verifications from the service to reach the stream-events sinks if configured
-     *
-     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
-     * @return $this Fluent Builder
-     */
-    public function setVerifyEventSubscriptionEnabled(bool $verifyEventSubscriptionEnabled): self
-    {
-        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
         return $this;
     }
 

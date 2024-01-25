@@ -21,6 +21,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Deserialize;
 
 
 /**
@@ -30,6 +31,8 @@ use Twilio\Version;
  * @property string|null $connectAppFriendlyName
  * @property string|null $connectAppHomepageUrl
  * @property string|null $connectAppSid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  * @property string[]|null $permissions
  * @property string|null $uri
  */
@@ -55,6 +58,8 @@ class AuthorizedConnectAppInstance extends InstanceResource
             'connectAppFriendlyName' => Values::array_get($payload, 'connect_app_friendly_name'),
             'connectAppHomepageUrl' => Values::array_get($payload, 'connect_app_homepage_url'),
             'connectAppSid' => Values::array_get($payload, 'connect_app_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'permissions' => Values::array_get($payload, 'permissions'),
             'uri' => Values::array_get($payload, 'uri'),
         ];
