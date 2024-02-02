@@ -117,7 +117,7 @@ class SerializeTest extends UnitTest {
         $this->assertEquals(null, $actual);
 
         // For backwards compatibility
-        $actual = Serialize::booleanToString('True');
+        $actual = Serialize::booleanToString('true');
         $this->assertEquals('true', $actual);
     }
 
