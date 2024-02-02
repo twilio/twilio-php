@@ -106,10 +106,10 @@ class SerializeTest extends UnitTest {
 
     public function testBooleanToString(): void {
         $actual = Serialize::booleanToString(True);
-        $this->assertEquals('True', $actual);
+        $this->assertEquals('true', $actual);
 
         $actual = Serialize::booleanToString(False);
-        $this->assertEquals('False', $actual);
+        $this->assertEquals('false', $actual);
     }
 
     public function testBooleanToStringPassThroughSpecialVals(): void {
@@ -118,7 +118,7 @@ class SerializeTest extends UnitTest {
 
         // For backwards compatibility
         $actual = Serialize::booleanToString('True');
-        $this->assertEquals('True', $actual);
+        $this->assertEquals('true', $actual);
     }
 
     public function testJsonObjectSerializesArrays(): void {
