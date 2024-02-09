@@ -22,7 +22,7 @@ abstract class ServiceOptions
 {
     /**
      * @param bool $autoTranscribe Instructs the Speech Recognition service to automatically transcribe all recordings made on the account.
-     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @param string $languageCode The default language code of the audio.
      * @param bool $autoRedaction Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service.
@@ -61,7 +61,7 @@ abstract class ServiceOptions
 
     /**
      * @param bool $autoTranscribe Instructs the Speech Recognition service to automatically transcribe all recordings made on the account.
-     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @param string $languageCode The default language code of the audio.
      * @param string $uniqueName Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID.
@@ -107,7 +107,7 @@ class CreateServiceOptions extends Options
     {
     /**
      * @param bool $autoTranscribe Instructs the Speech Recognition service to automatically transcribe all recordings made on the account.
-     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @param string $languageCode The default language code of the audio.
      * @param bool $autoRedaction Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service.
@@ -150,9 +150,9 @@ class CreateServiceOptions extends Options
     }
 
     /**
-     * Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      *
-     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      * @return $this Fluent Builder
      */
     public function setDataLogging(bool $dataLogging): self
@@ -250,7 +250,7 @@ class UpdateServiceOptions extends Options
     {
     /**
      * @param bool $autoTranscribe Instructs the Speech Recognition service to automatically transcribe all recordings made on the account.
-     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      * @param string $friendlyName A human readable description of this resource, up to 64 characters.
      * @param string $languageCode The default language code of the audio.
      * @param string $uniqueName Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID.
@@ -299,9 +299,9 @@ class UpdateServiceOptions extends Options
     }
 
     /**
-     * Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      *
-     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition through using customer data to refine its speech recognition models.
+     * @param bool $dataLogging Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
      * @return $this Fluent Builder
      */
     public function setDataLogging(bool $dataLogging): self

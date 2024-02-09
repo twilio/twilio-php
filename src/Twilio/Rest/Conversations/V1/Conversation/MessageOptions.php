@@ -27,7 +27,7 @@ abstract class MessageOptions
      * @param \DateTime $dateUpdated The date that this resource was last updated. `null` if the message has not been edited.
      * @param string $attributes A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
      * @param string $mediaSid The Media SID to be attached to the new Message.
-     * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
+     * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
      * @param string $contentVariables A structurally valid JSON string that contains values to resolve Rich Content template variables.
      * @param string $subject The subject of the message, can be up to 256 characters long.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
@@ -137,7 +137,7 @@ class CreateMessageOptions extends Options
      * @param \DateTime $dateUpdated The date that this resource was last updated. `null` if the message has not been edited.
      * @param string $attributes A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\"{}\\\" will be returned.
      * @param string $mediaSid The Media SID to be attached to the new Message.
-     * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
+     * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
      * @param string $contentVariables A structurally valid JSON string that contains values to resolve Rich Content template variables.
      * @param string $subject The subject of the message, can be up to 256 characters long.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
@@ -241,9 +241,9 @@ class CreateMessageOptions extends Options
     }
 
     /**
-     * The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
+     * The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
      *
-     * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content-api) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
+     * @param string $contentSid The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored.
      * @return $this Fluent Builder
      */
     public function setContentSid(string $contentSid): self

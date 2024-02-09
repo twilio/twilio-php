@@ -24,8 +24,8 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Preview\Sync\Service\SyncListList;
-use Twilio\Rest\Preview\Sync\Service\DocumentList;
 use Twilio\Rest\Preview\Sync\Service\SyncMapList;
+use Twilio\Rest\Preview\Sync\Service\DocumentList;
 
 
 /**
@@ -43,8 +43,8 @@ use Twilio\Rest\Preview\Sync\Service\SyncMapList;
 class ServiceInstance extends InstanceResource
 {
     protected $_syncLists;
-    protected $_documents;
     protected $_syncMaps;
+    protected $_documents;
 
     /**
      * Initialize the ServiceInstance
@@ -138,19 +138,19 @@ class ServiceInstance extends InstanceResource
     }
 
     /**
-     * Access the documents
-     */
-    protected function getDocuments(): DocumentList
-    {
-        return $this->proxy()->documents;
-    }
-
-    /**
      * Access the syncMaps
      */
     protected function getSyncMaps(): SyncMapList
     {
         return $this->proxy()->syncMaps;
+    }
+
+    /**
+     * Access the documents
+     */
+    protected function getDocuments(): DocumentList
+    {
+        return $this->proxy()->documents;
     }
 
     /**

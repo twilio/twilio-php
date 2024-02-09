@@ -23,6 +23,8 @@ use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Rest\FlexApi\V1\InsightsAssessmentsCommentList;
+use Twilio\Rest\FlexApi\V1\InsightsConversationalAiList;
+use Twilio\Rest\FlexApi\V1\InsightsConversationalAiReportInsightsList;
 use Twilio\Rest\FlexApi\V1\InsightsConversationsList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryList;
@@ -33,6 +35,7 @@ use Twilio\Rest\FlexApi\V1\InsightsSettingsAnswerSetsList;
 use Twilio\Rest\FlexApi\V1\InsightsSettingsCommentList;
 use Twilio\Rest\FlexApi\V1\InsightsUserRolesList;
 use Twilio\Rest\FlexApi\V1\InteractionList;
+use Twilio\Rest\FlexApi\V1\ProvisioningStatusList;
 use Twilio\Rest\FlexApi\V1\WebChannelList;
 use Twilio\Version;
 
@@ -42,6 +45,8 @@ use Twilio\Version;
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
  * @property InsightsAssessmentsCommentList $insightsAssessmentsComment
+ * @property InsightsConversationalAiList $insightsConversationalAi
+ * @property InsightsConversationalAiReportInsightsList $insightsConversationalAiReportInsights
  * @property InsightsConversationsList $insightsConversations
  * @property InsightsQuestionnairesList $insightsQuestionnaires
  * @property InsightsQuestionnairesCategoryList $insightsQuestionnairesCategory
@@ -52,6 +57,7 @@ use Twilio\Version;
  * @property InsightsSettingsCommentList $insightsSettingsComment
  * @property InsightsUserRolesList $insightsUserRoles
  * @property InteractionList $interaction
+ * @property ProvisioningStatusList $provisioningStatus
  * @property WebChannelList $webChannel
  * @method \Twilio\Rest\FlexApi\V1\ChannelContext channel(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\FlexFlowContext flexFlow(string $sid)
@@ -69,6 +75,8 @@ class V1 extends Version
     protected $_configuration;
     protected $_flexFlow;
     protected $_insightsAssessmentsComment;
+    protected $_insightsConversationalAi;
+    protected $_insightsConversationalAiReportInsights;
     protected $_insightsConversations;
     protected $_insightsQuestionnaires;
     protected $_insightsQuestionnairesCategory;
@@ -79,6 +87,7 @@ class V1 extends Version
     protected $_insightsSettingsComment;
     protected $_insightsUserRoles;
     protected $_interaction;
+    protected $_provisioningStatus;
     protected $_webChannel;
 
     /**
@@ -130,6 +139,22 @@ class V1 extends Version
             $this->_insightsAssessmentsComment = new InsightsAssessmentsCommentList($this);
         }
         return $this->_insightsAssessmentsComment;
+    }
+
+    protected function getInsightsConversationalAi(): InsightsConversationalAiList
+    {
+        if (!$this->_insightsConversationalAi) {
+            $this->_insightsConversationalAi = new InsightsConversationalAiList($this);
+        }
+        return $this->_insightsConversationalAi;
+    }
+
+    protected function getInsightsConversationalAiReportInsights(): InsightsConversationalAiReportInsightsList
+    {
+        if (!$this->_insightsConversationalAiReportInsights) {
+            $this->_insightsConversationalAiReportInsights = new InsightsConversationalAiReportInsightsList($this);
+        }
+        return $this->_insightsConversationalAiReportInsights;
     }
 
     protected function getInsightsConversations(): InsightsConversationsList
@@ -210,6 +235,14 @@ class V1 extends Version
             $this->_interaction = new InteractionList($this);
         }
         return $this->_interaction;
+    }
+
+    protected function getProvisioningStatus(): ProvisioningStatusList
+    {
+        if (!$this->_provisioningStatus) {
+            $this->_provisioningStatus = new ProvisioningStatusList($this);
+        }
+        return $this->_provisioningStatus;
     }
 
     protected function getWebChannel(): WebChannelList

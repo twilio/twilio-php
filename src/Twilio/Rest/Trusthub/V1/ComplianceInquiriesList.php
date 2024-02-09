@@ -18,6 +18,7 @@ namespace Twilio\Rest\Trusthub\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -45,15 +46,20 @@ class ComplianceInquiriesList extends ListResource
      * Create the ComplianceInquiriesInstance
      *
      * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
+     * @param array|Options $options Optional Arguments
      * @return ComplianceInquiriesInstance Created ComplianceInquiriesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $primaryProfileSid): ComplianceInquiriesInstance
+    public function create(string $primaryProfileSid, array $options = []): ComplianceInquiriesInstance
     {
+
+        $options = new Values($options);
 
         $data = Values::of([
             'PrimaryProfileSid' =>
                 $primaryProfileSid,
+            'NotificationEmail' =>
+                $options['notificationEmail'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

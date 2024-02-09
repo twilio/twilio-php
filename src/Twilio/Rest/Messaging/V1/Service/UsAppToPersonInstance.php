@@ -34,6 +34,9 @@ use Twilio\Deserialize;
  * @property string|null $usAppToPersonUsecase
  * @property bool|null $hasEmbeddedLinks
  * @property bool|null $hasEmbeddedPhone
+ * @property bool|null $subscriberOptIn
+ * @property bool|null $ageGated
+ * @property bool|null $directLending
  * @property string|null $campaignStatus
  * @property string|null $campaignId
  * @property bool|null $isExternallyRegistered
@@ -76,6 +79,9 @@ class UsAppToPersonInstance extends InstanceResource
             'usAppToPersonUsecase' => Values::array_get($payload, 'us_app_to_person_usecase'),
             'hasEmbeddedLinks' => Values::array_get($payload, 'has_embedded_links'),
             'hasEmbeddedPhone' => Values::array_get($payload, 'has_embedded_phone'),
+            'subscriberOptIn' => Values::array_get($payload, 'subscriber_opt_in'),
+            'ageGated' => Values::array_get($payload, 'age_gated'),
+            'directLending' => Values::array_get($payload, 'direct_lending'),
             'campaignStatus' => Values::array_get($payload, 'campaign_status'),
             'campaignId' => Values::array_get($payload, 'campaign_id'),
             'isExternallyRegistered' => Values::array_get($payload, 'is_externally_registered'),
@@ -138,6 +144,25 @@ class UsAppToPersonInstance extends InstanceResource
     {
 
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the UsAppToPersonInstance
+     *
+     * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
+     * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.
+     * @param string[] $messageSamples An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars.
+     * @param string $messageFlow Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
+     * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
+     * @param bool $ageGated A boolean that specifies whether campaign requires age gate for federally legal content.
+     * @param bool $directLending A boolean that specifies whether campaign allows direct lending or not.
+     * @return UsAppToPersonInstance Updated UsAppToPersonInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $messageSamples, string $messageFlow, string $description, bool $ageGated, bool $directLending): UsAppToPersonInstance
+    {
+
+        return $this->proxy()->update($hasEmbeddedLinks, $hasEmbeddedPhone, $messageSamples, $messageFlow, $description, $ageGated, $directLending);
     }
 
     /**

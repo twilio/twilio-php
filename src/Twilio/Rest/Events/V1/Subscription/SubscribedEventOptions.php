@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class SubscribedEventOptions
 {
     /**
-     * @param int $schemaVersion The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the Subscription should use.
      * @return CreateSubscribedEventOptions Options builder
      */
     public static function create(
@@ -39,7 +39,7 @@ abstract class SubscribedEventOptions
 
 
     /**
-     * @param int $schemaVersion The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the Subscription should use.
      * @return UpdateSubscribedEventOptions Options builder
      */
     public static function update(
@@ -58,7 +58,7 @@ abstract class SubscribedEventOptions
 class CreateSubscribedEventOptions extends Options
     {
     /**
-     * @param int $schemaVersion The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the Subscription should use.
      */
     public function __construct(
         
@@ -69,9 +69,9 @@ class CreateSubscribedEventOptions extends Options
     }
 
     /**
-     * The schema version that the subscription should use.
+     * The schema version that the Subscription should use.
      *
-     * @param int $schemaVersion The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the Subscription should use.
      * @return $this Fluent Builder
      */
     public function setSchemaVersion(int $schemaVersion): self
@@ -98,7 +98,7 @@ class CreateSubscribedEventOptions extends Options
 class UpdateSubscribedEventOptions extends Options
     {
     /**
-     * @param int $schemaVersion The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the Subscription should use.
      */
     public function __construct(
         
@@ -109,9 +109,9 @@ class UpdateSubscribedEventOptions extends Options
     }
 
     /**
-     * The schema version that the subscription should use.
+     * The schema version that the Subscription should use.
      *
-     * @param int $schemaVersion The schema version that the subscription should use.
+     * @param int $schemaVersion The schema version that the Subscription should use.
      * @return $this Fluent Builder
      */
     public function setSchemaVersion(int $schemaVersion): self

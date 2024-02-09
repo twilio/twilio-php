@@ -34,10 +34,10 @@ use Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList;
  * @property DeviceList $devices
  * @property KeyList $keys
  * @property DeploymentList $deployments
+ * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceContext devices(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyContext keys(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext deployments(string $sid)
- * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)
  */
 class FleetContext extends InstanceContext
     {

@@ -47,6 +47,7 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @property array|null $push
  * @property array|null $totp
  * @property string|null $defaultTemplateSid
+ * @property bool|null $verifyEventSubscriptionEnabled
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
@@ -89,6 +90,7 @@ class ServiceInstance extends InstanceResource
             'push' => Values::array_get($payload, 'push'),
             'totp' => Values::array_get($payload, 'totp'),
             'defaultTemplateSid' => Values::array_get($payload, 'default_template_sid'),
+            'verifyEventSubscriptionEnabled' => Values::array_get($payload, 'verify_event_subscription_enabled'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

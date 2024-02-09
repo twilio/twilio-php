@@ -43,6 +43,7 @@ use Twilio\Deserialize;
  * @property string|null $messagingServiceInstanceSid
  * @property string|null $chatServiceInstanceSid
  * @property string|null $flexServiceInstanceSid
+ * @property string|null $flexInstanceSid
  * @property string|null $uiLanguage
  * @property array|null $uiAttributes
  * @property array|null $uiDependencies
@@ -73,6 +74,7 @@ use Twilio\Deserialize;
  * @property array|null $flexUiStatusReport
  * @property array|null $agentConvEndMethods
  * @property array|null $citrixVoiceVdi
+ * @property array|null $offlineConfig
  */
 class ConfigurationInstance extends InstanceResource
 {
@@ -105,6 +107,7 @@ class ConfigurationInstance extends InstanceResource
             'messagingServiceInstanceSid' => Values::array_get($payload, 'messaging_service_instance_sid'),
             'chatServiceInstanceSid' => Values::array_get($payload, 'chat_service_instance_sid'),
             'flexServiceInstanceSid' => Values::array_get($payload, 'flex_service_instance_sid'),
+            'flexInstanceSid' => Values::array_get($payload, 'flex_instance_sid'),
             'uiLanguage' => Values::array_get($payload, 'ui_language'),
             'uiAttributes' => Values::array_get($payload, 'ui_attributes'),
             'uiDependencies' => Values::array_get($payload, 'ui_dependencies'),
@@ -135,6 +138,7 @@ class ConfigurationInstance extends InstanceResource
             'flexUiStatusReport' => Values::array_get($payload, 'flex_ui_status_report'),
             'agentConvEndMethods' => Values::array_get($payload, 'agent_conv_end_methods'),
             'citrixVoiceVdi' => Values::array_get($payload, 'citrix_voice_vdi'),
+            'offlineConfig' => Values::array_get($payload, 'offline_config'),
         ];
 
         $this->solution = [];
