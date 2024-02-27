@@ -23,8 +23,6 @@ use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Rest\FlexApi\V1\InsightsAssessmentsCommentList;
-use Twilio\Rest\FlexApi\V1\InsightsConversationalAiList;
-use Twilio\Rest\FlexApi\V1\InsightsConversationalAiReportInsightsList;
 use Twilio\Rest\FlexApi\V1\InsightsConversationsList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesList;
 use Twilio\Rest\FlexApi\V1\InsightsQuestionnairesCategoryList;
@@ -45,8 +43,6 @@ use Twilio\Version;
  * @property ConfigurationList $configuration
  * @property FlexFlowList $flexFlow
  * @property InsightsAssessmentsCommentList $insightsAssessmentsComment
- * @property InsightsConversationalAiList $insightsConversationalAi
- * @property InsightsConversationalAiReportInsightsList $insightsConversationalAiReportInsights
  * @property InsightsConversationsList $insightsConversations
  * @property InsightsQuestionnairesList $insightsQuestionnaires
  * @property InsightsQuestionnairesCategoryList $insightsQuestionnairesCategory
@@ -75,8 +71,6 @@ class V1 extends Version
     protected $_configuration;
     protected $_flexFlow;
     protected $_insightsAssessmentsComment;
-    protected $_insightsConversationalAi;
-    protected $_insightsConversationalAiReportInsights;
     protected $_insightsConversations;
     protected $_insightsQuestionnaires;
     protected $_insightsQuestionnairesCategory;
@@ -139,22 +133,6 @@ class V1 extends Version
             $this->_insightsAssessmentsComment = new InsightsAssessmentsCommentList($this);
         }
         return $this->_insightsAssessmentsComment;
-    }
-
-    protected function getInsightsConversationalAi(): InsightsConversationalAiList
-    {
-        if (!$this->_insightsConversationalAi) {
-            $this->_insightsConversationalAi = new InsightsConversationalAiList($this);
-        }
-        return $this->_insightsConversationalAi;
-    }
-
-    protected function getInsightsConversationalAiReportInsights(): InsightsConversationalAiReportInsightsList
-    {
-        if (!$this->_insightsConversationalAiReportInsights) {
-            $this->_insightsConversationalAiReportInsights = new InsightsConversationalAiReportInsightsList($this);
-        }
-        return $this->_insightsConversationalAiReportInsights;
     }
 
     protected function getInsightsConversations(): InsightsConversationsList

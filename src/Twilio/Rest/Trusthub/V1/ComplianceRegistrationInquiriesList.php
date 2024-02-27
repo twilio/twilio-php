@@ -118,6 +118,18 @@ class ComplianceRegistrationInquiriesList extends ListResource
                 $options['fileName'],
             'File' =>
                 $options['file'],
+            'FirstName' =>
+                $options['firstName'],
+            'LastName' =>
+                $options['lastName'],
+            'DateOfBirth' =>
+                $options['dateOfBirth'],
+            'IndividualEmail' =>
+                $options['individualEmail'],
+            'IndividualPhone' =>
+                $options['individualPhone'],
+            'IsIsvEmbed' =>
+                Serialize::booleanToString($options['isIsvEmbed']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

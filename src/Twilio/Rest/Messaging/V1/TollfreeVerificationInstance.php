@@ -60,6 +60,7 @@ use Twilio\Deserialize;
  * @property int|null $errorCode
  * @property \DateTime|null $editExpiration
  * @property bool|null $editAllowed
+ * @property array[]|null $rejectionReasons
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
  */
@@ -112,6 +113,7 @@ class TollfreeVerificationInstance extends InstanceResource
             'errorCode' => Values::array_get($payload, 'error_code'),
             'editExpiration' => Deserialize::dateTime(Values::array_get($payload, 'edit_expiration')),
             'editAllowed' => Values::array_get($payload, 'edit_allowed'),
+            'rejectionReasons' => Values::array_get($payload, 'rejection_reasons'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
             'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),
         ];

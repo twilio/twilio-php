@@ -34,7 +34,7 @@ use Twilio\Version;
  * @property array|null $callerName
  * @property array|null $simSwap
  * @property array|null $callForwarding
- * @property array|null $liveActivity
+ * @property array|null $lineStatus
  * @property array|null $lineTypeIntelligence
  * @property array|null $identityMatch
  * @property array|null $reassignedNumber
@@ -66,7 +66,7 @@ class PhoneNumberInstance extends InstanceResource
             'callerName' => Values::array_get($payload, 'caller_name'),
             'simSwap' => Values::array_get($payload, 'sim_swap'),
             'callForwarding' => Values::array_get($payload, 'call_forwarding'),
-            'liveActivity' => Values::array_get($payload, 'live_activity'),
+            'lineStatus' => Values::array_get($payload, 'line_status'),
             'lineTypeIntelligence' => Values::array_get($payload, 'line_type_intelligence'),
             'identityMatch' => Values::array_get($payload, 'identity_match'),
             'reassignedNumber' => Values::array_get($payload, 'reassigned_number'),

@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class PhoneNumberOptions
 {
     /**
-     * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number.
+     * @param string $fields A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score.
      * @param string $countryCode The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format.
      * @param string $firstName User’s first name. This query parameter is only used (optionally) for identity_match package requests.
      * @param string $lastName User’s last name. This query parameter is only used (optionally) for identity_match package requests.
@@ -76,7 +76,7 @@ abstract class PhoneNumberOptions
 class FetchPhoneNumberOptions extends Options
     {
     /**
-     * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number.
+     * @param string $fields A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score.
      * @param string $countryCode The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format.
      * @param string $firstName User’s first name. This query parameter is only used (optionally) for identity_match package requests.
      * @param string $lastName User’s last name. This query parameter is only used (optionally) for identity_match package requests.
@@ -123,9 +123,9 @@ class FetchPhoneNumberOptions extends Options
     }
 
     /**
-     * A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number.
+     * A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score.
      *
-     * @param string $fields A comma-separated list of fields to return. Possible values are caller_name, sim_swap, call_forwarding, live_activity, line_type_intelligence, identity_match, reassigned_number.
+     * @param string $fields A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score.
      * @return $this Fluent Builder
      */
     public function setFields(string $fields): self

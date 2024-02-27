@@ -18,6 +18,7 @@ namespace Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -60,17 +61,22 @@ class InteractionChannelParticipantList extends ListResource
      *
      * @param string $type
      * @param array $mediaProperties JSON representing the Media Properties for the new Participant.
+     * @param array|Options $options Optional Arguments
      * @return InteractionChannelParticipantInstance Created InteractionChannelParticipantInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $type, array $mediaProperties): InteractionChannelParticipantInstance
+    public function create(string $type, array $mediaProperties, array $options = []): InteractionChannelParticipantInstance
     {
+
+        $options = new Values($options);
 
         $data = Values::of([
             'Type' =>
                 $type,
             'MediaProperties' =>
                 Serialize::jsonObject($mediaProperties),
+            'RoutingProperties' =>
+                Serialize::jsonObject($options['routingProperties']),
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);

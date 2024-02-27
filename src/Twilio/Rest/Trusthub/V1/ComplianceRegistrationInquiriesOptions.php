@@ -22,7 +22,7 @@ abstract class ComplianceRegistrationInquiriesOptions
 {
     /**
      * @param string $businessIdentityType
-     * @param string $businessRegistrationAuthority The authority that registered the business
+     * @param string $businessRegistrationAuthority
      * @param string $businessLegalName he name of the business or organization using the Tollfree number.
      * @param string $notificationEmail he email address to receive the notification about the verification result.
      * @param bool $acceptedNotificationReceipt The email address to receive the notification about the verification result.
@@ -49,6 +49,12 @@ abstract class ComplianceRegistrationInquiriesOptions
      * @param bool $useAddressAsEmergencyAddress Use the business address as the emergency address
      * @param string $fileName The name of the verification document to upload
      * @param string $file The verification document to upload
+     * @param string $firstName The first name of the Individual User.
+     * @param string $lastName The last name of the Individual User.
+     * @param string $dateOfBirth The date of birth of the Individual User.
+     * @param string $individualEmail The email address of the Individual User.
+     * @param string $individualPhone The phone number of the Individual User.
+     * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
      * @return CreateComplianceRegistrationInquiriesOptions Options builder
      */
     public static function create(
@@ -80,7 +86,13 @@ abstract class ComplianceRegistrationInquiriesOptions
         string $emergencyAddressCountryCode = Values::NONE,
         bool $useAddressAsEmergencyAddress = Values::BOOL_NONE,
         string $fileName = Values::NONE,
-        string $file = Values::NONE
+        string $file = Values::NONE,
+        string $firstName = Values::NONE,
+        string $lastName = Values::NONE,
+        string $dateOfBirth = Values::NONE,
+        string $individualEmail = Values::NONE,
+        string $individualPhone = Values::NONE,
+        bool $isIsvEmbed = Values::BOOL_NONE
 
     ): CreateComplianceRegistrationInquiriesOptions
     {
@@ -112,7 +124,13 @@ abstract class ComplianceRegistrationInquiriesOptions
             $emergencyAddressCountryCode,
             $useAddressAsEmergencyAddress,
             $fileName,
-            $file
+            $file,
+            $firstName,
+            $lastName,
+            $dateOfBirth,
+            $individualEmail,
+            $individualPhone,
+            $isIsvEmbed
         );
     }
 
@@ -122,7 +140,7 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
     {
     /**
      * @param string $businessIdentityType
-     * @param string $businessRegistrationAuthority The authority that registered the business
+     * @param string $businessRegistrationAuthority
      * @param string $businessLegalName he name of the business or organization using the Tollfree number.
      * @param string $notificationEmail he email address to receive the notification about the verification result.
      * @param bool $acceptedNotificationReceipt The email address to receive the notification about the verification result.
@@ -149,6 +167,12 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
      * @param bool $useAddressAsEmergencyAddress Use the business address as the emergency address
      * @param string $fileName The name of the verification document to upload
      * @param string $file The verification document to upload
+     * @param string $firstName The first name of the Individual User.
+     * @param string $lastName The last name of the Individual User.
+     * @param string $dateOfBirth The date of birth of the Individual User.
+     * @param string $individualEmail The email address of the Individual User.
+     * @param string $individualPhone The phone number of the Individual User.
+     * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
      */
     public function __construct(
         
@@ -179,7 +203,13 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
         string $emergencyAddressCountryCode = Values::NONE,
         bool $useAddressAsEmergencyAddress = Values::BOOL_NONE,
         string $fileName = Values::NONE,
-        string $file = Values::NONE
+        string $file = Values::NONE,
+        string $firstName = Values::NONE,
+        string $lastName = Values::NONE,
+        string $dateOfBirth = Values::NONE,
+        string $individualEmail = Values::NONE,
+        string $individualPhone = Values::NONE,
+        bool $isIsvEmbed = Values::BOOL_NONE
 
     ) {
         $this->options['businessIdentityType'] = $businessIdentityType;
@@ -210,6 +240,12 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
         $this->options['useAddressAsEmergencyAddress'] = $useAddressAsEmergencyAddress;
         $this->options['fileName'] = $fileName;
         $this->options['file'] = $file;
+        $this->options['firstName'] = $firstName;
+        $this->options['lastName'] = $lastName;
+        $this->options['dateOfBirth'] = $dateOfBirth;
+        $this->options['individualEmail'] = $individualEmail;
+        $this->options['individualPhone'] = $individualPhone;
+        $this->options['isIsvEmbed'] = $isIsvEmbed;
     }
 
     /**
@@ -223,9 +259,7 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
     }
 
     /**
-     * The authority that registered the business
-     *
-     * @param string $businessRegistrationAuthority The authority that registered the business
+     * @param string $businessRegistrationAuthority
      * @return $this Fluent Builder
      */
     public function setBusinessRegistrationAuthority(string $businessRegistrationAuthority): self
@@ -543,6 +577,78 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
     public function setFile(string $file): self
     {
         $this->options['file'] = $file;
+        return $this;
+    }
+
+    /**
+     * The first name of the Individual User.
+     *
+     * @param string $firstName The first name of the Individual User.
+     * @return $this Fluent Builder
+     */
+    public function setFirstName(string $firstName): self
+    {
+        $this->options['firstName'] = $firstName;
+        return $this;
+    }
+
+    /**
+     * The last name of the Individual User.
+     *
+     * @param string $lastName The last name of the Individual User.
+     * @return $this Fluent Builder
+     */
+    public function setLastName(string $lastName): self
+    {
+        $this->options['lastName'] = $lastName;
+        return $this;
+    }
+
+    /**
+     * The date of birth of the Individual User.
+     *
+     * @param string $dateOfBirth The date of birth of the Individual User.
+     * @return $this Fluent Builder
+     */
+    public function setDateOfBirth(string $dateOfBirth): self
+    {
+        $this->options['dateOfBirth'] = $dateOfBirth;
+        return $this;
+    }
+
+    /**
+     * The email address of the Individual User.
+     *
+     * @param string $individualEmail The email address of the Individual User.
+     * @return $this Fluent Builder
+     */
+    public function setIndividualEmail(string $individualEmail): self
+    {
+        $this->options['individualEmail'] = $individualEmail;
+        return $this;
+    }
+
+    /**
+     * The phone number of the Individual User.
+     *
+     * @param string $individualPhone The phone number of the Individual User.
+     * @return $this Fluent Builder
+     */
+    public function setIndividualPhone(string $individualPhone): self
+    {
+        $this->options['individualPhone'] = $individualPhone;
+        return $this;
+    }
+
+    /**
+     * Indicates if the inquiry is being started from an ISV embedded component.
+     *
+     * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @return $this Fluent Builder
+     */
+    public function setIsIsvEmbed(bool $isIsvEmbed): self
+    {
+        $this->options['isIsvEmbed'] = $isIsvEmbed;
         return $this;
     }
 
