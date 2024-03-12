@@ -27,18 +27,18 @@ use Twilio\Version;
 /**
  * @property BulkEligibilityList $bulkEligibilities
  * @property PortingBulkPortabilityList $portingBulkPortabilities
- * @property PortingPortInFetchList $portingPortIns
+ * @property PortingPortInFetchList $portingPortInsFetch
  * @property PortingPortabilityList $portingPortabilities
  * @method \Twilio\Rest\Numbers\V1\BulkEligibilityContext bulkEligibilities(string $requestId)
  * @method \Twilio\Rest\Numbers\V1\PortingBulkPortabilityContext portingBulkPortabilities(string $sid)
- * @method \Twilio\Rest\Numbers\V1\PortingPortInFetchContext portingPortIns(string $portInRequestSid)
+ * @method \Twilio\Rest\Numbers\V1\PortingPortInFetchContext portingPortInsFetch(string $portInRequestSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortabilityContext portingPortabilities(string $phoneNumber)
  */
 class V1 extends Version
 {
     protected $_bulkEligibilities;
     protected $_portingBulkPortabilities;
-    protected $_portingPortIns;
+    protected $_portingPortInsFetch;
     protected $_portingPortabilities;
 
     /**
@@ -68,12 +68,12 @@ class V1 extends Version
         return $this->_portingBulkPortabilities;
     }
 
-    protected function getPortingPortIns(): PortingPortInFetchList
+    protected function getPortingPortInsFetch(): PortingPortInFetchList
     {
-        if (!$this->_portingPortIns) {
-            $this->_portingPortIns = new PortingPortInFetchList($this);
+        if (!$this->_portingPortInsFetch) {
+            $this->_portingPortInsFetch = new PortingPortInFetchList($this);
         }
-        return $this->_portingPortIns;
+        return $this->_portingPortInsFetch;
     }
 
     protected function getPortingPortabilities(): PortingPortabilityList
