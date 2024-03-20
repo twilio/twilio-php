@@ -38,6 +38,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Notify $notify
  * @property Numbers $numbers
  * @property Preview $preview
+ * @property PreviewMessaging $previewMessaging
  * @property Pricing $pricing
  * @property Proxy $proxy
  * @property Routes $routes
@@ -116,6 +117,7 @@ class Client extends BaseClient {
     protected $_notify;
     protected $_numbers;
     protected $_preview;
+    protected $_previewMessaging;
     protected $_pricing;
     protected $_proxy;
     protected $_routes;
@@ -350,6 +352,17 @@ class Client extends BaseClient {
             $this->_preview = new Preview($this);
         }
         return $this->_preview;
+    }
+    /**
+     * Access the PreviewMessaging Twilio Domain
+     *
+     * @return PreviewMessaging PreviewMessaging Twilio Domain
+     */
+    protected function getPreviewMessaging(): PreviewMessaging {
+        if (!$this->_previewMessaging) {
+            $this->_previewMessaging = new PreviewMessaging($this);
+        }
+        return $this->_previewMessaging;
     }
     /**
      * Access the Pricing Twilio Domain
