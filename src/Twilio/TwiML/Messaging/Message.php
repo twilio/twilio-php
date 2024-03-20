@@ -63,7 +63,8 @@ class Message extends TwiML {
     /**
      * Add Action attribute.
      *
-     * @param string $action Action URL
+     * @param string $action A URL specifying where Twilio should send status
+     *                       callbacks for the created outbound message.
      */
     public function setAction($action): self {
         return $this->setAttribute('action', $action);

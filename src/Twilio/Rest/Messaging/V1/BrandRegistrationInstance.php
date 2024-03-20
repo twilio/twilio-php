@@ -37,6 +37,7 @@ use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
  * @property string $status
  * @property string|null $tcrId
  * @property string|null $failureReason
+ * @property array[]|null $errors
  * @property string|null $url
  * @property int|null $brandScore
  * @property string[]|null $brandFeedback
@@ -76,6 +77,7 @@ class BrandRegistrationInstance extends InstanceResource
             'status' => Values::array_get($payload, 'status'),
             'tcrId' => Values::array_get($payload, 'tcr_id'),
             'failureReason' => Values::array_get($payload, 'failure_reason'),
+            'errors' => Values::array_get($payload, 'errors'),
             'url' => Values::array_get($payload, 'url'),
             'brandScore' => Values::array_get($payload, 'brand_score'),
             'brandFeedback' => Values::array_get($payload, 'brand_feedback'),

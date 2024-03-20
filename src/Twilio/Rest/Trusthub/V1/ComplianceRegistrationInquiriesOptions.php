@@ -55,6 +55,8 @@ abstract class ComplianceRegistrationInquiriesOptions
      * @param string $individualEmail The email address of the Individual User.
      * @param string $individualPhone The phone number of the Individual User.
      * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @param string $isvRegisteringForSelfOrTenant Indicates if the isv registering for self or tenant.
+     * @param string $statusCallbackUrl The url we call to inform you of bundle changes.
      * @return CreateComplianceRegistrationInquiriesOptions Options builder
      */
     public static function create(
@@ -92,7 +94,9 @@ abstract class ComplianceRegistrationInquiriesOptions
         string $dateOfBirth = Values::NONE,
         string $individualEmail = Values::NONE,
         string $individualPhone = Values::NONE,
-        bool $isIsvEmbed = Values::BOOL_NONE
+        bool $isIsvEmbed = Values::BOOL_NONE,
+        string $isvRegisteringForSelfOrTenant = Values::NONE,
+        string $statusCallbackUrl = Values::NONE
 
     ): CreateComplianceRegistrationInquiriesOptions
     {
@@ -130,7 +134,9 @@ abstract class ComplianceRegistrationInquiriesOptions
             $dateOfBirth,
             $individualEmail,
             $individualPhone,
-            $isIsvEmbed
+            $isIsvEmbed,
+            $isvRegisteringForSelfOrTenant,
+            $statusCallbackUrl
         );
     }
 
@@ -173,6 +179,8 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
      * @param string $individualEmail The email address of the Individual User.
      * @param string $individualPhone The phone number of the Individual User.
      * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @param string $isvRegisteringForSelfOrTenant Indicates if the isv registering for self or tenant.
+     * @param string $statusCallbackUrl The url we call to inform you of bundle changes.
      */
     public function __construct(
         
@@ -209,7 +217,9 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
         string $dateOfBirth = Values::NONE,
         string $individualEmail = Values::NONE,
         string $individualPhone = Values::NONE,
-        bool $isIsvEmbed = Values::BOOL_NONE
+        bool $isIsvEmbed = Values::BOOL_NONE,
+        string $isvRegisteringForSelfOrTenant = Values::NONE,
+        string $statusCallbackUrl = Values::NONE
 
     ) {
         $this->options['businessIdentityType'] = $businessIdentityType;
@@ -246,6 +256,8 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
         $this->options['individualEmail'] = $individualEmail;
         $this->options['individualPhone'] = $individualPhone;
         $this->options['isIsvEmbed'] = $isIsvEmbed;
+        $this->options['isvRegisteringForSelfOrTenant'] = $isvRegisteringForSelfOrTenant;
+        $this->options['statusCallbackUrl'] = $statusCallbackUrl;
     }
 
     /**
@@ -649,6 +661,30 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
     public function setIsIsvEmbed(bool $isIsvEmbed): self
     {
         $this->options['isIsvEmbed'] = $isIsvEmbed;
+        return $this;
+    }
+
+    /**
+     * Indicates if the isv registering for self or tenant.
+     *
+     * @param string $isvRegisteringForSelfOrTenant Indicates if the isv registering for self or tenant.
+     * @return $this Fluent Builder
+     */
+    public function setIsvRegisteringForSelfOrTenant(string $isvRegisteringForSelfOrTenant): self
+    {
+        $this->options['isvRegisteringForSelfOrTenant'] = $isvRegisteringForSelfOrTenant;
+        return $this;
+    }
+
+    /**
+     * The url we call to inform you of bundle changes.
+     *
+     * @param string $statusCallbackUrl The url we call to inform you of bundle changes.
+     * @return $this Fluent Builder
+     */
+    public function setStatusCallbackUrl(string $statusCallbackUrl): self
+    {
+        $this->options['statusCallbackUrl'] = $statusCallbackUrl;
         return $this;
     }
 

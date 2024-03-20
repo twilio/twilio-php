@@ -130,6 +130,10 @@ class ComplianceRegistrationInquiriesList extends ListResource
                 $options['individualPhone'],
             'IsIsvEmbed' =>
                 Serialize::booleanToString($options['isIsvEmbed']),
+            'IsvRegisteringForSelfOrTenant' =>
+                $options['isvRegisteringForSelfOrTenant'],
+            'StatusCallbackUrl' =>
+                $options['statusCallbackUrl'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
