@@ -120,7 +120,11 @@ class CurlClient implements Client {
                     [$headers, $body] = $this->buildMultipartOptions($data);
                     $options[CURLOPT_POSTFIELDS] = $body;
                     $options[CURLOPT_HTTPHEADER] = \array_merge($options[CURLOPT_HTTPHEADER], $headers);
-                } else {
+                }
+                elseif (array_key_exists('Content-Type', $headers)) {
+                    $options[CURLOPT_POSTFIELDS] = json_encode($data);
+                }
+                else {
                     $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
                     $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/x-www-form-urlencoded';
                 }
