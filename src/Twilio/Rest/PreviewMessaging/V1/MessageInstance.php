@@ -34,8 +34,8 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property int $totalMessageCount
  * @property int $successCount
  * @property int $errorCount
- * @property MessagingV1MessageReceipt[] $message_receipts
- * @property MessagingV1FailedMessageReceipt[] $failed_message_receipts
+ * @property string[] $messageReceipts
+ * @property string[] $failedMessageReceipts
  */
 class MessageInstance extends InstanceResource
 {
@@ -54,8 +54,8 @@ class MessageInstance extends InstanceResource
             'totalMessageCount' => Values::array_get($payload, 'total_message_count'),
             'successCount' => Values::array_get($payload, 'success_count'),
             'errorCount' => Values::array_get($payload, 'error_count'),
-            'message_receipts' => Values::array_get($payload, 'message_receipts'),
-            'failed_message_receipts' => Values::array_get($payload, 'failed_message_receipts'),
+            'messageReceipts' => Values::array_get($payload, 'message_receipts'),
+            'failedMessageReceipts' => Values::array_get($payload, 'failed_message_receipts'),
         ];
 
         $this->solution = [];

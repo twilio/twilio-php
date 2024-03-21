@@ -35,7 +35,7 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property \DateTime $createdDate
  * @property \DateTime $updatedDate
  * @property string $broadcastStatus
- * @property MessagingV1BroadcastExecutionDetails $execution_details
+ * @property string $executionDetails
  * @property string $resultsFile
  */
 class BroadcastInstance extends InstanceResource
@@ -56,7 +56,7 @@ class BroadcastInstance extends InstanceResource
             'createdDate' => Deserialize::dateTime(Values::array_get($payload, 'created_date')),
             'updatedDate' => Deserialize::dateTime(Values::array_get($payload, 'updated_date')),
             'broadcastStatus' => Values::array_get($payload, 'broadcast_status'),
-            'execution_details' => Values::array_get($payload, 'execution_details'),
+            'executionDetails' => Values::array_get($payload, 'execution_details'),
             'resultsFile' => Values::array_get($payload, 'results_file'),
         ];
 

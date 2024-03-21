@@ -52,25 +52,6 @@ abstract class MessageModels
         return new CreateMessagesRequest($payload);
     }
 
-    /**
-     * @property string|null $to The recipient phone number
-     * @property string|null $sid The unique string that identifies the resource
-    */
-    public static function createMessagingV1MessageReceipt(array $payload = []): MessagingV1MessageReceipt
-    {
-        return new MessagingV1MessageReceipt($payload);
-    }
-
-    /**
-     * @property string $to The recipient phone number
-     * @property string $errorMessage The description of the error_code
-     * @property int $errorCode The error code associated with the message creation attempt
-    */
-    public static function createMessagingV1FailedMessageReceipt(array $payload = []): MessagingV1FailedMessageReceipt
-    {
-        return new MessagingV1FailedMessageReceipt($payload);
-    }
-
 }
 
 class MessagingV1Message implements \JsonSerializable
@@ -190,63 +171,4 @@ class CreateMessagesRequest implements \JsonSerializable
         ];
     }
 }
-
-class MessagingV1MessageReceipt implements \JsonSerializable
-{
-    /**
-     * @property string|null $to The recipient phone number
-     * @property string|null $sid The unique string that identifies the resource
-    */
-        protected $to;
-        protected $sid;
-    public function __construct(array $payload = []) {
-        $this->to = Values::array_get($payload, 'to');
-        $this->sid = Values::array_get($payload, 'sid');
-    }
-
-    public function toArray(): array
-    {
-        return $this->jsonSerialize();
-    }
-
-    public function jsonSerialize(): array
-    {
-        return [
-            'to' => $this->to,
-            'sid' => $this->sid
-        ];
-    }
-}
-
-class MessagingV1FailedMessageReceipt implements \JsonSerializable
-{
-    /**
-     * @property string $to The recipient phone number
-     * @property string $errorMessage The description of the error_code
-     * @property int $errorCode The error code associated with the message creation attempt
-    */
-        protected $to;
-        protected $errorMessage;
-        protected $errorCode;
-    public function __construct(array $payload = []) {
-        $this->to = Values::array_get($payload, 'to');
-        $this->errorMessage = Values::array_get($payload, 'errorMessage');
-        $this->errorCode = Values::array_get($payload, 'errorCode');
-    }
-
-    public function toArray(): array
-    {
-        return $this->jsonSerialize();
-    }
-
-    public function jsonSerialize(): array
-    {
-        return [
-            'to' => $this->to,
-            'errorMessage' => $this->errorMessage,
-            'errorCode' => $this->errorCode
-        ];
-    }
-}
-
 
