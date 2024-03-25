@@ -1,6 +1,10 @@
 twilio-php Changelog
 ====================
 
+[2024-03-25] Version 8.0.0-rc.0
+---------------------------
+- Release Candidate Preparation
+
 [2024-03-12] Version 7.16.1
 ---------------------------
 **Api**
