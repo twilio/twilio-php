@@ -2,7 +2,7 @@
 
 _MAJOR version bumps will have upgrade notes posted here._
 
-[2023-03-25] 7.x.x to 8.x.x
+[2023-03-25] 7.x.x to 8.x.x-rc.x
 ---------------------------
 Twilio Php Helper Library’s major version 8.0.0-rc.x is now available. We ensured that you can upgrade to Php helper Library 8.0.0-rc.x version without any breaking changes
 Twilio Helper libraries now support nested json body while sending requests.
