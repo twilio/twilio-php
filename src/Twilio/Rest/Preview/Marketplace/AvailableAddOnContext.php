@@ -63,7 +63,7 @@ class AvailableAddOnContext extends InstanceContext
     public function fetch(): AvailableAddOnInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AvailableAddOnInstance(
             $this->version,

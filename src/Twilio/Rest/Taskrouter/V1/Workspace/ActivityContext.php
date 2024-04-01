@@ -75,7 +75,7 @@ class ActivityContext extends InstanceContext
     public function fetch(): ActivityInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ActivityInstance(
             $this->version,

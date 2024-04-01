@@ -70,7 +70,7 @@ class MessageInteractionContext extends InstanceContext
     public function fetch(): MessageInteractionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new MessageInteractionInstance(
             $this->version,

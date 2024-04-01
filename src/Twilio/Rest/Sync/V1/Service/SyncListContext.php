@@ -87,7 +87,7 @@ class SyncListContext extends InstanceContext
     public function fetch(): SyncListInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SyncListInstance(
             $this->version,

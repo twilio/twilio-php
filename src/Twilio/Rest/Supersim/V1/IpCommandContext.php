@@ -55,7 +55,7 @@ class IpCommandContext extends InstanceContext
     public function fetch(): IpCommandInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new IpCommandInstance(
             $this->version,

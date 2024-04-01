@@ -76,7 +76,7 @@ class OriginationUrlContext extends InstanceContext
     public function fetch(): OriginationUrlInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new OriginationUrlInstance(
             $this->version,

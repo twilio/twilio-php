@@ -65,7 +65,7 @@ class PublishedTrackContext extends InstanceContext
     public function fetch(): PublishedTrackInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new PublishedTrackInstance(
             $this->version,

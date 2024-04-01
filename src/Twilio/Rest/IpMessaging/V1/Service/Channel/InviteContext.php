@@ -78,7 +78,7 @@ class InviteContext extends InstanceContext
     public function fetch(): InviteInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new InviteInstance(
             $this->version,

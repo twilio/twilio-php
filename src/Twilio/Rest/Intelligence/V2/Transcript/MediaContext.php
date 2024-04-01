@@ -66,7 +66,7 @@ class MediaContext extends InstanceContext
                 Serialize::booleanToString($options['redacted']),
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new MediaInstance(
             $this->version,

@@ -63,6 +63,10 @@ class PluginList extends ListResource
                 $options['friendlyName'],
             'Description' =>
                 $options['description'],
+            'CliVersion' =>
+                $options['cliVersion'],
+            'ValidateStatus' =>
+                $options['validateStatus'],
         ]);
 
         $headers = Values::of(['Flex-Metadata' => $options['flexMetadata']]);

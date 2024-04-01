@@ -60,7 +60,7 @@ class ChannelSenderContext extends InstanceContext
     public function fetch(): ChannelSenderInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ChannelSenderInstance(
             $this->version,

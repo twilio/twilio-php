@@ -109,7 +109,7 @@ class CallContext extends InstanceContext
     public function fetch(): CallInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CallInstance(
             $this->version,

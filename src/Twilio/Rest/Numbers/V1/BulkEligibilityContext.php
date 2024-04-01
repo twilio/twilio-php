@@ -55,7 +55,7 @@ class BulkEligibilityContext extends InstanceContext
     public function fetch(): BulkEligibilityInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BulkEligibilityInstance(
             $this->version,

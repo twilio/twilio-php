@@ -80,7 +80,7 @@ class DocumentPermissionContext extends InstanceContext
     public function fetch(): DocumentPermissionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DocumentPermissionInstance(
             $this->version,

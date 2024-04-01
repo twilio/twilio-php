@@ -74,7 +74,7 @@ class ConferenceContext extends InstanceContext
     public function fetch(): ConferenceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ConferenceInstance(
             $this->version,

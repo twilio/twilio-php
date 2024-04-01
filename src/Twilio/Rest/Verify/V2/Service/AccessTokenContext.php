@@ -60,7 +60,7 @@ class AccessTokenContext extends InstanceContext
     public function fetch(): AccessTokenInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AccessTokenInstance(
             $this->version,

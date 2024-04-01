@@ -81,7 +81,7 @@ class UserChannelContext extends InstanceContext
     public function fetch(): UserChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new UserChannelInstance(
             $this->version,

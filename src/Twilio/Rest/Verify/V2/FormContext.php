@@ -55,7 +55,7 @@ class FormContext extends InstanceContext
     public function fetch(): FormInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FormInstance(
             $this->version,

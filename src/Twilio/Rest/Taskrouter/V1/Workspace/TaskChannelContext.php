@@ -76,7 +76,7 @@ class TaskChannelContext extends InstanceContext
     public function fetch(): TaskChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TaskChannelInstance(
             $this->version,

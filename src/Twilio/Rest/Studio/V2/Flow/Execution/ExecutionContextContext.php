@@ -60,7 +60,7 @@ class ExecutionContextContext extends InstanceContext
     public function fetch(): ExecutionContextInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ExecutionContextInstance(
             $this->version,

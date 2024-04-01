@@ -55,7 +55,7 @@ class AlertContext extends InstanceContext
     public function fetch(): AlertInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AlertInstance(
             $this->version,

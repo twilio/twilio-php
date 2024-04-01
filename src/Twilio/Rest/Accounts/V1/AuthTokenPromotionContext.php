@@ -50,7 +50,7 @@ class AuthTokenPromotionContext extends InstanceContext
     public function update(): AuthTokenPromotionInstance
     {
 
-        $payload = $this->version->update('POST', $this->uri);
+        $payload = $this->version->update('POST', $this->uri, [], []);
 
         return new AuthTokenPromotionInstance(
             $this->version,

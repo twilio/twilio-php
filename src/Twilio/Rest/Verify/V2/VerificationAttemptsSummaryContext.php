@@ -71,7 +71,7 @@ class VerificationAttemptsSummaryContext extends InstanceContext
                 $options['destinationPrefix'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new VerificationAttemptsSummaryInstance(
             $this->version,

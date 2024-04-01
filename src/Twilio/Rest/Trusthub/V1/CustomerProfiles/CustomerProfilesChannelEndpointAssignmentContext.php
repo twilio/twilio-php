@@ -73,7 +73,7 @@ class CustomerProfilesChannelEndpointAssignmentContext extends InstanceContext
     public function fetch(): CustomerProfilesChannelEndpointAssignmentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CustomerProfilesChannelEndpointAssignmentInstance(
             $this->version,

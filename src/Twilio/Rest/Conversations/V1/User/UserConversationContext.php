@@ -76,7 +76,7 @@ class UserConversationContext extends InstanceContext
     public function fetch(): UserConversationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new UserConversationInstance(
             $this->version,

@@ -55,7 +55,7 @@ class RegulationContext extends InstanceContext
     public function fetch(): RegulationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RegulationInstance(
             $this->version,

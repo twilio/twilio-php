@@ -60,7 +60,7 @@ class ConfigurationContext extends InstanceContext
                 $options['uiVersion'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new ConfigurationInstance(
             $this->version,

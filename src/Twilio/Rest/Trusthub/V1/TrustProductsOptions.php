@@ -38,9 +38,9 @@ abstract class TrustProductsOptions
 
 
     /**
-     * @param string $status The verification status of the Customer-Profile resource.
+     * @param string $status The verification status of the Trust Product resource.
      * @param string $friendlyName The string that you assigned to describe the resource.
-     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
+     * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
      * @return ReadTrustProductsOptions Options builder
      */
     public static function read(
@@ -62,7 +62,7 @@ abstract class TrustProductsOptions
      * @param string $status
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @param string $friendlyName The string that you assigned to describe the resource.
-     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
+     * @param string $email The email address that will receive updates when the Trust Product resource changes status.
      * @return UpdateTrustProductsOptions Options builder
      */
     public static function update(
@@ -126,9 +126,9 @@ class CreateTrustProductsOptions extends Options
 class ReadTrustProductsOptions extends Options
     {
     /**
-     * @param string $status The verification status of the Customer-Profile resource.
+     * @param string $status The verification status of the Trust Product resource.
      * @param string $friendlyName The string that you assigned to describe the resource.
-     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
+     * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
      */
     public function __construct(
         
@@ -143,9 +143,9 @@ class ReadTrustProductsOptions extends Options
     }
 
     /**
-     * The verification status of the Customer-Profile resource.
+     * The verification status of the Trust Product resource.
      *
-     * @param string $status The verification status of the Customer-Profile resource.
+     * @param string $status The verification status of the Trust Product resource.
      * @return $this Fluent Builder
      */
     public function setStatus(string $status): self
@@ -167,9 +167,9 @@ class ReadTrustProductsOptions extends Options
     }
 
     /**
-     * The unique string of a policy that is associated to the Customer-Profile resource.
+     * The unique string of a policy that is associated to the Trust Product resource.
      *
-     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
+     * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
      * @return $this Fluent Builder
      */
     public function setPolicySid(string $policySid): self
@@ -196,7 +196,7 @@ class UpdateTrustProductsOptions extends Options
      * @param string $status
      * @param string $statusCallback The URL we call to inform your application of status changes.
      * @param string $friendlyName The string that you assigned to describe the resource.
-     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
+     * @param string $email The email address that will receive updates when the Trust Product resource changes status.
      */
     public function __construct(
         
@@ -247,9 +247,9 @@ class UpdateTrustProductsOptions extends Options
     }
 
     /**
-     * The email address that will receive updates when the Customer-Profile resource changes status.
+     * The email address that will receive updates when the Trust Product resource changes status.
      *
-     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
+     * @param string $email The email address that will receive updates when the Trust Product resource changes status.
      * @return $this Fluent Builder
      */
     public function setEmail(string $email): self

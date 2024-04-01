@@ -83,7 +83,7 @@ class PayloadContext extends InstanceContext
     public function fetch(): PayloadInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new PayloadInstance(
             $this->version,

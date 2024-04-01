@@ -80,7 +80,7 @@ class IpAddressContext extends InstanceContext
     public function fetch(): IpAddressInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new IpAddressInstance(
             $this->version,

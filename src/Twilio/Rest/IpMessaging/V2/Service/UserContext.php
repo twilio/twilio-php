@@ -87,7 +87,7 @@ class UserContext extends InstanceContext
     public function fetch(): UserInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new UserInstance(
             $this->version,

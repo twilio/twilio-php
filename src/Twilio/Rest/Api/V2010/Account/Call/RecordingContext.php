@@ -80,7 +80,7 @@ class RecordingContext extends InstanceContext
     public function fetch(): RecordingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RecordingInstance(
             $this->version,

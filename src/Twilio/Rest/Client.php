@@ -31,12 +31,12 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
  * @property Lookups $lookups
- * @property Media $media
  * @property Messaging $messaging
  * @property Microvisor $microvisor
  * @property Monitor $monitor
  * @property Notify $notify
  * @property Numbers $numbers
+ * @property Oauth $oauth
  * @property Preview $preview
  * @property Pricing $pricing
  * @property Proxy $proxy
@@ -109,12 +109,12 @@ class Client extends BaseClient {
     protected $_intelligence;
     protected $_ipMessaging;
     protected $_lookups;
-    protected $_media;
     protected $_messaging;
     protected $_microvisor;
     protected $_monitor;
     protected $_notify;
     protected $_numbers;
+    protected $_oauth;
     protected $_preview;
     protected $_pricing;
     protected $_proxy;
@@ -275,17 +275,6 @@ class Client extends BaseClient {
         return $this->_lookups;
     }
     /**
-     * Access the Media Twilio Domain
-     *
-     * @return Media Media Twilio Domain
-     */
-    protected function getMedia(): Media {
-        if (!$this->_media) {
-            $this->_media = new Media($this);
-        }
-        return $this->_media;
-    }
-    /**
      * Access the Messaging Twilio Domain
      *
      * @return Messaging Messaging Twilio Domain
@@ -339,6 +328,17 @@ class Client extends BaseClient {
             $this->_numbers = new Numbers($this);
         }
         return $this->_numbers;
+    }
+    /**
+     * Access the Oauth Twilio Domain
+     *
+     * @return Oauth Oauth Twilio Domain
+     */
+    protected function getOauth(): Oauth {
+        if (!$this->_oauth) {
+            $this->_oauth = new Oauth($this);
+        }
+        return $this->_oauth;
     }
     /**
      * Access the Preview Twilio Domain

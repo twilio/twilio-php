@@ -57,7 +57,7 @@ class FlowTestUserContext extends InstanceContext
     public function fetch(): FlowTestUserInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FlowTestUserInstance(
             $this->version,

@@ -47,8 +47,8 @@ class TrustProductsList extends ListResource
      * Create the TrustProductsInstance
      *
      * @param string $friendlyName The string that you assigned to describe the resource.
-     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
-     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
+     * @param string $email The email address that will receive updates when the Trust Product resource changes status.
+     * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
      * @param array|Options $options Optional Arguments
      * @return TrustProductsInstance Created TrustProductsInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -183,7 +183,7 @@ class TrustProductsList extends ListResource
     /**
      * Constructs a TrustProductsContext
      *
-     * @param string $sid The unique string that we created to identify the Customer-Profile resource.
+     * @param string $sid The unique string that we created to identify the Trust Product resource.
      */
     public function getContext(
         string $sid

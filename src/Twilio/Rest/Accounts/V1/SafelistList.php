@@ -104,7 +104,7 @@ class SafelistList extends ListResource
                 $options['phoneNumber'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new SafelistInstance(
             $this->version,

@@ -78,7 +78,7 @@ class CredentialListMappingContext extends InstanceContext
     public function fetch(): CredentialListMappingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CredentialListMappingInstance(
             $this->version,

@@ -115,7 +115,7 @@ class WorkspaceContext extends InstanceContext
     public function fetch(): WorkspaceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new WorkspaceInstance(
             $this->version,

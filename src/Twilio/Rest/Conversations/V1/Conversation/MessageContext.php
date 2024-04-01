@@ -89,7 +89,7 @@ class MessageContext extends InstanceContext
     public function fetch(): MessageInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new MessageInstance(
             $this->version,

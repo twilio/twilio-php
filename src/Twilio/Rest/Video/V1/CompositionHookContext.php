@@ -71,7 +71,7 @@ class CompositionHookContext extends InstanceContext
     public function fetch(): CompositionHookInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CompositionHookInstance(
             $this->version,

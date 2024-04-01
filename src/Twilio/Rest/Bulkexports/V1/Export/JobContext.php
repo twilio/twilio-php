@@ -68,7 +68,7 @@ class JobContext extends InstanceContext
     public function fetch(): JobInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new JobInstance(
             $this->version,

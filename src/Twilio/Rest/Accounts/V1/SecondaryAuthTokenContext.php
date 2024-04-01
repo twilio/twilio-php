@@ -50,7 +50,7 @@ class SecondaryAuthTokenContext extends InstanceContext
     public function create(): SecondaryAuthTokenInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri);
+        $payload = $this->version->create('POST', $this->uri, [], []);
 
         return new SecondaryAuthTokenInstance(
             $this->version,

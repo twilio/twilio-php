@@ -80,7 +80,7 @@ class BucketContext extends InstanceContext
     public function fetch(): BucketInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BucketInstance(
             $this->version,

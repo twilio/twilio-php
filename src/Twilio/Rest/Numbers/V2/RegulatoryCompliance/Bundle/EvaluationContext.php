@@ -60,7 +60,7 @@ class EvaluationContext extends InstanceContext
     public function fetch(): EvaluationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EvaluationInstance(
             $this->version,

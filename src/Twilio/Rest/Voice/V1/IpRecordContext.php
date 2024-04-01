@@ -70,7 +70,7 @@ class IpRecordContext extends InstanceContext
     public function fetch(): IpRecordInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new IpRecordInstance(
             $this->version,

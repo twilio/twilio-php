@@ -73,7 +73,7 @@ class AlphaSenderContext extends InstanceContext
     public function fetch(): AlphaSenderInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AlphaSenderInstance(
             $this->version,

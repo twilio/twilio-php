@@ -75,7 +75,7 @@ class ChallengeContext extends InstanceContext
     public function fetch(): ChallengeInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ChallengeInstance(
             $this->version,

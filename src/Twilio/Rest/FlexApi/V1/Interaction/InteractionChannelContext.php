@@ -74,7 +74,7 @@ class InteractionChannelContext extends InstanceContext
     public function fetch(): InteractionChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new InteractionChannelInstance(
             $this->version,

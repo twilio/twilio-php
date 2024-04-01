@@ -65,7 +65,7 @@ class CallSummaryContext extends InstanceContext
                 $options['processingState'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new CallSummaryInstance(
             $this->version,

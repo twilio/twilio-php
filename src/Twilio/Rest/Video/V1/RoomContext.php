@@ -71,7 +71,7 @@ class RoomContext extends InstanceContext
     public function fetch(): RoomInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RoomInstance(
             $this->version,

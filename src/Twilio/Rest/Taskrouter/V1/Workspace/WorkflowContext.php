@@ -91,7 +91,7 @@ class WorkflowContext extends InstanceContext
     public function fetch(): WorkflowInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new WorkflowInstance(
             $this->version,

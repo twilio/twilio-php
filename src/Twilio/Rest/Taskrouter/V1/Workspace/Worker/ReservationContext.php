@@ -68,7 +68,7 @@ class ReservationContext extends InstanceContext
     public function fetch(): ReservationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ReservationInstance(
             $this->version,

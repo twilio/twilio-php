@@ -70,7 +70,7 @@ class RatePlanContext extends InstanceContext
     public function fetch(): RatePlanInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RatePlanInstance(
             $this->version,

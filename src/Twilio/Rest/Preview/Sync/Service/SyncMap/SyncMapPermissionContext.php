@@ -80,7 +80,7 @@ class SyncMapPermissionContext extends InstanceContext
     public function fetch(): SyncMapPermissionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SyncMapPermissionInstance(
             $this->version,

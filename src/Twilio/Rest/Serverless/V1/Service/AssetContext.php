@@ -82,7 +82,7 @@ class AssetContext extends InstanceContext
     public function fetch(): AssetInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AssetInstance(
             $this->version,

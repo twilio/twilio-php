@@ -18,6 +18,7 @@ namespace Twilio\Rest\Trusthub\V1\CustomerProfiles;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -78,6 +79,7 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -88,9 +90,9 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CustomerProfilesEntityAssignmentsInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array
+    public function read(array $options = [], int $limit = null, $pageSize = null): array
     {
-        return \iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
@@ -101,6 +103,7 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -111,11 +114,11 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream
+    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page($options, $limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -130,13 +133,17 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
      * @return CustomerProfilesEntityAssignmentsPage Page of CustomerProfilesEntityAssignmentsInstance
      */
     public function page(
+        array $options = [],
         $pageSize = Values::NONE,
         string $pageToken = Values::NONE,
         $pageNumber = Values::NONE
     ): CustomerProfilesEntityAssignmentsPage
     {
+        $options = new Values($options);
 
         $params = Values::of([
+            'ObjectType' =>
+                $options['objectType'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -58,7 +58,7 @@ class ConfigurationContext extends InstanceContext
     public function fetch(): ConfigurationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ConfigurationInstance(
             $this->version,

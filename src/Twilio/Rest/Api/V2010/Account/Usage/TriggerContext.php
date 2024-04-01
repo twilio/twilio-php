@@ -75,7 +75,7 @@ class TriggerContext extends InstanceContext
     public function fetch(): TriggerInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TriggerInstance(
             $this->version,

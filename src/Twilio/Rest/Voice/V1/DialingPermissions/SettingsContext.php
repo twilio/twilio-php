@@ -53,7 +53,7 @@ class SettingsContext extends InstanceContext
     public function fetch(): SettingsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SettingsInstance(
             $this->version,

@@ -67,7 +67,7 @@ class UsageContext extends InstanceContext
                 $options['start'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new UsageInstance(
             $this->version,

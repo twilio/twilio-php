@@ -60,7 +60,7 @@ class BuildStatusContext extends InstanceContext
     public function fetch(): BuildStatusInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BuildStatusInstance(
             $this->version,

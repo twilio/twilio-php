@@ -60,7 +60,7 @@ class ParticipantContext extends InstanceContext
     public function fetch(): ParticipantInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ParticipantInstance(
             $this->version,

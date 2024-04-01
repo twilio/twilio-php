@@ -49,7 +49,7 @@ class UsecaseList extends ListResource
     public function fetch(): UsecaseInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new UsecaseInstance(
             $this->version,
