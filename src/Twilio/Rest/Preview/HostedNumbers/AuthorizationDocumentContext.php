@@ -65,7 +65,7 @@ class AuthorizationDocumentContext extends InstanceContext
     public function fetch(): AuthorizationDocumentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AuthorizationDocumentInstance(
             $this->version,

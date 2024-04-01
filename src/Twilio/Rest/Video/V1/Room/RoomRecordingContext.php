@@ -73,7 +73,7 @@ class RoomRecordingContext extends InstanceContext
     public function fetch(): RoomRecordingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RoomRecordingInstance(
             $this->version,

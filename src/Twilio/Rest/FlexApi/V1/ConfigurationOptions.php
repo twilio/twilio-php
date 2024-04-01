@@ -35,6 +35,7 @@ abstract class ConfigurationOptions
         );
     }
 
+
 }
 
 class FetchConfigurationOptions extends Options
@@ -73,4 +74,5 @@ class FetchConfigurationOptions extends Options
         return '[Twilio.FlexApi.V1.FetchConfigurationOptions ' . $options . ']';
     }
 }
+
 

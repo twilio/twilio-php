@@ -69,7 +69,7 @@ class SourceIpMappingContext extends InstanceContext
     public function fetch(): SourceIpMappingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SourceIpMappingInstance(
             $this->version,

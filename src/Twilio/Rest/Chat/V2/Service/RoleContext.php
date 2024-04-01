@@ -75,7 +75,7 @@ class RoleContext extends InstanceContext
     public function fetch(): RoleInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RoleInstance(
             $this->version,

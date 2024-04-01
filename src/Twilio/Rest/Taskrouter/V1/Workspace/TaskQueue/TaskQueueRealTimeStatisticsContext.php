@@ -70,7 +70,7 @@ class TaskQueueRealTimeStatisticsContext extends InstanceContext
                 $options['taskChannel'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new TaskQueueRealTimeStatisticsInstance(
             $this->version,

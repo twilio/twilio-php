@@ -60,7 +60,7 @@ class AnonymizeContext extends InstanceContext
     public function update(): AnonymizeInstance
     {
 
-        $payload = $this->version->update('POST', $this->uri);
+        $payload = $this->version->update('POST', $this->uri, [], []);
 
         return new AnonymizeInstance(
             $this->version,

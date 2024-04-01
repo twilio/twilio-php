@@ -35,7 +35,7 @@ class PreviewMessagingBase extends Domain {
 
 
     /**
-     * @return V1 Version v1 of PreviewMessaging
+     * @return V1 Version v1 of preview.messaging
      */
     protected function getV1(): V1 {
         if (!$this->_v1) {

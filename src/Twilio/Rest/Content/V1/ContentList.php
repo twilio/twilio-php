@@ -16,6 +16,7 @@
 
 namespace Twilio\Rest\Content\V1;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
@@ -40,6 +41,27 @@ class ContentList extends ListResource
 
         $this->uri = '/Content';
     }
+
+    /**
+     * Create the ContentInstance
+     *
+     * @param ContentCreateRequest $contentCreateRequest
+     * @return ContentInstance Created ContentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(ContentCreateRequest $contentCreateRequest): ContentInstance
+    {
+
+        $data = $contentCreateRequest->toArray();
+        $headers['Content-Type'] = 'application/json';
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+
+        return new ContentInstance(
+            $this->version,
+            $payload
+        );
+    }
+
 
     /**
      * Reads ContentInstance records from the API as a list.

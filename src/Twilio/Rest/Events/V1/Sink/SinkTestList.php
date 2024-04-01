@@ -55,7 +55,7 @@ class SinkTestList extends ListResource
     public function create(): SinkTestInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri);
+        $payload = $this->version->create('POST', $this->uri, [], []);
 
         return new SinkTestInstance(
             $this->version,

@@ -58,7 +58,7 @@ class ExportConfigurationContext extends InstanceContext
     public function fetch(): ExportConfigurationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ExportConfigurationInstance(
             $this->version,

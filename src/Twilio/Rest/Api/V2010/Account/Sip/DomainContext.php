@@ -91,7 +91,7 @@ class DomainContext extends InstanceContext
     public function fetch(): DomainInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DomainInstance(
             $this->version,

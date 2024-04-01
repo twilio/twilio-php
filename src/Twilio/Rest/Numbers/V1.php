@@ -19,14 +19,18 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Numbers\V1\BulkEligibilityList;
+use Twilio\Rest\Numbers\V1\EligibilityList;
 use Twilio\Rest\Numbers\V1\PortingBulkPortabilityList;
+use Twilio\Rest\Numbers\V1\PortingPortInList;
 use Twilio\Rest\Numbers\V1\PortingPortInFetchList;
 use Twilio\Rest\Numbers\V1\PortingPortabilityList;
 use Twilio\Version;
 
 /**
  * @property BulkEligibilityList $bulkEligibilities
+ * @property EligibilityList $eligibilities
  * @property PortingBulkPortabilityList $portingBulkPortabilities
+ * @property PortingPortInList $portingPortIns
  * @property PortingPortInFetchList $portingPortInsFetch
  * @property PortingPortabilityList $portingPortabilities
  * @method \Twilio\Rest\Numbers\V1\BulkEligibilityContext bulkEligibilities(string $requestId)
@@ -37,7 +41,9 @@ use Twilio\Version;
 class V1 extends Version
 {
     protected $_bulkEligibilities;
+    protected $_eligibilities;
     protected $_portingBulkPortabilities;
+    protected $_portingPortIns;
     protected $_portingPortInsFetch;
     protected $_portingPortabilities;
 
@@ -60,12 +66,28 @@ class V1 extends Version
         return $this->_bulkEligibilities;
     }
 
+    protected function getEligibilities(): EligibilityList
+    {
+        if (!$this->_eligibilities) {
+            $this->_eligibilities = new EligibilityList($this);
+        }
+        return $this->_eligibilities;
+    }
+
     protected function getPortingBulkPortabilities(): PortingBulkPortabilityList
     {
         if (!$this->_portingBulkPortabilities) {
             $this->_portingBulkPortabilities = new PortingBulkPortabilityList($this);
         }
         return $this->_portingBulkPortabilities;
+    }
+
+    protected function getPortingPortIns(): PortingPortInList
+    {
+        if (!$this->_portingPortIns) {
+            $this->_portingPortIns = new PortingPortInList($this);
+        }
+        return $this->_portingPortIns;
     }
 
     protected function getPortingPortInsFetch(): PortingPortInFetchList

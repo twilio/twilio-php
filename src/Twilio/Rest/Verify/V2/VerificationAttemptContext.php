@@ -55,7 +55,7 @@ class VerificationAttemptContext extends InstanceContext
     public function fetch(): VerificationAttemptInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new VerificationAttemptInstance(
             $this->version,

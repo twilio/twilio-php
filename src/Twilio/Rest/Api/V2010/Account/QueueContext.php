@@ -83,7 +83,7 @@ class QueueContext extends InstanceContext
     public function fetch(): QueueInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new QueueInstance(
             $this->version,

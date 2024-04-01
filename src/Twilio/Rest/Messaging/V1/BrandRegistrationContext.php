@@ -66,7 +66,7 @@ class BrandRegistrationContext extends InstanceContext
     public function fetch(): BrandRegistrationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BrandRegistrationInstance(
             $this->version,
@@ -85,7 +85,7 @@ class BrandRegistrationContext extends InstanceContext
     public function update(): BrandRegistrationInstance
     {
 
-        $payload = $this->version->update('POST', $this->uri);
+        $payload = $this->version->update('POST', $this->uri, [], []);
 
         return new BrandRegistrationInstance(
             $this->version,

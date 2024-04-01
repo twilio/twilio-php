@@ -31,14 +31,14 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
  * @property Lookups $lookups
- * @property Media $media
+ * @property PreviewMessaging $previewMessaging
  * @property Messaging $messaging
  * @property Microvisor $microvisor
  * @property Monitor $monitor
  * @property Notify $notify
  * @property Numbers $numbers
+ * @property Oauth $oauth
  * @property Preview $preview
- * @property PreviewMessaging $previewMessaging
  * @property Pricing $pricing
  * @property Proxy $proxy
  * @property Routes $routes
@@ -110,14 +110,14 @@ class Client extends BaseClient {
     protected $_intelligence;
     protected $_ipMessaging;
     protected $_lookups;
-    protected $_media;
+    protected $_previewMessaging;
     protected $_messaging;
     protected $_microvisor;
     protected $_monitor;
     protected $_notify;
     protected $_numbers;
+    protected $_oauth;
     protected $_preview;
-    protected $_previewMessaging;
     protected $_pricing;
     protected $_proxy;
     protected $_routes;
@@ -277,15 +277,15 @@ class Client extends BaseClient {
         return $this->_lookups;
     }
     /**
-     * Access the Media Twilio Domain
+     * Access the PreviewMessaging Twilio Domain
      *
-     * @return Media Media Twilio Domain
+     * @return PreviewMessaging PreviewMessaging Twilio Domain
      */
-    protected function getMedia(): Media {
-        if (!$this->_media) {
-            $this->_media = new Media($this);
+    protected function getPreviewMessaging(): PreviewMessaging {
+        if (!$this->_previewMessaging) {
+            $this->_previewMessaging = new PreviewMessaging($this);
         }
-        return $this->_media;
+        return $this->_previewMessaging;
     }
     /**
      * Access the Messaging Twilio Domain
@@ -343,6 +343,17 @@ class Client extends BaseClient {
         return $this->_numbers;
     }
     /**
+     * Access the Oauth Twilio Domain
+     *
+     * @return Oauth Oauth Twilio Domain
+     */
+    protected function getOauth(): Oauth {
+        if (!$this->_oauth) {
+            $this->_oauth = new Oauth($this);
+        }
+        return $this->_oauth;
+    }
+    /**
      * Access the Preview Twilio Domain
      *
      * @return Preview Preview Twilio Domain
@@ -352,17 +363,6 @@ class Client extends BaseClient {
             $this->_preview = new Preview($this);
         }
         return $this->_preview;
-    }
-    /**
-     * Access the PreviewMessaging Twilio Domain
-     *
-     * @return PreviewMessaging PreviewMessaging Twilio Domain
-     */
-    protected function getPreviewMessaging(): PreviewMessaging {
-        if (!$this->_previewMessaging) {
-            $this->_previewMessaging = new PreviewMessaging($this);
-        }
-        return $this->_previewMessaging;
     }
     /**
      * Access the Pricing Twilio Domain

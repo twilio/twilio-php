@@ -88,7 +88,7 @@ class EntityContext extends InstanceContext
     public function fetch(): EntityInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EntityInstance(
             $this->version,

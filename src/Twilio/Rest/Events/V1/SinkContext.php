@@ -79,7 +79,7 @@ class SinkContext extends InstanceContext
     public function fetch(): SinkInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SinkInstance(
             $this->version,

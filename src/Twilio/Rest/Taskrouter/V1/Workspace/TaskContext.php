@@ -89,7 +89,7 @@ class TaskContext extends InstanceContext
     public function fetch(): TaskInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TaskInstance(
             $this->version,

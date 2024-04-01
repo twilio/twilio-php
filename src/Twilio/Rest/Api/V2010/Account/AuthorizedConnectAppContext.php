@@ -60,7 +60,7 @@ class AuthorizedConnectAppContext extends InstanceContext
     public function fetch(): AuthorizedConnectAppInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AuthorizedConnectAppInstance(
             $this->version,

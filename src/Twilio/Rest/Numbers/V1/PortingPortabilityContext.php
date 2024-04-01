@@ -65,7 +65,7 @@ class PortingPortabilityContext extends InstanceContext
                 $options['targetAccountSid'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new PortingPortabilityInstance(
             $this->version,

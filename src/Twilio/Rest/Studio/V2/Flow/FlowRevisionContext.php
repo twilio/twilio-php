@@ -60,7 +60,7 @@ class FlowRevisionContext extends InstanceContext
     public function fetch(): FlowRevisionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FlowRevisionInstance(
             $this->version,

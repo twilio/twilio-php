@@ -65,7 +65,7 @@ class BulkHostedNumberOrderContext extends InstanceContext
                 $options['orderStatus'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new BulkHostedNumberOrderInstance(
             $this->version,

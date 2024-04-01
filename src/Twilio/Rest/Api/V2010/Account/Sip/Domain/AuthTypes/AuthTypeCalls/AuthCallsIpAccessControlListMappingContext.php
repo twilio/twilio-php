@@ -78,7 +78,7 @@ class AuthCallsIpAccessControlListMappingContext extends InstanceContext
     public function fetch(): AuthCallsIpAccessControlListMappingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AuthCallsIpAccessControlListMappingInstance(
             $this->version,

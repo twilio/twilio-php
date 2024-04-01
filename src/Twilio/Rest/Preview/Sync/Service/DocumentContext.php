@@ -84,7 +84,7 @@ class DocumentContext extends InstanceContext
     public function fetch(): DocumentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DocumentInstance(
             $this->version,

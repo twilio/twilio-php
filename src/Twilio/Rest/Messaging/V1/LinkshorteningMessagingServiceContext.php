@@ -60,7 +60,7 @@ class LinkshorteningMessagingServiceContext extends InstanceContext
     public function create(): LinkshorteningMessagingServiceInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri);
+        $payload = $this->version->create('POST', $this->uri, [], []);
 
         return new LinkshorteningMessagingServiceInstance(
             $this->version,

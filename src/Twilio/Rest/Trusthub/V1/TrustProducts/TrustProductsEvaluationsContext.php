@@ -60,7 +60,7 @@ class TrustProductsEvaluationsContext extends InstanceContext
     public function fetch(): TrustProductsEvaluationsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TrustProductsEvaluationsInstance(
             $this->version,

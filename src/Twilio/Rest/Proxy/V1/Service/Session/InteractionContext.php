@@ -78,7 +78,7 @@ class InteractionContext extends InstanceContext
     public function fetch(): InteractionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new InteractionInstance(
             $this->version,

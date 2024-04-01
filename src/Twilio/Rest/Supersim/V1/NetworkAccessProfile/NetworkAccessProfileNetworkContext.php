@@ -73,7 +73,7 @@ class NetworkAccessProfileNetworkContext extends InstanceContext
     public function fetch(): NetworkAccessProfileNetworkInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new NetworkAccessProfileNetworkInstance(
             $this->version,

@@ -65,7 +65,7 @@ class LogContext extends InstanceContext
     public function fetch(): LogInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new LogInstance(
             $this->version,

@@ -19,6 +19,7 @@ namespace Twilio\Rest\Trusthub\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -36,8 +37,9 @@ class ComplianceRegistrationInquiriesInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $registrationId The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call.
      */
-    public function __construct(Version $version, array $payload)
+    public function __construct(Version $version, array $payload, string $registrationId = null)
     {
         parent::__construct($version);
 
@@ -49,7 +51,38 @@ class ComplianceRegistrationInquiriesInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = [];
+        $this->solution = ['registrationId' => $registrationId ?: $this->properties['registrationId'], ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return ComplianceRegistrationInquiriesContext Context for this ComplianceRegistrationInquiriesInstance
+     */
+    protected function proxy(): ComplianceRegistrationInquiriesContext
+    {
+        if (!$this->context) {
+            $this->context = new ComplianceRegistrationInquiriesContext(
+                $this->version,
+                $this->solution['registrationId']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Update the ComplianceRegistrationInquiriesInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ComplianceRegistrationInquiriesInstance Updated ComplianceRegistrationInquiriesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): ComplianceRegistrationInquiriesInstance
+    {
+
+        return $this->proxy()->update($options);
     }
 
     /**
@@ -80,7 +113,11 @@ class ComplianceRegistrationInquiriesInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Trusthub.V1.ComplianceRegistrationInquiriesInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Trusthub.V1.ComplianceRegistrationInquiriesInstance ' . \implode(' ', $context) . ']';
     }
 }
 

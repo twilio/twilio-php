@@ -89,7 +89,7 @@ class PhoneNumberContext extends InstanceContext
                 $options['lastVerifiedDate'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new PhoneNumberInstance(
             $this->version,

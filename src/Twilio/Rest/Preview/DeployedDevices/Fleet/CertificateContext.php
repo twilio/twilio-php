@@ -75,7 +75,7 @@ class CertificateContext extends InstanceContext
     public function fetch(): CertificateInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CertificateInstance(
             $this->version,

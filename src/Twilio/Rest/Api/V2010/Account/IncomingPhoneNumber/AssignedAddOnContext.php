@@ -86,7 +86,7 @@ class AssignedAddOnContext extends InstanceContext
     public function fetch(): AssignedAddOnInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AssignedAddOnInstance(
             $this->version,

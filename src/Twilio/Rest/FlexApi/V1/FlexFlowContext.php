@@ -71,7 +71,7 @@ class FlexFlowContext extends InstanceContext
     public function fetch(): FlexFlowInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FlexFlowInstance(
             $this->version,

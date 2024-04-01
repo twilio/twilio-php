@@ -73,7 +73,7 @@ class TrustProductsEntityAssignmentsContext extends InstanceContext
     public function fetch(): TrustProductsEntityAssignmentsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TrustProductsEntityAssignmentsInstance(
             $this->version,

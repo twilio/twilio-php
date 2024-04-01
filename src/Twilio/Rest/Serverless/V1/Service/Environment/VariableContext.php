@@ -80,7 +80,7 @@ class VariableContext extends InstanceContext
     public function fetch(): VariableInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new VariableInstance(
             $this->version,

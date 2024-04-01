@@ -82,7 +82,7 @@ class IpAccessControlListContext extends InstanceContext
     public function fetch(): IpAccessControlListInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new IpAccessControlListInstance(
             $this->version,

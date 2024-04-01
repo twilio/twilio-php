@@ -91,7 +91,7 @@ class TaskQueueContext extends InstanceContext
     public function fetch(): TaskQueueInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TaskQueueInstance(
             $this->version,

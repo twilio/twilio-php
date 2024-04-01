@@ -87,7 +87,7 @@ class FlowContext extends InstanceContext
     public function fetch(): FlowInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FlowInstance(
             $this->version,

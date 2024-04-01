@@ -68,7 +68,7 @@ class HostedNumberOrderContext extends InstanceContext
     public function fetch(): HostedNumberOrderInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new HostedNumberOrderInstance(
             $this->version,

@@ -76,7 +76,7 @@ class PhoneNumberContext extends InstanceContext
     public function fetch(): PhoneNumberInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new PhoneNumberInstance(
             $this->version,

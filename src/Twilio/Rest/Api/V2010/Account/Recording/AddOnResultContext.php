@@ -86,7 +86,7 @@ class AddOnResultContext extends InstanceContext
     public function fetch(): AddOnResultInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AddOnResultInstance(
             $this->version,

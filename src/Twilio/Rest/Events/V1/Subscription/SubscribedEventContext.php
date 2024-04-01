@@ -75,7 +75,7 @@ class SubscribedEventContext extends InstanceContext
     public function fetch(): SubscribedEventInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SubscribedEventInstance(
             $this->version,

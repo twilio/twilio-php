@@ -55,7 +55,7 @@ class CountryContext extends InstanceContext
     public function fetch(): CountryInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CountryInstance(
             $this->version,

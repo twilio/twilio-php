@@ -68,7 +68,7 @@ class WorkerChannelContext extends InstanceContext
     public function fetch(): WorkerChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new WorkerChannelInstance(
             $this->version,

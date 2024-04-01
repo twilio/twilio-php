@@ -70,7 +70,7 @@ class AssignedAddOnExtensionContext extends InstanceContext
     public function fetch(): AssignedAddOnExtensionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AssignedAddOnExtensionInstance(
             $this->version,

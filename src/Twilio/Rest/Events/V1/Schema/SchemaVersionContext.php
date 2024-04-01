@@ -60,7 +60,7 @@ class SchemaVersionContext extends InstanceContext
     public function fetch(): SchemaVersionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SchemaVersionInstance(
             $this->version,

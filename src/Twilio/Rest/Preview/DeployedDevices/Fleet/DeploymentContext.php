@@ -75,7 +75,7 @@ class DeploymentContext extends InstanceContext
     public function fetch(): DeploymentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DeploymentInstance(
             $this->version,

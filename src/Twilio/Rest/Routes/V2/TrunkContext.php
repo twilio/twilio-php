@@ -57,7 +57,7 @@ class TrunkContext extends InstanceContext
     public function fetch(): TrunkInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TrunkInstance(
             $this->version,

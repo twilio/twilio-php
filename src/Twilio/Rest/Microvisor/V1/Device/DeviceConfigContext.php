@@ -74,7 +74,7 @@ class DeviceConfigContext extends InstanceContext
     public function fetch(): DeviceConfigInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DeviceConfigInstance(
             $this->version,

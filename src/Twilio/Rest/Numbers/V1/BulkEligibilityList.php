@@ -16,6 +16,7 @@
 
 namespace Twilio\Rest\Numbers\V1;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 
@@ -35,7 +36,29 @@ class BulkEligibilityList extends ListResource
         // Path Solution
         $this->solution = [
         ];
+
+        $this->uri = '/HostedNumber/Eligibility/Bulk';
     }
+
+    /**
+     * Create the BulkEligibilityInstance
+     *
+     * @return BulkEligibilityInstance Created BulkEligibilityInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(): BulkEligibilityInstance
+    {
+
+        $data = $body->toArray();
+        $headers['Content-Type'] = 'application/json';
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+
+        return new BulkEligibilityInstance(
+            $this->version,
+            $payload
+        );
+    }
+
 
     /**
      * Constructs a BulkEligibilityContext

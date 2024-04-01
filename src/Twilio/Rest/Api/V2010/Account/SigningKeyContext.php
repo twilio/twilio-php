@@ -75,7 +75,7 @@ class SigningKeyContext extends InstanceContext
     public function fetch(): SigningKeyInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SigningKeyInstance(
             $this->version,

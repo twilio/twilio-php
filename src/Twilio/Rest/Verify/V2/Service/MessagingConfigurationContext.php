@@ -74,7 +74,7 @@ class MessagingConfigurationContext extends InstanceContext
     public function fetch(): MessagingConfigurationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new MessagingConfigurationInstance(
             $this->version,

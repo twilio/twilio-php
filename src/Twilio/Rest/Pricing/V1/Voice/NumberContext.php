@@ -55,7 +55,7 @@ class NumberContext extends InstanceContext
     public function fetch(): NumberInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new NumberInstance(
             $this->version,

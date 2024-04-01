@@ -53,7 +53,7 @@ class TrustProductsInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique string that we created to identify the Customer-Profile resource.
+     * @param string $sid The unique string that we created to identify the Trust Product resource.
      */
     public function __construct(Version $version, array $payload, string $sid = null)
     {

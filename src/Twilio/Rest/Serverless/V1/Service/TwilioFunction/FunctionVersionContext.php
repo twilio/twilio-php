@@ -73,7 +73,7 @@ class FunctionVersionContext extends InstanceContext
     public function fetch(): FunctionVersionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FunctionVersionInstance(
             $this->version,

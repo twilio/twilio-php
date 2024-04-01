@@ -75,7 +75,7 @@ class ConnectAppContext extends InstanceContext
     public function fetch(): ConnectAppInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ConnectAppInstance(
             $this->version,

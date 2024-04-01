@@ -60,7 +60,7 @@ class BrandVettingContext extends InstanceContext
     public function fetch(): BrandVettingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BrandVettingInstance(
             $this->version,

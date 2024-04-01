@@ -73,7 +73,7 @@ class ItemAssignmentContext extends InstanceContext
     public function fetch(): ItemAssignmentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ItemAssignmentInstance(
             $this->version,

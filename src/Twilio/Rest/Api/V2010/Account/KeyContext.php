@@ -75,7 +75,7 @@ class KeyContext extends InstanceContext
     public function fetch(): KeyInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new KeyInstance(
             $this->version,

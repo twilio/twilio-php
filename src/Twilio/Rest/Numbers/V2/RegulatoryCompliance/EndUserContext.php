@@ -71,7 +71,7 @@ class EndUserContext extends InstanceContext
     public function fetch(): EndUserInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EndUserInstance(
             $this->version,

@@ -32,6 +32,7 @@ use Twilio\Deserialize;
  * @property \DateTime|null $targetPortInDate
  * @property string|null $targetPortInTimeRangeStart
  * @property string|null $targetPortInTimeRangeEnd
+ * @property string|null $portInRequestStatus
  * @property array|null $losingCarrierInformation
  * @property array[]|null $phoneNumbers
  * @property string[]|null $documents
@@ -58,6 +59,7 @@ class PortingPortInFetchInstance extends InstanceResource
             'targetPortInDate' => Deserialize::dateTime(Values::array_get($payload, 'target_port_in_date')),
             'targetPortInTimeRangeStart' => Values::array_get($payload, 'target_port_in_time_range_start'),
             'targetPortInTimeRangeEnd' => Values::array_get($payload, 'target_port_in_time_range_end'),
+            'portInRequestStatus' => Values::array_get($payload, 'port_in_request_status'),
             'losingCarrierInformation' => Values::array_get($payload, 'losing_carrier_information'),
             'phoneNumbers' => Values::array_get($payload, 'phone_numbers'),
             'documents' => Values::array_get($payload, 'documents'),

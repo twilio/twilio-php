@@ -75,7 +75,7 @@ class UsAppToPersonContext extends InstanceContext
     public function fetch(): UsAppToPersonInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new UsAppToPersonInstance(
             $this->version,

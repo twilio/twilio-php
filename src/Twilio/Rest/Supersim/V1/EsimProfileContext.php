@@ -55,7 +55,7 @@ class EsimProfileContext extends InstanceContext
     public function fetch(): EsimProfileInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EsimProfileInstance(
             $this->version,

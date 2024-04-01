@@ -65,7 +65,7 @@ class StepContextContext extends InstanceContext
     public function fetch(): StepContextInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new StepContextInstance(
             $this->version,
