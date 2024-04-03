@@ -14,28 +14,28 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Media\V1;
+use Twilio\Rest\Oauth\V1;
 
 /**
- * @property \Twilio\Rest\Media\V1 $v1
+ * @property \Twilio\Rest\Oauth\V1 $v1
  */
-class MediaBase extends Domain {
+class OauthBase extends Domain {
     protected $_v1;
 
     /**
-     * Construct the Media Domain
+     * Construct the Oauth Domain
      *
      * @param Client $client Client to communicate with Twilio
      */
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://media.twilio.com';
+        $this->baseUrl = 'https://oauth.twilio.com';
     }
 
 
     /**
-     * @return V1 Version v1 of media
+     * @return V1 Version v1 of oauth
      */
     protected function getV1(): V1 {
         if (!$this->_v1) {
@@ -83,6 +83,6 @@ class MediaBase extends Domain {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Media]';
+        return '[Twilio.Oauth]';
     }
 }

@@ -85,7 +85,7 @@ class EngagementContext extends InstanceContext
     public function fetch(): EngagementInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EngagementInstance(
             $this->version,

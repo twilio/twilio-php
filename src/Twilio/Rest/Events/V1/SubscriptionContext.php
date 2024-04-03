@@ -78,7 +78,7 @@ class SubscriptionContext extends InstanceContext
     public function fetch(): SubscriptionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SubscriptionInstance(
             $this->version,

@@ -76,7 +76,7 @@ class ApplicationContext extends InstanceContext
     public function fetch(): ApplicationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ApplicationInstance(
             $this->version,

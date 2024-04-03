@@ -81,7 +81,7 @@ class BuildContext extends InstanceContext
     public function fetch(): BuildInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BuildInstance(
             $this->version,

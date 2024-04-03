@@ -76,7 +76,7 @@ class ContentContext extends InstanceContext
     public function fetch(): ContentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ContentInstance(
             $this->version,

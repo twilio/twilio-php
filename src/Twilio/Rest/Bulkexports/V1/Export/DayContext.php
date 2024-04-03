@@ -60,7 +60,7 @@ class DayContext extends InstanceContext
     public function fetch(): DayInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DayInstance(
             $this->version,

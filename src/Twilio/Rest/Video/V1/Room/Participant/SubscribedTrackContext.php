@@ -65,7 +65,7 @@ class SubscribedTrackContext extends InstanceContext
     public function fetch(): SubscribedTrackInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SubscribedTrackInstance(
             $this->version,

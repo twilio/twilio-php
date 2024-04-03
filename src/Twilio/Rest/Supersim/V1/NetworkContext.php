@@ -55,7 +55,7 @@ class NetworkContext extends InstanceContext
     public function fetch(): NetworkInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new NetworkInstance(
             $this->version,

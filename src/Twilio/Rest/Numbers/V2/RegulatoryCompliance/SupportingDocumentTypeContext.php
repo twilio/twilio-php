@@ -55,7 +55,7 @@ class SupportingDocumentTypeContext extends InstanceContext
     public function fetch(): SupportingDocumentTypeInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SupportingDocumentTypeInstance(
             $this->version,

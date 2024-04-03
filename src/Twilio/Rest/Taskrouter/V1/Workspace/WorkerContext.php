@@ -105,7 +105,7 @@ class WorkerContext extends InstanceContext
     public function fetch(): WorkerInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new WorkerInstance(
             $this->version,

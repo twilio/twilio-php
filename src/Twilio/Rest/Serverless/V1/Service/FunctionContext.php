@@ -82,7 +82,7 @@ class FunctionContext extends InstanceContext
     public function fetch(): FunctionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new FunctionInstance(
             $this->version,

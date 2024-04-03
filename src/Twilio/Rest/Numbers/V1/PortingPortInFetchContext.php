@@ -55,7 +55,7 @@ class PortingPortInFetchContext extends InstanceContext
     public function fetch(): PortingPortInFetchInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new PortingPortInFetchInstance(
             $this->version,

@@ -73,7 +73,7 @@ class CustomerProfilesEntityAssignmentsContext extends InstanceContext
     public function fetch(): CustomerProfilesEntityAssignmentsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CustomerProfilesEntityAssignmentsInstance(
             $this->version,

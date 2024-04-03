@@ -69,7 +69,7 @@ class AccountSecretContext extends InstanceContext
     public function fetch(): AccountSecretInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AccountSecretInstance(
             $this->version,

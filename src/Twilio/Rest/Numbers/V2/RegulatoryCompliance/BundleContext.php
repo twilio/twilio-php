@@ -88,7 +88,7 @@ class BundleContext extends InstanceContext
     public function fetch(): BundleInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BundleInstance(
             $this->version,

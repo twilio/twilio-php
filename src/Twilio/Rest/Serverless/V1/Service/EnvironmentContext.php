@@ -89,7 +89,7 @@ class EnvironmentContext extends InstanceContext
     public function fetch(): EnvironmentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EnvironmentInstance(
             $this->version,

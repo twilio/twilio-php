@@ -71,7 +71,7 @@ class TollfreeVerificationContext extends InstanceContext
     public function fetch(): TollfreeVerificationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TollfreeVerificationInstance(
             $this->version,

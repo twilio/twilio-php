@@ -67,7 +67,7 @@ class MemberContext extends InstanceContext
     public function fetch(): MemberInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new MemberInstance(
             $this->version,

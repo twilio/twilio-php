@@ -55,7 +55,7 @@ class ApprovalFetchContext extends InstanceContext
     public function fetch(): ApprovalFetchInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ApprovalFetchInstance(
             $this->version,

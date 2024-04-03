@@ -76,7 +76,7 @@ class WebhookContext extends InstanceContext
     public function fetch(): WebhookInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new WebhookInstance(
             $this->version,

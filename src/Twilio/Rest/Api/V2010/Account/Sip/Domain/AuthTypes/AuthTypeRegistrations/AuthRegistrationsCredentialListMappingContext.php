@@ -78,7 +78,7 @@ class AuthRegistrationsCredentialListMappingContext extends InstanceContext
     public function fetch(): AuthRegistrationsCredentialListMappingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AuthRegistrationsCredentialListMappingInstance(
             $this->version,

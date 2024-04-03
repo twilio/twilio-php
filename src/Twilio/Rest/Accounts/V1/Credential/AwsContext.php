@@ -70,7 +70,7 @@ class AwsContext extends InstanceContext
     public function fetch(): AwsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AwsInstance(
             $this->version,

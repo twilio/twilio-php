@@ -64,7 +64,7 @@ class SubscribeRulesList extends ListResource
     public function fetch(): SubscribeRulesInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SubscribeRulesInstance(
             $this->version,

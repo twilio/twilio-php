@@ -85,7 +85,7 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
     public function fetch(): AvailablePhoneNumberCountryInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AvailablePhoneNumberCountryInstance(
             $this->version,

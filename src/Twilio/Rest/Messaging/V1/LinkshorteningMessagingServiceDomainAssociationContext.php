@@ -55,7 +55,7 @@ class LinkshorteningMessagingServiceDomainAssociationContext extends InstanceCon
     public function fetch(): LinkshorteningMessagingServiceDomainAssociationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new LinkshorteningMessagingServiceDomainAssociationInstance(
             $this->version,

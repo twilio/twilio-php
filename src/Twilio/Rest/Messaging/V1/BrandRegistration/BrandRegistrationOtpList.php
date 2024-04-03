@@ -55,7 +55,7 @@ class BrandRegistrationOtpList extends ListResource
     public function create(): BrandRegistrationOtpInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri);
+        $payload = $this->version->create('POST', $this->uri, [], []);
 
         return new BrandRegistrationOtpInstance(
             $this->version,

@@ -23,6 +23,8 @@ abstract class PluginOptions
     /**
      * @param string $friendlyName The Flex Plugin's friendly name.
      * @param string $description A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long
+     * @param string $cliVersion The version of Flex Plugins CLI used to create this plugin
+     * @param string $validateStatus The validation status of the plugin, indicating whether it has been validated
      * @param string $flexMetadata The Flex-Metadata HTTP request header
      * @return CreatePluginOptions Options builder
      */
@@ -30,6 +32,8 @@ abstract class PluginOptions
         
         string $friendlyName = Values::NONE,
         string $description = Values::NONE,
+        string $cliVersion = Values::NONE,
+        string $validateStatus = Values::NONE,
         string $flexMetadata = Values::NONE
 
     ): CreatePluginOptions
@@ -37,6 +41,8 @@ abstract class PluginOptions
         return new CreatePluginOptions(
             $friendlyName,
             $description,
+            $cliVersion,
+            $validateStatus,
             $flexMetadata
         );
     }
@@ -99,17 +105,23 @@ class CreatePluginOptions extends Options
     /**
      * @param string $friendlyName The Flex Plugin's friendly name.
      * @param string $description A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long
+     * @param string $cliVersion The version of Flex Plugins CLI used to create this plugin
+     * @param string $validateStatus The validation status of the plugin, indicating whether it has been validated
      * @param string $flexMetadata The Flex-Metadata HTTP request header
      */
     public function __construct(
         
         string $friendlyName = Values::NONE,
         string $description = Values::NONE,
+        string $cliVersion = Values::NONE,
+        string $validateStatus = Values::NONE,
         string $flexMetadata = Values::NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
         $this->options['description'] = $description;
+        $this->options['cliVersion'] = $cliVersion;
+        $this->options['validateStatus'] = $validateStatus;
         $this->options['flexMetadata'] = $flexMetadata;
     }
 
@@ -134,6 +146,30 @@ class CreatePluginOptions extends Options
     public function setDescription(string $description): self
     {
         $this->options['description'] = $description;
+        return $this;
+    }
+
+    /**
+     * The version of Flex Plugins CLI used to create this plugin
+     *
+     * @param string $cliVersion The version of Flex Plugins CLI used to create this plugin
+     * @return $this Fluent Builder
+     */
+    public function setCliVersion(string $cliVersion): self
+    {
+        $this->options['cliVersion'] = $cliVersion;
+        return $this;
+    }
+
+    /**
+     * The validation status of the plugin, indicating whether it has been validated
+     *
+     * @param string $validateStatus The validation status of the plugin, indicating whether it has been validated
+     * @return $this Fluent Builder
+     */
+    public function setValidateStatus(string $validateStatus): self
+    {
+        $this->options['validateStatus'] = $validateStatus;
         return $this;
     }
 

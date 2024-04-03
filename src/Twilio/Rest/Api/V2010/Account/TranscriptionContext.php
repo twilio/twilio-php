@@ -73,7 +73,7 @@ class TranscriptionContext extends InstanceContext
     public function fetch(): TranscriptionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TranscriptionInstance(
             $this->version,

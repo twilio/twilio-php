@@ -46,7 +46,7 @@ class TrustProductsContext extends InstanceContext
      * Initialize the TrustProductsContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The unique string that we created to identify the Customer-Profile resource.
+     * @param string $sid The unique string that we created to identify the Trust Product resource.
      */
     public function __construct(
         Version $version,
@@ -86,7 +86,7 @@ class TrustProductsContext extends InstanceContext
     public function fetch(): TrustProductsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TrustProductsInstance(
             $this->version,

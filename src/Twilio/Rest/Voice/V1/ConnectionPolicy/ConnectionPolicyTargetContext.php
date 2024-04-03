@@ -76,7 +76,7 @@ class ConnectionPolicyTargetContext extends InstanceContext
     public function fetch(): ConnectionPolicyTargetInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ConnectionPolicyTargetInstance(
             $this->version,

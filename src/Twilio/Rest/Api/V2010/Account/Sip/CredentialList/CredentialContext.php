@@ -80,7 +80,7 @@ class CredentialContext extends InstanceContext
     public function fetch(): CredentialInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CredentialInstance(
             $this->version,

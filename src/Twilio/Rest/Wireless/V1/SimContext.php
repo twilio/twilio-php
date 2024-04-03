@@ -80,7 +80,7 @@ class SimContext extends InstanceContext
     public function fetch(): SimInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SimInstance(
             $this->version,

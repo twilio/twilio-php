@@ -96,7 +96,7 @@ class RecordingContext extends InstanceContext
                 Serialize::booleanToString($options['includeSoftDeleted']),
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new RecordingInstance(
             $this->version,

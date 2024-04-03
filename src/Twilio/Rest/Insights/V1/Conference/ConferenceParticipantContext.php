@@ -72,7 +72,7 @@ class ConferenceParticipantContext extends InstanceContext
                 $options['metrics'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new ConferenceParticipantInstance(
             $this->version,

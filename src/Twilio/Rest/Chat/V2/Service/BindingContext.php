@@ -73,7 +73,7 @@ class BindingContext extends InstanceContext
     public function fetch(): BindingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BindingInstance(
             $this->version,

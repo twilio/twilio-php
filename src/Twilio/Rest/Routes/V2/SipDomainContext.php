@@ -57,7 +57,7 @@ class SipDomainContext extends InstanceContext
     public function fetch(): SipDomainInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SipDomainInstance(
             $this->version,

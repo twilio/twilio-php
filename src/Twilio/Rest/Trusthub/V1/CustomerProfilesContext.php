@@ -86,7 +86,7 @@ class CustomerProfilesContext extends InstanceContext
     public function fetch(): CustomerProfilesInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CustomerProfilesInstance(
             $this->version,

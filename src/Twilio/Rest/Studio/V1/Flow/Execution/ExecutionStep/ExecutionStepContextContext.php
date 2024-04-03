@@ -65,7 +65,7 @@ class ExecutionStepContextContext extends InstanceContext
     public function fetch(): ExecutionStepContextInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new ExecutionStepContextInstance(
             $this->version,

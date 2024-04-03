@@ -83,7 +83,7 @@ class SyncStreamContext extends InstanceContext
     public function fetch(): SyncStreamInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SyncStreamInstance(
             $this->version,

@@ -83,7 +83,7 @@ class AddressContext extends InstanceContext
     public function fetch(): AddressInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AddressInstance(
             $this->version,

@@ -74,7 +74,7 @@ class DeviceSecretContext extends InstanceContext
     public function fetch(): DeviceSecretInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DeviceSecretInstance(
             $this->version,

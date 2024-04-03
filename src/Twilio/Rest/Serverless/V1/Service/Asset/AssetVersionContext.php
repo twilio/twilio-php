@@ -65,7 +65,7 @@ class AssetVersionContext extends InstanceContext
     public function fetch(): AssetVersionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AssetVersionInstance(
             $this->version,

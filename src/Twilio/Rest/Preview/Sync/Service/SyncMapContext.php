@@ -85,7 +85,7 @@ class SyncMapContext extends InstanceContext
     public function fetch(): SyncMapInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SyncMapInstance(
             $this->version,

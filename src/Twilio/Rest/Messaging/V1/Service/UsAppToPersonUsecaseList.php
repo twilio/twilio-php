@@ -65,7 +65,7 @@ class UsAppToPersonUsecaseList extends ListResource
                 $options['brandRegistrationSid'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new UsAppToPersonUsecaseInstance(
             $this->version,

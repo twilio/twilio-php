@@ -68,7 +68,7 @@ class CompositionContext extends InstanceContext
     public function fetch(): CompositionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new CompositionInstance(
             $this->version,

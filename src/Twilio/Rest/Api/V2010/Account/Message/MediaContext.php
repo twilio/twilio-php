@@ -78,7 +78,7 @@ class MediaContext extends InstanceContext
     public function fetch(): MediaInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new MediaInstance(
             $this->version,

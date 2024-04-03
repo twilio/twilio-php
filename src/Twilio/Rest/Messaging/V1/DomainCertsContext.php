@@ -69,7 +69,7 @@ class DomainCertsContext extends InstanceContext
     public function fetch(): DomainCertsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new DomainCertsInstance(
             $this->version,

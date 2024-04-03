@@ -88,7 +88,7 @@ class SessionContext extends InstanceContext
     public function fetch(): SessionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SessionInstance(
             $this->version,

@@ -55,7 +55,7 @@ class EventContext extends InstanceContext
     public function fetch(): EventInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new EventInstance(
             $this->version,

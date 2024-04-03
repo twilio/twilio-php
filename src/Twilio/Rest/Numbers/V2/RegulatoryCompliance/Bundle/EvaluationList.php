@@ -57,7 +57,7 @@ class EvaluationList extends ListResource
     public function create(): EvaluationInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri);
+        $payload = $this->version->create('POST', $this->uri, [], []);
 
         return new EvaluationInstance(
             $this->version,

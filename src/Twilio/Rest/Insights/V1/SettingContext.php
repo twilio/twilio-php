@@ -61,7 +61,7 @@ class SettingContext extends InstanceContext
                 $options['subaccountSid'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $payload = $this->version->fetch('GET', $this->uri, $params, []);
 
         return new SettingInstance(
             $this->version,

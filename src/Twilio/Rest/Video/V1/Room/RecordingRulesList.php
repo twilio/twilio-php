@@ -58,7 +58,7 @@ class RecordingRulesList extends ListResource
     public function fetch(): RecordingRulesInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new RecordingRulesInstance(
             $this->version,

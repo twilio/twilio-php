@@ -75,7 +75,7 @@ class OutgoingCallerIdContext extends InstanceContext
     public function fetch(): OutgoingCallerIdInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new OutgoingCallerIdInstance(
             $this->version,

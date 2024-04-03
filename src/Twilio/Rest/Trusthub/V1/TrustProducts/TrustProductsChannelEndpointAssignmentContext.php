@@ -73,7 +73,7 @@ class TrustProductsChannelEndpointAssignmentContext extends InstanceContext
     public function fetch(): TrustProductsChannelEndpointAssignmentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new TrustProductsChannelEndpointAssignmentInstance(
             $this->version,

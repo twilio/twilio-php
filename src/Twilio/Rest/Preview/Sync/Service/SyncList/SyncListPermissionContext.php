@@ -80,7 +80,7 @@ class SyncListPermissionContext extends InstanceContext
     public function fetch(): SyncListPermissionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new SyncListPermissionInstance(
             $this->version,

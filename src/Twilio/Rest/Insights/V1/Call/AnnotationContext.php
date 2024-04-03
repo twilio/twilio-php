@@ -58,7 +58,7 @@ class AnnotationContext extends InstanceContext
     public function fetch(): AnnotationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new AnnotationInstance(
             $this->version,

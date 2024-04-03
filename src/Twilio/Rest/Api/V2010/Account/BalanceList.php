@@ -55,7 +55,7 @@ class BalanceList extends ListResource
     public function fetch(): BalanceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
 
         return new BalanceInstance(
             $this->version,
