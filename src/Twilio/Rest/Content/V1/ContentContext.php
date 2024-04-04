@@ -21,15 +21,18 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Rest\Content\V1\Content\ApprovalCreateList;
 use Twilio\Rest\Content\V1\Content\ApprovalFetchList;
 
 
 /**
+ * @property ApprovalCreateList $approvalCreate
  * @property ApprovalFetchList $approvalFetch
  * @method \Twilio\Rest\Content\V1\Content\ApprovalFetchContext approvalFetch()
  */
 class ContentContext extends InstanceContext
     {
+    protected $_approvalCreate;
     protected $_approvalFetch;
 
     /**
@@ -85,6 +88,21 @@ class ContentContext extends InstanceContext
         );
     }
 
+
+    /**
+     * Access the approvalCreate
+     */
+    protected function getApprovalCreate(): ApprovalCreateList
+    {
+        if (!$this->_approvalCreate) {
+            $this->_approvalCreate = new ApprovalCreateList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_approvalCreate;
+    }
 
     /**
      * Access the approvalFetch

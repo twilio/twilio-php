@@ -26,18 +26,18 @@ class ApprovalFetchList extends ListResource
      * Construct the ApprovalFetchList
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
+     * @param string $contentSid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
      */
     public function __construct(
         Version $version,
-        string $sid
+        string $contentSid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'sid' =>
-            $sid,
+        'contentSid' =>
+            $contentSid,
         
         ];
     }
@@ -51,7 +51,7 @@ class ApprovalFetchList extends ListResource
     {
         return new ApprovalFetchContext(
             $this->version,
-            $this->solution['sid']
+            $this->solution['contentSid']
         );
     }
 

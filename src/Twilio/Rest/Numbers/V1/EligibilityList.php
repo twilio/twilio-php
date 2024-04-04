@@ -21,10 +21,10 @@ use Twilio\ListResource;
 use Twilio\Version;
 
 
-class BulkEligibilityList extends ListResource
+class EligibilityList extends ListResource
     {
     /**
-     * Construct the BulkEligibilityList
+     * Construct the EligibilityList
      *
      * @param Version $version Version that contains the resource
      */
@@ -37,44 +37,28 @@ class BulkEligibilityList extends ListResource
         $this->solution = [
         ];
 
-        $this->uri = '/HostedNumber/Eligibility/Bulk';
+        $this->uri = '/HostedNumber/Eligibility';
     }
 
     /**
-     * Create the BulkEligibilityInstance
+     * Create the EligibilityInstance
      *
-     * @return BulkEligibilityInstance Created BulkEligibilityInstance
+     * @return EligibilityInstance Created EligibilityInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): BulkEligibilityInstance
+    public function create(): EligibilityInstance
     {
 
         $data = $body->toArray();
         $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
-        return new BulkEligibilityInstance(
+        return new EligibilityInstance(
             $this->version,
             $payload
         );
     }
 
-
-    /**
-     * Constructs a BulkEligibilityContext
-     *
-     * @param string $requestId The SID of the bulk eligibility check that you want to know about.
-     */
-    public function getContext(
-        string $requestId
-        
-    ): BulkEligibilityContext
-    {
-        return new BulkEligibilityContext(
-            $this->version,
-            $requestId
-        );
-    }
 
     /**
      * Provide a friendly representation
@@ -83,6 +67,6 @@ class BulkEligibilityList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V1.BulkEligibilityList]';
+        return '[Twilio.Numbers.V1.EligibilityList]';
     }
 }

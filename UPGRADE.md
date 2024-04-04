@@ -2,6 +2,13 @@
 
 _MAJOR version bumps will have upgrade notes posted here._
 
+[2023-03-25] 7.x.x to 8.x.x
+---------------------------
+Twilio Php Helper Library’s major version 8.0.0 is now available. We ensured that you can upgrade to Php helper Library 8.0.0 version without any breaking changes of existing apis
+
+Behind the scenes Php Helper is now auto-generated via OpenAPI with this release. This enables us to rapidly add new features and enhance consistency across versions and languages.
+We're pleased to inform you that version 8.0.0 adds support for the application/json content type in the request body.
+
 [2023-03-08] 6.x.x to 7.x.x
 ---------------------------
 Twilio Php Helper Library’s major version 7.0.1 is now available. We ensured that you can upgrade to Php helper Library 7.0.1 version without any breaking changes.

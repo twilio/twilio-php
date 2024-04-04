@@ -70,6 +70,26 @@ class ConfigurationContext extends InstanceContext
 
 
     /**
+     * Update the ConfigurationInstance
+     *
+     * @return ConfigurationInstance Updated ConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): ConfigurationInstance
+    {
+
+        $data = $body->toArray();
+        $headers['Content-Type'] = 'application/json';
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+
+        return new ConfigurationInstance(
+            $this->version,
+            $payload
+        );
+    }
+
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

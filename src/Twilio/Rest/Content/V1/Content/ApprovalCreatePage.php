@@ -19,7 +19,7 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class ApprovalFetchPage extends Page
+class ApprovalCreatePage extends Page
     {
     /**
      * @param Version $version Version that contains the resource
@@ -36,11 +36,11 @@ class ApprovalFetchPage extends Page
 
     /**
      * @param array $payload Payload response from the API
-     * @return ApprovalFetchInstance \Twilio\Rest\Content\V1\Content\ApprovalFetchInstance
+     * @return ApprovalCreateInstance \Twilio\Rest\Content\V1\Content\ApprovalCreateInstance
      */
-    public function buildInstance(array $payload): ApprovalFetchInstance
+    public function buildInstance(array $payload): ApprovalCreateInstance
     {
-        return new ApprovalFetchInstance($this->version, $payload, $this->solution['contentSid']);
+        return new ApprovalCreateInstance($this->version, $payload, $this->solution['contentSid']);
     }
 
     /**
@@ -50,6 +50,6 @@ class ApprovalFetchPage extends Page
      */
     public function __toString(): string
     {
-        return '[Twilio.Content.V1.ApprovalFetchPage]';
+        return '[Twilio.Content.V1.ApprovalCreatePage]';
     }
 }

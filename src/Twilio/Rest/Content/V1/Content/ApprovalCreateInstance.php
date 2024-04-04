@@ -24,19 +24,21 @@ use Twilio\Version;
 
 
 /**
- * @property string|null $sid
- * @property string|null $accountSid
- * @property array|null $whatsapp
- * @property string|null $url
+ * @property string|null $name
+ * @property string|null $category
+ * @property string|null $contentType
+ * @property string|null $status
+ * @property string|null $rejectionReason
+ * @property bool|null $allowCategoryChange
  */
-class ApprovalFetchInstance extends InstanceResource
+class ApprovalCreateInstance extends InstanceResource
 {
     /**
-     * Initialize the ApprovalFetchInstance
+     * Initialize the ApprovalCreateInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $contentSid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
+     * @param string $contentSid 
      */
     public function __construct(Version $version, array $payload, string $contentSid)
     {
@@ -44,43 +46,15 @@ class ApprovalFetchInstance extends InstanceResource
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'whatsapp' => Values::array_get($payload, 'whatsapp'),
-            'url' => Values::array_get($payload, 'url'),
+            'name' => Values::array_get($payload, 'name'),
+            'category' => Values::array_get($payload, 'category'),
+            'contentType' => Values::array_get($payload, 'content_type'),
+            'status' => Values::array_get($payload, 'status'),
+            'rejectionReason' => Values::array_get($payload, 'rejection_reason'),
+            'allowCategoryChange' => Values::array_get($payload, 'allow_category_change'),
         ];
 
         $this->solution = ['contentSid' => $contentSid, ];
-    }
-
-    /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return ApprovalFetchContext Context for this ApprovalFetchInstance
-     */
-    protected function proxy(): ApprovalFetchContext
-    {
-        if (!$this->context) {
-            $this->context = new ApprovalFetchContext(
-                $this->version,
-                $this->solution['contentSid']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Fetch the ApprovalFetchInstance
-     *
-     * @return ApprovalFetchInstance Fetched ApprovalFetchInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): ApprovalFetchInstance
-    {
-
-        return $this->proxy()->fetch();
     }
 
     /**
@@ -111,11 +85,7 @@ class ApprovalFetchInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Content.V1.ApprovalFetchInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Content.V1.ApprovalCreateInstance]';
     }
 }
 
