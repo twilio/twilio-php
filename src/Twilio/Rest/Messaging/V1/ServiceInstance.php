@@ -55,6 +55,7 @@ use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
  * @property string|null $usecase
  * @property bool|null $usAppToPersonRegistered
  * @property bool|null $useInboundWebhookOnNumber
+ * @property array|null $sendingWindows
  */
 class ServiceInstance extends InstanceResource
 {
@@ -101,6 +102,7 @@ class ServiceInstance extends InstanceResource
             'usecase' => Values::array_get($payload, 'usecase'),
             'usAppToPersonRegistered' => Values::array_get($payload, 'us_app_to_person_registered'),
             'useInboundWebhookOnNumber' => Values::array_get($payload, 'use_inbound_webhook_on_number'),
+            'sendingWindows' => Values::array_get($payload, 'sending_windows'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

@@ -1,6 +1,36 @@
 twilio-php Changelog
 ====================
 
+[2024-04-04] Version 8.0.0
+--------------------------
+**Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2023-03-25-7xx-to-8xx) for detailed migration notes.
+
+**Library - Feature**
+- [PR #803](https://github.com/twilio/twilio-php/pull/803): Merge 8.0.0-rc into main. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)! **(breaking change)**
+
+**Api**
+- Correct conference filtering by date_created and date_updated documentation, clarifying that times are UTC.
+
+**Flex**
+- Remove optional parameter from `plugins` and it to `plugin_versions`
+
+**Lookups**
+- Add new `pre_fill` package to the lookup response
+
+**Messaging**
+- Cleanup api.messaging.next-gen from Messaging Services endpoints
+- Readd Sending-Window after fixing test failure
+
+**Verify**
+- Add `whatsapp.msg_service_sid` and `whatsapp.from` parameters to create, update, get and list of services endpoints
+
+**Voice**
+- Correct conference filtering by date_created and date_updated documentation, clarifying that times are UTC.
+
+**Twiml**
+- Add new `token_type` value `payment-method` for `Pay` verb
+
+
 [2024-04-01] Version 7.16.2
 ---------------------------
 **Api**

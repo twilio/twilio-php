@@ -73,6 +73,10 @@ class PluginVersionsList extends ListResource
                 $options['changelog'],
             'Private' =>
                 Serialize::booleanToString($options['_private']),
+            'CliVersion' =>
+                $options['cliVersion'],
+            'ValidateStatus' =>
+                $options['validateStatus'],
         ]);
 
         $headers = Values::of(['Flex-Metadata' => $options['flexMetadata']]);

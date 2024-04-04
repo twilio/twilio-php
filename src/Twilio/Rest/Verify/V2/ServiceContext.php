@@ -159,6 +159,10 @@ class ServiceContext extends InstanceContext
                 $options['totpSkew'],
             'DefaultTemplateSid' =>
                 $options['defaultTemplateSid'],
+            'Whatsapp.MsgServiceSid' =>
+                $options['whatsappMsgServiceSid'],
+            'Whatsapp.From' =>
+                $options['whatsappFrom'],
             'VerifyEventSubscriptionEnabled' =>
                 Serialize::booleanToString($options['verifyEventSubscriptionEnabled']),
         ]);
