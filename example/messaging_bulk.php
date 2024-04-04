@@ -31,7 +31,7 @@ $messages = [$message1, $message2];
 // This must be a Twilio phone number that you own, formatted with a '+' and country code
 $twilioPurchasedNumber = "+XXXXXXXXXX";
 // Specify the message to be sent - JSON string supported
-$messageBody = "Testing twilio-php json body!";
+$messageBody = "Hello from twilio-php!";
 
 // Create Message Request object
 $createMessagesRequest = MessageModels::createCreateMessagesRequest(
