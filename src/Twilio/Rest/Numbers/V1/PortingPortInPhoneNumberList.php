@@ -16,15 +16,14 @@
 
 namespace Twilio\Rest\Numbers\V1;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 
 
-class PortingPortInList extends ListResource
+class PortingPortInPhoneNumberList extends ListResource
     {
     /**
-     * Construct the PortingPortInList
+     * Construct the PortingPortInPhoneNumberList
      *
      * @param Version $version Version that contains the resource
      */
@@ -36,43 +35,25 @@ class PortingPortInList extends ListResource
         // Path Solution
         $this->solution = [
         ];
-
-        $this->uri = '/Porting/PortIn';
     }
 
     /**
-     * Create the PortingPortInInstance
-     *
-     * @return PortingPortInInstance Created PortingPortInInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(): PortingPortInInstance
-    {
-
-        $data = $body->toArray();
-        $headers['Content-Type'] = 'application/json';
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
-        return new PortingPortInInstance(
-            $this->version,
-            $payload
-        );
-    }
-
-
-    /**
-     * Constructs a PortingPortInContext
+     * Constructs a PortingPortInPhoneNumberContext
      *
      * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
+     *
+     * @param string $phoneNumberSid The SID of the Port In request phone number. This is a unique identifier of the phone number.
      */
     public function getContext(
         string $portInRequestSid
+        , string $phoneNumberSid
         
-    ): PortingPortInContext
+    ): PortingPortInPhoneNumberContext
     {
-        return new PortingPortInContext(
+        return new PortingPortInPhoneNumberContext(
             $this->version,
-            $portInRequestSid
+            $portInRequestSid,
+            $phoneNumberSid
         );
     }
 
@@ -83,6 +64,6 @@ class PortingPortInList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V1.PortingPortInList]';
+        return '[Twilio.Numbers.V1.PortingPortInPhoneNumberList]';
     }
 }

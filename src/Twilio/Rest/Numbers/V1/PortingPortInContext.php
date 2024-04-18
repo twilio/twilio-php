@@ -14,67 +14,50 @@
  * Do not edit the class manually.
  */
 
+
 namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
-use Twilio\ListResource;
 use Twilio\Version;
+use Twilio\InstanceContext;
 
 
-class PortingPortInList extends ListResource
+class PortingPortInContext extends InstanceContext
     {
     /**
-     * Construct the PortingPortInList
+     * Initialize the PortingPortInContext
      *
      * @param Version $version Version that contains the resource
+     * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
      */
     public function __construct(
-        Version $version
+        Version $version,
+        $portInRequestSid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
+        'portInRequestSid' =>
+            $portInRequestSid,
         ];
 
-        $this->uri = '/Porting/PortIn';
+        $this->uri = '/Porting/PortIn/' . \rawurlencode($portInRequestSid)
+        .'';
     }
 
     /**
-     * Create the PortingPortInInstance
+     * Delete the PortingPortInInstance
      *
-     * @return PortingPortInInstance Created PortingPortInInstance
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): PortingPortInInstance
+    public function delete(): bool
     {
 
-        $data = $body->toArray();
-        $headers['Content-Type'] = 'application/json';
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
-        return new PortingPortInInstance(
-            $this->version,
-            $payload
-        );
+        return $this->version->delete('DELETE', $this->uri);
     }
 
-
-    /**
-     * Constructs a PortingPortInContext
-     *
-     * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
-     */
-    public function getContext(
-        string $portInRequestSid
-        
-    ): PortingPortInContext
-    {
-        return new PortingPortInContext(
-            $this->version,
-            $portInRequestSid
-        );
-    }
 
     /**
      * Provide a friendly representation
@@ -83,6 +66,10 @@ class PortingPortInList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V1.PortingPortInList]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Numbers.V1.PortingPortInContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -32,7 +32,7 @@ class StreamContext extends InstanceContext
      * @param Version $version Version that contains the resource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this Stream resource.
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with.
-     * @param string $sid The SID of the Stream resource, or the `name` used when creating the resource
+     * @param string $sid The SID or the `name` of the Stream resource to be stopped
      */
     public function __construct(
         Version $version,

@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2024-04-18] Version 8.0.1
+--------------------------
+**Flex**
+- Add header `ui_version` to `web_channels` API
+
+**Messaging**
+- Redeploy after failed pipeline
+
+**Numbers**
+- Add Delete Port In request phone number api and Add Delete Port In request api
+
+
 [2024-04-04] Version 8.0.0
 --------------------------
 **Note:** This release contains breaking changes, check our [upgrade guide](./UPGRADE.md#2023-03-25-7xx-to-8xx) for detailed migration notes.

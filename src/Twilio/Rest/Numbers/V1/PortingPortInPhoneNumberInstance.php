@@ -19,48 +19,39 @@ namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 
-/**
- * @property string|null $portInRequestSid
- * @property string|null $url
- */
-class PortingPortInInstance extends InstanceResource
+class PortingPortInPhoneNumberInstance extends InstanceResource
 {
     /**
-     * Initialize the PortingPortInInstance
+     * Initialize the PortingPortInPhoneNumberInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
+     * @param string $phoneNumberSid The SID of the Port In request phone number. This is a unique identifier of the phone number.
      */
-    public function __construct(Version $version, array $payload, string $portInRequestSid = null)
+    public function __construct(Version $version, array $payload, string $portInRequestSid = null, string $phoneNumberSid = null)
     {
         parent::__construct($version);
 
-        // Marshaled Properties
-        $this->properties = [
-            'portInRequestSid' => Values::array_get($payload, 'port_in_request_sid'),
-            'url' => Values::array_get($payload, 'url'),
-        ];
-
-        $this->solution = ['portInRequestSid' => $portInRequestSid ?: $this->properties['portInRequestSid'], ];
+        $this->solution = ['portInRequestSid' => $portInRequestSid ?: $this->properties['portInRequestSid'], 'phoneNumberSid' => $phoneNumberSid ?: $this->properties['phoneNumberSid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return PortingPortInContext Context for this PortingPortInInstance
+     * @return PortingPortInPhoneNumberContext Context for this PortingPortInPhoneNumberInstance
      */
-    protected function proxy(): PortingPortInContext
+    protected function proxy(): PortingPortInPhoneNumberContext
     {
         if (!$this->context) {
-            $this->context = new PortingPortInContext(
+            $this->context = new PortingPortInPhoneNumberContext(
                 $this->version,
-                $this->solution['portInRequestSid']
+                $this->solution['portInRequestSid'],
+                $this->solution['phoneNumberSid']
             );
         }
 
@@ -68,7 +59,7 @@ class PortingPortInInstance extends InstanceResource
     }
 
     /**
-     * Delete the PortingPortInInstance
+     * Delete the PortingPortInPhoneNumberInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -111,7 +102,7 @@ class PortingPortInInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Numbers.V1.PortingPortInInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Numbers.V1.PortingPortInPhoneNumberInstance ' . \implode(' ', $context) . ']';
     }
 }
 

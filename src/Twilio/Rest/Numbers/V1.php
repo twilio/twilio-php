@@ -23,6 +23,7 @@ use Twilio\Rest\Numbers\V1\EligibilityList;
 use Twilio\Rest\Numbers\V1\PortingBulkPortabilityList;
 use Twilio\Rest\Numbers\V1\PortingPortInList;
 use Twilio\Rest\Numbers\V1\PortingPortInFetchList;
+use Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberList;
 use Twilio\Rest\Numbers\V1\PortingPortabilityList;
 use Twilio\Version;
 
@@ -32,10 +33,13 @@ use Twilio\Version;
  * @property PortingBulkPortabilityList $portingBulkPortabilities
  * @property PortingPortInList $portingPortIns
  * @property PortingPortInFetchList $portingPortInsFetch
+ * @property PortingPortInPhoneNumberList $portingPortInPhoneNumber
  * @property PortingPortabilityList $portingPortabilities
  * @method \Twilio\Rest\Numbers\V1\BulkEligibilityContext bulkEligibilities(string $requestId)
  * @method \Twilio\Rest\Numbers\V1\PortingBulkPortabilityContext portingBulkPortabilities(string $sid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortInFetchContext portingPortInsFetch(string $portInRequestSid)
+ * @method \Twilio\Rest\Numbers\V1\PortingPortInContext portingPortIns(string $portInRequestSid)
+ * @method \Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberContext portingPortInPhoneNumber(string $portInRequestSid, string $phoneNumberSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortabilityContext portingPortabilities(string $phoneNumber)
  */
 class V1 extends Version
@@ -45,6 +49,7 @@ class V1 extends Version
     protected $_portingBulkPortabilities;
     protected $_portingPortIns;
     protected $_portingPortInsFetch;
+    protected $_portingPortInPhoneNumber;
     protected $_portingPortabilities;
 
     /**
@@ -96,6 +101,14 @@ class V1 extends Version
             $this->_portingPortInsFetch = new PortingPortInFetchList($this);
         }
         return $this->_portingPortInsFetch;
+    }
+
+    protected function getPortingPortInPhoneNumber(): PortingPortInPhoneNumberList
+    {
+        if (!$this->_portingPortInPhoneNumber) {
+            $this->_portingPortInPhoneNumber = new PortingPortInPhoneNumberList($this);
+        }
+        return $this->_portingPortInPhoneNumber;
     }
 
     protected function getPortingPortabilities(): PortingPortabilityList
