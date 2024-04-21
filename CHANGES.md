@@ -1,11 +1,8 @@
 twilio-php Changelog
 ====================
 
-[2024-04-01] Version 8.0.0-rc.1
--------------------------------
-**Library - Chore**
-- [PR #799](https://github.com/twilio/twilio-php/pull/799): provide application/json support in request body. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
-
+[2024-04-01] Version 7.16.2
+---------------------------
 **Api**
 - Add property `queue_time` to conference participant resource
 - Update RiskCheck documentation
@@ -41,10 +38,6 @@ twilio-php Changelog
 - Add support for new Google voices (Q1 2024) for `Say` verb - gu-IN voices
 - Add support for new Amazon Polly and Google voices (Q1 2024) for `Say` verb - Niamh (en-IE) and Sofie (da-DK) voices
 
-
-[2024-03-25] Version 8.0.0-rc.0
----------------------------
-- Release Candidate Preparation
 
 [2024-03-12] Version 7.16.1
 ---------------------------
