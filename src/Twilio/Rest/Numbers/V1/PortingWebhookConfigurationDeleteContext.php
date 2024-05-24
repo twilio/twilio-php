@@ -22,32 +22,32 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class PortingPortInContext extends InstanceContext
+class PortingWebhookConfigurationDeleteContext extends InstanceContext
     {
     /**
-     * Initialize the PortingPortInContext
+     * Initialize the PortingWebhookConfigurationDeleteContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
+     * @param string $webhookType The of the webhook type of the configuration to be deleted
      */
     public function __construct(
         Version $version,
-        $portInRequestSid
+        $webhookType
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'portInRequestSid' =>
-            $portInRequestSid,
+        'webhookType' =>
+            $webhookType,
         ];
 
-        $this->uri = '/Porting/PortIn/' . \rawurlencode($portInRequestSid)
+        $this->uri = '/Porting/Configuration/Webhook/' . \rawurlencode($webhookType)
         .'';
     }
 
     /**
-     * Delete the PortingPortInInstance
+     * Delete the PortingWebhookConfigurationDeleteInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -56,25 +56,6 @@ class PortingPortInContext extends InstanceContext
     {
 
         return $this->version->delete('DELETE', $this->uri);
-    }
-
-
-    /**
-     * Fetch the PortingPortInInstance
-     *
-     * @return PortingPortInInstance Fetched PortingPortInInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): PortingPortInInstance
-    {
-
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
-
-        return new PortingPortInInstance(
-            $this->version,
-            $payload,
-            $this->solution['portInRequestSid']
-        );
     }
 
 
@@ -89,6 +70,6 @@ class PortingPortInContext extends InstanceContext
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Numbers.V1.PortingPortInContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Numbers.V1.PortingWebhookConfigurationDeleteContext ' . \implode(' ', $context) . ']';
     }
 }

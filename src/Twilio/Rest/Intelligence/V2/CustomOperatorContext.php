@@ -25,13 +25,13 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 
 
-class ServiceContext extends InstanceContext
+class CustomOperatorContext extends InstanceContext
     {
     /**
-     * Initialize the ServiceContext
+     * Initialize the CustomOperatorContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this Service.
+     * @param string $sid A 34 character string that uniquely identifies this Custom Operator.
      */
     public function __construct(
         Version $version,
@@ -45,12 +45,12 @@ class ServiceContext extends InstanceContext
             $sid,
         ];
 
-        $this->uri = '/Services/' . \rawurlencode($sid)
+        $this->uri = '/Operators/Custom/' . \rawurlencode($sid)
         .'';
     }
 
     /**
-     * Delete the ServiceInstance
+     * Delete the CustomOperatorInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -63,17 +63,17 @@ class ServiceContext extends InstanceContext
 
 
     /**
-     * Fetch the ServiceInstance
+     * Fetch the CustomOperatorInstance
      *
-     * @return ServiceInstance Fetched ServiceInstance
+     * @return CustomOperatorInstance Fetched CustomOperatorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ServiceInstance
+    public function fetch(): CustomOperatorInstance
     {
 
         $payload = $this->version->fetch('GET', $this->uri, [], []);
 
-        return new ServiceInstance(
+        return new CustomOperatorInstance(
             $this->version,
             $payload,
             $this->solution['sid']
@@ -82,41 +82,31 @@ class ServiceContext extends InstanceContext
 
 
     /**
-     * Update the ServiceInstance
+     * Update the CustomOperatorInstance
      *
+     * @param string $friendlyName A human-readable name of this resource, up to 64 characters.
+     * @param array $config Operator configuration, following the schema defined by the Operator Type.
      * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Updated ServiceInstance
+     * @return CustomOperatorInstance Updated CustomOperatorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ServiceInstance
+    public function update(string $friendlyName, array $config, array $options = []): CustomOperatorInstance
     {
 
         $options = new Values($options);
 
         $data = Values::of([
-            'AutoTranscribe' =>
-                Serialize::booleanToString($options['autoTranscribe']),
-            'DataLogging' =>
-                Serialize::booleanToString($options['dataLogging']),
             'FriendlyName' =>
-                $options['friendlyName'],
-            'UniqueName' =>
-                $options['uniqueName'],
-            'AutoRedaction' =>
-                Serialize::booleanToString($options['autoRedaction']),
-            'MediaRedaction' =>
-                Serialize::booleanToString($options['mediaRedaction']),
-            'WebhookUrl' =>
-                $options['webhookUrl'],
-            'WebhookHttpMethod' =>
-                $options['webhookHttpMethod'],
+                $friendlyName,
+            'Config' =>
+                Serialize::jsonObject($config),
         ]);
 
         $headers = Values::of(['If-Match' => $options['ifMatch']]);
 
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
-        return new ServiceInstance(
+        return new CustomOperatorInstance(
             $this->version,
             $payload,
             $this->solution['sid']
@@ -135,6 +125,6 @@ class ServiceContext extends InstanceContext
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Intelligence.V2.ServiceContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Intelligence.V2.CustomOperatorContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -19,55 +19,37 @@ namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
-use Twilio\Deserialize;
 
 
-/**
- * @property string|null $sid
- * @property string $status
- * @property \DateTime|null $datetimeCreated
- * @property array[]|null $phoneNumbers
- * @property string|null $url
- */
-class PortingBulkPortabilityInstance extends InstanceResource
+class PortingWebhookConfigurationDeleteInstance extends InstanceResource
 {
     /**
-     * Initialize the PortingBulkPortabilityInstance
+     * Initialize the PortingWebhookConfigurationDeleteInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid A 34 character string that uniquely identifies the Portability check.
+     * @param string $webhookType The of the webhook type of the configuration to be deleted
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, string $webhookType = null)
     {
         parent::__construct($version);
 
-        // Marshaled Properties
-        $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'status' => Values::array_get($payload, 'status'),
-            'datetimeCreated' => Deserialize::dateTime(Values::array_get($payload, 'datetime_created')),
-            'phoneNumbers' => Values::array_get($payload, 'phone_numbers'),
-            'url' => Values::array_get($payload, 'url'),
-        ];
-
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['webhookType' => $webhookType ?: $this->properties['webhookType'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return PortingBulkPortabilityContext Context for this PortingBulkPortabilityInstance
+     * @return PortingWebhookConfigurationDeleteContext Context for this PortingWebhookConfigurationDeleteInstance
      */
-    protected function proxy(): PortingBulkPortabilityContext
+    protected function proxy(): PortingWebhookConfigurationDeleteContext
     {
         if (!$this->context) {
-            $this->context = new PortingBulkPortabilityContext(
+            $this->context = new PortingWebhookConfigurationDeleteContext(
                 $this->version,
-                $this->solution['sid']
+                $this->solution['webhookType']
             );
         }
 
@@ -75,15 +57,15 @@ class PortingBulkPortabilityInstance extends InstanceResource
     }
 
     /**
-     * Fetch the PortingBulkPortabilityInstance
+     * Delete the PortingWebhookConfigurationDeleteInstance
      *
-     * @return PortingBulkPortabilityInstance Fetched PortingBulkPortabilityInstance
+     * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PortingBulkPortabilityInstance
+    public function delete(): bool
     {
 
-        return $this->proxy()->fetch();
+        return $this->proxy()->delete();
     }
 
     /**
@@ -118,7 +100,7 @@ class PortingBulkPortabilityInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Numbers.V1.PortingBulkPortabilityInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Numbers.V1.PortingWebhookConfigurationDeleteInstance ' . \implode(' ', $context) . ']';
     }
 }
 

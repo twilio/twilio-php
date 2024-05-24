@@ -21,22 +21,22 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Intelligence\V2\Transcript\OperatorResultList;
 use Twilio\Rest\Intelligence\V2\Transcript\SentenceList;
+use Twilio\Rest\Intelligence\V2\Transcript\OperatorResultList;
 use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
 
 
 /**
- * @property OperatorResultList $operatorResults
  * @property SentenceList $sentences
+ * @property OperatorResultList $operatorResults
  * @property MediaList $media
- * @method \Twilio\Rest\Intelligence\V2\Transcript\OperatorResultContext operatorResults(string $operatorSid)
  * @method \Twilio\Rest\Intelligence\V2\Transcript\MediaContext media()
+ * @method \Twilio\Rest\Intelligence\V2\Transcript\OperatorResultContext operatorResults(string $operatorSid)
  */
 class TranscriptContext extends InstanceContext
     {
-    protected $_operatorResults;
     protected $_sentences;
+    protected $_operatorResults;
     protected $_media;
 
     /**
@@ -94,21 +94,6 @@ class TranscriptContext extends InstanceContext
 
 
     /**
-     * Access the operatorResults
-     */
-    protected function getOperatorResults(): OperatorResultList
-    {
-        if (!$this->_operatorResults) {
-            $this->_operatorResults = new OperatorResultList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_operatorResults;
-    }
-
-    /**
      * Access the sentences
      */
     protected function getSentences(): SentenceList
@@ -121,6 +106,21 @@ class TranscriptContext extends InstanceContext
         }
 
         return $this->_sentences;
+    }
+
+    /**
+     * Access the operatorResults
+     */
+    protected function getOperatorResults(): OperatorResultList
+    {
+        if (!$this->_operatorResults) {
+            $this->_operatorResults = new OperatorResultList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_operatorResults;
     }
 
     /**

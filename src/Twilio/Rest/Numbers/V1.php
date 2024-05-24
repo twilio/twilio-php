@@ -20,37 +20,39 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Numbers\V1\BulkEligibilityList;
 use Twilio\Rest\Numbers\V1\EligibilityList;
-use Twilio\Rest\Numbers\V1\PortingBulkPortabilityList;
 use Twilio\Rest\Numbers\V1\PortingPortInList;
-use Twilio\Rest\Numbers\V1\PortingPortInFetchList;
 use Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberList;
 use Twilio\Rest\Numbers\V1\PortingPortabilityList;
+use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationList;
+use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationDeleteList;
+use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationFetchList;
 use Twilio\Version;
 
 /**
  * @property BulkEligibilityList $bulkEligibilities
  * @property EligibilityList $eligibilities
- * @property PortingBulkPortabilityList $portingBulkPortabilities
  * @property PortingPortInList $portingPortIns
- * @property PortingPortInFetchList $portingPortInsFetch
  * @property PortingPortInPhoneNumberList $portingPortInPhoneNumber
  * @property PortingPortabilityList $portingPortabilities
+ * @property PortingWebhookConfigurationList $portingWebhookConfigurations
+ * @property PortingWebhookConfigurationDeleteList $portingWebhookConfigurationsDelete
+ * @property PortingWebhookConfigurationFetchList $portingWebhookConfigurationFetch
  * @method \Twilio\Rest\Numbers\V1\BulkEligibilityContext bulkEligibilities(string $requestId)
- * @method \Twilio\Rest\Numbers\V1\PortingBulkPortabilityContext portingBulkPortabilities(string $sid)
- * @method \Twilio\Rest\Numbers\V1\PortingPortInFetchContext portingPortInsFetch(string $portInRequestSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortInContext portingPortIns(string $portInRequestSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberContext portingPortInPhoneNumber(string $portInRequestSid, string $phoneNumberSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortabilityContext portingPortabilities(string $phoneNumber)
+ * @method \Twilio\Rest\Numbers\V1\PortingWebhookConfigurationDeleteContext portingWebhookConfigurationsDelete(string $webhookType)
  */
 class V1 extends Version
 {
     protected $_bulkEligibilities;
     protected $_eligibilities;
-    protected $_portingBulkPortabilities;
     protected $_portingPortIns;
-    protected $_portingPortInsFetch;
     protected $_portingPortInPhoneNumber;
     protected $_portingPortabilities;
+    protected $_portingWebhookConfigurations;
+    protected $_portingWebhookConfigurationsDelete;
+    protected $_portingWebhookConfigurationFetch;
 
     /**
      * Construct the V1 version of Numbers
@@ -79,28 +81,12 @@ class V1 extends Version
         return $this->_eligibilities;
     }
 
-    protected function getPortingBulkPortabilities(): PortingBulkPortabilityList
-    {
-        if (!$this->_portingBulkPortabilities) {
-            $this->_portingBulkPortabilities = new PortingBulkPortabilityList($this);
-        }
-        return $this->_portingBulkPortabilities;
-    }
-
     protected function getPortingPortIns(): PortingPortInList
     {
         if (!$this->_portingPortIns) {
             $this->_portingPortIns = new PortingPortInList($this);
         }
         return $this->_portingPortIns;
-    }
-
-    protected function getPortingPortInsFetch(): PortingPortInFetchList
-    {
-        if (!$this->_portingPortInsFetch) {
-            $this->_portingPortInsFetch = new PortingPortInFetchList($this);
-        }
-        return $this->_portingPortInsFetch;
     }
 
     protected function getPortingPortInPhoneNumber(): PortingPortInPhoneNumberList
@@ -117,6 +103,30 @@ class V1 extends Version
             $this->_portingPortabilities = new PortingPortabilityList($this);
         }
         return $this->_portingPortabilities;
+    }
+
+    protected function getPortingWebhookConfigurations(): PortingWebhookConfigurationList
+    {
+        if (!$this->_portingWebhookConfigurations) {
+            $this->_portingWebhookConfigurations = new PortingWebhookConfigurationList($this);
+        }
+        return $this->_portingWebhookConfigurations;
+    }
+
+    protected function getPortingWebhookConfigurationsDelete(): PortingWebhookConfigurationDeleteList
+    {
+        if (!$this->_portingWebhookConfigurationsDelete) {
+            $this->_portingWebhookConfigurationsDelete = new PortingWebhookConfigurationDeleteList($this);
+        }
+        return $this->_portingWebhookConfigurationsDelete;
+    }
+
+    protected function getPortingWebhookConfigurationFetch(): PortingWebhookConfigurationFetchList
+    {
+        if (!$this->_portingWebhookConfigurationFetch) {
+            $this->_portingWebhookConfigurationFetch = new PortingWebhookConfigurationFetchList($this);
+        }
+        return $this->_portingWebhookConfigurationFetch;
     }
 
     /**

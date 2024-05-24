@@ -22,8 +22,8 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
-use Twilio\Rest\Intelligence\V2\Transcript\OperatorResultList;
 use Twilio\Rest\Intelligence\V2\Transcript\SentenceList;
+use Twilio\Rest\Intelligence\V2\Transcript\OperatorResultList;
 use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
 
 
@@ -46,8 +46,8 @@ use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
  */
 class TranscriptInstance extends InstanceResource
 {
-    protected $_operatorResults;
     protected $_sentences;
+    protected $_operatorResults;
     protected $_media;
 
     /**
@@ -126,19 +126,19 @@ class TranscriptInstance extends InstanceResource
     }
 
     /**
-     * Access the operatorResults
-     */
-    protected function getOperatorResults(): OperatorResultList
-    {
-        return $this->proxy()->operatorResults;
-    }
-
-    /**
      * Access the sentences
      */
     protected function getSentences(): SentenceList
     {
         return $this->proxy()->sentences;
+    }
+
+    /**
+     * Access the operatorResults
+     */
+    protected function getOperatorResults(): OperatorResultList
+    {
+        return $this->proxy()->operatorResults;
     }
 
     /**

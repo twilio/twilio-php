@@ -31,7 +31,6 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
  * @property Lookups $lookups
- * @property PreviewMessaging $previewMessaging
  * @property Messaging $messaging
  * @property Microvisor $microvisor
  * @property Monitor $monitor
@@ -110,7 +109,6 @@ class Client extends BaseClient {
     protected $_intelligence;
     protected $_ipMessaging;
     protected $_lookups;
-    protected $_previewMessaging;
     protected $_messaging;
     protected $_microvisor;
     protected $_monitor;
@@ -275,17 +273,6 @@ class Client extends BaseClient {
             $this->_lookups = new Lookups($this);
         }
         return $this->_lookups;
-    }
-    /**
-     * Access the PreviewMessaging Twilio Domain
-     *
-     * @return PreviewMessaging PreviewMessaging Twilio Domain
-     */
-    protected function getPreviewMessaging(): PreviewMessaging {
-        if (!$this->_previewMessaging) {
-            $this->_previewMessaging = new PreviewMessaging($this);
-        }
-        return $this->_previewMessaging;
     }
     /**
      * Access the Messaging Twilio Domain

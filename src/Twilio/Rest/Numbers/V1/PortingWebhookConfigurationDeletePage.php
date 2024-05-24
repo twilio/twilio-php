@@ -19,7 +19,7 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class PortingPortInFetchPage extends Page
+class PortingWebhookConfigurationDeletePage extends Page
     {
     /**
      * @param Version $version Version that contains the resource
@@ -36,11 +36,11 @@ class PortingPortInFetchPage extends Page
 
     /**
      * @param array $payload Payload response from the API
-     * @return PortingPortInFetchInstance \Twilio\Rest\Numbers\V1\PortingPortInFetchInstance
+     * @return PortingWebhookConfigurationDeleteInstance \Twilio\Rest\Numbers\V1\PortingWebhookConfigurationDeleteInstance
      */
-    public function buildInstance(array $payload): PortingPortInFetchInstance
+    public function buildInstance(array $payload): PortingWebhookConfigurationDeleteInstance
     {
-        return new PortingPortInFetchInstance($this->version, $payload);
+        return new PortingWebhookConfigurationDeleteInstance($this->version, $payload);
     }
 
     /**
@@ -50,6 +50,6 @@ class PortingPortInFetchPage extends Page
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V1.PortingPortInFetchPage]';
+        return '[Twilio.Numbers.V1.PortingWebhookConfigurationDeletePage]';
     }
 }

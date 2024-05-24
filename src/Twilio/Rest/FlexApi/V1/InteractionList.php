@@ -47,12 +47,11 @@ class InteractionList extends ListResource
      * Create the InteractionInstance
      *
      * @param array $channel The Interaction's channel.
-     * @param array $routing The Interaction's routing logic.
      * @param array|Options $options Optional Arguments
      * @return InteractionInstance Created InteractionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $channel, array $routing, array $options = []): InteractionInstance
+    public function create(array $channel, array $options = []): InteractionInstance
     {
 
         $options = new Values($options);
@@ -61,7 +60,7 @@ class InteractionList extends ListResource
             'Channel' =>
                 Serialize::jsonObject($channel),
             'Routing' =>
-                Serialize::jsonObject($routing),
+                Serialize::jsonObject($options['routing']),
             'InteractionContextSid' =>
                 $options['interactionContextSid'],
         ]);

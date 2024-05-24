@@ -65,6 +65,26 @@ class PortingPortInPhoneNumberContext extends InstanceContext
 
 
     /**
+     * Fetch the PortingPortInPhoneNumberInstance
+     *
+     * @return PortingPortInPhoneNumberInstance Fetched PortingPortInPhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): PortingPortInPhoneNumberInstance
+    {
+
+        $payload = $this->version->fetch('GET', $this->uri, [], []);
+
+        return new PortingPortInPhoneNumberInstance(
+            $this->version,
+            $payload,
+            $this->solution['portInRequestSid'],
+            $this->solution['phoneNumberSid']
+        );
+    }
+
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

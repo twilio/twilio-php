@@ -100,6 +100,8 @@ class ComplianceTollfreeInquiriesList extends ListResource
                 $options['businessContactEmail'],
             'BusinessContactPhone' =>
                 $options['businessContactPhone'],
+            'ThemeSetId' =>
+                $options['themeSetId'],
         ]);
 
         $payload = $this->version->create('POST', $this->uri, [], $data);
