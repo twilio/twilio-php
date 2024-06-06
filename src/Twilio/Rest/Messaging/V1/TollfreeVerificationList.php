@@ -196,6 +196,10 @@ class TollfreeVerificationList extends ListResource
                 $options['tollfreePhoneNumberSid'],
             'Status' =>
                 $options['status'],
+            'ExternalReferenceId' =>
+                $options['externalReferenceId'],
+            'IncludeSubAccounts' =>
+                Serialize::booleanToString($options['includeSubAccounts']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
