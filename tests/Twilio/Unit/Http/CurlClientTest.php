@@ -248,12 +248,26 @@ class CurlClientTest extends UnitTest {
         ];
     }
 
-    public function testPutFile(): void {
+    /**
+     * @param array|string $params Parameters to put
+     * @param array|string $data Data to put
+     * @param string $expectedContentType Excpected Content-Type header
+     * @param string $expectedBody Expected POSTFIELDS
+     * @dataProvider postFieldsProvider
+     * @throws \Twilio\Exceptions\EnvironmentException
+     */
+    public function testPutFile($params, $data, string $expectedContentType, string $expectedBody): void {
         $client = new CurlClient();
-        $actual = $client->options('PUT', 'url', [], ['a' => 1, 'b' => 2]);
-        $this->assertNotNull($actual[CURLOPT_INFILE]);
-        $this->assertEquals('a=1&b=2', \fread($actual[CURLOPT_INFILE], $actual[CURLOPT_INFILESIZE]));
-        $this->assertEquals(7, $actual[CURLOPT_INFILESIZE]);
+        $actual = $client->options('PUT', 'url', $params, $data);
+
+        foreach ($actual[CURLOPT_HTTPHEADER] as $header) {
+            if (strpos($header, 'Content-Type: ') === 0) {
+                $this->assertStringMatchesFormat($expectedContentType, substr($header, 14));
+                break;
+            }
+        }
+
+        $this->assertStringMatchesFormat($expectedBody, $actual[CURLOPT_POSTFIELDS]);
     }
 
     /**
