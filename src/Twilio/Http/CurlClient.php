@@ -131,18 +131,18 @@ class CurlClient implements Client {
 
                 break;
             case 'put':
-                // TODO: PUT doesn't used anywhere and it has strange implementation. Must investigate later
-                $options[CURLOPT_PUT] = true;
-                if ($data) {
-                    if ($buffer = \fopen('php://memory', 'w+')) {
-                        $dataString = $this->buildQuery($data);
-                        \fwrite($buffer, $dataString);
-                        \fseek($buffer, 0);
-                        $options[CURLOPT_INFILE] = $buffer;
-                        $options[CURLOPT_INFILESIZE] = \strlen($dataString);
-                    } else {
-                        throw new EnvironmentException('Unable to open a temporary file');
-                    }
+                $options[CURLOPT_CUSTOMREQUEST] = 'PUT';
+                if ($this->hasFile($data)) {
+                    [$headers, $body] = $this->buildMultipartOptions($data);
+                    $options[CURLOPT_POSTFIELDS] = $body;
+                    $options[CURLOPT_HTTPHEADER] = \array_merge($options[CURLOPT_HTTPHEADER], $headers);
+                }
+                elseif (array_key_exists('Content-Type', $headers)) {
+                    $options[CURLOPT_POSTFIELDS] = json_encode($data);
+                }
+                else {
+                    $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
+                    $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/x-www-form-urlencoded';
                 }
                 break;
             case 'head':
