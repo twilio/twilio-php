@@ -19,6 +19,7 @@ namespace Twilio\Rest\Voice\V1\DialingPermissions;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList;
@@ -62,7 +63,8 @@ class CountryContext extends InstanceContext
     public function fetch(): CountryInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CountryInstance(
             $this->version,

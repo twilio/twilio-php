@@ -71,8 +71,7 @@ class UserChannelContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
@@ -86,7 +85,8 @@ class UserChannelContext extends InstanceContext
     public function fetch(): UserChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new UserChannelInstance(
             $this->version,
@@ -119,7 +119,8 @@ class UserChannelContext extends InstanceContext
                 Serialize::iso8601DateTime($options['lastConsumptionTimestamp']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new UserChannelInstance(
             $this->version,

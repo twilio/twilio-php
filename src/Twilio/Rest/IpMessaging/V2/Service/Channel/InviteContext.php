@@ -18,6 +18,7 @@
 namespace Twilio\Rest\IpMessaging\V2\Service\Channel;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -65,7 +66,8 @@ class InviteContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -78,7 +80,8 @@ class InviteContext extends InstanceContext
     public function fetch(): InviteInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InviteInstance(
             $this->version,

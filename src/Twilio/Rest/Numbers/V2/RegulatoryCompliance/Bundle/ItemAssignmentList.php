@@ -63,7 +63,8 @@ class ItemAssignmentList extends ListResource
                 $objectSid,
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ItemAssignmentInstance(
             $this->version,

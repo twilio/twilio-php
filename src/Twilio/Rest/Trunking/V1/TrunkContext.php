@@ -82,7 +82,8 @@ class TrunkContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -95,7 +96,8 @@ class TrunkContext extends InstanceContext
     public function fetch(): TrunkInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new TrunkInstance(
             $this->version,
@@ -136,7 +138,8 @@ class TrunkContext extends InstanceContext
                 $options['transferCallerId'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new TrunkInstance(
             $this->version,

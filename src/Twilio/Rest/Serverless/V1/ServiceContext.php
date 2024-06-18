@@ -78,7 +78,8 @@ class ServiceContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -91,7 +92,8 @@ class ServiceContext extends InstanceContext
     public function fetch(): ServiceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ServiceInstance(
             $this->version,
@@ -122,7 +124,8 @@ class ServiceContext extends InstanceContext
                 Serialize::booleanToString($options['uiEditable']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ServiceInstance(
             $this->version,

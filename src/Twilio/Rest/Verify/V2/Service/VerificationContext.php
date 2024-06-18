@@ -61,7 +61,8 @@ class VerificationContext extends InstanceContext
     public function fetch(): VerificationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new VerificationInstance(
             $this->version,
@@ -87,7 +88,8 @@ class VerificationContext extends InstanceContext
                 $status,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new VerificationInstance(
             $this->version,

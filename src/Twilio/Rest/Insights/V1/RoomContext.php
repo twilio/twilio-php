@@ -19,6 +19,7 @@ namespace Twilio\Rest\Insights\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Insights\V1\Room\ParticipantList;
@@ -63,7 +64,8 @@ class RoomContext extends InstanceContext
     public function fetch(): RoomInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new RoomInstance(
             $this->version,

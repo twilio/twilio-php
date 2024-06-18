@@ -68,7 +68,8 @@ class WorkerChannelContext extends InstanceContext
     public function fetch(): WorkerChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new WorkerChannelInstance(
             $this->version,
@@ -99,7 +100,8 @@ class WorkerChannelContext extends InstanceContext
                 Serialize::booleanToString($options['available']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new WorkerChannelInstance(
             $this->version,

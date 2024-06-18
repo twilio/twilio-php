@@ -69,7 +69,8 @@ class CredentialListContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -82,7 +83,8 @@ class CredentialListContext extends InstanceContext
     public function fetch(): CredentialListInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CredentialListInstance(
             $this->version,
@@ -108,7 +110,8 @@ class CredentialListContext extends InstanceContext
                 $friendlyName,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new CredentialListInstance(
             $this->version,

@@ -19,6 +19,7 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
@@ -63,7 +64,8 @@ class InteractionContext extends InstanceContext
     public function fetch(): InteractionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InteractionInstance(
             $this->version,

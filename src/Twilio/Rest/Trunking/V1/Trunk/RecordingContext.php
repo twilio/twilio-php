@@ -57,7 +57,8 @@ class RecordingContext extends InstanceContext
     public function fetch(): RecordingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new RecordingInstance(
             $this->version,
@@ -86,7 +87,8 @@ class RecordingContext extends InstanceContext
                 $options['trim'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new RecordingInstance(
             $this->version,

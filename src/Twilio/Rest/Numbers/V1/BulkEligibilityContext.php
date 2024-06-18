@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -55,7 +56,8 @@ class BulkEligibilityContext extends InstanceContext
     public function fetch(): BulkEligibilityInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new BulkEligibilityInstance(
             $this->version,

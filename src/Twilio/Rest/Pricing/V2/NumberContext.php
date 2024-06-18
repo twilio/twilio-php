@@ -65,7 +65,8 @@ class NumberContext extends InstanceContext
                 $options['originationNumber'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new NumberInstance(
             $this->version,

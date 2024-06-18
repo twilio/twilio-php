@@ -56,7 +56,8 @@ class AccountConfigContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -69,7 +70,8 @@ class AccountConfigContext extends InstanceContext
     public function fetch(): AccountConfigInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AccountConfigInstance(
             $this->version,
@@ -94,7 +96,8 @@ class AccountConfigContext extends InstanceContext
                 $value,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AccountConfigInstance(
             $this->version,

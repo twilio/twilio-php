@@ -65,7 +65,8 @@ class NetworkAccessProfileContext extends InstanceContext
     public function fetch(): NetworkAccessProfileInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new NetworkAccessProfileInstance(
             $this->version,
@@ -92,7 +93,8 @@ class NetworkAccessProfileContext extends InstanceContext
                 $options['uniqueName'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new NetworkAccessProfileInstance(
             $this->version,

@@ -58,7 +58,8 @@ class UserContext extends InstanceContext
     public function fetch(): UserInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new UserInstance(
             $this->version,
@@ -91,7 +92,8 @@ class UserContext extends InstanceContext
                 Serialize::booleanToString($options['isAvailable']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new UserInstance(
             $this->version,

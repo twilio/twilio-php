@@ -18,6 +18,7 @@
 namespace Twilio\Rest\FlexApi\V2;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -60,7 +61,8 @@ class FlexUserContext extends InstanceContext
     public function fetch(): FlexUserInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new FlexUserInstance(
             $this->version,

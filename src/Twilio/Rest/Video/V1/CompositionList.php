@@ -78,7 +78,8 @@ class CompositionList extends ListResource
                 Serialize::booleanToString($options['trim']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new CompositionInstance(
             $this->version,

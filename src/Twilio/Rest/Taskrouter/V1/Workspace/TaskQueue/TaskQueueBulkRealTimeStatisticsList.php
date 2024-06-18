@@ -18,6 +18,7 @@ namespace Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -55,6 +56,7 @@ class TaskQueueBulkRealTimeStatisticsList extends ListResource
     public function create(): TaskQueueBulkRealTimeStatisticsInstance
     {
 
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $data = $body->toArray();
         $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);

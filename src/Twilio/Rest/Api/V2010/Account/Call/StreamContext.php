@@ -73,7 +73,8 @@ class StreamContext extends InstanceContext
                 $status,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new StreamInstance(
             $this->version,

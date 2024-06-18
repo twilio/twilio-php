@@ -83,7 +83,8 @@ class ChannelList extends ListResource
                 Serialize::booleanToString($options['longLived']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ChannelInstance(
             $this->version,

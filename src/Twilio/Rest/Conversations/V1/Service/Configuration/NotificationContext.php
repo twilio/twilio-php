@@ -58,7 +58,8 @@ class NotificationContext extends InstanceContext
     public function fetch(): NotificationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new NotificationInstance(
             $this->version,
@@ -109,7 +110,8 @@ class NotificationContext extends InstanceContext
                 $options['newMessageWithMediaTemplate'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new NotificationInstance(
             $this->version,

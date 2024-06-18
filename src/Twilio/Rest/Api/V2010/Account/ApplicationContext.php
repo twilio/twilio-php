@@ -63,7 +63,8 @@ class ApplicationContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -76,7 +77,8 @@ class ApplicationContext extends InstanceContext
     public function fetch(): ApplicationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ApplicationInstance(
             $this->version,
@@ -134,7 +136,8 @@ class ApplicationContext extends InstanceContext
                 Serialize::booleanToString($options['publicApplicationConnectEnabled']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ApplicationInstance(
             $this->version,

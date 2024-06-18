@@ -71,8 +71,7 @@ class SyncListItemContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['If-Match' => $options['ifMatch']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
@@ -86,7 +85,8 @@ class SyncListItemContext extends InstanceContext
     public function fetch(): SyncListItemInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SyncListItemInstance(
             $this->version,
@@ -121,8 +121,7 @@ class SyncListItemContext extends InstanceContext
                 $options['collectionTtl'],
         ]);
 
-        $headers = Values::of(['If-Match' => $options['ifMatch']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SyncListItemInstance(

@@ -102,9 +102,12 @@ class ComplianceTollfreeInquiriesList extends ListResource
                 $options['businessContactPhone'],
             'ThemeSetId' =>
                 $options['themeSetId'],
+            'SkipMessagingUseCase' =>
+                Serialize::booleanToString($options['skipMessagingUseCase']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ComplianceTollfreeInquiriesInstance(
             $this->version,

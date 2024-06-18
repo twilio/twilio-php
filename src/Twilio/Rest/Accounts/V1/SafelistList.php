@@ -57,7 +57,8 @@ class SafelistList extends ListResource
                 $phoneNumber,
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SafelistInstance(
             $this->version,
@@ -83,7 +84,8 @@ class SafelistList extends ListResource
                 $options['phoneNumber'],
         ]);
 
-        return $this->version->delete('DELETE', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, $params, [], $headers);
     }
 
 
@@ -104,7 +106,8 @@ class SafelistList extends ListResource
                 $options['phoneNumber'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new SafelistInstance(
             $this->version,

@@ -477,7 +477,8 @@ class StreamList extends ListResource
                 $options['parameter99Value'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new StreamInstance(
             $this->version,

@@ -72,8 +72,7 @@ class AssessmentsContext extends InstanceContext
                 $answerId,
         ]);
 
-        $headers = Values::of(['Authorization' => $options['authorization']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AssessmentsInstance(

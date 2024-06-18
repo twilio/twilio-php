@@ -67,7 +67,8 @@ class UsageContext extends InstanceContext
                 $options['start'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new UsageInstance(
             $this->version,

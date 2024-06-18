@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Pricing\V1\Voice;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -55,7 +56,8 @@ class NumberContext extends InstanceContext
     public function fetch(): NumberInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new NumberInstance(
             $this->version,

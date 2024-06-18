@@ -67,7 +67,8 @@ class SyncMapPermissionContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -80,7 +81,8 @@ class SyncMapPermissionContext extends InstanceContext
     public function fetch(): SyncMapPermissionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SyncMapPermissionInstance(
             $this->version,
@@ -113,7 +115,8 @@ class SyncMapPermissionContext extends InstanceContext
                 Serialize::booleanToString($manage),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SyncMapPermissionInstance(
             $this->version,

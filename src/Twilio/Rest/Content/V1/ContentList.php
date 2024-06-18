@@ -52,6 +52,7 @@ class ContentList extends ListResource
     public function create(ContentCreateRequest $contentCreateRequest): ContentInstance
     {
 
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $data = $contentCreateRequest->toArray();
         $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);

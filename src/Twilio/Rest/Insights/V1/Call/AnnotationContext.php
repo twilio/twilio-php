@@ -58,7 +58,8 @@ class AnnotationContext extends InstanceContext
     public function fetch(): AnnotationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AnnotationInstance(
             $this->version,
@@ -97,7 +98,8 @@ class AnnotationContext extends InstanceContext
                 $options['incident'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AnnotationInstance(
             $this->version,

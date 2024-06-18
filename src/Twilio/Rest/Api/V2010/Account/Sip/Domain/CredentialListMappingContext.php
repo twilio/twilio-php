@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Sip\Domain;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -65,7 +66,8 @@ class CredentialListMappingContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -78,7 +80,8 @@ class CredentialListMappingContext extends InstanceContext
     public function fetch(): CredentialListMappingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CredentialListMappingInstance(
             $this->version,

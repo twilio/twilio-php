@@ -66,7 +66,8 @@ class MediaContext extends InstanceContext
                 Serialize::booleanToString($options['redacted']),
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new MediaInstance(
             $this->version,

@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Conversations\V1\Conversation\Message;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -65,7 +66,8 @@ class DeliveryReceiptContext extends InstanceContext
     public function fetch(): DeliveryReceiptInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new DeliveryReceiptInstance(
             $this->version,

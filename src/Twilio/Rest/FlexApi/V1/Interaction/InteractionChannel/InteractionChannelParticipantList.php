@@ -79,7 +79,8 @@ class InteractionChannelParticipantList extends ListResource
                 Serialize::jsonObject($options['routingProperties']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new InteractionChannelParticipantInstance(
             $this->version,

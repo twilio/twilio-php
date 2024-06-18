@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Serverless\V1\Service\Environment;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -65,7 +66,8 @@ class DeploymentContext extends InstanceContext
     public function fetch(): DeploymentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new DeploymentInstance(
             $this->version,

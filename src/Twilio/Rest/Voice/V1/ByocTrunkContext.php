@@ -58,7 +58,8 @@ class ByocTrunkContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -71,7 +72,8 @@ class ByocTrunkContext extends InstanceContext
     public function fetch(): ByocTrunkInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ByocTrunkInstance(
             $this->version,
@@ -116,7 +118,8 @@ class ByocTrunkContext extends InstanceContext
                 $options['fromDomainSid'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ByocTrunkInstance(
             $this->version,

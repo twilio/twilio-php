@@ -18,6 +18,7 @@ namespace Twilio\Rest\Marketplace\V1\InstalledAddOn;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -56,6 +57,7 @@ class InstalledAddOnUsageList extends ListResource
     public function create(CreateMarketplaceBillingUsageRequest $createMarketplaceBillingUsageRequest): InstalledAddOnUsageInstance
     {
 
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $data = $createMarketplaceBillingUsageRequest->toArray();
         $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);

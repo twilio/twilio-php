@@ -62,7 +62,8 @@ class ComplianceInquiriesContext extends InstanceContext
                 $primaryProfileSid,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ComplianceInquiriesInstance(
             $this->version,

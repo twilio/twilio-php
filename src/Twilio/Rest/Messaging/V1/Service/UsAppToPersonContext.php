@@ -62,7 +62,8 @@ class UsAppToPersonContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -75,7 +76,8 @@ class UsAppToPersonContext extends InstanceContext
     public function fetch(): UsAppToPersonInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new UsAppToPersonInstance(
             $this->version,
@@ -119,7 +121,8 @@ class UsAppToPersonContext extends InstanceContext
                 Serialize::booleanToString($directLending),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new UsAppToPersonInstance(
             $this->version,

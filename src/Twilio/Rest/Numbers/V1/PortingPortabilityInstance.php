@@ -33,8 +33,6 @@ use Twilio\Version;
  * @property int|null $notPortableReasonCode
  * @property string $numberType
  * @property string|null $country
- * @property string|null $messagingCarrier
- * @property string|null $voiceCarrier
  * @property string|null $url
  */
 class PortingPortabilityInstance extends InstanceResource
@@ -60,8 +58,6 @@ class PortingPortabilityInstance extends InstanceResource
             'notPortableReasonCode' => Values::array_get($payload, 'not_portable_reason_code'),
             'numberType' => Values::array_get($payload, 'number_type'),
             'country' => Values::array_get($payload, 'country'),
-            'messagingCarrier' => Values::array_get($payload, 'messaging_carrier'),
-            'voiceCarrier' => Values::array_get($payload, 'voice_carrier'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

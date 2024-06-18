@@ -69,7 +69,8 @@ class CustomerProfilesList extends ListResource
                 $options['statusCallback'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new CustomerProfilesInstance(
             $this->version,

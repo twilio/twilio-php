@@ -71,7 +71,8 @@ class RoomContext extends InstanceContext
     public function fetch(): RoomInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new RoomInstance(
             $this->version,
@@ -96,7 +97,8 @@ class RoomContext extends InstanceContext
                 $status,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new RoomInstance(
             $this->version,

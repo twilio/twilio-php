@@ -72,7 +72,8 @@ class CompositionSettingsContext extends InstanceContext
                 Serialize::booleanToString($options['encryptionEnabled']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new CompositionSettingsInstance(
             $this->version,
@@ -90,7 +91,8 @@ class CompositionSettingsContext extends InstanceContext
     public function fetch(): CompositionSettingsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CompositionSettingsInstance(
             $this->version,

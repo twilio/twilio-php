@@ -61,7 +61,8 @@ class SettingContext extends InstanceContext
                 $options['subaccountSid'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new SettingInstance(
             $this->version,
@@ -91,7 +92,8 @@ class SettingContext extends InstanceContext
                 $options['subaccountSid'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SettingInstance(
             $this->version,

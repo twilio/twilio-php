@@ -66,8 +66,7 @@ class WebChannelsList extends ListResource
                 $options['preEngagementData'],
         ]);
 
-        $headers = Values::of(['Ui-Version' => $options['uiVersion']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Ui-Version' => $options['uiVersion']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new WebChannelsInstance(

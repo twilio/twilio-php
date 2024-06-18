@@ -86,7 +86,8 @@ class WebhookList extends ListResource
                 $options['configurationRetryCount'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new WebhookInstance(
             $this->version,

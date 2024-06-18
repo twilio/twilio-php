@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Trusthub\V1\CustomerProfiles;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -60,7 +61,8 @@ class CustomerProfilesEvaluationsContext extends InstanceContext
     public function fetch(): CustomerProfilesEvaluationsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new CustomerProfilesEvaluationsInstance(
             $this->version,

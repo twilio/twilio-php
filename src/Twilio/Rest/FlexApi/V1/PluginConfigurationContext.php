@@ -68,8 +68,7 @@ class PluginConfigurationContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Flex-Metadata' => $options['flexMetadata']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Flex-Metadata' => $options['flexMetadata']]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new PluginConfigurationInstance(

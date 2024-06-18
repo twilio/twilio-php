@@ -150,7 +150,8 @@ class AccountContext extends InstanceContext
     public function fetch(): AccountInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AccountInstance(
             $this->version,
@@ -179,7 +180,8 @@ class AccountContext extends InstanceContext
                 $options['status'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AccountInstance(
             $this->version,

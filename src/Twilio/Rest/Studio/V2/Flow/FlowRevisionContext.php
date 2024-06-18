@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Studio\V2\Flow;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -60,7 +61,8 @@ class FlowRevisionContext extends InstanceContext
     public function fetch(): FlowRevisionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new FlowRevisionInstance(
             $this->version,

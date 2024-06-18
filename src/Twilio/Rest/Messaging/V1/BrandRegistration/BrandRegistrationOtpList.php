@@ -18,6 +18,7 @@ namespace Twilio\Rest\Messaging\V1\BrandRegistration;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -55,7 +56,8 @@ class BrandRegistrationOtpList extends ListResource
     public function create(): BrandRegistrationOtpInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
         return new BrandRegistrationOtpInstance(
             $this->version,

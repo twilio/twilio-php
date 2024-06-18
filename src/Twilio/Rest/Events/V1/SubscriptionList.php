@@ -65,7 +65,8 @@ class SubscriptionList extends ListResource
                 Serialize::map($types,function ($e) { return Serialize::jsonObject($e); }),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SubscriptionInstance(
             $this->version,

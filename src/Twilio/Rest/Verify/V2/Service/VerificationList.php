@@ -100,7 +100,8 @@ class VerificationList extends ListResource
                 $options['tags'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new VerificationInstance(
             $this->version,

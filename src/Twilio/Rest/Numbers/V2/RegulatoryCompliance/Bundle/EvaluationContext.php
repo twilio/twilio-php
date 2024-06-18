@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -60,7 +61,8 @@ class EvaluationContext extends InstanceContext
     public function fetch(): EvaluationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new EvaluationInstance(
             $this->version,

@@ -19,6 +19,7 @@ namespace Twilio\Rest\Numbers\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Numbers\V2\AuthorizationDocument\DependentHostedNumberOrderList;
@@ -62,7 +63,8 @@ class AuthorizationDocumentContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -75,7 +77,8 @@ class AuthorizationDocumentContext extends InstanceContext
     public function fetch(): AuthorizationDocumentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AuthorizationDocumentInstance(
             $this->version,

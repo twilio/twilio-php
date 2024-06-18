@@ -58,7 +58,8 @@ class AddressConfigurationContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -71,7 +72,8 @@ class AddressConfigurationContext extends InstanceContext
     public function fetch(): AddressConfigurationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AddressConfigurationInstance(
             $this->version,
@@ -114,7 +116,8 @@ class AddressConfigurationContext extends InstanceContext
                 $options['autoCreationStudioRetryCount'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AddressConfigurationInstance(
             $this->version,

@@ -68,7 +68,8 @@ class ComplianceRegistrationInquiriesContext extends InstanceContext
                 $options['themeSetId'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ComplianceRegistrationInquiriesInstance(
             $this->version,

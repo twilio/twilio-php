@@ -57,7 +57,8 @@ class SipDomainContext extends InstanceContext
     public function fetch(): SipDomainInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SipDomainInstance(
             $this->version,
@@ -86,7 +87,8 @@ class SipDomainContext extends InstanceContext
                 $options['friendlyName'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SipDomainInstance(
             $this->version,

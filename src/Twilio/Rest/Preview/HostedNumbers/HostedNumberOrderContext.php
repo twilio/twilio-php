@@ -58,7 +58,8 @@ class HostedNumberOrderContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -71,7 +72,8 @@ class HostedNumberOrderContext extends InstanceContext
     public function fetch(): HostedNumberOrderInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new HostedNumberOrderInstance(
             $this->version,
@@ -116,7 +118,8 @@ class HostedNumberOrderContext extends InstanceContext
                 $options['callDelay'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new HostedNumberOrderInstance(
             $this->version,

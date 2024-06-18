@@ -19,6 +19,7 @@ namespace Twilio\Rest\Studio\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Studio\V1\Flow\EngagementList;
@@ -67,7 +68,8 @@ class FlowContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -80,7 +82,8 @@ class FlowContext extends InstanceContext
     public function fetch(): FlowInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new FlowInstance(
             $this->version,

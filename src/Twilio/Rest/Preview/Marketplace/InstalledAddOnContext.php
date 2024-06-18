@@ -66,7 +66,8 @@ class InstalledAddOnContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -79,7 +80,8 @@ class InstalledAddOnContext extends InstanceContext
     public function fetch(): InstalledAddOnInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InstalledAddOnInstance(
             $this->version,
@@ -108,7 +110,8 @@ class InstalledAddOnContext extends InstanceContext
                 $options['uniqueName'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InstalledAddOnInstance(
             $this->version,

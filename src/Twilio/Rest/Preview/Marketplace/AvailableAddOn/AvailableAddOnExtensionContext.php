@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Preview\Marketplace\AvailableAddOn;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -60,7 +61,8 @@ class AvailableAddOnExtensionContext extends InstanceContext
     public function fetch(): AvailableAddOnExtensionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AvailableAddOnExtensionInstance(
             $this->version,

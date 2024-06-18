@@ -61,7 +61,8 @@ class DeactivationsContext extends InstanceContext
                 Serialize::iso8601Date($options['date']),
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new DeactivationsInstance(
             $this->version,

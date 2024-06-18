@@ -86,8 +86,7 @@ class ChannelContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
@@ -101,7 +100,8 @@ class ChannelContext extends InstanceContext
     public function fetch(): ChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ChannelInstance(
             $this->version,
@@ -139,8 +139,7 @@ class ChannelContext extends InstanceContext
                 $options['createdBy'],
         ]);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ChannelInstance(

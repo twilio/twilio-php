@@ -18,6 +18,7 @@ namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -49,7 +50,8 @@ class PortingWebhookConfigurationFetchList extends ListResource
     public function fetch(): PortingWebhookConfigurationFetchInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new PortingWebhookConfigurationFetchInstance(
             $this->version,

@@ -52,7 +52,8 @@ class ConfigurationContext extends InstanceContext
     public function fetch(): ConfigurationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ConfigurationInstance(
             $this->version,
@@ -84,7 +85,8 @@ class ConfigurationContext extends InstanceContext
                 $options['defaultClosedTimer'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ConfigurationInstance(
             $this->version,

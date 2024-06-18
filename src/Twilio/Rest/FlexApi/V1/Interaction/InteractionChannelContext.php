@@ -74,7 +74,8 @@ class InteractionChannelContext extends InstanceContext
     public function fetch(): InteractionChannelInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InteractionChannelInstance(
             $this->version,
@@ -105,7 +106,8 @@ class InteractionChannelContext extends InstanceContext
                 Serialize::jsonObject($options['routing']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InteractionChannelInstance(
             $this->version,

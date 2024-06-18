@@ -57,7 +57,8 @@ class PhoneNumberContext extends InstanceContext
     public function fetch(): PhoneNumberInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new PhoneNumberInstance(
             $this->version,
@@ -86,7 +87,8 @@ class PhoneNumberContext extends InstanceContext
                 $options['friendlyName'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new PhoneNumberInstance(
             $this->version,

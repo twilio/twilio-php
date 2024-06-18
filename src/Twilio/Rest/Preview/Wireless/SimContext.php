@@ -65,7 +65,8 @@ class SimContext extends InstanceContext
     public function fetch(): SimInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SimInstance(
             $this->version,
@@ -122,7 +123,8 @@ class SimContext extends InstanceContext
                 $options['voiceUrl'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SimInstance(
             $this->version,

@@ -56,7 +56,8 @@ class SourceIpMappingContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -69,7 +70,8 @@ class SourceIpMappingContext extends InstanceContext
     public function fetch(): SourceIpMappingInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SourceIpMappingInstance(
             $this->version,
@@ -94,7 +96,8 @@ class SourceIpMappingContext extends InstanceContext
                 $sipDomainSid,
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SourceIpMappingInstance(
             $this->version,

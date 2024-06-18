@@ -74,7 +74,8 @@ class ConferenceContext extends InstanceContext
     public function fetch(): ConferenceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ConferenceInstance(
             $this->version,
@@ -106,7 +107,8 @@ class ConferenceContext extends InstanceContext
                 $options['announceMethod'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ConferenceInstance(
             $this->version,

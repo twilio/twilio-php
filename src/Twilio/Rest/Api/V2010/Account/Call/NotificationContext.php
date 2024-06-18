@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Call;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -65,7 +66,8 @@ class NotificationContext extends InstanceContext
     public function fetch(): NotificationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new NotificationInstance(
             $this->version,

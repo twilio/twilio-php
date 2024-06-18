@@ -36,6 +36,7 @@ use Twilio\Deserialize;
  * @property array|null $losingCarrierInformation
  * @property array[]|null $phoneNumbers
  * @property string[]|null $documents
+ * @property \DateTime|null $dateCreated
  */
 class PortingPortInInstance extends InstanceResource
 {
@@ -63,6 +64,7 @@ class PortingPortInInstance extends InstanceResource
             'losingCarrierInformation' => Values::array_get($payload, 'losing_carrier_information'),
             'phoneNumbers' => Values::array_get($payload, 'phone_numbers'),
             'documents' => Values::array_get($payload, 'documents'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
         ];
 
         $this->solution = ['portInRequestSid' => $portInRequestSid ?: $this->properties['portInRequestSid'], ];

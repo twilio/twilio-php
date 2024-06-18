@@ -74,7 +74,8 @@ class WorkspaceStatisticsContext extends InstanceContext
                 $options['splitByWaitTime'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params, []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new WorkspaceStatisticsInstance(
             $this->version,

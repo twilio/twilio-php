@@ -18,6 +18,7 @@ namespace Twilio\Rest\Content\V1\Content;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -56,6 +57,7 @@ class ApprovalCreateList extends ListResource
     public function create(ContentApprovalRequest $contentApprovalRequest): ApprovalCreateInstance
     {
 
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $data = $contentApprovalRequest->toArray();
         $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);

@@ -19,6 +19,7 @@ namespace Twilio\Rest\Preview\Sync\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemList;
@@ -72,7 +73,8 @@ class SyncMapContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -85,7 +87,8 @@ class SyncMapContext extends InstanceContext
     public function fetch(): SyncMapInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SyncMapInstance(
             $this->version,

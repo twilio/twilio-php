@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Intelligence\V2;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -60,7 +61,8 @@ class OperatorAttachmentContext extends InstanceContext
     public function create(): OperatorAttachmentInstance
     {
 
-        $payload = $this->version->create('POST', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
         return new OperatorAttachmentInstance(
             $this->version,
@@ -80,7 +82,8 @@ class OperatorAttachmentContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 

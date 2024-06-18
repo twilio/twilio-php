@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Serverless\V1\Service\Asset;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -65,7 +66,8 @@ class AssetVersionContext extends InstanceContext
     public function fetch(): AssetVersionInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AssetVersionInstance(
             $this->version,

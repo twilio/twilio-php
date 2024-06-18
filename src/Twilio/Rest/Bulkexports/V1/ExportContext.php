@@ -19,6 +19,7 @@ namespace Twilio\Rest\Bulkexports\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Bulkexports\V1\Export\ExportCustomJobList;
@@ -66,7 +67,8 @@ class ExportContext extends InstanceContext
     public function fetch(): ExportInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ExportInstance(
             $this->version,

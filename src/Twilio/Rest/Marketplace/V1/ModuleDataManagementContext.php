@@ -57,7 +57,8 @@ class ModuleDataManagementContext extends InstanceContext
     public function fetch(): ModuleDataManagementInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri, [], []);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ModuleDataManagementInstance(
             $this->version,
@@ -92,7 +93,8 @@ class ModuleDataManagementContext extends InstanceContext
                 $options['support'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ModuleDataManagementInstance(
             $this->version,
