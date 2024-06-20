@@ -121,12 +121,11 @@ class CurlClient implements Client {
                     $options[CURLOPT_POSTFIELDS] = $body;
                     $options[CURLOPT_HTTPHEADER] = \array_merge($options[CURLOPT_HTTPHEADER], $headers);
                 }
-                elseif (array_key_exists('Content-Type', $headers)) {
+                elseif ($headers['Content-Type'] === 'application/json') {
                     $options[CURLOPT_POSTFIELDS] = json_encode($data);
                 }
                 else {
                     $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
-                    $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/x-www-form-urlencoded';
                 }
 
                 break;
@@ -137,12 +136,11 @@ class CurlClient implements Client {
                     $options[CURLOPT_POSTFIELDS] = $body;
                     $options[CURLOPT_HTTPHEADER] = \array_merge($options[CURLOPT_HTTPHEADER], $headers);
                 }
-                elseif (array_key_exists('Content-Type', $headers)) {
+                elseif ($headers['Content-Type'] === 'application/json') {
                     $options[CURLOPT_POSTFIELDS] = json_encode($data);
                 }
                 else {
                     $options[CURLOPT_POSTFIELDS] = $this->buildQuery($data);
-                    $options[CURLOPT_HTTPHEADER][] = 'Content-Type: application/x-www-form-urlencoded';
                 }
                 break;
             case 'head':
