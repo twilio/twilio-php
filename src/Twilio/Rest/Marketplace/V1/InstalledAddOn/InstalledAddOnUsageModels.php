@@ -22,22 +22,22 @@ abstract class InstalledAddOnUsageModels
      * @property string $quantity 
      * @property string $sid 
     */
-    public static function createCreateMarketplaceBillingUsageRequestBillableItems(array $payload = []): CreateMarketplaceBillingUsageRequestBillableItems
+    public static function createCreateBillingUsageRequestBillableItems(array $payload = []): CreateBillingUsageRequestBillableItems
     {
-        return new CreateMarketplaceBillingUsageRequestBillableItems($payload);
+        return new CreateBillingUsageRequestBillableItems($payload);
     }
 
     /**
-     * @property CreateMarketplaceBillingUsageRequestBillableItems[] $billableItems
+     * @property CreateBillingUsageRequestBillableItems[] $billableItems
     */
-    public static function createCreateMarketplaceBillingUsageRequest(array $payload = []): CreateMarketplaceBillingUsageRequest
+    public static function createCreateBillingUsageRequest(array $payload = []): CreateBillingUsageRequest
     {
-        return new CreateMarketplaceBillingUsageRequest($payload);
+        return new CreateBillingUsageRequest($payload);
     }
 
 }
 
-class CreateMarketplaceBillingUsageRequestBillableItems implements \JsonSerializable
+class CreateBillingUsageRequestBillableItems implements \JsonSerializable
 {
     /**
      * @property string $quantity 
@@ -64,10 +64,10 @@ class CreateMarketplaceBillingUsageRequestBillableItems implements \JsonSerializ
     }
 }
 
-class CreateMarketplaceBillingUsageRequest implements \JsonSerializable
+class CreateBillingUsageRequest implements \JsonSerializable
 {
     /**
-     * @property CreateMarketplaceBillingUsageRequestBillableItems[] $billableItems
+     * @property CreateBillingUsageRequestBillableItems[] $billableItems
     */
         protected $billableItems;
     public function __construct(array $payload = []) {

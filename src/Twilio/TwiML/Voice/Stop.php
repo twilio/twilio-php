@@ -38,4 +38,14 @@ class Stop extends TwiML {
     public function siprec($attributes = []): Siprec {
         return $this->nest(new Siprec($attributes));
     }
+
+    /**
+     * Add Transcription child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Transcription Child element.
+     */
+    public function transcription($attributes = []): Transcription {
+        return $this->nest(new Transcription($attributes));
+    }
 }

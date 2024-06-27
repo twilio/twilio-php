@@ -1,6 +1,28 @@
 twilio-php Changelog
 ====================
 
+[2024-06-27] Version 8.2.1
+--------------------------
+**Library - Chore**
+- [PR #811](https://github.com/twilio/twilio-php/pull/811): fix contentType check in post and put. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Add `transcription` resource
+- Add beta feature request managed cert
+
+**Flex**
+- Changed mount name for flex_team v2 api
+
+**Intelligence**
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` as Response Headers to Operator resources
+
+**Numbers**
+- Added include_constraints query parameter to the Regulations API
+
+**Twiml**
+- Add support for `<Transcription>` noun
+
+
 [2024-06-18] Version 8.2.0
 --------------------------
 **Library - Chore**
