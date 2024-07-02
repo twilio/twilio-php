@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2024-07-02] Version 8.2.2
+--------------------------
+**Intelligence**
+- Deprecate account flag api.twilio-intelligence.v2
+
+
 [2024-06-27] Version 8.2.1
 --------------------------
 **Library - Chore**
