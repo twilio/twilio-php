@@ -25,23 +25,23 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Rest\Preview\Sync\Service\SyncListList;
-use Twilio\Rest\Preview\Sync\Service\DocumentList;
 use Twilio\Rest\Preview\Sync\Service\SyncMapList;
+use Twilio\Rest\Preview\Sync\Service\DocumentList;
 
 
 /**
  * @property SyncListList $syncLists
- * @property DocumentList $documents
  * @property SyncMapList $syncMaps
- * @method \Twilio\Rest\Preview\Sync\Service\SyncListContext syncLists(string $sid)
+ * @property DocumentList $documents
  * @method \Twilio\Rest\Preview\Sync\Service\SyncMapContext syncMaps(string $sid)
  * @method \Twilio\Rest\Preview\Sync\Service\DocumentContext documents(string $sid)
+ * @method \Twilio\Rest\Preview\Sync\Service\SyncListContext syncLists(string $sid)
  */
 class ServiceContext extends InstanceContext
     {
     protected $_syncLists;
-    protected $_documents;
     protected $_syncMaps;
+    protected $_documents;
 
     /**
      * Initialize the ServiceContext
@@ -74,7 +74,8 @@ class ServiceContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -87,7 +88,8 @@ class ServiceContext extends InstanceContext
     public function fetch(): ServiceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ServiceInstance(
             $this->version,
@@ -120,7 +122,8 @@ class ServiceContext extends InstanceContext
                 Serialize::booleanToString($options['aclEnabled']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ServiceInstance(
             $this->version,
@@ -146,21 +149,6 @@ class ServiceContext extends InstanceContext
     }
 
     /**
-     * Access the documents
-     */
-    protected function getDocuments(): DocumentList
-    {
-        if (!$this->_documents) {
-            $this->_documents = new DocumentList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_documents;
-    }
-
-    /**
      * Access the syncMaps
      */
     protected function getSyncMaps(): SyncMapList
@@ -173,6 +161,21 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_syncMaps;
+    }
+
+    /**
+     * Access the documents
+     */
+    protected function getDocuments(): DocumentList
+    {
+        if (!$this->_documents) {
+            $this->_documents = new DocumentList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_documents;
     }
 
     /**

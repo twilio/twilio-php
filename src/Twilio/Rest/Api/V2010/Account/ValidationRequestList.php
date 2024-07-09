@@ -76,7 +76,8 @@ class ValidationRequestList extends ListResource
                 $options['statusCallbackMethod'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ValidationRequestInstance(
             $this->version,

@@ -29,7 +29,7 @@ abstract class RoomOptions
      * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants.
      * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.***
      * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
-     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
      * @param array $recordingRules A collection of Recording Rules that describe how to include or exclude matching tracks for recording
      * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only.
      * @param int $maxParticipantDuration The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
@@ -116,7 +116,7 @@ class CreateRoomOptions extends Options
      * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants.
      * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.***
      * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
-     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
      * @param array $recordingRules A collection of Recording Rules that describe how to include or exclude matching tracks for recording
      * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only.
      * @param int $maxParticipantDuration The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
@@ -255,9 +255,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
      *
-     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-address-whitelisting#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
      * @return $this Fluent Builder
      */
     public function setMediaRegion(string $mediaRegion): self

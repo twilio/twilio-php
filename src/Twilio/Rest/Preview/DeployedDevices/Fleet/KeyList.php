@@ -68,7 +68,8 @@ class KeyList extends ListResource
                 $options['deviceSid'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new KeyInstance(
             $this->version,

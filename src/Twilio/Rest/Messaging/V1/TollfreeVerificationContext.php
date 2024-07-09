@@ -50,6 +50,20 @@ class TollfreeVerificationContext extends InstanceContext
     }
 
     /**
+     * Delete the TollfreeVerificationInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+    }
+
+
+    /**
      * Fetch the TollfreeVerificationInstance
      *
      * @return TollfreeVerificationInstance Fetched TollfreeVerificationInstance
@@ -58,7 +72,8 @@ class TollfreeVerificationContext extends InstanceContext
     public function fetch(): TollfreeVerificationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new TollfreeVerificationInstance(
             $this->version,
@@ -121,9 +136,12 @@ class TollfreeVerificationContext extends InstanceContext
                 $options['businessContactEmail'],
             'BusinessContactPhone' =>
                 $options['businessContactPhone'],
+            'EditReason' =>
+                $options['editReason'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new TollfreeVerificationInstance(
             $this->version,

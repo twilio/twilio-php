@@ -79,7 +79,8 @@ class ByocTrunkList extends ListResource
                 $options['fromDomainSid'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ByocTrunkInstance(
             $this->version,

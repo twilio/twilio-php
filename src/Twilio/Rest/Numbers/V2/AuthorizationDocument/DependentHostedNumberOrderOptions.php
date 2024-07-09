@@ -21,10 +21,10 @@ use Twilio\Values;
 abstract class DependentHostedNumberOrderOptions
 {
     /**
-     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
+     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values) for more information on each of these statuses.
      * @param string $phoneNumber An E164 formatted phone number hosted by this HostedNumberOrder.
      * @param string $incomingPhoneNumberSid A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
+     * @param string $friendlyName A human readable description of this resource, up to 128 characters.
      * @return ReadDependentHostedNumberOrderOptions Options builder
      */
     public static function read(
@@ -49,10 +49,10 @@ abstract class DependentHostedNumberOrderOptions
 class ReadDependentHostedNumberOrderOptions extends Options
     {
     /**
-     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
+     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values) for more information on each of these statuses.
      * @param string $phoneNumber An E164 formatted phone number hosted by this HostedNumberOrder.
      * @param string $incomingPhoneNumberSid A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
+     * @param string $friendlyName A human readable description of this resource, up to 128 characters.
      */
     public function __construct(
         
@@ -69,9 +69,9 @@ class ReadDependentHostedNumberOrderOptions extends Options
     }
 
     /**
-     * Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
+     * Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values) for more information on each of these statuses.
      *
-     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/api/phone-numbers/hosted-number-authorization-documents#status-values) for more information on each of these statuses.
+     * @param string $status Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed LOA, 4. canceled, 5. failed. See the section entitled [Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values) for more information on each of these statuses.
      * @return $this Fluent Builder
      */
     public function setStatus(string $status): self
@@ -105,9 +105,9 @@ class ReadDependentHostedNumberOrderOptions extends Options
     }
 
     /**
-     * A human readable description of this resource, up to 64 characters.
+     * A human readable description of this resource, up to 128 characters.
      *
-     * @param string $friendlyName A human readable description of this resource, up to 64 characters.
+     * @param string $friendlyName A human readable description of this resource, up to 128 characters.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self

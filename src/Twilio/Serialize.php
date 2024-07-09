@@ -63,7 +63,7 @@ class Serialize {
             return $boolOrStr;
         }
 
-        return $boolOrStr ? 'True' : 'False';
+        return $boolOrStr ? 'true' : 'false';
     }
 
     public static function jsonObject($object) {

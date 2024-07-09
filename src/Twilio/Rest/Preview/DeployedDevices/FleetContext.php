@@ -34,10 +34,10 @@ use Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList;
  * @property DeviceList $devices
  * @property KeyList $keys
  * @property DeploymentList $deployments
+ * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceContext devices(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyContext keys(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentContext deployments(string $sid)
- * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)
  */
 class FleetContext extends InstanceContext
     {
@@ -77,7 +77,8 @@ class FleetContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -90,7 +91,8 @@ class FleetContext extends InstanceContext
     public function fetch(): FleetInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new FleetInstance(
             $this->version,
@@ -119,7 +121,8 @@ class FleetContext extends InstanceContext
                 $options['defaultDeploymentSid'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new FleetInstance(
             $this->version,

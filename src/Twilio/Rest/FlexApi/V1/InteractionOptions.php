@@ -21,16 +21,19 @@ use Twilio\Values;
 abstract class InteractionOptions
 {
     /**
+     * @param array $routing The Interaction's routing logic.
      * @param string $interactionContextSid The Interaction context sid is used for adding a context lookup sid
      * @return CreateInteractionOptions Options builder
      */
     public static function create(
         
+        array $routing = Values::ARRAY_NONE,
         string $interactionContextSid = Values::NONE
 
     ): CreateInteractionOptions
     {
         return new CreateInteractionOptions(
+            $routing,
             $interactionContextSid
         );
     }
@@ -41,14 +44,29 @@ abstract class InteractionOptions
 class CreateInteractionOptions extends Options
     {
     /**
+     * @param array $routing The Interaction's routing logic.
      * @param string $interactionContextSid The Interaction context sid is used for adding a context lookup sid
      */
     public function __construct(
         
+        array $routing = Values::ARRAY_NONE,
         string $interactionContextSid = Values::NONE
 
     ) {
+        $this->options['routing'] = $routing;
         $this->options['interactionContextSid'] = $interactionContextSid;
+    }
+
+    /**
+     * The Interaction's routing logic.
+     *
+     * @param array $routing The Interaction's routing logic.
+     * @return $this Fluent Builder
+     */
+    public function setRouting(array $routing): self
+    {
+        $this->options['routing'] = $routing;
+        return $this;
     }
 
     /**

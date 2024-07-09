@@ -85,10 +85,11 @@ class MessageList extends ListResource
                 $options['contentSid'],
             'ContentVariables' =>
                 $options['contentVariables'],
+            'Subject' =>
+                $options['subject'],
         ]);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new MessageInstance(

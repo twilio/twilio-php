@@ -81,10 +81,13 @@ class ConversationList extends ListResource
                 $options['timersInactive'],
             'Timers.Closed' =>
                 $options['timersClosed'],
+            'Bindings.Email.Address' =>
+                $options['bindingsEmailAddress'],
+            'Bindings.Email.Name' =>
+                $options['bindingsEmailName'],
         ]);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ConversationInstance(

@@ -19,23 +19,43 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Numbers\V1\BulkEligibilityList;
-use Twilio\Rest\Numbers\V1\PortingBulkPortabilityList;
+use Twilio\Rest\Numbers\V1\EligibilityList;
+use Twilio\Rest\Numbers\V1\PortingPortInList;
+use Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberList;
 use Twilio\Rest\Numbers\V1\PortingPortabilityList;
+use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationList;
+use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationDeleteList;
+use Twilio\Rest\Numbers\V1\SigningRequestConfigurationList;
+use Twilio\Rest\Numbers\V1\WebhookList;
 use Twilio\Version;
 
 /**
  * @property BulkEligibilityList $bulkEligibilities
- * @property PortingBulkPortabilityList $portingBulkPortabilities
+ * @property EligibilityList $eligibilities
+ * @property PortingPortInList $portingPortIns
+ * @property PortingPortInPhoneNumberList $portingPortInPhoneNumber
  * @property PortingPortabilityList $portingPortabilities
+ * @property PortingWebhookConfigurationList $portingWebhookConfigurations
+ * @property PortingWebhookConfigurationDeleteList $portingWebhookConfigurationsDelete
+ * @property SigningRequestConfigurationList $signingRequestConfigurations
+ * @property WebhookList $webhook
  * @method \Twilio\Rest\Numbers\V1\BulkEligibilityContext bulkEligibilities(string $requestId)
- * @method \Twilio\Rest\Numbers\V1\PortingBulkPortabilityContext portingBulkPortabilities(string $sid)
+ * @method \Twilio\Rest\Numbers\V1\PortingPortInContext portingPortIns(string $portInRequestSid)
+ * @method \Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberContext portingPortInPhoneNumber(string $portInRequestSid, string $phoneNumberSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortabilityContext portingPortabilities(string $phoneNumber)
+ * @method \Twilio\Rest\Numbers\V1\PortingWebhookConfigurationDeleteContext portingWebhookConfigurationsDelete(string $webhookType)
  */
 class V1 extends Version
 {
     protected $_bulkEligibilities;
-    protected $_portingBulkPortabilities;
+    protected $_eligibilities;
+    protected $_portingPortIns;
+    protected $_portingPortInPhoneNumber;
     protected $_portingPortabilities;
+    protected $_portingWebhookConfigurations;
+    protected $_portingWebhookConfigurationsDelete;
+    protected $_signingRequestConfigurations;
+    protected $_webhook;
 
     /**
      * Construct the V1 version of Numbers
@@ -56,12 +76,28 @@ class V1 extends Version
         return $this->_bulkEligibilities;
     }
 
-    protected function getPortingBulkPortabilities(): PortingBulkPortabilityList
+    protected function getEligibilities(): EligibilityList
     {
-        if (!$this->_portingBulkPortabilities) {
-            $this->_portingBulkPortabilities = new PortingBulkPortabilityList($this);
+        if (!$this->_eligibilities) {
+            $this->_eligibilities = new EligibilityList($this);
         }
-        return $this->_portingBulkPortabilities;
+        return $this->_eligibilities;
+    }
+
+    protected function getPortingPortIns(): PortingPortInList
+    {
+        if (!$this->_portingPortIns) {
+            $this->_portingPortIns = new PortingPortInList($this);
+        }
+        return $this->_portingPortIns;
+    }
+
+    protected function getPortingPortInPhoneNumber(): PortingPortInPhoneNumberList
+    {
+        if (!$this->_portingPortInPhoneNumber) {
+            $this->_portingPortInPhoneNumber = new PortingPortInPhoneNumberList($this);
+        }
+        return $this->_portingPortInPhoneNumber;
     }
 
     protected function getPortingPortabilities(): PortingPortabilityList
@@ -70,6 +106,38 @@ class V1 extends Version
             $this->_portingPortabilities = new PortingPortabilityList($this);
         }
         return $this->_portingPortabilities;
+    }
+
+    protected function getPortingWebhookConfigurations(): PortingWebhookConfigurationList
+    {
+        if (!$this->_portingWebhookConfigurations) {
+            $this->_portingWebhookConfigurations = new PortingWebhookConfigurationList($this);
+        }
+        return $this->_portingWebhookConfigurations;
+    }
+
+    protected function getPortingWebhookConfigurationsDelete(): PortingWebhookConfigurationDeleteList
+    {
+        if (!$this->_portingWebhookConfigurationsDelete) {
+            $this->_portingWebhookConfigurationsDelete = new PortingWebhookConfigurationDeleteList($this);
+        }
+        return $this->_portingWebhookConfigurationsDelete;
+    }
+
+    protected function getSigningRequestConfigurations(): SigningRequestConfigurationList
+    {
+        if (!$this->_signingRequestConfigurations) {
+            $this->_signingRequestConfigurations = new SigningRequestConfigurationList($this);
+        }
+        return $this->_signingRequestConfigurations;
+    }
+
+    protected function getWebhook(): WebhookList
+    {
+        if (!$this->_webhook) {
+            $this->_webhook = new WebhookList($this);
+        }
+        return $this->_webhook;
     }
 
     /**

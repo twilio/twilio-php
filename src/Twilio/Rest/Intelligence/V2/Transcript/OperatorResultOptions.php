@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class OperatorResultOptions
 {
     /**
-     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      * @return FetchOperatorResultOptions Options builder
      */
     public static function fetch(
@@ -36,7 +36,7 @@ abstract class OperatorResultOptions
     }
 
     /**
-     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      * @return ReadOperatorResultOptions Options builder
      */
     public static function read(
@@ -55,7 +55,7 @@ abstract class OperatorResultOptions
 class FetchOperatorResultOptions extends Options
     {
     /**
-     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      */
     public function __construct(
         
@@ -66,9 +66,9 @@ class FetchOperatorResultOptions extends Options
     }
 
     /**
-     * Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      *
-     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      * @return $this Fluent Builder
      */
     public function setRedacted(bool $redacted): self
@@ -92,7 +92,7 @@ class FetchOperatorResultOptions extends Options
 class ReadOperatorResultOptions extends Options
     {
     /**
-     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      */
     public function __construct(
         
@@ -103,9 +103,9 @@ class ReadOperatorResultOptions extends Options
     }
 
     /**
-     * Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      *
-     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. The default is True.
+     * @param bool $redacted Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True.
      * @return $this Fluent Builder
      */
     public function setRedacted(bool $redacted): self

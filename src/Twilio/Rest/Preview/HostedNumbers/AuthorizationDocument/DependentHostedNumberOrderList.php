@@ -29,7 +29,7 @@ class DependentHostedNumberOrderList extends ListResource
      * Construct the DependentHostedNumberOrderList
      *
      * @param Version $version Version that contains the resource
-     * @param string $signingDocumentSid 
+     * @param string $signingDocumentSid A 34 character string that uniquely identifies the LOA document associated with this HostedNumberOrder.
      */
     public function __construct(
         Version $version,

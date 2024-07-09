@@ -20,18 +20,21 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Accounts\V1\AuthTokenPromotionList;
 use Twilio\Rest\Accounts\V1\CredentialList;
+use Twilio\Rest\Accounts\V1\SafelistList;
 use Twilio\Rest\Accounts\V1\SecondaryAuthTokenList;
 use Twilio\Version;
 
 /**
  * @property AuthTokenPromotionList $authTokenPromotion
  * @property CredentialList $credentials
+ * @property SafelistList $safelist
  * @property SecondaryAuthTokenList $secondaryAuthToken
  */
 class V1 extends Version
 {
     protected $_authTokenPromotion;
     protected $_credentials;
+    protected $_safelist;
     protected $_secondaryAuthToken;
 
     /**
@@ -59,6 +62,14 @@ class V1 extends Version
             $this->_credentials = new CredentialList($this);
         }
         return $this->_credentials;
+    }
+
+    protected function getSafelist(): SafelistList
+    {
+        if (!$this->_safelist) {
+            $this->_safelist = new SafelistList($this);
+        }
+        return $this->_safelist;
     }
 
     protected function getSecondaryAuthToken(): SecondaryAuthTokenList

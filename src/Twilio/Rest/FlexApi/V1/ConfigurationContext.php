@@ -60,7 +60,29 @@ class ConfigurationContext extends InstanceContext
                 $options['uiVersion'],
         ]);
 
-        $payload = $this->version->fetch('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+
+        return new ConfigurationInstance(
+            $this->version,
+            $payload
+        );
+    }
+
+
+    /**
+     * Update the ConfigurationInstance
+     *
+     * @return ConfigurationInstance Updated ConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): ConfigurationInstance
+    {
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $data = $body->toArray();
+        $headers['Content-Type'] = 'application/json';
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ConfigurationInstance(
             $this->version,

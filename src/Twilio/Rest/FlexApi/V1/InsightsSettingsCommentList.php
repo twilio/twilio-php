@@ -54,8 +54,7 @@ class InsightsSettingsCommentList extends ListResource
 
         $options = new Values($options);
 
-        $headers = Values::of(['Authorization' => $options['authorization']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InsightsSettingsCommentInstance(

@@ -20,30 +20,83 @@ use Twilio\Values;
 
 abstract class RegulationOptions
 {
+    /**
+     * @param bool $includeConstraints A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
+     * @return FetchRegulationOptions Options builder
+     */
+    public static function fetch(
+        
+        bool $includeConstraints = Values::BOOL_NONE
+
+    ): FetchRegulationOptions
+    {
+        return new FetchRegulationOptions(
+            $includeConstraints
+        );
+    }
 
     /**
      * @param string $endUserType The type of End User the regulation requires - can be `individual` or `business`.
      * @param string $isoCountry The ISO country code of the phone number's country.
      * @param string $numberType The type of phone number that the regulatory requiremnt is restricting.
+     * @param bool $includeConstraints A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
      * @return ReadRegulationOptions Options builder
      */
     public static function read(
         
         string $endUserType = Values::NONE,
         string $isoCountry = Values::NONE,
-        string $numberType = Values::NONE
+        string $numberType = Values::NONE,
+        bool $includeConstraints = Values::BOOL_NONE
 
     ): ReadRegulationOptions
     {
         return new ReadRegulationOptions(
             $endUserType,
             $isoCountry,
-            $numberType
+            $numberType,
+            $includeConstraints
         );
     }
 
 }
 
+class FetchRegulationOptions extends Options
+    {
+    /**
+     * @param bool $includeConstraints A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
+     */
+    public function __construct(
+        
+        bool $includeConstraints = Values::BOOL_NONE
+
+    ) {
+        $this->options['includeConstraints'] = $includeConstraints;
+    }
+
+    /**
+     * A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
+     *
+     * @param bool $includeConstraints A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
+     * @return $this Fluent Builder
+     */
+    public function setIncludeConstraints(bool $includeConstraints): self
+    {
+        $this->options['includeConstraints'] = $includeConstraints;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Numbers.V2.FetchRegulationOptions ' . $options . ']';
+    }
+}
 
 class ReadRegulationOptions extends Options
     {
@@ -51,17 +104,20 @@ class ReadRegulationOptions extends Options
      * @param string $endUserType The type of End User the regulation requires - can be `individual` or `business`.
      * @param string $isoCountry The ISO country code of the phone number's country.
      * @param string $numberType The type of phone number that the regulatory requiremnt is restricting.
+     * @param bool $includeConstraints A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
      */
     public function __construct(
         
         string $endUserType = Values::NONE,
         string $isoCountry = Values::NONE,
-        string $numberType = Values::NONE
+        string $numberType = Values::NONE,
+        bool $includeConstraints = Values::BOOL_NONE
 
     ) {
         $this->options['endUserType'] = $endUserType;
         $this->options['isoCountry'] = $isoCountry;
         $this->options['numberType'] = $numberType;
+        $this->options['includeConstraints'] = $includeConstraints;
     }
 
     /**
@@ -97,6 +153,18 @@ class ReadRegulationOptions extends Options
     public function setNumberType(string $numberType): self
     {
         $this->options['numberType'] = $numberType;
+        return $this;
+    }
+
+    /**
+     * A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
+     *
+     * @param bool $includeConstraints A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields
+     * @return $this Fluent Builder
+     */
+    public function setIncludeConstraints(bool $includeConstraints): self
+    {
+        $this->options['includeConstraints'] = $includeConstraints;
         return $this;
     }
 

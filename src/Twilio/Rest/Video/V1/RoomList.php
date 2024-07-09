@@ -89,7 +89,8 @@ class RoomList extends ListResource
                 Serialize::booleanToString($options['largeRoom']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new RoomInstance(
             $this->version,

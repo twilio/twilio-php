@@ -40,10 +40,11 @@ abstract class CallSummariesOptions
      * @param string $subaccount A unique SID identifier of a Subaccount.
      * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
      * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
-     * @param string $connectivityIssue A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
-     * @param string $qualityIssue A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
-     * @param bool $spam A boolean flag indicating spam calls.
-     * @param string $callScore A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     * @param string $answeredByAnnotation Either machine or human.
+     * @param string $connectivityIssueAnnotation A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $qualityIssueAnnotation A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param bool $spamAnnotation A boolean flag indicating spam calls.
+     * @param string $callScoreAnnotation A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      * @return ReadCallSummariesOptions Options builder
      */
     public static function read(
@@ -67,10 +68,11 @@ abstract class CallSummariesOptions
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::BOOL_NONE,
         string $answeredBy = Values::NONE,
-        string $connectivityIssue = Values::NONE,
-        string $qualityIssue = Values::NONE,
-        bool $spam = Values::BOOL_NONE,
-        string $callScore = Values::NONE
+        string $answeredByAnnotation = Values::NONE,
+        string $connectivityIssueAnnotation = Values::NONE,
+        string $qualityIssueAnnotation = Values::NONE,
+        bool $spamAnnotation = Values::BOOL_NONE,
+        string $callScoreAnnotation = Values::NONE
 
     ): ReadCallSummariesOptions
     {
@@ -94,10 +96,11 @@ abstract class CallSummariesOptions
             $subaccount,
             $abnormalSession,
             $answeredBy,
-            $connectivityIssue,
-            $qualityIssue,
-            $spam,
-            $callScore
+            $answeredByAnnotation,
+            $connectivityIssueAnnotation,
+            $qualityIssueAnnotation,
+            $spamAnnotation,
+            $callScoreAnnotation
         );
     }
 
@@ -125,10 +128,11 @@ class ReadCallSummariesOptions extends Options
      * @param string $subaccount A unique SID identifier of a Subaccount.
      * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
      * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
-     * @param string $connectivityIssue A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
-     * @param string $qualityIssue A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
-     * @param bool $spam A boolean flag indicating spam calls.
-     * @param string $callScore A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     * @param string $answeredByAnnotation Either machine or human.
+     * @param string $connectivityIssueAnnotation A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $qualityIssueAnnotation A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param bool $spamAnnotation A boolean flag indicating spam calls.
+     * @param string $callScoreAnnotation A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      */
     public function __construct(
         
@@ -151,10 +155,11 @@ class ReadCallSummariesOptions extends Options
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::BOOL_NONE,
         string $answeredBy = Values::NONE,
-        string $connectivityIssue = Values::NONE,
-        string $qualityIssue = Values::NONE,
-        bool $spam = Values::BOOL_NONE,
-        string $callScore = Values::NONE
+        string $answeredByAnnotation = Values::NONE,
+        string $connectivityIssueAnnotation = Values::NONE,
+        string $qualityIssueAnnotation = Values::NONE,
+        bool $spamAnnotation = Values::BOOL_NONE,
+        string $callScoreAnnotation = Values::NONE
 
     ) {
         $this->options['from'] = $from;
@@ -176,10 +181,11 @@ class ReadCallSummariesOptions extends Options
         $this->options['subaccount'] = $subaccount;
         $this->options['abnormalSession'] = $abnormalSession;
         $this->options['answeredBy'] = $answeredBy;
-        $this->options['connectivityIssue'] = $connectivityIssue;
-        $this->options['qualityIssue'] = $qualityIssue;
-        $this->options['spam'] = $spam;
-        $this->options['callScore'] = $callScore;
+        $this->options['answeredByAnnotation'] = $answeredByAnnotation;
+        $this->options['connectivityIssueAnnotation'] = $connectivityIssueAnnotation;
+        $this->options['qualityIssueAnnotation'] = $qualityIssueAnnotation;
+        $this->options['spamAnnotation'] = $spamAnnotation;
+        $this->options['callScoreAnnotation'] = $callScoreAnnotation;
     }
 
     /**
@@ -411,50 +417,62 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * Either machine or human.
      *
-     * @param string $connectivityIssue A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $answeredByAnnotation Either machine or human.
      * @return $this Fluent Builder
      */
-    public function setConnectivityIssue(string $connectivityIssue): self
+    public function setAnsweredByAnnotation(string $answeredByAnnotation): self
     {
-        $this->options['connectivityIssue'] = $connectivityIssue;
+        $this->options['answeredByAnnotation'] = $answeredByAnnotation;
+        return $this;
+    }
+
+    /**
+     * A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     *
+     * @param string $connectivityIssueAnnotation A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @return $this Fluent Builder
+     */
+    public function setConnectivityIssueAnnotation(string $connectivityIssueAnnotation): self
+    {
+        $this->options['connectivityIssueAnnotation'] = $connectivityIssueAnnotation;
         return $this;
     }
 
     /**
      * A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
      *
-     * @param string $qualityIssue A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param string $qualityIssueAnnotation A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
      * @return $this Fluent Builder
      */
-    public function setQualityIssue(string $qualityIssue): self
+    public function setQualityIssueAnnotation(string $qualityIssueAnnotation): self
     {
-        $this->options['qualityIssue'] = $qualityIssue;
+        $this->options['qualityIssueAnnotation'] = $qualityIssueAnnotation;
         return $this;
     }
 
     /**
      * A boolean flag indicating spam calls.
      *
-     * @param bool $spam A boolean flag indicating spam calls.
+     * @param bool $spamAnnotation A boolean flag indicating spam calls.
      * @return $this Fluent Builder
      */
-    public function setSpam(bool $spam): self
+    public function setSpamAnnotation(bool $spamAnnotation): self
     {
-        $this->options['spam'] = $spam;
+        $this->options['spamAnnotation'] = $spamAnnotation;
         return $this;
     }
 
     /**
      * A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      *
-     * @param string $callScore A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     * @param string $callScoreAnnotation A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
      * @return $this Fluent Builder
      */
-    public function setCallScore(string $callScore): self
+    public function setCallScoreAnnotation(string $callScoreAnnotation): self
     {
-        $this->options['callScore'] = $callScore;
+        $this->options['callScoreAnnotation'] = $callScoreAnnotation;
         return $this;
     }
 

@@ -31,7 +31,7 @@ class UsAppToPersonList extends ListResource
      * Construct the UsAppToPersonList
      *
      * @param Version $version Version that contains the resource
-     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
+     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from.
      */
     public function __construct(
         Version $version,
@@ -56,7 +56,7 @@ class UsAppToPersonList extends ListResource
      * @param string $brandRegistrationSid A2P Brand Registration SID
      * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
      * @param string $messageFlow Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
-     * @param string[] $messageSamples Message samples, at least 1 and up to 5 sample messages (at least 2 for sole proprietor), >=20 chars, <=1024 chars each.
+     * @param string[] $messageSamples An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars.
      * @param string $usAppToPersonUsecase A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..]
      * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
      * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.
@@ -96,9 +96,16 @@ class UsAppToPersonList extends ListResource
                 Serialize::map($options['optOutKeywords'], function ($e) { return $e; }),
             'HelpKeywords' =>
                 Serialize::map($options['helpKeywords'], function ($e) { return $e; }),
+            'SubscriberOptIn' =>
+                Serialize::booleanToString($options['subscriberOptIn']),
+            'AgeGated' =>
+                Serialize::booleanToString($options['ageGated']),
+            'DirectLending' =>
+                Serialize::booleanToString($options['directLending']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new UsAppToPersonInstance(
             $this->version,

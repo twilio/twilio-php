@@ -60,7 +60,8 @@ class SourceIpMappingList extends ListResource
                 $sipDomainSid,
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SourceIpMappingInstance(
             $this->version,

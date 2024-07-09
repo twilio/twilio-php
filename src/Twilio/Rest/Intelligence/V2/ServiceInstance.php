@@ -40,6 +40,7 @@ use Twilio\Deserialize;
  * @property string|null $url
  * @property string|null $webhookUrl
  * @property string $webhookHttpMethod
+ * @property string[]|null $readOnlyAttachedOperatorSids
  * @property int|null $version
  */
 class ServiceInstance extends InstanceResource
@@ -71,6 +72,7 @@ class ServiceInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
             'webhookUrl' => Values::array_get($payload, 'webhook_url'),
             'webhookHttpMethod' => Values::array_get($payload, 'webhook_http_method'),
+            'readOnlyAttachedOperatorSids' => Values::array_get($payload, 'read_only_attached_operator_sids'),
             'version' => Values::array_get($payload, 'version'),
         ];
 

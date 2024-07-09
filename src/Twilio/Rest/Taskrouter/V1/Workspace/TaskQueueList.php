@@ -23,14 +23,17 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueBulkRealTimeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 
 
 /**
+ * @property TaskQueueBulkRealTimeStatisticsList $bulkRealTimeStatistics
  * @property TaskQueuesStatisticsList $statistics
  */
 class TaskQueueList extends ListResource
     {
+    protected $_bulkRealTimeStatistics = null;
     protected $_statistics = null;
 
     /**
@@ -84,7 +87,8 @@ class TaskQueueList extends ListResource
                 $options['assignmentActivitySid'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TaskQueueInstance(
             $this->version,
@@ -213,6 +217,20 @@ class TaskQueueList extends ListResource
             $this->solution['workspaceSid'],
             $sid
         );
+    }
+
+    /**
+     * Access the bulkRealTimeStatistics
+     */
+    protected function getBulkRealTimeStatistics(): TaskQueueBulkRealTimeStatisticsList
+    {
+        if (!$this->_bulkRealTimeStatistics) {
+            $this->_bulkRealTimeStatistics = new TaskQueueBulkRealTimeStatisticsList(
+                $this->version,
+                $this->solution['workspaceSid']
+            );
+        }
+        return $this->_bulkRealTimeStatistics;
     }
 
     /**

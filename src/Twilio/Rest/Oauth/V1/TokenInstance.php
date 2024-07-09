@@ -21,15 +21,14 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\Deserialize;
 
 
 /**
  * @property string|null $accessToken
  * @property string|null $refreshToken
  * @property string|null $idToken
- * @property \DateTime|null $refreshTokenExpiresAt
- * @property \DateTime|null $accessTokenExpiresAt
+ * @property string|null $tokenType
+ * @property int|null $expiresIn
  */
 class TokenInstance extends InstanceResource
 {
@@ -48,8 +47,8 @@ class TokenInstance extends InstanceResource
             'accessToken' => Values::array_get($payload, 'access_token'),
             'refreshToken' => Values::array_get($payload, 'refresh_token'),
             'idToken' => Values::array_get($payload, 'id_token'),
-            'refreshTokenExpiresAt' => Deserialize::dateTime(Values::array_get($payload, 'refresh_token_expires_at')),
-            'accessTokenExpiresAt' => Deserialize::dateTime(Values::array_get($payload, 'access_token_expires_at')),
+            'tokenType' => Values::array_get($payload, 'token_type'),
+            'expiresIn' => Values::array_get($payload, 'expires_in'),
         ];
 
         $this->solution = [];

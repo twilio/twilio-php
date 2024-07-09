@@ -79,8 +79,7 @@ class ChannelList extends ListResource
                 $options['createdBy'],
         ]);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ChannelInstance(

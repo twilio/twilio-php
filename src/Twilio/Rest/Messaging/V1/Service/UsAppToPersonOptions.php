@@ -27,6 +27,9 @@ abstract class UsAppToPersonOptions
      * @param string[] $optInKeywords If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum.
      * @param string[] $optOutKeywords End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
      * @param string[] $helpKeywords End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
+     * @param bool $subscriberOptIn A boolean that specifies whether campaign has Subscriber Optin or not.
+     * @param bool $ageGated A boolean that specifies whether campaign is age gated or not.
+     * @param bool $directLending A boolean that specifies whether campaign allows direct lending or not.
      * @return CreateUsAppToPersonOptions Options builder
      */
     public static function create(
@@ -36,7 +39,10 @@ abstract class UsAppToPersonOptions
         string $helpMessage = Values::NONE,
         array $optInKeywords = Values::ARRAY_NONE,
         array $optOutKeywords = Values::ARRAY_NONE,
-        array $helpKeywords = Values::ARRAY_NONE
+        array $helpKeywords = Values::ARRAY_NONE,
+        bool $subscriberOptIn = Values::BOOL_NONE,
+        bool $ageGated = Values::BOOL_NONE,
+        bool $directLending = Values::BOOL_NONE
 
     ): CreateUsAppToPersonOptions
     {
@@ -46,9 +52,13 @@ abstract class UsAppToPersonOptions
             $helpMessage,
             $optInKeywords,
             $optOutKeywords,
-            $helpKeywords
+            $helpKeywords,
+            $subscriberOptIn,
+            $ageGated,
+            $directLending
         );
     }
+
 
 
 
@@ -64,6 +74,9 @@ class CreateUsAppToPersonOptions extends Options
      * @param string[] $optInKeywords If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum.
      * @param string[] $optOutKeywords End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
      * @param string[] $helpKeywords End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
+     * @param bool $subscriberOptIn A boolean that specifies whether campaign has Subscriber Optin or not.
+     * @param bool $ageGated A boolean that specifies whether campaign is age gated or not.
+     * @param bool $directLending A boolean that specifies whether campaign allows direct lending or not.
      */
     public function __construct(
         
@@ -72,7 +85,10 @@ class CreateUsAppToPersonOptions extends Options
         string $helpMessage = Values::NONE,
         array $optInKeywords = Values::ARRAY_NONE,
         array $optOutKeywords = Values::ARRAY_NONE,
-        array $helpKeywords = Values::ARRAY_NONE
+        array $helpKeywords = Values::ARRAY_NONE,
+        bool $subscriberOptIn = Values::BOOL_NONE,
+        bool $ageGated = Values::BOOL_NONE,
+        bool $directLending = Values::BOOL_NONE
 
     ) {
         $this->options['optInMessage'] = $optInMessage;
@@ -81,6 +97,9 @@ class CreateUsAppToPersonOptions extends Options
         $this->options['optInKeywords'] = $optInKeywords;
         $this->options['optOutKeywords'] = $optOutKeywords;
         $this->options['helpKeywords'] = $helpKeywords;
+        $this->options['subscriberOptIn'] = $subscriberOptIn;
+        $this->options['ageGated'] = $ageGated;
+        $this->options['directLending'] = $directLending;
     }
 
     /**
@@ -156,6 +175,42 @@ class CreateUsAppToPersonOptions extends Options
     }
 
     /**
+     * A boolean that specifies whether campaign has Subscriber Optin or not.
+     *
+     * @param bool $subscriberOptIn A boolean that specifies whether campaign has Subscriber Optin or not.
+     * @return $this Fluent Builder
+     */
+    public function setSubscriberOptIn(bool $subscriberOptIn): self
+    {
+        $this->options['subscriberOptIn'] = $subscriberOptIn;
+        return $this;
+    }
+
+    /**
+     * A boolean that specifies whether campaign is age gated or not.
+     *
+     * @param bool $ageGated A boolean that specifies whether campaign is age gated or not.
+     * @return $this Fluent Builder
+     */
+    public function setAgeGated(bool $ageGated): self
+    {
+        $this->options['ageGated'] = $ageGated;
+        return $this;
+    }
+
+    /**
+     * A boolean that specifies whether campaign allows direct lending or not.
+     *
+     * @param bool $directLending A boolean that specifies whether campaign allows direct lending or not.
+     * @return $this Fluent Builder
+     */
+    public function setDirectLending(bool $directLending): self
+    {
+        $this->options['directLending'] = $directLending;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -166,6 +221,7 @@ class CreateUsAppToPersonOptions extends Options
         return '[Twilio.Messaging.V1.CreateUsAppToPersonOptions ' . $options . ']';
     }
 }
+
 
 
 

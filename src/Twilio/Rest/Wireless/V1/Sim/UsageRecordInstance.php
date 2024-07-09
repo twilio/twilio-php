@@ -37,7 +37,7 @@ class UsageRecordInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $simSid The SID of the [Sim resource](https://www.twilio.com/docs/wireless/api/sim-resource)  to read the usage from.
+     * @param string $simSid The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource)  to read the usage from.
      */
     public function __construct(Version $version, array $payload, string $simSid)
     {

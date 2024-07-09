@@ -25,6 +25,8 @@ This library supports the following PHP implementations:
 - PHP 7.4
 - PHP 8.0
 - PHP 8.1
+- PHP 8.2
+- PHP 8.3
 
 ## Installation
 
@@ -141,6 +143,37 @@ print $call->to;
 The library automatically handles paging for you. Collections, such as `calls` and `messages`, have `read` and `stream` methods that page under the hood. With both `read` and `stream`, you can specify the number of records you want to receive (`limit`) and the maximum size you want each page fetch to be (`pageSize`). The library will then handle the task for you.
 
 `read` eagerly fetches all records and returns them as a list, whereas `stream` returns an iterator and lazily retrieves pages of records as you iterate over the collection. You can also page manually using the `page` method.
+
+```php
+<?php
+require_once '/path/to/vendor/autoload.php';
+
+$sid = "ACXXXXXX";
+$token = "YYYYYY";
+$client = new Twilio\Rest\Client($sid, $token);
+
+$limit = 5;
+$pageSize = 2;
+
+// Read - fetches all messages eagerly and returns as a list
+$messageList = $client->messages->read([], $limit);
+foreach ($messageList as $msg) {
+    print($msg->sid);
+}
+
+// Stream - returns an iterator of 'pageSize' messages at a time and lazily retrieves pages until 'limit' messages
+$messageStream = $client->messages->stream([], $limit, $pageSize);
+foreach ($messageStream as $msg) {
+    print($msg->sid);
+}
+
+// Page - get the a single page by passing pageSize, pageToken and pageNumber
+$messagePage = $client->messages->page([], $pageSize);
+$nextPageData = $messagePage->nextPage();  // this will return data of next page
+foreach ($messagePage as $msg) {
+    print($msg->sid);
+}
+```
 
 For more information about these methods, view the [auto-generated library docs](https://www.twilio.com/docs/libraries/reference/twilio-php/).
 

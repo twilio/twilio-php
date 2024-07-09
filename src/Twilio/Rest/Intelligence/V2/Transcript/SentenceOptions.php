@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class SentenceOptions
 {
     /**
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
      * @return ReadSentenceOptions Options builder
      */
     public static function read(
@@ -40,7 +40,7 @@ abstract class SentenceOptions
 class ReadSentenceOptions extends Options
     {
     /**
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
      */
     public function __construct(
         
@@ -51,9 +51,9 @@ class ReadSentenceOptions extends Options
     }
 
     /**
-     * Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
      *
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
      * @return $this Fluent Builder
      */
     public function setRedacted(bool $redacted): self

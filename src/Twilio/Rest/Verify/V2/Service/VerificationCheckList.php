@@ -73,7 +73,8 @@ class VerificationCheckList extends ListResource
                 $options['payee'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new VerificationCheckInstance(
             $this->version,

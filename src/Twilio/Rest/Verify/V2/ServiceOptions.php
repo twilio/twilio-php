@@ -37,6 +37,9 @@ abstract class ServiceOptions
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
+     * @param string $whatsappMsgServiceSid The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users.
+     * @param string $whatsappFrom The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID.
+     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      * @return CreateServiceOptions Options builder
      */
     public static function create(
@@ -56,7 +59,10 @@ abstract class ServiceOptions
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE
+        string $defaultTemplateSid = Values::NONE,
+        string $whatsappMsgServiceSid = Values::NONE,
+        string $whatsappFrom = Values::NONE,
+        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
 
     ): CreateServiceOptions
     {
@@ -76,7 +82,10 @@ abstract class ServiceOptions
             $totpTimeStep,
             $totpCodeLength,
             $totpSkew,
-            $defaultTemplateSid
+            $defaultTemplateSid,
+            $whatsappMsgServiceSid,
+            $whatsappFrom,
+            $verifyEventSubscriptionEnabled
         );
     }
 
@@ -101,6 +110,9 @@ abstract class ServiceOptions
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
+     * @param string $whatsappMsgServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service.
+     * @param string $whatsappFrom The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service.
+     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      * @return UpdateServiceOptions Options builder
      */
     public static function update(
@@ -121,7 +133,10 @@ abstract class ServiceOptions
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE
+        string $defaultTemplateSid = Values::NONE,
+        string $whatsappMsgServiceSid = Values::NONE,
+        string $whatsappFrom = Values::NONE,
+        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
 
     ): UpdateServiceOptions
     {
@@ -142,7 +157,10 @@ abstract class ServiceOptions
             $totpTimeStep,
             $totpCodeLength,
             $totpSkew,
-            $defaultTemplateSid
+            $defaultTemplateSid,
+            $whatsappMsgServiceSid,
+            $whatsappFrom,
+            $verifyEventSubscriptionEnabled
         );
     }
 
@@ -167,6 +185,9 @@ class CreateServiceOptions extends Options
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
+     * @param string $whatsappMsgServiceSid The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users.
+     * @param string $whatsappFrom The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID.
+     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      */
     public function __construct(
         
@@ -185,7 +206,10 @@ class CreateServiceOptions extends Options
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE
+        string $defaultTemplateSid = Values::NONE,
+        string $whatsappMsgServiceSid = Values::NONE,
+        string $whatsappFrom = Values::NONE,
+        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['codeLength'] = $codeLength;
@@ -204,6 +228,9 @@ class CreateServiceOptions extends Options
         $this->options['totpCodeLength'] = $totpCodeLength;
         $this->options['totpSkew'] = $totpSkew;
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
+        $this->options['whatsappMsgServiceSid'] = $whatsappMsgServiceSid;
+        $this->options['whatsappFrom'] = $whatsappFrom;
+        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
     }
 
     /**
@@ -399,6 +426,42 @@ class CreateServiceOptions extends Options
     }
 
     /**
+     * The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users.
+     *
+     * @param string $whatsappMsgServiceSid The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users.
+     * @return $this Fluent Builder
+     */
+    public function setWhatsappMsgServiceSid(string $whatsappMsgServiceSid): self
+    {
+        $this->options['whatsappMsgServiceSid'] = $whatsappMsgServiceSid;
+        return $this;
+    }
+
+    /**
+     * The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID.
+     *
+     * @param string $whatsappFrom The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID.
+     * @return $this Fluent Builder
+     */
+    public function setWhatsappFrom(string $whatsappFrom): self
+    {
+        $this->options['whatsappFrom'] = $whatsappFrom;
+        return $this;
+    }
+
+    /**
+     * Whether to allow verifications from the service to reach the stream-events sinks if configured
+     *
+     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
+     * @return $this Fluent Builder
+     */
+    public function setVerifyEventSubscriptionEnabled(bool $verifyEventSubscriptionEnabled): self
+    {
+        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -433,6 +496,9 @@ class UpdateServiceOptions extends Options
      * @param int $totpCodeLength Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6
      * @param int $totpSkew Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1
      * @param string $defaultTemplateSid The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only.
+     * @param string $whatsappMsgServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service.
+     * @param string $whatsappFrom The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service.
+     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      */
     public function __construct(
         
@@ -452,7 +518,10 @@ class UpdateServiceOptions extends Options
         int $totpTimeStep = Values::INT_NONE,
         int $totpCodeLength = Values::INT_NONE,
         int $totpSkew = Values::INT_NONE,
-        string $defaultTemplateSid = Values::NONE
+        string $defaultTemplateSid = Values::NONE,
+        string $whatsappMsgServiceSid = Values::NONE,
+        string $whatsappFrom = Values::NONE,
+        bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
 
     ) {
         $this->options['friendlyName'] = $friendlyName;
@@ -472,6 +541,9 @@ class UpdateServiceOptions extends Options
         $this->options['totpCodeLength'] = $totpCodeLength;
         $this->options['totpSkew'] = $totpSkew;
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
+        $this->options['whatsappMsgServiceSid'] = $whatsappMsgServiceSid;
+        $this->options['whatsappFrom'] = $whatsappFrom;
+        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
     }
 
     /**
@@ -675,6 +747,42 @@ class UpdateServiceOptions extends Options
     public function setDefaultTemplateSid(string $defaultTemplateSid): self
     {
         $this->options['defaultTemplateSid'] = $defaultTemplateSid;
+        return $this;
+    }
+
+    /**
+     * The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service.
+     *
+     * @param string $whatsappMsgServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service.
+     * @return $this Fluent Builder
+     */
+    public function setWhatsappMsgServiceSid(string $whatsappMsgServiceSid): self
+    {
+        $this->options['whatsappMsgServiceSid'] = $whatsappMsgServiceSid;
+        return $this;
+    }
+
+    /**
+     * The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service.
+     *
+     * @param string $whatsappFrom The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service.
+     * @return $this Fluent Builder
+     */
+    public function setWhatsappFrom(string $whatsappFrom): self
+    {
+        $this->options['whatsappFrom'] = $whatsappFrom;
+        return $this;
+    }
+
+    /**
+     * Whether to allow verifications from the service to reach the stream-events sinks if configured
+     *
+     * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
+     * @return $this Fluent Builder
+     */
+    public function setVerifyEventSubscriptionEnabled(bool $verifyEventSubscriptionEnabled): self
+    {
+        $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
         return $this;
     }
 

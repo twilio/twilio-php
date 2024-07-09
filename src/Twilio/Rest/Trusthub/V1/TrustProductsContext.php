@@ -46,7 +46,7 @@ class TrustProductsContext extends InstanceContext
      * Initialize the TrustProductsContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid The unique string that we created to identify the Customer-Profile resource.
+     * @param string $sid The unique string that we created to identify the Trust Product resource.
      */
     public function __construct(
         Version $version,
@@ -73,7 +73,8 @@ class TrustProductsContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -86,7 +87,8 @@ class TrustProductsContext extends InstanceContext
     public function fetch(): TrustProductsInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new TrustProductsInstance(
             $this->version,
@@ -119,7 +121,8 @@ class TrustProductsContext extends InstanceContext
                 $options['email'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new TrustProductsInstance(
             $this->version,
