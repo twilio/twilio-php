@@ -269,7 +269,7 @@ try {
     $client = new Twilio\Rest\Client($sid, $token);
 } catch (ConfigurationException $e) {
     // You can `catch` the exception, and perform any recovery method of your choice
-    print $e . getCode();
+    print $e->getCode();
 }
 
 $call = $client->account->calls
@@ -306,7 +306,7 @@ try {
         $token
     );
 } catch (EnvironmentException $e) {
-    print $e . getCode();
+    print $e->getCode();
 }
 
 print $call->to;
