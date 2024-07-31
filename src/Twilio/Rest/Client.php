@@ -27,7 +27,6 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Events $events
  * @property FlexApi $flexApi
  * @property FrontlineApi $frontlineApi
- * @property PreviewIam $previewIam
  * @property Insights $insights
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
@@ -107,7 +106,6 @@ class Client extends BaseClient {
     protected $_events;
     protected $_flexApi;
     protected $_frontlineApi;
-    protected $_previewIam;
     protected $_insights;
     protected $_intelligence;
     protected $_ipMessaging;
@@ -233,17 +231,6 @@ class Client extends BaseClient {
             $this->_frontlineApi = new FrontlineApi($this);
         }
         return $this->_frontlineApi;
-    }
-    /**
-     * Access the PreviewIam Twilio Domain
-     *
-     * @return PreviewIam PreviewIam Twilio Domain
-     */
-    protected function getPreviewIam(): PreviewIam {
-        if (!$this->_previewIam) {
-            $this->_previewIam = new PreviewIam($this);
-        }
-        return $this->_previewIam;
     }
     /**
      * Access the Insights Twilio Domain
