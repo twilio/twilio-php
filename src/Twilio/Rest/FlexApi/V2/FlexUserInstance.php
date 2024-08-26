@@ -19,6 +19,7 @@ namespace Twilio\Rest\FlexApi\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
@@ -37,6 +38,8 @@ use Twilio\Deserialize;
  * @property string|null $username
  * @property string|null $email
  * @property string|null $friendlyName
+ * @property string|null $locale
+ * @property string[]|null $roles
  * @property \DateTime|null $createdDate
  * @property \DateTime|null $updatedDate
  * @property int|null $version
@@ -70,6 +73,8 @@ class FlexUserInstance extends InstanceResource
             'username' => Values::array_get($payload, 'username'),
             'email' => Values::array_get($payload, 'email'),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'locale' => Values::array_get($payload, 'locale'),
+            'roles' => Values::array_get($payload, 'roles'),
             'createdDate' => Deserialize::dateTime(Values::array_get($payload, 'created_date')),
             'updatedDate' => Deserialize::dateTime(Values::array_get($payload, 'updated_date')),
             'version' => Values::array_get($payload, 'version'),
@@ -108,6 +113,19 @@ class FlexUserInstance extends InstanceResource
     {
 
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the FlexUserInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return FlexUserInstance Updated FlexUserInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): FlexUserInstance
+    {
+
+        return $this->proxy()->update($options);
     }
 
     /**

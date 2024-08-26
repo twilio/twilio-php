@@ -30,7 +30,7 @@ class ModuleDataManagementContext extends InstanceContext
      * Initialize the ModuleDataManagementContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid 
+     * @param string $sid The unique identifier of a Listing.
      */
     public function __construct(
         Version $version,
@@ -91,6 +91,8 @@ class ModuleDataManagementContext extends InstanceContext
                 $options['policies'],
             'Support' =>
                 $options['support'],
+            'Configuration' =>
+                $options['configuration'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

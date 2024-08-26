@@ -19,29 +19,29 @@ use Twilio\Values;
 abstract class InstalledAddOnUsageModels
 {
     /**
-     * @property string $quantity 
-     * @property string $sid 
+     * @property string $quantity Any floating number greater than 0.
+     * @property string $sid BillingSid to use for billing.
     */
-    public static function createCreateBillingUsageRequestBillableItems(array $payload = []): CreateBillingUsageRequestBillableItems
+    public static function createMarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems(array $payload = []): MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems
     {
-        return new CreateBillingUsageRequestBillableItems($payload);
+        return new MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems($payload);
     }
 
     /**
-     * @property CreateBillingUsageRequestBillableItems[] $billableItems
+     * @property MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems[] $billableItems
     */
-    public static function createCreateBillingUsageRequest(array $payload = []): CreateBillingUsageRequest
+    public static function createMarketplaceV1InstalledAddOnInstalledAddOnUsage(array $payload = []): MarketplaceV1InstalledAddOnInstalledAddOnUsage
     {
-        return new CreateBillingUsageRequest($payload);
+        return new MarketplaceV1InstalledAddOnInstalledAddOnUsage($payload);
     }
 
 }
 
-class CreateBillingUsageRequestBillableItems implements \JsonSerializable
+class MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems implements \JsonSerializable
 {
     /**
-     * @property string $quantity 
-     * @property string $sid 
+     * @property string $quantity Any floating number greater than 0.
+     * @property string $sid BillingSid to use for billing.
     */
         protected $quantity;
         protected $sid;
@@ -64,10 +64,10 @@ class CreateBillingUsageRequestBillableItems implements \JsonSerializable
     }
 }
 
-class CreateBillingUsageRequest implements \JsonSerializable
+class MarketplaceV1InstalledAddOnInstalledAddOnUsage implements \JsonSerializable
 {
     /**
-     * @property CreateBillingUsageRequestBillableItems[] $billableItems
+     * @property MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems[] $billableItems
     */
         protected $billableItems;
     public function __construct(array $payload = []) {

@@ -29,7 +29,7 @@ class PortingWebhookConfigurationDeleteInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $webhookType The of the webhook type of the configuration to be deleted
+     * @param string $webhookType The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT`
      */
     public function __construct(Version $version, array $payload, string $webhookType = null)
     {

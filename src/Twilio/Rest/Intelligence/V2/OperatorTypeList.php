@@ -136,7 +136,7 @@ class OperatorTypeList extends ListResource
     /**
      * Constructs a OperatorTypeContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this Operator Type.
+     * @param string $sid Either a 34 character string that uniquely identifies this Operator Type or the unique name that references an Operator Type.
      */
     public function getContext(
         string $sid

@@ -1,6 +1,47 @@
 twilio-php Changelog
 ====================
 
+[2024-08-26] Version 8.2.3
+--------------------------
+**Library - Fix**
+- [PR #812](https://github.com/twilio/twilio-php/pull/812): Orgs api metadata removal for php repo. Thanks to [@AsabuHere](https://github.com/AsabuHere)!
+- [PR #781](https://github.com/twilio/twilio-php/pull/781): Eliminate typo in README.md. Thanks to [@ahmedghanem00](https://github.com/ahmedghanem00)!
+
+**Api**
+- Update documentation of `error_code` and `error_message` on the Message resource.
+- Remove generic parameters from `transcription` resource
+- Added public documentation for Payload Data retrieval API
+
+**Flex**
+- Adding update Flex User api
+
+**Insights**
+- Added 'branded', 'business_profile' and 'voice_integrity' fields in List Call Summary
+
+**Intelligence**
+- Add `words` array information to the Sentences v2 entity.
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` headers for Operator Results.
+- Change the path parameter when fetching an `/OperatorType/{}` from `sid<EY>` to `string` to support searching by SID or by name
+- Add `X-Rate-Limit-Limit`, `X-Rate-Limit-Remaining`, and `X-Rate-Limit-Config` headers for Transcript and Service endpoints.
+
+**Messaging**
+- Adds two new channel senders api to add/remove channel senders to/from a messaging service
+- Extend ERC api to accept an optional attribute in request body to indicate CNP migration for an ERC
+
+**Numbers**
+- Modify visibility to public in bundle clone API
+- Add `port_date` field to Port In Request and Port In Phone Numbers Fetch APIs
+- Change properties docs for port in phone numbers api
+- Add is_test body param to the Bundle Create API
+- Change properties docs for port in api
+
+**Trusthub**
+- Add new field in themeSetId in compliance_inquiry.
+
+**Verify**
+- Update `custom_code_enabled` description on verification docs
+
+
 [2024-07-02] Version 8.2.2
 --------------------------
 **Intelligence**

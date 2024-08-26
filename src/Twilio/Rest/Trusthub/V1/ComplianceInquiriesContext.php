@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Trusthub\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
@@ -51,15 +52,20 @@ class ComplianceInquiriesContext extends InstanceContext
      * Update the ComplianceInquiriesInstance
      *
      * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
+     * @param array|Options $options Optional Arguments
      * @return ComplianceInquiriesInstance Updated ComplianceInquiriesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $primaryProfileSid): ComplianceInquiriesInstance
+    public function update(string $primaryProfileSid, array $options = []): ComplianceInquiriesInstance
     {
+
+        $options = new Values($options);
 
         $data = Values::of([
             'PrimaryProfileSid' =>
                 $primaryProfileSid,
+            'ThemeSetId' =>
+                $options['themeSetId'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

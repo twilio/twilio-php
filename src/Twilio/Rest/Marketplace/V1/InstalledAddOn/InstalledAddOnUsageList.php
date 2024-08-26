@@ -50,15 +50,15 @@ class InstalledAddOnUsageList extends ListResource
     /**
      * Create the InstalledAddOnUsageInstance
      *
-     * @param CreateBillingUsageRequest $createBillingUsageRequest
+     * @param MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage
      * @return InstalledAddOnUsageInstance Created InstalledAddOnUsageInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(CreateBillingUsageRequest $createBillingUsageRequest): InstalledAddOnUsageInstance
+    public function create(MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage): InstalledAddOnUsageInstance
     {
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        $data = $createBillingUsageRequest->toArray();
+        $data = $marketplaceV1InstalledAddOnInstalledAddOnUsage->toArray();
         $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 

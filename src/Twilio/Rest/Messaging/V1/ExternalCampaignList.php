@@ -18,8 +18,10 @@ namespace Twilio\Rest\Messaging\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Serialize;
 
 
 class ExternalCampaignList extends ListResource
@@ -46,17 +48,22 @@ class ExternalCampaignList extends ListResource
      *
      * @param string $campaignId ID of the preregistered campaign.
      * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with.
+     * @param array|Options $options Optional Arguments
      * @return ExternalCampaignInstance Created ExternalCampaignInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $campaignId, string $messagingServiceSid): ExternalCampaignInstance
+    public function create(string $campaignId, string $messagingServiceSid, array $options = []): ExternalCampaignInstance
     {
+
+        $options = new Values($options);
 
         $data = Values::of([
             'CampaignId' =>
                 $campaignId,
             'MessagingServiceSid' =>
                 $messagingServiceSid,
+            'CnpMigration' =>
+                Serialize::booleanToString($options['cnpMigration']),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

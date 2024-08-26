@@ -27,6 +27,7 @@ abstract class ModuleDataManagementOptions
      * @param string $documentation 
      * @param string $policies 
      * @param string $support 
+     * @param string $configuration 
      * @return UpdateModuleDataManagementOptions Options builder
      */
     public static function update(
@@ -35,7 +36,8 @@ abstract class ModuleDataManagementOptions
         string $description = Values::NONE,
         string $documentation = Values::NONE,
         string $policies = Values::NONE,
-        string $support = Values::NONE
+        string $support = Values::NONE,
+        string $configuration = Values::NONE
 
     ): UpdateModuleDataManagementOptions
     {
@@ -44,7 +46,8 @@ abstract class ModuleDataManagementOptions
             $description,
             $documentation,
             $policies,
-            $support
+            $support,
+            $configuration
         );
     }
 
@@ -59,6 +62,7 @@ class UpdateModuleDataManagementOptions extends Options
      * @param string $documentation 
      * @param string $policies 
      * @param string $support 
+     * @param string $configuration 
      */
     public function __construct(
         
@@ -66,7 +70,8 @@ class UpdateModuleDataManagementOptions extends Options
         string $description = Values::NONE,
         string $documentation = Values::NONE,
         string $policies = Values::NONE,
-        string $support = Values::NONE
+        string $support = Values::NONE,
+        string $configuration = Values::NONE
 
     ) {
         $this->options['moduleInfo'] = $moduleInfo;
@@ -74,6 +79,7 @@ class UpdateModuleDataManagementOptions extends Options
         $this->options['documentation'] = $documentation;
         $this->options['policies'] = $policies;
         $this->options['support'] = $support;
+        $this->options['configuration'] = $configuration;
     }
 
     /**
@@ -133,6 +139,18 @@ class UpdateModuleDataManagementOptions extends Options
     public function setSupport(string $support): self
     {
         $this->options['support'] = $support;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param string $configuration 
+     * @return $this Fluent Builder
+     */
+    public function setConfiguration(string $configuration): self
+    {
+        $this->options['configuration'] = $configuration;
         return $this;
     }
 

@@ -29,8 +29,8 @@ class ChannelSenderContext extends InstanceContext
      * Initialize the ChannelSenderContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $messagingServiceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from.
-     * @param string $sid The SID of the ChannelSender resource to fetch.
+     * @param string $messagingServiceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.
+     * @param string $sid The SID of the Channel Sender resource to delete.
      */
     public function __construct(
         Version $version,
@@ -51,6 +51,20 @@ class ChannelSenderContext extends InstanceContext
         .'/ChannelSenders/' . \rawurlencode($sid)
         .'';
     }
+
+    /**
+     * Delete the ChannelSenderInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+    }
+
 
     /**
      * Fetch the ChannelSenderInstance

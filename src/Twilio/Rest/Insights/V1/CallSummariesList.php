@@ -123,8 +123,6 @@ class CallSummariesList extends ListResource
                 $options['fromCountryCode'],
             'ToCountryCode' =>
                 $options['toCountryCode'],
-            'Branded' =>
-                Serialize::booleanToString($options['branded']),
             'VerifiedCaller' =>
                 Serialize::booleanToString($options['verifiedCaller']),
             'HasTag' =>
@@ -159,6 +157,24 @@ class CallSummariesList extends ListResource
                 Serialize::booleanToString($options['spamAnnotation']),
             'CallScoreAnnotation' =>
                 $options['callScoreAnnotation'],
+            'BrandedEnabled' =>
+                Serialize::booleanToString($options['brandedEnabled']),
+            'VoiceIntegrityEnabled' =>
+                Serialize::booleanToString($options['voiceIntegrityEnabled']),
+            'BrandedBundleSid' =>
+                $options['brandedBundleSid'],
+            'VoiceIntegrityBundleSid' =>
+                $options['voiceIntegrityBundleSid'],
+            'VoiceIntegrityUseCase' =>
+                $options['voiceIntegrityUseCase'],
+            'BusinessProfileIdentity' =>
+                $options['businessProfileIdentity'],
+            'BusinessProfileIndustry' =>
+                $options['businessProfileIndustry'],
+            'BusinessProfileBundleSid' =>
+                $options['businessProfileBundleSid'],
+            'BusinessProfileType' =>
+                $options['businessProfileType'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

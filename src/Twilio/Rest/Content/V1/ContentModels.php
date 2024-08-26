@@ -155,6 +155,38 @@ abstract class ContentModels
     }
 
     /**
+     * @property string $type
+     * @property string $title
+     * @property string $url
+     * @property string $phone
+     * @property string $id
+    */
+    public static function createCarouselAction(array $payload = []): CarouselAction
+    {
+        return new CarouselAction($payload);
+    }
+
+    /**
+     * @property string $title
+     * @property string $body
+     * @property string $media
+     * @property CarouselAction[] $actions
+    */
+    public static function createCarouselCard(array $payload = []): CarouselCard
+    {
+        return new CarouselCard($payload);
+    }
+
+    /**
+     * @property string $body
+     * @property CarouselCard[] $cards
+    */
+    public static function createTwilioCarousel(array $payload = []): TwilioCarousel
+    {
+        return new TwilioCarousel($payload);
+    }
+
+    /**
      * @property string $body
      * @property string $footer
      * @property string[] $media
@@ -194,6 +226,7 @@ abstract class ContentModels
      * @property TwilioQuickReply $twilioQuickReply
      * @property TwilioCard $twilioCard
      * @property TwilioCatalog $twilioCatalog
+     * @property TwilioCarousel $twilioCarousel
      * @property WhatsappCard $whatsappCard
      * @property WhatsappAuthentication $whatsappAuthentication
     */
@@ -642,6 +675,107 @@ class TwilioCatalog implements \JsonSerializable
     }
 }
 
+class CarouselAction implements \JsonSerializable
+{
+    /**
+     * @property string $type
+     * @property string $title
+     * @property string $url
+     * @property string $phone
+     * @property string $id
+    */
+        protected $type;
+        protected $title;
+        protected $url;
+        protected $phone;
+        protected $id;
+    public function __construct(array $payload = []) {
+        $this->type = Values::array_get($payload, 'type');
+        $this->title = Values::array_get($payload, 'title');
+        $this->url = Values::array_get($payload, 'url');
+        $this->phone = Values::array_get($payload, 'phone');
+        $this->id = Values::array_get($payload, 'id');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'type' => $this->type,
+            'title' => $this->title,
+            'url' => $this->url,
+            'phone' => $this->phone,
+            'id' => $this->id
+        ];
+    }
+}
+
+class CarouselCard implements \JsonSerializable
+{
+    /**
+     * @property string $title
+     * @property string $body
+     * @property string $media
+     * @property CarouselAction[] $actions
+    */
+        protected $title;
+        protected $body;
+        protected $media;
+        protected $actions;
+    public function __construct(array $payload = []) {
+        $this->title = Values::array_get($payload, 'title');
+        $this->body = Values::array_get($payload, 'body');
+        $this->media = Values::array_get($payload, 'media');
+        $this->actions = Values::array_get($payload, 'actions');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'title' => $this->title,
+            'body' => $this->body,
+            'media' => $this->media,
+            'actions' => $this->actions
+        ];
+    }
+}
+
+class TwilioCarousel implements \JsonSerializable
+{
+    /**
+     * @property string $body
+     * @property CarouselCard[] $cards
+    */
+        protected $body;
+        protected $cards;
+    public function __construct(array $payload = []) {
+        $this->body = Values::array_get($payload, 'body');
+        $this->cards = Values::array_get($payload, 'cards');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'body' => $this->body,
+            'cards' => $this->cards
+        ];
+    }
+}
+
 class WhatsappCard implements \JsonSerializable
 {
     /**
@@ -750,6 +884,7 @@ class Types implements \JsonSerializable
      * @property TwilioQuickReply $twilioQuickReply
      * @property TwilioCard $twilioCard
      * @property TwilioCatalog $twilioCatalog
+     * @property TwilioCarousel $twilioCarousel
      * @property WhatsappCard $whatsappCard
      * @property WhatsappAuthentication $whatsappAuthentication
     */
@@ -761,6 +896,7 @@ class Types implements \JsonSerializable
         protected $twilioQuickReply;
         protected $twilioCard;
         protected $twilioCatalog;
+        protected $twilioCarousel;
         protected $whatsappCard;
         protected $whatsappAuthentication;
     public function __construct(array $payload = []) {
@@ -772,6 +908,7 @@ class Types implements \JsonSerializable
         $this->twilioQuickReply = Values::array_get($payload, 'twilioQuickReply');
         $this->twilioCard = Values::array_get($payload, 'twilioCard');
         $this->twilioCatalog = Values::array_get($payload, 'twilioCatalog');
+        $this->twilioCarousel = Values::array_get($payload, 'twilioCarousel');
         $this->whatsappCard = Values::array_get($payload, 'whatsappCard');
         $this->whatsappAuthentication = Values::array_get($payload, 'whatsappAuthentication');
     }
@@ -792,6 +929,7 @@ class Types implements \JsonSerializable
             'twilioQuickReply' => $this->twilioQuickReply,
             'twilioCard' => $this->twilioCard,
             'twilioCatalog' => $this->twilioCatalog,
+            'twilioCarousel' => $this->twilioCarousel,
             'whatsappCard' => $this->whatsappCard,
             'whatsappAuthentication' => $this->whatsappAuthentication
         ];

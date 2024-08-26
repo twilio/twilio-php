@@ -73,6 +73,8 @@ class BundleList extends ListResource
                 $options['endUserType'],
             'NumberType' =>
                 $options['numberType'],
+            'IsTest' =>
+                Serialize::booleanToString($options['isTest']),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

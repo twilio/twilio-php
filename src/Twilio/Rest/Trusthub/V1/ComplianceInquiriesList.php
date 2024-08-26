@@ -60,6 +60,8 @@ class ComplianceInquiriesList extends ListResource
                 $primaryProfileSid,
             'NotificationEmail' =>
                 $options['notificationEmail'],
+            'ThemeSetId' =>
+                $options['themeSetId'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

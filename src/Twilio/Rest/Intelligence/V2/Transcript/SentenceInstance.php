@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string|null $transcript
  * @property string|null $sid
  * @property string|null $confidence
+ * @property array[]|null $words
  */
 class SentenceInstance extends InstanceResource
 {
@@ -54,6 +55,7 @@ class SentenceInstance extends InstanceResource
             'transcript' => Values::array_get($payload, 'transcript'),
             'sid' => Values::array_get($payload, 'sid'),
             'confidence' => Values::array_get($payload, 'confidence'),
+            'words' => Values::array_get($payload, 'words'),
         ];
 
         $this->solution = ['transcriptSid' => $transcriptSid, ];

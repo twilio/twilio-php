@@ -15,63 +15,69 @@
  */
 
 
-namespace Twilio\Rest\Numbers\V1;
+namespace Twilio\Rest\Numbers\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 
 
-class PortingPortabilityContext extends InstanceContext
+class BundleCloneContext extends InstanceContext
     {
     /**
-     * Initialize the PortingPortabilityContext
+     * Initialize the BundleCloneContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $phoneNumber Phone number to check portability in e164 format.
+     * @param string $bundleSid The unique string that identifies the Bundle to be cloned.
      */
     public function __construct(
         Version $version,
-        $phoneNumber
+        $bundleSid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'phoneNumber' =>
-            $phoneNumber,
+        'bundleSid' =>
+            $bundleSid,
         ];
 
-        $this->uri = '/Porting/Portability/PhoneNumber/' . \rawurlencode($phoneNumber)
-        .'';
+        $this->uri = '/RegulatoryCompliance/Bundles/' . \rawurlencode($bundleSid)
+        .'/Clones';
     }
 
     /**
-     * Fetch the PortingPortabilityInstance
+     * Create the BundleCloneInstance
      *
+     * @param string $targetAccountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned.
      * @param array|Options $options Optional Arguments
-     * @return PortingPortabilityInstance Fetched PortingPortabilityInstance
+     * @return BundleCloneInstance Created BundleCloneInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): PortingPortabilityInstance
+    public function create(string $targetAccountSid, array $options = []): BundleCloneInstance
     {
 
         $options = new Values($options);
 
-        $params = Values::of([
+        $data = Values::of([
             'TargetAccountSid' =>
-                $options['targetAccountSid'],
+                $targetAccountSid,
+            'MoveToDraft' =>
+                Serialize::booleanToString($options['moveToDraft']),
+            'FriendlyName' =>
+                $options['friendlyName'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
-        return new PortingPortabilityInstance(
+        return new BundleCloneInstance(
             $this->version,
             $payload,
-            $this->solution['phoneNumber']
+            $this->solution['bundleSid']
         );
     }
 
@@ -87,6 +93,6 @@ class PortingPortabilityContext extends InstanceContext
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Numbers.V1.PortingPortabilityContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Numbers.V2.BundleCloneContext ' . \implode(' ', $context) . ']';
     }
 }

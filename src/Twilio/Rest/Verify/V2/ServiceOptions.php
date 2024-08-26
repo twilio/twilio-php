@@ -28,7 +28,7 @@ abstract class ServiceOptions
      * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
      * @param bool $doNotShareWarningEnabled Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one.
      * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead.
      * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
@@ -101,7 +101,7 @@ abstract class ServiceOptions
      * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
      * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one.
      * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter.
      * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
@@ -176,7 +176,7 @@ class CreateServiceOptions extends Options
      * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
      * @param bool $doNotShareWarningEnabled Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one.
      * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead.
      * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
@@ -318,9 +318,9 @@ class CreateServiceOptions extends Options
     }
 
     /**
-     * Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * Whether to allow sending verifications with a custom code instead of a randomly generated one.
      *
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one.
      * @return $this Fluent Builder
      */
     public function setCustomCodeEnabled(bool $customCodeEnabled): self
@@ -487,7 +487,7 @@ class UpdateServiceOptions extends Options
      * @param string $ttsName The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
      * @param bool $psd2Enabled Whether to pass PSD2 transaction parameters when starting a verification.
      * @param bool $doNotShareWarningEnabled Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS.**
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one.
      * @param bool $pushIncludeDate Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter.
      * @param string $pushApnCredentialSid Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
      * @param string $pushFcmCredentialSid Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)
@@ -643,9 +643,9 @@ class UpdateServiceOptions extends Options
     }
 
     /**
-     * Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * Whether to allow sending verifications with a custom code instead of a randomly generated one.
      *
-     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one. Not available for all customers.
+     * @param bool $customCodeEnabled Whether to allow sending verifications with a custom code instead of a randomly generated one.
      * @return $this Fluent Builder
      */
     public function setCustomCodeEnabled(bool $customCodeEnabled): self

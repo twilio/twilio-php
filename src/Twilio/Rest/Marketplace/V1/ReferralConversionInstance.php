@@ -19,61 +19,44 @@ namespace Twilio\Rest\Marketplace\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 
 
 /**
- * @property string|null $url
- * @property string|null $sid
- * @property array|null $description
- * @property array|null $support
- * @property array|null $policies
- * @property array|null $moduleInfo
- * @property array|null $documentation
- * @property array|null $configuration
+ * @property string $convertedAccountSid
  */
-class ModuleDataManagementInstance extends InstanceResource
+class ReferralConversionInstance extends InstanceResource
 {
     /**
-     * Initialize the ModuleDataManagementInstance
+     * Initialize the ReferralConversionInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique identifier of a Listing.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'url' => Values::array_get($payload, 'url'),
-            'sid' => Values::array_get($payload, 'sid'),
-            'description' => Values::array_get($payload, 'description'),
-            'support' => Values::array_get($payload, 'support'),
-            'policies' => Values::array_get($payload, 'policies'),
-            'moduleInfo' => Values::array_get($payload, 'module_info'),
-            'documentation' => Values::array_get($payload, 'documentation'),
-            'configuration' => Values::array_get($payload, 'configuration'),
+            'convertedAccountSid' => Values::array_get($payload, 'converted_account_sid'),
         ];
 
-        $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = [];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return ModuleDataManagementContext Context for this ModuleDataManagementInstance
+     * @return ReferralConversionContext Context for this ReferralConversionInstance
      */
-    protected function proxy(): ModuleDataManagementContext
+    protected function proxy(): ReferralConversionContext
     {
         if (!$this->context) {
-            $this->context = new ModuleDataManagementContext(
-                $this->version,
-                $this->solution['sid']
+            $this->context = new ReferralConversionContext(
+                $this->version
             );
         }
 
@@ -81,28 +64,16 @@ class ModuleDataManagementInstance extends InstanceResource
     }
 
     /**
-     * Fetch the ModuleDataManagementInstance
+     * Create the ReferralConversionInstance
      *
-     * @return ModuleDataManagementInstance Fetched ModuleDataManagementInstance
+     * @param CreateReferralConversionRequest $createReferralConversionRequest
+     * @return ReferralConversionInstance Created ReferralConversionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): ModuleDataManagementInstance
+    public function create(CreateReferralConversionRequest $createReferralConversionRequest): ReferralConversionInstance
     {
 
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the ModuleDataManagementInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return ModuleDataManagementInstance Updated ModuleDataManagementInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): ModuleDataManagementInstance
-    {
-
-        return $this->proxy()->update($options);
+        return $this->proxy()->create($createReferralConversionRequest);
     }
 
     /**
@@ -137,7 +108,7 @@ class ModuleDataManagementInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Marketplace.V1.ModuleDataManagementInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Marketplace.V1.ReferralConversionInstance ' . \implode(' ', $context) . ']';
     }
 }
 
