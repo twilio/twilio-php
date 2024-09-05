@@ -28,21 +28,21 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
 
 /**
  * @property string|null $accountSid
- * @property int|null $age
+ * @property int $age
  * @property string $assignmentStatus
  * @property string|null $attributes
  * @property string|null $addons
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property \DateTime|null $taskQueueEnteredDate
- * @property int|null $priority
+ * @property int $priority
  * @property string|null $reason
  * @property string|null $sid
  * @property string|null $taskQueueSid
  * @property string|null $taskQueueFriendlyName
  * @property string|null $taskChannelSid
  * @property string|null $taskChannelUniqueName
- * @property int|null $timeout
+ * @property int $timeout
  * @property string|null $workflowSid
  * @property string|null $workflowFriendlyName
  * @property string|null $workspaceSid

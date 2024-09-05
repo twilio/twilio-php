@@ -36,7 +36,7 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @property string|null $sid
  * @property string|null $accountSid
  * @property string|null $friendlyName
- * @property int|null $codeLength
+ * @property int $codeLength
  * @property bool|null $lookupEnabled
  * @property bool|null $psd2Enabled
  * @property bool|null $skipSmsToLandlines

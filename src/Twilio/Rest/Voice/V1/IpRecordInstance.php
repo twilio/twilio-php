@@ -30,7 +30,7 @@ use Twilio\Deserialize;
  * @property string|null $sid
  * @property string|null $friendlyName
  * @property string|null $ipAddress
- * @property int|null $cidrPrefixLength
+ * @property int $cidrPrefixLength
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url

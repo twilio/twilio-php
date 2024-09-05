@@ -38,7 +38,7 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property PhoneNumberCapabilities|null $capabilities
  * @property string|null $url
  * @property bool|null $isReserved
- * @property int|null $inUse
+ * @property int $inUse
  */
 class PhoneNumberInstance extends InstanceResource
 {

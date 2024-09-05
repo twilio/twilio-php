@@ -39,8 +39,8 @@ use Twilio\Rest\IpMessaging\V1\Service\Channel\MessageList;
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $createdBy
- * @property int|null $membersCount
- * @property int|null $messagesCount
+ * @property int $membersCount
+ * @property int $messagesCount
  * @property string|null $url
  * @property array|null $links
  */

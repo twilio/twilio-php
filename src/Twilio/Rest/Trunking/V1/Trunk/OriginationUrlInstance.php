@@ -29,11 +29,11 @@ use Twilio\Deserialize;
  * @property string|null $accountSid
  * @property string|null $sid
  * @property string|null $trunkSid
- * @property int|null $weight
+ * @property int $weight
  * @property bool|null $enabled
  * @property string|null $sipUrl
  * @property string|null $friendlyName
- * @property int|null $priority
+ * @property int $priority
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url

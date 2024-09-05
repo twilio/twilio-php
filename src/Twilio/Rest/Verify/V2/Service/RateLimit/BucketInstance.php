@@ -30,8 +30,8 @@ use Twilio\Deserialize;
  * @property string|null $rateLimitSid
  * @property string|null $serviceSid
  * @property string|null $accountSid
- * @property int|null $max
- * @property int|null $interval
+ * @property int $max
+ * @property int $interval
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url

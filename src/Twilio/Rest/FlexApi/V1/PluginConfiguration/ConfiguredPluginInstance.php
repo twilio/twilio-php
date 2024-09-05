@@ -30,7 +30,7 @@ use Twilio\Deserialize;
  * @property string|null $configurationSid
  * @property string|null $pluginSid
  * @property string|null $pluginVersionSid
- * @property int|null $phase
+ * @property int $phase
  * @property string|null $pluginUrl
  * @property string|null $uniqueName
  * @property string|null $friendlyName

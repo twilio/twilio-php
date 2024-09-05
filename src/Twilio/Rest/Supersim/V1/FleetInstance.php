@@ -33,7 +33,7 @@ use Twilio\Deserialize;
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
  * @property bool|null $dataEnabled
- * @property int|null $dataLimit
+ * @property int $dataLimit
  * @property string $dataMetering
  * @property bool|null $smsCommandsEnabled
  * @property string|null $smsCommandsUrl

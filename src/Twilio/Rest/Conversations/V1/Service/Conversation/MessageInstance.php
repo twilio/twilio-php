@@ -31,7 +31,7 @@ use Twilio\Rest\Conversations\V1\Service\Conversation\Message\DeliveryReceiptLis
  * @property string|null $chatServiceSid
  * @property string|null $conversationSid
  * @property string|null $sid
- * @property int|null $index
+ * @property int $index
  * @property string|null $author
  * @property string|null $body
  * @property array[]|null $media

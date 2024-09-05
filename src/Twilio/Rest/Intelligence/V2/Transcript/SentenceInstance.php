@@ -24,8 +24,8 @@ use Twilio\Version;
 
 
 /**
- * @property int|null $mediaChannel
- * @property int|null $sentenceIndex
+ * @property int $mediaChannel
+ * @property int $sentenceIndex
  * @property string|null $startTime
  * @property string|null $endTime
  * @property string|null $transcript

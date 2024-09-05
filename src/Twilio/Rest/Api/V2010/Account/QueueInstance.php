@@ -28,14 +28,14 @@ use Twilio\Rest\Api\V2010\Account\Queue\MemberList;
 
 /**
  * @property \DateTime|null $dateUpdated
- * @property int|null $currentSize
+ * @property int $currentSize
  * @property string|null $friendlyName
  * @property string|null $uri
  * @property string|null $accountSid
- * @property int|null $averageWaitTime
+ * @property int $averageWaitTime
  * @property string|null $sid
  * @property \DateTime|null $dateCreated
- * @property int|null $maxSize
+ * @property int $maxSize
  */
 class QueueInstance extends InstanceResource
 {

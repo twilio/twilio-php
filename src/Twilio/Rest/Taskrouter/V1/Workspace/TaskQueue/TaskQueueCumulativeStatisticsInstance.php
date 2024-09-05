@@ -27,25 +27,25 @@ use Twilio\Deserialize;
 
 /**
  * @property string|null $accountSid
- * @property int|null $avgTaskAcceptanceTime
+ * @property int $avgTaskAcceptanceTime
  * @property \DateTime|null $startTime
  * @property \DateTime|null $endTime
- * @property int|null $reservationsCreated
- * @property int|null $reservationsAccepted
- * @property int|null $reservationsRejected
- * @property int|null $reservationsTimedOut
- * @property int|null $reservationsCanceled
- * @property int|null $reservationsRescinded
+ * @property int $reservationsCreated
+ * @property int $reservationsAccepted
+ * @property int $reservationsRejected
+ * @property int $reservationsTimedOut
+ * @property int $reservationsCanceled
+ * @property int $reservationsRescinded
  * @property array|null $splitByWaitTime
  * @property string|null $taskQueueSid
  * @property array|null $waitDurationUntilAccepted
  * @property array|null $waitDurationUntilCanceled
  * @property array|null $waitDurationInQueueUntilAccepted
- * @property int|null $tasksCanceled
- * @property int|null $tasksCompleted
- * @property int|null $tasksDeleted
- * @property int|null $tasksEntered
- * @property int|null $tasksMoved
+ * @property int $tasksCanceled
+ * @property int $tasksCompleted
+ * @property int $tasksDeleted
+ * @property int $tasksEntered
+ * @property int $tasksMoved
  * @property string|null $workspaceSid
  * @property string|null $url
  */

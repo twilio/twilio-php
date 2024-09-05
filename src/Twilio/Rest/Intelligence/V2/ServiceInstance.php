@@ -41,7 +41,7 @@ use Twilio\Deserialize;
  * @property string|null $webhookUrl
  * @property string $webhookHttpMethod
  * @property string[]|null $readOnlyAttachedOperatorSids
- * @property int|null $version
+ * @property int $version
  */
 class ServiceInstance extends InstanceResource
 {

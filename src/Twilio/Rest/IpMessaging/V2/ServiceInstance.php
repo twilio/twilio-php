@@ -40,15 +40,15 @@ use Twilio\Rest\IpMessaging\V2\Service\UserList;
  * @property string|null $defaultChannelCreatorRoleSid
  * @property bool|null $readStatusEnabled
  * @property bool|null $reachabilityEnabled
- * @property int|null $typingIndicatorTimeout
- * @property int|null $consumptionReportInterval
+ * @property int $typingIndicatorTimeout
+ * @property int $consumptionReportInterval
  * @property array|null $limits
  * @property string|null $preWebhookUrl
  * @property string|null $postWebhookUrl
  * @property string|null $webhookMethod
  * @property string[]|null $webhookFilters
- * @property int|null $preWebhookRetryCount
- * @property int|null $postWebhookRetryCount
+ * @property int $preWebhookRetryCount
+ * @property int $postWebhookRetryCount
  * @property array|null $notifications
  * @property array|null $media
  * @property string|null $url

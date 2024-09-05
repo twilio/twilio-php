@@ -39,7 +39,7 @@ use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
  * @property string|null $languageCode
  * @property string|null $customerKey
  * @property \DateTime|null $mediaStartTime
- * @property int|null $duration
+ * @property int $duration
  * @property string|null $url
  * @property bool|null $redaction
  * @property array|null $links

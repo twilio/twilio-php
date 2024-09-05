@@ -39,7 +39,7 @@ use Twilio\Rest\Chat\V2\Service\User\UserChannelList;
  * @property bool|null $isNotifiable
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
- * @property int|null $joinedChannelsCount
+ * @property int $joinedChannelsCount
  * @property array|null $links
  * @property string|null $url
  */

@@ -30,7 +30,7 @@ use Twilio\Deserialize;
  * @property string|null $friendlyName
  * @property array|null $definition
  * @property string $status
- * @property int|null $revision
+ * @property int $revision
  * @property string|null $commitMessage
  * @property bool|null $valid
  * @property array[]|null $errors

@@ -31,7 +31,7 @@ use Twilio\Deserialize;
  * @property string|null $description
  * @property string|null $author
  * @property string|null $operatorType
- * @property int|null $version
+ * @property int $version
  * @property string $availability
  * @property array|null $config
  * @property \DateTime|null $dateCreated

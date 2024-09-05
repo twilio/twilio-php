@@ -32,7 +32,7 @@ use Twilio\Deserialize;
  * @property string $status
  * @property string $direction
  * @property string|null $deviceIp
- * @property int|null $devicePort
+ * @property int $devicePort
  * @property string $payloadType
  * @property string|null $payload
  * @property \DateTime|null $dateCreated

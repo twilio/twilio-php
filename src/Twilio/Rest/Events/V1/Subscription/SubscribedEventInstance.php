@@ -27,7 +27,7 @@ use Twilio\Version;
 /**
  * @property string|null $accountSid
  * @property string|null $type
- * @property int|null $schemaVersion
+ * @property int $schemaVersion
  * @property string|null $subscriptionSid
  * @property string|null $url
  */

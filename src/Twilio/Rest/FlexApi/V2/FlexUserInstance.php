@@ -42,7 +42,7 @@ use Twilio\Deserialize;
  * @property string[]|null $roles
  * @property \DateTime|null $createdDate
  * @property \DateTime|null $updatedDate
- * @property int|null $version
+ * @property int $version
  * @property string|null $url
  */
 class FlexUserInstance extends InstanceResource

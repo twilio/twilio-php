@@ -26,7 +26,7 @@ use Twilio\Version;
 /**
  * @property string|null $redirectTo
  * @property string|null $day
- * @property int|null $size
+ * @property int $size
  * @property string|null $createDate
  * @property string|null $friendlyName
  * @property string|null $resourceType
