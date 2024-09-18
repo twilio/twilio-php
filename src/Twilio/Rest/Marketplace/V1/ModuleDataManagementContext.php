@@ -93,6 +93,8 @@ class ModuleDataManagementContext extends InstanceContext
                 $options['support'],
             'Configuration' =>
                 $options['configuration'],
+            'Pricing' =>
+                $options['pricing'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

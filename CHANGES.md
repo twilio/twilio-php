@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2024-09-18] Version 8.3.1
+--------------------------
+**Intelligence**
+- Remove public from operator_type
+- Update operator_type to include general-availablity and deprecated
+
+**Numbers**
+- Remove beta flag for bundle clone API
+
+
 [2024-09-05] Version 8.3.0
 --------------------------
 **Iam**

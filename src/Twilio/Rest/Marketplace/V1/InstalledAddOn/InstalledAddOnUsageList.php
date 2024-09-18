@@ -28,7 +28,7 @@ class InstalledAddOnUsageList extends ListResource
      * Construct the InstalledAddOnUsageList
      *
      * @param Version $version Version that contains the resource
-     * @param string $installedAddOnSid 
+     * @param string $installedAddOnSid Customer Installation SID to report usage on.
      */
     public function __construct(
         Version $version,
