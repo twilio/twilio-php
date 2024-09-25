@@ -22,9 +22,10 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Rest\Assistants\V1\Assistant\AssistantsKnowledgeList;
+use Twilio\Rest\Assistants\V1\Assistant\AssistantsToolList;
 use Twilio\Rest\Assistants\V1\Assistant\FeedbackList;
 use Twilio\Rest\Assistants\V1\Assistant\MessageList;
-use Twilio\Rest\Assistants\V1\Assistant\ToolList;
 
 
 /**
@@ -34,6 +35,7 @@ use Twilio\Rest\Assistants\V1\Assistant\ToolList;
  * @property string $model
  * @property string $name
  * @property string $owner
+ * @property string $url
  * @property string $personalityPrompt
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
@@ -43,6 +45,7 @@ use Twilio\Rest\Assistants\V1\Assistant\ToolList;
  * @property string $model
  * @property string $name
  * @property string $owner
+ * @property string $url
  * @property string $personalityPrompt
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
@@ -51,9 +54,10 @@ use Twilio\Rest\Assistants\V1\Assistant\ToolList;
  */
 class AssistantInstance extends InstanceResource
 {
+    protected $_assistantsKnowledge;
+    protected $_assistantsTools;
     protected $_feedbacks;
     protected $_messages;
-    protected $_tools;
 
     /**
      * Initialize the AssistantInstance
@@ -74,6 +78,7 @@ class AssistantInstance extends InstanceResource
             'model' => Values::array_get($payload, 'model'),
             'name' => Values::array_get($payload, 'name'),
             'owner' => Values::array_get($payload, 'owner'),
+            'url' => Values::array_get($payload, 'url'),
             'personalityPrompt' => Values::array_get($payload, 'personality_prompt'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -83,6 +88,7 @@ class AssistantInstance extends InstanceResource
             'model' => Values::array_get($payload, 'model'),
             'name' => Values::array_get($payload, 'name'),
             'owner' => Values::array_get($payload, 'owner'),
+            'url' => Values::array_get($payload, 'url'),
             'personalityPrompt' => Values::array_get($payload, 'personality_prompt'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
@@ -148,6 +154,22 @@ class AssistantInstance extends InstanceResource
     }
 
     /**
+     * Access the assistantsKnowledge
+     */
+    protected function getAssistantsKnowledge(): AssistantsKnowledgeList
+    {
+        return $this->proxy()->assistantsKnowledge;
+    }
+
+    /**
+     * Access the assistantsTools
+     */
+    protected function getAssistantsTools(): AssistantsToolList
+    {
+        return $this->proxy()->assistantsTools;
+    }
+
+    /**
      * Access the feedbacks
      */
     protected function getFeedbacks(): FeedbackList
@@ -161,14 +183,6 @@ class AssistantInstance extends InstanceResource
     protected function getMessages(): MessageList
     {
         return $this->proxy()->messages;
-    }
-
-    /**
-     * Access the tools
-     */
-    protected function getTools(): ToolList
-    {
-        return $this->proxy()->tools;
     }
 
     /**

@@ -22,21 +22,26 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Rest\Assistants\V1\Assistant\AssistantsKnowledgeList;
+use Twilio\Rest\Assistants\V1\Assistant\AssistantsToolList;
 use Twilio\Rest\Assistants\V1\Assistant\FeedbackList;
 use Twilio\Rest\Assistants\V1\Assistant\MessageList;
-use Twilio\Rest\Assistants\V1\Assistant\ToolList;
 
 
 /**
+ * @property AssistantsKnowledgeList $assistantsKnowledge
+ * @property AssistantsToolList $assistantsTools
  * @property FeedbackList $feedbacks
  * @property MessageList $messages
- * @property ToolList $tools
+ * @method \Twilio\Rest\Assistants\V1\Assistant\AssistantsToolContext assistantsTools(string $id)
+ * @method \Twilio\Rest\Assistants\V1\Assistant\AssistantsKnowledgeContext assistantsKnowledge(string $id)
  */
 class AssistantContext extends InstanceContext
     {
+    protected $_assistantsKnowledge;
+    protected $_assistantsTools;
     protected $_feedbacks;
     protected $_messages;
-    protected $_tools;
 
     /**
      * Initialize the AssistantContext
@@ -117,6 +122,36 @@ class AssistantContext extends InstanceContext
 
 
     /**
+     * Access the assistantsKnowledge
+     */
+    protected function getAssistantsKnowledge(): AssistantsKnowledgeList
+    {
+        if (!$this->_assistantsKnowledge) {
+            $this->_assistantsKnowledge = new AssistantsKnowledgeList(
+                $this->version,
+                $this->solution['id']
+            );
+        }
+
+        return $this->_assistantsKnowledge;
+    }
+
+    /**
+     * Access the assistantsTools
+     */
+    protected function getAssistantsTools(): AssistantsToolList
+    {
+        if (!$this->_assistantsTools) {
+            $this->_assistantsTools = new AssistantsToolList(
+                $this->version,
+                $this->solution['id']
+            );
+        }
+
+        return $this->_assistantsTools;
+    }
+
+    /**
      * Access the feedbacks
      */
     protected function getFeedbacks(): FeedbackList
@@ -144,21 +179,6 @@ class AssistantContext extends InstanceContext
         }
 
         return $this->_messages;
-    }
-
-    /**
-     * Access the tools
-     */
-    protected function getTools(): ToolList
-    {
-        if (!$this->_tools) {
-            $this->_tools = new ToolList(
-                $this->version,
-                $this->solution['id']
-            );
-        }
-
-        return $this->_tools;
     }
 
     /**

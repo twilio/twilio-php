@@ -22,6 +22,7 @@ abstract class ToolOptions
 {
 
 
+
     /**
      * @param string $assistantId
      * @return ReadToolOptions Options builder
@@ -39,6 +40,7 @@ abstract class ToolOptions
 
 
 }
+
 
 
 

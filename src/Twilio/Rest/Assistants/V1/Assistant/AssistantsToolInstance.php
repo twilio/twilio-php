@@ -15,7 +15,7 @@
  */
 
 
-namespace Twilio\Rest\Assistants\V1;
+namespace Twilio\Rest\Assistants\V1\Assistant;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -36,29 +36,18 @@ use Twilio\Deserialize;
  * @property string $url
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $accountSid
- * @property string $description
- * @property bool $enabled
- * @property string $id
- * @property array $meta
- * @property string $name
- * @property bool $requiresAuth
- * @property string $type
- * @property string $url
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
- * @property string[] $policies
  */
-class ToolInstance extends InstanceResource
+class AssistantsToolInstance extends InstanceResource
 {
     /**
-     * Initialize the ToolInstance
+     * Initialize the AssistantsToolInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $assistantId The assistant ID.
      * @param string $id The tool ID.
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, string $assistantId, string $id = null)
     {
         parent::__construct($version);
 
@@ -75,34 +64,23 @@ class ToolInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'description' => Values::array_get($payload, 'description'),
-            'enabled' => Values::array_get($payload, 'enabled'),
-            'id' => Values::array_get($payload, 'id'),
-            'meta' => Values::array_get($payload, 'meta'),
-            'name' => Values::array_get($payload, 'name'),
-            'requiresAuth' => Values::array_get($payload, 'requires_auth'),
-            'type' => Values::array_get($payload, 'type'),
-            'url' => Values::array_get($payload, 'url'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'policies' => Values::array_get($payload, 'policies'),
         ];
 
-        $this->solution = ['id' => $id ?: $this->properties['id'], ];
+        $this->solution = ['assistantId' => $assistantId, 'id' => $id ?: $this->properties['id'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return ToolContext Context for this ToolInstance
+     * @return AssistantsToolContext Context for this AssistantsToolInstance
      */
-    protected function proxy(): ToolContext
+    protected function proxy(): AssistantsToolContext
     {
         if (!$this->context) {
-            $this->context = new ToolContext(
+            $this->context = new AssistantsToolContext(
                 $this->version,
+                $this->solution['assistantId'],
                 $this->solution['id']
             );
         }
@@ -111,7 +89,19 @@ class ToolInstance extends InstanceResource
     }
 
     /**
-     * Delete the ToolInstance
+     * Create the AssistantsToolInstance
+     *
+     * @return AssistantsToolInstance Created AssistantsToolInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(): AssistantsToolInstance
+    {
+
+        return $this->proxy()->create();
+    }
+
+    /**
+     * Delete the AssistantsToolInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -120,30 +110,6 @@ class ToolInstance extends InstanceResource
     {
 
         return $this->proxy()->delete();
-    }
-
-    /**
-     * Fetch the ToolInstance
-     *
-     * @return ToolInstance Fetched ToolInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): ToolInstance
-    {
-
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the ToolInstance
-     *
-     * @return ToolInstance Updated ToolInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(): ToolInstance
-    {
-
-        return $this->proxy()->update();
     }
 
     /**
@@ -178,7 +144,7 @@ class ToolInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Assistants.V1.ToolInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Assistants.V1.AssistantsToolInstance ' . \implode(' ', $context) . ']';
     }
 }
 

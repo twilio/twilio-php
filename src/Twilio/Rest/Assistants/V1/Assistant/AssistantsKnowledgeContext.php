@@ -15,7 +15,7 @@
  */
 
 
-namespace Twilio\Rest\Assistants\V1;
+namespace Twilio\Rest\Assistants\V1\Assistant;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\Values;
@@ -23,32 +23,58 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class ToolContext extends InstanceContext
+class AssistantsKnowledgeContext extends InstanceContext
     {
     /**
-     * Initialize the ToolContext
+     * Initialize the AssistantsKnowledgeContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $id The tool ID.
+     * @param string $assistantId The assistant ID.
+     * @param string $id The knowledge ID.
      */
     public function __construct(
         Version $version,
+        $assistantId,
         $id
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
+        'assistantId' =>
+            $assistantId,
         'id' =>
             $id,
         ];
 
-        $this->uri = '/Tools/' . \rawurlencode($id)
+        $this->uri = '/Assistants/' . \rawurlencode($assistantId)
+        .'/Knowledge/' . \rawurlencode($id)
         .'';
     }
 
     /**
-     * Delete the ToolInstance
+     * Create the AssistantsKnowledgeInstance
+     *
+     * @return AssistantsKnowledgeInstance Created AssistantsKnowledgeInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(): AssistantsKnowledgeInstance
+    {
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], [], $headers);
+
+        return new AssistantsKnowledgeInstance(
+            $this->version,
+            $payload,
+            $this->solution['assistantId'],
+            $this->solution['id']
+        );
+    }
+
+
+    /**
+     * Delete the AssistantsKnowledgeInstance
      *
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
@@ -58,48 +84,6 @@ class ToolContext extends InstanceContext
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
-    }
-
-
-    /**
-     * Fetch the ToolInstance
-     *
-     * @return ToolInstance Fetched ToolInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): ToolInstance
-    {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
-        return new ToolInstance(
-            $this->version,
-            $payload,
-            $this->solution['id']
-        );
-    }
-
-
-    /**
-     * Update the ToolInstance
-     *
-     * @return ToolInstance Updated ToolInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(): ToolInstance
-    {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        $data = $assistantsV1ServiceUpdateToolRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
-        $payload = $this->version->update('PUT', $this->uri, [], $data, $headers);
-
-        return new ToolInstance(
-            $this->version,
-            $payload,
-            $this->solution['id']
-        );
     }
 
 
@@ -114,6 +98,6 @@ class ToolContext extends InstanceContext
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.Assistants.V1.ToolContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Assistants.V1.AssistantsKnowledgeContext ' . \implode(' ', $context) . ']';
     }
 }

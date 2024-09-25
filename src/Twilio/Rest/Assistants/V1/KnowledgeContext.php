@@ -23,17 +23,18 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Assistants\V1\Knowledge\ChunkList;
-use Twilio\Rest\Assistants\V1\Knowledge\StatusList;
+use Twilio\Rest\Assistants\V1\Knowledge\KnowledgeStatusList;
 
 
 /**
  * @property ChunkList $chunks
- * @property StatusList $status
+ * @property KnowledgeStatusList $knowledgeStatus
+ * @method \Twilio\Rest\Assistants\V1\Knowledge\KnowledgeStatusContext knowledgeStatus()
  */
 class KnowledgeContext extends InstanceContext
     {
     protected $_chunks;
-    protected $_status;
+    protected $_knowledgeStatus;
 
     /**
      * Initialize the KnowledgeContext
@@ -129,18 +130,18 @@ class KnowledgeContext extends InstanceContext
     }
 
     /**
-     * Access the status
+     * Access the knowledgeStatus
      */
-    protected function getStatus(): StatusList
+    protected function getKnowledgeStatus(): KnowledgeStatusList
     {
-        if (!$this->_status) {
-            $this->_status = new StatusList(
+        if (!$this->_knowledgeStatus) {
+            $this->_knowledgeStatus = new KnowledgeStatusList(
                 $this->version,
                 $this->solution['id']
             );
         }
 
-        return $this->_status;
+        return $this->_knowledgeStatus;
     }
 
     /**
