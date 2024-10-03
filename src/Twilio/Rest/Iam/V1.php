@@ -20,20 +20,20 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Iam\V1\ApiKeyList;
 use Twilio\Rest\Iam\V1\GetApiKeysList;
-use Twilio\Rest\Iam\V1\NewApiKeyList;
+use Twilio\Rest\Iam\V1\KeyList;
 use Twilio\Version;
 
 /**
  * @property ApiKeyList $apiKey
  * @property GetApiKeysList $getApiKeys
- * @property NewApiKeyList $newApiKey
+ * @property KeyList $keys
  * @method \Twilio\Rest\Iam\V1\ApiKeyContext apiKey(string $sid)
  */
 class V1 extends Version
 {
     protected $_apiKey;
     protected $_getApiKeys;
-    protected $_newApiKey;
+    protected $_keys;
 
     /**
      * Construct the V1 version of Iam
@@ -62,12 +62,12 @@ class V1 extends Version
         return $this->_getApiKeys;
     }
 
-    protected function getNewApiKey(): NewApiKeyList
+    protected function getKeys(): KeyList
     {
-        if (!$this->_newApiKey) {
-            $this->_newApiKey = new NewApiKeyList($this);
+        if (!$this->_keys) {
+            $this->_keys = new KeyList($this);
         }
-        return $this->_newApiKey;
+        return $this->_keys;
     }
 
     /**

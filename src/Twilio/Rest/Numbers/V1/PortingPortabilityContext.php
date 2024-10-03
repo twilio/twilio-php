@@ -63,6 +63,8 @@ class PortingPortabilityContext extends InstanceContext
         $params = Values::of([
             'TargetAccountSid' =>
                 $options['targetAccountSid'],
+            'AddressSid' =>
+                $options['addressSid'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

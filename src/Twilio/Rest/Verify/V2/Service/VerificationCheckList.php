@@ -71,6 +71,8 @@ class VerificationCheckList extends ListResource
                 $options['amount'],
             'Payee' =>
                 $options['payee'],
+            'SnaClientToken' =>
+                $options['snaClientToken'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

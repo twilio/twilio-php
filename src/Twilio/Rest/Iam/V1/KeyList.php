@@ -24,10 +24,10 @@ use Twilio\Version;
 use Twilio\Serialize;
 
 
-class NewApiKeyList extends ListResource
+class KeyList extends ListResource
     {
     /**
-     * Construct the NewApiKeyList
+     * Construct the KeyList
      *
      * @param Version $version Version that contains the resource
      */
@@ -44,14 +44,14 @@ class NewApiKeyList extends ListResource
     }
 
     /**
-     * Create the NewApiKeyInstance
+     * Create the KeyInstance
      *
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Payments resource.
      * @param array|Options $options Optional Arguments
-     * @return NewApiKeyInstance Created NewApiKeyInstance
+     * @return KeyInstance Created KeyInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $accountSid, array $options = []): NewApiKeyInstance
+    public function create(string $accountSid, array $options = []): KeyInstance
     {
 
         $options = new Values($options);
@@ -70,7 +70,7 @@ class NewApiKeyList extends ListResource
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
-        return new NewApiKeyInstance(
+        return new KeyInstance(
             $this->version,
             $payload
         );
@@ -84,6 +84,6 @@ class NewApiKeyList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Iam.V1.NewApiKeyList]';
+        return '[Twilio.Iam.V1.KeyList]';
     }
 }
