@@ -58,7 +58,7 @@ class StreamList extends ListResource
     /**
      * Create the StreamInstance
      *
-     * @param string $url Relative or absolute url where WebSocket connection will be established.
+     * @param string $url Relative or absolute URL where WebSocket connection will be established.
      * @param array|Options $options Optional Arguments
      * @return StreamInstance Created StreamInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -477,7 +477,8 @@ class StreamList extends ListResource
                 $options['parameter99Value'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new StreamInstance(
             $this->version,
@@ -491,7 +492,7 @@ class StreamList extends ListResource
     /**
      * Constructs a StreamContext
      *
-     * @param string $sid The SID of the Stream resource, or the `name` used when creating the resource
+     * @param string $sid The SID or the `name` of the Stream resource to be stopped
      */
     public function getContext(
         string $sid

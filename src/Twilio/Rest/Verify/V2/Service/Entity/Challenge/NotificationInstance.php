@@ -32,7 +32,7 @@ use Twilio\Deserialize;
  * @property string|null $identity
  * @property string|null $challengeSid
  * @property string|null $priority
- * @property int|null $ttl
+ * @property int $ttl
  * @property \DateTime|null $dateCreated
  */
 class NotificationInstance extends InstanceResource

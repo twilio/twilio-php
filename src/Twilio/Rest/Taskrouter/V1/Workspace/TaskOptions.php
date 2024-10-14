@@ -26,7 +26,10 @@ abstract class TaskOptions
      * @param string $taskChannel When MultiTasking is enabled, specify the TaskChannel by passing either its `unique_name` or `sid`. Default value is `default`.
      * @param string $workflowSid The SID of the Workflow that you would like to handle routing for the new Task. If there is only one Workflow defined for the Workspace that you are posting the new task to, this parameter is optional.
      * @param string $attributes A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`.
-     * @param \DateTime $virtualStartTime The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future.
+     * @param \DateTime $virtualStartTime The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900.
+     * @param string $routingTarget A SID of a Worker, Queue, or Workflow to route a Task to
+     * @param string $ignoreCapacity A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.
+     * @param string $taskQueueSid The SID of the TaskQueue in which the Task belongs
      * @return CreateTaskOptions Options builder
      */
     public static function create(
@@ -36,7 +39,10 @@ abstract class TaskOptions
         string $taskChannel = Values::NONE,
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $virtualStartTime = null
+        \DateTime $virtualStartTime = null,
+        string $routingTarget = Values::NONE,
+        string $ignoreCapacity = Values::NONE,
+        string $taskQueueSid = Values::NONE
 
     ): CreateTaskOptions
     {
@@ -46,7 +52,10 @@ abstract class TaskOptions
             $taskChannel,
             $workflowSid,
             $attributes,
-            $virtualStartTime
+            $virtualStartTime,
+            $routingTarget,
+            $ignoreCapacity,
+            $taskQueueSid
         );
     }
 
@@ -74,6 +83,7 @@ abstract class TaskOptions
      * @param string $taskQueueSid The SID of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this SID.
      * @param string $taskQueueName The `friendly_name` of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this friendly name.
      * @param string $evaluateTaskAttributes The attributes of the Tasks to read. Returns the Tasks that match the attributes specified in this parameter.
+     * @param string $routingTarget A SID of a Worker, Queue, or Workflow to route a Task to
      * @param string $ordering How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime.
      * @param bool $hasAddons Whether to read Tasks with Add-ons. If `true`, returns only Tasks with Add-ons. If `false`, returns only Tasks without Add-ons.
      * @return ReadTaskOptions Options builder
@@ -87,6 +97,7 @@ abstract class TaskOptions
         string $taskQueueSid = Values::NONE,
         string $taskQueueName = Values::NONE,
         string $evaluateTaskAttributes = Values::NONE,
+        string $routingTarget = Values::NONE,
         string $ordering = Values::NONE,
         bool $hasAddons = Values::BOOL_NONE
 
@@ -100,6 +111,7 @@ abstract class TaskOptions
             $taskQueueSid,
             $taskQueueName,
             $evaluateTaskAttributes,
+            $routingTarget,
             $ordering,
             $hasAddons
         );
@@ -111,7 +123,7 @@ abstract class TaskOptions
      * @param string $reason The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason.
      * @param int $priority The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647).
      * @param string $taskChannel When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
-     * @param \DateTime $virtualStartTime The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future.
+     * @param \DateTime $virtualStartTime The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900.
      * @param string $ifMatch If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      * @return UpdateTaskOptions Options builder
      */
@@ -148,7 +160,10 @@ class CreateTaskOptions extends Options
      * @param string $taskChannel When MultiTasking is enabled, specify the TaskChannel by passing either its `unique_name` or `sid`. Default value is `default`.
      * @param string $workflowSid The SID of the Workflow that you would like to handle routing for the new Task. If there is only one Workflow defined for the Workspace that you are posting the new task to, this parameter is optional.
      * @param string $attributes A URL-encoded JSON string with the attributes of the new task. This value is passed to the Workflow's `assignment_callback_url` when the Task is assigned to a Worker. For example: `{ \\\"task_type\\\": \\\"call\\\", \\\"twilio_call_sid\\\": \\\"CAxxx\\\", \\\"customer_ticket_number\\\": \\\"12345\\\" }`.
-     * @param \DateTime $virtualStartTime The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future.
+     * @param \DateTime $virtualStartTime The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900.
+     * @param string $routingTarget A SID of a Worker, Queue, or Workflow to route a Task to
+     * @param string $ignoreCapacity A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.
+     * @param string $taskQueueSid The SID of the TaskQueue in which the Task belongs
      */
     public function __construct(
         
@@ -157,7 +172,10 @@ class CreateTaskOptions extends Options
         string $taskChannel = Values::NONE,
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $virtualStartTime = null
+        \DateTime $virtualStartTime = null,
+        string $routingTarget = Values::NONE,
+        string $ignoreCapacity = Values::NONE,
+        string $taskQueueSid = Values::NONE
 
     ) {
         $this->options['timeout'] = $timeout;
@@ -166,6 +184,9 @@ class CreateTaskOptions extends Options
         $this->options['workflowSid'] = $workflowSid;
         $this->options['attributes'] = $attributes;
         $this->options['virtualStartTime'] = $virtualStartTime;
+        $this->options['routingTarget'] = $routingTarget;
+        $this->options['ignoreCapacity'] = $ignoreCapacity;
+        $this->options['taskQueueSid'] = $taskQueueSid;
     }
 
     /**
@@ -229,14 +250,50 @@ class CreateTaskOptions extends Options
     }
 
     /**
-     * The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future.
+     * The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900.
      *
-     * @param \DateTime $virtualStartTime The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future.
+     * @param \DateTime $virtualStartTime The virtual start time to assign the new task and override the default. When supplied, the new task will have this virtual start time. When not supplied, the new task will have the virtual start time equal to `date_created`. Value can't be in the future or before the year of 1900.
      * @return $this Fluent Builder
      */
     public function setVirtualStartTime(\DateTime $virtualStartTime): self
     {
         $this->options['virtualStartTime'] = $virtualStartTime;
+        return $this;
+    }
+
+    /**
+     * A SID of a Worker, Queue, or Workflow to route a Task to
+     *
+     * @param string $routingTarget A SID of a Worker, Queue, or Workflow to route a Task to
+     * @return $this Fluent Builder
+     */
+    public function setRoutingTarget(string $routingTarget): self
+    {
+        $this->options['routingTarget'] = $routingTarget;
+        return $this;
+    }
+
+    /**
+     * A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.
+     *
+     * @param string $ignoreCapacity A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID.
+     * @return $this Fluent Builder
+     */
+    public function setIgnoreCapacity(string $ignoreCapacity): self
+    {
+        $this->options['ignoreCapacity'] = $ignoreCapacity;
+        return $this;
+    }
+
+    /**
+     * The SID of the TaskQueue in which the Task belongs
+     *
+     * @param string $taskQueueSid The SID of the TaskQueue in which the Task belongs
+     * @return $this Fluent Builder
+     */
+    public function setTaskQueueSid(string $taskQueueSid): self
+    {
+        $this->options['taskQueueSid'] = $taskQueueSid;
         return $this;
     }
 
@@ -300,6 +357,7 @@ class ReadTaskOptions extends Options
      * @param string $taskQueueSid The SID of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this SID.
      * @param string $taskQueueName The `friendly_name` of the TaskQueue with the Tasks to read. Returns the Tasks waiting in the TaskQueue identified by this friendly name.
      * @param string $evaluateTaskAttributes The attributes of the Tasks to read. Returns the Tasks that match the attributes specified in this parameter.
+     * @param string $routingTarget A SID of a Worker, Queue, or Workflow to route a Task to
      * @param string $ordering How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime.
      * @param bool $hasAddons Whether to read Tasks with Add-ons. If `true`, returns only Tasks with Add-ons. If `false`, returns only Tasks without Add-ons.
      */
@@ -312,6 +370,7 @@ class ReadTaskOptions extends Options
         string $taskQueueSid = Values::NONE,
         string $taskQueueName = Values::NONE,
         string $evaluateTaskAttributes = Values::NONE,
+        string $routingTarget = Values::NONE,
         string $ordering = Values::NONE,
         bool $hasAddons = Values::BOOL_NONE
 
@@ -323,6 +382,7 @@ class ReadTaskOptions extends Options
         $this->options['taskQueueSid'] = $taskQueueSid;
         $this->options['taskQueueName'] = $taskQueueName;
         $this->options['evaluateTaskAttributes'] = $evaluateTaskAttributes;
+        $this->options['routingTarget'] = $routingTarget;
         $this->options['ordering'] = $ordering;
         $this->options['hasAddons'] = $hasAddons;
     }
@@ -412,6 +472,18 @@ class ReadTaskOptions extends Options
     }
 
     /**
+     * A SID of a Worker, Queue, or Workflow to route a Task to
+     *
+     * @param string $routingTarget A SID of a Worker, Queue, or Workflow to route a Task to
+     * @return $this Fluent Builder
+     */
+    public function setRoutingTarget(string $routingTarget): self
+    {
+        $this->options['routingTarget'] = $routingTarget;
+        return $this;
+    }
+
+    /**
      * How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime.
      *
      * @param string $ordering How to order the returned Task resources. By default, Tasks are sorted by ascending DateCreated. This value is specified as: `Attribute:Order`, where `Attribute` can be either `DateCreated`, `Priority`, or `VirtualStartTime` and `Order` can be either `asc` or `desc`. For example, `Priority:desc` returns Tasks ordered in descending order of their Priority. Pairings of sort orders can be specified in a comma-separated list such as `Priority:desc,DateCreated:asc`, which returns the Tasks in descending Priority order and ascending DateCreated Order. The only ordering pairing not allowed is DateCreated and VirtualStartTime.
@@ -455,7 +527,7 @@ class UpdateTaskOptions extends Options
      * @param string $reason The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason.
      * @param int $priority The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647).
      * @param string $taskChannel When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`.
-     * @param \DateTime $virtualStartTime The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future.
+     * @param \DateTime $virtualStartTime The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900.
      * @param string $ifMatch If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match).
      */
     public function __construct(
@@ -537,9 +609,9 @@ class UpdateTaskOptions extends Options
     }
 
     /**
-     * The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future.
+     * The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900.
      *
-     * @param \DateTime $virtualStartTime The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future.
+     * @param \DateTime $virtualStartTime The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900.
      * @return $this Fluent Builder
      */
     public function setVirtualStartTime(\DateTime $virtualStartTime): self

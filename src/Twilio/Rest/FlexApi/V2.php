@@ -18,14 +18,18 @@ namespace Twilio\Rest\FlexApi;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\FlexApi\V2\FlexUserList;
 use Twilio\Rest\FlexApi\V2\WebChannelsList;
 use Twilio\Version;
 
 /**
+ * @property FlexUserList $flexUser
  * @property WebChannelsList $webChannels
+ * @method \Twilio\Rest\FlexApi\V2\FlexUserContext flexUser(string $instanceSid, string $flexUserSid)
  */
 class V2 extends Version
 {
+    protected $_flexUser;
     protected $_webChannels;
 
     /**
@@ -37,6 +41,14 @@ class V2 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getFlexUser(): FlexUserList
+    {
+        if (!$this->_flexUser) {
+            $this->_flexUser = new FlexUserList($this);
+        }
+        return $this->_flexUser;
     }
 
     protected function getWebChannels(): WebChannelsList

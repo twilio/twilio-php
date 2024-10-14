@@ -36,7 +36,7 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @property string|null $sid
  * @property string|null $accountSid
  * @property string|null $friendlyName
- * @property int|null $codeLength
+ * @property int $codeLength
  * @property bool|null $lookupEnabled
  * @property bool|null $psd2Enabled
  * @property bool|null $skipSmsToLandlines
@@ -47,6 +47,7 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @property array|null $push
  * @property array|null $totp
  * @property string|null $defaultTemplateSid
+ * @property array|null $whatsapp
  * @property bool|null $verifyEventSubscriptionEnabled
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
@@ -90,6 +91,7 @@ class ServiceInstance extends InstanceResource
             'push' => Values::array_get($payload, 'push'),
             'totp' => Values::array_get($payload, 'totp'),
             'defaultTemplateSid' => Values::array_get($payload, 'default_template_sid'),
+            'whatsapp' => Values::array_get($payload, 'whatsapp'),
             'verifyEventSubscriptionEnabled' => Values::array_get($payload, 'verify_event_subscription_enabled'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),

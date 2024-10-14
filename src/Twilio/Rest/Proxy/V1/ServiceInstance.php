@@ -34,7 +34,7 @@ use Twilio\Rest\Proxy\V1\Service\SessionList;
  * @property string|null $accountSid
  * @property string|null $chatInstanceSid
  * @property string|null $callbackUrl
- * @property int|null $defaultTtl
+ * @property int $defaultTtl
  * @property string $numberSelectionBehavior
  * @property string $geoMatchLevel
  * @property string|null $interceptCallbackUrl

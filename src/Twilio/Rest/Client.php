@@ -20,6 +20,7 @@ use Twilio\Base\BaseClient as BaseClient;
  *
  * @property Accounts $accounts
  * @property Api $api
+ * @property Assistants $assistants
  * @property Bulkexports $bulkexports
  * @property Chat $chat
  * @property Content $content
@@ -27,16 +28,18 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Events $events
  * @property FlexApi $flexApi
  * @property FrontlineApi $frontlineApi
+ * @property Iam $iam
  * @property Insights $insights
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
  * @property Lookups $lookups
- * @property Media $media
+ * @property Marketplace $marketplace
  * @property Messaging $messaging
  * @property Microvisor $microvisor
  * @property Monitor $monitor
  * @property Notify $notify
  * @property Numbers $numbers
+ * @property Oauth $oauth
  * @property Preview $preview
  * @property Pricing $pricing
  * @property Proxy $proxy
@@ -98,6 +101,7 @@ use Twilio\Base\BaseClient as BaseClient;
 class Client extends BaseClient {
     protected $_accounts;
     protected $_api;
+    protected $_assistants;
     protected $_bulkexports;
     protected $_chat;
     protected $_content;
@@ -105,16 +109,18 @@ class Client extends BaseClient {
     protected $_events;
     protected $_flexApi;
     protected $_frontlineApi;
+    protected $_iam;
     protected $_insights;
     protected $_intelligence;
     protected $_ipMessaging;
     protected $_lookups;
-    protected $_media;
+    protected $_marketplace;
     protected $_messaging;
     protected $_microvisor;
     protected $_monitor;
     protected $_notify;
     protected $_numbers;
+    protected $_oauth;
     protected $_preview;
     protected $_pricing;
     protected $_proxy;
@@ -152,6 +158,17 @@ class Client extends BaseClient {
             $this->_api = new Api($this);
         }
         return $this->_api;
+    }
+    /**
+     * Access the Assistants Twilio Domain
+     *
+     * @return Assistants Assistants Twilio Domain
+     */
+    protected function getAssistants(): Assistants {
+        if (!$this->_assistants) {
+            $this->_assistants = new Assistants($this);
+        }
+        return $this->_assistants;
     }
     /**
      * Access the Bulkexports Twilio Domain
@@ -231,6 +248,17 @@ class Client extends BaseClient {
         return $this->_frontlineApi;
     }
     /**
+     * Access the Iam Twilio Domain
+     *
+     * @return Iam Iam Twilio Domain
+     */
+    protected function getIam(): Iam {
+        if (!$this->_iam) {
+            $this->_iam = new Iam($this);
+        }
+        return $this->_iam;
+    }
+    /**
      * Access the Insights Twilio Domain
      *
      * @return Insights Insights Twilio Domain
@@ -275,15 +303,15 @@ class Client extends BaseClient {
         return $this->_lookups;
     }
     /**
-     * Access the Media Twilio Domain
+     * Access the Marketplace Twilio Domain
      *
-     * @return Media Media Twilio Domain
+     * @return Marketplace Marketplace Twilio Domain
      */
-    protected function getMedia(): Media {
-        if (!$this->_media) {
-            $this->_media = new Media($this);
+    protected function getMarketplace(): Marketplace {
+        if (!$this->_marketplace) {
+            $this->_marketplace = new Marketplace($this);
         }
-        return $this->_media;
+        return $this->_marketplace;
     }
     /**
      * Access the Messaging Twilio Domain
@@ -339,6 +367,17 @@ class Client extends BaseClient {
             $this->_numbers = new Numbers($this);
         }
         return $this->_numbers;
+    }
+    /**
+     * Access the Oauth Twilio Domain
+     *
+     * @return Oauth Oauth Twilio Domain
+     */
+    protected function getOauth(): Oauth {
+        if (!$this->_oauth) {
+            $this->_oauth = new Oauth($this);
+        }
+        return $this->_oauth;
     }
     /**
      * Access the Preview Twilio Domain

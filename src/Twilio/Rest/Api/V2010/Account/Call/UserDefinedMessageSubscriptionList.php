@@ -76,7 +76,8 @@ class UserDefinedMessageSubscriptionList extends ListResource
                 $options['method'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new UserDefinedMessageSubscriptionInstance(
             $this->version,

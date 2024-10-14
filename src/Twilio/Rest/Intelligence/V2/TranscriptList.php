@@ -69,7 +69,8 @@ class TranscriptList extends ListResource
                 Serialize::iso8601DateTime($options['mediaStartTime']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TranscriptInstance(
             $this->version,

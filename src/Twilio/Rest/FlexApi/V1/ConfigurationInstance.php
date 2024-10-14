@@ -175,6 +175,18 @@ class ConfigurationInstance extends InstanceResource
     }
 
     /**
+     * Update the ConfigurationInstance
+     *
+     * @return ConfigurationInstance Updated ConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(): ConfigurationInstance
+    {
+
+        return $this->proxy()->update();
+    }
+
+    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access

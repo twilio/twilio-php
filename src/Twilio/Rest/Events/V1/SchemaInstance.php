@@ -30,7 +30,7 @@ use Twilio\Rest\Events\V1\Schema\SchemaVersionList;
  * @property string|null $url
  * @property array|null $links
  * @property \DateTime|null $latestVersionDateCreated
- * @property int|null $latestVersion
+ * @property int $latestVersion
  */
 class SchemaInstance extends InstanceResource
 {

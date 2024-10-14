@@ -40,6 +40,7 @@ use Twilio\Version;
  * @property array|null $reassignedNumber
  * @property array|null $smsPumpingRisk
  * @property array|null $phoneNumberQualityScore
+ * @property array|null $preFill
  * @property string|null $url
  */
 class PhoneNumberInstance extends InstanceResource
@@ -72,6 +73,7 @@ class PhoneNumberInstance extends InstanceResource
             'reassignedNumber' => Values::array_get($payload, 'reassigned_number'),
             'smsPumpingRisk' => Values::array_get($payload, 'sms_pumping_risk'),
             'phoneNumberQualityScore' => Values::array_get($payload, 'phone_number_quality_score'),
+            'preFill' => Values::array_get($payload, 'pre_fill'),
             'url' => Values::array_get($payload, 'url'),
         ];
 

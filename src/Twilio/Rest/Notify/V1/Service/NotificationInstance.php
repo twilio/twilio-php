@@ -33,7 +33,7 @@ use Twilio\Deserialize;
  * @property string[]|null $tags
  * @property string[]|null $segments
  * @property string $priority
- * @property int|null $ttl
+ * @property int $ttl
  * @property string|null $title
  * @property string|null $body
  * @property string|null $sound

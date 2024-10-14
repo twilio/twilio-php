@@ -60,7 +60,8 @@ class AccountList extends ListResource
                 $options['friendlyName'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new AccountInstance(
             $this->version,

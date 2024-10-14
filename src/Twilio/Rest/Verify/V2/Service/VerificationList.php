@@ -94,13 +94,16 @@ class VerificationList extends ListResource
                 $options['templateCustomSubstitutions'],
             'DeviceIp' =>
                 $options['deviceIp'],
+            'EnableSnaClientToken' =>
+                Serialize::booleanToString($options['enableSnaClientToken']),
             'RiskCheck' =>
                 $options['riskCheck'],
             'Tags' =>
                 $options['tags'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new VerificationInstance(
             $this->version,

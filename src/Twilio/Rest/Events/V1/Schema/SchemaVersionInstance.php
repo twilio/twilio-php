@@ -26,7 +26,7 @@ use Twilio\Deserialize;
 
 /**
  * @property string|null $id
- * @property int|null $schemaVersion
+ * @property int $schemaVersion
  * @property \DateTime|null $dateCreated
  * @property string|null $url
  * @property string|null $raw

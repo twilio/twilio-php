@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property int|null $updateCount
+ * @property int $updateCount
  * @property string|null $updateRequest
  */
 class BulkCountryUpdateInstance extends InstanceResource

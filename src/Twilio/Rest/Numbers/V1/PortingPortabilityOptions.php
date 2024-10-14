@@ -21,17 +21,20 @@ use Twilio\Values;
 abstract class PortingPortabilityOptions
 {
     /**
-     * @param string $targetAccountSid The SID of the account where the phone number(s) will be ported.
+     * @param string $targetAccountSid Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account.
+     * @param string $addressSid Address Sid of customer to which the number will be ported.
      * @return FetchPortingPortabilityOptions Options builder
      */
     public static function fetch(
         
-        string $targetAccountSid = Values::NONE
+        string $targetAccountSid = Values::NONE,
+        string $addressSid = Values::NONE
 
     ): FetchPortingPortabilityOptions
     {
         return new FetchPortingPortabilityOptions(
-            $targetAccountSid
+            $targetAccountSid,
+            $addressSid
         );
     }
 
@@ -40,25 +43,40 @@ abstract class PortingPortabilityOptions
 class FetchPortingPortabilityOptions extends Options
     {
     /**
-     * @param string $targetAccountSid The SID of the account where the phone number(s) will be ported.
+     * @param string $targetAccountSid Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account.
+     * @param string $addressSid Address Sid of customer to which the number will be ported.
      */
     public function __construct(
         
-        string $targetAccountSid = Values::NONE
+        string $targetAccountSid = Values::NONE,
+        string $addressSid = Values::NONE
 
     ) {
         $this->options['targetAccountSid'] = $targetAccountSid;
+        $this->options['addressSid'] = $addressSid;
     }
 
     /**
-     * The SID of the account where the phone number(s) will be ported.
+     * Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account.
      *
-     * @param string $targetAccountSid The SID of the account where the phone number(s) will be ported.
+     * @param string $targetAccountSid Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account.
      * @return $this Fluent Builder
      */
     public function setTargetAccountSid(string $targetAccountSid): self
     {
         $this->options['targetAccountSid'] = $targetAccountSid;
+        return $this;
+    }
+
+    /**
+     * Address Sid of customer to which the number will be ported.
+     *
+     * @param string $addressSid Address Sid of customer to which the number will be ported.
+     * @return $this Fluent Builder
+     */
+    public function setAddressSid(string $addressSid): self
+    {
+        $this->options['addressSid'] = $addressSid;
         return $this;
     }
 

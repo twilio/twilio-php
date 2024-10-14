@@ -40,7 +40,7 @@ use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
  * @property string|null $price
  * @property string|null $priceUnit
  * @property string $status
- * @property int|null $channels
+ * @property int $channels
  * @property string $source
  * @property int|null $errorCode
  * @property string|null $uri

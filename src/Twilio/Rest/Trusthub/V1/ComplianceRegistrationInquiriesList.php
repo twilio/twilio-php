@@ -130,9 +130,16 @@ class ComplianceRegistrationInquiriesList extends ListResource
                 $options['individualPhone'],
             'IsIsvEmbed' =>
                 Serialize::booleanToString($options['isIsvEmbed']),
+            'IsvRegisteringForSelfOrTenant' =>
+                $options['isvRegisteringForSelfOrTenant'],
+            'StatusCallbackUrl' =>
+                $options['statusCallbackUrl'],
+            'ThemeSetId' =>
+                $options['themeSetId'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ComplianceRegistrationInquiriesInstance(
             $this->version,
@@ -140,6 +147,22 @@ class ComplianceRegistrationInquiriesList extends ListResource
         );
     }
 
+
+    /**
+     * Constructs a ComplianceRegistrationInquiriesContext
+     *
+     * @param string $registrationId The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call.
+     */
+    public function getContext(
+        string $registrationId
+        
+    ): ComplianceRegistrationInquiriesContext
+    {
+        return new ComplianceRegistrationInquiriesContext(
+            $this->version,
+            $registrationId
+        );
+    }
 
     /**
      * Provide a friendly representation

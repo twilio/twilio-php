@@ -74,7 +74,8 @@ class CommandList extends ListResource
                 Serialize::booleanToString($options['deliveryReceiptRequested']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new CommandInstance(
             $this->version,

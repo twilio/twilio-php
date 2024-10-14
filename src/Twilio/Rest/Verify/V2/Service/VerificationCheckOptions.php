@@ -26,6 +26,7 @@ abstract class VerificationCheckOptions
      * @param string $verificationSid A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified.
      * @param string $amount The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
      * @param string $payee The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * @param string $snaClientToken A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response.
      * @return CreateVerificationCheckOptions Options builder
      */
     public static function create(
@@ -34,7 +35,8 @@ abstract class VerificationCheckOptions
         string $to = Values::NONE,
         string $verificationSid = Values::NONE,
         string $amount = Values::NONE,
-        string $payee = Values::NONE
+        string $payee = Values::NONE,
+        string $snaClientToken = Values::NONE
 
     ): CreateVerificationCheckOptions
     {
@@ -43,7 +45,8 @@ abstract class VerificationCheckOptions
             $to,
             $verificationSid,
             $amount,
-            $payee
+            $payee,
+            $snaClientToken
         );
     }
 
@@ -57,6 +60,7 @@ class CreateVerificationCheckOptions extends Options
      * @param string $verificationSid A SID that uniquely identifies the Verification Check. Either this parameter or the `to` phone number/[email](https://www.twilio.com/docs/verify/email) must be specified.
      * @param string $amount The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
      * @param string $payee The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+     * @param string $snaClientToken A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response.
      */
     public function __construct(
         
@@ -64,7 +68,8 @@ class CreateVerificationCheckOptions extends Options
         string $to = Values::NONE,
         string $verificationSid = Values::NONE,
         string $amount = Values::NONE,
-        string $payee = Values::NONE
+        string $payee = Values::NONE,
+        string $snaClientToken = Values::NONE
 
     ) {
         $this->options['code'] = $code;
@@ -72,6 +77,7 @@ class CreateVerificationCheckOptions extends Options
         $this->options['verificationSid'] = $verificationSid;
         $this->options['amount'] = $amount;
         $this->options['payee'] = $payee;
+        $this->options['snaClientToken'] = $snaClientToken;
     }
 
     /**
@@ -131,6 +137,18 @@ class CreateVerificationCheckOptions extends Options
     public function setPayee(string $payee): self
     {
         $this->options['payee'] = $payee;
+        return $this;
+    }
+
+    /**
+     * A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response.
+     *
+     * @param string $snaClientToken A sna client token received in sna url invocation response needs to be passed in Verification Check request and should match to get successful response.
+     * @return $this Fluent Builder
+     */
+    public function setSnaClientToken(string $snaClientToken): self
+    {
+        $this->options['snaClientToken'] = $snaClientToken;
         return $this;
     }
 

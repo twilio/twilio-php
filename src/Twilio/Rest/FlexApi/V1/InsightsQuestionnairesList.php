@@ -68,8 +68,7 @@ class InsightsQuestionnairesList extends ListResource
                 Serialize::map($options['questionSids'], function ($e) { return $e; }),
         ]);
 
-        $headers = Values::of(['Authorization' => $options['authorization']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new InsightsQuestionnairesInstance(

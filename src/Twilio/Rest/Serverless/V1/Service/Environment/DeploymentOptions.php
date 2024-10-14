@@ -22,16 +22,19 @@ abstract class DeploymentOptions
 {
     /**
      * @param string $buildSid The SID of the Build for the Deployment.
+     * @param bool $isPlugin Whether the Deployment is a plugin.
      * @return CreateDeploymentOptions Options builder
      */
     public static function create(
         
-        string $buildSid = Values::NONE
+        string $buildSid = Values::NONE,
+        bool $isPlugin = Values::BOOL_NONE
 
     ): CreateDeploymentOptions
     {
         return new CreateDeploymentOptions(
-            $buildSid
+            $buildSid,
+            $isPlugin
         );
     }
 
@@ -43,13 +46,16 @@ class CreateDeploymentOptions extends Options
     {
     /**
      * @param string $buildSid The SID of the Build for the Deployment.
+     * @param bool $isPlugin Whether the Deployment is a plugin.
      */
     public function __construct(
         
-        string $buildSid = Values::NONE
+        string $buildSid = Values::NONE,
+        bool $isPlugin = Values::BOOL_NONE
 
     ) {
         $this->options['buildSid'] = $buildSid;
+        $this->options['isPlugin'] = $isPlugin;
     }
 
     /**
@@ -61,6 +67,18 @@ class CreateDeploymentOptions extends Options
     public function setBuildSid(string $buildSid): self
     {
         $this->options['buildSid'] = $buildSid;
+        return $this;
+    }
+
+    /**
+     * Whether the Deployment is a plugin.
+     *
+     * @param bool $isPlugin Whether the Deployment is a plugin.
+     * @return $this Fluent Builder
+     */
+    public function setIsPlugin(bool $isPlugin): self
+    {
+        $this->options['isPlugin'] = $isPlugin;
         return $this;
     }
 

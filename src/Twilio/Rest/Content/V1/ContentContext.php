@@ -19,17 +19,21 @@ namespace Twilio\Rest\Content\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Rest\Content\V1\Content\ApprovalCreateList;
 use Twilio\Rest\Content\V1\Content\ApprovalFetchList;
 
 
 /**
+ * @property ApprovalCreateList $approvalCreate
  * @property ApprovalFetchList $approvalFetch
  * @method \Twilio\Rest\Content\V1\Content\ApprovalFetchContext approvalFetch()
  */
 class ContentContext extends InstanceContext
     {
+    protected $_approvalCreate;
     protected $_approvalFetch;
 
     /**
@@ -63,7 +67,8 @@ class ContentContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -76,7 +81,8 @@ class ContentContext extends InstanceContext
     public function fetch(): ContentInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ContentInstance(
             $this->version,
@@ -85,6 +91,21 @@ class ContentContext extends InstanceContext
         );
     }
 
+
+    /**
+     * Access the approvalCreate
+     */
+    protected function getApprovalCreate(): ApprovalCreateList
+    {
+        if (!$this->_approvalCreate) {
+            $this->_approvalCreate = new ApprovalCreateList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_approvalCreate;
+    }
 
     /**
      * Access the approvalFetch

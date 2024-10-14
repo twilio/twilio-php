@@ -23,18 +23,18 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueBulkRealTimeStatisticsList;
+use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 
 
 /**
- * @property TaskQueuesStatisticsList $statistics
  * @property TaskQueueBulkRealTimeStatisticsList $bulkRealTimeStatistics
+ * @property TaskQueuesStatisticsList $statistics
  */
 class TaskQueueList extends ListResource
     {
-    protected $_statistics = null;
     protected $_bulkRealTimeStatistics = null;
+    protected $_statistics = null;
 
     /**
      * Construct the TaskQueueList
@@ -87,7 +87,8 @@ class TaskQueueList extends ListResource
                 $options['assignmentActivitySid'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TaskQueueInstance(
             $this->version,
@@ -219,20 +220,6 @@ class TaskQueueList extends ListResource
     }
 
     /**
-     * Access the statistics
-     */
-    protected function getStatistics(): TaskQueuesStatisticsList
-    {
-        if (!$this->_statistics) {
-            $this->_statistics = new TaskQueuesStatisticsList(
-                $this->version,
-                $this->solution['workspaceSid']
-            );
-        }
-        return $this->_statistics;
-    }
-
-    /**
      * Access the bulkRealTimeStatistics
      */
     protected function getBulkRealTimeStatistics(): TaskQueueBulkRealTimeStatisticsList
@@ -244,6 +231,20 @@ class TaskQueueList extends ListResource
             );
         }
         return $this->_bulkRealTimeStatistics;
+    }
+
+    /**
+     * Access the statistics
+     */
+    protected function getStatistics(): TaskQueuesStatisticsList
+    {
+        if (!$this->_statistics) {
+            $this->_statistics = new TaskQueuesStatisticsList(
+                $this->version,
+                $this->solution['workspaceSid']
+            );
+        }
+        return $this->_statistics;
     }
 
     /**

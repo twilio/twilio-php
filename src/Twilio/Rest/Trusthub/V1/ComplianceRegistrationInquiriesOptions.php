@@ -55,6 +55,9 @@ abstract class ComplianceRegistrationInquiriesOptions
      * @param string $individualEmail The email address of the Individual User.
      * @param string $individualPhone The phone number of the Individual User.
      * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @param string $isvRegisteringForSelfOrTenant Indicates if the isv registering for self or tenant.
+     * @param string $statusCallbackUrl The url we call to inform you of bundle changes.
+     * @param string $themeSetId Theme id for styling the inquiry form.
      * @return CreateComplianceRegistrationInquiriesOptions Options builder
      */
     public static function create(
@@ -92,7 +95,10 @@ abstract class ComplianceRegistrationInquiriesOptions
         string $dateOfBirth = Values::NONE,
         string $individualEmail = Values::NONE,
         string $individualPhone = Values::NONE,
-        bool $isIsvEmbed = Values::BOOL_NONE
+        bool $isIsvEmbed = Values::BOOL_NONE,
+        string $isvRegisteringForSelfOrTenant = Values::NONE,
+        string $statusCallbackUrl = Values::NONE,
+        string $themeSetId = Values::NONE
 
     ): CreateComplianceRegistrationInquiriesOptions
     {
@@ -130,7 +136,28 @@ abstract class ComplianceRegistrationInquiriesOptions
             $dateOfBirth,
             $individualEmail,
             $individualPhone,
-            $isIsvEmbed
+            $isIsvEmbed,
+            $isvRegisteringForSelfOrTenant,
+            $statusCallbackUrl,
+            $themeSetId
+        );
+    }
+
+    /**
+     * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @param string $themeSetId Theme id for styling the inquiry form.
+     * @return UpdateComplianceRegistrationInquiriesOptions Options builder
+     */
+    public static function update(
+        
+        bool $isIsvEmbed = Values::BOOL_NONE,
+        string $themeSetId = Values::NONE
+
+    ): UpdateComplianceRegistrationInquiriesOptions
+    {
+        return new UpdateComplianceRegistrationInquiriesOptions(
+            $isIsvEmbed,
+            $themeSetId
         );
     }
 
@@ -173,6 +200,9 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
      * @param string $individualEmail The email address of the Individual User.
      * @param string $individualPhone The phone number of the Individual User.
      * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @param string $isvRegisteringForSelfOrTenant Indicates if the isv registering for self or tenant.
+     * @param string $statusCallbackUrl The url we call to inform you of bundle changes.
+     * @param string $themeSetId Theme id for styling the inquiry form.
      */
     public function __construct(
         
@@ -209,7 +239,10 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
         string $dateOfBirth = Values::NONE,
         string $individualEmail = Values::NONE,
         string $individualPhone = Values::NONE,
-        bool $isIsvEmbed = Values::BOOL_NONE
+        bool $isIsvEmbed = Values::BOOL_NONE,
+        string $isvRegisteringForSelfOrTenant = Values::NONE,
+        string $statusCallbackUrl = Values::NONE,
+        string $themeSetId = Values::NONE
 
     ) {
         $this->options['businessIdentityType'] = $businessIdentityType;
@@ -246,6 +279,9 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
         $this->options['individualEmail'] = $individualEmail;
         $this->options['individualPhone'] = $individualPhone;
         $this->options['isIsvEmbed'] = $isIsvEmbed;
+        $this->options['isvRegisteringForSelfOrTenant'] = $isvRegisteringForSelfOrTenant;
+        $this->options['statusCallbackUrl'] = $statusCallbackUrl;
+        $this->options['themeSetId'] = $themeSetId;
     }
 
     /**
@@ -653,6 +689,42 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
     }
 
     /**
+     * Indicates if the isv registering for self or tenant.
+     *
+     * @param string $isvRegisteringForSelfOrTenant Indicates if the isv registering for self or tenant.
+     * @return $this Fluent Builder
+     */
+    public function setIsvRegisteringForSelfOrTenant(string $isvRegisteringForSelfOrTenant): self
+    {
+        $this->options['isvRegisteringForSelfOrTenant'] = $isvRegisteringForSelfOrTenant;
+        return $this;
+    }
+
+    /**
+     * The url we call to inform you of bundle changes.
+     *
+     * @param string $statusCallbackUrl The url we call to inform you of bundle changes.
+     * @return $this Fluent Builder
+     */
+    public function setStatusCallbackUrl(string $statusCallbackUrl): self
+    {
+        $this->options['statusCallbackUrl'] = $statusCallbackUrl;
+        return $this;
+    }
+
+    /**
+     * Theme id for styling the inquiry form.
+     *
+     * @param string $themeSetId Theme id for styling the inquiry form.
+     * @return $this Fluent Builder
+     */
+    public function setThemeSetId(string $themeSetId): self
+    {
+        $this->options['themeSetId'] = $themeSetId;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -661,6 +733,58 @@ class CreateComplianceRegistrationInquiriesOptions extends Options
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Trusthub.V1.CreateComplianceRegistrationInquiriesOptions ' . $options . ']';
+    }
+}
+
+class UpdateComplianceRegistrationInquiriesOptions extends Options
+    {
+    /**
+     * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @param string $themeSetId Theme id for styling the inquiry form.
+     */
+    public function __construct(
+        
+        bool $isIsvEmbed = Values::BOOL_NONE,
+        string $themeSetId = Values::NONE
+
+    ) {
+        $this->options['isIsvEmbed'] = $isIsvEmbed;
+        $this->options['themeSetId'] = $themeSetId;
+    }
+
+    /**
+     * Indicates if the inquiry is being started from an ISV embedded component.
+     *
+     * @param bool $isIsvEmbed Indicates if the inquiry is being started from an ISV embedded component.
+     * @return $this Fluent Builder
+     */
+    public function setIsIsvEmbed(bool $isIsvEmbed): self
+    {
+        $this->options['isIsvEmbed'] = $isIsvEmbed;
+        return $this;
+    }
+
+    /**
+     * Theme id for styling the inquiry form.
+     *
+     * @param string $themeSetId Theme id for styling the inquiry form.
+     * @return $this Fluent Builder
+     */
+    public function setThemeSetId(string $themeSetId): self
+    {
+        $this->options['themeSetId'] = $themeSetId;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Trusthub.V1.UpdateComplianceRegistrationInquiriesOptions ' . $options . ']';
     }
 }
 

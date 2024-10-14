@@ -42,8 +42,8 @@ class ChannelSenderInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $messagingServiceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the resource from.
-     * @param string $sid The SID of the ChannelSender resource to fetch.
+     * @param string $messagingServiceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.
+     * @param string $sid The SID of the Channel Sender resource to delete.
      */
     public function __construct(Version $version, array $payload, string $messagingServiceSid, string $sid = null)
     {
@@ -82,6 +82,18 @@ class ChannelSenderInstance extends InstanceResource
         }
 
         return $this->context;
+    }
+
+    /**
+     * Delete the ChannelSenderInstance
+     *
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+
+        return $this->proxy()->delete();
     }
 
     /**

@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Rest\Api\V2010\Account\Call\TranscriptionList;
 use Twilio\Rest\Api\V2010\Account\Call\RecordingList;
 use Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageSubscriptionList;
 use Twilio\Rest\Api\V2010\Account\Call\EventList;
@@ -63,6 +64,7 @@ use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
  */
 class CallInstance extends InstanceResource
 {
+    protected $_transcriptions;
     protected $_recordings;
     protected $_userDefinedMessageSubscriptions;
     protected $_events;
@@ -171,6 +173,14 @@ class CallInstance extends InstanceResource
     {
 
         return $this->proxy()->update($options);
+    }
+
+    /**
+     * Access the transcriptions
+     */
+    protected function getTranscriptions(): TranscriptionList
+    {
+        return $this->proxy()->transcriptions;
     }
 
     /**

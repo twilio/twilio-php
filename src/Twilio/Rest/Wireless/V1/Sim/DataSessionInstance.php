@@ -35,8 +35,8 @@ use Twilio\Deserialize;
  * @property string|null $operatorName
  * @property string|null $cellId
  * @property array|null $cellLocationEstimate
- * @property int|null $packetsUploaded
- * @property int|null $packetsDownloaded
+ * @property int $packetsUploaded
+ * @property int $packetsDownloaded
  * @property \DateTime|null $lastUpdated
  * @property \DateTime|null $start
  * @property \DateTime|null $end

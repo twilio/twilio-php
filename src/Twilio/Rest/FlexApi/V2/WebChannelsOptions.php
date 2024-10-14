@@ -17,6 +17,7 @@ namespace Twilio\Rest\FlexApi\V2;
 
 use Twilio\Options;
 use Twilio\Values;
+use Twilio\Version;
 
 abstract class WebChannelsOptions
 {
@@ -24,20 +25,23 @@ abstract class WebChannelsOptions
      * @param string $chatFriendlyName The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example.
      * @param string $customerFriendlyName The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example.
      * @param string $preEngagementData The pre-engagement data.
+     * @param string $uiVersion The Ui-Version HTTP request header
      * @return CreateWebChannelsOptions Options builder
      */
     public static function create(
         
         string $chatFriendlyName = Values::NONE,
         string $customerFriendlyName = Values::NONE,
-        string $preEngagementData = Values::NONE
+        string $preEngagementData = Values::NONE,
+        string $uiVersion = Values::NONE
 
     ): CreateWebChannelsOptions
     {
         return new CreateWebChannelsOptions(
             $chatFriendlyName,
             $customerFriendlyName,
-            $preEngagementData
+            $preEngagementData,
+            $uiVersion
         );
     }
 
@@ -49,17 +53,20 @@ class CreateWebChannelsOptions extends Options
      * @param string $chatFriendlyName The Conversation's friendly name. See the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) for an example.
      * @param string $customerFriendlyName The Conversation participant's friendly name. See the [Conversation Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) for an example.
      * @param string $preEngagementData The pre-engagement data.
+     * @param string $uiVersion The Ui-Version HTTP request header
      */
     public function __construct(
         
         string $chatFriendlyName = Values::NONE,
         string $customerFriendlyName = Values::NONE,
-        string $preEngagementData = Values::NONE
+        string $preEngagementData = Values::NONE,
+        string $uiVersion = Values::NONE
 
     ) {
         $this->options['chatFriendlyName'] = $chatFriendlyName;
         $this->options['customerFriendlyName'] = $customerFriendlyName;
         $this->options['preEngagementData'] = $preEngagementData;
+        $this->options['uiVersion'] = $uiVersion;
     }
 
     /**
@@ -95,6 +102,18 @@ class CreateWebChannelsOptions extends Options
     public function setPreEngagementData(string $preEngagementData): self
     {
         $this->options['preEngagementData'] = $preEngagementData;
+        return $this;
+    }
+
+    /**
+     * The Ui-Version HTTP request header
+     *
+     * @param string $uiVersion The Ui-Version HTTP request header
+     * @return $this Fluent Builder
+     */
+    public function setUiVersion(string $uiVersion): self
+    {
+        $this->options['uiVersion'] = $uiVersion;
         return $this;
     }
 

@@ -38,7 +38,7 @@ use Twilio\Rest\Proxy\V1\Service\Session\InteractionList;
  * @property string|null $uniqueName
  * @property string $status
  * @property string|null $closedReason
- * @property int|null $ttl
+ * @property int $ttl
  * @property string $mode
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated

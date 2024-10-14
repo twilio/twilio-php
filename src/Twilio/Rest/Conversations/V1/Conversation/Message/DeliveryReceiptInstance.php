@@ -32,7 +32,7 @@ use Twilio\Deserialize;
  * @property string|null $channelMessageSid
  * @property string|null $participantSid
  * @property string $status
- * @property int|null $errorCode
+ * @property int $errorCode
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url

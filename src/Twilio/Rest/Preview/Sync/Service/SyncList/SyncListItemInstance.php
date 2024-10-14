@@ -26,7 +26,7 @@ use Twilio\Deserialize;
 
 
 /**
- * @property int|null $index
+ * @property int $index
  * @property string|null $accountSid
  * @property string|null $serviceSid
  * @property string|null $listSid

@@ -40,7 +40,7 @@ use Twilio\Deserialize;
  * @property array|null $encryptionDetails
  * @property string|null $priceUnit
  * @property string $status
- * @property int|null $channels
+ * @property int $channels
  * @property string $source
  * @property int|null $errorCode
  * @property string|null $track

@@ -18,8 +18,11 @@
 namespace Twilio\Rest\Numbers\V2\RegulatoryCompliance;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Options;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 
 
 class RegulationContext extends InstanceContext
@@ -49,13 +52,22 @@ class RegulationContext extends InstanceContext
     /**
      * Fetch the RegulationInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return RegulationInstance Fetched RegulationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): RegulationInstance
+    public function fetch(array $options = []): RegulationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $options = new Values($options);
+
+        $params = Values::of([
+            'IncludeConstraints' =>
+                Serialize::booleanToString($options['includeConstraints']),
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new RegulationInstance(
             $this->version,

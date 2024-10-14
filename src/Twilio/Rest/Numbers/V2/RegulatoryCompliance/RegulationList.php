@@ -21,6 +21,7 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Serialize;
 
 
 class RegulationList extends ListResource
@@ -116,6 +117,8 @@ class RegulationList extends ListResource
                 $options['isoCountry'],
             'NumberType' =>
                 $options['numberType'],
+            'IncludeConstraints' =>
+                Serialize::booleanToString($options['includeConstraints']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
