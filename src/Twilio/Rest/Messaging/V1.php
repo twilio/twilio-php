@@ -26,6 +26,7 @@ use Twilio\Rest\Messaging\V1\DomainConfigMessagingServiceList;
 use Twilio\Rest\Messaging\V1\ExternalCampaignList;
 use Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceList;
 use Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceDomainAssociationList;
+use Twilio\Rest\Messaging\V1\RequestManagedCertList;
 use Twilio\Rest\Messaging\V1\ServiceList;
 use Twilio\Rest\Messaging\V1\TollfreeVerificationList;
 use Twilio\Rest\Messaging\V1\UsecaseList;
@@ -40,6 +41,7 @@ use Twilio\Version;
  * @property ExternalCampaignList $externalCampaign
  * @property LinkshorteningMessagingServiceList $linkshorteningMessagingService
  * @property LinkshorteningMessagingServiceDomainAssociationList $linkshorteningMessagingServiceDomainAssociation
+ * @property RequestManagedCertList $requestManagedCert
  * @property ServiceList $services
  * @property TollfreeVerificationList $tollfreeVerifications
  * @property UsecaseList $usecases
@@ -58,6 +60,7 @@ class V1 extends Version
     protected $_externalCampaign;
     protected $_linkshorteningMessagingService;
     protected $_linkshorteningMessagingServiceDomainAssociation;
+    protected $_requestManagedCert;
     protected $_services;
     protected $_tollfreeVerifications;
     protected $_usecases;
@@ -135,6 +138,14 @@ class V1 extends Version
             $this->_linkshorteningMessagingServiceDomainAssociation = new LinkshorteningMessagingServiceDomainAssociationList($this);
         }
         return $this->_linkshorteningMessagingServiceDomainAssociation;
+    }
+
+    protected function getRequestManagedCert(): RequestManagedCertList
+    {
+        if (!$this->_requestManagedCert) {
+            $this->_requestManagedCert = new RequestManagedCertList($this);
+        }
+        return $this->_requestManagedCert;
     }
 
     protected function getServices(): ServiceList

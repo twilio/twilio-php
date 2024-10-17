@@ -24,14 +24,14 @@ abstract class RoomOptions
      * @param bool $enableTurn Deprecated, now always considered to be true.
      * @param string $type
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`.
-     * @param string $statusCallback The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
-     * @param string $statusCallbackMethod The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`.
-     * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants.
-     * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.***
-     * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
-     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * @param string $statusCallback The URL Twilio should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
+     * @param string $statusCallbackMethod The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`.
+     * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50.
+     * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect.
+     * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
+     * @param string $mediaRegion The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers).
      * @param array $recordingRules A collection of Recording Rules that describe how to include or exclude matching tracks for recording
-     * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only.
+     * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
      * @param int $maxParticipantDuration The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
      * @param int $emptyRoomTimeout Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions).
      * @param int $unusedRoomTimeout Configures how long (in minutes) a room will remain active if no one joins. Valid values range from 1 to 60 minutes (no fractions).
@@ -111,14 +111,14 @@ class CreateRoomOptions extends Options
      * @param bool $enableTurn Deprecated, now always considered to be true.
      * @param string $type
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`.
-     * @param string $statusCallback The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
-     * @param string $statusCallbackMethod The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`.
-     * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants.
-     * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.***
-     * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
-     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * @param string $statusCallback The URL Twilio should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
+     * @param string $statusCallbackMethod The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`.
+     * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50.
+     * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect.
+     * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
+     * @param string $mediaRegion The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers).
      * @param array $recordingRules A collection of Recording Rules that describe how to include or exclude matching tracks for recording
-     * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only.
+     * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
      * @param int $maxParticipantDuration The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
      * @param int $emptyRoomTimeout Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions).
      * @param int $unusedRoomTimeout Configures how long (in minutes) a room will remain active if no one joins. Valid values range from 1 to 60 minutes (no fractions).
@@ -195,9 +195,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
+     * The URL Twilio should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
      *
-     * @param string $statusCallback The URL we should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
+     * @param string $statusCallback The URL Twilio should call using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
      * @return $this Fluent Builder
      */
     public function setStatusCallback(string $statusCallback): self
@@ -207,9 +207,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`.
+     * The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`.
      *
-     * @param string $statusCallbackMethod The HTTP method we should use to call `status_callback`. Can be `POST` or `GET`.
+     * @param string $statusCallbackMethod The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`.
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod(string $statusCallbackMethod): self
@@ -219,9 +219,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants.
+     * The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50.
      *
-     * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. Peer-to-peer rooms can have up to 10 Participants. Small Group rooms can have up to 4 Participants. Group rooms can have up to 50 Participants.
+     * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50.
      * @return $this Fluent Builder
      */
     public function setMaxParticipants(int $maxParticipants): self
@@ -231,9 +231,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.***
+     * Whether to start recording when Participants connect.
      *
-     * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect. ***This feature is not available in `peer-to-peer` rooms.***
+     * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect.
      * @return $this Fluent Builder
      */
     public function setRecordParticipantsOnConnect(bool $recordParticipantsOnConnect): self
@@ -243,9 +243,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
+     * An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
      *
-     * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.  ***This feature is not available in `peer-to-peer` rooms***
+     * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
      * @return $this Fluent Builder
      */
     public function setVideoCodecs(array $videoCodecs): self
@@ -255,9 +255,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers).
      *
-     * @param string $mediaRegion The region for the media server in Group Rooms.  Can be: one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers). ***This feature is not available in `peer-to-peer` rooms.***
+     * @param string $mediaRegion The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers).
      * @return $this Fluent Builder
      */
     public function setMediaRegion(string $mediaRegion): self
@@ -279,9 +279,9 @@ class CreateRoomOptions extends Options
     }
 
     /**
-     * When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only.
+     * When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
      *
-     * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed. Group rooms only.
+     * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
      * @return $this Fluent Builder
      */
     public function setAudioOnly(bool $audioOnly): self
