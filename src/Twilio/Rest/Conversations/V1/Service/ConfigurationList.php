@@ -20,20 +20,20 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Conversations\V1\Service\Configuration\NotificationList;
 use Twilio\Rest\Conversations\V1\Service\Configuration\WebhookList;
+use Twilio\Rest\Conversations\V1\Service\Configuration\NotificationList;
 
 
 /**
- * @property NotificationList $notifications
  * @property WebhookList $webhooks
- * @method \Twilio\Rest\Conversations\V1\Service\Configuration\NotificationContext notifications()
+ * @property NotificationList $notifications
  * @method \Twilio\Rest\Conversations\V1\Service\Configuration\WebhookContext webhooks()
+ * @method \Twilio\Rest\Conversations\V1\Service\Configuration\NotificationContext notifications()
  */
 class ConfigurationList extends ListResource
     {
-    protected $_notifications = null;
     protected $_webhooks = null;
+    protected $_notifications = null;
 
     /**
      * Construct the ConfigurationList
@@ -69,20 +69,6 @@ class ConfigurationList extends ListResource
     }
 
     /**
-     * Access the notifications
-     */
-    protected function getNotifications(): NotificationList
-    {
-        if (!$this->_notifications) {
-            $this->_notifications = new NotificationList(
-                $this->version,
-                $this->solution['chatServiceSid']
-            );
-        }
-        return $this->_notifications;
-    }
-
-    /**
      * Access the webhooks
      */
     protected function getWebhooks(): WebhookList
@@ -94,6 +80,20 @@ class ConfigurationList extends ListResource
             );
         }
         return $this->_webhooks;
+    }
+
+    /**
+     * Access the notifications
+     */
+    protected function getNotifications(): NotificationList
+    {
+        if (!$this->_notifications) {
+            $this->_notifications = new NotificationList(
+                $this->version,
+                $this->solution['chatServiceSid']
+            );
+        }
+        return $this->_notifications;
     }
 
     /**

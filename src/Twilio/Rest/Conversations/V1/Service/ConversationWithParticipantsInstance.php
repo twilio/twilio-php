@@ -19,13 +19,9 @@ namespace Twilio\Rest\Conversations\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
-use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
-use Twilio\Rest\Conversations\V1\Service\Conversation\WebhookList;
-use Twilio\Rest\Conversations\V1\Service\Conversation\ParticipantList;
 
 
 /**
@@ -40,25 +36,20 @@ use Twilio\Rest\Conversations\V1\Service\Conversation\ParticipantList;
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property array|null $timers
- * @property string|null $url
  * @property array|null $links
  * @property array|null $bindings
+ * @property string|null $url
  */
-class ConversationInstance extends InstanceResource
+class ConversationWithParticipantsInstance extends InstanceResource
 {
-    protected $_messages;
-    protected $_webhooks;
-    protected $_participants;
-
     /**
-     * Initialize the ConversationInstance
+     * Initialize the ConversationWithParticipantsInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.
-     * @param string $sid A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $chatServiceSid)
     {
         parent::__construct($version);
 
@@ -75,93 +66,12 @@ class ConversationInstance extends InstanceResource
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'timers' => Values::array_get($payload, 'timers'),
-            'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
             'bindings' => Values::array_get($payload, 'bindings'),
+            'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['chatServiceSid' => $chatServiceSid, 'sid' => $sid ?: $this->properties['sid'], ];
-    }
-
-    /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return ConversationContext Context for this ConversationInstance
-     */
-    protected function proxy(): ConversationContext
-    {
-        if (!$this->context) {
-            $this->context = new ConversationContext(
-                $this->version,
-                $this->solution['chatServiceSid'],
-                $this->solution['sid']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Delete the ConversationInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return bool True if delete succeeds, false otherwise
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function delete(array $options = []): bool
-    {
-
-        return $this->proxy()->delete($options);
-    }
-
-    /**
-     * Fetch the ConversationInstance
-     *
-     * @return ConversationInstance Fetched ConversationInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function fetch(): ConversationInstance
-    {
-
-        return $this->proxy()->fetch();
-    }
-
-    /**
-     * Update the ConversationInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return ConversationInstance Updated ConversationInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function update(array $options = []): ConversationInstance
-    {
-
-        return $this->proxy()->update($options);
-    }
-
-    /**
-     * Access the messages
-     */
-    protected function getMessages(): MessageList
-    {
-        return $this->proxy()->messages;
-    }
-
-    /**
-     * Access the webhooks
-     */
-    protected function getWebhooks(): WebhookList
-    {
-        return $this->proxy()->webhooks;
-    }
-
-    /**
-     * Access the participants
-     */
-    protected function getParticipants(): ParticipantList
-    {
-        return $this->proxy()->participants;
+        $this->solution = ['chatServiceSid' => $chatServiceSid, ];
     }
 
     /**
@@ -192,11 +102,7 @@ class ConversationInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Conversations.V1.ConversationInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Conversations.V1.ConversationWithParticipantsInstance]';
     }
 }
 

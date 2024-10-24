@@ -25,8 +25,8 @@ use Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberList;
 use Twilio\Rest\Numbers\V1\PortingPortabilityList;
 use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationList;
 use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationDeleteList;
+use Twilio\Rest\Numbers\V1\PortingWebhookConfigurationFetchList;
 use Twilio\Rest\Numbers\V1\SigningRequestConfigurationList;
-use Twilio\Rest\Numbers\V1\WebhookList;
 use Twilio\Version;
 
 /**
@@ -37,8 +37,8 @@ use Twilio\Version;
  * @property PortingPortabilityList $portingPortabilities
  * @property PortingWebhookConfigurationList $portingWebhookConfigurations
  * @property PortingWebhookConfigurationDeleteList $portingWebhookConfigurationsDelete
+ * @property PortingWebhookConfigurationFetchList $portingWebhookConfigurationFetch
  * @property SigningRequestConfigurationList $signingRequestConfigurations
- * @property WebhookList $webhook
  * @method \Twilio\Rest\Numbers\V1\BulkEligibilityContext bulkEligibilities(string $requestId)
  * @method \Twilio\Rest\Numbers\V1\PortingPortInContext portingPortIns(string $portInRequestSid)
  * @method \Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberContext portingPortInPhoneNumber(string $portInRequestSid, string $phoneNumberSid)
@@ -54,8 +54,8 @@ class V1 extends Version
     protected $_portingPortabilities;
     protected $_portingWebhookConfigurations;
     protected $_portingWebhookConfigurationsDelete;
+    protected $_portingWebhookConfigurationFetch;
     protected $_signingRequestConfigurations;
-    protected $_webhook;
 
     /**
      * Construct the V1 version of Numbers
@@ -124,20 +124,20 @@ class V1 extends Version
         return $this->_portingWebhookConfigurationsDelete;
     }
 
+    protected function getPortingWebhookConfigurationFetch(): PortingWebhookConfigurationFetchList
+    {
+        if (!$this->_portingWebhookConfigurationFetch) {
+            $this->_portingWebhookConfigurationFetch = new PortingWebhookConfigurationFetchList($this);
+        }
+        return $this->_portingWebhookConfigurationFetch;
+    }
+
     protected function getSigningRequestConfigurations(): SigningRequestConfigurationList
     {
         if (!$this->_signingRequestConfigurations) {
             $this->_signingRequestConfigurations = new SigningRequestConfigurationList($this);
         }
         return $this->_signingRequestConfigurations;
-    }
-
-    protected function getWebhook(): WebhookList
-    {
-        if (!$this->_webhook) {
-            $this->_webhook = new WebhookList($this);
-        }
-        return $this->_webhook;
     }
 
     /**

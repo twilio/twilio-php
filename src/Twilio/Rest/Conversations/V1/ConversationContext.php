@@ -25,23 +25,23 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Rest\Conversations\V1\Conversation\ParticipantList;
-use Twilio\Rest\Conversations\V1\Conversation\WebhookList;
 use Twilio\Rest\Conversations\V1\Conversation\MessageList;
+use Twilio\Rest\Conversations\V1\Conversation\WebhookList;
 
 
 /**
  * @property ParticipantList $participants
- * @property WebhookList $webhooks
  * @property MessageList $messages
- * @method \Twilio\Rest\Conversations\V1\Conversation\WebhookContext webhooks(string $sid)
+ * @property WebhookList $webhooks
  * @method \Twilio\Rest\Conversations\V1\Conversation\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Conversations\V1\Conversation\ParticipantContext participants(string $sid)
+ * @method \Twilio\Rest\Conversations\V1\Conversation\WebhookContext webhooks(string $sid)
  */
 class ConversationContext extends InstanceContext
     {
     protected $_participants;
-    protected $_webhooks;
     protected $_messages;
+    protected $_webhooks;
 
     /**
      * Initialize the ConversationContext
@@ -166,21 +166,6 @@ class ConversationContext extends InstanceContext
     }
 
     /**
-     * Access the webhooks
-     */
-    protected function getWebhooks(): WebhookList
-    {
-        if (!$this->_webhooks) {
-            $this->_webhooks = new WebhookList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_webhooks;
-    }
-
-    /**
      * Access the messages
      */
     protected function getMessages(): MessageList
@@ -193,6 +178,21 @@ class ConversationContext extends InstanceContext
         }
 
         return $this->_messages;
+    }
+
+    /**
+     * Access the webhooks
+     */
+    protected function getWebhooks(): WebhookList
+    {
+        if (!$this->_webhooks) {
+            $this->_webhooks = new WebhookList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_webhooks;
     }
 
     /**
