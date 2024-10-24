@@ -4182,9 +4182,9 @@ Version 3.8.1
 
 Released on November 23, 2012
 
-- [Implements the Countable interface on the ListResource][countable], so you
+- Implements the Countable interface on the ListResource, so you
   can call count() on any resource.
-- [Adds a convenience method for retrieving a phone number object][get-number],
+- Adds a convenience method for retrieving a phone number object,
   so you can retrieve all of a number's properties by its E.164 representation.
 
 Internally:
@@ -4193,8 +4193,6 @@ Internally:
 - Updates [Travis CI configuration to use Composer][travis-composer],
 shortening build time from 83 seconds to 21 seconds.
 
-[countable]: https://twilio-php.readthedocs.org/en/latest/usage/rest.html#retrieving-the-total-number-of-resources
-[get-number]: https://twilio-php.readthedocs.org/en/latest/usage/rest/phonenumbers.html#retrieving-all-of-a-number-s-properties
 [unicode-tests]: https://github.com/twilio/twilio-php/commit/6f8aa57885796691858e460c8cea748e241c47e3
 [travis-composer]: https://github.com/twilio/twilio-php/commit/a732358e90e1ae9a5a3348ad77dda8cc8b5ec6bc
 
@@ -4204,10 +4202,7 @@ Version 3.8.0
 Released on October 17, 2012
 
 - Support the new Usage API, with Usage Records and Usage Triggers. Read the
-  PHP documentation for [usage records][records] or [usage triggers][triggers]
-
-  [records]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-records.html
-  [triggers]: https://twilio-php.readthedocs.org/en/latest/usage/rest/usage-triggers.html
+  PHP documentation for usage records or usage triggers
 
 Version 3.7.2
 -------------
