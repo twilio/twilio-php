@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2024-10-25] Version 8.3.6
+--------------------------
+**Library - Chore**
+- [PR #816](https://github.com/twilio/twilio-php/pull/816): remove urls that do not belong to Twilio anymore. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 [2024-10-24] Version 8.3.5
 --------------------------
 **Conversations**
