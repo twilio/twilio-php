@@ -5,7 +5,8 @@ composer.lock
 coverage.xml
 package.xml
 *.tgz
-docs
+# Build folder containing HTML and static files
+docs/_build/
 .phpintel/
 tests/.phpunit.result.cache
 
