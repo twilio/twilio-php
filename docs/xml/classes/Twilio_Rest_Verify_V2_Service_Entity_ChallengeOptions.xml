@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Verify\V2\Service\Entity\ChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="ChallengeOptions" abstract="true" final="false" start="21" end="90">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service/Entity" file="ChallengeOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service/Entity/ChallengeOptions.php" size="14781" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="cbb7dd2ccc5af3be3964e8a3d633ce5161ae1609" relative="Twilio/Rest/Verify/V2/Service/Entity/ChallengeOptions.php"/>
+  <method name="create" start="31" end="48" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The date-time when this Challenge expires, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. The default value is five (5) minutes after Challenge creation. The max value is sixty (60) minutes after creation." type="object" variable="$expirationDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Shown to the user when the push notification arrives. Required when `factor_type` is `push`. Can be up to 256 characters in length" type="string" variable="$detailsMessage"/>
+      <param description="A list of objects that describe the Fields included in the Challenge. Each object contains the label and value of the field, the label can be up to 36 characters in length and the value can be up to 128 characters in length. Used when `factor_type` is `push`. There can be up to 20 details fields." type="array" variable="$detailsFields" of="object">
+        <type full="Twilio\Rest\Verify\V2\Service\Entity\array" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="array"/>
+      </param>
+      <param description="Details provided to give context about the Challenge. Not shown to the end user. It must be a stringified JSON with only strings values eg. `{\\\&quot;ip\\\&quot;: \\\&quot;172.168.1.234\\\&quot;}`. Can be up to 1024 characters in length" type="array" variable="$hiddenDetails"/>
+      <param description="Optional payload used to verify the Challenge upon creation. Only used with a Factor of type `totp` to carry the TOTP code that needs to be verified. For `TOTP` this value must be between 3 and 8 characters long." type="string" variable="$authPayload"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\Entity\CreateChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="CreateChallengeOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\Entity\CreateChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="CreateChallengeOptions"/>
+    </return>
+    <parameter name="expirationDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="detailsMessage" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="detailsFields" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="hiddenDetails" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="authPayload" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="57" end="70" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The unique SID identifier of the Factor." type="string" variable="$factorSid"/>
+      <param description="The Status of the Challenges to fetch. One of `pending`, `expired`, `approved` or `denied`." type="string" variable="$status"/>
+      <param description="The desired sort order of the Challenges list. One of `asc` or `desc` for ascending and descending respectively. Defaults to `asc`." type="string" variable="$order"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\Entity\ReadChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="ReadChallengeOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\Entity\ReadChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="ReadChallengeOptions"/>
+    </return>
+    <parameter name="factorSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="order" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="77" end="88" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The optional payload needed to verify the Challenge. E.g., a TOTP would use the numeric code. For `TOTP` this value must be between 3 and 8 characters long. For `Push` this value can be up to 5456 characters in length" type="string" variable="$authPayload"/>
+      <param description="Custom metadata associated with the challenge. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{\\\&quot;os\\\&quot;: \\\&quot;Android\\\&quot;}`. Can be up to 1024 characters in length." type="array" variable="$metadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\Entity\UpdateChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="UpdateChallengeOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\Entity\UpdateChallengeOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="UpdateChallengeOptions"/>
+    </return>
+    <parameter name="authPayload" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="metadata" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

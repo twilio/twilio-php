@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Assistants\V1\Assistant\MessageModels" namespace="Twilio\Rest\Assistants\V1\Assistant" name="MessageModels" abstract="true" final="false" start="19" end="33">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/Assistant" file="MessageModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/Assistant/MessageModels.php" size="2660" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="66e4ed5bca5907ed1bb9f7bffc3c88797b0c4638" relative="Twilio/Rest/Assistants/V1/Assistant/MessageModels.php"/>
+  <method name="createAssistantsV1ServiceAssistantSendMessageRequest" start="28" end="31" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $identity The unique identity of user for the session."/>
+      <property value="string $sessionId The unique name for the session."/>
+      <property value="string $body The query to ask the assistant."/>
+      <property value="string $webhook The webhook url to call after the assistant has generated a response or report an error."/>
+      <property value="string $mode one of the modes 'chat', 'email' or 'voice'"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Assistants\V1\Assistant\AssistantsV1ServiceAssistantSendMessageRequest" namespace="Twilio\Rest\Assistants\V1\Assistant" name="AssistantsV1ServiceAssistantSendMessageRequest"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+</class>

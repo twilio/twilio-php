@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\ReadBindingOptions" namespace="Twilio\Rest\Chat\V2\Service" name="ReadBindingOptions" abstract="false" final="false" start="47" end="97">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service" file="BindingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/BindingOptions.php" size="3844" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="7f2458b64d74760e1c99806dbd94255fef746c6a" relative="Twilio/Rest/Chat/V2/Service/BindingOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="53" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info." type="string" variable="$bindingType"/>
+      <param description="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\string" namespace="Twilio\Rest\Chat\V2\Service" name="string"/>
+      </param>
+    </docblock>
+    <parameter name="bindingType" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </constructor>
+  <method name="setBindingType" start="69" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info."/>
+      <param description="The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info." type="string" variable="$bindingType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\$this" namespace="Twilio\Rest\Chat\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\ReadBindingOptions" namespace="Twilio\Rest\Chat\V2\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="bindingType" byreference="false" type="array"/>
+  </method>
+  <method name="setIdentity" start="81" end="85" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details."/>
+      <param description="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\string" namespace="Twilio\Rest\Chat\V2\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\$this" namespace="Twilio\Rest\Chat\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\ReadBindingOptions" namespace="Twilio\Rest\Chat\V2\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="92" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

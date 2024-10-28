@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions" abstract="false" final="false" start="72" end="257">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="EventOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/EventOptions.php" size="11667" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="adc46cddd1e45d38f400a1b58285515dc0360926" relative="Twilio/Rest/Taskrouter/V1/Workspace/EventOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="87" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only include Events that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The type of Events to read. Returns only Events of the type specified." type="string" variable="$eventType"/>
+      <param description="The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes. Task Attributes for Events occuring more 43,200 minutes ago will be redacted." type="int" variable="$minutes"/>
+      <param description="The SID of the Reservation with the Events to read. Returns only Events that pertain to the specified Reservation." type="string" variable="$reservationSid"/>
+      <param description="Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Task Attributes for Events older than 30 days will be redacted." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The SID of the TaskQueue with the Events to read. Returns only the Events that pertain to the specified TaskQueue." type="string" variable="$taskQueueSid"/>
+      <param description="The SID of the Task with the Events to read. Returns only the Events that pertain to the specified Task." type="string" variable="$taskSid"/>
+      <param description="The SID of the Worker with the Events to read. Returns only the Events that pertain to the specified Worker." type="string" variable="$workerSid"/>
+      <param description="The SID of the Workflow with the Events to read. Returns only the Events that pertain to the specified Workflow." type="string" variable="$workflowSid"/>
+      <param description="The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel." type="string" variable="$taskChannel"/>
+      <param description="The SID of the Event resource to read." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="endDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="eventType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="minutes" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="reservationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="taskQueueSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="taskSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="workerSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="workflowSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="taskChannel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setEndDate" start="121" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include Events that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time."/>
+      <param description="Only include Events that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="endDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setEventType" start="133" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The type of Events to read. Returns only Events of the type specified."/>
+      <param description="The type of Events to read. Returns only Events of the type specified." type="string" variable="$eventType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="eventType" byreference="false" type="string"/>
+  </method>
+  <method name="setMinutes" start="145" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes. Task Attributes for Events occuring more 43,200 minutes ago will be redacted."/>
+      <param description="The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes. Task Attributes for Events occuring more 43,200 minutes ago will be redacted." type="int" variable="$minutes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="minutes" byreference="false" type="int"/>
+  </method>
+  <method name="setReservationSid" start="157" end="161" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Reservation with the Events to read. Returns only Events that pertain to the specified Reservation."/>
+      <param description="The SID of the Reservation with the Events to read. Returns only Events that pertain to the specified Reservation." type="string" variable="$reservationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="reservationSid" byreference="false" type="string"/>
+  </method>
+  <method name="setStartDate" start="169" end="173" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Task Attributes for Events older than 30 days will be redacted."/>
+      <param description="Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Task Attributes for Events older than 30 days will be redacted." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="startDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setTaskQueueSid" start="181" end="185" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the TaskQueue with the Events to read. Returns only the Events that pertain to the specified TaskQueue."/>
+      <param description="The SID of the TaskQueue with the Events to read. Returns only the Events that pertain to the specified TaskQueue." type="string" variable="$taskQueueSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="taskQueueSid" byreference="false" type="string"/>
+  </method>
+  <method name="setTaskSid" start="193" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Task with the Events to read. Returns only the Events that pertain to the specified Task."/>
+      <param description="The SID of the Task with the Events to read. Returns only the Events that pertain to the specified Task." type="string" variable="$taskSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="taskSid" byreference="false" type="string"/>
+  </method>
+  <method name="setWorkerSid" start="205" end="209" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Worker with the Events to read. Returns only the Events that pertain to the specified Worker."/>
+      <param description="The SID of the Worker with the Events to read. Returns only the Events that pertain to the specified Worker." type="string" variable="$workerSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="workerSid" byreference="false" type="string"/>
+  </method>
+  <method name="setWorkflowSid" start="217" end="221" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Workflow with the Events to read. Returns only the Events that pertain to the specified Workflow."/>
+      <param description="The SID of the Workflow with the Events to read. Returns only the Events that pertain to the specified Workflow." type="string" variable="$workflowSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="workflowSid" byreference="false" type="string"/>
+  </method>
+  <method name="setTaskChannel" start="229" end="233" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel."/>
+      <param description="The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel." type="string" variable="$taskChannel"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="taskChannel" byreference="false" type="string"/>
+  </method>
+  <method name="setSid" start="241" end="245" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Event resource to read."/>
+      <param description="The SID of the Event resource to read." type="string" variable="$sid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadEventOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadEventOptions"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="252" end="256" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

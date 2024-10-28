@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\ShortCodeOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ShortCodeOptions" abstract="true" final="false" start="21" end="72">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="ShortCodeOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/ShortCodeOptions.php" size="9011" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="82ad874b90cd151de12b607fe03a196a42a42340" relative="Twilio/Rest/Api/V2010/Account/ShortCodeOptions.php"/>
+  <method name="read" start="29" end="40" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The string that identifies the ShortCode resources to read." type="string" variable="$friendlyName"/>
+      <param description="Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit." type="string" variable="$shortCode"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\ReadShortCodeOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadShortCodeOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadShortCodeOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadShortCodeOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="shortCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="51" end="70" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you created to describe this resource. It can be up to 64 characters long. By default, the `FriendlyName` is the short code." type="string" variable="$friendlyName"/>
+      <param description="The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`." type="string" variable="$apiVersion"/>
+      <param description="The URL we should call when receiving an incoming SMS message to this short code." type="string" variable="$smsUrl"/>
+      <param description="The HTTP method we should use when calling the `sms_url`. Can be: `GET` or `POST`." type="string" variable="$smsMethod"/>
+      <param description="The URL that we should call if an error occurs while retrieving or executing the TwiML from `sms_url`." type="string" variable="$smsFallbackUrl"/>
+      <param description="The HTTP method that we should use to call the `sms_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$smsFallbackMethod"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\UpdateShortCodeOptions" namespace="Twilio\Rest\Api\V2010\Account" name="UpdateShortCodeOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\UpdateShortCodeOptions" namespace="Twilio\Rest\Api\V2010\Account" name="UpdateShortCodeOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="apiVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

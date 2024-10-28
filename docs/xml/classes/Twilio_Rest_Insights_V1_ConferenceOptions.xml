@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Insights\V1\ConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ConferenceOptions" abstract="true" final="false" start="21" end="66">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Insights/V1" file="ConferenceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Insights/V1/ConferenceOptions.php" size="8636" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="4cf7a2c4bb04b7262b2c70c94a4ccc5c1f3c909d" relative="Twilio/Rest/Insights/V1/ConferenceOptions.php"/>
+  <method name="read" start="37" end="64" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the conference." type="string" variable="$conferenceSid"/>
+      <param description="Custom label for the conference resource, up to 64 characters." type="string" variable="$friendlyName"/>
+      <param description="Conference status." type="string" variable="$status"/>
+      <param description="Conferences created after the provided timestamp specified in ISO 8601 format" type="string" variable="$createdAfter"/>
+      <param description="Conferences created before the provided timestamp specified in ISO 8601 format." type="string" variable="$createdBefore"/>
+      <param description="Twilio region where the conference media was mixed." type="string" variable="$mixerRegion"/>
+      <param description="Tags applied by Twilio for common potential configuration, quality, or performance issues." type="string" variable="$tags"/>
+      <param description="Account SID for the subaccount whose resources you wish to retrieve." type="string" variable="$subaccount"/>
+      <param description="Potential configuration, behavior, or performance issues detected during the conference." type="string" variable="$detectedIssues"/>
+      <param description="Conference end reason; e.g. last participant left, modified by API, etc." type="string" variable="$endReason"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="conferenceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="createdAfter" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="createdBefore" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mixerRegion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="tags" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="subaccount" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="detectedIssues" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="endReason" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

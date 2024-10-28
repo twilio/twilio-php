@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\ExternalCampaignList" namespace="Twilio\Rest\Messaging\V1" name="ExternalCampaignList" abstract="false" final="false" start="27" end="88">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="ExternalCampaignList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/ExternalCampaignList.php" size="2567" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="ec140b7ad796f9913bc3080f6f5059e1e03fc540" relative="Twilio/Rest/Messaging/V1/ExternalCampaignList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="34" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the ExternalCampaignList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="39"/>
+    </inline>
+  </constructor>
+  <method name="create" start="55" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the ExternalCampaignInstance"/>
+      <param description="ID of the preregistered campaign." type="string" variable="$campaignId"/>
+      <param description="The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with." type="string" variable="$messagingServiceSid"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Messaging\V1\array|Options" namespace="Twilio\Rest\Messaging\V1" name="array|Options"/>
+      </param>
+      <return description="Created ExternalCampaignInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\ExternalCampaignInstance" namespace="Twilio\Rest\Messaging\V1" name="ExternalCampaignInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ExternalCampaignInstance" namespace="Twilio\Rest\Messaging\V1" name="ExternalCampaignInstance"/>
+    </return>
+    <parameter name="campaignId" byreference="false" type="string"/>
+    <parameter name="messagingServiceSid" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="84" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

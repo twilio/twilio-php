@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\BulkHostedNumberOrderInstance" namespace="Twilio\Rest\Numbers\V2" name="BulkHostedNumberOrderInstance" abstract="false" final="false" start="39" end="133">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2" file="BulkHostedNumberOrderInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/BulkHostedNumberOrderInstance.php" size="4429" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="e9ad659fc03217e17b393fd7dff2510e2e84dd4b" relative="Twilio/Rest/Numbers/V2/BulkHostedNumberOrderInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $bulkHostingSid"/>
+    <property value="string $requestStatus"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string|null $notificationEmail"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateCompleted"/>
+    <property value="string|null $url"/>
+    <property value="int $totalCount"/>
+    <property value="array[]|null $results"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="48" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the BulkHostedNumberOrderInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Numbers\V2\mixed" namespace="Twilio\Rest\Numbers\V2" name="mixed"/>
+      </param>
+      <param description="A 34 character string that uniquely identifies this BulkHostedNumberOrder." type="string" variable="$bulkHostingSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="bulkHostingSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="52"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="74" end="84" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this BulkHostedNumberOrderInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext" namespace="Twilio\Rest\Numbers\V2" name="BulkHostedNumberOrderContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext" namespace="Twilio\Rest\Numbers\V2" name="BulkHostedNumberOrderContext"/>
+    </return>
+  </method>
+  <method name="fetch" start="93" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the BulkHostedNumberOrderInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Numbers\V2\array|Options" namespace="Twilio\Rest\Numbers\V2" name="array|Options"/>
+      </param>
+      <return description="Fetched BulkHostedNumberOrderInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\BulkHostedNumberOrderInstance" namespace="Twilio\Rest\Numbers\V2" name="BulkHostedNumberOrderInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\BulkHostedNumberOrderInstance" namespace="Twilio\Rest\Numbers\V2" name="BulkHostedNumberOrderInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__get" start="106" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="125" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

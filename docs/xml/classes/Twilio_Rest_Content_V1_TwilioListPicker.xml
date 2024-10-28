@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Content\V1\TwilioListPicker" namespace="Twilio\Rest\Content\V1" name="TwilioListPicker" abstract="false" final="false" start="410" end="439">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Content/V1" file="ContentModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Content/V1/ContentModels.php" size="32790" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="4ae1c29bf6e1d9adf20e22209a6ef6ebe7edd5e6" relative="Twilio/Rest/Content/V1/ContentModels.php"/>
+  <implements full="JsonSerializable" namespace="" name="JsonSerializable"/>
+  <member name="body" visibility="protected" static="false" line="417">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="string $button"/>
+      <property value="ListItem[] $items"/>
+    </docblock>
+  </member>
+  <member name="button" visibility="protected" static="false" line="418"/>
+  <member name="items" visibility="protected" static="false" line="419"/>
+  <constructor name="__construct" start="420" end="424" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="toArray" start="426" end="429" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="jsonSerialize" start="431" end="438" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="JsonSerializable" namespace="" name="JsonSerializable">
+    <method name="jsonSerialize" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Specify data which should be serialized to JSON"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

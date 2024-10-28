@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="BundleCopyOptions" abstract="true" final="false" start="21" end="39">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/Bundle" file="BundleCopyOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/Bundle/BundleCopyOptions.php" size="2050" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="4f6e61fa624db10ad7b8cb6fce6e3913cc5e8000" relative="Twilio/Rest/Numbers/V2/RegulatoryCompliance/Bundle/BundleCopyOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The string that you assigned to describe the copied bundle." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\CreateBundleCopyOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="CreateBundleCopyOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\CreateBundleCopyOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="CreateBundleCopyOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

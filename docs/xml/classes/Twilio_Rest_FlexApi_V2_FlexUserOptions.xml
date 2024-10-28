@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V2\FlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="FlexUserOptions" abstract="true" final="false" start="21" end="54">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V2" file="FlexUserOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V2/FlexUserOptions.php" size="4690" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="845271056a75d3d7d71897e0172838f68f7ae236" relative="Twilio/Rest/FlexApi/V2/FlexUserOptions.php"/>
+  <method name="update" start="33" end="52" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="First name of the User." type="string" variable="$firstName"/>
+      <param description="Last name of the User." type="string" variable="$lastName"/>
+      <param description="Email of the User." type="string" variable="$email"/>
+      <param description="Friendly name of the User." type="string" variable="$friendlyName"/>
+      <param description="The unique SID identifier of the Twilio Unified User." type="string" variable="$userSid"/>
+      <param description="The locale preference of the user." type="string" variable="$locale"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="firstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="userSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="locale" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

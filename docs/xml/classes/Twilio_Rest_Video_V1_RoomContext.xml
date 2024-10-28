@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Video\V1\RoomContext" namespace="Twilio\Rest\Video\V1" name="RoomContext" abstract="false" final="false" start="37" end="204">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Video/V1" file="RoomContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Video/V1/RoomContext.php" size="5471" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="695584ed3dc5f407500becc177b8acee42b18022" relative="Twilio/Rest/Video/V1/RoomContext.php"/>
+  <docblock>
+    <description/>
+    <property value="RecordingRulesList $recordingRules"/>
+    <property value="ParticipantList $participants"/>
+    <property value="RoomRecordingList $recordings"/>
+    <method value="\Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)"/>
+    <method value="\Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_recordingRules" visibility="protected" static="false" line="39"/>
+  <member name="_participants" visibility="protected" static="false" line="40"/>
+  <member name="_recordings" visibility="protected" static="false" line="41"/>
+  <constructor name="__construct" start="49" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the RoomContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Room resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="55"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="71" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the RoomInstance"/>
+      <return description="Fetched RoomInstance" type="object">
+        <type full="Twilio\Rest\Video\V1\RoomInstance" namespace="Twilio\Rest\Video\V1" name="RoomInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RoomInstance" namespace="Twilio\Rest\Video\V1" name="RoomInstance"/>
+    </return>
+  </method>
+  <method name="update" start="92" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the RoomInstance"/>
+      <param type="string" variable="$status"/>
+      <return description="Updated RoomInstance" type="object">
+        <type full="Twilio\Rest\Video\V1\RoomInstance" namespace="Twilio\Rest\Video\V1" name="RoomInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RoomInstance" namespace="Twilio\Rest\Video\V1" name="RoomInstance"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="getRecordingRules" start="114" end="124" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the recordingRules"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\Room\RecordingRulesList" namespace="Twilio\Rest\Video\V1\Room" name="RecordingRulesList"/>
+    </return>
+  </method>
+  <method name="getParticipants" start="129" end="139" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the participants"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\Room\ParticipantList" namespace="Twilio\Rest\Video\V1\Room" name="ParticipantList"/>
+    </return>
+  </method>
+  <method name="getRecordings" start="144" end="154" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the recordings"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\Room\RoomRecordingList" namespace="Twilio\Rest\Video\V1\Room" name="RoomRecordingList"/>
+    </return>
+  </method>
+  <method name="__get" start="163" end="171" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="181" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="196" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

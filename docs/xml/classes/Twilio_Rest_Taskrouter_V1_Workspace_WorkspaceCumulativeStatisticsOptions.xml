@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceCumulativeStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkspaceCumulativeStatisticsOptions" abstract="true" final="false" start="21" end="50">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="WorkspaceCumulativeStatisticsOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/WorkspaceCumulativeStatisticsOptions.php" size="8569" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="a7a8a85882b4baee3fe91a019a5eef2269cd80b6" relative="Twilio/Rest/Taskrouter/V1/Workspace/WorkspaceCumulativeStatisticsOptions.php"/>
+  <method name="fetch" start="31" end="48" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only include usage that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends." type="int" variable="$minutes"/>
+      <param description="Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`." type="string" variable="$taskChannel"/>
+      <param description="A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA. TaskRouter will calculate statistics on up to 10,000 Tasks for any given threshold." type="string" variable="$splitByWaitTime"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\FetchWorkspaceCumulativeStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="FetchWorkspaceCumulativeStatisticsOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\FetchWorkspaceCumulativeStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="FetchWorkspaceCumulativeStatisticsOptions"/>
+    </return>
+    <parameter name="endDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="minutes" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="startDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="taskChannel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="splitByWaitTime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

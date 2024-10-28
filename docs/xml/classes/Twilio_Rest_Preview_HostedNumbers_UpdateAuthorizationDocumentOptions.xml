@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions" abstract="false" final="false" start="182" end="305">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/HostedNumbers" file="AuthorizationDocumentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/HostedNumbers/AuthorizationDocumentOptions.php" size="11984" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="f84d1eb527206cf18485028ae55956b6d3dcc0ea" relative="Twilio/Rest/Preview/HostedNumbers/AuthorizationDocumentOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="193" end="211" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform." type="array" variable="$hostedNumberOrderSids" of="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\string" namespace="Twilio\Rest\Preview\HostedNumbers" name="string"/>
+      </param>
+      <param description="A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument." type="string" variable="$addressSid"/>
+      <param description="Email that this AuthorizationDocument will be sent to for signing." type="string" variable="$email"/>
+      <param description="Email recipients who will be informed when an Authorization Document has been sent and signed" type="array" variable="$ccEmails" of="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\string" namespace="Twilio\Rest\Preview\HostedNumbers" name="string"/>
+      </param>
+      <param type="string" variable="$status"/>
+      <param description="The title of the person authorized to sign the Authorization Document for this phone number." type="string" variable="$contactTitle"/>
+      <param description="The contact phone number of the person authorized to sign the Authorization Document." type="string" variable="$contactPhoneNumber"/>
+    </docblock>
+    <parameter name="hostedNumberOrderSids" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="addressSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ccEmails" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="contactTitle" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="contactPhoneNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setHostedNumberOrderSids" start="219" end="223" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform."/>
+      <param description="A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform." type="array" variable="$hostedNumberOrderSids" of="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\string" namespace="Twilio\Rest\Preview\HostedNumbers" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="hostedNumberOrderSids" byreference="false" type="array"/>
+  </method>
+  <method name="setAddressSid" start="231" end="235" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument."/>
+      <param description="A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument." type="string" variable="$addressSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="addressSid" byreference="false" type="string"/>
+  </method>
+  <method name="setEmail" start="243" end="247" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Email that this AuthorizationDocument will be sent to for signing."/>
+      <param description="Email that this AuthorizationDocument will be sent to for signing." type="string" variable="$email"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="email" byreference="false" type="string"/>
+  </method>
+  <method name="setCcEmails" start="255" end="259" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Email recipients who will be informed when an Authorization Document has been sent and signed"/>
+      <param description="Email recipients who will be informed when an Authorization Document has been sent and signed" type="array" variable="$ccEmails" of="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\string" namespace="Twilio\Rest\Preview\HostedNumbers" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="ccEmails" byreference="false" type="array"/>
+  </method>
+  <method name="setStatus" start="265" end="269" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setContactTitle" start="277" end="281" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The title of the person authorized to sign the Authorization Document for this phone number."/>
+      <param description="The title of the person authorized to sign the Authorization Document for this phone number." type="string" variable="$contactTitle"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="contactTitle" byreference="false" type="string"/>
+  </method>
+  <method name="setContactPhoneNumber" start="289" end="293" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The contact phone number of the person authorized to sign the Authorization Document."/>
+      <param description="The contact phone number of the person authorized to sign the Authorization Document." type="string" variable="$contactPhoneNumber"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\UpdateAuthorizationDocumentOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="UpdateAuthorizationDocumentOptions"/>
+    </return>
+    <parameter name="contactPhoneNumber" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="300" end="304" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

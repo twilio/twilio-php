@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\BindingOptions" namespace="Twilio\Rest\Chat\V2\Service" name="BindingOptions" abstract="true" final="false" start="21" end="43">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service" file="BindingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/BindingOptions.php" size="3844" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="7f2458b64d74760e1c99806dbd94255fef746c6a" relative="Twilio/Rest/Chat/V2/Service/BindingOptions.php"/>
+  <method name="read" start="30" end="41" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info." type="string" variable="$bindingType"/>
+      <param description="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\string" namespace="Twilio\Rest\Chat\V2\Service" name="string"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\ReadBindingOptions" namespace="Twilio\Rest\Chat\V2\Service" name="ReadBindingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\ReadBindingOptions" namespace="Twilio\Rest\Chat\V2\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="bindingType" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

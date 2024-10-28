@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions" abstract="false" final="false" start="421" end="651">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Notify/V1" file="ServiceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Notify/V1/ServiceOptions.php" size="32415" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="9e6c49df17ccb9f1443651f81cf493e48c4c402c" relative="Twilio/Rest/Notify/V1/ServiceOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="439" end="471" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings." type="string" variable="$apnCredentialSid"/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings." type="string" variable="$gcmCredentialSid"/>
+      <param description="The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications." type="string" variable="$messagingServiceSid"/>
+      <param description="Deprecated." type="string" variable="$facebookMessengerPageId"/>
+      <param description="The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource." type="string" variable="$defaultApnNotificationProtocolVersion"/>
+      <param description="The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource." type="string" variable="$defaultGcmNotificationProtocolVersion"/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings." type="string" variable="$fcmCredentialSid"/>
+      <param description="The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource." type="string" variable="$defaultFcmNotificationProtocolVersion"/>
+      <param description="Whether to log notifications. Can be: `true` or `false` and the default is `true`." type="object" variable="$logEnabled">
+        <type full="Twilio\Rest\Notify\V1\bool" namespace="Twilio\Rest\Notify\V1" name="bool"/>
+      </param>
+      <param description="Deprecated." type="string" variable="$alexaSkillId"/>
+      <param description="Deprecated." type="string" variable="$defaultAlexaNotificationProtocolVersion"/>
+      <param description="URL to send delivery status callback." type="string" variable="$deliveryCallbackUrl"/>
+      <param description="Callback configuration that enables delivery callbacks, default false" type="object" variable="$deliveryCallbackEnabled">
+        <type full="Twilio\Rest\Notify\V1\bool" namespace="Twilio\Rest\Notify\V1" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="apnCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="gcmCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messagingServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="facebookMessengerPageId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultApnNotificationProtocolVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultGcmNotificationProtocolVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fcmCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultFcmNotificationProtocolVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="logEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="alexaSkillId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultAlexaNotificationProtocolVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="deliveryCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="deliveryCallbackEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setFriendlyName" start="479" end="483" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you create to describe the resource. It can be up to 64 characters long."/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setApnCredentialSid" start="491" end="495" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings."/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings." type="string" variable="$apnCredentialSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="apnCredentialSid" byreference="false" type="string"/>
+  </method>
+  <method name="setGcmCredentialSid" start="503" end="507" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings."/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings." type="string" variable="$gcmCredentialSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="gcmCredentialSid" byreference="false" type="string"/>
+  </method>
+  <method name="setMessagingServiceSid" start="515" end="519" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications."/>
+      <param description="The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. This parameter must be set in order to send SMS notifications." type="string" variable="$messagingServiceSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="messagingServiceSid" byreference="false" type="string"/>
+  </method>
+  <method name="setFacebookMessengerPageId" start="527" end="531" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="string" variable="$facebookMessengerPageId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="facebookMessengerPageId" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultApnNotificationProtocolVersion" start="539" end="543" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource."/>
+      <param description="The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource." type="string" variable="$defaultApnNotificationProtocolVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="defaultApnNotificationProtocolVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultGcmNotificationProtocolVersion" start="551" end="555" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource."/>
+      <param description="The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource." type="string" variable="$defaultGcmNotificationProtocolVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="defaultGcmNotificationProtocolVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setFcmCredentialSid" start="563" end="567" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings."/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings." type="string" variable="$fcmCredentialSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="fcmCredentialSid" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultFcmNotificationProtocolVersion" start="575" end="579" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource."/>
+      <param description="The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource." type="string" variable="$defaultFcmNotificationProtocolVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="defaultFcmNotificationProtocolVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setLogEnabled" start="587" end="591" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to log notifications. Can be: `true` or `false` and the default is `true`."/>
+      <param description="Whether to log notifications. Can be: `true` or `false` and the default is `true`." type="object" variable="$logEnabled">
+        <type full="Twilio\Rest\Notify\V1\bool" namespace="Twilio\Rest\Notify\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="logEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setAlexaSkillId" start="599" end="603" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="string" variable="$alexaSkillId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="alexaSkillId" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultAlexaNotificationProtocolVersion" start="611" end="615" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="string" variable="$defaultAlexaNotificationProtocolVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="defaultAlexaNotificationProtocolVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setDeliveryCallbackUrl" start="623" end="627" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="URL to send delivery status callback."/>
+      <param description="URL to send delivery status callback." type="string" variable="$deliveryCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="deliveryCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setDeliveryCallbackEnabled" start="635" end="639" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Callback configuration that enables delivery callbacks, default false"/>
+      <param description="Callback configuration that enables delivery callbacks, default false" type="object" variable="$deliveryCallbackEnabled">
+        <type full="Twilio\Rest\Notify\V1\bool" namespace="Twilio\Rest\Notify\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\$this" namespace="Twilio\Rest\Notify\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\UpdateServiceOptions" namespace="Twilio\Rest\Notify\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="deliveryCallbackEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="646" end="650" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

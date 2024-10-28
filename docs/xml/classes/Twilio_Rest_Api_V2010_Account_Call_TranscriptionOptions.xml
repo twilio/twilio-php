@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Call\TranscriptionOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="TranscriptionOptions" abstract="true" final="false" start="21" end="75">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Call" file="TranscriptionOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Call/TranscriptionOptions.php" size="12115" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="a4924d448737a2ecf8cb70cc0172e49d548bb689" relative="Twilio/Rest/Api/V2010/Account/Call/TranscriptionOptions.php"/>
+  <method name="create" start="39" end="72" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The user-specified name of this Transcription, if one was given when the Transcription was created. This may be used to stop the Transcription." type="string" variable="$name"/>
+      <param type="string" variable="$track"/>
+      <param description="Absolute URL of the status callback." type="string" variable="$statusCallbackUrl"/>
+      <param description="The http method for the status_callback (one of GET, POST)." type="string" variable="$statusCallbackMethod"/>
+      <param description="Friendly name given to the Inbound Track" type="string" variable="$inboundTrackLabel"/>
+      <param description="Friendly name given to the Outbound Track" type="string" variable="$outboundTrackLabel"/>
+      <param description="Indicates if partial results are going to be sent to the customer" type="object" variable="$partialResults">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <param description="Language code used by the transcription engine, specified in [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) format" type="string" variable="$languageCode"/>
+      <param description="Definition of the transcription engine to be used, among those supported by Twilio" type="string" variable="$transcriptionEngine"/>
+      <param description="indicates if the server will attempt to filter out profanities, replacing all but the initial character in each filtered word with asterisks" type="object" variable="$profanityFilter">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <param description="Recognition model used by the transcription engine, among those supported by the provider" type="string" variable="$speechModel"/>
+      <param description="A Phrase contains words and phrase \\\&quot;hints\\\&quot; so that the speech recognition engine is more likely to recognize them." type="string" variable="$hints"/>
+      <param description="The provider will add punctuation to recognition result" type="object" variable="$enableAutomaticPunctuation">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\CreateTranscriptionOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreateTranscriptionOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreateTranscriptionOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreateTranscriptionOptions"/>
+    </return>
+    <parameter name="name" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="track" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="inboundTrackLabel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="outboundTrackLabel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="partialResults" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="languageCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="transcriptionEngine" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="profanityFilter" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="speechModel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="hints" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="enableAutomaticPunctuation" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

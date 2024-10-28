@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Studio\V2\UpdateFlowValidateOptions" namespace="Twilio\Rest\Studio\V2" name="UpdateFlowValidateOptions" abstract="false" final="false" start="40" end="75">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Studio/V2" file="FlowValidateOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Studio/V2/FlowValidateOptions.php" size="1977" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="cf777568b5f40c5b011a1af913df6e616567e325" relative="Twilio/Rest/Studio/V2/FlowValidateOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="45" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Description of change made in the revision." type="string" variable="$commitMessage"/>
+    </docblock>
+    <parameter name="commitMessage" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setCommitMessage" start="59" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Description of change made in the revision."/>
+      <param description="Description of change made in the revision." type="string" variable="$commitMessage"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Studio\V2\$this" namespace="Twilio\Rest\Studio\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V2\UpdateFlowValidateOptions" namespace="Twilio\Rest\Studio\V2" name="UpdateFlowValidateOptions"/>
+    </return>
+    <parameter name="commitMessage" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="70" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

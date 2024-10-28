@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Assistants\V1\AssistantsV1ServiceCreateToolRequest" namespace="Twilio\Rest\Assistants\V1" name="AssistantsV1ServiceCreateToolRequest" abstract="false" final="false" start="102" end="147">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Assistants/V1" file="ToolModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/ToolModels.php" size="7115" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="99ab1e4821d2823cb8595c11cfa6bae909e80627" relative="Twilio/Rest/Assistants/V1/ToolModels.php"/>
+  <implements full="JsonSerializable" namespace="" name="JsonSerializable"/>
+  <member name="assistantId" visibility="protected" static="false" line="113">
+    <docblock>
+      <description/>
+      <property value="string $assistantId The Assistant ID."/>
+      <property value="string $description The description of the tool."/>
+      <property value="bool $enabled True if the tool is enabled."/>
+      <property value="array $meta The metadata related to method, url, input_schema to used with the Tool."/>
+      <property value="string $name The name of the tool."/>
+      <property value="AssistantsV1ServiceCreatePolicyRequest $policy"/>
+      <property value="string $type The description of the tool."/>
+    </docblock>
+  </member>
+  <member name="description" visibility="protected" static="false" line="114"/>
+  <member name="enabled" visibility="protected" static="false" line="115"/>
+  <member name="meta" visibility="protected" static="false" line="116"/>
+  <member name="name" visibility="protected" static="false" line="117"/>
+  <member name="policy" visibility="protected" static="false" line="118"/>
+  <member name="type" visibility="protected" static="false" line="119"/>
+  <constructor name="__construct" start="120" end="128" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="toArray" start="130" end="133" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="jsonSerialize" start="135" end="146" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="JsonSerializable" namespace="" name="JsonSerializable">
+    <method name="jsonSerialize" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Specify data which should be serialized to JSON"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

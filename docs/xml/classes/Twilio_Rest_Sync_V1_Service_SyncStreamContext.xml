@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Sync\V1\Service\SyncStreamContext" namespace="Twilio\Rest\Sync\V1\Service" name="SyncStreamContext" abstract="false" final="false" start="33" end="192">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Sync/V1/Service" file="SyncStreamContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Sync/V1/Service/SyncStreamContext.php" size="5385" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="68afb34a3e48fdecc2b2f3992ed80a213fe128c2" relative="Twilio/Rest/Sync/V1/Service/SyncStreamContext.php"/>
+  <docblock>
+    <description/>
+    <property value="StreamMessageList $streamMessages"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_streamMessages" visibility="protected" static="false" line="35"/>
+  <constructor name="__construct" start="44" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SyncStreamContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new Stream in." type="string" variable="$serviceSid"/>
+      <param description="The SID of the Stream resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="serviceSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="51"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="70" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the SyncStreamInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\bool" namespace="Twilio\Rest\Sync\V1\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="84" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SyncStreamInstance"/>
+      <return description="Fetched SyncStreamInstance" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\SyncStreamInstance" namespace="Twilio\Rest\Sync\V1\Service" name="SyncStreamInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\SyncStreamInstance" namespace="Twilio\Rest\Sync\V1\Service" name="SyncStreamInstance"/>
+    </return>
+  </method>
+  <method name="update" start="106" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the SyncStreamInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Sync\V1\Service\array|Options" namespace="Twilio\Rest\Sync\V1\Service" name="array|Options"/>
+      </param>
+      <return description="Updated SyncStreamInstance" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\SyncStreamInstance" namespace="Twilio\Rest\Sync\V1\Service" name="SyncStreamInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\SyncStreamInstance" namespace="Twilio\Rest\Sync\V1\Service" name="SyncStreamInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getStreamMessages" start="131" end="142" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the streamMessages"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\SyncStream\StreamMessageList" namespace="Twilio\Rest\Sync\V1\Service\SyncStream" name="StreamMessageList"/>
+    </return>
+  </method>
+  <method name="__get" start="151" end="159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="169" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="184" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Bulkexports\V1\Export\JobInstance" namespace="Twilio\Rest\Bulkexports\V1\Export" name="JobInstance" abstract="false" final="false" start="40" end="148">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1/Export" file="JobInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1/Export/JobInstance.php" size="4592" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="9d0c5d98ba454ee03037e835cde9bc906b8663ae" relative="Twilio/Rest/Bulkexports/V1/Export/JobInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $resourceType"/>
+    <property value="string|null $friendlyName"/>
+    <property value="array|null $details"/>
+    <property value="string|null $startDay"/>
+    <property value="string|null $endDay"/>
+    <property value="string|null $jobSid"/>
+    <property value="string|null $webhookUrl"/>
+    <property value="string|null $webhookMethod"/>
+    <property value="string|null $email"/>
+    <property value="string|null $url"/>
+    <property value="string|null $jobQueuePosition"/>
+    <property value="string|null $estimatedCompletionTime"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="49" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the JobInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\mixed" namespace="Twilio\Rest\Bulkexports\V1\Export" name="mixed"/>
+      </param>
+      <param description="The unique string that that we created to identify the Bulk Export job" type="string" variable="$jobSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="jobSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="53"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="78" end="88" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this JobInstance" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\JobContext" namespace="Twilio\Rest\Bulkexports\V1\Export" name="JobContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\Export\JobContext" namespace="Twilio\Rest\Bulkexports\V1\Export" name="JobContext"/>
+    </return>
+  </method>
+  <method name="delete" start="96" end="100" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the JobInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\bool" namespace="Twilio\Rest\Bulkexports\V1\Export" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="108" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the JobInstance"/>
+      <return description="Fetched JobInstance" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\JobInstance" namespace="Twilio\Rest\Bulkexports\V1\Export" name="JobInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\Export\JobInstance" namespace="Twilio\Rest\Bulkexports\V1\Export" name="JobInstance"/>
+    </return>
+  </method>
+  <method name="__get" start="121" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="140" end="147" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

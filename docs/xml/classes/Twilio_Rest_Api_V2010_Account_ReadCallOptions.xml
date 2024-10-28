@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions" abstract="false" final="false" start="738" end="908">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="CallOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/CallOptions.php" size="76293" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="b242e722ba3c3f98a9bac914e9ae9610289ef143" relative="Twilio/Rest/Api/V2010/Account/CallOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="752" end="776" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only show calls made to this phone number, SIP address, Client identifier or SIM SID." type="string" variable="$to"/>
+      <param description="Only include calls from this phone number, SIP address, Client identifier or SIM SID." type="string" variable="$from"/>
+      <param description="Only include calls spawned by calls with this SID." type="string" variable="$parentCallSid"/>
+      <param description="The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`." type="string" variable="$status"/>
+      <param description="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date." type="string" variable="$startTimeBefore"/>
+      <param description="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date." type="string" variable="$startTime"/>
+      <param description="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date." type="string" variable="$startTimeAfter"/>
+      <param description="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date." type="string" variable="$endTimeBefore"/>
+      <param description="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date." type="string" variable="$endTime"/>
+      <param description="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date." type="string" variable="$endTimeAfter"/>
+    </docblock>
+    <parameter name="to" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="parentCallSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startTimeBefore" byreference="false" type="string" default="NULL"/>
+    <parameter name="startTime" byreference="false" type="string" default="NULL"/>
+    <parameter name="startTimeAfter" byreference="false" type="string" default="NULL"/>
+    <parameter name="endTimeBefore" byreference="false" type="string" default="NULL"/>
+    <parameter name="endTime" byreference="false" type="string" default="NULL"/>
+    <parameter name="endTimeAfter" byreference="false" type="string" default="NULL"/>
+  </constructor>
+  <method name="setTo" start="784" end="788" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only show calls made to this phone number, SIP address, Client identifier or SIM SID."/>
+      <param description="Only show calls made to this phone number, SIP address, Client identifier or SIM SID." type="string" variable="$to"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="to" byreference="false" type="string"/>
+  </method>
+  <method name="setFrom" start="796" end="800" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls from this phone number, SIP address, Client identifier or SIM SID."/>
+      <param description="Only include calls from this phone number, SIP address, Client identifier or SIM SID." type="string" variable="$from"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="from" byreference="false" type="string"/>
+  </method>
+  <method name="setParentCallSid" start="808" end="812" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls spawned by calls with this SID."/>
+      <param description="Only include calls spawned by calls with this SID." type="string" variable="$parentCallSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="parentCallSid" byreference="false" type="string"/>
+  </method>
+  <method name="setStatus" start="820" end="824" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`."/>
+      <param description="The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`." type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setStartTimeBefore" start="832" end="836" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date."/>
+      <param description="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date." type="string" variable="$startTimeBefore"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="startTimeBefore" byreference="false" type="string"/>
+  </method>
+  <method name="setStartTime" start="844" end="848" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date."/>
+      <param description="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date." type="string" variable="$startTime"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="startTime" byreference="false" type="string"/>
+  </method>
+  <method name="setStartTimeAfter" start="856" end="860" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date."/>
+      <param description="Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read calls that started on or after midnight of this date." type="string" variable="$startTimeAfter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="startTimeAfter" byreference="false" type="string"/>
+  </method>
+  <method name="setEndTimeBefore" start="868" end="872" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date."/>
+      <param description="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date." type="string" variable="$endTimeBefore"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="endTimeBefore" byreference="false" type="string"/>
+  </method>
+  <method name="setEndTime" start="880" end="884" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date."/>
+      <param description="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date." type="string" variable="$endTime"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="endTime" byreference="false" type="string"/>
+  </method>
+  <method name="setEndTimeAfter" start="892" end="896" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date."/>
+      <param description="Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in UTC, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime&lt;=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime&gt;=YYYY-MM-DD` to read calls that ended on or after midnight of this date." type="string" variable="$endTimeAfter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadCallOptions"/>
+    </return>
+    <parameter name="endTimeAfter" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="903" end="907" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

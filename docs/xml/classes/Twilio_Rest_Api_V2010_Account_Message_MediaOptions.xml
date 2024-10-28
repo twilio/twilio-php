@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Message\MediaOptions" namespace="Twilio\Rest\Api\V2010\Account\Message" name="MediaOptions" abstract="true" final="false" start="21" end="46">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Message" file="MediaOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Message/MediaOptions.php" size="7658" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="c2a8c4e3b75db77005e65ce2e80e11c0582d744a" relative="Twilio/Rest/Api/V2010/Account/Message/MediaOptions.php"/>
+  <method name="read" start="31" end="44" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read Media that were created on or after midnight of this date." type="string" variable="$dateCreatedBefore"/>
+      <param description="Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read Media that were created on or after midnight of this date." type="string" variable="$dateCreated"/>
+      <param description="Only include Media resources that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read Media that were created on this date. You can also specify an inequality, such as `StartTime&lt;=YYYY-MM-DD`, to read Media that were created on or before midnight of this date, and `StartTime&gt;=YYYY-MM-DD` to read Media that were created on or after midnight of this date." type="string" variable="$dateCreatedAfter"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Message\ReadMediaOptions" namespace="Twilio\Rest\Api\V2010\Account\Message" name="ReadMediaOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Message\ReadMediaOptions" namespace="Twilio\Rest\Api\V2010\Account\Message" name="ReadMediaOptions"/>
+    </return>
+    <parameter name="dateCreatedBefore" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateCreated" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateCreatedAfter" byreference="false" type="string" default="NULL"/>
+  </method>
+</class>

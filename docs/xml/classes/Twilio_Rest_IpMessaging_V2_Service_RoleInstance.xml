@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V2\Service\RoleInstance" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleInstance" abstract="false" final="false" start="38" end="158">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V2/Service" file="RoleInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V2/Service/RoleInstance.php" size="4667" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="daafefe129c6947cc4ba8b78097ed641d91fb397" relative="Twilio/Rest/IpMessaging/V2/Service/RoleInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $sid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $serviceSid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string $type"/>
+    <property value="string[]|null $permissions"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="48" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the RoleInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\mixed" namespace="Twilio\Rest\IpMessaging\V2\Service" name="mixed"/>
+      </param>
+      <param type="string" variable="$serviceSid"/>
+      <param type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="serviceSid" byreference="false" type="string"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="52"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="74" end="85" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this RoleInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\RoleContext" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\RoleContext" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleContext"/>
+    </return>
+  </method>
+  <method name="delete" start="93" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the RoleInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\bool" namespace="Twilio\Rest\IpMessaging\V2\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="105" end="109" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the RoleInstance"/>
+      <return description="Fetched RoleInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\RoleInstance" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\RoleInstance" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleInstance"/>
+    </return>
+  </method>
+  <method name="update" start="118" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the RoleInstance"/>
+      <param type="array" variable="$permission" of="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\string" namespace="Twilio\Rest\IpMessaging\V2\Service" name="string"/>
+      </param>
+      <return description="Updated RoleInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\RoleInstance" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\RoleInstance" namespace="Twilio\Rest\IpMessaging\V2\Service" name="RoleInstance"/>
+    </return>
+    <parameter name="permission" byreference="false" type="array"/>
+  </method>
+  <method name="__get" start="131" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="150" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

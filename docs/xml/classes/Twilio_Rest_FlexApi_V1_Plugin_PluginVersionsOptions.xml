@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\Plugin\PluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="PluginVersionsOptions" abstract="true" final="false" start="22" end="81">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/Plugin" file="PluginVersionsOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/Plugin/PluginVersionsOptions.php" size="7478" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="01064bda0f8762d7e0d6ab040616f08a37625b0e" relative="Twilio/Rest/FlexApi/V1/Plugin/PluginVersionsOptions.php"/>
+  <method name="create" start="32" end="49" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The changelog of the Flex Plugin Version." type="string" variable="$changelog"/>
+      <param description="Whether this Flex Plugin Version requires authorization." type="object" variable="$private">
+        <type full="Twilio\Rest\FlexApi\V1\Plugin\bool" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="bool"/>
+      </param>
+      <param description="The version of Flex Plugins CLI used to create this plugin" type="string" variable="$cliVersion"/>
+      <param description="The validation status of the plugin, indicating whether it has been validated" type="string" variable="$validateStatus"/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\Plugin\CreatePluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="CreatePluginVersionsOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Plugin\CreatePluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="CreatePluginVersionsOptions"/>
+    </return>
+    <parameter name="changelog" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="private" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="cliVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="validateStatus" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="fetch" start="55" end="64" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\Plugin\FetchPluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="FetchPluginVersionsOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Plugin\FetchPluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="FetchPluginVersionsOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="70" end="79" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\Plugin\ReadPluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="ReadPluginVersionsOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Plugin\ReadPluginVersionsOptions" namespace="Twilio\Rest\FlexApi\V1\Plugin" name="ReadPluginVersionsOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

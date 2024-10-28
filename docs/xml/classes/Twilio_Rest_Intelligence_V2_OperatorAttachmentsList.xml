@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\OperatorAttachmentsList" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentsList" abstract="false" final="false" start="23" end="65">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2" file="OperatorAttachmentsList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/OperatorAttachmentsList.php" size="1573" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="5030e3b363ac1225b024a4a1079f213fd2f3f35a" relative="Twilio/Rest/Intelligence/V2/OperatorAttachmentsList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="30" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the OperatorAttachmentsList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="35"/>
+    </inline>
+  </constructor>
+  <method name="getContext" start="45" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a OperatorAttachmentsContext"/>
+      <param description="The unique SID identifier of the Service." type="string" variable="$serviceSid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\OperatorAttachmentsContext" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentsContext"/>
+    </return>
+    <parameter name="serviceSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

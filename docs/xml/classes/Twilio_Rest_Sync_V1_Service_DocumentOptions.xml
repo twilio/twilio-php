@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Sync\V1\Service\DocumentOptions" namespace="Twilio\Rest\Sync\V1\Service" name="DocumentOptions" abstract="true" final="false" start="21" end="68">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Sync/V1/Service" file="DocumentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Sync/V1/Service/DocumentOptions.php" size="7117" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="1fcc236871596c5e11d1c72245aaf6388d5715cb" relative="Twilio/Rest/Sync/V1/Service/DocumentOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the Sync Document" type="string" variable="$uniqueName"/>
+      <param description="A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length." type="array" variable="$data"/>
+      <param description="How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Document expires and is deleted (the Sync Document's time-to-live)." type="int" variable="$ttl"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\CreateDocumentOptions" namespace="Twilio\Rest\Sync\V1\Service" name="CreateDocumentOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\CreateDocumentOptions" namespace="Twilio\Rest\Sync\V1\Service" name="CreateDocumentOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="data" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </method>
+  <method name="update" start="53" end="66" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A JSON string that represents an arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length." type="array" variable="$data"/>
+      <param description="How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync Document expires and is deleted (time-to-live)." type="int" variable="$ttl"/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\UpdateDocumentOptions" namespace="Twilio\Rest\Sync\V1\Service" name="UpdateDocumentOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\UpdateDocumentOptions" namespace="Twilio\Rest\Sync\V1\Service" name="UpdateDocumentOptions"/>
+    </return>
+    <parameter name="data" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

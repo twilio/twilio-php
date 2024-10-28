@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\ServiceList" namespace="Twilio\Rest\Conversations\V1" name="ServiceList" abstract="false" final="false" start="26" end="187">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1" file="ServiceList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/ServiceList.php" size="5988" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="b4385e1fc8e36013731d8b809a1c6f1af5d2d4eb" relative="Twilio/Rest/Conversations/V1/ServiceList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="33" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the ServiceList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="38"/>
+    </inline>
+  </constructor>
+  <method name="create" start="52" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the ServiceInstance"/>
+      <param description="The human-readable name of this service, limited to 256 characters. Optional." type="string" variable="$friendlyName"/>
+      <return description="Created ServiceInstance" type="object">
+        <type full="Twilio\Rest\Conversations\V1\ServiceInstance" namespace="Twilio\Rest\Conversations\V1" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ServiceInstance" namespace="Twilio\Rest\Conversations\V1" name="ServiceInstance"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="read" start="85" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reads ServiceInstance records from the API as a list.">Unlike stream(), this operation is eager and will load `limit` records into
+memory before returning.</description>
+      <param description="Upper limit for the number of records to return. read()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, read()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="Array of results" type="array" of="object">
+        <type full="Twilio\Rest\Conversations\V1\ServiceInstance" namespace="Twilio\Rest\Conversations\V1" name="ServiceInstance"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="stream" start="108" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Streams ServiceInstance records from the API as a generator stream.">This operation lazily loads records as efficiently as possible until the
+limit
+is reached.
+The results are returned as a generator, so this operation is memory
+efficient.</description>
+      <param description="Upper limit for the number of records to return. stream()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, stream()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="stream of results" type="object">
+        <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+    </return>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="page" start="126" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a single page of ServiceInstance records from the API.">Request is executed immediately</description>
+      <param description="Number of records to return, defaults to 50" type="mixed" variable="$pageSize"/>
+      <param description="PageToken provided by the API" type="string" variable="$pageToken"/>
+      <param description="Page Number, this value is simply for client state" type="mixed" variable="$pageNumber"/>
+      <return description="Page of ServiceInstance" type="object">
+        <type full="Twilio\Rest\Conversations\V1\ServicePage" namespace="Twilio\Rest\Conversations\V1" name="ServicePage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ServicePage" namespace="Twilio\Rest\Conversations\V1" name="ServicePage"/>
+    </return>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="getPage" start="151" end="159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a specific page of ServiceInstance records from the API.">Request is executed immediately</description>
+      <param description="API-generated URL for the requested results page" type="string" variable="$targetUrl"/>
+      <return description="Page of ServiceInstance" type="object">
+        <type full="Twilio\Rest\Conversations\V1\ServicePage" namespace="Twilio\Rest\Conversations\V1" name="ServicePage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ServicePage" namespace="Twilio\Rest\Conversations\V1" name="ServicePage"/>
+    </return>
+    <parameter name="targetUrl" byreference="false" type="string"/>
+  </method>
+  <method name="getContext" start="167" end="176" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a ServiceContext"/>
+      <param description="A 34 character string that uniquely identifies this resource." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ServiceContext" namespace="Twilio\Rest\Conversations\V1" name="ServiceContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="183" end="186" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

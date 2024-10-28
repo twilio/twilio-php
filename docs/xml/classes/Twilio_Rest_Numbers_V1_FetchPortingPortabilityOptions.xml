@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V1\FetchPortingPortabilityOptions" namespace="Twilio\Rest\Numbers\V1" name="FetchPortingPortabilityOptions" abstract="false" final="false" start="43" end="93">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V1" file="PortingPortabilityOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V1/PortingPortabilityOptions.php" size="3609" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="d3a34747f7271408ef893c183e1e1197b0a31ec1" relative="Twilio/Rest/Numbers/V1/PortingPortabilityOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="49" end="57" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account." type="string" variable="$targetAccountSid"/>
+      <param description="Address Sid of customer to which the number will be ported." type="string" variable="$addressSid"/>
+    </docblock>
+    <parameter name="targetAccountSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setTargetAccountSid" start="65" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account."/>
+      <param description="Account Sid to which the number will be ported. This can be used to determine if a sub account already has the number in its inventory or a different sub account. If this is not provided, the authenticated account will be assumed to be the target account." type="string" variable="$targetAccountSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V1\$this" namespace="Twilio\Rest\Numbers\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V1\FetchPortingPortabilityOptions" namespace="Twilio\Rest\Numbers\V1" name="FetchPortingPortabilityOptions"/>
+    </return>
+    <parameter name="targetAccountSid" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressSid" start="77" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Address Sid of customer to which the number will be ported."/>
+      <param description="Address Sid of customer to which the number will be ported." type="string" variable="$addressSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V1\$this" namespace="Twilio\Rest\Numbers\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V1\FetchPortingPortabilityOptions" namespace="Twilio\Rest\Numbers\V1" name="FetchPortingPortabilityOptions"/>
+    </return>
+    <parameter name="addressSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="88" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

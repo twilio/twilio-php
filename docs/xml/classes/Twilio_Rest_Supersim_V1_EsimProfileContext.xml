@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\EsimProfileContext" namespace="Twilio\Rest\Supersim\V1" name="EsimProfileContext" abstract="false" final="false" start="26" end="83">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="EsimProfileContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/EsimProfileContext.php" size="2147" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="1a57ad7a40e042fd168643dfe3d782561f923abf" relative="Twilio/Rest/Supersim/V1/EsimProfileContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="34" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the EsimProfileContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the eSIM Profile resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="40"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="56" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the EsimProfileInstance"/>
+      <return description="Fetched EsimProfileInstance" type="object">
+        <type full="Twilio\Rest\Supersim\V1\EsimProfileInstance" namespace="Twilio\Rest\Supersim\V1" name="EsimProfileInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\EsimProfileInstance" namespace="Twilio\Rest\Supersim\V1" name="EsimProfileInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="75" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

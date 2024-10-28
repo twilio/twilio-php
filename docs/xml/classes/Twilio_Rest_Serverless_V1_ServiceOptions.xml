@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Serverless\V1\ServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="ServiceOptions" abstract="true" final="false" start="21" end="65">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Serverless/V1" file="ServiceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/ServiceOptions.php" size="6547" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="2d94b8e05dda5f7b5bbab1ded7775a66969a4c37" relative="Twilio/Rest/Serverless/V1/ServiceOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether to inject Account credentials into a function invocation context. The default value is `true`." type="object" variable="$includeCredentials">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <param description="Whether the Service's properties and subresources can be edited via the UI. The default value is `false`." type="object" variable="$uiEditable">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\CreateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="CreateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\CreateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="CreateServiceOptions"/>
+    </return>
+    <parameter name="includeCredentials" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="uiEditable" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="update" start="50" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether to inject Account credentials into a function invocation context." type="object" variable="$includeCredentials">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <param description="A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters." type="string" variable="$friendlyName"/>
+      <param description="Whether the Service resource's properties and subresources can be edited via the UI. The default value is `false`." type="object" variable="$uiEditable">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\UpdateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="UpdateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\UpdateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="includeCredentials" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="uiEditable" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

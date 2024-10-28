@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Proxy\V1\Service\Session\Participant\MessageInteractionOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session\Participant" name="MessageInteractionOptions" abstract="true" final="false" start="21" end="43">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/Session/Participant" file="MessageInteractionOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/Session/Participant/MessageInteractionOptions.php" size="2520" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="ac1031c3872cda9e776c59fc89dcb5a00cf7b418" relative="Twilio/Rest/Proxy/V1/Service/Session/Participant/MessageInteractionOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The message to send to the participant" type="string" variable="$body"/>
+      <param description="Reserved. Not currently supported." type="array" variable="$mediaUrl" of="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\Session\Participant\string" namespace="Twilio\Rest\Proxy\V1\Service\Session\Participant" name="string"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\Session\Participant\CreateMessageInteractionOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session\Participant" name="CreateMessageInteractionOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\Participant\CreateMessageInteractionOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session\Participant" name="CreateMessageInteractionOptions"/>
+    </return>
+    <parameter name="body" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mediaUrl" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

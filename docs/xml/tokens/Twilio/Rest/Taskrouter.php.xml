@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/twilio/repos/php/src/Twilio/Rest" file="Taskrouter.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter.php" size="731" time="2024-10-28T12:06:41+00:00" unixtime="1730117201" sha1="6da4da0ce34926599105e415dbadc216d6c22a4e" relative="Twilio/Rest/Taskrouter.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2"/>
+  <line no="3">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Twilio</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Rest</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="4"/>
+  <line no="5">
+    <token name="T_USE">use</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Twilio</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Rest</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Taskrouter</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">V1</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="6">
+    <token name="T_CLASS">class</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Taskrouter</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_EXTENDS">extends</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">TaskrouterBase</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="7"/>
+  <line no="8">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT">     * @deprecated Use v1-&gt;workspaces instead.</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="11">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PROTECTED">protected</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getWorkspaces</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Twilio</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Rest</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Taskrouter</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">V1</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">WorkspaceList</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="12">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"workspaces is deprecated. Use v1-&gt;workspaces instead."</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="13">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_RETURN">return</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">v1</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">workspaces</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="14">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="15"/>
+  <line no="16">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="17">
+    <token name="T_DOC_COMMENT">     * @deprecated Use v1-&gt;workspaces(\$sid) instead.</token>
+  </line>
+  <line no="18">
+    <token name="T_DOC_COMMENT">     * @param string $sid The SID of the resource to fetch</token>
+  </line>
+  <line no="19">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="20">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PROTECTED">protected</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">contextWorkspaces</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">string</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$sid</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Twilio</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Rest</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Taskrouter</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">V1</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">WorkspaceContext</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="21">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"workspaces(\$sid) is deprecated. Use v1-&gt;workspaces(\$sid) instead."</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="22">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_RETURN">return</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">v1</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">workspaces</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$sid</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="23">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="24">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+</source>

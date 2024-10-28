@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\ReadTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="ReadTollfreeVerificationOptions" abstract="false" final="false" start="396" end="476">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="TollfreeVerificationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/TollfreeVerificationOptions.php" size="36635" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="e0365e450d53cf85216a457914d54ddfefbcdc8e" relative="Twilio/Rest/Messaging/V1/TollfreeVerificationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="404" end="416" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the Phone Number associated with the Tollfree Verification." type="string" variable="$tollfreePhoneNumberSid"/>
+      <param description="The compliance status of the Tollfree Verification record." type="string" variable="$status"/>
+      <param description="Customer supplied reference id for the Tollfree Verification record." type="string" variable="$externalReferenceId"/>
+      <param description="Whether to include Tollfree Verifications from sub accounts in list response." type="object" variable="$includeSubAccounts">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="tollfreePhoneNumberSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="externalReferenceId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="includeSubAccounts" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setTollfreePhoneNumberSid" start="424" end="428" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Phone Number associated with the Tollfree Verification."/>
+      <param description="The SID of the Phone Number associated with the Tollfree Verification." type="string" variable="$tollfreePhoneNumberSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ReadTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="ReadTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="tollfreePhoneNumberSid" byreference="false" type="string"/>
+  </method>
+  <method name="setStatus" start="436" end="440" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The compliance status of the Tollfree Verification record."/>
+      <param description="The compliance status of the Tollfree Verification record." type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ReadTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="ReadTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setExternalReferenceId" start="448" end="452" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Customer supplied reference id for the Tollfree Verification record."/>
+      <param description="Customer supplied reference id for the Tollfree Verification record." type="string" variable="$externalReferenceId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ReadTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="ReadTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="externalReferenceId" byreference="false" type="string"/>
+  </method>
+  <method name="setIncludeSubAccounts" start="460" end="464" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to include Tollfree Verifications from sub accounts in list response."/>
+      <param description="Whether to include Tollfree Verifications from sub accounts in list response." type="object" variable="$includeSubAccounts">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ReadTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="ReadTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="includeSubAccounts" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="471" end="475" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

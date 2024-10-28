@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FrontlineApi\V1\UserOptions" namespace="Twilio\Rest\FrontlineApi\V1" name="UserOptions" abstract="true" final="false" start="21" end="48">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FrontlineApi/V1" file="UserOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FrontlineApi/V1/UserOptions.php" size="4487" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="a394ae328c3258f8fa421ed1c49cc204544ca735" relative="Twilio/Rest/FrontlineApi/V1/UserOptions.php"/>
+  <method name="update" start="31" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The string that you assigned to describe the User." type="string" variable="$friendlyName"/>
+      <param description="The avatar URL which will be shown in Frontline application." type="string" variable="$avatar"/>
+      <param type="string" variable="$state"/>
+      <param description="Whether the User is available for new conversations. Set to `false` to prevent User from receiving new inbound conversations if you are using [Pool Routing](https://www.twilio.com/docs/frontline/handle-incoming-conversations#3-pool-routing)." type="object" variable="$isAvailable">
+        <type full="Twilio\Rest\FrontlineApi\V1\bool" namespace="Twilio\Rest\FrontlineApi\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FrontlineApi\V1\UpdateUserOptions" namespace="Twilio\Rest\FrontlineApi\V1" name="UpdateUserOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FrontlineApi\V1\UpdateUserOptions" namespace="Twilio\Rest\FrontlineApi\V1" name="UpdateUserOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="avatar" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="isAvailable" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\ConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="ConfigurationOptions" abstract="true" final="false" start="21" end="48">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1" file="ConfigurationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/ConfigurationOptions.php" size="5891" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="c84d378482307e2887d6367fd7f06f6dfe488d07" relative="Twilio/Rest/Conversations/V1/ConfigurationOptions.php"/>
+  <method name="update" start="31" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation." type="string" variable="$defaultChatServiceSid"/>
+      <param description="The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation." type="string" variable="$defaultMessagingServiceSid"/>
+      <param description="Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute." type="string" variable="$defaultInactiveTimer"/>
+      <param description="Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes." type="string" variable="$defaultClosedTimer"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions"/>
+    </return>
+    <parameter name="defaultChatServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultMessagingServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultInactiveTimer" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultClosedTimer" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

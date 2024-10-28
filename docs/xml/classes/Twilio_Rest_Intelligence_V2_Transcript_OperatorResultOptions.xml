@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\Transcript\OperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="OperatorResultOptions" abstract="true" final="false" start="21" end="53">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript" file="OperatorResultOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript/OperatorResultOptions.php" size="3854" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="24f4a0de36876a94a537b3317d892fc3d023e558" relative="Twilio/Rest/Intelligence/V2/Transcript/OperatorResultOptions.php"/>
+  <method name="fetch" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True." type="object" variable="$redacted">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\FetchOperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="FetchOperatorResultOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\Transcript\FetchOperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="FetchOperatorResultOptions"/>
+    </return>
+    <parameter name="redacted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="read" start="42" end="51" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True." type="object" variable="$redacted">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\ReadOperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="ReadOperatorResultOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\Transcript\ReadOperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="ReadOperatorResultOptions"/>
+    </return>
+    <parameter name="redacted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

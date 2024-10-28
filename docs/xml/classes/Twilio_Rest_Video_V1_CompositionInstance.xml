@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Video\V1\CompositionInstance" namespace="Twilio\Rest\Video\V1" name="CompositionInstance" abstract="false" final="false" start="50" end="167">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Video/V1" file="CompositionInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Video/V1/CompositionInstance.php" size="5655" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="b195fc87c371f3368ee16bd5ad7f5e72ccbbe898" relative="Twilio/Rest/Video/V1/CompositionInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $accountSid"/>
+    <property value="string $status"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateCompleted"/>
+    <property value="\DateTime|null $dateDeleted"/>
+    <property value="string|null $sid"/>
+    <property value="string|null $roomSid"/>
+    <property value="string[]|null $audioSources"/>
+    <property value="string[]|null $audioSourcesExcluded"/>
+    <property value="array|null $videoLayout"/>
+    <property value="string|null $resolution"/>
+    <property value="bool|null $trim"/>
+    <property value="string $format"/>
+    <property value="int $bitrate"/>
+    <property value="int|null $size"/>
+    <property value="int $duration"/>
+    <property value="string|null $mediaExternalLocation"/>
+    <property value="string|null $statusCallback"/>
+    <property value="string|null $statusCallbackMethod"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="59" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the CompositionInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Video\V1\mixed" namespace="Twilio\Rest\Video\V1" name="mixed"/>
+      </param>
+      <param description="The SID of the Composition resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="63"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="97" end="107" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this CompositionInstance" type="object">
+        <type full="Twilio\Rest\Video\V1\CompositionContext" namespace="Twilio\Rest\Video\V1" name="CompositionContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionContext" namespace="Twilio\Rest\Video\V1" name="CompositionContext"/>
+    </return>
+  </method>
+  <method name="delete" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the CompositionInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Video\V1\bool" namespace="Twilio\Rest\Video\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="127" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the CompositionInstance"/>
+      <return description="Fetched CompositionInstance" type="object">
+        <type full="Twilio\Rest\Video\V1\CompositionInstance" namespace="Twilio\Rest\Video\V1" name="CompositionInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionInstance" namespace="Twilio\Rest\Video\V1" name="CompositionInstance"/>
+    </return>
+  </method>
+  <method name="__get" start="140" end="152" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="159" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

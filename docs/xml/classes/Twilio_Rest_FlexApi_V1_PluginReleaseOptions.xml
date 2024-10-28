@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\PluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="PluginReleaseOptions" abstract="true" final="false" start="21" end="68">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="PluginReleaseOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/PluginReleaseOptions.php" size="4593" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="f62c537826dacd3b3a4bc769e75263493a99cfb0" relative="Twilio/Rest/FlexApi/V1/PluginReleaseOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\CreatePluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreatePluginReleaseOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\CreatePluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreatePluginReleaseOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="fetch" start="42" end="51" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\FetchPluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="FetchPluginReleaseOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\FetchPluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="FetchPluginReleaseOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="57" end="66" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\ReadPluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadPluginReleaseOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ReadPluginReleaseOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadPluginReleaseOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\CreateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateInsightsQuestionnairesQuestionOptions" abstract="false" final="false" start="103" end="153">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="InsightsQuestionnairesQuestionOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/InsightsQuestionnairesQuestionOptions.php" size="9897" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="30322994bd93f25921c4aea4e28bd403b9e0083a" relative="Twilio/Rest/FlexApi/V1/InsightsQuestionnairesQuestionOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="109" end="117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The description for the question." type="string" variable="$description"/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+    </docblock>
+    <parameter name="description" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setDescription" start="125" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The description for the question."/>
+      <param description="The description for the question." type="string" variable="$description"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\$this" namespace="Twilio\Rest\FlexApi\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\CreateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateInsightsQuestionnairesQuestionOptions"/>
+    </return>
+    <parameter name="description" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorization" start="137" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Authorization HTTP request header"/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\$this" namespace="Twilio\Rest\FlexApi\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\CreateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateInsightsQuestionnairesQuestionOptions"/>
+    </return>
+    <parameter name="authorization" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="148" end="152" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

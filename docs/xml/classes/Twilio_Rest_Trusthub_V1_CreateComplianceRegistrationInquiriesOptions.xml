@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions" abstract="false" final="false" start="166" end="737">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="ComplianceRegistrationInquiriesOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/ComplianceRegistrationInquiriesOptions.php" size="31475" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="461e329e479851901e91a1dedd0f35b262e8053d" relative="Twilio/Rest/Trusthub/V1/ComplianceRegistrationInquiriesOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="207" end="285" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$businessIdentityType"/>
+      <param type="string" variable="$businessRegistrationAuthority"/>
+      <param description="he name of the business or organization using the Tollfree number." type="string" variable="$businessLegalName"/>
+      <param description="he email address to receive the notification about the verification result." type="string" variable="$notificationEmail"/>
+      <param description="The email address to receive the notification about the verification result." type="object" variable="$acceptedNotificationReceipt">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <param description="Business registration number of the business" type="string" variable="$businessRegistrationNumber"/>
+      <param description="The URL of the business website" type="string" variable="$businessWebsiteUrl"/>
+      <param description="Friendly name for your business information" type="string" variable="$friendlyName"/>
+      <param description="First name of the authorized representative" type="string" variable="$authorizedRepresentative1FirstName"/>
+      <param description="Last name of the authorized representative" type="string" variable="$authorizedRepresentative1LastName"/>
+      <param description="Phone number of the authorized representative" type="string" variable="$authorizedRepresentative1Phone"/>
+      <param description="Email address of the authorized representative" type="string" variable="$authorizedRepresentative1Email"/>
+      <param description="Birthdate of the authorized representative" type="string" variable="$authorizedRepresentative1DateOfBirth"/>
+      <param description="Street address of the business" type="string" variable="$addressStreet"/>
+      <param description="Street address of the business" type="string" variable="$addressStreetSecondary"/>
+      <param description="City of the business" type="string" variable="$addressCity"/>
+      <param description="State or province of the business" type="string" variable="$addressSubdivision"/>
+      <param description="Postal code of the business" type="string" variable="$addressPostalCode"/>
+      <param description="Country code of the business" type="string" variable="$addressCountryCode"/>
+      <param description="Street address of the business" type="string" variable="$emergencyAddressStreet"/>
+      <param description="Street address of the business" type="string" variable="$emergencyAddressStreetSecondary"/>
+      <param description="City of the business" type="string" variable="$emergencyAddressCity"/>
+      <param description="State or province of the business" type="string" variable="$emergencyAddressSubdivision"/>
+      <param description="Postal code of the business" type="string" variable="$emergencyAddressPostalCode"/>
+      <param description="Country code of the business" type="string" variable="$emergencyAddressCountryCode"/>
+      <param description="Use the business address as the emergency address" type="object" variable="$useAddressAsEmergencyAddress">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <param description="The name of the verification document to upload" type="string" variable="$fileName"/>
+      <param description="The verification document to upload" type="string" variable="$file"/>
+      <param description="The first name of the Individual User." type="string" variable="$firstName"/>
+      <param description="The last name of the Individual User." type="string" variable="$lastName"/>
+      <param description="The date of birth of the Individual User." type="string" variable="$dateOfBirth"/>
+      <param description="The email address of the Individual User." type="string" variable="$individualEmail"/>
+      <param description="The phone number of the Individual User." type="string" variable="$individualPhone"/>
+      <param description="Indicates if the inquiry is being started from an ISV embedded component." type="object" variable="$isIsvEmbed">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <param description="Indicates if the isv registering for self or tenant." type="string" variable="$isvRegisteringForSelfOrTenant"/>
+      <param description="The url we call to inform you of bundle changes." type="string" variable="$statusCallbackUrl"/>
+      <param description="Theme id for styling the inquiry form." type="string" variable="$themeSetId"/>
+    </docblock>
+    <parameter name="businessIdentityType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessRegistrationAuthority" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessLegalName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="notificationEmail" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="acceptedNotificationReceipt" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="businessRegistrationNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessWebsiteUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorizedRepresentative1FirstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorizedRepresentative1LastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorizedRepresentative1Phone" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorizedRepresentative1Email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorizedRepresentative1DateOfBirth" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressStreet" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressStreetSecondary" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressCity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressSubdivision" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressPostalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressCountryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressStreet" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressStreetSecondary" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressCity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressSubdivision" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressPostalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressCountryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="useAddressAsEmergencyAddress" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="fileName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="file" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="firstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateOfBirth" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="individualEmail" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="individualPhone" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="isIsvEmbed" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="isvRegisteringForSelfOrTenant" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="themeSetId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setBusinessIdentityType" start="291" end="295" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$businessIdentityType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="businessIdentityType" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessRegistrationAuthority" start="301" end="305" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$businessRegistrationAuthority"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="businessRegistrationAuthority" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessLegalName" start="313" end="317" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="he name of the business or organization using the Tollfree number."/>
+      <param description="he name of the business or organization using the Tollfree number." type="string" variable="$businessLegalName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="businessLegalName" byreference="false" type="string"/>
+  </method>
+  <method name="setNotificationEmail" start="325" end="329" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="he email address to receive the notification about the verification result."/>
+      <param description="he email address to receive the notification about the verification result." type="string" variable="$notificationEmail"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="notificationEmail" byreference="false" type="string"/>
+  </method>
+  <method name="setAcceptedNotificationReceipt" start="337" end="341" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The email address to receive the notification about the verification result."/>
+      <param description="The email address to receive the notification about the verification result." type="object" variable="$acceptedNotificationReceipt">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="acceptedNotificationReceipt" byreference="false" type="bool"/>
+  </method>
+  <method name="setBusinessRegistrationNumber" start="349" end="353" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Business registration number of the business"/>
+      <param description="Business registration number of the business" type="string" variable="$businessRegistrationNumber"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="businessRegistrationNumber" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessWebsiteUrl" start="361" end="365" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL of the business website"/>
+      <param description="The URL of the business website" type="string" variable="$businessWebsiteUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="businessWebsiteUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="373" end="377" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Friendly name for your business information"/>
+      <param description="Friendly name for your business information" type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorizedRepresentative1FirstName" start="385" end="389" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="First name of the authorized representative"/>
+      <param description="First name of the authorized representative" type="string" variable="$authorizedRepresentative1FirstName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="authorizedRepresentative1FirstName" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorizedRepresentative1LastName" start="397" end="401" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Last name of the authorized representative"/>
+      <param description="Last name of the authorized representative" type="string" variable="$authorizedRepresentative1LastName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="authorizedRepresentative1LastName" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorizedRepresentative1Phone" start="409" end="413" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Phone number of the authorized representative"/>
+      <param description="Phone number of the authorized representative" type="string" variable="$authorizedRepresentative1Phone"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="authorizedRepresentative1Phone" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorizedRepresentative1Email" start="421" end="425" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Email address of the authorized representative"/>
+      <param description="Email address of the authorized representative" type="string" variable="$authorizedRepresentative1Email"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="authorizedRepresentative1Email" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorizedRepresentative1DateOfBirth" start="433" end="437" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Birthdate of the authorized representative"/>
+      <param description="Birthdate of the authorized representative" type="string" variable="$authorizedRepresentative1DateOfBirth"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="authorizedRepresentative1DateOfBirth" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressStreet" start="445" end="449" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Street address of the business"/>
+      <param description="Street address of the business" type="string" variable="$addressStreet"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="addressStreet" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressStreetSecondary" start="457" end="461" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Street address of the business"/>
+      <param description="Street address of the business" type="string" variable="$addressStreetSecondary"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="addressStreetSecondary" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressCity" start="469" end="473" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="City of the business"/>
+      <param description="City of the business" type="string" variable="$addressCity"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="addressCity" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressSubdivision" start="481" end="485" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="State or province of the business"/>
+      <param description="State or province of the business" type="string" variable="$addressSubdivision"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="addressSubdivision" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressPostalCode" start="493" end="497" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Postal code of the business"/>
+      <param description="Postal code of the business" type="string" variable="$addressPostalCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="addressPostalCode" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressCountryCode" start="505" end="509" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Country code of the business"/>
+      <param description="Country code of the business" type="string" variable="$addressCountryCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="addressCountryCode" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressStreet" start="517" end="521" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Street address of the business"/>
+      <param description="Street address of the business" type="string" variable="$emergencyAddressStreet"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="emergencyAddressStreet" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressStreetSecondary" start="529" end="533" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Street address of the business"/>
+      <param description="Street address of the business" type="string" variable="$emergencyAddressStreetSecondary"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="emergencyAddressStreetSecondary" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressCity" start="541" end="545" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="City of the business"/>
+      <param description="City of the business" type="string" variable="$emergencyAddressCity"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="emergencyAddressCity" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressSubdivision" start="553" end="557" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="State or province of the business"/>
+      <param description="State or province of the business" type="string" variable="$emergencyAddressSubdivision"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="emergencyAddressSubdivision" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressPostalCode" start="565" end="569" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Postal code of the business"/>
+      <param description="Postal code of the business" type="string" variable="$emergencyAddressPostalCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="emergencyAddressPostalCode" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressCountryCode" start="577" end="581" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Country code of the business"/>
+      <param description="Country code of the business" type="string" variable="$emergencyAddressCountryCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="emergencyAddressCountryCode" byreference="false" type="string"/>
+  </method>
+  <method name="setUseAddressAsEmergencyAddress" start="589" end="593" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Use the business address as the emergency address"/>
+      <param description="Use the business address as the emergency address" type="object" variable="$useAddressAsEmergencyAddress">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="useAddressAsEmergencyAddress" byreference="false" type="bool"/>
+  </method>
+  <method name="setFileName" start="601" end="605" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The name of the verification document to upload"/>
+      <param description="The name of the verification document to upload" type="string" variable="$fileName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="fileName" byreference="false" type="string"/>
+  </method>
+  <method name="setFile" start="613" end="617" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The verification document to upload"/>
+      <param description="The verification document to upload" type="string" variable="$file"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="file" byreference="false" type="string"/>
+  </method>
+  <method name="setFirstName" start="625" end="629" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The first name of the Individual User."/>
+      <param description="The first name of the Individual User." type="string" variable="$firstName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="firstName" byreference="false" type="string"/>
+  </method>
+  <method name="setLastName" start="637" end="641" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The last name of the Individual User."/>
+      <param description="The last name of the Individual User." type="string" variable="$lastName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="lastName" byreference="false" type="string"/>
+  </method>
+  <method name="setDateOfBirth" start="649" end="653" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The date of birth of the Individual User."/>
+      <param description="The date of birth of the Individual User." type="string" variable="$dateOfBirth"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="dateOfBirth" byreference="false" type="string"/>
+  </method>
+  <method name="setIndividualEmail" start="661" end="665" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The email address of the Individual User."/>
+      <param description="The email address of the Individual User." type="string" variable="$individualEmail"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="individualEmail" byreference="false" type="string"/>
+  </method>
+  <method name="setIndividualPhone" start="673" end="677" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The phone number of the Individual User."/>
+      <param description="The phone number of the Individual User." type="string" variable="$individualPhone"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="individualPhone" byreference="false" type="string"/>
+  </method>
+  <method name="setIsIsvEmbed" start="685" end="689" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Indicates if the inquiry is being started from an ISV embedded component."/>
+      <param description="Indicates if the inquiry is being started from an ISV embedded component." type="object" variable="$isIsvEmbed">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="isIsvEmbed" byreference="false" type="bool"/>
+  </method>
+  <method name="setIsvRegisteringForSelfOrTenant" start="697" end="701" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Indicates if the isv registering for self or tenant."/>
+      <param description="Indicates if the isv registering for self or tenant." type="string" variable="$isvRegisteringForSelfOrTenant"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="isvRegisteringForSelfOrTenant" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackUrl" start="709" end="713" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The url we call to inform you of bundle changes."/>
+      <param description="The url we call to inform you of bundle changes." type="string" variable="$statusCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="statusCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setThemeSetId" start="721" end="725" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Theme id for styling the inquiry form."/>
+      <param description="Theme id for styling the inquiry form." type="string" variable="$themeSetId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\$this" namespace="Twilio\Rest\Trusthub\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceRegistrationInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceRegistrationInquiriesOptions"/>
+    </return>
+    <parameter name="themeSetId" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="732" end="736" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

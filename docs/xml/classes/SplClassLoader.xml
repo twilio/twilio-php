@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SplClassLoader" namespace="" name="SplClassLoader" abstract="false" final="false" start="38" end="143">
+  <file path="/twilio/repos/php/src/Twilio" file="autoload.php" realpath="/twilio/repos/php/src/Twilio/autoload.php" size="5389" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="17b2347239a4e9b785d9f7a23edd76b221e48ba4" relative="Twilio/autoload.php"/>
+  <docblock>
+    <description compact="SplClassLoader implementation that implements the technical interoperability standards for PHP 5.3 namespaces and class names.">http://groups.google.com/group/php-standards/web/psr-0-final-proposal?pli=1
+
+    // Example which loads classes for the Doctrine Common package in the
+    // Doctrine\Common namespace.
+    $classLoader = new SplClassLoader('Doctrine\Common', '/path/to/doctrine');
+    $classLoader-&gt;register();</description>
+    <license name="http://www.opensource.org/licenses/mit-license.html  MIT License"/>
+    <author value="Jonathan H. Wage &lt;jonwage@gmail.com&gt;"/>
+    <author value="Roman S. Borschel &lt;roman@code-factory.org&gt;"/>
+    <author value="Matthew Weier O'Phinney &lt;matthew@zend.com&gt;"/>
+    <author value="Kris Wallsmith &lt;kris.wallsmith@gmail.com&gt;"/>
+    <author value="Fabien Potencier &lt;fabien.potencier@symfony-project.org&gt;"/>
+  </docblock>
+  <member name="_fileExtension" default="'.php'" type="string" visibility="private" static="false" line="39"/>
+  <member name="_namespace" visibility="private" static="false" line="40"/>
+  <member name="_includePath" visibility="private" static="false" line="41"/>
+  <member name="_namespaceSeparator" default="'\\'" type="string" visibility="private" static="false" line="42"/>
+  <constructor name="__construct" start="51" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a new &lt;tt&gt;SplClassLoader&lt;/tt&gt; that loads classes of the specified namespace."/>
+      <param description="The namespace to use." type="string" variable="$ns"/>
+      <param description="The include path to search" type="string" variable="$includePath"/>
+    </docblock>
+    <parameter name="ns" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="includePath" byreference="false" type="{unknown}" default="NULL"/>
+  </constructor>
+  <method name="setNamespaceSeparator" start="61" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets the namespace separator used by classes in the namespace of this class loader."/>
+      <param description="The separator to use." type="string" variable="$sep"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="sep" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getNamespaceSeparator" start="70" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets the namespace separator used by classes in the namespace of this class loader."/>
+      <return description="The separator to use." type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="setIncludePath" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets the base include path for all class files in the namespace of this class loader."/>
+      <param type="string" variable="$includePath"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="includePath" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getIncludePath" start="88" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets the base include path for all class files in the namespace of this class loader."/>
+      <return description="$includePath" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="setFileExtension" start="97" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets the file extension of class files in the namespace of this class loader."/>
+      <param type="string" variable="$fileExtension"/>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="fileExtension" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFileExtension" start="106" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets the file extension of class files in the namespace of this class loader."/>
+      <return description="$fileExtension" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="register" start="113" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Installs this class loader on the SPL autoload stack."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="unregister" start="120" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Uninstalls this class loader from the SPL autoloader stack."/>
+    </docblock>
+    <return type="void" nullable="false"/>
+  </method>
+  <method name="loadClass" start="130" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Loads the given class or interface."/>
+      <param description="The name of the class to load." type="string" variable="$className"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="className" byreference="false" type="{unknown}"/>
+  </method>
+</class>

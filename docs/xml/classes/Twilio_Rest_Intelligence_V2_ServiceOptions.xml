@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\ServiceOptions" namespace="Twilio\Rest\Intelligence\V2" name="ServiceOptions" abstract="true" final="false" start="21" end="101">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2" file="ServiceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/ServiceOptions.php" size="18899" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="fd5891f8c5c27226ccb6b4381238ead40c01563a" relative="Twilio/Rest/Intelligence/V2/ServiceOptions.php"/>
+  <method name="create" start="34" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Instructs the Speech Recognition service to automatically transcribe all recordings made on the account." type="object" variable="$autoTranscribe">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="Data logging allows Twilio to improve the quality of the speech recognition &amp; language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent." type="object" variable="$dataLogging">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="A human readable description of this resource, up to 64 characters." type="string" variable="$friendlyName"/>
+      <param description="The language code set during Service creation determines the Transcription language for all call recordings processed by that Service. The default is en-US if no language code is set. A Service can only support one language code, and it cannot be updated once it's set." type="string" variable="$languageCode"/>
+      <param description="Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service." type="object" variable="$autoRedaction">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise." type="object" variable="$mediaRedaction">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="The URL Twilio will request when executing the Webhook." type="string" variable="$webhookUrl"/>
+      <param type="string" variable="$webhookHttpMethod"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\CreateServiceOptions" namespace="Twilio\Rest\Intelligence\V2" name="CreateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\CreateServiceOptions" namespace="Twilio\Rest\Intelligence\V2" name="CreateServiceOptions"/>
+    </return>
+    <parameter name="autoTranscribe" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dataLogging" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="languageCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="autoRedaction" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="mediaRedaction" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="webhookUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="webhookHttpMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="74" end="99" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Instructs the Speech Recognition service to automatically transcribe all recordings made on the account." type="object" variable="$autoTranscribe">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="Data logging allows Twilio to improve the quality of the speech recognition &amp; language understanding services through using customer data to refine, fine tune and evaluate machine learning models. Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent." type="object" variable="$dataLogging">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="A human readable description of this resource, up to 64 characters." type="string" variable="$friendlyName"/>
+      <param description="Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID." type="string" variable="$uniqueName"/>
+      <param description="Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service." type="object" variable="$autoRedaction">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise." type="object" variable="$mediaRedaction">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </param>
+      <param description="The URL Twilio will request when executing the Webhook." type="string" variable="$webhookUrl"/>
+      <param type="string" variable="$webhookHttpMethod"/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\UpdateServiceOptions" namespace="Twilio\Rest\Intelligence\V2" name="UpdateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\UpdateServiceOptions" namespace="Twilio\Rest\Intelligence\V2" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="autoTranscribe" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dataLogging" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="autoRedaction" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="mediaRedaction" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="webhookUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="webhookHttpMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

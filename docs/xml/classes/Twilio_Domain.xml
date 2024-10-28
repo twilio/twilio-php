@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Domain" namespace="Twilio" name="Domain" abstract="true" final="false" start="15" end="82">
+  <file path="/twilio/repos/php/src/Twilio" file="Domain.php" realpath="/twilio/repos/php/src/Twilio/Domain.php" size="2117" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="a2deaee0b3f3fc848d65c4d13fce06cce20b3e35" relative="Twilio/Domain.php"/>
+  <docblock>
+    <description compact="Class Domain Abstracts a Twilio sub domain"/>
+    <package value="Twilio"/>
+  </docblock>
+  <member name="client" visibility="protected" static="false" line="19">
+    <docblock>
+      <description/>
+      <var description="Twilio Client" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="baseUrl" visibility="protected" static="false" line="24">
+    <docblock>
+      <description/>
+      <var description="Base URL for this domain" type="string"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="30" end="33" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct a new Domain"/>
+      <param description="used to communicate with Twilio" type="object" variable="$client">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </param>
+    </docblock>
+    <parameter name="client" byreference="false" type="object">
+      <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+    </parameter>
+  </constructor>
+  <method name="absoluteUrl" start="41" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Translate version relative URIs into absolute URLs"/>
+      <param description="Version relative URI" type="string" variable="$uri"/>
+      <return description="Absolute URL for this domain" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="uri" byreference="false" type="string"/>
+  </method>
+  <method name="request" start="58" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Make an HTTP request to the domain"/>
+      <param description="HTTP Method to make the request with" type="string" variable="$method"/>
+      <param description="Relative uri to make a request to" type="string" variable="$uri"/>
+      <param description="Query string arguments" type="array" variable="$params"/>
+      <param description="Post form data" type="array" variable="$data"/>
+      <param description="HTTP headers to send with the request" type="array" variable="$headers"/>
+      <param description="User to authenticate as" type="string" variable="$user"/>
+      <param description="Password" type="string" variable="$password"/>
+      <param description="Request timeout" type="int" variable="$timeout"/>
+      <return description="the response for the request" type="object">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="user" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="getClient" start="75" end="77" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+    </return>
+  </method>
+  <method name="__toString" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <extenders>
+    <extender full="Twilio\Rest\Accounts" namespace="Twilio\Rest" name="Accounts"/>
+    <extender full="Twilio\Rest\AccountsBase" namespace="Twilio\Rest" name="AccountsBase"/>
+    <extender full="Twilio\Rest\Api" namespace="Twilio\Rest" name="Api"/>
+    <extender full="Twilio\Rest\ApiBase" namespace="Twilio\Rest" name="ApiBase"/>
+    <extender full="Twilio\Rest\Assistants" namespace="Twilio\Rest" name="Assistants"/>
+    <extender full="Twilio\Rest\AssistantsBase" namespace="Twilio\Rest" name="AssistantsBase"/>
+    <extender full="Twilio\Rest\Bulkexports" namespace="Twilio\Rest" name="Bulkexports"/>
+    <extender full="Twilio\Rest\BulkexportsBase" namespace="Twilio\Rest" name="BulkexportsBase"/>
+    <extender full="Twilio\Rest\Chat" namespace="Twilio\Rest" name="Chat"/>
+    <extender full="Twilio\Rest\ChatBase" namespace="Twilio\Rest" name="ChatBase"/>
+    <extender full="Twilio\Rest\Content" namespace="Twilio\Rest" name="Content"/>
+    <extender full="Twilio\Rest\ContentBase" namespace="Twilio\Rest" name="ContentBase"/>
+    <extender full="Twilio\Rest\Conversations" namespace="Twilio\Rest" name="Conversations"/>
+    <extender full="Twilio\Rest\ConversationsBase" namespace="Twilio\Rest" name="ConversationsBase"/>
+    <extender full="Twilio\Rest\Events" namespace="Twilio\Rest" name="Events"/>
+    <extender full="Twilio\Rest\EventsBase" namespace="Twilio\Rest" name="EventsBase"/>
+    <extender full="Twilio\Rest\FlexApi" namespace="Twilio\Rest" name="FlexApi"/>
+    <extender full="Twilio\Rest\FlexApiBase" namespace="Twilio\Rest" name="FlexApiBase"/>
+    <extender full="Twilio\Rest\FrontlineApi" namespace="Twilio\Rest" name="FrontlineApi"/>
+    <extender full="Twilio\Rest\FrontlineApiBase" namespace="Twilio\Rest" name="FrontlineApiBase"/>
+    <extender full="Twilio\Rest\Iam" namespace="Twilio\Rest" name="Iam"/>
+    <extender full="Twilio\Rest\IamBase" namespace="Twilio\Rest" name="IamBase"/>
+    <extender full="Twilio\Rest\Insights" namespace="Twilio\Rest" name="Insights"/>
+    <extender full="Twilio\Rest\InsightsBase" namespace="Twilio\Rest" name="InsightsBase"/>
+    <extender full="Twilio\Rest\Intelligence" namespace="Twilio\Rest" name="Intelligence"/>
+    <extender full="Twilio\Rest\IntelligenceBase" namespace="Twilio\Rest" name="IntelligenceBase"/>
+    <extender full="Twilio\Rest\IpMessaging" namespace="Twilio\Rest" name="IpMessaging"/>
+    <extender full="Twilio\Rest\IpMessagingBase" namespace="Twilio\Rest" name="IpMessagingBase"/>
+    <extender full="Twilio\Rest\Lookups" namespace="Twilio\Rest" name="Lookups"/>
+    <extender full="Twilio\Rest\LookupsBase" namespace="Twilio\Rest" name="LookupsBase"/>
+    <extender full="Twilio\Rest\Marketplace" namespace="Twilio\Rest" name="Marketplace"/>
+    <extender full="Twilio\Rest\MarketplaceBase" namespace="Twilio\Rest" name="MarketplaceBase"/>
+    <extender full="Twilio\Rest\Messaging" namespace="Twilio\Rest" name="Messaging"/>
+    <extender full="Twilio\Rest\MessagingBase" namespace="Twilio\Rest" name="MessagingBase"/>
+    <extender full="Twilio\Rest\Microvisor" namespace="Twilio\Rest" name="Microvisor"/>
+    <extender full="Twilio\Rest\MicrovisorBase" namespace="Twilio\Rest" name="MicrovisorBase"/>
+    <extender full="Twilio\Rest\Monitor" namespace="Twilio\Rest" name="Monitor"/>
+    <extender full="Twilio\Rest\MonitorBase" namespace="Twilio\Rest" name="MonitorBase"/>
+    <extender full="Twilio\Rest\Notify" namespace="Twilio\Rest" name="Notify"/>
+    <extender full="Twilio\Rest\NotifyBase" namespace="Twilio\Rest" name="NotifyBase"/>
+    <extender full="Twilio\Rest\Numbers" namespace="Twilio\Rest" name="Numbers"/>
+    <extender full="Twilio\Rest\NumbersBase" namespace="Twilio\Rest" name="NumbersBase"/>
+    <extender full="Twilio\Rest\Oauth" namespace="Twilio\Rest" name="Oauth"/>
+    <extender full="Twilio\Rest\OauthBase" namespace="Twilio\Rest" name="OauthBase"/>
+    <extender full="Twilio\Rest\Preview" namespace="Twilio\Rest" name="Preview"/>
+    <extender full="Twilio\Rest\PreviewBase" namespace="Twilio\Rest" name="PreviewBase"/>
+    <extender full="Twilio\Rest\Pricing" namespace="Twilio\Rest" name="Pricing"/>
+    <extender full="Twilio\Rest\PricingBase" namespace="Twilio\Rest" name="PricingBase"/>
+    <extender full="Twilio\Rest\Proxy" namespace="Twilio\Rest" name="Proxy"/>
+    <extender full="Twilio\Rest\ProxyBase" namespace="Twilio\Rest" name="ProxyBase"/>
+    <extender full="Twilio\Rest\Routes" namespace="Twilio\Rest" name="Routes"/>
+    <extender full="Twilio\Rest\RoutesBase" namespace="Twilio\Rest" name="RoutesBase"/>
+    <extender full="Twilio\Rest\Serverless" namespace="Twilio\Rest" name="Serverless"/>
+    <extender full="Twilio\Rest\ServerlessBase" namespace="Twilio\Rest" name="ServerlessBase"/>
+    <extender full="Twilio\Rest\Studio" namespace="Twilio\Rest" name="Studio"/>
+    <extender full="Twilio\Rest\StudioBase" namespace="Twilio\Rest" name="StudioBase"/>
+    <extender full="Twilio\Rest\Supersim" namespace="Twilio\Rest" name="Supersim"/>
+    <extender full="Twilio\Rest\SupersimBase" namespace="Twilio\Rest" name="SupersimBase"/>
+    <extender full="Twilio\Rest\Sync" namespace="Twilio\Rest" name="Sync"/>
+    <extender full="Twilio\Rest\SyncBase" namespace="Twilio\Rest" name="SyncBase"/>
+    <extender full="Twilio\Rest\Taskrouter" namespace="Twilio\Rest" name="Taskrouter"/>
+    <extender full="Twilio\Rest\TaskrouterBase" namespace="Twilio\Rest" name="TaskrouterBase"/>
+    <extender full="Twilio\Rest\Trunking" namespace="Twilio\Rest" name="Trunking"/>
+    <extender full="Twilio\Rest\TrunkingBase" namespace="Twilio\Rest" name="TrunkingBase"/>
+    <extender full="Twilio\Rest\Trusthub" namespace="Twilio\Rest" name="Trusthub"/>
+    <extender full="Twilio\Rest\TrusthubBase" namespace="Twilio\Rest" name="TrusthubBase"/>
+    <extender full="Twilio\Rest\Verify" namespace="Twilio\Rest" name="Verify"/>
+    <extender full="Twilio\Rest\VerifyBase" namespace="Twilio\Rest" name="VerifyBase"/>
+    <extender full="Twilio\Rest\Video" namespace="Twilio\Rest" name="Video"/>
+    <extender full="Twilio\Rest\VideoBase" namespace="Twilio\Rest" name="VideoBase"/>
+    <extender full="Twilio\Rest\Voice" namespace="Twilio\Rest" name="Voice"/>
+    <extender full="Twilio\Rest\VoiceBase" namespace="Twilio\Rest" name="VoiceBase"/>
+    <extender full="Twilio\Rest\Wireless" namespace="Twilio\Rest" name="Wireless"/>
+    <extender full="Twilio\Rest\WirelessBase" namespace="Twilio\Rest" name="WirelessBase"/>
+  </extenders>
+</class>

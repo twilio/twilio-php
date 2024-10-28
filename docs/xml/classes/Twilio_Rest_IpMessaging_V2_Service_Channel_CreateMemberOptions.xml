@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions" abstract="false" final="false" start="122" end="247">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V2/Service/Channel" file="MemberOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V2/Service/Channel/MemberOptions.php" size="12493" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="80d4afb909522a81c713f800c39dc4aa34056fae" relative="Twilio/Rest/IpMessaging/V2/Service/Channel/MemberOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="133" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$roleSid"/>
+      <param type="int" variable="$lastConsumedMessageIndex"/>
+      <param type="object" variable="$lastConsumptionTimestamp">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param type="string" variable="$attributes"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+    </docblock>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastConsumedMessageIndex" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="lastConsumptionTimestamp" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="dateCreated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="dateUpdated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setRoleSid" start="159" end="163" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$roleSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="string"/>
+  </method>
+  <method name="setLastConsumedMessageIndex" start="171" end="175" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$lastConsumedMessageIndex"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="lastConsumedMessageIndex" byreference="false" type="int"/>
+  </method>
+  <method name="setLastConsumptionTimestamp" start="183" end="187" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$lastConsumptionTimestamp">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="lastConsumptionTimestamp" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setDateCreated" start="195" end="199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="dateCreated" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setDateUpdated" start="207" end="211" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="dateUpdated" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setAttributes" start="219" end="223" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="string"/>
+  </method>
+  <method name="setXTwilioWebhookEnabled" start="231" end="235" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The X-Twilio-Webhook-Enabled HTTP request header"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateMemberOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateMemberOptions"/>
+    </return>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="242" end="246" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

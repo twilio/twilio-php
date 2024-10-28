@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions" abstract="false" final="false" start="81" end="189">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Wireless/V1" file="CommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Wireless/V1/CommandOptions.php" size="13024" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="ee541ce3cbad15309c6bf99d62a3fed16e2a4a11" relative="Twilio/Rest/Wireless/V1/CommandOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="91" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to." type="string" variable="$sim"/>
+      <param description="The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`." type="string" variable="$callbackMethod"/>
+      <param description="The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed." type="string" variable="$callbackUrl"/>
+      <param type="string" variable="$commandMode"/>
+      <param description="Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included." type="string" variable="$includeSid"/>
+      <param description="Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`." type="object" variable="$deliveryReceiptRequested">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="commandMode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="includeSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="deliveryReceiptRequested" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setSim" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to."/>
+      <param description="The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource) to send the Command to." type="string" variable="$sim"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackMethod" start="127" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`."/>
+      <param description="The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`." type="string" variable="$callbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackUrl" start="139" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed."/>
+      <param description="The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed." type="string" variable="$callbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="callbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCommandMode" start="149" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$commandMode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="commandMode" byreference="false" type="string"/>
+  </method>
+  <method name="setIncludeSid" start="161" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included."/>
+      <param description="Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included." type="string" variable="$includeSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="includeSid" byreference="false" type="string"/>
+  </method>
+  <method name="setDeliveryReceiptRequested" start="173" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`."/>
+      <param description="Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`." type="object" variable="$deliveryReceiptRequested">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateCommandOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="deliveryReceiptRequested" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="184" end="188" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

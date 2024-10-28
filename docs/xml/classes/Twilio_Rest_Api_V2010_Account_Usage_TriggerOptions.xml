@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Usage\TriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="TriggerOptions" abstract="true" final="false" start="21" end="91">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Usage" file="TriggerOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Usage/TriggerOptions.php" size="11589" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="6c96d54dfb2d607807bbd0f1ebcbc4d7cc41afdf" relative="Twilio/Rest/Api/V2010/Account/Usage/TriggerOptions.php"/>
+  <method name="create" start="30" end="45" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$callbackMethod"/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param type="string" variable="$recurring"/>
+      <param type="string" variable="$triggerBy"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\CreateTriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="CreateTriggerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\CreateTriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="CreateTriggerOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recurring" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="triggerBy" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="55" end="68" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers." type="string" variable="$recurring"/>
+      <param description="The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price)." type="string" variable="$triggerBy"/>
+      <param description="The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories)." type="string" variable="$usageCategory"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\ReadTriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="ReadTriggerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\ReadTriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="ReadTriggerOptions"/>
+    </return>
+    <parameter name="recurring" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="triggerBy" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="usageCategory" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="76" end="89" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$callbackMethod"/>
+      <param description="The URL we should call using `callback_method` when the trigger fires." type="string" variable="$callbackUrl"/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\UpdateTriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="UpdateTriggerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\UpdateTriggerOptions" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="UpdateTriggerOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

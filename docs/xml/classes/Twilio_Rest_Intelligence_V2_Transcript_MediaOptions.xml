@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\Transcript\MediaOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="MediaOptions" abstract="true" final="false" start="21" end="38">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript" file="MediaOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript/MediaOptions.php" size="2200" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="f049927658e8be6b2918713f606f478138ce480a" relative="Twilio/Rest/Intelligence/V2/Transcript/MediaOptions.php"/>
+  <method name="fetch" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media." type="object" variable="$redacted">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\FetchMediaOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="FetchMediaOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\Transcript\FetchMediaOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="FetchMediaOptions"/>
+    </return>
+    <parameter name="redacted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

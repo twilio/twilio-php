@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionContext" namespace="Twilio\Rest\Serverless\V1\Service\TwilioFunction" name="FunctionVersionContext" abstract="false" final="false" start="32" end="155">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/Service/TwilioFunction" file="FunctionVersionContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/Service/TwilioFunction/FunctionVersionContext.php" size="4775" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="fa069b50c8d6e0dd9fc352bc27cdeee687b48dec" relative="Twilio/Rest/Serverless/V1/Service/TwilioFunction/FunctionVersionContext.php"/>
+  <docblock>
+    <description/>
+    <property value="FunctionVersionContentList $functionVersionContent"/>
+    <method value="\Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion\FunctionVersionContentContext functionVersionContent()"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_functionVersionContent" visibility="protected" static="false" line="34"/>
+  <constructor name="__construct" start="44" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the FunctionVersionContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Service to fetch the Function Version resource from." type="string" variable="$serviceSid"/>
+      <param description="The SID of the function that is the parent of the Function Version resource to fetch." type="string" variable="$functionSid"/>
+      <param description="The SID of the Function Version resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="serviceSid" byreference="false" type="{unknown}"/>
+    <parameter name="functionSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="52"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="74" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the FunctionVersionInstance"/>
+      <return description="Fetched FunctionVersionInstance" type="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionInstance" namespace="Twilio\Rest\Serverless\V1\Service\TwilioFunction" name="FunctionVersionInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersionInstance" namespace="Twilio\Rest\Serverless\V1\Service\TwilioFunction" name="FunctionVersionInstance"/>
+    </return>
+  </method>
+  <method name="getFunctionVersionContent" start="93" end="105" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the functionVersionContent"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion\FunctionVersionContentList" namespace="Twilio\Rest\Serverless\V1\Service\TwilioFunction\FunctionVersion" name="FunctionVersionContentList"/>
+    </return>
+  </method>
+  <method name="__get" start="114" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="132" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="147" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

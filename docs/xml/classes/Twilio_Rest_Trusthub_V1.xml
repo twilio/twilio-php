@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1" namespace="Twilio\Rest\Trusthub" name="V1" abstract="false" final="false" start="52" end="200">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub" file="V1.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1.php" size="6800" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="97d5c80ccc8c090e16e488da5ce7bf7e1ed22fbd" relative="Twilio/Rest/Trusthub/V1.php"/>
+  <docblock>
+    <description/>
+    <property value="ComplianceInquiriesList $complianceInquiries"/>
+    <property value="ComplianceRegistrationInquiriesList $complianceRegistrationInquiries"/>
+    <property value="ComplianceTollfreeInquiriesList $complianceTollfreeInquiries"/>
+    <property value="CustomerProfilesList $customerProfiles"/>
+    <property value="EndUserList $endUsers"/>
+    <property value="EndUserTypeList $endUserTypes"/>
+    <property value="PoliciesList $policies"/>
+    <property value="SupportingDocumentList $supportingDocuments"/>
+    <property value="SupportingDocumentTypeList $supportingDocumentTypes"/>
+    <property value="TrustProductsList $trustProducts"/>
+    <method value="\Twilio\Rest\Trusthub\V1\CustomerProfilesContext customerProfiles(string $sid)"/>
+    <method value="\Twilio\Rest\Trusthub\V1\EndUserContext endUsers(string $sid)"/>
+    <method value="\Twilio\Rest\Trusthub\V1\EndUserTypeContext endUserTypes(string $sid)"/>
+    <method value="\Twilio\Rest\Trusthub\V1\PoliciesContext policies(string $sid)"/>
+    <method value="\Twilio\Rest\Trusthub\V1\SupportingDocumentContext supportingDocuments(string $sid)"/>
+    <method value="\Twilio\Rest\Trusthub\V1\SupportingDocumentTypeContext supportingDocumentTypes(string $sid)"/>
+    <method value="\Twilio\Rest\Trusthub\V1\TrustProductsContext trustProducts(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\Version" namespace="Twilio" name="Version"/>
+  <member name="_complianceInquiries" visibility="protected" static="false" line="54"/>
+  <member name="_complianceRegistrationInquiries" visibility="protected" static="false" line="55"/>
+  <member name="_complianceTollfreeInquiries" visibility="protected" static="false" line="56"/>
+  <member name="_customerProfiles" visibility="protected" static="false" line="57"/>
+  <member name="_endUsers" visibility="protected" static="false" line="58"/>
+  <member name="_endUserTypes" visibility="protected" static="false" line="59"/>
+  <member name="_policies" visibility="protected" static="false" line="60"/>
+  <member name="_supportingDocuments" visibility="protected" static="false" line="61"/>
+  <member name="_supportingDocumentTypes" visibility="protected" static="false" line="62"/>
+  <member name="_trustProducts" visibility="protected" static="false" line="63"/>
+  <constructor name="__construct" start="70" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the V1 version of Trusthub"/>
+      <param description="Domain that contains the version" type="object" variable="$domain">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </param>
+    </docblock>
+    <parameter name="domain" byreference="false" type="object">
+      <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    </parameter>
+  </constructor>
+  <method name="getComplianceInquiries" start="76" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ComplianceInquiriesList" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceInquiriesList"/>
+    </return>
+  </method>
+  <method name="getComplianceRegistrationInquiries" start="84" end="90" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ComplianceRegistrationInquiriesList" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceRegistrationInquiriesList"/>
+    </return>
+  </method>
+  <method name="getComplianceTollfreeInquiries" start="92" end="98" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ComplianceTollfreeInquiriesList" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceTollfreeInquiriesList"/>
+    </return>
+  </method>
+  <method name="getCustomerProfiles" start="100" end="106" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesList" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesList"/>
+    </return>
+  </method>
+  <method name="getEndUsers" start="108" end="114" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\EndUserList" namespace="Twilio\Rest\Trusthub\V1" name="EndUserList"/>
+    </return>
+  </method>
+  <method name="getEndUserTypes" start="116" end="122" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\EndUserTypeList" namespace="Twilio\Rest\Trusthub\V1" name="EndUserTypeList"/>
+    </return>
+  </method>
+  <method name="getPolicies" start="124" end="130" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\PoliciesList" namespace="Twilio\Rest\Trusthub\V1" name="PoliciesList"/>
+    </return>
+  </method>
+  <method name="getSupportingDocuments" start="132" end="138" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentList" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentList"/>
+    </return>
+  </method>
+  <method name="getSupportingDocumentTypes" start="140" end="146" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentTypeList" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentTypeList"/>
+    </return>
+  </method>
+  <method name="getTrustProducts" start="148" end="154" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\TrustProductsList" namespace="Twilio\Rest\Trusthub\V1" name="TrustProductsList"/>
+    </return>
+  </method>
+  <method name="__get" start="163" end="171" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load root resources"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <return description="The requested resource" type="object">
+        <type full="\Twilio\ListResource" namespace="\Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="181" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="196" end="199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Version" namespace="Twilio" name="Version">
+    <constant type="{unknown}" name="MAX_PAGE_SIZE" value="1000">
+      <docblock>
+        <description/>
+        <const value="int MAX_PAGE_SIZE largest page the Twilio API will return"/>
+      </docblock>
+    </constant>
+    <member name="domain" visibility="protected" static="false" line="18">
+      <docblock>
+        <description/>
+        <var description="$domain" type="object">
+          <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="version" visibility="protected" static="false" line="23">
+      <docblock>
+        <description/>
+        <var description="$version" type="string"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="28" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object" variable="$domain">
+          <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+        </param>
+      </docblock>
+      <parameter name="domain" byreference="false" type="object">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </parameter>
+    </constructor>
+    <method name="absoluteUrl" start="38" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Generate an absolute URL from a version relative uri"/>
+        <param description="Version relative uri" type="string" variable="$uri"/>
+        <return description="Absolute URL" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="relativeUri" start="47" end="49" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Generate a domain relative uri from a version relative uri"/>
+        <param description="Version relative uri" type="string" variable="$uri"/>
+        <return description="Domain relative uri" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="request" start="51" end="66" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="exception" start="79" end="92" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Create the best possible exception for the response.">Attempts to parse the response for Twilio Standard error messages and use
+those to populate the exception, falls back to generic error message and
+HTTP status code.</description>
+        <param description="Error response" type="object" variable="$response">
+          <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+        </param>
+        <param description="Header for exception message" type="string" variable="$header"/>
+        <return type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </return>
+      <parameter name="response" byreference="false" type="object">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </parameter>
+      <parameter name="header" byreference="false" type="string"/>
+    </method>
+    <method name="fetch" start="97" end="118" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+      <inline>
+        <comment value="3XX response codes are allowed here to allow for 307 redirect from Deactivations API." line="112"/>
+      </inline>
+    </method>
+    <method name="update" start="123" end="143" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="delete" start="148" end="168" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="readLimits" start="170" end="182" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="limit" byreference="false" type="int" default="NULL"/>
+      <parameter name="pageSize" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="page" start="184" end="198" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="stream" start="200" end="202" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+      </return>
+      <parameter name="page" byreference="false" type="object">
+        <type full="Twilio\Page" namespace="Twilio" name="Page"/>
+      </parameter>
+      <parameter name="limit" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="pageLimit" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="create" start="207" end="227" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="getDomain" start="229" end="231" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </return>
+    </method>
+    <method name="__toString" start="233" end="235" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

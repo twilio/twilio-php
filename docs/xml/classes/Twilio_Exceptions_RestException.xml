@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Exceptions\RestException" namespace="Twilio\Exceptions" name="RestException" abstract="false" final="false" start="7" end="52">
+  <file path="/twilio/repos/php/src/Twilio/Exceptions" file="RestException.php" realpath="/twilio/repos/php/src/Twilio/Exceptions/RestException.php" size="1518" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="a7128a6ec1743f9e56485bf7422be9ff9749069e" relative="Twilio/Exceptions/RestException.php"/>
+  <extends full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+  <member name="statusCode" visibility="protected" static="false" line="8"/>
+  <member name="details" visibility="protected" static="false" line="9"/>
+  <member name="moreInfo" visibility="protected" static="false" line="10"/>
+  <constructor name="__construct" start="22" end="27" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the exception. Note: The message is NOT binary safe."/>
+      <link value="http://php.net/manual/en/exception.construct.php"/>
+      <param description="[optional] The Exception message to throw." type="string" variable="$message"/>
+      <param description="[optional] The Exception code." type="int" variable="$code"/>
+      <param description="[optional] The HTTP Status code." type="int" variable="$statusCode"/>
+      <param description="[optional] More information about the error." type="string" variable="$moreInfo"/>
+      <param description="[optional] Additional details about the error." type="array" variable="$details"/>
+      <since value="5.1.0"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="string"/>
+    <parameter name="code" byreference="false" type="int"/>
+    <parameter name="statusCode" byreference="false" type="int"/>
+    <parameter name="moreInfo" byreference="false" type="string" default="''"/>
+    <parameter name="details" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="getStatusCode" start="33" end="35" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the HTTP Status Code of the RestException"/>
+      <return description="HTTP Status Code" type="int"/>
+    </docblock>
+    <return type="int" nullable="false"/>
+  </method>
+  <method name="getMoreInfo" start="41" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get more information of the RestException"/>
+      <return description="More error information" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getDetails" start="49" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the details of the RestException"/>
+      <return description="details" type="object">
+        <type full="Twilio\Exceptions\exception" namespace="Twilio\Exceptions" name="exception"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <parent full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException">
+    <extends full="Exception" namespace="" name="Exception"/>
+  </parent>
+  <parent full="Exception" namespace="" name="Exception">
+    <member name="message" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception message"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="code" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The exception code"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <member name="file" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The filename where the exception was created"/>
+      <var type="string"/>
+    </docblock>
+  </member>
+    <member name="line" static="false" visibility="protected">
+    <default>null</default>
+    <docblock>
+      <description compact="The line where the exception was created"/>
+      <var type="int"/>
+    </docblock>
+  </member>
+    <constructor name="__construct" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Construct the exception"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="message" optional="true" byreference="false" type="string"/>
+    <parameter name="code" optional="true" byreference="false" type="int"/>
+    <parameter name="previous" optional="true" byreference="false" type="object" class="Throwable"/>
+  </constructor>
+    <method name="getMessage" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the Exception message"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getPrevious" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Returns previous Exception"/>
+      <return type="Throwable"/>
+    </docblock>
+  </method>
+    <method name="getCode" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the Exception code"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="getFile" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the file in which the exception was created"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="getLine" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the line in which the exception was created"/>
+      <return type="int"/>
+    </docblock>
+  </method>
+    <method name="getTrace" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the stack trace"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+    <method name="getTraceAsString" abstract="false" static="false" visibility="public" final="true">
+    <docblock>
+      <description compact="Gets the stack trace as a string"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+    <method name="__toString" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="String representation of the exception"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  </parent>
+</class>

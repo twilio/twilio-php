@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\TwiML\VoiceResponse" namespace="Twilio\TwiML" name="VoiceResponse" abstract="false" final="false" start="12" end="222">
+  <file path="/twilio/repos/php/src/Twilio/TwiML" file="VoiceResponse.php" realpath="/twilio/repos/php/src/Twilio/TwiML/VoiceResponse.php" size="5739" time="2024-10-28T12:06:32+00:00" unixtime="1730117192" sha1="71bbbc83982fba6dce61b0d3648aebf4fff65d84" relative="Twilio/TwiML/VoiceResponse.php"/>
+  <extends full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+  <constructor name="__construct" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="VoiceResponse constructor."/>
+    </docblock>
+  </constructor>
+  <method name="connect" start="26" end="28" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Connect child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Connect" namespace="Twilio\TwiML\Voice" name="Connect"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Connect" namespace="Twilio\TwiML\Voice" name="Connect"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="dial" start="37" end="39" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Dial child."/>
+      <param description="Phone number to dial" type="string" variable="$number"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Dial" namespace="Twilio\TwiML\Voice" name="Dial"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Dial" namespace="Twilio\TwiML\Voice" name="Dial"/>
+    </return>
+    <parameter name="number" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="echo_" start="46" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Echo child."/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Echo_" namespace="Twilio\TwiML\Voice" name="Echo_"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Echo_" namespace="Twilio\TwiML\Voice" name="Echo_"/>
+    </return>
+  </method>
+  <method name="enqueue" start="57" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Enqueue child."/>
+      <param description="Friendly name" type="string" variable="$name"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="name" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="gather" start="67" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Gather child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Gather" namespace="Twilio\TwiML\Voice" name="Gather"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Gather" namespace="Twilio\TwiML\Voice" name="Gather"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="hangup" start="76" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Hangup child."/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Hangup" namespace="Twilio\TwiML\Voice" name="Hangup"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Hangup" namespace="Twilio\TwiML\Voice" name="Hangup"/>
+    </return>
+  </method>
+  <method name="leave" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Leave child."/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Leave" namespace="Twilio\TwiML\Voice" name="Leave"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Leave" namespace="Twilio\TwiML\Voice" name="Leave"/>
+    </return>
+  </method>
+  <method name="pause" start="95" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Pause child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Pause" namespace="Twilio\TwiML\Voice" name="Pause"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Pause" namespace="Twilio\TwiML\Voice" name="Pause"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="play" start="106" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Play child."/>
+      <param description="Media URL" type="string" variable="$url"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Play" namespace="Twilio\TwiML\Voice" name="Play"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Play" namespace="Twilio\TwiML\Voice" name="Play"/>
+    </return>
+    <parameter name="url" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="queue" start="117" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Queue child."/>
+      <param description="Queue name" type="string" variable="$name"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Queue" namespace="Twilio\TwiML\Voice" name="Queue"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Queue" namespace="Twilio\TwiML\Voice" name="Queue"/>
+    </return>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="record" start="127" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Record child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Record" namespace="Twilio\TwiML\Voice" name="Record"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Record" namespace="Twilio\TwiML\Voice" name="Record"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="redirect" start="138" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Redirect child."/>
+      <param description="Redirect URL" type="string" variable="$url"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Redirect" namespace="Twilio\TwiML\Voice" name="Redirect"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Redirect" namespace="Twilio\TwiML\Voice" name="Redirect"/>
+    </return>
+    <parameter name="url" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="reject" start="148" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Reject child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Reject" namespace="Twilio\TwiML\Voice" name="Reject"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Reject" namespace="Twilio\TwiML\Voice" name="Reject"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="say" start="159" end="161" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Say child."/>
+      <param description="Message to say" type="string" variable="$message"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Say" namespace="Twilio\TwiML\Voice" name="Say"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Say" namespace="Twilio\TwiML\Voice" name="Say"/>
+    </return>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="sms" start="170" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Sms child."/>
+      <param description="Message body" type="string" variable="$message"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Sms" namespace="Twilio\TwiML\Voice" name="Sms"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Sms" namespace="Twilio\TwiML\Voice" name="Sms"/>
+    </return>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="pay" start="180" end="182" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Pay child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Pay" namespace="Twilio\TwiML\Voice" name="Pay"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Pay" namespace="Twilio\TwiML\Voice" name="Pay"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="prompt" start="190" end="192" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Prompt child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Prompt" namespace="Twilio\TwiML\Voice" name="Prompt"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Prompt" namespace="Twilio\TwiML\Voice" name="Prompt"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="start" start="200" end="202" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Start child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Start" namespace="Twilio\TwiML\Voice" name="Start"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Start" namespace="Twilio\TwiML\Voice" name="Start"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="stop" start="209" end="211" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Stop child."/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Stop" namespace="Twilio\TwiML\Voice" name="Stop"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Stop" namespace="Twilio\TwiML\Voice" name="Stop"/>
+    </return>
+  </method>
+  <method name="refer" start="219" end="221" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Refer child."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Refer" namespace="Twilio\TwiML\Voice" name="Refer"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Refer" namespace="Twilio\TwiML\Voice" name="Refer"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <parent full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML">
+    <member name="name" visibility="protected" static="false" line="15"/>
+    <member name="attributes" visibility="protected" static="false" line="16"/>
+    <member name="children" visibility="protected" static="false" line="17"/>
+    <constructor name="__construct" start="26" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="TwiML constructor."/>
+        <param description="XML element name" type="string" variable="$name"/>
+        <param description="XML value" type="string" variable="$value"/>
+        <param description="XML attributes" type="array" variable="$attributes"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string" default="NULL"/>
+      <parameter name="attributes" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="append" start="42" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Add a TwiML element."/>
+        <param description="TwiML element to add" type="object" variable="$twiml">
+          <type full="Twilio\TwiML\TwiML|string" namespace="Twilio\TwiML" name="TwiML|string"/>
+        </param>
+        <return description="$this" type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="twiml" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="nest" start="53" end="56" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Add a TwiML element."/>
+        <param description="TwiML element to add" type="object" variable="$twiml">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </param>
+        <return description="added TwiML element" type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="twiml" byreference="false" type="object">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </parameter>
+    </method>
+    <method name="setAttribute" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set TwiML attribute."/>
+        <param description="name of attribute" type="string" variable="$key"/>
+        <param description="value of attribute" type="string" variable="$value"/>
+        <return description="$this" resolution="static" type="object">
+          <type full="Twilio\TwiML\VoiceResponse" namespace="Twilio\TwiML" name="VoiceResponse"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="key" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string"/>
+    </method>
+    <method name="addChild" start="76" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="XML element name" type="string" variable="$name"/>
+        <param description="XML value" type="string" variable="$value"/>
+        <param description="XML attributes" type="array" variable="$attributes"/>
+        <return type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string" default="NULL"/>
+      <parameter name="attributes" byreference="false" type="array" default=""/>
+    </method>
+    <method name="asXML" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert TwiML to XML string."/>
+        <return description="TwiML XML representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__toString" start="94" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert TwiML to XML string."/>
+        <return description="TwiML XML representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

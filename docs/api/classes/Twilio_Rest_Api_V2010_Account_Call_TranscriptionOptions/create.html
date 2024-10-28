@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Api\V2010\Account\Call\TranscriptionOptions::create</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Api_V2010_Account_Call">Twilio\Rest\Api\V2010\Account\Call</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Api_V2010_Account_Call_TranscriptionOptions.html" title="Twilio\Rest\Api\V2010\Account\Call\TranscriptionOptions">TranscriptionOptions</a>
+</li>
+<li class="separator">create</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="#return">Return</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Api/V2010/Account/Call/TranscriptionOptions.php.html#line39">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Api\V2010\Account\Call\TranscriptionOptions::</small>create</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function create([string
+        $name = Values::NONE,
+            [string
+        $track = Values::NONE,
+            [string
+        $statusCallbackUrl = Values::NONE,
+            [string
+        $statusCallbackMethod = Values::NONE,
+            [string
+        $inboundTrackLabel = Values::NONE,
+            [string
+        $outboundTrackLabel = Values::NONE,
+            [<a href="../../classes/Twilio_Rest_Api_V2010_Account_Call_bool.html" title="Twilio\Rest\Api\V2010\Account\Call\bool">bool</a>
+        $partialResults = Values::BOOL_NONE,
+            [string
+        $languageCode = Values::NONE,
+            [string
+        $transcriptionEngine = Values::NONE,
+            [<a href="../../classes/Twilio_Rest_Api_V2010_Account_Call_bool.html" title="Twilio\Rest\Api\V2010\Account\Call\bool">bool</a>
+        $profanityFilter = Values::BOOL_NONE,
+            [string
+        $speechModel = Values::NONE,
+            [string
+        $hints = Values::NONE,
+            [<a href="../../classes/Twilio_Rest_Api_V2010_Account_Call_bool.html" title="Twilio\Rest\Api\V2010\Account\Call\bool">bool</a>
+        $enableAutomaticPunctuation = Values::BOOL_NONE]]]]]]]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$name</code>
+                —
+                string</dt>
+<dd>The user-specified name of this Transcription, if one was given when the Transcription was created. This may be used to stop the Transcription.</dd>
+<dt><code>$track</code>
+                —
+                string</dt>
+<dd></dd>
+<dt><code>$statusCallbackUrl</code>
+                —
+                string</dt>
+<dd>Absolute URL of the status callback.</dd>
+<dt><code>$statusCallbackMethod</code>
+                —
+                string</dt>
+<dd>The http method for the status_callback (one of GET, POST).</dd>
+<dt><code>$inboundTrackLabel</code>
+                —
+                string</dt>
+<dd>Friendly name given to the Inbound Track</dd>
+<dt><code>$outboundTrackLabel</code>
+                —
+                string</dt>
+<dd>Friendly name given to the Outbound Track</dd>
+<dt><code>$partialResults</code>
+                —
+                object</dt>
+<dd>Indicates if partial results are going to be sent to the customer<br/><br/><br/> </dd>
+<dt><code>$languageCode</code>
+                —
+                string</dt>
+<dd>Language code used by the transcription engine, specified in [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) format</dd>
+<dt><code>$transcriptionEngine</code>
+                —
+                string</dt>
+<dd>Definition of the transcription engine to be used, among those supported by Twilio</dd>
+<dt><code>$profanityFilter</code>
+                —
+                object</dt>
+<dd>indicates if the server will attempt to filter out profanities, replacing all but the initial character in each filtered word with asterisks<br/><br/><br/> </dd>
+<dt><code>$speechModel</code>
+                —
+                string</dt>
+<dd>Recognition model used by the transcription engine, among those supported by the provider</dd>
+<dt><code>$hints</code>
+                —
+                string</dt>
+<dd>A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them.</dd>
+<dt><code>$enableAutomaticPunctuation</code>
+                —
+                object</dt>
+<dd>The provider will add punctuation to recognition result<br/><br/><br/> </dd>
+</dl>
+<h2 id="return">Returns</h2>
+<dl class="styled">
+<dt>CreateTranscriptionOptions</dt>
+<dd>Options builder<br/>
+</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

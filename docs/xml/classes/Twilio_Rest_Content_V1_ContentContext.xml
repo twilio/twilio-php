@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Content\V1\ContentContext" namespace="Twilio\Rest\Content\V1" name="ContentContext" abstract="false" final="false" start="34" end="173">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Content/V1" file="ContentContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Content/V1/ContentContext.php" size="4765" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="0d111cfd967a5b1d55af50d7ef512563747e7784" relative="Twilio/Rest/Content/V1/ContentContext.php"/>
+  <docblock>
+    <description/>
+    <property value="ApprovalCreateList $approvalCreate"/>
+    <property value="ApprovalFetchList $approvalFetch"/>
+    <method value="\Twilio\Rest\Content\V1\Content\ApprovalFetchContext approvalFetch()"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_approvalCreate" visibility="protected" static="false" line="36"/>
+  <member name="_approvalFetch" visibility="protected" static="false" line="37"/>
+  <constructor name="__construct" start="45" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ContentContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The Twilio-provided string that uniquely identifies the Content resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="51"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="67" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the ContentInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Content\V1\bool" namespace="Twilio\Rest\Content\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="81" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ContentInstance"/>
+      <return description="Fetched ContentInstance" type="object">
+        <type full="Twilio\Rest\Content\V1\ContentInstance" namespace="Twilio\Rest\Content\V1" name="ContentInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\ContentInstance" namespace="Twilio\Rest\Content\V1" name="ContentInstance"/>
+    </return>
+  </method>
+  <method name="getApprovalCreate" start="98" end="108" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the approvalCreate"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\Content\ApprovalCreateList" namespace="Twilio\Rest\Content\V1\Content" name="ApprovalCreateList"/>
+    </return>
+  </method>
+  <method name="getApprovalFetch" start="113" end="123" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the approvalFetch"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\Content\ApprovalFetchList" namespace="Twilio\Rest\Content\V1\Content" name="ApprovalFetchList"/>
+    </return>
+  </method>
+  <method name="__get" start="132" end="140" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="150" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="165" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

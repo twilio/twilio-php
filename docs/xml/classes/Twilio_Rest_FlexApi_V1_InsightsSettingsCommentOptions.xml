@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\InsightsSettingsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="InsightsSettingsCommentOptions" abstract="true" final="false" start="21" end="38">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="InsightsSettingsCommentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/InsightsSettingsCommentOptions.php" size="2013" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="891fefb52c9307609f4b2eb0064418ebdc4d6fcf" relative="Twilio/Rest/FlexApi/V1/InsightsSettingsCommentOptions.php"/>
+  <method name="fetch" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\FetchInsightsSettingsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="FetchInsightsSettingsCommentOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\FetchInsightsSettingsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="FetchInsightsSettingsCommentOptions"/>
+    </return>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

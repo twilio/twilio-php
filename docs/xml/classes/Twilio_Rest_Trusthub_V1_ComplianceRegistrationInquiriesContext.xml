@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\ComplianceRegistrationInquiriesContext" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceRegistrationInquiriesContext" abstract="false" final="false" start="28" end="95">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="ComplianceRegistrationInquiriesContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/ComplianceRegistrationInquiriesContext.php" size="2956" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="e69bfeb623d8965165d1de0559b15f6e49b6d1cb" relative="Twilio/Rest/Trusthub/V1/ComplianceRegistrationInquiriesContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="36" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ComplianceRegistrationInquiriesContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call." type="string" variable="$registrationId"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="registrationId" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="42"/>
+    </inline>
+  </constructor>
+  <method name="update" start="59" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the ComplianceRegistrationInquiriesInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Trusthub\V1\array|Options" namespace="Twilio\Rest\Trusthub\V1" name="array|Options"/>
+      </param>
+      <return description="Updated ComplianceRegistrationInquiriesInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\ComplianceRegistrationInquiriesInstance" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceRegistrationInquiriesInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ComplianceRegistrationInquiriesInstance" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceRegistrationInquiriesInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="87" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

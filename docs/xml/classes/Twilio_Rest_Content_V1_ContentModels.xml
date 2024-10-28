@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Content\V1\ContentModels" namespace="Twilio\Rest\Content\V1" name="ContentModels" abstract="true" final="false" start="19" end="296">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Content/V1" file="ContentModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Content/V1/ContentModels.php" size="32790" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="4ae1c29bf6e1d9adf20e22209a6ef6ebe7edd5e6" relative="Twilio/Rest/Content/V1/ContentModels.php"/>
+  <method name="createTwilioText" start="24" end="27" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioText" namespace="Twilio\Rest\Content\V1" name="TwilioText"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioMedia" start="33" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="string[] $media"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioMedia" namespace="Twilio\Rest\Content\V1" name="TwilioMedia"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioLocation" start="43" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $latitude"/>
+      <property value="string $longitude"/>
+      <property value="string $label"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioLocation" namespace="Twilio\Rest\Content\V1" name="TwilioLocation"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createListItem" start="53" end="56" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $id"/>
+      <property value="string $item"/>
+      <property value="string $description"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\ListItem" namespace="Twilio\Rest\Content\V1" name="ListItem"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioListPicker" start="63" end="66" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="string $button"/>
+      <property value="ListItem[] $items"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioListPicker" namespace="Twilio\Rest\Content\V1" name="TwilioListPicker"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createCallToActionAction" start="75" end="78" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $type"/>
+      <property value="string $title"/>
+      <property value="string $url"/>
+      <property value="string $phone"/>
+      <property value="string $code"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\CallToActionAction" namespace="Twilio\Rest\Content\V1" name="CallToActionAction"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioCallToAction" start="84" end="87" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="CallToActionAction[] $actions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioCallToAction" namespace="Twilio\Rest\Content\V1" name="TwilioCallToAction"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createQuickReplyAction" start="94" end="97" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $type"/>
+      <property value="string $title"/>
+      <property value="string $id"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\QuickReplyAction" namespace="Twilio\Rest\Content\V1" name="QuickReplyAction"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioQuickReply" start="103" end="106" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="QuickReplyAction[] $actions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioQuickReply" namespace="Twilio\Rest\Content\V1" name="TwilioQuickReply"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createCardAction" start="116" end="119" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $type"/>
+      <property value="string $title"/>
+      <property value="string $url"/>
+      <property value="string $phone"/>
+      <property value="string $id"/>
+      <property value="string $code"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\CardAction" namespace="Twilio\Rest\Content\V1" name="CardAction"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioCard" start="127" end="130" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $title"/>
+      <property value="string $subtitle"/>
+      <property value="string[] $media"/>
+      <property value="CardAction[] $actions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioCard" namespace="Twilio\Rest\Content\V1" name="TwilioCard"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createCatalogItem" start="140" end="143" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $id"/>
+      <property value="string $sectionTitle"/>
+      <property value="string $name"/>
+      <property value="string $mediaUrl"/>
+      <property value="string $price"/>
+      <property value="string $description"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\CatalogItem" namespace="Twilio\Rest\Content\V1" name="CatalogItem"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioCatalog" start="153" end="156" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $title"/>
+      <property value="string $body"/>
+      <property value="string $subtitle"/>
+      <property value="string $id"/>
+      <property value="CatalogItem[] $items"/>
+      <property value="string $dynamicItems"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioCatalog" namespace="Twilio\Rest\Content\V1" name="TwilioCatalog"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createCarouselAction" start="165" end="168" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $type"/>
+      <property value="string $title"/>
+      <property value="string $url"/>
+      <property value="string $phone"/>
+      <property value="string $id"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\CarouselAction" namespace="Twilio\Rest\Content\V1" name="CarouselAction"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createCarouselCard" start="176" end="179" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $title"/>
+      <property value="string $body"/>
+      <property value="string $media"/>
+      <property value="CarouselAction[] $actions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\CarouselCard" namespace="Twilio\Rest\Content\V1" name="CarouselCard"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioCarousel" start="185" end="188" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="CarouselCard[] $cards"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioCarousel" namespace="Twilio\Rest\Content\V1" name="TwilioCarousel"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createFlowsPageComponentSelectItem" start="194" end="197" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $id"/>
+      <property value="string $title"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\FlowsPageComponentSelectItem" namespace="Twilio\Rest\Content\V1" name="FlowsPageComponentSelectItem"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createFlowsPageComponent" start="205" end="208" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $label"/>
+      <property value="string $type"/>
+      <property value="string $text"/>
+      <property value="FlowsPageComponentSelectItem[] $options"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\FlowsPageComponent" namespace="Twilio\Rest\Content\V1" name="FlowsPageComponent"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createFlowsPage" start="217" end="220" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $id"/>
+      <property value="string $nextPageId"/>
+      <property value="string $title"/>
+      <property value="string $subtitle"/>
+      <property value="FlowsPageComponent[] $layout"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\FlowsPage" namespace="Twilio\Rest\Content\V1" name="FlowsPage"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTwilioFlows" start="230" end="233" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="string $buttonText"/>
+      <property value="string $subtitle"/>
+      <property value="string $mediaUrl"/>
+      <property value="FlowsPage[] $pages"/>
+      <property value="string $type"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\TwilioFlows" namespace="Twilio\Rest\Content\V1" name="TwilioFlows"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createWhatsappCard" start="242" end="245" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $body"/>
+      <property value="string $footer"/>
+      <property value="string[] $media"/>
+      <property value="string $headerText"/>
+      <property value="CardAction[] $actions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\WhatsappCard" namespace="Twilio\Rest\Content\V1" name="WhatsappCard"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createAuthenticationAction" start="251" end="254" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $type"/>
+      <property value="string $copyCodeText"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\AuthenticationAction" namespace="Twilio\Rest\Content\V1" name="AuthenticationAction"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createWhatsappAuthentication" start="261" end="264" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="bool $addSecurityRecommendation"/>
+      <property value="string $codeExpirationMinutes"/>
+      <property value="AuthenticationAction[] $actions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\WhatsappAuthentication" namespace="Twilio\Rest\Content\V1" name="WhatsappAuthentication"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createTypes" start="280" end="283" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="TwilioText $twilioText"/>
+      <property value="TwilioMedia $twilioMedia"/>
+      <property value="TwilioLocation $twilioLocation"/>
+      <property value="TwilioListPicker $twilioListPicker"/>
+      <property value="TwilioCallToAction $twilioCallToAction"/>
+      <property value="TwilioQuickReply $twilioQuickReply"/>
+      <property value="TwilioCard $twilioCard"/>
+      <property value="TwilioCatalog $twilioCatalog"/>
+      <property value="TwilioCarousel $twilioCarousel"/>
+      <property value="TwilioFlows $twilioFlows"/>
+      <property value="WhatsappCard $whatsappCard"/>
+      <property value="WhatsappAuthentication $whatsappAuthentication"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\Types" namespace="Twilio\Rest\Content\V1" name="Types"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createContentCreateRequest" start="291" end="294" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $friendlyName User defined name of the content"/>
+      <property value="array&lt;string,string&gt; $variables Key value pairs of variable name to value"/>
+      <property value="string $language Language code for the content"/>
+      <property value="Types $types"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content\V1\ContentCreateRequest" namespace="Twilio\Rest\Content\V1" name="ContentCreateRequest"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+</class>

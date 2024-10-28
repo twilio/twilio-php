@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\ReadMessageOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadMessageOptions" abstract="false" final="false" start="496" end="591">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="MessageOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/MessageOptions.php" size="45944" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="81f7ea9faed6f7fb2b93e587742a3f2fb6311ba7" relative="Twilio/Rest/Api/V2010/Account/MessageOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="505" end="519" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111`" type="string" variable="$to"/>
+      <param description="Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999`" type="string" variable="$from"/>
+      <param description="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)." type="string" variable="$dateSentBefore"/>
+      <param description="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)." type="string" variable="$dateSent"/>
+      <param description="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)." type="string" variable="$dateSentAfter"/>
+    </docblock>
+    <parameter name="to" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateSentBefore" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateSent" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateSentAfter" byreference="false" type="string" default="NULL"/>
+  </constructor>
+  <method name="setTo" start="527" end="531" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111`"/>
+      <param description="Filter by recipient. For example: Set this `to` parameter to `+15558881111` to retrieve a list of Message resources with `to` properties of `+15558881111`" type="string" variable="$to"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadMessageOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="to" byreference="false" type="string"/>
+  </method>
+  <method name="setFrom" start="539" end="543" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999`"/>
+      <param description="Filter by sender. For example: Set this `from` parameter to `+15552229999` to retrieve a list of Message resources with `from` properties of `+15552229999`" type="string" variable="$from"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadMessageOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="from" byreference="false" type="string"/>
+  </method>
+  <method name="setDateSentBefore" start="551" end="555" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)."/>
+      <param description="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)." type="string" variable="$dateSentBefore"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadMessageOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="dateSentBefore" byreference="false" type="string"/>
+  </method>
+  <method name="setDateSent" start="563" end="567" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)."/>
+      <param description="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)." type="string" variable="$dateSent"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadMessageOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="dateSent" byreference="false" type="string"/>
+  </method>
+  <method name="setDateSentAfter" start="575" end="579" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)."/>
+      <param description="Filter by Message `sent_date`. Accepts GMT dates in the following formats: `YYYY-MM-DD` (to find Messages with a specific `sent_date`), `&lt;=YYYY-MM-DD` (to find Messages with `sent_date`s on and before a specific date), and `&gt;=YYYY-MM-DD` (to find Messages with `sent_dates` on and after a specific date)." type="string" variable="$dateSentAfter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadMessageOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="dateSentAfter" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="586" end="590" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

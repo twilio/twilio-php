@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\RecordingContext" namespace="Twilio\Rest\Api\V2010\Account" name="RecordingContext" abstract="false" final="false" start="37" end="192">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="RecordingContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/RecordingContext.php" size="5642" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="295960db832876611a348233e7c5cb1dc9c2abfa" relative="Twilio/Rest/Api/V2010/Account/RecordingContext.php"/>
+  <docblock>
+    <description/>
+    <property value="AddOnResultList $addOnResults"/>
+    <property value="TranscriptionList $transcriptions"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Recording\AddOnResultContext addOnResults(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Recording\TranscriptionContext transcriptions(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_addOnResults" visibility="protected" static="false" line="39"/>
+  <member name="_transcriptions" visibility="protected" static="false" line="40"/>
+  <constructor name="__construct" start="49" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the RecordingContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to delete." type="string" variable="$accountSid"/>
+      <param description="The Twilio-provided string that uniquely identifies the Recording resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="accountSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="56"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="75" end="80" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the RecordingInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="90" end="109" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the RecordingInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Api\V2010\Account\array|Options" namespace="Twilio\Rest\Api\V2010\Account" name="array|Options"/>
+      </param>
+      <return description="Fetched RecordingInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\RecordingInstance" namespace="Twilio\Rest\Api\V2010\Account" name="RecordingInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\RecordingInstance" namespace="Twilio\Rest\Api\V2010\Account" name="RecordingInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getAddOnResults" start="115" end="126" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the addOnResults"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Recording\AddOnResultList" namespace="Twilio\Rest\Api\V2010\Account\Recording" name="AddOnResultList"/>
+    </return>
+  </method>
+  <method name="getTranscriptions" start="131" end="142" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the transcriptions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList" namespace="Twilio\Rest\Api\V2010\Account\Recording" name="TranscriptionList"/>
+    </return>
+  </method>
+  <method name="__get" start="151" end="159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="169" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="184" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

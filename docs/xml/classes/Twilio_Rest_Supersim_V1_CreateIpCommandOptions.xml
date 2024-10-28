@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\CreateIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateIpCommandOptions" abstract="false" final="false" start="71" end="134">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="IpCommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/IpCommandOptions.php" size="8177" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="d0bd383c4a242ee1dc5704d63b938e197370f40b" relative="Twilio/Rest/Supersim/V1/IpCommandOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="78" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$payloadType"/>
+      <param description="The URL we should call using the `callback_method` after we have sent the IP Command." type="string" variable="$callbackUrl"/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`." type="string" variable="$callbackMethod"/>
+    </docblock>
+    <parameter name="payloadType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setPayloadType" start="94" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$payloadType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateIpCommandOptions"/>
+    </return>
+    <parameter name="payloadType" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackUrl" start="106" end="110" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `callback_method` after we have sent the IP Command."/>
+      <param description="The URL we should call using the `callback_method` after we have sent the IP Command." type="string" variable="$callbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateIpCommandOptions"/>
+    </return>
+    <parameter name="callbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackMethod" start="118" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`."/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`." type="string" variable="$callbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateIpCommandOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="129" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

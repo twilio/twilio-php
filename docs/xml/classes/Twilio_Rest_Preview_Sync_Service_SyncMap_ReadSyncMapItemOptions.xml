@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Sync\Service\SyncMap\ReadSyncMapItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="ReadSyncMapItemOptions" abstract="false" final="false" start="117" end="182">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Sync/Service/SyncMap" file="SyncMapItemOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Sync/Service/SyncMap/SyncMapItemOptions.php" size="5044" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="8df18f6d65e395b46c48be3986948a9355db8ad0" relative="Twilio/Rest/Preview/Sync/Service/SyncMap/SyncMapItemOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="124" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$order"/>
+      <param type="string" variable="$from"/>
+      <param type="string" variable="$bounds"/>
+    </docblock>
+    <parameter name="order" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bounds" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setOrder" start="142" end="146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$order"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncMap\$this" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncMap\ReadSyncMapItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="ReadSyncMapItemOptions"/>
+    </return>
+    <parameter name="order" byreference="false" type="string"/>
+  </method>
+  <method name="setFrom" start="154" end="158" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$from"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncMap\$this" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncMap\ReadSyncMapItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="ReadSyncMapItemOptions"/>
+    </return>
+    <parameter name="from" byreference="false" type="string"/>
+  </method>
+  <method name="setBounds" start="166" end="170" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$bounds"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncMap\$this" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncMap\ReadSyncMapItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncMap" name="ReadSyncMapItemOptions"/>
+    </return>
+    <parameter name="bounds" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="177" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

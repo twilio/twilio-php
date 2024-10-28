@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V2\Service\Channel\WebhookOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="WebhookOptions" abstract="true" final="false" start="21" end="86">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V2/Service/Channel" file="WebhookOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V2/Service/Channel/WebhookOptions.php" size="9121" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="6329f310f73520362466c84926c246f9e21e3a89" relative="Twilio/Rest/IpMessaging/V2/Service/Channel/WebhookOptions.php"/>
+  <method name="create" start="32" end="51" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$configurationUrl"/>
+      <param type="string" variable="$configurationMethod"/>
+      <param type="array" variable="$configurationFilters" of="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\string" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="string"/>
+      </param>
+      <param type="array" variable="$configurationTriggers" of="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\string" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="string"/>
+      </param>
+      <param type="string" variable="$configurationFlowSid"/>
+      <param type="int" variable="$configurationRetryCount"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateWebhookOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationFilters" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="configurationTriggers" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="configurationFlowSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationRetryCount" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </method>
+  <method name="update" start="65" end="84" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$configurationUrl"/>
+      <param type="string" variable="$configurationMethod"/>
+      <param type="array" variable="$configurationFilters" of="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\string" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="string"/>
+      </param>
+      <param type="array" variable="$configurationTriggers" of="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\string" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="string"/>
+      </param>
+      <param type="string" variable="$configurationFlowSid"/>
+      <param type="int" variable="$configurationRetryCount"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\UpdateWebhookOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="UpdateWebhookOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V2\Service\Channel\UpdateWebhookOptions" namespace="Twilio\Rest\IpMessaging\V2\Service\Channel" name="UpdateWebhookOptions"/>
+    </return>
+    <parameter name="configurationUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationFilters" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="configurationTriggers" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="configurationFlowSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationRetryCount" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </method>
+</class>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleInstance" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleInstance" abstract="false" final="false" start="46" end="204">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance" file="BundleInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/BundleInstance.php" size="6090" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="3351997029ee19d1fdcfb00ac9293e177433175d" relative="Twilio/Rest/Numbers/V2/RegulatoryCompliance/BundleInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $sid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $regulationSid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string $status"/>
+    <property value="\DateTime|null $validUntil"/>
+    <property value="string|null $email"/>
+    <property value="string|null $statusCallback"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_replaceItems" visibility="protected" static="false" line="48"/>
+  <member name="_evaluations" visibility="protected" static="false" line="49"/>
+  <member name="_bundleCopies" visibility="protected" static="false" line="50"/>
+  <member name="_itemAssignments" visibility="protected" static="false" line="51"/>
+  <constructor name="__construct" start="60" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the BundleInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\mixed" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="mixed"/>
+      </param>
+      <param description="The unique string that we created to identify the Bundle resource." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="64"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="89" end="99" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this BundleInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleContext"/>
+    </return>
+  </method>
+  <method name="delete" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the BundleInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\bool" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the BundleInstance"/>
+      <return description="Fetched BundleInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleInstance" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleInstance" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleInstance"/>
+    </return>
+  </method>
+  <method name="update" start="132" end="136" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the BundleInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\array|Options" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="array|Options"/>
+      </param>
+      <return description="Updated BundleInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleInstance" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleInstance" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getReplaceItems" start="141" end="144" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the replaceItems"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ReplaceItemsList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="ReplaceItemsList"/>
+    </return>
+  </method>
+  <method name="getEvaluations" start="149" end="152" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the evaluations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="EvaluationList"/>
+    </return>
+  </method>
+  <method name="getBundleCopies" start="157" end="160" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the bundleCopies"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="BundleCopyList"/>
+    </return>
+  </method>
+  <method name="getItemAssignments" start="165" end="168" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the itemAssignments"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle" name="ItemAssignmentList"/>
+    </return>
+  </method>
+  <method name="__get" start="177" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="196" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

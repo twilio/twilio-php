@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions::__construct</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Bulkexports_V1_Export">Twilio\Rest\Bulkexports\V1\Export</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Bulkexports_V1_Export_CreateExportCustomJobOptions.html" title="Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions">CreateExportCustomJobOptions</a>
+</li>
+<li class="separator">__construct</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Bulkexports/V1/Export/ExportCustomJobOptions.php.html#line54">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions::</small>__construct</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function __construct([string
+        $webhookUrl = Values::NONE,
+            [string
+        $webhookMethod = Values::NONE,
+            [string
+        $email = Values::NONE]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$webhookUrl</code>
+                —
+                string</dt>
+<dd>The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied. If you set neither webhook nor email, you will have to check your job's status manually.</dd>
+<dt><code>$webhookMethod</code>
+                —
+                string</dt>
+<dd>This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied.</dd>
+<dt><code>$email</code>
+                —
+                string</dt>
+<dd>The optional email to send the completion notification to. You can set both webhook, and email, or one or the other. If you set neither, the job will run but you will have to query to determine your job's status.</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

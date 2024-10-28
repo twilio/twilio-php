@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Notify\V1\Service\CreateBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateBindingOptions" abstract="false" final="false" start="75" end="155">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Notify/V1/Service" file="BindingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Notify/V1/Service/BindingOptions.php" size="11119" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="ad14761ce0aa24a39ec2b2e42557f26c985af6df" relative="Twilio/Rest/Notify/V1/Service/BindingOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="83" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A tag that can be used to select the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 20 tags." type="array" variable="$tag" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <param description="The protocol version to use to send the notification. This defaults to the value of `default_xxxx_notification_protocol_version` for the protocol in the [Service](https://www.twilio.com/docs/notify/api/service-resource). The current version is `\\\&quot;3\\\&quot;` for `apn`, `fcm`, and `gcm` type Bindings. The parameter is not applicable to `sms` and `facebook-messenger` type Bindings as the data format is fixed." type="string" variable="$notificationProtocolVersion"/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) resource to be used to send notifications to this Binding. If present, this overrides the Credential specified in the Service resource. Applies to only `apn`, `fcm`, and `gcm` type Bindings." type="string" variable="$credentialSid"/>
+      <param description="Deprecated." type="string" variable="$endpoint"/>
+    </docblock>
+    <parameter name="tag" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="notificationProtocolVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="credentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="endpoint" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setTag" start="103" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A tag that can be used to select the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 20 tags."/>
+      <param description="A tag that can be used to select the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 20 tags." type="array" variable="$tag" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateBindingOptions"/>
+    </return>
+    <parameter name="tag" byreference="false" type="array"/>
+  </method>
+  <method name="setNotificationProtocolVersion" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The protocol version to use to send the notification. This defaults to the value of `default_xxxx_notification_protocol_version` for the protocol in the [Service](https://www.twilio.com/docs/notify/api/service-resource). The current version is `\\\&quot;3\\\&quot;` for `apn`, `fcm`, and `gcm` type Bindings. The parameter is not applicable to `sms` and `facebook-messenger` type Bindings as the data format is fixed."/>
+      <param description="The protocol version to use to send the notification. This defaults to the value of `default_xxxx_notification_protocol_version` for the protocol in the [Service](https://www.twilio.com/docs/notify/api/service-resource). The current version is `\\\&quot;3\\\&quot;` for `apn`, `fcm`, and `gcm` type Bindings. The parameter is not applicable to `sms` and `facebook-messenger` type Bindings as the data format is fixed." type="string" variable="$notificationProtocolVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateBindingOptions"/>
+    </return>
+    <parameter name="notificationProtocolVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setCredentialSid" start="127" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) resource to be used to send notifications to this Binding. If present, this overrides the Credential specified in the Service resource. Applies to only `apn`, `fcm`, and `gcm` type Bindings."/>
+      <param description="The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) resource to be used to send notifications to this Binding. If present, this overrides the Credential specified in the Service resource. Applies to only `apn`, `fcm`, and `gcm` type Bindings." type="string" variable="$credentialSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateBindingOptions"/>
+    </return>
+    <parameter name="credentialSid" byreference="false" type="string"/>
+  </method>
+  <method name="setEndpoint" start="139" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="string" variable="$endpoint"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateBindingOptions"/>
+    </return>
+    <parameter name="endpoint" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="150" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

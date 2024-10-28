@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2" namespace="Twilio\Rest\Chat" name="V2" abstract="false" final="false" start="31" end="107">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat" file="V2.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2.php" size="2998" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="a028a54bc4d13436fbe895bd2c0f5b959b01e7da" relative="Twilio/Rest/Chat/V2.php"/>
+  <docblock>
+    <description/>
+    <property value="CredentialList $credentials"/>
+    <property value="ServiceList $services"/>
+    <method value="\Twilio\Rest\Chat\V2\CredentialContext credentials(string $sid)"/>
+    <method value="\Twilio\Rest\Chat\V2\ServiceContext services(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\Version" namespace="Twilio" name="Version"/>
+  <member name="_credentials" visibility="protected" static="false" line="33"/>
+  <member name="_services" visibility="protected" static="false" line="34"/>
+  <constructor name="__construct" start="41" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the V2 version of Chat"/>
+      <param description="Domain that contains the version" type="object" variable="$domain">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </param>
+    </docblock>
+    <parameter name="domain" byreference="false" type="object">
+      <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    </parameter>
+  </constructor>
+  <method name="getCredentials" start="47" end="53" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\CredentialList" namespace="Twilio\Rest\Chat\V2" name="CredentialList"/>
+    </return>
+  </method>
+  <method name="getServices" start="55" end="61" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\ServiceList" namespace="Twilio\Rest\Chat\V2" name="ServiceList"/>
+    </return>
+  </method>
+  <method name="__get" start="70" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load root resources"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <return description="The requested resource" type="object">
+        <type full="\Twilio\ListResource" namespace="\Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="88" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="103" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Version" namespace="Twilio" name="Version">
+    <constant type="{unknown}" name="MAX_PAGE_SIZE" value="1000">
+      <docblock>
+        <description/>
+        <const value="int MAX_PAGE_SIZE largest page the Twilio API will return"/>
+      </docblock>
+    </constant>
+    <member name="domain" visibility="protected" static="false" line="18">
+      <docblock>
+        <description/>
+        <var description="$domain" type="object">
+          <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="version" visibility="protected" static="false" line="23">
+      <docblock>
+        <description/>
+        <var description="$version" type="string"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="28" end="31" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param type="object" variable="$domain">
+          <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+        </param>
+      </docblock>
+      <parameter name="domain" byreference="false" type="object">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </parameter>
+    </constructor>
+    <method name="absoluteUrl" start="38" end="40" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Generate an absolute URL from a version relative uri"/>
+        <param description="Version relative uri" type="string" variable="$uri"/>
+        <return description="Absolute URL" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="relativeUri" start="47" end="49" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Generate a domain relative uri from a version relative uri"/>
+        <param description="Version relative uri" type="string" variable="$uri"/>
+        <return description="Domain relative uri" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="request" start="51" end="66" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="exception" start="79" end="92" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Create the best possible exception for the response.">Attempts to parse the response for Twilio Standard error messages and use
+those to populate the exception, falls back to generic error message and
+HTTP status code.</description>
+        <param description="Error response" type="object" variable="$response">
+          <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+        </param>
+        <param description="Header for exception message" type="string" variable="$header"/>
+        <return type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </return>
+      <parameter name="response" byreference="false" type="object">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </parameter>
+      <parameter name="header" byreference="false" type="string"/>
+    </method>
+    <method name="fetch" start="97" end="118" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+      <inline>
+        <comment value="3XX response codes are allowed here to allow for 307 redirect from Deactivations API." line="112"/>
+      </inline>
+    </method>
+    <method name="update" start="123" end="143" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="delete" start="148" end="168" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <return type="bool" nullable="false"/>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="readLimits" start="170" end="182" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+      <parameter name="limit" byreference="false" type="int" default="NULL"/>
+      <parameter name="pageSize" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="page" start="184" end="198" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="stream" start="200" end="202" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+      </return>
+      <parameter name="page" byreference="false" type="object">
+        <type full="Twilio\Page" namespace="Twilio" name="Page"/>
+      </parameter>
+      <parameter name="limit" byreference="false" type="{unknown}" default="NULL"/>
+      <parameter name="pageLimit" byreference="false" type="{unknown}" default="NULL"/>
+    </method>
+    <method name="create" start="207" end="227" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <throws type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="getDomain" start="229" end="231" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </return>
+    </method>
+    <method name="__toString" start="233" end="235" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

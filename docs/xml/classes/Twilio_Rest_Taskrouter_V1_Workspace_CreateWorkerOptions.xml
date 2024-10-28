@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\CreateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateWorkerOptions" abstract="false" final="false" start="122" end="172">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="WorkerOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/WorkerOptions.php" size="19699" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="ebaa9948ef3861e60f01e597f55303e34bb56110" relative="Twilio/Rest/Taskrouter/V1/Workspace/WorkerOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="128" end="136" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace." type="string" variable="$activitySid"/>
+      <param description="A valid JSON string that describes the new Worker. For example: `{ \\\&quot;email\\\&quot;: \\\&quot;Bob@example.com\\\&quot;, \\\&quot;phone\\\&quot;: \\\&quot;+5095551234\\\&quot; }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}." type="string" variable="$attributes"/>
+    </docblock>
+    <parameter name="activitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setActivitySid" start="144" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace."/>
+      <param description="The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace." type="string" variable="$activitySid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\CreateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateWorkerOptions"/>
+    </return>
+    <parameter name="activitySid" byreference="false" type="string"/>
+  </method>
+  <method name="setAttributes" start="156" end="160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A valid JSON string that describes the new Worker. For example: `{ \\\&quot;email\\\&quot;: \\\&quot;Bob@example.com\\\&quot;, \\\&quot;phone\\\&quot;: \\\&quot;+5095551234\\\&quot; }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}."/>
+      <param description="A valid JSON string that describes the new Worker. For example: `{ \\\&quot;email\\\&quot;: \\\&quot;Bob@example.com\\\&quot;, \\\&quot;phone\\\&quot;: \\\&quot;+5095551234\\\&quot; }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}." type="string" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\CreateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateWorkerOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="167" end="171" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

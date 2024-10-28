@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Wireless\V1\RatePlanOptions::create</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Wireless_V1">Twilio\Rest\Wireless\V1</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Wireless_V1_RatePlanOptions.html" title="Twilio\Rest\Wireless\V1\RatePlanOptions">RatePlanOptions</a>
+</li>
+<li class="separator">create</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="#return">Return</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Wireless/V1/RatePlanOptions.php.html#line37">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Wireless\V1\RatePlanOptions::</small>create</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function create([string
+        $uniqueName = Values::NONE,
+            [string
+        $friendlyName = Values::NONE,
+            [<a href="../../classes/Twilio_Rest_Wireless_V1_bool.html" title="Twilio\Rest\Wireless\V1\bool">bool</a>
+        $dataEnabled = Values::BOOL_NONE,
+            [int
+        $dataLimit = Values::INT_NONE,
+            [string
+        $dataMetering = Values::NONE,
+            [<a href="../../classes/Twilio_Rest_Wireless_V1_bool.html" title="Twilio\Rest\Wireless\V1\bool">bool</a>
+        $messagingEnabled = Values::BOOL_NONE,
+            [<a href="../../classes/Twilio_Rest_Wireless_V1_bool.html" title="Twilio\Rest\Wireless\V1\bool">bool</a>
+        $voiceEnabled = Values::BOOL_NONE,
+            [<a href="../../classes/Twilio_Rest_Wireless_V1_bool.html" title="Twilio\Rest\Wireless\V1\bool">bool</a>
+        $nationalRoamingEnabled = Values::BOOL_NONE,
+            [array
+        $internationalRoaming = Values::ARRAY_NONE,
+            [int
+        $nationalRoamingDataLimit = Values::INT_NONE,
+            [int
+        $internationalRoamingDataLimit = Values::INT_NONE]]]]]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$uniqueName</code>
+                —
+                string</dt>
+<dd>An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.</dd>
+<dt><code>$friendlyName</code>
+                —
+                string</dt>
+<dd>A descriptive string that you create to describe the resource. It does not have to be unique.</dd>
+<dt><code>$dataEnabled</code>
+                —
+                object</dt>
+<dd>Whether SIMs can use GPRS/3G/4G/LTE data connectivity.<br/><br/><br/> </dd>
+<dt><code>$dataLimit</code>
+                —
+                int</dt>
+<dd>The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`.</dd>
+<dt><code>$dataMetering</code>
+                —
+                string</dt>
+<dd>The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans).</dd>
+<dt><code>$messagingEnabled</code>
+                —
+                object</dt>
+<dd>Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource).<br/><br/><br/> </dd>
+<dt><code>$voiceEnabled</code>
+                —
+                object</dt>
+<dd>Deprecated.<br/><br/><br/> </dd>
+<dt><code>$nationalRoamingEnabled</code>
+                —
+                object</dt>
+<dd>Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming).<br/><br/><br/> </dd>
+<dt><code>$internationalRoaming</code>
+                —
+                array</dt>
+<dd>The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`.<br/><br/><br/> </dd>
+<dt><code>$nationalRoamingDataLimit</code>
+                —
+                int</dt>
+<dd>The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info.</dd>
+<dt><code>$internationalRoamingDataLimit</code>
+                —
+                int</dt>
+<dd>The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.</dd>
+</dl>
+<h2 id="return">Returns</h2>
+<dl class="styled">
+<dt>CreateRatePlanOptions</dt>
+<dd>Options builder<br/>
+</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

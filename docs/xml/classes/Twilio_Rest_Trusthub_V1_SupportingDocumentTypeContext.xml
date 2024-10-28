@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\SupportingDocumentTypeContext" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentTypeContext" abstract="false" final="false" start="26" end="83">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="SupportingDocumentTypeContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/SupportingDocumentTypeContext.php" size="2272" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="62f08ab47ef002a7fcd7aba12abed6669bf11dbc" relative="Twilio/Rest/Trusthub/V1/SupportingDocumentTypeContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="34" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SupportingDocumentTypeContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The unique string that identifies the Supporting Document Type resource." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="40"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="56" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SupportingDocumentTypeInstance"/>
+      <return description="Fetched SupportingDocumentTypeInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentTypeInstance" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentTypeInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentTypeInstance" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentTypeInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="75" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

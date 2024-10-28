@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V1\Service\Channel\InviteOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="InviteOptions" abstract="true" final="false" start="21" end="55">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel" file="InviteOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel/InviteOptions.php" size="2841" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="23f255cb87f73a47dd28c9f0a96c9617fbc8da77" relative="Twilio/Rest/IpMessaging/V1/Service/Channel/InviteOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$roleSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\CreateInviteOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="CreateInviteOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\CreateInviteOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="CreateInviteOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="44" end="53" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\string" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="string"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\ReadInviteOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="ReadInviteOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\ReadInviteOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="ReadInviteOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

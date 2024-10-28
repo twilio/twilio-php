@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V1\ServiceContext" namespace="Twilio\Rest\IpMessaging\V1" name="ServiceContext" abstract="false" final="false" start="40" end="329">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1" file="ServiceContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/ServiceContext.php" size="11528" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="edba0ab73516c2b81fcae076d12aecf4c43eac4e" relative="Twilio/Rest/IpMessaging/V1/ServiceContext.php"/>
+  <docblock>
+    <description/>
+    <property value="ChannelList $channels"/>
+    <property value="RoleList $roles"/>
+    <property value="UserList $users"/>
+    <method value="\Twilio\Rest\IpMessaging\V1\Service\ChannelContext channels(string $sid)"/>
+    <method value="\Twilio\Rest\IpMessaging\V1\Service\RoleContext roles(string $sid)"/>
+    <method value="\Twilio\Rest\IpMessaging\V1\Service\UserContext users(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_channels" visibility="protected" static="false" line="42"/>
+  <member name="_roles" visibility="protected" static="false" line="43"/>
+  <member name="_users" visibility="protected" static="false" line="44"/>
+  <constructor name="__construct" start="52" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ServiceContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="58"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="74" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the ServiceInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\bool" namespace="Twilio\Rest\IpMessaging\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="88" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ServiceInstance"/>
+      <return description="Fetched ServiceInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\ServiceInstance" namespace="Twilio\Rest\IpMessaging\V1" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\ServiceInstance" namespace="Twilio\Rest\IpMessaging\V1" name="ServiceInstance"/>
+    </return>
+  </method>
+  <method name="update" start="109" end="233" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the ServiceInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\IpMessaging\V1\array|Options" namespace="Twilio\Rest\IpMessaging\V1" name="array|Options"/>
+      </param>
+      <return description="Updated ServiceInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\ServiceInstance" namespace="Twilio\Rest\IpMessaging\V1" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\ServiceInstance" namespace="Twilio\Rest\IpMessaging\V1" name="ServiceInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getChannels" start="239" end="249" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the channels"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\ChannelList" namespace="Twilio\Rest\IpMessaging\V1\Service" name="ChannelList"/>
+    </return>
+  </method>
+  <method name="getRoles" start="254" end="264" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the roles"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\RoleList" namespace="Twilio\Rest\IpMessaging\V1\Service" name="RoleList"/>
+    </return>
+  </method>
+  <method name="getUsers" start="269" end="279" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the users"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\UserList" namespace="Twilio\Rest\IpMessaging\V1\Service" name="UserList"/>
+    </return>
+  </method>
+  <method name="__get" start="288" end="296" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="306" end="314" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="321" end="328" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

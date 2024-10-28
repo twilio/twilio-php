@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Usage\RecordList" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="RecordList" abstract="false" final="false" start="47" end="341">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Usage" file="RecordList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Usage/RecordList.php" size="10555" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="bdaa73d1e64fa54386948306361be4dfffb77bf5" relative="Twilio/Rest/Api/V2010/Account/Usage/RecordList.php"/>
+  <docblock>
+    <description/>
+    <property value="LastMonthList $lastMonth"/>
+    <property value="TodayList $today"/>
+    <property value="YearlyList $yearly"/>
+    <property value="ThisMonthList $thisMonth"/>
+    <property value="DailyList $daily"/>
+    <property value="AllTimeList $allTime"/>
+    <property value="YesterdayList $yesterday"/>
+    <property value="MonthlyList $monthly"/>
+  </docblock>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <member name="_lastMonth" default="NULL" visibility="protected" static="false" line="49"/>
+  <member name="_today" default="NULL" visibility="protected" static="false" line="50"/>
+  <member name="_yearly" default="NULL" visibility="protected" static="false" line="51"/>
+  <member name="_thisMonth" default="NULL" visibility="protected" static="false" line="52"/>
+  <member name="_daily" default="NULL" visibility="protected" static="false" line="53"/>
+  <member name="_allTime" default="NULL" visibility="protected" static="false" line="54"/>
+  <member name="_yesterday" default="NULL" visibility="protected" static="false" line="55"/>
+  <member name="_monthly" default="NULL" visibility="protected" static="false" line="56"/>
+  <constructor name="__construct" start="64" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the RecordList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read." type="string" variable="$accountSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="accountSid" byreference="false" type="string"/>
+    <inline>
+      <comment value="Path Solution" line="70"/>
+    </inline>
+  </constructor>
+  <method name="read" start="97" end="100" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reads RecordInstance records from the API as a list.">Unlike stream(), this operation is eager and will load `limit` records into
+memory before returning.</description>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\array|Options" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="array|Options"/>
+      </param>
+      <param description="Upper limit for the number of records to return. read()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, read()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="Array of results" type="array" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\RecordInstance" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="RecordInstance"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="stream" start="121" end="128" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Streams RecordInstance records from the API as a generator stream.">This operation lazily loads records as efficiently as possible until the
+limit
+is reached.
+The results are returned as a generator, so this operation is memory
+efficient.</description>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\array|Options" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="array|Options"/>
+      </param>
+      <param description="Upper limit for the number of records to return. stream()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, stream()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="stream of results" type="object">
+        <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="page" start="139" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a single page of RecordInstance records from the API.">Request is executed immediately</description>
+      <param description="Number of records to return, defaults to 50" type="mixed" variable="$pageSize"/>
+      <param description="PageToken provided by the API" type="string" variable="$pageToken"/>
+      <param description="Page Number, this value is simply for client state" type="mixed" variable="$pageNumber"/>
+      <return description="Page of RecordInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\RecordPage" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="RecordPage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\RecordPage" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="RecordPage"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="getPage" start="174" end="182" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a specific page of RecordInstance records from the API.">Request is executed immediately</description>
+      <param description="API-generated URL for the requested results page" type="string" variable="$targetUrl"/>
+      <return description="Page of RecordInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Usage\RecordPage" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="RecordPage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\RecordPage" namespace="Twilio\Rest\Api\V2010\Account\Usage" name="RecordPage"/>
+    </return>
+    <parameter name="targetUrl" byreference="false" type="string"/>
+  </method>
+  <method name="getLastMonth" start="188" end="197" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the lastMonth"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="LastMonthList"/>
+    </return>
+  </method>
+  <method name="getToday" start="202" end="211" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the today"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\TodayList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="TodayList"/>
+    </return>
+  </method>
+  <method name="getYearly" start="216" end="225" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the yearly"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="YearlyList"/>
+    </return>
+  </method>
+  <method name="getThisMonth" start="230" end="239" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the thisMonth"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="ThisMonthList"/>
+    </return>
+  </method>
+  <method name="getDaily" start="244" end="253" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the daily"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\DailyList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="DailyList"/>
+    </return>
+  </method>
+  <method name="getAllTime" start="258" end="267" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the allTime"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="AllTimeList"/>
+    </return>
+  </method>
+  <method name="getYesterday" start="272" end="281" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the yesterday"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="YesterdayList"/>
+    </return>
+  </method>
+  <method name="getMonthly" start="286" end="295" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the monthly"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyList" namespace="Twilio\Rest\Api\V2010\Account\Usage\Record" name="MonthlyList"/>
+    </return>
+  </method>
+  <method name="__get" start="304" end="312" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="\Twilio\ListResource" namespace="\Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="322" end="330" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="337" end="340" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

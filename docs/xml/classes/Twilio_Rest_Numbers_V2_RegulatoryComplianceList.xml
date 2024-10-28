@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryComplianceList" namespace="Twilio\Rest\Numbers\V2" name="RegulatoryComplianceList" abstract="false" final="false" start="45" end="191">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2" file="RegulatoryComplianceList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryComplianceList.php" size="5798" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="06d5f21534b3ea327bfaae47737b91bba94b48e8" relative="Twilio/Rest/Numbers/V2/RegulatoryComplianceList.php"/>
+  <docblock>
+    <description/>
+    <property value="RegulationList $regulations"/>
+    <property value="SupportingDocumentList $supportingDocuments"/>
+    <property value="BundleList $bundles"/>
+    <property value="EndUserTypeList $endUserTypes"/>
+    <property value="EndUserList $endUsers"/>
+    <property value="SupportingDocumentTypeList $supportingDocumentTypes"/>
+    <method value="\Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentContext supportingDocuments(string $sid)"/>
+    <method value="\Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserContext endUsers(string $sid)"/>
+    <method value="\Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext bundles(string $sid)"/>
+    <method value="\Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeContext supportingDocumentTypes(string $sid)"/>
+    <method value="\Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationContext regulations(string $sid)"/>
+    <method value="\Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext endUserTypes(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <member name="_regulations" default="NULL" visibility="protected" static="false" line="47"/>
+  <member name="_supportingDocuments" default="NULL" visibility="protected" static="false" line="48"/>
+  <member name="_bundles" default="NULL" visibility="protected" static="false" line="49"/>
+  <member name="_endUserTypes" default="NULL" visibility="protected" static="false" line="50"/>
+  <member name="_endUsers" default="NULL" visibility="protected" static="false" line="51"/>
+  <member name="_supportingDocumentTypes" default="NULL" visibility="protected" static="false" line="52"/>
+  <constructor name="__construct" start="59" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the RegulatoryComplianceList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="64"/>
+    </inline>
+  </constructor>
+  <method name="getRegulations" start="72" end="80" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the regulations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="RegulationList"/>
+    </return>
+  </method>
+  <method name="getSupportingDocuments" start="85" end="93" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the supportingDocuments"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="SupportingDocumentList"/>
+    </return>
+  </method>
+  <method name="getBundles" start="98" end="106" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the bundles"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="BundleList"/>
+    </return>
+  </method>
+  <method name="getEndUserTypes" start="111" end="119" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the endUserTypes"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="EndUserTypeList"/>
+    </return>
+  </method>
+  <method name="getEndUsers" start="124" end="132" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the endUsers"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="EndUserList"/>
+    </return>
+  </method>
+  <method name="getSupportingDocumentTypes" start="137" end="145" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the supportingDocumentTypes"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeList" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="SupportingDocumentTypeList"/>
+    </return>
+  </method>
+  <method name="__get" start="154" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="\Twilio\ListResource" namespace="\Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="172" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="187" end="190" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

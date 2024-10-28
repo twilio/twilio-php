@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Events\V1\Sink\SinkValidateList" namespace="Twilio\Rest\Events\V1\Sink" name="SinkValidateList" abstract="false" final="false" start="25" end="85">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Events/V1/Sink" file="SinkValidateList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Events/V1/Sink/SinkValidateList.php" size="2253" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="b0fc488dab78c1e0044b8421b7b8305fce5bd5a9" relative="Twilio/Rest/Events/V1/Sink/SinkValidateList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="33" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the SinkValidateList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="A 34 character string that uniquely identifies the Sink being validated." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="string"/>
+    <inline>
+      <comment value="Path Solution" line="39"/>
+    </inline>
+  </constructor>
+  <method name="create" start="57" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the SinkValidateInstance"/>
+      <param description="A 34 character string that uniquely identifies the test event for a Sink being validated." type="string" variable="$testId"/>
+      <return description="Created SinkValidateInstance" type="object">
+        <type full="Twilio\Rest\Events\V1\Sink\SinkValidateInstance" namespace="Twilio\Rest\Events\V1\Sink" name="SinkValidateInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events\V1\Sink\SinkValidateInstance" namespace="Twilio\Rest\Events\V1\Sink" name="SinkValidateInstance"/>
+    </return>
+    <parameter name="testId" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="81" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

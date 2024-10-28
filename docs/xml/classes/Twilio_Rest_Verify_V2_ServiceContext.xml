@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Verify\V2\ServiceContext" namespace="Twilio\Rest\Verify\V2" name="ServiceContext" abstract="false" final="false" start="51" end="336">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Verify/V2" file="ServiceContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Verify/V2/ServiceContext.php" size="10166" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="d00b708dbe645d963e75b4c09d54b0781d9d0983" relative="Twilio/Rest/Verify/V2/ServiceContext.php"/>
+  <docblock>
+    <description/>
+    <property value="EntityList $entities"/>
+    <property value="VerificationCheckList $verificationChecks"/>
+    <property value="VerificationList $verifications"/>
+    <property value="AccessTokenList $accessTokens"/>
+    <property value="RateLimitList $rateLimits"/>
+    <property value="WebhookList $webhooks"/>
+    <property value="MessagingConfigurationList $messagingConfigurations"/>
+    <method value="\Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)"/>
+    <method value="\Twilio\Rest\Verify\V2\Service\AccessTokenContext accessTokens(string $sid)"/>
+    <method value="\Twilio\Rest\Verify\V2\Service\WebhookContext webhooks(string $sid)"/>
+    <method value="\Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext messagingConfigurations(string $country)"/>
+    <method value="\Twilio\Rest\Verify\V2\Service\EntityContext entities(string $identity)"/>
+    <method value="\Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_entities" visibility="protected" static="false" line="53"/>
+  <member name="_verificationChecks" visibility="protected" static="false" line="54"/>
+  <member name="_verifications" visibility="protected" static="false" line="55"/>
+  <member name="_accessTokens" visibility="protected" static="false" line="56"/>
+  <member name="_rateLimits" visibility="protected" static="false" line="57"/>
+  <member name="_webhooks" visibility="protected" static="false" line="58"/>
+  <member name="_messagingConfigurations" visibility="protected" static="false" line="59"/>
+  <constructor name="__construct" start="67" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ServiceContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The Twilio-provided string that uniquely identifies the Verification Service resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="73"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="89" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the ServiceInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="103" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ServiceInstance"/>
+      <return description="Fetched ServiceInstance" type="object">
+        <type full="Twilio\Rest\Verify\V2\ServiceInstance" namespace="Twilio\Rest\Verify\V2" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\ServiceInstance" namespace="Twilio\Rest\Verify\V2" name="ServiceInstance"/>
+    </return>
+  </method>
+  <method name="update" start="124" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the ServiceInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Verify\V2\array|Options" namespace="Twilio\Rest\Verify\V2" name="array|Options"/>
+      </param>
+      <return description="Updated ServiceInstance" type="object">
+        <type full="Twilio\Rest\Verify\V2\ServiceInstance" namespace="Twilio\Rest\Verify\V2" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\ServiceInstance" namespace="Twilio\Rest\Verify\V2" name="ServiceInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getEntities" start="186" end="196" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the entities"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\EntityList" namespace="Twilio\Rest\Verify\V2\Service" name="EntityList"/>
+    </return>
+  </method>
+  <method name="getVerificationChecks" start="201" end="211" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the verificationChecks"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\VerificationCheckList" namespace="Twilio\Rest\Verify\V2\Service" name="VerificationCheckList"/>
+    </return>
+  </method>
+  <method name="getVerifications" start="216" end="226" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the verifications"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\VerificationList" namespace="Twilio\Rest\Verify\V2\Service" name="VerificationList"/>
+    </return>
+  </method>
+  <method name="getAccessTokens" start="231" end="241" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the accessTokens"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\AccessTokenList" namespace="Twilio\Rest\Verify\V2\Service" name="AccessTokenList"/>
+    </return>
+  </method>
+  <method name="getRateLimits" start="246" end="256" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the rateLimits"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\RateLimitList" namespace="Twilio\Rest\Verify\V2\Service" name="RateLimitList"/>
+    </return>
+  </method>
+  <method name="getWebhooks" start="261" end="271" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the webhooks"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\WebhookList" namespace="Twilio\Rest\Verify\V2\Service" name="WebhookList"/>
+    </return>
+  </method>
+  <method name="getMessagingConfigurations" start="276" end="286" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the messagingConfigurations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationList" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationList"/>
+    </return>
+  </method>
+  <method name="__get" start="295" end="303" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="313" end="321" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="328" end="335" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

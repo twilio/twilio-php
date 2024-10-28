@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Insights\V1\SettingOptions" namespace="Twilio\Rest\Insights\V1" name="SettingOptions" abstract="true" final="false" start="21" end="59">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Insights/V1" file="SettingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Insights/V1/SettingOptions.php" size="4716" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="ba1517aab83cc5d3f9f6ba8be161889c3094561b" relative="Twilio/Rest/Insights/V1/SettingOptions.php"/>
+  <method name="fetch" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The unique SID identifier of the Subaccount." type="string" variable="$subaccountSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\FetchSettingOptions" namespace="Twilio\Rest\Insights\V1" name="FetchSettingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\FetchSettingOptions" namespace="Twilio\Rest\Insights\V1" name="FetchSettingOptions"/>
+    </return>
+    <parameter name="subaccountSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="44" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A boolean flag to enable Advanced Features for Voice Insights." type="object" variable="$advancedFeatures">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="A boolean flag to enable Voice Trace." type="object" variable="$voiceTrace">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="The unique SID identifier of the Subaccount." type="string" variable="$subaccountSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\UpdateSettingOptions" namespace="Twilio\Rest\Insights\V1" name="UpdateSettingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\UpdateSettingOptions" namespace="Twilio\Rest\Insights\V1" name="UpdateSettingOptions"/>
+    </return>
+    <parameter name="advancedFeatures" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="voiceTrace" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="subaccountSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

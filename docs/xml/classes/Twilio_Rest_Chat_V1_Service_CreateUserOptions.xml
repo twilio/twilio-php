@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V1\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="CreateUserOptions" abstract="false" final="false" start="70" end="135">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V1/Service" file="UserOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V1/Service/UserOptions.php" size="6825" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="caddcbe836ee14616777b1073686ad2ff544e474" relative="Twilio/Rest/Chat/V1/Service/UserOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="77" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User." type="string" variable="$roleSid"/>
+      <param description="A valid JSON string that contains application-specific data." type="string" variable="$attributes"/>
+      <param description="A descriptive string that you create to describe the new resource. This value is often used for display purposes." type="string" variable="$friendlyName"/>
+    </docblock>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setRoleSid" start="95" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User."/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User." type="string" variable="$roleSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V1\Service\$this" namespace="Twilio\Rest\Chat\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V1\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="string"/>
+  </method>
+  <method name="setAttributes" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A valid JSON string that contains application-specific data."/>
+      <param description="A valid JSON string that contains application-specific data." type="string" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V1\Service\$this" namespace="Twilio\Rest\Chat\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V1\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you create to describe the new resource. This value is often used for display purposes."/>
+      <param description="A descriptive string that you create to describe the new resource. This value is often used for display purposes." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V1\Service\$this" namespace="Twilio\Rest\Chat\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V1\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="130" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

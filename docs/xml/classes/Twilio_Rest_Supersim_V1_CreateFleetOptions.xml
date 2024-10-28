@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions" abstract="false" final="false" start="110" end="250">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="FleetOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/FleetOptions.php" size="22136" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="316166da6413b91d83a5cd55300afdf47b1fc40f" relative="Twilio/Rest/Supersim/V1/FleetOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="122" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <param description="Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`." type="object" variable="$dataEnabled">
+        <type full="Twilio\Rest\Supersim\V1\bool" namespace="Twilio\Rest\Supersim\V1" name="bool"/>
+      </param>
+      <param description="The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000)." type="int" variable="$dataLimit"/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$ipCommandsUrl"/>
+      <param description="A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$ipCommandsMethod"/>
+      <param description="Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`." type="object" variable="$smsCommandsEnabled">
+        <type full="Twilio\Rest\Supersim\V1\bool" namespace="Twilio\Rest\Supersim\V1" name="bool"/>
+      </param>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$smsCommandsUrl"/>
+      <param description="A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$smsCommandsMethod"/>
+    </docblock>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dataEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dataLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="ipCommandsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ipCommandsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsCommandsEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="smsCommandsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsCommandsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setUniqueName" start="150" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource."/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="string"/>
+  </method>
+  <method name="setDataEnabled" start="162" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`."/>
+      <param description="Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`." type="object" variable="$dataEnabled">
+        <type full="Twilio\Rest\Supersim\V1\bool" namespace="Twilio\Rest\Supersim\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="dataEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setDataLimit" start="174" end="178" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000)."/>
+      <param description="The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000)." type="int" variable="$dataLimit"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="dataLimit" byreference="false" type="int"/>
+  </method>
+  <method name="setIpCommandsUrl" start="186" end="190" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored."/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$ipCommandsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="ipCommandsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setIpCommandsMethod" start="198" end="202" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`."/>
+      <param description="A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$ipCommandsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="ipCommandsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsCommandsEnabled" start="210" end="214" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`."/>
+      <param description="Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`." type="object" variable="$smsCommandsEnabled">
+        <type full="Twilio\Rest\Supersim\V1\bool" namespace="Twilio\Rest\Supersim\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="smsCommandsEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setSmsCommandsUrl" start="222" end="226" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored."/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$smsCommandsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="smsCommandsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsCommandsMethod" start="234" end="238" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`."/>
+      <param description="A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$smsCommandsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateFleetOptions"/>
+    </return>
+    <parameter name="smsCommandsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="245" end="249" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Events\V1\SinkContext" namespace="Twilio\Rest\Events\V1" name="SinkContext" abstract="false" final="false" start="33" end="198">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Events/V1" file="SinkContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Events/V1/SinkContext.php" size="5300" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="641ec832d811f2b8f47e7f6e5cc73c7549a65c21" relative="Twilio/Rest/Events/V1/SinkContext.php"/>
+  <docblock>
+    <description/>
+    <property value="SinkTestList $sinkTest"/>
+    <property value="SinkValidateList $sinkValidate"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_sinkTest" visibility="protected" static="false" line="35"/>
+  <member name="_sinkValidate" visibility="protected" static="false" line="36"/>
+  <constructor name="__construct" start="44" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SinkContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="A 34 character string that uniquely identifies this Sink." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="50"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="66" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the SinkInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Events\V1\bool" namespace="Twilio\Rest\Events\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="80" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SinkInstance"/>
+      <return description="Fetched SinkInstance" type="object">
+        <type full="Twilio\Rest\Events\V1\SinkInstance" namespace="Twilio\Rest\Events\V1" name="SinkInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events\V1\SinkInstance" namespace="Twilio\Rest\Events\V1" name="SinkInstance"/>
+    </return>
+  </method>
+  <method name="update" start="101" end="117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the SinkInstance"/>
+      <param description="A human readable description for the Sink **This value should not contain PII." type="string" variable="$description"/>
+      <return description="Updated SinkInstance" type="object">
+        <type full="Twilio\Rest\Events\V1\SinkInstance" namespace="Twilio\Rest\Events\V1" name="SinkInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events\V1\SinkInstance" namespace="Twilio\Rest\Events\V1" name="SinkInstance"/>
+    </return>
+    <parameter name="description" byreference="false" type="string"/>
+  </method>
+  <method name="getSinkTest" start="123" end="133" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the sinkTest"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events\V1\Sink\SinkTestList" namespace="Twilio\Rest\Events\V1\Sink" name="SinkTestList"/>
+    </return>
+  </method>
+  <method name="getSinkValidate" start="138" end="148" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the sinkValidate"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events\V1\Sink\SinkValidateList" namespace="Twilio\Rest\Events\V1\Sink" name="SinkValidateList"/>
+    </return>
+  </method>
+  <method name="__get" start="157" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="175" end="183" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="190" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

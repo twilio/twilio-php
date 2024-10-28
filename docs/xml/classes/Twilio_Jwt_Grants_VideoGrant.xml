@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Jwt\Grants\VideoGrant" namespace="Twilio\Jwt\Grants" name="VideoGrant" abstract="false" final="false" start="7" end="52">
+  <file path="/twilio/repos/php/src/Twilio/Jwt/Grants" file="VideoGrant.php" realpath="/twilio/repos/php/src/Twilio/Jwt/Grants/VideoGrant.php" size="1003" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="6cc9d556a84046e24561c374a8fcba7a41a512a9" relative="Twilio/Jwt/Grants/VideoGrant.php"/>
+  <implements full="Twilio\Jwt\Grants\Grant" namespace="Twilio\Jwt\Grants" name="Grant"/>
+  <member name="room" visibility="private" static="false" line="9"/>
+  <method name="getRoom" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the room"/>
+      <return description="room name or sid set in this grant" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="setRoom" start="26" end="29" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the room to allow access to in the grant"/>
+      <param description="room sid or name" type="string" variable="$roomSidOrName"/>
+      <return description="updated grant" type="object">
+        <type full="Twilio\Jwt\Grants\$this" namespace="Twilio\Jwt\Grants" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Jwt\Grants\VideoGrant" namespace="Twilio\Jwt\Grants" name="VideoGrant"/>
+    </return>
+    <parameter name="roomSidOrName" byreference="false" type="string"/>
+  </method>
+  <method name="getGrantKey" start="36" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the grant type"/>
+      <return description="type of the grant" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getPayload" start="45" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the grant data"/>
+      <return description="data of the grant" type="array"/>
+    </docblock>
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="Twilio\Jwt\Grants\Grant" namespace="Twilio\Jwt\Grants" name="Grant">
+    <method name="getGrantKey" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the grant type"/>
+        <return description="type of the grant" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPayload" start="20" end="20" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the grant data"/>
+        <return description="data of the grant" type="array"/>
+      </docblock>
+      <return type="array" nullable="false"/>
+    </method>
+  </interface>
+</class>

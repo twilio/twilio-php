@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Http\File" namespace="Twilio\Http" name="File" abstract="false" final="true" start="6" end="47">
+  <file path="/twilio/repos/php/src/Twilio/Http" file="File.php" realpath="/twilio/repos/php/src/Twilio/Http/File.php" size="990" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="620fc7598dc2fc093e724ad7c4177fb3f955292c" relative="Twilio/Http/File.php"/>
+  <member name="fileName" visibility="private" static="false" line="10">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="contents" visibility="private" static="false" line="15">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Twilio\Http\resource|string|mixed|null" namespace="Twilio\Http" name="resource|string|mixed|null"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="contentType" visibility="private" static="false" line="20">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Twilio\Http\string|null" namespace="Twilio\Http" name="string|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="27" end="31" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="full file path or file name for passed $contents" type="string" variable="$fileName"/>
+      <param type="object" variable="$contents">
+        <type full="Twilio\Http\string|resource|mixed|null" namespace="Twilio\Http" name="string|resource|mixed|null"/>
+      </param>
+      <param type="string" variable="$contentType"/>
+    </docblock>
+    <parameter name="fileName" byreference="false" type="string"/>
+    <parameter name="contents" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="contentType" byreference="false" type="string" default="NULL"/>
+  </constructor>
+  <method name="getContents" start="36" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="Twilio\Http\resource|string|mixed|null" namespace="Twilio\Http" name="resource|string|mixed|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getFileName" start="40" end="42" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="getContentType" start="44" end="46" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="true"/>
+  </method>
+</class>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions" abstract="false" final="false" start="153" end="396">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/HostedNumbers" file="HostedNumberOrderOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/HostedNumbers/HostedNumberOrderOptions.php" size="31149" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="17734f9a1a4347efc9f1ea6fb34742cc929c8ff4" relative="Twilio/Rest/Preview/HostedNumbers/HostedNumberOrderOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="172" end="206" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to." type="string" variable="$accountSid"/>
+      <param description="A 64 character string that is a human readable text that describes this resource." type="string" variable="$friendlyName"/>
+      <param description="Optional. Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID." type="string" variable="$uniqueName"/>
+      <param description="Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to." type="array" variable="$ccEmails" of="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\string" namespace="Twilio\Rest\Preview\HostedNumbers" name="string"/>
+      </param>
+      <param description="The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsUrl"/>
+      <param description="The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsMethod"/>
+      <param description="A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by SmsUrl. This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsFallbackUrl"/>
+      <param description="The HTTP method that should be used to request the SmsFallbackUrl. Must be either `GET` or `POST`. This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsFallbackMethod"/>
+      <param description="Optional. The Status Callback URL attached to the IncomingPhoneNumber resource." type="string" variable="$statusCallbackUrl"/>
+      <param description="Optional. The Status Callback Method attached to the IncomingPhoneNumber resource." type="string" variable="$statusCallbackMethod"/>
+      <param description="Optional. The 34 character sid of the application Twilio should use to handle SMS messages sent to this number. If a `SmsApplicationSid` is present, Twilio will ignore all of the SMS urls above and use those set on the application." type="string" variable="$smsApplicationSid"/>
+      <param description="Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number." type="string" variable="$addressSid"/>
+      <param description="Optional. Email of the owner of this phone number that is being hosted." type="string" variable="$email"/>
+      <param type="string" variable="$verificationType"/>
+      <param description="Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill." type="string" variable="$verificationDocumentSid"/>
+    </docblock>
+    <parameter name="accountSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ccEmails" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="smsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsApplicationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verificationType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verificationDocumentSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setAccountSid" start="214" end="218" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to."/>
+      <param description="This defaults to the AccountSid of the authorization the user is using. This can be provided to specify a subaccount to add the HostedNumberOrder to." type="string" variable="$accountSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="accountSid" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="226" end="230" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A 64 character string that is a human readable text that describes this resource."/>
+      <param description="A 64 character string that is a human readable text that describes this resource." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setUniqueName" start="238" end="242" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID."/>
+      <param description="Optional. Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID." type="string" variable="$uniqueName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="string"/>
+  </method>
+  <method name="setCcEmails" start="250" end="254" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to."/>
+      <param description="Optional. A list of emails that the LOA document for this HostedNumberOrder will be carbon copied to." type="array" variable="$ccEmails" of="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\string" namespace="Twilio\Rest\Preview\HostedNumbers" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="ccEmails" byreference="false" type="array"/>
+  </method>
+  <method name="setSmsUrl" start="262" end="266" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource."/>
+      <param description="The URL that Twilio should request when somebody sends an SMS to the phone number. This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="smsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsMethod" start="274" end="278" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource."/>
+      <param description="The HTTP method that should be used to request the SmsUrl. Must be either `GET` or `POST`.  This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="smsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsFallbackUrl" start="286" end="290" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by SmsUrl. This will be copied onto the IncomingPhoneNumber resource."/>
+      <param description="A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by SmsUrl. This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsFallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="smsFallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsFallbackMethod" start="298" end="302" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that should be used to request the SmsFallbackUrl. Must be either `GET` or `POST`. This will be copied onto the IncomingPhoneNumber resource."/>
+      <param description="The HTTP method that should be used to request the SmsFallbackUrl. Must be either `GET` or `POST`. This will be copied onto the IncomingPhoneNumber resource." type="string" variable="$smsFallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="smsFallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackUrl" start="310" end="314" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. The Status Callback URL attached to the IncomingPhoneNumber resource."/>
+      <param description="Optional. The Status Callback URL attached to the IncomingPhoneNumber resource." type="string" variable="$statusCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="statusCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackMethod" start="322" end="326" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. The Status Callback Method attached to the IncomingPhoneNumber resource."/>
+      <param description="Optional. The Status Callback Method attached to the IncomingPhoneNumber resource." type="string" variable="$statusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="statusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsApplicationSid" start="334" end="338" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. The 34 character sid of the application Twilio should use to handle SMS messages sent to this number. If a `SmsApplicationSid` is present, Twilio will ignore all of the SMS urls above and use those set on the application."/>
+      <param description="Optional. The 34 character sid of the application Twilio should use to handle SMS messages sent to this number. If a `SmsApplicationSid` is present, Twilio will ignore all of the SMS urls above and use those set on the application." type="string" variable="$smsApplicationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="smsApplicationSid" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressSid" start="346" end="350" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number."/>
+      <param description="Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number." type="string" variable="$addressSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="addressSid" byreference="false" type="string"/>
+  </method>
+  <method name="setEmail" start="358" end="362" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. Email of the owner of this phone number that is being hosted."/>
+      <param description="Optional. Email of the owner of this phone number that is being hosted." type="string" variable="$email"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="email" byreference="false" type="string"/>
+  </method>
+  <method name="setVerificationType" start="368" end="372" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$verificationType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="verificationType" byreference="false" type="string"/>
+  </method>
+  <method name="setVerificationDocumentSid" start="380" end="384" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill."/>
+      <param description="Optional. The unique sid identifier of the Identity Document that represents the document for verifying ownership of the number to be hosted. Required when VerificationType is phone-bill." type="string" variable="$verificationDocumentSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\HostedNumbers\$this" namespace="Twilio\Rest\Preview\HostedNumbers" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\CreateHostedNumberOrderOptions" namespace="Twilio\Rest\Preview\HostedNumbers" name="CreateHostedNumberOrderOptions"/>
+    </return>
+    <parameter name="verificationDocumentSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="391" end="395" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

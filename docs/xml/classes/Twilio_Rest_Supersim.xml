@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim" namespace="Twilio\Rest" name="Supersim" abstract="false" final="false" start="7" end="142">
+  <file path="/twilio/repos/php/src/Twilio/Rest" file="Supersim.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim.php" size="5123" time="2024-10-28T12:06:41+00:00" unixtime="1730117201" sha1="62001c6de747c240c9aea643d1e4db05e07bb84f" relative="Twilio/Rest/Supersim.php"/>
+  <extends full="Twilio\Rest\SupersimBase" namespace="Twilio\Rest" name="SupersimBase"/>
+  <method name="getEsimProfiles" start="11" end="14" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;esimProfiles instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\EsimProfileList" namespace="Twilio\Rest\Supersim\V1" name="EsimProfileList"/>
+    </return>
+  </method>
+  <method name="contextEsimProfiles" start="20" end="23" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;esimProfiles(\$sid) instead."/>
+      <param description="The SID of the eSIM Profile resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\EsimProfileContext" namespace="Twilio\Rest\Supersim\V1" name="EsimProfileContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getFleets" start="28" end="31" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;fleets instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\FleetList" namespace="Twilio\Rest\Supersim\V1" name="FleetList"/>
+    </return>
+  </method>
+  <method name="contextFleets" start="37" end="40" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;fleets(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\FleetContext" namespace="Twilio\Rest\Supersim\V1" name="FleetContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getIpCommands" start="45" end="48" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;ipCommands instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\IpCommandList" namespace="Twilio\Rest\Supersim\V1" name="IpCommandList"/>
+    </return>
+  </method>
+  <method name="contextIpCommands" start="54" end="57" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;ipCommands(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\IpCommandContext" namespace="Twilio\Rest\Supersim\V1" name="IpCommandContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getNetworks" start="62" end="65" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;networks instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\NetworkList" namespace="Twilio\Rest\Supersim\V1" name="NetworkList"/>
+    </return>
+  </method>
+  <method name="contextNetworks" start="71" end="74" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;networks(\$sid) instead."/>
+      <param description="The SID of the Network resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\NetworkContext" namespace="Twilio\Rest\Supersim\V1" name="NetworkContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getNetworkAccessProfiles" start="79" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;networkAccessProfiles instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\NetworkAccessProfileList" namespace="Twilio\Rest\Supersim\V1" name="NetworkAccessProfileList"/>
+    </return>
+  </method>
+  <method name="contextNetworkAccessProfiles" start="88" end="91" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;networkAccessProfiles(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\NetworkAccessProfileContext" namespace="Twilio\Rest\Supersim\V1" name="NetworkAccessProfileContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getSettingsUpdates" start="96" end="99" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;settingsUpdates instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\SettingsUpdateList" namespace="Twilio\Rest\Supersim\V1" name="SettingsUpdateList"/>
+    </return>
+  </method>
+  <method name="getSims" start="104" end="107" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;sims instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\SimList" namespace="Twilio\Rest\Supersim\V1" name="SimList"/>
+    </return>
+  </method>
+  <method name="contextSims" start="113" end="116" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;sims(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\SimContext" namespace="Twilio\Rest\Supersim\V1" name="SimContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getSmsCommands" start="121" end="124" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;smsCommands instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\SmsCommandList" namespace="Twilio\Rest\Supersim\V1" name="SmsCommandList"/>
+    </return>
+  </method>
+  <method name="contextSmsCommands" start="130" end="133" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;smsCommands(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\SmsCommandContext" namespace="Twilio\Rest\Supersim\V1" name="SmsCommandContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getUsageRecords" start="138" end="141" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;usageRecords instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UsageRecordList" namespace="Twilio\Rest\Supersim\V1" name="UsageRecordList"/>
+    </return>
+  </method>
+  <parent full="Twilio\Rest\SupersimBase" namespace="Twilio\Rest" name="SupersimBase">
+    <extends full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    <member name="_v1" visibility="protected" static="false" line="23"/>
+    <constructor name="__construct" start="30" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Construct the Supersim Domain"/>
+        <param description="Client to communicate with Twilio" type="object" variable="$client">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </param>
+      </docblock>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </parameter>
+    </constructor>
+    <method name="getV1" start="40" end="45" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return description="Version v1 of supersim" type="object">
+          <type full="Twilio\Rest\Supersim\V1" namespace="Twilio\Rest\Supersim" name="V1"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Supersim\V1" namespace="Twilio\Rest\Supersim" name="V1"/>
+      </return>
+    </method>
+    <method name="__get" start="54" end="61" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic getter to lazy load version"/>
+        <param description="Version to return" type="string" variable="$name"/>
+        <return description="The requested version" type="object">
+          <type full="\Twilio\Version" namespace="\Twilio" name="Version"/>
+        </return>
+        <throws description="For unknown versions" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+    </method>
+    <method name="__call" start="71" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic caller to get resource contexts"/>
+        <param description="Resource to return" type="string" variable="$name"/>
+        <param description="Context parameters" type="array" variable="$arguments"/>
+        <return description="The requested resource context" type="object">
+          <type full="\Twilio\InstanceContext" namespace="\Twilio" name="InstanceContext"/>
+        </return>
+        <throws description="For unknown resource" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="__toString" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Provide a friendly representation"/>
+        <return description="Machine friendly representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+  <parent full="Twilio\Domain" namespace="Twilio" name="Domain">
+    <member name="client" visibility="protected" static="false" line="19">
+      <docblock>
+        <description/>
+        <var description="Twilio Client" type="object">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="baseUrl" visibility="protected" static="false" line="24">
+      <docblock>
+        <description/>
+        <var description="Base URL for this domain" type="string"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="30" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Construct a new Domain"/>
+        <param description="used to communicate with Twilio" type="object" variable="$client">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </param>
+      </docblock>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </parameter>
+    </constructor>
+    <method name="absoluteUrl" start="41" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Translate version relative URIs into absolute URLs"/>
+        <param description="Version relative URI" type="string" variable="$uri"/>
+        <return description="Absolute URL for this domain" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="request" start="58" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Make an HTTP request to the domain"/>
+        <param description="HTTP Method to make the request with" type="string" variable="$method"/>
+        <param description="Relative uri to make a request to" type="string" variable="$uri"/>
+        <param description="Query string arguments" type="array" variable="$params"/>
+        <param description="Post form data" type="array" variable="$data"/>
+        <param description="HTTP headers to send with the request" type="array" variable="$headers"/>
+        <param description="User to authenticate as" type="string" variable="$user"/>
+        <param description="Password" type="string" variable="$password"/>
+        <param description="Request timeout" type="int" variable="$timeout"/>
+        <return description="the response for the request" type="object">
+          <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="user" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="getClient" start="75" end="77" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </return>
+    </method>
+    <method name="__toString" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

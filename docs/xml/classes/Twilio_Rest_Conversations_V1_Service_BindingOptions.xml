@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\Service\BindingOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="BindingOptions" abstract="true" final="false" start="21" end="43">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service" file="BindingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/BindingOptions.php" size="3967" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="b58b16cedcb779758bf5144a6868ca14ab36aabb" relative="Twilio/Rest/Conversations/V1/Service/BindingOptions.php"/>
+  <method name="read" start="30" end="41" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The push technology used by the Binding resources to read.  Can be: `apn`, `gcm`, or `fcm`.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info." type="string" variable="$bindingType"/>
+      <param description="The identity of a [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource) this binding belongs to. See [access tokens](https://www.twilio.com/docs/conversations/create-tokens) for more details." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\string" namespace="Twilio\Rest\Conversations\V1\Service" name="string"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="ReadBindingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="bindingType" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

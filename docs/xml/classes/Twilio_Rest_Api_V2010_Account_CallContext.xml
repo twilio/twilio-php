@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\CallContext" namespace="Twilio\Rest\Api\V2010\Account" name="CallContext" abstract="false" final="false" start="55" end="366">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="CallContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/CallContext.php" size="10745" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="2e8c861a21d53179e1252c67f34681b425eddb94" relative="Twilio/Rest/Api/V2010/Account/CallContext.php"/>
+  <docblock>
+    <description/>
+    <property value="TranscriptionList $transcriptions"/>
+    <property value="RecordingList $recordings"/>
+    <property value="UserDefinedMessageSubscriptionList $userDefinedMessageSubscriptions"/>
+    <property value="EventList $events"/>
+    <property value="NotificationList $notifications"/>
+    <property value="UserDefinedMessageList $userDefinedMessages"/>
+    <property value="SiprecList $siprec"/>
+    <property value="StreamList $streams"/>
+    <property value="PaymentList $payments"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\TranscriptionContext transcriptions(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\SiprecContext siprec(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageSubscriptionContext userDefinedMessageSubscriptions(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\PaymentContext payments(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\RecordingContext recordings(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\NotificationContext notifications(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Call\StreamContext streams(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_transcriptions" visibility="protected" static="false" line="57"/>
+  <member name="_recordings" visibility="protected" static="false" line="58"/>
+  <member name="_userDefinedMessageSubscriptions" visibility="protected" static="false" line="59"/>
+  <member name="_events" visibility="protected" static="false" line="60"/>
+  <member name="_notifications" visibility="protected" static="false" line="61"/>
+  <member name="_userDefinedMessages" visibility="protected" static="false" line="62"/>
+  <member name="_siprec" visibility="protected" static="false" line="63"/>
+  <member name="_streams" visibility="protected" static="false" line="64"/>
+  <member name="_payments" visibility="protected" static="false" line="65"/>
+  <constructor name="__construct" start="74" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the CallContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource." type="string" variable="$accountSid"/>
+      <param description="The Twilio-provided Call SID that uniquely identifies the Call resource to delete" type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="accountSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="81"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="100" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the CallInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="114" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the CallInstance"/>
+      <return description="Fetched CallInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\CallInstance" namespace="Twilio\Rest\Api\V2010\Account" name="CallInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CallInstance" namespace="Twilio\Rest\Api\V2010\Account" name="CallInstance"/>
+    </return>
+  </method>
+  <method name="update" start="136" end="171" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the CallInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Api\V2010\Account\array|Options" namespace="Twilio\Rest\Api\V2010\Account" name="array|Options"/>
+      </param>
+      <return description="Updated CallInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\CallInstance" namespace="Twilio\Rest\Api\V2010\Account" name="CallInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CallInstance" namespace="Twilio\Rest\Api\V2010\Account" name="CallInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getTranscriptions" start="177" end="188" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the transcriptions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\TranscriptionList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="TranscriptionList"/>
+    </return>
+  </method>
+  <method name="getRecordings" start="193" end="204" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the recordings"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\RecordingList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="RecordingList"/>
+    </return>
+  </method>
+  <method name="getUserDefinedMessageSubscriptions" start="209" end="220" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the userDefinedMessageSubscriptions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageSubscriptionList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="UserDefinedMessageSubscriptionList"/>
+    </return>
+  </method>
+  <method name="getEvents" start="225" end="236" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the events"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\EventList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="EventList"/>
+    </return>
+  </method>
+  <method name="getNotifications" start="241" end="252" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the notifications"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\NotificationList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="NotificationList"/>
+    </return>
+  </method>
+  <method name="getUserDefinedMessages" start="257" end="268" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the userDefinedMessages"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="UserDefinedMessageList"/>
+    </return>
+  </method>
+  <method name="getSiprec" start="273" end="284" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the siprec"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\SiprecList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="SiprecList"/>
+    </return>
+  </method>
+  <method name="getStreams" start="289" end="300" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the streams"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\StreamList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="StreamList"/>
+    </return>
+  </method>
+  <method name="getPayments" start="305" end="316" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the payments"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\PaymentList" namespace="Twilio\Rest\Api\V2010\Account\Call" name="PaymentList"/>
+    </return>
+  </method>
+  <method name="__get" start="325" end="333" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="343" end="351" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="358" end="365" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

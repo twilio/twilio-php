@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Content\V1\Content\ContentApprovalRequest" namespace="Twilio\Rest\Content\V1\Content" name="ContentApprovalRequest" abstract="false" final="false" start="32" end="57">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Content/V1/Content" file="ApprovalCreateModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Content/V1/Content/ApprovalCreateModels.php" size="1610" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="cb0a97c8ccdd3f6a2f7d54d22416be0610ee3652" relative="Twilio/Rest/Content/V1/Content/ApprovalCreateModels.php"/>
+  <implements full="JsonSerializable" namespace="" name="JsonSerializable"/>
+  <member name="name" visibility="protected" static="false" line="38">
+    <docblock>
+      <description/>
+      <property value="string $name Name of the template."/>
+      <property value="string $category A WhatsApp recognized template category."/>
+    </docblock>
+  </member>
+  <member name="category" visibility="protected" static="false" line="39"/>
+  <constructor name="__construct" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="toArray" start="45" end="48" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="jsonSerialize" start="50" end="56" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="JsonSerializable" namespace="" name="JsonSerializable">
+    <method name="jsonSerialize" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Specify data which should be serialized to JSON"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

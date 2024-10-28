@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\RecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="RecordingOptions" abstract="true" final="false" start="21" end="69">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="RecordingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/RecordingOptions.php" size="12610" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="cd7f70fcd77610ccf11bcd9eafdf38243aac3b47" relative="Twilio/Rest/Api/V2010/Account/RecordingOptions.php"/>
+  <method name="fetch" start="28" end="37" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days." type="object" variable="$includeSoftDeleted">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\FetchRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="FetchRecordingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\FetchRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="FetchRecordingOptions"/>
+    </return>
+    <parameter name="includeSoftDeleted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="read" start="48" end="67" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated&lt;=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated&gt;=YYYY-MM-DD` to read recordings that were created on or after midnight of this date." type="string" variable="$dateCreatedBefore"/>
+      <param description="Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated&lt;=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated&gt;=YYYY-MM-DD` to read recordings that were created on or after midnight of this date." type="string" variable="$dateCreated"/>
+      <param description="Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated&lt;=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated&gt;=YYYY-MM-DD` to read recordings that were created on or after midnight of this date." type="string" variable="$dateCreatedAfter"/>
+      <param description="The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read." type="string" variable="$callSid"/>
+      <param description="The Conference SID that identifies the conference associated with the recording to read." type="string" variable="$conferenceSid"/>
+      <param description="A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days." type="object" variable="$includeSoftDeleted">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\ReadRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadRecordingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ReadRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ReadRecordingOptions"/>
+    </return>
+    <parameter name="dateCreatedBefore" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateCreated" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateCreatedAfter" byreference="false" type="string" default="NULL"/>
+    <parameter name="callSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="includeSoftDeleted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

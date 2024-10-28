@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Bulkexports\V1\ExportConfigurationOptions" namespace="Twilio\Rest\Bulkexports\V1" name="ExportConfigurationOptions" abstract="true" final="false" start="21" end="45">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1" file="ExportConfigurationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1/ExportConfigurationOptions.php" size="4016" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="f74008415ef2c5ae7788206abfeb787becc32786" relative="Twilio/Rest/Bulkexports/V1/ExportConfigurationOptions.php"/>
+  <method name="update" start="30" end="43" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="If true, Twilio will automatically generate every day's file when the day is over." type="object" variable="$enabled">
+        <type full="Twilio\Rest\Bulkexports\V1\bool" namespace="Twilio\Rest\Bulkexports\V1" name="bool"/>
+      </param>
+      <param description="Stores the URL destination for the method specified in webhook_method." type="string" variable="$webhookUrl"/>
+      <param description="Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url" type="string" variable="$webhookMethod"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\UpdateExportConfigurationOptions" namespace="Twilio\Rest\Bulkexports\V1" name="UpdateExportConfigurationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\UpdateExportConfigurationOptions" namespace="Twilio\Rest\Bulkexports\V1" name="UpdateExportConfigurationOptions"/>
+    </return>
+    <parameter name="enabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="webhookUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="webhookMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

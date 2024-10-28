@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V1\Service\Channel\UpdateMemberOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="UpdateMemberOptions" abstract="false" final="false" start="151" end="201">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel" file="MemberOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel/MemberOptions.php" size="4571" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="f9a007e3cd1fa0777a2e6a80dc79844696921687" relative="Twilio/Rest/IpMessaging/V1/Service/Channel/MemberOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="157" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$roleSid"/>
+      <param type="int" variable="$lastConsumedMessageIndex"/>
+    </docblock>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastConsumedMessageIndex" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </constructor>
+  <method name="setRoleSid" start="173" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$roleSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\UpdateMemberOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="UpdateMemberOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="string"/>
+  </method>
+  <method name="setLastConsumedMessageIndex" start="185" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="int" variable="$lastConsumedMessageIndex"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\$this" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\UpdateMemberOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="UpdateMemberOptions"/>
+    </return>
+    <parameter name="lastConsumedMessageIndex" byreference="false" type="int"/>
+  </method>
+  <method name="__toString" start="196" end="200" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

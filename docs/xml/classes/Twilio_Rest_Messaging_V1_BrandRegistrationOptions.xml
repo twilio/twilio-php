@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\BrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="BrandRegistrationOptions" abstract="true" final="false" start="21" end="47">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="BrandRegistrationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/BrandRegistrationOptions.php" size="4492" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="e349423a27c2b36cef48853ed8d4d48c662a902f" relative="Twilio/Rest/Messaging/V1/BrandRegistrationOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Type of brand being created. One of: \\\&quot;STANDARD\\\&quot;, \\\&quot;SOLE_PROPRIETOR\\\&quot;. SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases." type="string" variable="$brandType"/>
+      <param description="A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided." type="object" variable="$mock">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <param description="A flag to disable automatic secondary vetting for brands which it would otherwise be done." type="object" variable="$skipAutomaticSecVet">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\CreateBrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="CreateBrandRegistrationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\CreateBrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="CreateBrandRegistrationOptions"/>
+    </return>
+    <parameter name="brandType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mock" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="skipAutomaticSecVet" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

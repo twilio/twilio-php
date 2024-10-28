@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\ConfigurationContext" namespace="Twilio\Rest\FlexApi\V1" name="ConfigurationContext" abstract="false" final="false" start="27" end="107">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="ConfigurationContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/ConfigurationContext.php" size="2837" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="e8136c9a3d2c94557af6b3ec18493bf3fd9fd95f" relative="Twilio/Rest/FlexApi/V1/ConfigurationContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="34" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ConfigurationContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="39"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="53" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ConfigurationInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\FlexApi\V1\array|Options" namespace="Twilio\Rest\FlexApi\V1" name="array|Options"/>
+      </param>
+      <return description="Fetched ConfigurationInstance" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\ConfigurationInstance" namespace="Twilio\Rest\FlexApi\V1" name="ConfigurationInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ConfigurationInstance" namespace="Twilio\Rest\FlexApi\V1" name="ConfigurationInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="update" start="79" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the ConfigurationInstance"/>
+      <return description="Updated ConfigurationInstance" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\ConfigurationInstance" namespace="Twilio\Rest\FlexApi\V1" name="ConfigurationInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ConfigurationInstance" namespace="Twilio\Rest\FlexApi\V1" name="ConfigurationInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="99" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive" abstract="false" final="false" start="14" end="70">
+  <file path="/twilio/repos/php/src/Twilio/TwiML/Fax" file="Receive.php" realpath="/twilio/repos/php/src/Twilio/TwiML/Fax/Receive.php" size="1693" time="2024-10-28T12:06:32+00:00" unixtime="1730117192" sha1="de43f269f4ee6be73396b2fa01d9ea0686dbf6f2" relative="Twilio/TwiML/Fax/Receive.php"/>
+  <extends full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+  <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Receive constructor."/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+    </docblock>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="setAction" start="29" end="31" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Action attribute."/>
+      <param description="Receive action URL" type="string" variable="$action"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive"/>
+    </return>
+    <parameter name="action" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setMethod" start="38" end="40" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Method attribute."/>
+      <param description="Receive action URL method" type="string" variable="$method"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive"/>
+    </return>
+    <parameter name="method" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setMediaType" start="48" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add MediaType attribute."/>
+      <param description="The media type used to store media in the fax media" type="string" variable="$mediaType">store</param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive"/>
+    </return>
+    <parameter name="mediaType" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPageSize" start="57" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add PageSize attribute."/>
+      <param description="What size to interpret received pages as" type="string" variable="$pageSize"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive"/>
+    </return>
+    <parameter name="pageSize" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setStoreMedia" start="67" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add StoreMedia attribute."/>
+      <param description="Whether or not to store received media in the fax" type="object" variable="$storeMedia">media store<type full="Twilio\TwiML\Fax\bool" namespace="Twilio\TwiML\Fax" name="bool"/></param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive"/>
+    </return>
+    <parameter name="storeMedia" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML">
+    <member name="name" visibility="protected" static="false" line="15"/>
+    <member name="attributes" visibility="protected" static="false" line="16"/>
+    <member name="children" visibility="protected" static="false" line="17"/>
+    <constructor name="__construct" start="26" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="TwiML constructor."/>
+        <param description="XML element name" type="string" variable="$name"/>
+        <param description="XML value" type="string" variable="$value"/>
+        <param description="XML attributes" type="array" variable="$attributes"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string" default="NULL"/>
+      <parameter name="attributes" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="append" start="42" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Add a TwiML element."/>
+        <param description="TwiML element to add" type="object" variable="$twiml">
+          <type full="Twilio\TwiML\TwiML|string" namespace="Twilio\TwiML" name="TwiML|string"/>
+        </param>
+        <return description="$this" type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="twiml" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="nest" start="53" end="56" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Add a TwiML element."/>
+        <param description="TwiML element to add" type="object" variable="$twiml">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </param>
+        <return description="added TwiML element" type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="twiml" byreference="false" type="object">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </parameter>
+    </method>
+    <method name="setAttribute" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set TwiML attribute."/>
+        <param description="name of attribute" type="string" variable="$key"/>
+        <param description="value of attribute" type="string" variable="$value"/>
+        <return description="$this" resolution="static" type="object">
+          <type full="Twilio\TwiML\Fax\Receive" namespace="Twilio\TwiML\Fax" name="Receive"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="key" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string"/>
+    </method>
+    <method name="addChild" start="76" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="XML element name" type="string" variable="$name"/>
+        <param description="XML value" type="string" variable="$value"/>
+        <param description="XML attributes" type="array" variable="$attributes"/>
+        <return type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string" default="NULL"/>
+      <parameter name="attributes" byreference="false" type="array" default=""/>
+    </method>
+    <method name="asXML" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert TwiML to XML string."/>
+        <return description="TwiML XML representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__toString" start="94" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert TwiML to XML string."/>
+        <return description="TwiML XML representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\SmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="SmsCommandOptions" abstract="true" final="false" start="21" end="63">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="SmsCommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/SmsCommandOptions.php" size="7048" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="773ed7abc414efb42d211125cdc62463d817141f" relative="Twilio/Rest/Supersim/V1/SmsCommandOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST." type="string" variable="$callbackMethod"/>
+      <param description="The URL we should call using the `callback_method` after we have sent the command." type="string" variable="$callbackUrl"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\CreateSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateSmsCommandOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateSmsCommandOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="48" end="61" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID or unique name of the Sim resource that SMS Command was sent to or from." type="string" variable="$sim"/>
+      <param description="The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/iot/supersim/api/smscommand-resource#status-values) for a description of each." type="string" variable="$status"/>
+      <param description="The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`." type="string" variable="$direction"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\ReadSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSmsCommandOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSmsCommandOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="direction" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

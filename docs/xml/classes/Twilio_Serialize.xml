@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Serialize" namespace="Twilio" name="Serialize" abstract="false" final="false" start="5" end="83">
+  <file path="/twilio/repos/php/src/Twilio" file="Serialize.php" realpath="/twilio/repos/php/src/Twilio/Serialize.php" size="2204" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="0970a813d8b4689aa7783f3b0b6d3a6b2f597f97" relative="Twilio/Serialize.php"/>
+  <method name="flatten" start="7" end="17" abstract="false" final="false" static="true" visibility="private">
+    <return type="array" nullable="false"/>
+    <parameter name="map" byreference="false" type="array"/>
+    <parameter name="result" byreference="false" type="array" default=""/>
+    <parameter name="previous" byreference="false" type="array" default=""/>
+  </method>
+  <method name="prefixedCollapsibleMap" start="19" end="31" abstract="false" final="false" static="true" visibility="public">
+    <return type="array" nullable="false"/>
+    <parameter name="map" byreference="false" type="{unknown}"/>
+    <parameter name="prefix" byreference="false" type="string"/>
+  </method>
+  <method name="iso8601Date" start="33" end="45" abstract="false" final="false" static="true" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="dateTime" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="iso8601DateTime" start="47" end="59" abstract="false" final="false" static="true" visibility="public">
+    <return type="string" nullable="false"/>
+    <parameter name="dateTime" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="booleanToString" start="61" end="67" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="boolOrStr" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="jsonObject" start="69" end="74" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="object" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="map" start="76" end="81" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="values" byreference="false" type="{unknown}"/>
+    <parameter name="map_func" byreference="false" type="{unknown}"/>
+  </method>
+</class>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Jwt\Client\ScopeURI" namespace="Twilio\Jwt\Client" name="ScopeURI" abstract="false" final="false" start="18" end="67">
+  <file path="/twilio/repos/php/src/Twilio/Jwt/Client" file="ScopeURI.php" realpath="/twilio/repos/php/src/Twilio/Jwt/Client/ScopeURI.php" size="1705" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="873bb73ab49baf25e7465b803e06b63eab07f807" relative="Twilio/Jwt/Client/ScopeURI.php"/>
+  <docblock>
+    <description compact="Scope URI implementation">Simple way to represent configurable privileges in an OAuth
+friendly way. For our case, they look like this:
+
+scope:&lt;service&gt;:&lt;privilege&gt;?&lt;params&gt;
+
+For example:
+scope:client:incoming?name=jonas</description>
+  </docblock>
+  <member name="service" visibility="public" static="false" line="19"/>
+  <member name="privilege" visibility="public" static="false" line="20"/>
+  <member name="params" visibility="public" static="false" line="21"/>
+  <constructor name="__construct" start="23" end="27" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="service" byreference="false" type="string"/>
+    <parameter name="privilege" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="toString" start="29" end="35" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <method name="parse" start="44" end="66" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Parse a scope URI into a ScopeURI object"/>
+      <param description="The scope URI" type="string" variable="$uri"/>
+      <return description="The parsed scope uri" type="object">
+        <type full="Twilio\Jwt\Client\ScopeURI" namespace="Twilio\Jwt\Client" name="ScopeURI"/>
+      </return>
+      <throws type="object">
+        <type full="\UnexpectedValueException" namespace="" name="UnexpectedValueException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Jwt\Client\ScopeURI" namespace="Twilio\Jwt\Client" name="ScopeURI"/>
+    </return>
+    <parameter name="uri" byreference="false" type="string"/>
+  </method>
+</class>

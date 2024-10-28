@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Verify\V2\Service\CreateVerificationOptions::__construct</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Verify_V2_Service">Twilio\Rest\Verify\V2\Service</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Verify_V2_Service_CreateVerificationOptions.html" title="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions">CreateVerificationOptions</a>
+</li>
+<li class="separator">__construct</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Verify/V2/Service/VerificationOptions.php.html#line107">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Verify\V2\Service\CreateVerificationOptions::</small>__construct</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function __construct([string
+        $customFriendlyName = Values::NONE,
+            [string
+        $customMessage = Values::NONE,
+            [string
+        $sendDigits = Values::NONE,
+            [string
+        $locale = Values::NONE,
+            [string
+        $customCode = Values::NONE,
+            [string
+        $amount = Values::NONE,
+            [string
+        $payee = Values::NONE,
+            [array
+        $rateLimits = Values::ARRAY_NONE,
+            [array
+        $channelConfiguration = Values::ARRAY_NONE,
+            [string
+        $appHash = Values::NONE,
+            [string
+        $templateSid = Values::NONE,
+            [string
+        $templateCustomSubstitutions = Values::NONE,
+            [string
+        $deviceIp = Values::NONE,
+            [<a href="../../classes/Twilio_Rest_Verify_V2_Service_bool.html" title="Twilio\Rest\Verify\V2\Service\bool">bool</a>
+        $enableSnaClientToken = Values::BOOL_NONE,
+            [string
+        $riskCheck = Values::NONE,
+            [string
+        $tags = Values::NONE]]]]]]]]]]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$customFriendlyName</code>
+                —
+                string</dt>
+<dd>A custom user defined friendly name that overwrites the existing one in the verification message</dd>
+<dt><code>$customMessage</code>
+                —
+                string</dt>
+<dd>The text of a custom message to use for the verification.</dd>
+<dt><code>$sendDigits</code>
+                —
+                string</dt>
+<dd>The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits).</dd>
+<dt><code>$locale</code>
+                —
+                string</dt>
+<dd>Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages).</dd>
+<dt><code>$customCode</code>
+                —
+                string</dt>
+<dd>A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive.</dd>
+<dt><code>$amount</code>
+                —
+                string</dt>
+<dd>The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.</dd>
+<dt><code>$payee</code>
+                —
+                string</dt>
+<dd>The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.</dd>
+<dt><code>$rateLimits</code>
+                —
+                array</dt>
+<dd>The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request.</dd>
+<dt><code>$channelConfiguration</code>
+                —
+                array</dt>
+<dd>[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address.</dd>
+<dt><code>$appHash</code>
+                —
+                string</dt>
+<dd>Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `&lt;#&gt; Your AppName verification code is: 1234 He42w354ol9`.</dd>
+<dt><code>$templateSid</code>
+                —
+                string</dt>
+<dd>The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only.</dd>
+<dt><code>$templateCustomSubstitutions</code>
+                —
+                string</dt>
+<dd>A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions.</dd>
+<dt><code>$deviceIp</code>
+                —
+                string</dt>
+<dd>Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address.</dd>
+<dt><code>$enableSnaClientToken</code>
+                —
+                object</dt>
+<dd>An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification.<br/><br/><br/> </dd>
+<dt><code>$riskCheck</code>
+                —
+                string</dt>
+<dd></dd>
+<dt><code>$tags</code>
+                —
+                string</dt>
+<dd>A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length.</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

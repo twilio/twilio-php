@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Monitor\V1\EventContext" namespace="Twilio\Rest\Monitor\V1" name="EventContext" abstract="false" final="false" start="26" end="83">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Monitor/V1" file="EventContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Monitor/V1/EventContext.php" size="2083" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="0d5ed5e8abfa0e3e74c47dc681419cd1ddb5f3c9" relative="Twilio/Rest/Monitor/V1/EventContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="34" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the EventContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Event resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="40"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="56" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the EventInstance"/>
+      <return description="Fetched EventInstance" type="object">
+        <type full="Twilio\Rest\Monitor\V1\EventInstance" namespace="Twilio\Rest\Monitor\V1" name="EventInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\EventInstance" namespace="Twilio\Rest\Monitor\V1" name="EventInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="75" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

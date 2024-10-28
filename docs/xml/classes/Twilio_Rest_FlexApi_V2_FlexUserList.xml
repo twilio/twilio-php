@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V2\FlexUserList" namespace="Twilio\Rest\FlexApi\V2" name="FlexUserList" abstract="false" final="false" start="23" end="69">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V2" file="FlexUserList.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V2/FlexUserList.php" size="1657" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="0eb6faba37ff0bd9628876317373d5cc456f1396" relative="Twilio/Rest/FlexApi/V2/FlexUserList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="30" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the FlexUserList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="35"/>
+    </inline>
+  </constructor>
+  <method name="getContext" start="47" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a FlexUserContext"/>
+      <param description="The unique ID created by Twilio to identify a Flex instance." type="string" variable="$instanceSid"/>
+      <param description="The unique id for the flex user to be retrieved." type="string" variable="$flexUserSid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\FlexUserContext" namespace="Twilio\Rest\FlexApi\V2" name="FlexUserContext"/>
+    </return>
+    <parameter name="instanceSid" byreference="false" type="string"/>
+    <parameter name="flexUserSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

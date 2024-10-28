@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\CreateBrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="CreateBrandRegistrationOptions" abstract="false" final="false" start="49" end="114">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="BrandRegistrationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/BrandRegistrationOptions.php" size="4492" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="e349423a27c2b36cef48853ed8d4d48c662a902f" relative="Twilio/Rest/Messaging/V1/BrandRegistrationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="56" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Type of brand being created. One of: \\\&quot;STANDARD\\\&quot;, \\\&quot;SOLE_PROPRIETOR\\\&quot;. SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases." type="string" variable="$brandType"/>
+      <param description="A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided." type="object" variable="$mock">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <param description="A flag to disable automatic secondary vetting for brands which it would otherwise be done." type="object" variable="$skipAutomaticSecVet">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="brandType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mock" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="skipAutomaticSecVet" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setBrandType" start="74" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Type of brand being created. One of: \\\&quot;STANDARD\\\&quot;, \\\&quot;SOLE_PROPRIETOR\\\&quot;. SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases."/>
+      <param description="Type of brand being created. One of: \\\&quot;STANDARD\\\&quot;, \\\&quot;SOLE_PROPRIETOR\\\&quot;. SOLE_PROPRIETOR is for low volume, SOLE_PROPRIETOR use cases. STANDARD is for all other use cases." type="string" variable="$brandType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\CreateBrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="CreateBrandRegistrationOptions"/>
+    </return>
+    <parameter name="brandType" byreference="false" type="string"/>
+  </method>
+  <method name="setMock" start="86" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided."/>
+      <param description="A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided." type="object" variable="$mock">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\CreateBrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="CreateBrandRegistrationOptions"/>
+    </return>
+    <parameter name="mock" byreference="false" type="bool"/>
+  </method>
+  <method name="setSkipAutomaticSecVet" start="98" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A flag to disable automatic secondary vetting for brands which it would otherwise be done."/>
+      <param description="A flag to disable automatic secondary vetting for brands which it would otherwise be done." type="object" variable="$skipAutomaticSecVet">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\CreateBrandRegistrationOptions" namespace="Twilio\Rest\Messaging\V1" name="CreateBrandRegistrationOptions"/>
+    </return>
+    <parameter name="skipAutomaticSecVet" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="109" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

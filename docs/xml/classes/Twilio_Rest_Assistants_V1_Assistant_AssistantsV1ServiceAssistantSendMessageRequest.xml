@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Assistants\V1\Assistant\AssistantsV1ServiceAssistantSendMessageRequest" namespace="Twilio\Rest\Assistants\V1\Assistant" name="AssistantsV1ServiceAssistantSendMessageRequest" abstract="false" final="false" start="35" end="72">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/Assistant" file="MessageModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/Assistant/MessageModels.php" size="2660" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="66e4ed5bca5907ed1bb9f7bffc3c88797b0c4638" relative="Twilio/Rest/Assistants/V1/Assistant/MessageModels.php"/>
+  <implements full="JsonSerializable" namespace="" name="JsonSerializable"/>
+  <member name="identity" visibility="protected" static="false" line="44">
+    <docblock>
+      <description/>
+      <property value="string $identity The unique identity of user for the session."/>
+      <property value="string $sessionId The unique name for the session."/>
+      <property value="string $body The query to ask the assistant."/>
+      <property value="string $webhook The webhook url to call after the assistant has generated a response or report an error."/>
+      <property value="string $mode one of the modes 'chat', 'email' or 'voice'"/>
+    </docblock>
+  </member>
+  <member name="sessionId" visibility="protected" static="false" line="45"/>
+  <member name="body" visibility="protected" static="false" line="46"/>
+  <member name="webhook" visibility="protected" static="false" line="47"/>
+  <member name="mode" visibility="protected" static="false" line="48"/>
+  <constructor name="__construct" start="49" end="55" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="toArray" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="jsonSerialize" start="62" end="71" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="JsonSerializable" namespace="" name="JsonSerializable">
+    <method name="jsonSerialize" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Specify data which should be serialized to JSON"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

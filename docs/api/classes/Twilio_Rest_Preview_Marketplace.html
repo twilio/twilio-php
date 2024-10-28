@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Preview\Marketplace</title>
+<link href="../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../classes.html#Twilio_Rest_Preview">Twilio\Rest\Preview</a>
+</li>
+<li class="separator">Marketplace</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#hierarchy">Hierarchy</a>
+</li>
+<li>
+<a href="#constants">Constants</a>
+</li>
+<li>
+<a href="#members">Members</a>
+</li>
+<li>
+<a href="#methods">Methods</a>
+</li>
+<li>
+<a href="../source/Twilio/Rest/Preview/Marketplace.php.html#line31">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1 id="introduction"><small>Twilio\Rest\Preview\</small>Marketplace</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="synopsis">Synopsis</h2>
+<div class="synopsis">class Marketplace
+                extends <a href="../classes/Twilio_Version.html" title="Twilio\Version">Version</a>
+            {<br/><ul class="none"><li>// Inherited constants from <a href="../classes/Twilio_Version.html" title="Twilio\Version">Version</a></li><li>const <a href="#MAX_PAGE_SIZE">MAX_PAGE_SIZE</a> = 1000;</li></ul><ul class="none"><li>// members</li><li>protected  <a href="#members">$_availableAddOns</a>;
+                    </li><li>protected  <a href="#members">$_installedAddOns</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="Twilio\Version">Version</span></li><li>protected <span title="Twilio\Domain">Domain</span> <a href="#members">$domain</a>;
+                        </li><li>protected  <a href="#members">$version</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a href="../classes/Twilio_Rest_Preview_Marketplace/__construct.html" title="Twilio\Rest\Preview\Marketplace">__construct</a>()
+                    </li><li>protected <span title="AvailableAddOnList">AvailableAddOnList</span> <a href="../classes/Twilio_Rest_Preview_Marketplace/getAvailableAddOns.html" title="Twilio\Rest\Preview\Marketplace">getAvailableAddOns</a>()
+                    </li><li>protected <span title="InstalledAddOnList">InstalledAddOnList</span> <a href="../classes/Twilio_Rest_Preview_Marketplace/getInstalledAddOns.html" title="Twilio\Rest\Preview\Marketplace">getInstalledAddOns</a>()
+                    </li><li>public ListResource <a href="../classes/Twilio_Rest_Preview_Marketplace/__get.html" title="Twilio\Rest\Preview\Marketplace">__get</a>()
+                    </li><li>public <span title="InstanceContext">InstanceContext</span> <a href="../classes/Twilio_Rest_Preview_Marketplace/__call.html" title="Twilio\Rest\Preview\Marketplace">__call</a>()
+                    </li><li>public string <a href="../classes/Twilio_Rest_Preview_Marketplace/__toString.html" title="Twilio\Rest\Preview\Marketplace">__toString</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="Twilio\Version">Version</span></li><li>public void <a href="../classes/Twilio_Version/__construct.html" title="Twilio\Version">__construct</a>()
+                        </li><li>public string <a href="../classes/Twilio_Version/absoluteUrl.html" title="Twilio\Version">absoluteUrl</a>()
+                        </li><li>public string <a href="../classes/Twilio_Version/relativeUri.html" title="Twilio\Version">relativeUri</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/request.html" title="Twilio\Version">request</a>()
+                        </li><li>protected TwilioException <a href="../classes/Twilio_Version/exception.html" title="Twilio\Version">exception</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/fetch.html" title="Twilio\Version">fetch</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/update.html" title="Twilio\Version">update</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/delete.html" title="Twilio\Version">delete</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/readLimits.html" title="Twilio\Version">readLimits</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/page.html" title="Twilio\Version">page</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/stream.html" title="Twilio\Version">stream</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/create.html" title="Twilio\Version">create</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/getDomain.html" title="Twilio\Version">getDomain</a>()
+                        </li><li>public void <a href="../classes/Twilio_Version/__toString.html" title="Twilio\Version">__toString</a>()
+                        </li></ul>
+
+            }<br/></div>
+<h2 id="hierarchy">Hierarchy</h2>
+<div class="styled">
+<h4>Extends</h4>
+<ul>
+<li>
+<a href="../classes/Twilio_Version.html" title="Twilio\Version">Twilio\Version</a>
+</li>
+</ul>
+</div>
+<h2 id="constants">Constants</h2>
+<table class="styled">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td id="MAX_PAGE_SIZE">MAX_PAGE_SIZE</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="members">Members</h2>
+<div class="styled members">
+<h4>protected</h4>
+<ul class="members">
+<li id="_availableAddOns">
+<strong>$_availableAddOns</strong>
+</li>
+<li id="_installedAddOns">
+<strong>$_installedAddOns</strong>
+</li>
+<li id="domain"><strong>$domain</strong>
+                —
+                <a href="../classes/Twilio_Domain.html" title="Twilio\Domain">Twilio\Domain</a></li>
+<li id="version"><strong>$version</strong>
+                —
+                string</li>
+</ul>
+</div>
+<h2 id="methods">Methods</h2>
+<div class="styled">
+<h4>protected</h4>
+<ul>
+<li id="getAvailableAddOns">
+<a href="../classes/Twilio_Rest_Preview_Marketplace/getAvailableAddOns.html" title="Twilio\Rest\Preview\Marketplace">getAvailableAddOns()</a>
+</li>
+<li id="getInstalledAddOns">
+<a href="../classes/Twilio_Rest_Preview_Marketplace/getInstalledAddOns.html" title="Twilio\Rest\Preview\Marketplace">getInstalledAddOns()</a>
+</li>
+</ul>
+<h4>public</h4>
+<ul>
+<li id="__construct"><a href="../classes/Twilio_Rest_Preview_Marketplace/__construct.html" title="Twilio\Rest\Preview\Marketplace">__construct()</a>
+                — Construct the Marketplace version of Preview</li>
+<li id="__call"><a href="../classes/Twilio_Rest_Preview_Marketplace/__call.html" title="Twilio\Rest\Preview\Marketplace">__call()</a>
+                — Magic caller to get resource contexts</li>
+<li id="__get"><a href="../classes/Twilio_Rest_Preview_Marketplace/__get.html" title="Twilio\Rest\Preview\Marketplace">__get()</a>
+                — Magic getter to lazy load root resources</li>
+<li id="__toString"><a href="../classes/Twilio_Rest_Preview_Marketplace/__toString.html" title="Twilio\Rest\Preview\Marketplace">__toString()</a>
+                — Provide a friendly representation</li>
+</ul>
+<h3>Inherited from <a href="../classes/Twilio_Version.html" title="Twilio\Version">Twilio\Version</a></h3>
+<h4>protected</h4>
+<ul>
+<li id="exception"><a href="../classes/Twilio_Version/exception.html" title="Twilio\Version">exception()</a>
+                — Create the best possible exception for the response.</li>
+</ul>
+<h4>public</h4>
+<ul>
+<li id="__toString">
+<a href="../classes/Twilio_Version/__toString.html" title="Twilio\Version">__toString()</a>
+</li>
+<li id="absoluteUrl"><a href="../classes/Twilio_Version/absoluteUrl.html" title="Twilio\Version">absoluteUrl()</a>
+                — Generate an absolute URL from a version relative uri</li>
+<li id="create">
+<a href="../classes/Twilio_Version/create.html" title="Twilio\Version">create()</a>
+</li>
+<li id="delete">
+<a href="../classes/Twilio_Version/delete.html" title="Twilio\Version">delete()</a>
+</li>
+<li id="fetch">
+<a href="../classes/Twilio_Version/fetch.html" title="Twilio\Version">fetch()</a>
+</li>
+<li id="getDomain">
+<a href="../classes/Twilio_Version/getDomain.html" title="Twilio\Version">getDomain()</a>
+</li>
+<li id="page">
+<a href="../classes/Twilio_Version/page.html" title="Twilio\Version">page()</a>
+</li>
+<li id="readLimits">
+<a href="../classes/Twilio_Version/readLimits.html" title="Twilio\Version">readLimits()</a>
+</li>
+<li id="relativeUri"><a href="../classes/Twilio_Version/relativeUri.html" title="Twilio\Version">relativeUri()</a>
+                — Generate a domain relative uri from a version relative uri</li>
+<li id="request">
+<a href="../classes/Twilio_Version/request.html" title="Twilio\Version">request()</a>
+</li>
+<li id="stream">
+<a href="../classes/Twilio_Version/stream.html" title="Twilio\Version">stream()</a>
+</li>
+<li id="update">
+<a href="../classes/Twilio_Version/update.html" title="Twilio\Version">update()</a>
+</li>
+</ul>
+</div>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

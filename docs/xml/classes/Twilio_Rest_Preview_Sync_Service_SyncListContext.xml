@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Sync\Service\SyncListContext" namespace="Twilio\Rest\Preview\Sync\Service" name="SyncListContext" abstract="false" final="false" start="35" end="182">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Sync/Service" file="SyncListContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Sync/Service/SyncListContext.php" size="5204" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="8a3336d270e094cd1f25e48e633de2cc6a218788" relative="Twilio/Rest/Preview/Sync/Service/SyncListContext.php"/>
+  <docblock>
+    <description/>
+    <property value="SyncListPermissionList $syncListPermissions"/>
+    <property value="SyncListItemList $syncListItems"/>
+    <method value="\Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionContext syncListPermissions(string $identity)"/>
+    <method value="\Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext syncListItems(string $index)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_syncListPermissions" visibility="protected" static="false" line="37"/>
+  <member name="_syncListItems" visibility="protected" static="false" line="38"/>
+  <constructor name="__construct" start="47" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SyncListContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param type="string" variable="$serviceSid"/>
+      <param type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="serviceSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="54"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="73" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the SyncListInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\bool" namespace="Twilio\Rest\Preview\Sync\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="87" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SyncListInstance"/>
+      <return description="Fetched SyncListInstance" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncListInstance" namespace="Twilio\Rest\Preview\Sync\Service" name="SyncListInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncListInstance" namespace="Twilio\Rest\Preview\Sync\Service" name="SyncListInstance"/>
+    </return>
+  </method>
+  <method name="getSyncListPermissions" start="105" end="116" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the syncListPermissions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncList\SyncListPermissionList" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="SyncListPermissionList"/>
+    </return>
+  </method>
+  <method name="getSyncListItems" start="121" end="132" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the syncListItems"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemList" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="SyncListItemList"/>
+    </return>
+  </method>
+  <method name="__get" start="141" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="159" end="167" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="174" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

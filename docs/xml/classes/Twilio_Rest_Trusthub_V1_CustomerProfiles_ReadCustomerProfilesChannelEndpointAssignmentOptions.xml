@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\CustomerProfiles\ReadCustomerProfilesChannelEndpointAssignmentOptions" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="ReadCustomerProfilesChannelEndpointAssignmentOptions" abstract="false" final="false" start="49" end="99">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/CustomerProfiles" file="CustomerProfilesChannelEndpointAssignmentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/CustomerProfiles/CustomerProfilesChannelEndpointAssignmentOptions.php" size="2943" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="b9d7758d854ddb72f00318c532644d0f2744ac58" relative="Twilio/Rest/Trusthub/V1/CustomerProfiles/CustomerProfilesChannelEndpointAssignmentOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="55" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of an channel endpoint" type="string" variable="$channelEndpointSid"/>
+      <param description="comma separated list of channel endpoint sids" type="string" variable="$channelEndpointSids"/>
+    </docblock>
+    <parameter name="channelEndpointSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="channelEndpointSids" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setChannelEndpointSid" start="71" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of an channel endpoint"/>
+      <param description="The SID of an channel endpoint" type="string" variable="$channelEndpointSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\$this" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\ReadCustomerProfilesChannelEndpointAssignmentOptions" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="ReadCustomerProfilesChannelEndpointAssignmentOptions"/>
+    </return>
+    <parameter name="channelEndpointSid" byreference="false" type="string"/>
+  </method>
+  <method name="setChannelEndpointSids" start="83" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="comma separated list of channel endpoint sids"/>
+      <param description="comma separated list of channel endpoint sids" type="string" variable="$channelEndpointSids"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\$this" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\ReadCustomerProfilesChannelEndpointAssignmentOptions" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="ReadCustomerProfilesChannelEndpointAssignmentOptions"/>
+    </return>
+    <parameter name="channelEndpointSids" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="94" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

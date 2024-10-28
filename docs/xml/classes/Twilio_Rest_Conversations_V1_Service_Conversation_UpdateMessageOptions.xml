@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions" abstract="false" final="false" start="378" end="503">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/Conversation" file="MessageOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/Conversation/MessageOptions.php" size="19280" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="16b12a8d05e2cb6806a60ba9aba7541f67b485a5" relative="Twilio/Rest/Conversations/V1/Service/Conversation/MessageOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="389" end="407" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The channel specific identifier of the message's author. Defaults to `system`." type="string" variable="$author"/>
+      <param description="The content of the message, can be up to 1,600 characters long." type="string" variable="$body"/>
+      <param description="The date that this resource was created." type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The date that this resource was last updated. `null` if the message has not been edited." type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\&quot;{}\\\&quot; will be returned." type="string" variable="$attributes"/>
+      <param description="The subject of the message, can be up to 256 characters long." type="string" variable="$subject"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+    </docblock>
+    <parameter name="author" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="body" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateCreated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="dateUpdated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="subject" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setAuthor" start="415" end="419" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The channel specific identifier of the message's author. Defaults to `system`."/>
+      <param description="The channel specific identifier of the message's author. Defaults to `system`." type="string" variable="$author"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="author" byreference="false" type="string"/>
+  </method>
+  <method name="setBody" start="427" end="431" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The content of the message, can be up to 1,600 characters long."/>
+      <param description="The content of the message, can be up to 1,600 characters long." type="string" variable="$body"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="body" byreference="false" type="string"/>
+  </method>
+  <method name="setDateCreated" start="439" end="443" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The date that this resource was created."/>
+      <param description="The date that this resource was created." type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="dateCreated" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setDateUpdated" start="451" end="455" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The date that this resource was last updated. `null` if the message has not been edited."/>
+      <param description="The date that this resource was last updated. `null` if the message has not been edited." type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="dateUpdated" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setAttributes" start="463" end="467" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\&quot;{}\\\&quot; will be returned."/>
+      <param description="A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\&quot;{}\\\&quot; will be returned." type="string" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="string"/>
+  </method>
+  <method name="setSubject" start="475" end="479" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The subject of the message, can be up to 256 characters long."/>
+      <param description="The subject of the message, can be up to 256 characters long." type="string" variable="$subject"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="subject" byreference="false" type="string"/>
+  </method>
+  <method name="setXTwilioWebhookEnabled" start="487" end="491" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The X-Twilio-Webhook-Enabled HTTP request header"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\$this" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="498" end="502" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

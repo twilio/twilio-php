@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\InsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="InsightsQuestionnairesQuestionOptions" abstract="true" final="false" start="21" end="101">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="InsightsQuestionnairesQuestionOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/InsightsQuestionnairesQuestionOptions.php" size="9897" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="30322994bd93f25921c4aea4e28bd403b9e0083a" relative="Twilio/Rest/FlexApi/V1/InsightsQuestionnairesQuestionOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The description for the question." type="string" variable="$description"/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\CreateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateInsightsQuestionnairesQuestionOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\CreateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateInsightsQuestionnairesQuestionOptions"/>
+    </return>
+    <parameter name="description" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="delete" start="45" end="54" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\DeleteInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="DeleteInsightsQuestionnairesQuestionOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\DeleteInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="DeleteInsightsQuestionnairesQuestionOptions"/>
+    </return>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="61" end="72" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The list of category SIDs" type="array" variable="$categorySid" of="object">
+        <type full="Twilio\Rest\FlexApi\V1\string" namespace="Twilio\Rest\FlexApi\V1" name="string"/>
+      </param>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\ReadInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadInsightsQuestionnairesQuestionOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ReadInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadInsightsQuestionnairesQuestionOptions"/>
+    </return>
+    <parameter name="categorySid" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="82" end="99" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the category" type="string" variable="$categorySid"/>
+      <param description="The question." type="string" variable="$question"/>
+      <param description="The description for the question." type="string" variable="$description"/>
+      <param description="The answer_set for the question." type="string" variable="$answerSetId"/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\UpdateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="UpdateInsightsQuestionnairesQuestionOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\UpdateInsightsQuestionnairesQuestionOptions" namespace="Twilio\Rest\FlexApi\V1" name="UpdateInsightsQuestionnairesQuestionOptions"/>
+    </return>
+    <parameter name="categorySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="question" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="description" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="answerSetId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

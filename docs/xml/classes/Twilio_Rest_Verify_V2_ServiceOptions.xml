@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Verify\V2\ServiceOptions" namespace="Twilio\Rest\Verify\V2" name="ServiceOptions" abstract="true" final="false" start="21" end="167">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Verify/V2" file="ServiceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Verify/V2/ServiceOptions.php" size="46945" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="7dc12a545c3b4dd002aa4c35c24ce83085861a8b" relative="Twilio/Rest/Verify/V2/ServiceOptions.php"/>
+  <method name="create" start="45" end="90" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive." type="int" variable="$codeLength"/>
+      <param description="Whether to perform a lookup with each verification started and return info about the phone number." type="object" variable="$lookupEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`." type="object" variable="$skipSmsToLandlines">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to ask the user to press a number before delivering the verify code in a phone call." type="object" variable="$dtmfInputRequired">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages." type="string" variable="$ttsName"/>
+      <param description="Whether to pass PSD2 transaction parameters when starting a verification." type="object" variable="$psd2Enabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`" type="object" variable="$doNotShareWarningEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to allow sending verifications with a custom code instead of a randomly generated one." type="object" variable="$customCodeEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter. This timestamp value is the same one as the one found in `date_created`, please use that one instead." type="object" variable="$pushIncludeDate">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)" type="string" variable="$pushApnCredentialSid"/>
+      <param description="Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)" type="string" variable="$pushFcmCredentialSid"/>
+      <param description="Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI. Defaults to the service friendly name if not provided." type="string" variable="$totpIssuer"/>
+      <param description="Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds" type="int" variable="$totpTimeStep"/>
+      <param description="Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6" type="int" variable="$totpCodeLength"/>
+      <param description="Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1" type="int" variable="$totpSkew"/>
+      <param description="The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only." type="string" variable="$defaultTemplateSid"/>
+      <param description="The SID of the Messaging Service containing WhatsApp Sender(s) that Verify will use to send WhatsApp messages to your users." type="string" variable="$whatsappMsgServiceSid"/>
+      <param description="The number to use as the WhatsApp Sender that Verify will use to send WhatsApp messages to your users.This WhatsApp Sender must be associated with a Messaging Service SID." type="string" variable="$whatsappFrom"/>
+      <param description="Whether to allow verifications from the service to reach the stream-events sinks if configured" type="object" variable="$verifyEventSubscriptionEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\CreateServiceOptions" namespace="Twilio\Rest\Verify\V2" name="CreateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\CreateServiceOptions" namespace="Twilio\Rest\Verify\V2" name="CreateServiceOptions"/>
+    </return>
+    <parameter name="codeLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="lookupEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="skipSmsToLandlines" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dtmfInputRequired" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="ttsName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="psd2Enabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="doNotShareWarningEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="customCodeEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="pushIncludeDate" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="pushApnCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pushFcmCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="totpIssuer" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="totpTimeStep" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="totpCodeLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="totpSkew" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="defaultTemplateSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="whatsappMsgServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="whatsappFrom" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verifyEventSubscriptionEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="update" start="118" end="165" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the verification service. It can be up to 32 characters long. **This value should not contain PII." type="string" variable="$friendlyName"/>
+      <param description="The length of the verification code to generate. Must be an integer value between 4 and 10, inclusive." type="int" variable="$codeLength"/>
+      <param description="Whether to perform a lookup with each verification started and return info about the phone number." type="object" variable="$lookupEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`." type="object" variable="$skipSmsToLandlines">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to ask the user to press a number before delivering the verify code in a phone call." type="object" variable="$dtmfInputRequired">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages." type="string" variable="$ttsName"/>
+      <param description="Whether to pass PSD2 transaction parameters when starting a verification." type="object" variable="$psd2Enabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to add a privacy warning at the end of an SMS. **Disabled by default and applies only for SMS." type="object" variable="$doNotShareWarningEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Whether to allow sending verifications with a custom code instead of a randomly generated one." type="object" variable="$customCodeEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Optional configuration for the Push factors. If true, include the date in the Challenge's response. Otherwise, the date is omitted from the response. See [Challenge](https://www.twilio.com/docs/verify/api/challenge) resource’s details parameter for more info. Default: false. **Deprecated** do not use this parameter." type="object" variable="$pushIncludeDate">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <param description="Optional configuration for the Push factors. Set the APN Credential for this service. This will allow to send push notifications to iOS devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)" type="string" variable="$pushApnCredentialSid"/>
+      <param description="Optional configuration for the Push factors. Set the FCM Credential for this service. This will allow to send push notifications to Android devices. See [Credential Resource](https://www.twilio.com/docs/notify/api/credential-resource)" type="string" variable="$pushFcmCredentialSid"/>
+      <param description="Optional configuration for the TOTP factors. Set TOTP Issuer for this service. This will allow to configure the issuer of the TOTP URI." type="string" variable="$totpIssuer"/>
+      <param description="Optional configuration for the TOTP factors. Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. Defaults to 30 seconds" type="int" variable="$totpTimeStep"/>
+      <param description="Optional configuration for the TOTP factors. Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. Defaults to 6" type="int" variable="$totpCodeLength"/>
+      <param description="Optional configuration for the TOTP factors. The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. Defaults to 1" type="int" variable="$totpSkew"/>
+      <param description="The default message [template](https://www.twilio.com/docs/verify/api/templates). Will be used for all SMS verifications unless explicitly overriden. SMS channel only." type="string" variable="$defaultTemplateSid"/>
+      <param description="The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services) to associate with the Verification Service." type="string" variable="$whatsappMsgServiceSid"/>
+      <param description="The WhatsApp number to use as the sender of the verification messages. This number must be associated with the WhatsApp Message Service." type="string" variable="$whatsappFrom"/>
+      <param description="Whether to allow verifications from the service to reach the stream-events sinks if configured" type="object" variable="$verifyEventSubscriptionEnabled">
+        <type full="Twilio\Rest\Verify\V2\bool" namespace="Twilio\Rest\Verify\V2" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\UpdateServiceOptions" namespace="Twilio\Rest\Verify\V2" name="UpdateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\UpdateServiceOptions" namespace="Twilio\Rest\Verify\V2" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="codeLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="lookupEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="skipSmsToLandlines" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dtmfInputRequired" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="ttsName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="psd2Enabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="doNotShareWarningEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="customCodeEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="pushIncludeDate" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="pushApnCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pushFcmCredentialSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="totpIssuer" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="totpTimeStep" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="totpCodeLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="totpSkew" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="defaultTemplateSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="whatsappMsgServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="whatsappFrom" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verifyEventSubscriptionEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

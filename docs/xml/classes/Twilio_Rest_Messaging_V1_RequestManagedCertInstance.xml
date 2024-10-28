@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\RequestManagedCertInstance" namespace="Twilio\Rest\Messaging\V1" name="RequestManagedCertInstance" abstract="false" final="false" start="38" end="131">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="RequestManagedCertInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/RequestManagedCertInstance.php" size="4278" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="a16e95c5822aeedc35cdf9850dcb494f79666445" relative="Twilio/Rest/Messaging/V1/RequestManagedCertInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $domainSid"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateExpires"/>
+    <property value="string|null $domainName"/>
+    <property value="string|null $certificateSid"/>
+    <property value="string|null $url"/>
+    <property value="bool|null $managed"/>
+    <property value="bool|null $requesting"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="47" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the RequestManagedCertInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Messaging\V1\mixed" namespace="Twilio\Rest\Messaging\V1" name="mixed"/>
+      </param>
+      <param description="Unique string used to identify the domain that this certificate should be associated with." type="string" variable="$domainSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="domainSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="51"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="73" end="83" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this RequestManagedCertInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\RequestManagedCertContext" namespace="Twilio\Rest\Messaging\V1" name="RequestManagedCertContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\RequestManagedCertContext" namespace="Twilio\Rest\Messaging\V1" name="RequestManagedCertContext"/>
+    </return>
+  </method>
+  <method name="update" start="91" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the RequestManagedCertInstance"/>
+      <return description="Updated RequestManagedCertInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\RequestManagedCertInstance" namespace="Twilio\Rest\Messaging\V1" name="RequestManagedCertInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\RequestManagedCertInstance" namespace="Twilio\Rest\Messaging\V1" name="RequestManagedCertInstance"/>
+    </return>
+  </method>
+  <method name="__get" start="104" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="123" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

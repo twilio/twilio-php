@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Api\V2010\Account\CreateCallOptions::__construct</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Api_V2010_Account">Twilio\Rest\Api\V2010\Account</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Api_V2010_Account_CreateCallOptions.html" title="Twilio\Rest\Api\V2010\Account\CreateCallOptions">CreateCallOptions</a>
+</li>
+<li class="separator">__construct</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Api/V2010/Account/CallOptions.php.html#line256">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Api\V2010\Account\CreateCallOptions::</small>__construct</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function __construct([string
+        $url = Values::NONE,
+            [string
+        $twiml = Values::NONE,
+            [string
+        $applicationSid = Values::NONE,
+            [string
+        $method = Values::NONE,
+            [string
+        $fallbackUrl = Values::NONE,
+            [string
+        $fallbackMethod = Values::NONE,
+            [string
+        $statusCallback = Values::NONE,
+            [array
+        $statusCallbackEvent = Values::ARRAY_NONE,
+            [string
+        $statusCallbackMethod = Values::NONE,
+            [string
+        $sendDigits = Values::NONE,
+            [int
+        $timeout = Values::INT_NONE,
+            [<a href="../../classes/Twilio_Rest_Api_V2010_Account_bool.html" title="Twilio\Rest\Api\V2010\Account\bool">bool</a>
+        $record = Values::BOOL_NONE,
+            [string
+        $recordingChannels = Values::NONE,
+            [string
+        $recordingStatusCallback = Values::NONE,
+            [string
+        $recordingStatusCallbackMethod = Values::NONE,
+            [string
+        $sipAuthUsername = Values::NONE,
+            [string
+        $sipAuthPassword = Values::NONE,
+            [string
+        $machineDetection = Values::NONE,
+            [int
+        $machineDetectionTimeout = Values::INT_NONE,
+            [array
+        $recordingStatusCallbackEvent = Values::ARRAY_NONE,
+            [string
+        $trim = Values::NONE,
+            [string
+        $callerId = Values::NONE,
+            [int
+        $machineDetectionSpeechThreshold = Values::INT_NONE,
+            [int
+        $machineDetectionSpeechEndThreshold = Values::INT_NONE,
+            [int
+        $machineDetectionSilenceTimeout = Values::INT_NONE,
+            [string
+        $asyncAmd = Values::NONE,
+            [string
+        $asyncAmdStatusCallback = Values::NONE,
+            [string
+        $asyncAmdStatusCallbackMethod = Values::NONE,
+            [string
+        $byoc = Values::NONE,
+            [string
+        $callReason = Values::NONE,
+            [string
+        $callToken = Values::NONE,
+            [string
+        $recordingTrack = Values::NONE,
+            [int
+        $timeLimit = Values::INT_NONE]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$url</code>
+                —
+                string</dt>
+<dd>The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).</dd>
+<dt><code>$twiml</code>
+                —
+                string</dt>
+<dd>TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters.</dd>
+<dt><code>$applicationSid</code>
+                —
+                string</dt>
+<dd>The SID of the Application resource that will handle the call, if the call will be handled by an application.</dd>
+<dt><code>$method</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.</dd>
+<dt><code>$fallbackUrl</code>
+                —
+                string</dt>
+<dd>The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.</dd>
+<dt><code>$fallbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.</dd>
+<dt><code>$statusCallback</code>
+                —
+                string</dt>
+<dd>The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).</dd>
+<dt><code>$statusCallbackEvent</code>
+                —
+                array</dt>
+<dd>The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&amp;code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.<br/><br/><br/> </dd>
+<dt><code>$statusCallbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.</dd>
+<dt><code>$sendDigits</code>
+                —
+                string</dt>
+<dd>A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored.</dd>
+<dt><code>$timeout</code>
+                —
+                int</dt>
+<dd>The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.</dd>
+<dt><code>$record</code>
+                —
+                object</dt>
+<dd>Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.<br/><br/><br/> </dd>
+<dt><code>$recordingChannels</code>
+                —
+                string</dt>
+<dd>The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call.</dd>
+<dt><code>$recordingStatusCallback</code>
+                —
+                string</dt>
+<dd>The URL that we call when the recording is available to be accessed.</dd>
+<dt><code>$recordingStatusCallbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.</dd>
+<dt><code>$sipAuthUsername</code>
+                —
+                string</dt>
+<dd>The username used to authenticate the caller making a SIP call.</dd>
+<dt><code>$sipAuthPassword</code>
+                —
+                string</dt>
+<dd>The password required to authenticate the user account specified in `sip_auth_username`.</dd>
+<dt><code>$machineDetection</code>
+                —
+                string</dt>
+<dd>Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).</dd>
+<dt><code>$machineDetectionTimeout</code>
+                —
+                int</dt>
+<dd>The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.</dd>
+<dt><code>$recordingStatusCallbackEvent</code>
+                —
+                array</dt>
+<dd>The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space.<br/><br/><br/> </dd>
+<dt><code>$trim</code>
+                —
+                string</dt>
+<dd>Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.</dd>
+<dt><code>$callerId</code>
+                —
+                string</dt>
+<dd>The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.</dd>
+<dt><code>$machineDetectionSpeechThreshold</code>
+                —
+                int</dt>
+<dd>The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.</dd>
+<dt><code>$machineDetectionSpeechEndThreshold</code>
+                —
+                int</dt>
+<dd>The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.</dd>
+<dt><code>$machineDetectionSilenceTimeout</code>
+                —
+                int</dt>
+<dd>The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.</dd>
+<dt><code>$asyncAmd</code>
+                —
+                string</dt>
+<dd>Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.</dd>
+<dt><code>$asyncAmdStatusCallback</code>
+                —
+                string</dt>
+<dd>The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.</dd>
+<dt><code>$asyncAmdStatusCallbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.</dd>
+<dt><code>$byoc</code>
+                —
+                string</dt>
+<dd>The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)</dd>
+<dt><code>$callReason</code>
+                —
+                string</dt>
+<dd>The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)</dd>
+<dt><code>$callToken</code>
+                —
+                string</dt>
+<dd>A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.</dd>
+<dt><code>$recordingTrack</code>
+                —
+                string</dt>
+<dd>The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.</dd>
+<dt><code>$timeLimit</code>
+                —
+                int</dt>
+<dd>The maximum duration of the call in seconds. Constraints depend on account and configuration.</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

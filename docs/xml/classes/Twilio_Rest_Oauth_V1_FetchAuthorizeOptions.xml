@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions" abstract="false" final="false" start="52" end="147">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Oauth/V1" file="AuthorizeOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Oauth/V1/AuthorizeOptions.php" size="4334" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="1f6b73823fe24e156ca0cd0913ed84f9033f598f" relative="Twilio/Rest/Oauth/V1/AuthorizeOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="61" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Response Type" type="string" variable="$responseType"/>
+      <param description="The Client Identifier" type="string" variable="$clientId"/>
+      <param description="The url to which response will be redirected to" type="string" variable="$redirectUri"/>
+      <param description="The scope of the access request" type="string" variable="$scope"/>
+      <param description="An opaque value which can be used to maintain state between the request and callback" type="string" variable="$state"/>
+    </docblock>
+    <parameter name="responseType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="clientId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="redirectUri" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="scope" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setResponseType" start="83" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Response Type"/>
+      <param description="Response Type" type="string" variable="$responseType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Oauth\V1\$this" namespace="Twilio\Rest\Oauth\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+    </return>
+    <parameter name="responseType" byreference="false" type="string"/>
+  </method>
+  <method name="setClientId" start="95" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Client Identifier"/>
+      <param description="The Client Identifier" type="string" variable="$clientId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Oauth\V1\$this" namespace="Twilio\Rest\Oauth\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+    </return>
+    <parameter name="clientId" byreference="false" type="string"/>
+  </method>
+  <method name="setRedirectUri" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The url to which response will be redirected to"/>
+      <param description="The url to which response will be redirected to" type="string" variable="$redirectUri"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Oauth\V1\$this" namespace="Twilio\Rest\Oauth\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+    </return>
+    <parameter name="redirectUri" byreference="false" type="string"/>
+  </method>
+  <method name="setScope" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The scope of the access request"/>
+      <param description="The scope of the access request" type="string" variable="$scope"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Oauth\V1\$this" namespace="Twilio\Rest\Oauth\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+    </return>
+    <parameter name="scope" byreference="false" type="string"/>
+  </method>
+  <method name="setState" start="131" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An opaque value which can be used to maintain state between the request and callback"/>
+      <param description="An opaque value which can be used to maintain state between the request and callback" type="string" variable="$state"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Oauth\V1\$this" namespace="Twilio\Rest\Oauth\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+    </return>
+    <parameter name="state" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="142" end="146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

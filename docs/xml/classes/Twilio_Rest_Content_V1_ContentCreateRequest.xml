@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Content\V1\ContentCreateRequest" namespace="Twilio\Rest\Content\V1" name="ContentCreateRequest" abstract="false" final="false" start="1138" end="1171">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Content/V1" file="ContentModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Content/V1/ContentModels.php" size="32790" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="4ae1c29bf6e1d9adf20e22209a6ef6ebe7edd5e6" relative="Twilio/Rest/Content/V1/ContentModels.php"/>
+  <implements full="JsonSerializable" namespace="" name="JsonSerializable"/>
+  <member name="friendlyName" visibility="protected" static="false" line="1146">
+    <docblock>
+      <description/>
+      <property value="string $friendlyName User defined name of the content"/>
+      <property value="array&lt;string,string&gt; $variables Key value pairs of variable name to value"/>
+      <property value="string $language Language code for the content"/>
+      <property value="Types $types"/>
+    </docblock>
+  </member>
+  <member name="variables" visibility="protected" static="false" line="1147"/>
+  <member name="language" visibility="protected" static="false" line="1148"/>
+  <member name="types" visibility="protected" static="false" line="1149"/>
+  <constructor name="__construct" start="1150" end="1155" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="toArray" start="1157" end="1160" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <method name="jsonSerialize" start="1162" end="1170" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+  </method>
+  <interface full="JsonSerializable" namespace="" name="JsonSerializable">
+    <method name="jsonSerialize" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Specify data which should be serialized to JSON"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

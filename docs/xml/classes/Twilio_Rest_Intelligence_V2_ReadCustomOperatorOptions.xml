@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\ReadCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadCustomOperatorOptions" abstract="false" final="false" start="64" end="114">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2" file="CustomOperatorOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/CustomOperatorOptions.php" size="4286" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="b27908290c4c105c20e663fdeab51cebbd463a49" relative="Twilio/Rest/Intelligence/V2/CustomOperatorOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="70" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Returns Custom Operators with the provided availability type. Possible values: internal, beta, public, retired." type="string" variable="$availability"/>
+      <param description="Returns Custom Operators that support the provided language code." type="string" variable="$languageCode"/>
+    </docblock>
+    <parameter name="availability" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="languageCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setAvailability" start="86" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns Custom Operators with the provided availability type. Possible values: internal, beta, public, retired."/>
+      <param description="Returns Custom Operators with the provided availability type. Possible values: internal, beta, public, retired." type="string" variable="$availability"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\$this" namespace="Twilio\Rest\Intelligence\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\ReadCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadCustomOperatorOptions"/>
+    </return>
+    <parameter name="availability" byreference="false" type="string"/>
+  </method>
+  <method name="setLanguageCode" start="98" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns Custom Operators that support the provided language code."/>
+      <param description="Returns Custom Operators that support the provided language code." type="string" variable="$languageCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\$this" namespace="Twilio\Rest\Intelligence\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\ReadCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadCustomOperatorOptions"/>
+    </return>
+    <parameter name="languageCode" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="109" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

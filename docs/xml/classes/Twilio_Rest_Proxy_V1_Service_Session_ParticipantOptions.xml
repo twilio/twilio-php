@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Proxy\V1\Service\Session\ParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="ParticipantOptions" abstract="true" final="false" start="21" end="47">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/Session" file="ParticipantOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/Session/ParticipantOptions.php" size="4152" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="10df83c34fa53358fe2650c3936a88c2586be301" relative="Twilio/Rest/Proxy/V1/Service/Session/ParticipantOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII." type="string" variable="$friendlyName"/>
+      <param description="The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool." type="string" variable="$proxyIdentifier"/>
+      <param description="The SID of the Proxy Identifier to assign to the Participant." type="string" variable="$proxyIdentifierSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\Session\CreateParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="CreateParticipantOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\CreateParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="CreateParticipantOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="proxyIdentifier" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="proxyIdentifierSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

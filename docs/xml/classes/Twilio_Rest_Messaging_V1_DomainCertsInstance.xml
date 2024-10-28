@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\DomainCertsInstance" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsInstance" abstract="false" final="false" start="37" end="154">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="DomainCertsInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/DomainCertsInstance.php" size="4937" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="574909c4c1baffabd100ef8376d22ba829a938e1" relative="Twilio/Rest/Messaging/V1/DomainCertsInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $domainSid"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="\DateTime|null $dateExpires"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="string|null $domainName"/>
+    <property value="string|null $certificateSid"/>
+    <property value="string|null $url"/>
+    <property value="array|null $certInValidation"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="46" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the DomainCertsInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Messaging\V1\mixed" namespace="Twilio\Rest\Messaging\V1" name="mixed"/>
+      </param>
+      <param description="Unique string used to identify the domain that this certificate should be associated with." type="string" variable="$domainSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="domainSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="50"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="71" end="81" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this DomainCertsInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\DomainCertsContext" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\DomainCertsContext" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsContext"/>
+    </return>
+  </method>
+  <method name="delete" start="89" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the DomainCertsInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="101" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the DomainCertsInstance"/>
+      <return description="Fetched DomainCertsInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\DomainCertsInstance" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\DomainCertsInstance" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsInstance"/>
+    </return>
+  </method>
+  <method name="update" start="114" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the DomainCertsInstance"/>
+      <param description="Contains the full TLS certificate and private for this domain in PEM format: https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail. Twilio uses this information to process HTTPS traffic sent to your domain." type="string" variable="$tlsCert"/>
+      <return description="Updated DomainCertsInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\DomainCertsInstance" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\DomainCertsInstance" namespace="Twilio\Rest\Messaging\V1" name="DomainCertsInstance"/>
+    </return>
+    <parameter name="tlsCert" byreference="false" type="string"/>
+  </method>
+  <method name="__get" start="127" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="146" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

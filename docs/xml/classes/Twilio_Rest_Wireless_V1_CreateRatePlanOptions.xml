@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions" abstract="false" final="false" start="91" end="276">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Wireless/V1" file="RatePlanOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Wireless/V1/RatePlanOptions.php" size="17407" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="a9419e184474566e12b3dd58893789c5e624254a" relative="Twilio/Rest/Wireless/V1/RatePlanOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="106" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <param description="A descriptive string that you create to describe the resource. It does not have to be unique." type="string" variable="$friendlyName"/>
+      <param description="Whether SIMs can use GPRS/3G/4G/LTE data connectivity." type="object" variable="$dataEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <param description="The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`." type="int" variable="$dataLimit"/>
+      <param description="The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans)." type="string" variable="$dataMetering"/>
+      <param description="Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource)." type="object" variable="$messagingEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <param description="Deprecated." type="object" variable="$voiceEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <param description="Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming)." type="object" variable="$nationalRoamingEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <param description="The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`." type="array" variable="$internationalRoaming" of="object">
+        <type full="Twilio\Rest\Wireless\V1\string" namespace="Twilio\Rest\Wireless\V1" name="string"/>
+      </param>
+      <param description="The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info." type="int" variable="$nationalRoamingDataLimit"/>
+      <param description="The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB." type="int" variable="$internationalRoamingDataLimit"/>
+    </docblock>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dataEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dataLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="dataMetering" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messagingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="voiceEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="nationalRoamingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="internationalRoaming" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="nationalRoamingDataLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="internationalRoamingDataLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </constructor>
+  <method name="setUniqueName" start="140" end="144" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource."/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="152" end="156" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you create to describe the resource. It does not have to be unique."/>
+      <param description="A descriptive string that you create to describe the resource. It does not have to be unique." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setDataEnabled" start="164" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether SIMs can use GPRS/3G/4G/LTE data connectivity."/>
+      <param description="Whether SIMs can use GPRS/3G/4G/LTE data connectivity." type="object" variable="$dataEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="dataEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setDataLimit" start="176" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`."/>
+      <param description="The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`." type="int" variable="$dataLimit"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="dataLimit" byreference="false" type="int"/>
+  </method>
+  <method name="setDataMetering" start="188" end="192" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans)."/>
+      <param description="The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans)." type="string" variable="$dataMetering"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="dataMetering" byreference="false" type="string"/>
+  </method>
+  <method name="setMessagingEnabled" start="200" end="204" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource)."/>
+      <param description="Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource)." type="object" variable="$messagingEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="messagingEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setVoiceEnabled" start="212" end="216" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="object" variable="$voiceEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="voiceEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setNationalRoamingEnabled" start="224" end="228" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming)."/>
+      <param description="Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming)." type="object" variable="$nationalRoamingEnabled">
+        <type full="Twilio\Rest\Wireless\V1\bool" namespace="Twilio\Rest\Wireless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="nationalRoamingEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setInternationalRoaming" start="236" end="240" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`."/>
+      <param description="The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`." type="array" variable="$internationalRoaming" of="object">
+        <type full="Twilio\Rest\Wireless\V1\string" namespace="Twilio\Rest\Wireless\V1" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="internationalRoaming" byreference="false" type="array"/>
+  </method>
+  <method name="setNationalRoamingDataLimit" start="248" end="252" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info."/>
+      <param description="The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info." type="int" variable="$nationalRoamingDataLimit"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="nationalRoamingDataLimit" byreference="false" type="int"/>
+  </method>
+  <method name="setInternationalRoamingDataLimit" start="260" end="264" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB."/>
+      <param description="The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB." type="int" variable="$internationalRoamingDataLimit"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Wireless\V1\$this" namespace="Twilio\Rest\Wireless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless\V1\CreateRatePlanOptions" namespace="Twilio\Rest\Wireless\V1" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="internationalRoamingDataLimit" byreference="false" type="int"/>
+  </method>
+  <method name="__toString" start="271" end="275" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

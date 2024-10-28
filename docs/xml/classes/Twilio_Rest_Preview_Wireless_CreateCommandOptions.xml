@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions" abstract="false" final="false" start="80" end="190">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless" file="CommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless/CommandOptions.php" size="6460" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="3da905e32a72860a1904c5f4a0bed7368a202c4c" relative="Twilio/Rest/Preview/Wireless/CommandOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="90" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$device"/>
+      <param type="string" variable="$sim"/>
+      <param type="string" variable="$callbackMethod"/>
+      <param type="string" variable="$callbackUrl"/>
+      <param type="string" variable="$commandMode"/>
+      <param type="string" variable="$includeSid"/>
+    </docblock>
+    <parameter name="device" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="commandMode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="includeSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setDevice" start="114" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$device"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\$this" namespace="Twilio\Rest\Preview\Wireless" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="device" byreference="false" type="string"/>
+  </method>
+  <method name="setSim" start="126" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$sim"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\$this" namespace="Twilio\Rest\Preview\Wireless" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackMethod" start="138" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$callbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\$this" namespace="Twilio\Rest\Preview\Wireless" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackUrl" start="150" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$callbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\$this" namespace="Twilio\Rest\Preview\Wireless" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="callbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCommandMode" start="162" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$commandMode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\$this" namespace="Twilio\Rest\Preview\Wireless" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="commandMode" byreference="false" type="string"/>
+  </method>
+  <method name="setIncludeSid" start="174" end="178" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$includeSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\$this" namespace="Twilio\Rest\Preview\Wireless" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateCommandOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateCommandOptions"/>
+    </return>
+    <parameter name="includeSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="185" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

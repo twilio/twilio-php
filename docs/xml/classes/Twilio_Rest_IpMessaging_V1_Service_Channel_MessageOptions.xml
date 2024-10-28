@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V1\Service\Channel\MessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="MessageOptions" abstract="true" final="false" start="21" end="76">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel" file="MessageOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel/MessageOptions.php" size="4785" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="126e019851b26a39784fe6023a1308d38697acd5" relative="Twilio/Rest/IpMessaging/V1/Service/Channel/MessageOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$from"/>
+      <param type="string" variable="$attributes"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\CreateMessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="CreateMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\CreateMessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="CreateMessageOptions"/>
+    </return>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="47" end="56" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$order"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\ReadMessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="ReadMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\ReadMessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="order" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="63" end="74" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$body"/>
+      <param type="string" variable="$attributes"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\UpdateMessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="UpdateMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\UpdateMessageOptions" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="body" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

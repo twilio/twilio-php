@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\DomainConfigOptions" namespace="Twilio\Rest\Messaging\V1" name="DomainConfigOptions" abstract="true" final="false" start="21" end="48">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="DomainConfigOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/DomainConfigOptions.php" size="6205" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="6551298a033f7dc72efaaf78e8f880a5d9f9b768" relative="Twilio/Rest/Messaging/V1/DomainConfigOptions.php"/>
+  <method name="update" start="31" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping." type="string" variable="$fallbackUrl"/>
+      <param description="URL to receive click events to your webhook whenever the recipients click on the shortened links" type="string" variable="$callbackUrl"/>
+      <param description="Boolean field to set customer delivery preference when there is a failure in linkShortening service" type="object" variable="$continueOnFailure">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <param description="Customer's choice to send links with/without \\\&quot;https://\\\&quot; attached to shortened url. If true, messages will not be sent with https:// at the beginning of the url. If false, messages will be sent with https:// at the beginning of the url. False is the default behavior if it is not specified." type="object" variable="$disableHttps">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\UpdateDomainConfigOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateDomainConfigOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateDomainConfigOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateDomainConfigOptions"/>
+    </return>
+    <parameter name="fallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="continueOnFailure" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="disableHttps" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

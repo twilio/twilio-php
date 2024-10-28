@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions" abstract="false" final="false" start="51" end="131">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1" file="ConfigurationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/ConfigurationOptions.php" size="5891" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="c84d378482307e2887d6367fd7f06f6dfe488d07" relative="Twilio/Rest/Conversations/V1/ConfigurationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="59" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation." type="string" variable="$defaultChatServiceSid"/>
+      <param description="The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation." type="string" variable="$defaultMessagingServiceSid"/>
+      <param description="Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute." type="string" variable="$defaultInactiveTimer"/>
+      <param description="Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes." type="string" variable="$defaultClosedTimer"/>
+    </docblock>
+    <parameter name="defaultChatServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultMessagingServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultInactiveTimer" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="defaultClosedTimer" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setDefaultChatServiceSid" start="79" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation."/>
+      <param description="The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to use when creating a conversation." type="string" variable="$defaultChatServiceSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\$this" namespace="Twilio\Rest\Conversations\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions"/>
+    </return>
+    <parameter name="defaultChatServiceSid" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultMessagingServiceSid" start="91" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation."/>
+      <param description="The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to use when creating a conversation." type="string" variable="$defaultMessagingServiceSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\$this" namespace="Twilio\Rest\Conversations\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions"/>
+    </return>
+    <parameter name="defaultMessagingServiceSid" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultInactiveTimer" start="103" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute."/>
+      <param description="Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute." type="string" variable="$defaultInactiveTimer"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\$this" namespace="Twilio\Rest\Conversations\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions"/>
+    </return>
+    <parameter name="defaultInactiveTimer" byreference="false" type="string"/>
+  </method>
+  <method name="setDefaultClosedTimer" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes."/>
+      <param description="Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes." type="string" variable="$defaultClosedTimer"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\$this" namespace="Twilio\Rest\Conversations\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\UpdateConfigurationOptions" namespace="Twilio\Rest\Conversations\V1" name="UpdateConfigurationOptions"/>
+    </return>
+    <parameter name="defaultClosedTimer" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="126" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

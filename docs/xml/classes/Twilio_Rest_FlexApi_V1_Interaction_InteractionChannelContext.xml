@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelContext" namespace="Twilio\Rest\FlexApi\V1\Interaction" name="InteractionChannelContext" abstract="false" final="false" start="36" end="201">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/Interaction" file="InteractionChannelContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/Interaction/InteractionChannelContext.php" size="6065" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="7b6679b821b0a2fb91ead3085b6f0519a451d27f" relative="Twilio/Rest/FlexApi/V1/Interaction/InteractionChannelContext.php"/>
+  <docblock>
+    <description/>
+    <property value="InteractionChannelParticipantList $participants"/>
+    <property value="InteractionChannelInviteList $invites"/>
+    <method value="\Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantContext participants(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_participants" visibility="protected" static="false" line="38"/>
+  <member name="_invites" visibility="protected" static="false" line="39"/>
+  <constructor name="__construct" start="48" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the InteractionChannelContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The unique string created by Twilio to identify an Interaction resource, prefixed with KD." type="string" variable="$interactionSid"/>
+      <param description="The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="interactionSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="55"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="74" end="86" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the InteractionChannelInstance"/>
+      <return description="Fetched InteractionChannelInstance" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelInstance" namespace="Twilio\Rest\FlexApi\V1\Interaction" name="InteractionChannelInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelInstance" namespace="Twilio\Rest\FlexApi\V1\Interaction" name="InteractionChannelInstance"/>
+    </return>
+  </method>
+  <method name="update" start="97" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the InteractionChannelInstance"/>
+      <param type="string" variable="$status"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\FlexApi\V1\Interaction\array|Options" namespace="Twilio\Rest\FlexApi\V1\Interaction" name="array|Options"/>
+      </param>
+      <return description="Updated InteractionChannelInstance" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelInstance" namespace="Twilio\Rest\FlexApi\V1\Interaction" name="InteractionChannelInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelInstance" namespace="Twilio\Rest\FlexApi\V1\Interaction" name="InteractionChannelInstance"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getParticipants" start="124" end="135" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the participants"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantList" namespace="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel" name="InteractionChannelParticipantList"/>
+    </return>
+  </method>
+  <method name="getInvites" start="140" end="151" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the invites"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInviteList" namespace="Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel" name="InteractionChannelInviteList"/>
+    </return>
+  </method>
+  <method name="__get" start="160" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="178" end="186" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="193" end="200" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

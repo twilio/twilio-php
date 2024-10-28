@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\ComplianceInquiriesList" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceInquiriesList" abstract="false" final="false" start="26" end="102">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="ComplianceInquiriesList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/ComplianceInquiriesList.php" size="3016" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="7a7a20cfe2e0890aee99a1d6603164d25582ad49" relative="Twilio/Rest/Trusthub/V1/ComplianceInquiriesList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="33" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the ComplianceInquiriesList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="38"/>
+    </inline>
+  </constructor>
+  <method name="create" start="53" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the ComplianceInquiriesInstance"/>
+      <param description="The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile." type="string" variable="$primaryProfileSid"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Trusthub\V1\array|Options" namespace="Twilio\Rest\Trusthub\V1" name="array|Options"/>
+      </param>
+      <return description="Created ComplianceInquiriesInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\ComplianceInquiriesInstance" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceInquiriesInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ComplianceInquiriesInstance" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceInquiriesInstance"/>
+    </return>
+    <parameter name="primaryProfileSid" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getContext" start="82" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a ComplianceInquiriesContext"/>
+      <param description="The unique CustomerId matching the Customer Profile/Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Inquiry creation call." type="string" variable="$customerId"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ComplianceInquiriesContext" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceInquiriesContext"/>
+    </return>
+    <parameter name="customerId" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="98" end="101" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions" abstract="false" final="false" start="91" end="379">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Notify/V1/Service" file="NotificationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Notify/V1/Service/NotificationOptions.php" size="30642" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="369de8b69fa6f6e9e094515f3e687f6f0838e71a" relative="Twilio/Rest/Notify/V1/Service/NotificationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="113" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <param description="A tag that selects the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 5 tags. The implicit tag `all` is available to notify all Bindings in a Service instance. Similarly, the implicit tags `apn`, `fcm`, `gcm`, `sms` and `facebook-messenger` are available to notify all Bindings in a specific channel." type="array" variable="$tag" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <param description="The notification text. For FCM and GCM, translates to `data.twi_body`. For APNS, translates to `aps.alert.body`. For SMS, translates to `body`. SMS requires either this `body` value, or `media_urls` attribute defined in the `sms` parameter of the notification." type="string" variable="$body"/>
+      <param type="string" variable="$priority"/>
+      <param description="How long, in seconds, the notification is valid. Can be an integer between 0 and 2,419,200, which is 4 weeks, the default and the maximum supported time to live (TTL). Delivery should be attempted if the device is offline until the TTL elapses. Zero means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. SMS does not support this property." type="int" variable="$ttl"/>
+      <param description="The notification title. For FCM and GCM, this translates to the `data.twi_title` value. For APNS, this translates to the `aps.alert.title` value. SMS does not support this property. This field is not visible on iOS phones and tablets but appears on Apple Watch and Android devices." type="string" variable="$title"/>
+      <param description="The name of the sound to be played for the notification. For FCM and GCM, this Translates to `data.twi_sound`.  For APNS, this translates to `aps.sound`.  SMS does not support this property." type="string" variable="$sound"/>
+      <param description="The actions to display for the notification. For APNS, translates to the `aps.category` value. For GCM, translates to the `data.twi_action` value. For SMS, this parameter is not supported and is omitted from deliveries to those channels." type="string" variable="$action"/>
+      <param description="The custom key-value pairs of the notification's payload. For FCM and GCM, this value translates to `data` in the FCM and GCM payloads. FCM and GCM [reserve certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used in those channels. For APNS, attributes of `data` are inserted into the APNS payload as custom properties outside of the `aps` dictionary. In all channels, we reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed and are rejected as 400 Bad request with no delivery attempted. For SMS, this parameter is not supported and is omitted from deliveries to those channels." type="array" variable="$data"/>
+      <param description="The APNS-specific payload that overrides corresponding attributes in the generic payload for APNS Bindings. This property maps to the APNS `Payload` item, therefore the `aps` key must be used to change standard attributes. Adds custom key-value pairs to the root of the dictionary. See the [APNS documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingwithAPNs.html) for more details. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed." type="array" variable="$apn"/>
+      <param description="The GCM-specific payload that overrides corresponding attributes in the generic payload for GCM Bindings.  This property maps to the root JSON dictionary. See the [GCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref) for more details. Target parameters `to`, `registration_ids`, and `notification_key` are not allowed. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. GCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref)." type="array" variable="$gcm"/>
+      <param description="The SMS-specific payload that overrides corresponding attributes in the generic payload for SMS Bindings.  Each attribute in this value maps to the corresponding `form` parameter of the Twilio [Message](https://www.twilio.com/docs/sms/quickstart) resource.  These parameters of the Message resource are supported in snake case format: `body`, `media_urls`, `status_callback`, and `max_price`.  The `status_callback` parameter overrides the corresponding parameter in the messaging service, if configured. The `media_urls` property expects a JSON array." type="array" variable="$sms"/>
+      <param description="Deprecated." type="array" variable="$facebookMessenger"/>
+      <param description="The FCM-specific payload that overrides corresponding attributes in the generic payload for FCM Bindings. This property maps to the root JSON dictionary. See the [FCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream) for more details. Target parameters `to`, `registration_ids`, `condition`, and `notification_key` are not allowed in this parameter. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. FCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref), which cannot be used in that channel." type="array" variable="$fcm"/>
+      <param description="The Segment resource is deprecated. Use the `tag` parameter, instead." type="array" variable="$segment" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <param description="Deprecated." type="array" variable="$alexa"/>
+      <param description="The destination address specified as a JSON string.  Multiple `to_binding` parameters can be included but the total size of the request entity should not exceed 1MB. This is typically sufficient for 10,000 phone numbers." type="array" variable="$toBinding" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <param description="URL to send webhooks." type="string" variable="$deliveryCallbackUrl"/>
+    </docblock>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="tag" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="body" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="priority" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="title" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sound" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="action" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="data" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="apn" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="gcm" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="sms" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="facebookMessenger" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="fcm" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="segment" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="alexa" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="toBinding" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="deliveryCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setIdentity" start="161" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list."/>
+      <param description="The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Delivery will be attempted only to Bindings with an Identity in this list. No more than 20 items are allowed in this list." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="array"/>
+  </method>
+  <method name="setTag" start="173" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A tag that selects the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 5 tags. The implicit tag `all` is available to notify all Bindings in a Service instance. Similarly, the implicit tags `apn`, `fcm`, `gcm`, `sms` and `facebook-messenger` are available to notify all Bindings in a specific channel."/>
+      <param description="A tag that selects the Bindings to notify. Repeat this parameter to specify more than one tag, up to a total of 5 tags. The implicit tag `all` is available to notify all Bindings in a Service instance. Similarly, the implicit tags `apn`, `fcm`, `gcm`, `sms` and `facebook-messenger` are available to notify all Bindings in a specific channel." type="array" variable="$tag" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="tag" byreference="false" type="array"/>
+  </method>
+  <method name="setBody" start="185" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The notification text. For FCM and GCM, translates to `data.twi_body`. For APNS, translates to `aps.alert.body`. For SMS, translates to `body`. SMS requires either this `body` value, or `media_urls` attribute defined in the `sms` parameter of the notification."/>
+      <param description="The notification text. For FCM and GCM, translates to `data.twi_body`. For APNS, translates to `aps.alert.body`. For SMS, translates to `body`. SMS requires either this `body` value, or `media_urls` attribute defined in the `sms` parameter of the notification." type="string" variable="$body"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="body" byreference="false" type="string"/>
+  </method>
+  <method name="setPriority" start="195" end="199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$priority"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="priority" byreference="false" type="string"/>
+  </method>
+  <method name="setTtl" start="207" end="211" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="How long, in seconds, the notification is valid. Can be an integer between 0 and 2,419,200, which is 4 weeks, the default and the maximum supported time to live (TTL). Delivery should be attempted if the device is offline until the TTL elapses. Zero means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. SMS does not support this property."/>
+      <param description="How long, in seconds, the notification is valid. Can be an integer between 0 and 2,419,200, which is 4 weeks, the default and the maximum supported time to live (TTL). Delivery should be attempted if the device is offline until the TTL elapses. Zero means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. SMS does not support this property." type="int" variable="$ttl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="ttl" byreference="false" type="int"/>
+  </method>
+  <method name="setTitle" start="219" end="223" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The notification title. For FCM and GCM, this translates to the `data.twi_title` value. For APNS, this translates to the `aps.alert.title` value. SMS does not support this property. This field is not visible on iOS phones and tablets but appears on Apple Watch and Android devices."/>
+      <param description="The notification title. For FCM and GCM, this translates to the `data.twi_title` value. For APNS, this translates to the `aps.alert.title` value. SMS does not support this property. This field is not visible on iOS phones and tablets but appears on Apple Watch and Android devices." type="string" variable="$title"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="title" byreference="false" type="string"/>
+  </method>
+  <method name="setSound" start="231" end="235" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The name of the sound to be played for the notification. For FCM and GCM, this Translates to `data.twi_sound`.  For APNS, this translates to `aps.sound`.  SMS does not support this property."/>
+      <param description="The name of the sound to be played for the notification. For FCM and GCM, this Translates to `data.twi_sound`.  For APNS, this translates to `aps.sound`.  SMS does not support this property." type="string" variable="$sound"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="sound" byreference="false" type="string"/>
+  </method>
+  <method name="setAction" start="243" end="247" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The actions to display for the notification. For APNS, translates to the `aps.category` value. For GCM, translates to the `data.twi_action` value. For SMS, this parameter is not supported and is omitted from deliveries to those channels."/>
+      <param description="The actions to display for the notification. For APNS, translates to the `aps.category` value. For GCM, translates to the `data.twi_action` value. For SMS, this parameter is not supported and is omitted from deliveries to those channels." type="string" variable="$action"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="action" byreference="false" type="string"/>
+  </method>
+  <method name="setData" start="255" end="259" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The custom key-value pairs of the notification's payload. For FCM and GCM, this value translates to `data` in the FCM and GCM payloads. FCM and GCM [reserve certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used in those channels. For APNS, attributes of `data` are inserted into the APNS payload as custom properties outside of the `aps` dictionary. In all channels, we reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed and are rejected as 400 Bad request with no delivery attempted. For SMS, this parameter is not supported and is omitted from deliveries to those channels."/>
+      <param description="The custom key-value pairs of the notification's payload. For FCM and GCM, this value translates to `data` in the FCM and GCM payloads. FCM and GCM [reserve certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used in those channels. For APNS, attributes of `data` are inserted into the APNS payload as custom properties outside of the `aps` dictionary. In all channels, we reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed and are rejected as 400 Bad request with no delivery attempted. For SMS, this parameter is not supported and is omitted from deliveries to those channels." type="array" variable="$data"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="data" byreference="false" type="array"/>
+  </method>
+  <method name="setApn" start="267" end="271" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The APNS-specific payload that overrides corresponding attributes in the generic payload for APNS Bindings. This property maps to the APNS `Payload` item, therefore the `aps` key must be used to change standard attributes. Adds custom key-value pairs to the root of the dictionary. See the [APNS documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingwithAPNs.html) for more details. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed."/>
+      <param description="The APNS-specific payload that overrides corresponding attributes in the generic payload for APNS Bindings. This property maps to the APNS `Payload` item, therefore the `aps` key must be used to change standard attributes. Adds custom key-value pairs to the root of the dictionary. See the [APNS documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingwithAPNs.html) for more details. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed." type="array" variable="$apn"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="apn" byreference="false" type="array"/>
+  </method>
+  <method name="setGcm" start="279" end="283" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The GCM-specific payload that overrides corresponding attributes in the generic payload for GCM Bindings.  This property maps to the root JSON dictionary. See the [GCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref) for more details. Target parameters `to`, `registration_ids`, and `notification_key` are not allowed. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. GCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref)."/>
+      <param description="The GCM-specific payload that overrides corresponding attributes in the generic payload for GCM Bindings.  This property maps to the root JSON dictionary. See the [GCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref) for more details. Target parameters `to`, `registration_ids`, and `notification_key` are not allowed. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. GCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref)." type="array" variable="$gcm"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="gcm" byreference="false" type="array"/>
+  </method>
+  <method name="setSms" start="291" end="295" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SMS-specific payload that overrides corresponding attributes in the generic payload for SMS Bindings.  Each attribute in this value maps to the corresponding `form` parameter of the Twilio [Message](https://www.twilio.com/docs/sms/quickstart) resource.  These parameters of the Message resource are supported in snake case format: `body`, `media_urls`, `status_callback`, and `max_price`.  The `status_callback` parameter overrides the corresponding parameter in the messaging service, if configured. The `media_urls` property expects a JSON array."/>
+      <param description="The SMS-specific payload that overrides corresponding attributes in the generic payload for SMS Bindings.  Each attribute in this value maps to the corresponding `form` parameter of the Twilio [Message](https://www.twilio.com/docs/sms/quickstart) resource.  These parameters of the Message resource are supported in snake case format: `body`, `media_urls`, `status_callback`, and `max_price`.  The `status_callback` parameter overrides the corresponding parameter in the messaging service, if configured. The `media_urls` property expects a JSON array." type="array" variable="$sms"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="sms" byreference="false" type="array"/>
+  </method>
+  <method name="setFacebookMessenger" start="303" end="307" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="array" variable="$facebookMessenger"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="facebookMessenger" byreference="false" type="array"/>
+  </method>
+  <method name="setFcm" start="315" end="319" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The FCM-specific payload that overrides corresponding attributes in the generic payload for FCM Bindings. This property maps to the root JSON dictionary. See the [FCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream) for more details. Target parameters `to`, `registration_ids`, `condition`, and `notification_key` are not allowed in this parameter. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. FCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref), which cannot be used in that channel."/>
+      <param description="The FCM-specific payload that overrides corresponding attributes in the generic payload for FCM Bindings. This property maps to the root JSON dictionary. See the [FCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream) for more details. Target parameters `to`, `registration_ids`, `condition`, and `notification_key` are not allowed in this parameter. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. FCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref), which cannot be used in that channel." type="array" variable="$fcm"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="fcm" byreference="false" type="array"/>
+  </method>
+  <method name="setSegment" start="327" end="331" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Segment resource is deprecated. Use the `tag` parameter, instead."/>
+      <param description="The Segment resource is deprecated. Use the `tag` parameter, instead." type="array" variable="$segment" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="segment" byreference="false" type="array"/>
+  </method>
+  <method name="setAlexa" start="339" end="343" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Deprecated."/>
+      <param description="Deprecated." type="array" variable="$alexa"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="alexa" byreference="false" type="array"/>
+  </method>
+  <method name="setToBinding" start="351" end="355" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The destination address specified as a JSON string.  Multiple `to_binding` parameters can be included but the total size of the request entity should not exceed 1MB. This is typically sufficient for 10,000 phone numbers."/>
+      <param description="The destination address specified as a JSON string.  Multiple `to_binding` parameters can be included but the total size of the request entity should not exceed 1MB. This is typically sufficient for 10,000 phone numbers." type="array" variable="$toBinding" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="toBinding" byreference="false" type="array"/>
+  </method>
+  <method name="setDeliveryCallbackUrl" start="363" end="367" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="URL to send webhooks."/>
+      <param description="URL to send webhooks." type="string" variable="$deliveryCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\CreateNotificationOptions" namespace="Twilio\Rest\Notify\V1\Service" name="CreateNotificationOptions"/>
+    </return>
+    <parameter name="deliveryCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="374" end="378" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

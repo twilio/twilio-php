@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\WorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="WorkspaceOptions" abstract="true" final="false" start="21" end="100">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1" file="WorkspaceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/WorkspaceOptions.php" size="23423" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="04d25b6b3527a3852efa41d1e793a440ebe486cf" relative="Twilio/Rest/Taskrouter/V1/WorkspaceOptions.php"/>
+  <method name="create" start="31" end="48" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides)." type="string" variable="$eventCallbackUrl"/>
+      <param description="The list of Workspace events for which to call event_callback_url. For example, if `EventsFilter=task.created, task.canceled, worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated." type="string" variable="$eventsFilter"/>
+      <param description="Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. However, all workspaces should be created as multi-tasking. The default is `true`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. In single-tasking mode (legacy mode), each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking](https://www.twilio.com/docs/taskrouter/multitasking)." type="object" variable="$multiTaskEnabled">
+        <type full="Twilio\Rest\Taskrouter\V1\bool" namespace="Twilio\Rest\Taskrouter\V1" name="bool"/>
+      </param>
+      <param description="An available template name. Can be: `NONE` or `FIFO` and the default is `NONE`. Pre-configures the Workspace with the Workflow and Activities specified in the template. `NONE` will create a Workspace with only a set of default activities. `FIFO` will configure TaskRouter with a set of default activities and a single TaskQueue for first-in, first-out distribution, which can be useful when you are getting started with TaskRouter." type="string" variable="$template"/>
+      <param type="string" variable="$prioritizeQueueOrder"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+    </return>
+    <parameter name="eventCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="eventsFilter" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="multiTaskEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="template" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="prioritizeQueueOrder" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="56" end="65" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The `friendly_name` of the Workspace resources to read. For example `Customer Support` or `2014 Election Campaign`." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\ReadWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="ReadWorkspaceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\ReadWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="ReadWorkspaceOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="77" end="98" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the Activity that will be used when new Workers are created in the Workspace." type="string" variable="$defaultActivitySid"/>
+      <param description="The URL we should call when an event occurs. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides)." type="string" variable="$eventCallbackUrl"/>
+      <param description="The list of Workspace events for which to call event_callback_url. For example if `EventsFilter=task.created,task.canceled,worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated." type="string" variable="$eventsFilter"/>
+      <param description="A descriptive string that you create to describe the Workspace resource. For example: `Sales Call Center` or `Customer Support Team`." type="string" variable="$friendlyName"/>
+      <param description="Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. However, all workspaces should be maintained as multi-tasking. There is no default when omitting this parameter. A multi-tasking Workspace can't be updated to single-tasking unless it is not a Flex Project and another (legacy) single-tasking Workspace exists. Multi-tasking allows Workers to handle multiple Tasks simultaneously. In multi-tasking mode, each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. In single-tasking mode (legacy mode), each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking](https://www.twilio.com/docs/taskrouter/multitasking)." type="object" variable="$multiTaskEnabled">
+        <type full="Twilio\Rest\Taskrouter\V1\bool" namespace="Twilio\Rest\Taskrouter\V1" name="bool"/>
+      </param>
+      <param description="The SID of the Activity that will be assigned to a Worker when a Task reservation times out without a response." type="string" variable="$timeoutActivitySid"/>
+      <param type="string" variable="$prioritizeQueueOrder"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\UpdateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="UpdateWorkspaceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\UpdateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="UpdateWorkspaceOptions"/>
+    </return>
+    <parameter name="defaultActivitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="eventCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="eventsFilter" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="multiTaskEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="timeoutActivitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="prioritizeQueueOrder" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

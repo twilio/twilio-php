@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Voice\V1\ByocTrunkPage" namespace="Twilio\Rest\Voice\V1" name="ByocTrunkPage" abstract="false" final="false" start="22" end="55">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Voice/V1" file="ByocTrunkPage.php" realpath="/twilio/repos/php/src/Twilio/Rest/Voice/V1/ByocTrunkPage.php" size="1554" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="43aaae4d43330d662a3d53c5e89626ce6243b143" relative="Twilio/Rest/Voice/V1/ByocTrunkPage.php"/>
+  <extends full="Twilio\Page" namespace="Twilio" name="Page"/>
+  <constructor name="__construct" start="29" end="35" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="Response from the API" type="object" variable="$response">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </param>
+      <param description="The context solution" type="array" variable="$solution"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+    </parameter>
+    <parameter name="solution" byreference="false" type="array"/>
+    <inline>
+      <comment value="Path Solution" line="33"/>
+    </inline>
+  </constructor>
+  <method name="buildInstance" start="41" end="44" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Payload response from the API" type="array" variable="$payload"/>
+      <return description="\Twilio\Rest\Voice\V1\ByocTrunkInstance" type="object">
+        <type full="Twilio\Rest\Voice\V1\ByocTrunkInstance" namespace="Twilio\Rest\Voice\V1" name="ByocTrunkInstance"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\ByocTrunkInstance" namespace="Twilio\Rest\Voice\V1" name="ByocTrunkInstance"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="51" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Page" namespace="Twilio" name="Page">
+    <implements full="Iterator" namespace="" name="Iterator"/>
+    <member name="metaKeys" default="" type="array" visibility="protected" static="true" line="12"/>
+    <member name="version" visibility="protected" static="false" line="26"/>
+    <member name="payload" visibility="protected" static="false" line="27"/>
+    <member name="solution" visibility="protected" static="false" line="28"/>
+    <member name="records" visibility="protected" static="false" line="29"/>
+    <method name="buildInstance" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+      <parameter name="payload" byreference="false" type="array"/>
+    </method>
+    <constructor name="__construct" start="33" end="40" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+      <parameter name="response" byreference="false" type="object">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </parameter>
+    </constructor>
+    <method name="processResponse" start="42" end="61" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="response" byreference="false" type="object">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </parameter>
+    </method>
+    <method name="isPagingEol" start="63" end="65" abstract="false" final="false" static="false" visibility="protected">
+      <return type="bool" nullable="false"/>
+      <parameter name="content" byreference="false" nullable="true" type="array"/>
+    </method>
+    <method name="hasMeta" start="67" end="69" abstract="false" final="false" static="false" visibility="protected">
+      <return type="bool" nullable="false"/>
+      <parameter name="key" byreference="false" type="string"/>
+    </method>
+    <method name="getMeta" start="71" end="73" abstract="false" final="false" static="false" visibility="protected">
+      <return type="string" nullable="true"/>
+      <parameter name="key" byreference="false" type="string"/>
+      <parameter name="default" byreference="false" type="string" default="NULL"/>
+    </method>
+    <method name="loadPage" start="75" end="95" abstract="false" final="false" static="false" visibility="protected">
+      <return type="array" nullable="false"/>
+      <inline>
+        <comment value="handle end of results error code" line="89"/>
+      </inline>
+    </method>
+    <method name="getPreviousPageUrl" start="97" end="104" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="getNextPageUrl" start="106" end="113" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="nextPage" start="115" end="122" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="true">
+        <type full="Twilio\Page" namespace="Twilio" name="Page"/>
+      </return>
+    </method>
+    <method name="previousPage" start="124" end="131" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="true">
+        <type full="Twilio\Page" namespace="Twilio" name="Page"/>
+      </return>
+    </method>
+    <method name="current" start="139" end="142" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Return the current element"/>
+        <link value="http://php.net/manual/en/iterator.current.php"/>
+        <return description="Can return any type." type="mixed"/>
+      </docblock>
+    </method>
+    <method name="next" start="150" end="152" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Move forward to next element"/>
+        <link value="http://php.net/manual/en/iterator.next.php"/>
+        <return description="Any returned value is ignored." type="object">
+          <type full="Twilio\void" namespace="Twilio" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="key" start="160" end="163" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Return the key of the current element"/>
+        <link value="http://php.net/manual/en/iterator.key.php"/>
+        <return description="scalar on success, or null on failure." type="mixed"/>
+      </docblock>
+    </method>
+    <method name="valid" start="172" end="174" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Checks if current position is valid"/>
+        <link value="http://php.net/manual/en/iterator.valid.php"/>
+        <return description="The return value will be casted to boolean and then evaluated." type="object">Returns true on success or false on failure.<type full="Twilio\bool" namespace="Twilio" name="bool"/></return>
+      </docblock>
+      <return type="bool" nullable="false"/>
+    </method>
+    <method name="rewind" start="182" end="184" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Rewind the Iterator to the first element"/>
+        <link value="http://php.net/manual/en/iterator.rewind.php"/>
+        <return description="Any returned value is ignored." type="object">
+          <type full="Twilio\void" namespace="Twilio" name="void"/>
+        </return>
+      </docblock>
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="getVersion" start="187" end="189" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </return>
+    </method>
+    <method name="__toString" start="191" end="193" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+  <interface full="Iterator" namespace="" name="Iterator">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="current" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Return the current element"/>
+      <return type="mixed"/>
+    </docblock>
+  </method>
+    <method name="key" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Return the key of the current element"/>
+      <return type="scalar"/>
+    </docblock>
+  </method>
+    <method name="next" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Move forward to next element">Moves the current position to the next element.</description>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="rewind" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Rewind the Iterator to the first element">Rewinds back to the first element of the Iterator.</description>
+      <return type="void"/>
+    </docblock>
+  </method>
+    <method name="valid" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Checks if current position is valid"/>
+      <return type="bool"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

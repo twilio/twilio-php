@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="WorkerChannelOptions" abstract="true" final="false" start="21" end="43">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Worker" file="WorkerChannelOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Worker/WorkerChannelOptions.php" size="3711" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="01fdda251b77784653f4c898163b91169dc3ac65" relative="Twilio/Rest/Taskrouter/V1/Workspace/Worker/WorkerChannelOptions.php"/>
+  <method name="update" start="30" end="41" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created." type="int" variable="$capacity"/>
+      <param description="Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type." type="object" variable="$available">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\UpdateWorkerChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="UpdateWorkerChannelOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\UpdateWorkerChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="UpdateWorkerChannelOptions"/>
+    </return>
+    <parameter name="capacity" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="available" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

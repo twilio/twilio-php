@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Autopilot" namespace="Twilio\Rest" name="Autopilot" abstract="false" final="false" start="6" end="32">
+  <file path="/twilio/repos/php/src/Twilio/Rest" file="Autopilot.php" realpath="/twilio/repos/php/src/Twilio/Rest/Autopilot.php" size="1036" time="2024-10-28T12:06:41+00:00" unixtime="1730117201" sha1="f20d3dc0b7ee4ae32932b26ed73655d468aaa772" relative="Twilio/Rest/Autopilot.php"/>
+  <extends full="Twilio\Rest\AutopilotBase" namespace="Twilio\Rest" name="AutopilotBase" unresolved="true"/>
+  <method name="getAssistants" start="11" end="14" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;assistants instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Autopilot\V1\AssistantList" namespace="Twilio\Rest\Autopilot\V1" name="AssistantList"/>
+    </return>
+  </method>
+  <method name="contextAssistants" start="20" end="23" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;assistants(\$sid) instead."/>
+      <param description="The unique string that identifies the resource" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Autopilot\V1\AssistantContext" namespace="Twilio\Rest\Autopilot\V1" name="AssistantContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getRestoreAssistant" start="28" end="31" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;restoreAssistant instead"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Autopilot\V1\RestoreAssistantList" namespace="Twilio\Rest\Autopilot\V1" name="RestoreAssistantList"/>
+    </return>
+  </method>
+</class>

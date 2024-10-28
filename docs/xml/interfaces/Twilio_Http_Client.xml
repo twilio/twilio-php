@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Twilio\Http\Client" namespace="Twilio\Http" name="Client" abstract="false" final="false" start="7" end="12">
+  <file path="/twilio/repos/php/src/Twilio/Http" file="Client.php" realpath="/twilio/repos/php/src/Twilio/Http/Client.php" size="332" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="36a456ea98d6bf80807c61ef49230b53d5bf6568" relative="Twilio/Http/Client.php"/>
+  <method name="request" start="8" end="11" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="url" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="user" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <implementors>
+    <class full="Twilio\Http\CurlClient" namespace="Twilio\Http" name="CurlClient"/>
+    <class full="Twilio\Http\GuzzleClient" namespace="Twilio\Http" name="GuzzleClient"/>
+  </implementors>
+</interface>

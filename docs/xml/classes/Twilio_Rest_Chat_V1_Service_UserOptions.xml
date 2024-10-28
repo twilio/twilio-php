@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V1\Service\UserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="UserOptions" abstract="true" final="false" start="21" end="68">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V1/Service" file="UserOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V1/Service/UserOptions.php" size="6825" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="caddcbe836ee14616777b1073686ad2ff544e474" relative="Twilio/Rest/Chat/V1/Service/UserOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to the new User." type="string" variable="$roleSid"/>
+      <param description="A valid JSON string that contains application-specific data." type="string" variable="$attributes"/>
+      <param description="A descriptive string that you create to describe the new resource. This value is often used for display purposes." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Chat\V1\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="CreateUserOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V1\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="53" end="66" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/api/chat/rest/roles) assigned to this user." type="string" variable="$roleSid"/>
+      <param description="A valid JSON string that contains application-specific data." type="string" variable="$attributes"/>
+      <param description="A descriptive string that you create to describe the resource. It is often used for display purposes." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Chat\V1\Service\UpdateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="UpdateUserOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V1\Service\UpdateUserOptions" namespace="Twilio\Rest\Chat\V1\Service" name="UpdateUserOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Insights\V1\CallSummariesOptions" namespace="Twilio\Rest\Insights\V1" name="CallSummariesOptions" abstract="true" final="false" start="21" end="131">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Insights/V1" file="CallSummariesOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Insights/V1/CallSummariesOptions.php" size="35262" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="477b3bb2b20e937d944f8e23c2afef3ab8913d49" relative="Twilio/Rest/Insights/V1/CallSummariesOptions.php"/>
+  <method name="read" start="58" end="129" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name." type="string" variable="$from"/>
+      <param description="A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name." type="string" variable="$to"/>
+      <param description="An origination carrier." type="string" variable="$fromCarrier"/>
+      <param description="A destination carrier." type="string" variable="$toCarrier"/>
+      <param description="A source country code based on phone number in From." type="string" variable="$fromCountryCode"/>
+      <param description="A destination country code. Based on phone number in To." type="string" variable="$toCountryCode"/>
+      <param description="A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.One of 'true' or 'false'." type="object" variable="$verifiedCaller">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags)." type="object" variable="$hasTag">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h." type="string" variable="$startTime"/>
+      <param description="An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m." type="string" variable="$endTime"/>
+      <param description="A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`." type="string" variable="$callType"/>
+      <param description="A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`." type="string" variable="$callState"/>
+      <param description="A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`." type="string" variable="$direction"/>
+      <param description="A Processing State of the Call Summaries. One of `completed`, `partial` or `all`." type="string" variable="$processingState"/>
+      <param description="A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`." type="string" variable="$sortBy"/>
+      <param description="A unique SID identifier of a Subaccount." type="string" variable="$subaccount"/>
+      <param description="A boolean flag indicating an abnormal session where the last SIP response was not 200 OK." type="object" variable="$abnormalSession">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`." type="string" variable="$answeredBy"/>
+      <param description="Either machine or human." type="string" variable="$answeredByAnnotation"/>
+      <param description="A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`." type="string" variable="$connectivityIssueAnnotation"/>
+      <param description="A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`." type="string" variable="$qualityIssueAnnotation"/>
+      <param description="A boolean flag indicating spam calls." type="object" variable="$spamAnnotation">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]." type="string" variable="$callScoreAnnotation"/>
+      <param description="A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'" type="object" variable="$brandedEnabled">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'" type="object" variable="$voiceIntegrityEnabled">
+        <type full="Twilio\Rest\Insights\V1\bool" namespace="Twilio\Rest\Insights\V1" name="bool"/>
+      </param>
+      <param description="A unique SID identifier of the Branded Call." type="string" variable="$brandedBundleSid"/>
+      <param description="A unique SID identifier of the Voice Integrity Profile." type="string" variable="$voiceIntegrityBundleSid"/>
+      <param description="A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&amp;_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'." type="string" variable="$voiceIntegrityUseCase"/>
+      <param description="A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'." type="string" variable="$businessProfileIdentity"/>
+      <param description="A Business Industry of the calls. Is of type enum. One of 'automotive', 'agriculture', 'banking', 'consumer', 'construction', 'education', 'engineering', 'energy', 'oil_and_gas', 'fast_moving_consumer_goods', 'financial', 'fintech', 'food_and_beverage', 'government', 'healthcare', 'hospitality', 'insurance', 'legal', 'manufacturing', 'media', 'online', 'professional_services', 'raw_materials', 'real_estate', 'religion', 'retail', 'jewelry', 'technology', 'telecommunications', 'transportation', 'travel', 'electronics', 'not_for_profit'" type="string" variable="$businessProfileIndustry"/>
+      <param description="A unique SID identifier of the Business Profile." type="string" variable="$businessProfileBundleSid"/>
+      <param description="A Business Profile Type of the calls. Is of type enum. One of 'primary', 'secondary'." type="string" variable="$businessProfileType"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\ReadCallSummariesOptions" namespace="Twilio\Rest\Insights\V1" name="ReadCallSummariesOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadCallSummariesOptions" namespace="Twilio\Rest\Insights\V1" name="ReadCallSummariesOptions"/>
+    </return>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="to" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fromCarrier" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="toCarrier" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fromCountryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="toCountryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verifiedCaller" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="hasTag" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="startTime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="endTime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callState" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="direction" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="processingState" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sortBy" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="subaccount" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="abnormalSession" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="answeredBy" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="answeredByAnnotation" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="connectivityIssueAnnotation" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="qualityIssueAnnotation" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="spamAnnotation" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="callScoreAnnotation" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="brandedEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="voiceIntegrityEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="brandedBundleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceIntegrityBundleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceIntegrityUseCase" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessProfileIdentity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessProfileIndustry" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessProfileBundleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessProfileType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Accounts\V1\SafelistOptions" namespace="Twilio\Rest\Accounts\V1" name="SafelistOptions" abstract="true" final="false" start="21" end="54">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Accounts/V1" file="SafelistOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Accounts/V1/SafelistOptions.php" size="3979" time="2024-10-28T12:06:41+00:00" unixtime="1730117201" sha1="f6eb23bcfdcf81ff3e0008ef1aafaade50e2be18" relative="Twilio/Rest/Accounts/V1/SafelistOptions.php"/>
+  <method name="delete" start="28" end="37" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164)." type="string" variable="$phoneNumber"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Accounts\V1\DeleteSafelistOptions" namespace="Twilio\Rest\Accounts\V1" name="DeleteSafelistOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Accounts\V1\DeleteSafelistOptions" namespace="Twilio\Rest\Accounts\V1" name="DeleteSafelistOptions"/>
+    </return>
+    <parameter name="phoneNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="fetch" start="43" end="52" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164)." type="string" variable="$phoneNumber"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Accounts\V1\FetchSafelistOptions" namespace="Twilio\Rest\Accounts\V1" name="FetchSafelistOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Accounts\V1\FetchSafelistOptions" namespace="Twilio\Rest\Accounts\V1" name="FetchSafelistOptions"/>
+    </return>
+    <parameter name="phoneNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

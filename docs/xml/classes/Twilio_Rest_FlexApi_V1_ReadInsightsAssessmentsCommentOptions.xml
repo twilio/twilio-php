@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\ReadInsightsAssessmentsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadInsightsAssessmentsCommentOptions" abstract="false" final="false" start="98" end="163">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="InsightsAssessmentsCommentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/InsightsAssessmentsCommentOptions.php" size="4512" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="b41ba4807717d279484b52c4a587b17a56986f92" relative="Twilio/Rest/FlexApi/V1/InsightsAssessmentsCommentOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="105" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The id of the segment." type="string" variable="$segmentId"/>
+      <param description="The id of the agent." type="string" variable="$agentId"/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+    </docblock>
+    <parameter name="segmentId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="agentId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="authorization" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setSegmentId" start="123" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The id of the segment."/>
+      <param description="The id of the segment." type="string" variable="$segmentId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\$this" namespace="Twilio\Rest\FlexApi\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ReadInsightsAssessmentsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadInsightsAssessmentsCommentOptions"/>
+    </return>
+    <parameter name="segmentId" byreference="false" type="string"/>
+  </method>
+  <method name="setAgentId" start="135" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The id of the agent."/>
+      <param description="The id of the agent." type="string" variable="$agentId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\$this" namespace="Twilio\Rest\FlexApi\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ReadInsightsAssessmentsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadInsightsAssessmentsCommentOptions"/>
+    </return>
+    <parameter name="agentId" byreference="false" type="string"/>
+  </method>
+  <method name="setAuthorization" start="147" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Authorization HTTP request header"/>
+      <param description="The Authorization HTTP request header" type="string" variable="$authorization"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\$this" namespace="Twilio\Rest\FlexApi\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ReadInsightsAssessmentsCommentOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadInsightsAssessmentsCommentOptions"/>
+    </return>
+    <parameter name="authorization" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="158" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

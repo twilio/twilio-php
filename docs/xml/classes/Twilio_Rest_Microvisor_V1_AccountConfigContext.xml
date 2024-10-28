@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Microvisor\V1\AccountConfigContext" namespace="Twilio\Rest\Microvisor\V1" name="AccountConfigContext" abstract="false" final="false" start="26" end="123">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Microvisor/V1" file="AccountConfigContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Microvisor/V1/AccountConfigContext.php" size="3293" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="a28f25287454581d227932b691c63a2efd97a095" relative="Twilio/Rest/Microvisor/V1/AccountConfigContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="34" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the AccountConfigContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The config key; up to 100 characters." type="string" variable="$key"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="40"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="56" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the AccountConfigInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Microvisor\V1\bool" namespace="Twilio\Rest\Microvisor\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="70" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the AccountConfigInstance"/>
+      <return description="Fetched AccountConfigInstance" type="object">
+        <type full="Twilio\Rest\Microvisor\V1\AccountConfigInstance" namespace="Twilio\Rest\Microvisor\V1" name="AccountConfigInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\AccountConfigInstance" namespace="Twilio\Rest\Microvisor\V1" name="AccountConfigInstance"/>
+    </return>
+  </method>
+  <method name="update" start="91" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the AccountConfigInstance"/>
+      <param description="The config value; up to 4096 characters." type="string" variable="$value"/>
+      <return description="Updated AccountConfigInstance" type="object">
+        <type full="Twilio\Rest\Microvisor\V1\AccountConfigInstance" namespace="Twilio\Rest\Microvisor\V1" name="AccountConfigInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\AccountConfigInstance" namespace="Twilio\Rest\Microvisor\V1" name="AccountConfigInstance"/>
+    </return>
+    <parameter name="value" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="115" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

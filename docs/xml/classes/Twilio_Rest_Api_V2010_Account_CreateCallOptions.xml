@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions" abstract="false" final="false" start="219" end="734">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="CallOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/CallOptions.php" size="76293" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="b242e722ba3c3f98a9bac914e9ae9610289ef143" relative="Twilio/Rest/Api/V2010/Account/CallOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="256" end="326" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls)." type="string" variable="$url"/>
+      <param description="TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters." type="string" variable="$twiml"/>
+      <param description="The SID of the Application resource that will handle the call, if the call will be handled by an application." type="string" variable="$applicationSid"/>
+      <param description="The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$method"/>
+      <param description="The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$fallbackUrl"/>
+      <param description="The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$fallbackMethod"/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted)." type="string" variable="$statusCallback"/>
+      <param description="The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&amp;code-sdk-version=json). If an `application_sid` is present, this parameter is ignored." type="array" variable="$statusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\string" namespace="Twilio\Rest\Api\V2010\Account" name="string"/>
+      </param>
+      <param description="The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$statusCallbackMethod"/>
+      <param description="A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored." type="string" variable="$sendDigits"/>
+      <param description="The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail." type="int" variable="$timeout"/>
+      <param description="Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL." type="object" variable="$record">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <param description="The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call." type="string" variable="$recordingChannels"/>
+      <param description="The URL that we call when the recording is available to be accessed." type="string" variable="$recordingStatusCallback"/>
+      <param description="The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$recordingStatusCallbackMethod"/>
+      <param description="The username used to authenticate the caller making a SIP call." type="string" variable="$sipAuthUsername"/>
+      <param description="The password required to authenticate the user account specified in `sip_auth_username`." type="string" variable="$sipAuthPassword"/>
+      <param description="Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection)." type="string" variable="$machineDetection"/>
+      <param description="The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds." type="int" variable="$machineDetectionTimeout"/>
+      <param description="The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space." type="array" variable="$recordingStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\string" namespace="Twilio\Rest\Api\V2010\Account" name="string"/>
+      </param>
+      <param description="Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`." type="string" variable="$trim"/>
+      <param description="The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`." type="string" variable="$callerId"/>
+      <param description="The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400." type="int" variable="$machineDetectionSpeechThreshold"/>
+      <param description="The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200." type="int" variable="$machineDetectionSpeechEndThreshold"/>
+      <param description="The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000." type="int" variable="$machineDetectionSilenceTimeout"/>
+      <param description="Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`." type="string" variable="$asyncAmd"/>
+      <param description="The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax." type="string" variable="$asyncAmdStatusCallback"/>
+      <param description="The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$asyncAmdStatusCallbackMethod"/>
+      <param description="The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)" type="string" variable="$byoc"/>
+      <param description="The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)" type="string" variable="$callReason"/>
+      <param description="A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call." type="string" variable="$callToken"/>
+      <param description="The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio." type="string" variable="$recordingTrack"/>
+      <param description="The maximum duration of the call in seconds. Constraints depend on account and configuration." type="int" variable="$timeLimit"/>
+    </docblock>
+    <parameter name="url" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="twiml" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="applicationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="method" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sendDigits" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="timeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="record" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="recordingChannels" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sipAuthUsername" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sipAuthPassword" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="machineDetection" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="machineDetectionTimeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="recordingStatusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="trim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callerId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="machineDetectionSpeechThreshold" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="machineDetectionSpeechEndThreshold" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="machineDetectionSilenceTimeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="asyncAmd" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="asyncAmdStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="asyncAmdStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="byoc" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callReason" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingTrack" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="timeLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </constructor>
+  <method name="setUrl" start="334" end="338" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls)."/>
+      <param description="The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls)." type="string" variable="$url"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="url" byreference="false" type="string"/>
+  </method>
+  <method name="setTwiml" start="346" end="350" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters."/>
+      <param description="TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters." type="string" variable="$twiml"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="twiml" byreference="false" type="string"/>
+  </method>
+  <method name="setApplicationSid" start="358" end="362" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Application resource that will handle the call, if the call will be handled by an application."/>
+      <param description="The SID of the Application resource that will handle the call, if the call will be handled by an application." type="string" variable="$applicationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="applicationSid" byreference="false" type="string"/>
+  </method>
+  <method name="setMethod" start="370" end="374" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored."/>
+      <param description="The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$method"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+  </method>
+  <method name="setFallbackUrl" start="382" end="386" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored."/>
+      <param description="The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$fallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="fallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setFallbackMethod" start="394" end="398" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored."/>
+      <param description="The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$fallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="fallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallback" start="406" end="410" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted)."/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted)." type="string" variable="$statusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackEvent" start="418" end="422" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&amp;code-sdk-version=json). If an `application_sid` is present, this parameter is ignored."/>
+      <param description="The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&amp;code-sdk-version=json). If an `application_sid` is present, this parameter is ignored." type="array" variable="$statusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\string" namespace="Twilio\Rest\Api\V2010\Account" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="statusCallbackEvent" byreference="false" type="array"/>
+  </method>
+  <method name="setStatusCallbackMethod" start="430" end="434" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored."/>
+      <param description="The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored." type="string" variable="$statusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="statusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSendDigits" start="442" end="446" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored."/>
+      <param description="A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored." type="string" variable="$sendDigits"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="sendDigits" byreference="false" type="string"/>
+  </method>
+  <method name="setTimeout" start="454" end="458" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail."/>
+      <param description="The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail." type="int" variable="$timeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="timeout" byreference="false" type="int"/>
+  </method>
+  <method name="setRecord" start="466" end="470" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL."/>
+      <param description="Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL." type="object" variable="$record">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="record" byreference="false" type="bool"/>
+  </method>
+  <method name="setRecordingChannels" start="478" end="482" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call."/>
+      <param description="The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call." type="string" variable="$recordingChannels"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="recordingChannels" byreference="false" type="string"/>
+  </method>
+  <method name="setRecordingStatusCallback" start="490" end="494" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we call when the recording is available to be accessed."/>
+      <param description="The URL that we call when the recording is available to be accessed." type="string" variable="$recordingStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="recordingStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setRecordingStatusCallbackMethod" start="502" end="506" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`."/>
+      <param description="The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$recordingStatusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="recordingStatusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSipAuthUsername" start="514" end="518" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The username used to authenticate the caller making a SIP call."/>
+      <param description="The username used to authenticate the caller making a SIP call." type="string" variable="$sipAuthUsername"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="sipAuthUsername" byreference="false" type="string"/>
+  </method>
+  <method name="setSipAuthPassword" start="526" end="530" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The password required to authenticate the user account specified in `sip_auth_username`."/>
+      <param description="The password required to authenticate the user account specified in `sip_auth_username`." type="string" variable="$sipAuthPassword"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="sipAuthPassword" byreference="false" type="string"/>
+  </method>
+  <method name="setMachineDetection" start="538" end="542" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection)."/>
+      <param description="Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection)." type="string" variable="$machineDetection"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="machineDetection" byreference="false" type="string"/>
+  </method>
+  <method name="setMachineDetectionTimeout" start="550" end="554" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds."/>
+      <param description="The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds." type="int" variable="$machineDetectionTimeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="machineDetectionTimeout" byreference="false" type="int"/>
+  </method>
+  <method name="setRecordingStatusCallbackEvent" start="562" end="566" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space."/>
+      <param description="The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space." type="array" variable="$recordingStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\string" namespace="Twilio\Rest\Api\V2010\Account" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="recordingStatusCallbackEvent" byreference="false" type="array"/>
+  </method>
+  <method name="setTrim" start="574" end="578" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`."/>
+      <param description="Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`." type="string" variable="$trim"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="trim" byreference="false" type="string"/>
+  </method>
+  <method name="setCallerId" start="586" end="590" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`."/>
+      <param description="The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`." type="string" variable="$callerId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="callerId" byreference="false" type="string"/>
+  </method>
+  <method name="setMachineDetectionSpeechThreshold" start="598" end="602" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400."/>
+      <param description="The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400." type="int" variable="$machineDetectionSpeechThreshold"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="machineDetectionSpeechThreshold" byreference="false" type="int"/>
+  </method>
+  <method name="setMachineDetectionSpeechEndThreshold" start="610" end="614" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200."/>
+      <param description="The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200." type="int" variable="$machineDetectionSpeechEndThreshold"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="machineDetectionSpeechEndThreshold" byreference="false" type="int"/>
+  </method>
+  <method name="setMachineDetectionSilenceTimeout" start="622" end="626" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000."/>
+      <param description="The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000." type="int" variable="$machineDetectionSilenceTimeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="machineDetectionSilenceTimeout" byreference="false" type="int"/>
+  </method>
+  <method name="setAsyncAmd" start="634" end="638" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`."/>
+      <param description="Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`." type="string" variable="$asyncAmd"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="asyncAmd" byreference="false" type="string"/>
+  </method>
+  <method name="setAsyncAmdStatusCallback" start="646" end="650" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax."/>
+      <param description="The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax." type="string" variable="$asyncAmdStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="asyncAmdStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setAsyncAmdStatusCallbackMethod" start="658" end="662" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`."/>
+      <param description="The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$asyncAmdStatusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="asyncAmdStatusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setByoc" start="670" end="674" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)"/>
+      <param description="The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)" type="string" variable="$byoc"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="byoc" byreference="false" type="string"/>
+  </method>
+  <method name="setCallReason" start="682" end="686" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)"/>
+      <param description="The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)" type="string" variable="$callReason"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="callReason" byreference="false" type="string"/>
+  </method>
+  <method name="setCallToken" start="694" end="698" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call."/>
+      <param description="A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call." type="string" variable="$callToken"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="callToken" byreference="false" type="string"/>
+  </method>
+  <method name="setRecordingTrack" start="706" end="710" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio."/>
+      <param description="The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio." type="string" variable="$recordingTrack"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="recordingTrack" byreference="false" type="string"/>
+  </method>
+  <method name="setTimeLimit" start="718" end="722" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The maximum duration of the call in seconds. Constraints depend on account and configuration."/>
+      <param description="The maximum duration of the call in seconds. Constraints depend on account and configuration." type="int" variable="$timeLimit"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateCallOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateCallOptions"/>
+    </return>
+    <parameter name="timeLimit" byreference="false" type="int"/>
+  </method>
+  <method name="__toString" start="729" end="733" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

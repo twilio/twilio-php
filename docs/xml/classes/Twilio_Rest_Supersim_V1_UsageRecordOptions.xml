@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\UsageRecordOptions" namespace="Twilio\Rest\Supersim\V1" name="UsageRecordOptions" abstract="true" final="false" start="21" end="59">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="UsageRecordOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/UsageRecordOptions.php" size="9698" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="afd79b4a4f0a7dd6bfeb4d3746be7a851e712755" relative="Twilio/Rest/Supersim/V1/UsageRecordOptions.php"/>
+  <method name="read" start="34" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM." type="string" variable="$sim"/>
+      <param description="SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super SIMs belonging to this Fleet resource at the time the usage occurred." type="string" variable="$fleet"/>
+      <param description="SID of a Network resource. Only show UsageRecords representing usage on this network." type="string" variable="$network"/>
+      <param description="Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country." type="string" variable="$isoCountry"/>
+      <param description="Dimension over which to aggregate usage records. Can be: `sim`, `fleet`, `network`, `isoCountry`. Default is to not aggregate across any of these dimensions, UsageRecords will be aggregated into the time buckets described by the `Granularity` parameter." type="string" variable="$group"/>
+      <param description="Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or `all`. Default is `all`. `all` returns one UsageRecord that describes the usage for the entire period." type="string" variable="$granularity"/>
+      <param description="Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`." type="object" variable="$startTime">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time." type="object" variable="$endTime">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\ReadUsageRecordOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadUsageRecordOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadUsageRecordOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadUsageRecordOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fleet" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="network" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="isoCountry" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="group" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="granularity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startTime" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="endTime" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+</class>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Pricing\V2\Voice\CountryContext" namespace="Twilio\Rest\Pricing\V2\Voice" name="CountryContext" abstract="false" final="false" start="26" end="83">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Pricing/V2/Voice" file="CountryContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Pricing/V2/Voice/CountryContext.php" size="2245" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="f616f6a93dfe60c0200e49d2d4f6f071e2c7cbe3" relative="Twilio/Rest/Pricing/V2/Voice/CountryContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="34" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the CountryContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the origin-based voice pricing information to fetch." type="string" variable="$isoCountry"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="isoCountry" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="40"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="56" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the CountryInstance"/>
+      <return description="Fetched CountryInstance" type="object">
+        <type full="Twilio\Rest\Pricing\V2\Voice\CountryInstance" namespace="Twilio\Rest\Pricing\V2\Voice" name="CountryInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Pricing\V2\Voice\CountryInstance" namespace="Twilio\Rest\Pricing\V2\Voice" name="CountryInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="75" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

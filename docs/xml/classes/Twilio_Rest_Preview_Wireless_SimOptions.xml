@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Wireless\SimOptions" namespace="Twilio\Rest\Preview\Wireless" name="SimOptions" abstract="true" final="false" start="21" end="111">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless" file="SimOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless/SimOptions.php" size="12333" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="46a498acda50fc6463002922d08a8a939c71fde4" relative="Twilio/Rest/Preview/Wireless/SimOptions.php"/>
+  <method name="read" start="32" end="49" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$status"/>
+      <param type="string" variable="$iccid"/>
+      <param type="string" variable="$ratePlan"/>
+      <param type="string" variable="$eId"/>
+      <param type="string" variable="$simRegistrationCode"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\ReadSimOptions" namespace="Twilio\Rest\Preview\Wireless" name="ReadSimOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\ReadSimOptions" namespace="Twilio\Rest\Preview\Wireless" name="ReadSimOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="iccid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ratePlan" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="eId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="simRegistrationCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="70" end="109" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$uniqueName"/>
+      <param type="string" variable="$callbackMethod"/>
+      <param type="string" variable="$callbackUrl"/>
+      <param type="string" variable="$friendlyName"/>
+      <param type="string" variable="$ratePlan"/>
+      <param type="string" variable="$status"/>
+      <param type="string" variable="$commandsCallbackMethod"/>
+      <param type="string" variable="$commandsCallbackUrl"/>
+      <param type="string" variable="$smsFallbackMethod"/>
+      <param type="string" variable="$smsFallbackUrl"/>
+      <param type="string" variable="$smsMethod"/>
+      <param type="string" variable="$smsUrl"/>
+      <param type="string" variable="$voiceFallbackMethod"/>
+      <param type="string" variable="$voiceFallbackUrl"/>
+      <param type="string" variable="$voiceMethod"/>
+      <param type="string" variable="$voiceUrl"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\UpdateSimOptions" namespace="Twilio\Rest\Preview\Wireless" name="UpdateSimOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\UpdateSimOptions" namespace="Twilio\Rest\Preview\Wireless" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ratePlan" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="commandsCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="commandsCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

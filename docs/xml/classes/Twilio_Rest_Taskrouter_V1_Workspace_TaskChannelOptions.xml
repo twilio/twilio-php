@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="TaskChannelOptions" abstract="true" final="false" start="21" end="59">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="TaskChannelOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/TaskChannelOptions.php" size="5271" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="9af1ae19fba318a46bbef4a7ec2c5fa98deb1055" relative="Twilio/Rest/Taskrouter/V1/Workspace/TaskChannelOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether the Task Channel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized." type="object" variable="$channelOptimizedRouting">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\CreateTaskChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateTaskChannelOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\CreateTaskChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateTaskChannelOptions"/>
+    </return>
+    <parameter name="channelOptimizedRouting" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="update" start="46" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param description="Whether the TaskChannel should prioritize Workers that have been idle. If `true`, Workers that have been idle the longest are prioritized." type="object" variable="$channelOptimizedRouting">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskChannelOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskChannelOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="channelOptimizedRouting" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

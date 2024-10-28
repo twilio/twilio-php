@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\WebChannelOptions" namespace="Twilio\Rest\FlexApi\V1" name="WebChannelOptions" abstract="true" final="false" start="21" end="62">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="WebChannelOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/WebChannelOptions.php" size="4396" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="90b1c583e8687b70a469094a3358cf32ad398ba9" relative="Twilio/Rest/FlexApi/V1/WebChannelOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The chat channel's unique name." type="string" variable="$chatUniqueName"/>
+      <param description="The pre-engagement data." type="string" variable="$preEngagementData"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\CreateWebChannelOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateWebChannelOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\CreateWebChannelOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreateWebChannelOptions"/>
+    </return>
+    <parameter name="chatUniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="preEngagementData" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="49" end="60" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$chatStatus"/>
+      <param description="The post-engagement data." type="string" variable="$postEngagementData"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\UpdateWebChannelOptions" namespace="Twilio\Rest\FlexApi\V1" name="UpdateWebChannelOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\UpdateWebChannelOptions" namespace="Twilio\Rest\FlexApi\V1" name="UpdateWebChannelOptions"/>
+    </return>
+    <parameter name="chatStatus" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="postEngagementData" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

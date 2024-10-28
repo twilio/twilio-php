@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions" abstract="false" final="false" start="87" end="345">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service" file="VerificationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service/VerificationOptions.php" size="20238" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="2da6c9c053703021448a049108f60b81d00e5c78" relative="Twilio/Rest/Verify/V2/Service/VerificationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="107" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A custom user defined friendly name that overwrites the existing one in the verification message" type="string" variable="$customFriendlyName"/>
+      <param description="The text of a custom message to use for the verification." type="string" variable="$customMessage"/>
+      <param description="The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits)." type="string" variable="$sendDigits"/>
+      <param description="Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages)." type="string" variable="$locale"/>
+      <param description="A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive." type="string" variable="$customCode"/>
+      <param description="The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled." type="string" variable="$amount"/>
+      <param description="The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled." type="string" variable="$payee"/>
+      <param description="The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request." type="array" variable="$rateLimits"/>
+      <param description="[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address." type="array" variable="$channelConfiguration"/>
+      <param description="Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `&lt;#&gt; Your AppName verification code is: 1234 He42w354ol9`." type="string" variable="$appHash"/>
+      <param description="The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only." type="string" variable="$templateSid"/>
+      <param description="A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions." type="string" variable="$templateCustomSubstitutions"/>
+      <param description="Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address." type="string" variable="$deviceIp"/>
+      <param description="An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification." type="object" variable="$enableSnaClientToken">
+        <type full="Twilio\Rest\Verify\V2\Service\bool" namespace="Twilio\Rest\Verify\V2\Service" name="bool"/>
+      </param>
+      <param type="string" variable="$riskCheck"/>
+      <param description="A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length." type="string" variable="$tags"/>
+    </docblock>
+    <parameter name="customFriendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="customMessage" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sendDigits" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="locale" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="customCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="amount" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="payee" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="rateLimits" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="channelConfiguration" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="appHash" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="templateSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="templateCustomSubstitutions" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="deviceIp" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="enableSnaClientToken" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="riskCheck" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="tags" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setCustomFriendlyName" start="151" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A custom user defined friendly name that overwrites the existing one in the verification message"/>
+      <param description="A custom user defined friendly name that overwrites the existing one in the verification message" type="string" variable="$customFriendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="customFriendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setCustomMessage" start="163" end="167" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The text of a custom message to use for the verification."/>
+      <param description="The text of a custom message to use for the verification." type="string" variable="$customMessage"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="customMessage" byreference="false" type="string"/>
+  </method>
+  <method name="setSendDigits" start="175" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits)."/>
+      <param description="The digits to send after a phone call is answered, for example, to dial an extension. For more information, see the Programmable Voice documentation of [sendDigits](https://www.twilio.com/docs/voice/twiml/number#attributes-sendDigits)." type="string" variable="$sendDigits"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="sendDigits" byreference="false" type="string"/>
+  </method>
+  <method name="setLocale" start="187" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages)."/>
+      <param description="Locale will automatically resolve based on phone number country code for SMS, WhatsApp, and call channel verifications. It will fallback to English or the template’s default translation if the selected translation is not available. This parameter will override the automatic locale resolution. [See supported languages and more information here](https://www.twilio.com/docs/verify/supported-languages)." type="string" variable="$locale"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="locale" byreference="false" type="string"/>
+  </method>
+  <method name="setCustomCode" start="199" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive."/>
+      <param description="A pre-generated code to use for verification. The code can be between 4 and 10 characters, inclusive." type="string" variable="$customCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="customCode" byreference="false" type="string"/>
+  </method>
+  <method name="setAmount" start="211" end="215" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled."/>
+      <param description="The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled." type="string" variable="$amount"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="amount" byreference="false" type="string"/>
+  </method>
+  <method name="setPayee" start="223" end="227" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled."/>
+      <param description="The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled." type="string" variable="$payee"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="payee" byreference="false" type="string"/>
+  </method>
+  <method name="setRateLimits" start="235" end="239" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request."/>
+      <param description="The custom key-value pairs of Programmable Rate Limits. Keys correspond to `unique_name` fields defined when [creating your Rate Limit](https://www.twilio.com/docs/verify/api/service-rate-limits). Associated value pairs represent values in the request that you are rate limiting on. You may include multiple Rate Limit values in each request." type="array" variable="$rateLimits"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="rateLimits" byreference="false" type="array"/>
+  </method>
+  <method name="setChannelConfiguration" start="247" end="251" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address."/>
+      <param description="[`email`](https://www.twilio.com/docs/verify/email) channel configuration in json format. The fields 'from' and 'from_name' are optional but if included the 'from' field must have a valid email address." type="array" variable="$channelConfiguration"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="channelConfiguration" byreference="false" type="array"/>
+  </method>
+  <method name="setAppHash" start="259" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `&lt;#&gt; Your AppName verification code is: 1234 He42w354ol9`."/>
+      <param description="Your [App Hash](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string) to be appended at the end of your verification SMS body. Applies only to SMS. Example SMS body: `&lt;#&gt; Your AppName verification code is: 1234 He42w354ol9`." type="string" variable="$appHash"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="appHash" byreference="false" type="string"/>
+  </method>
+  <method name="setTemplateSid" start="271" end="275" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only."/>
+      <param description="The message [template](https://www.twilio.com/docs/verify/api/templates). If provided, will override the default template for the Service. SMS and Voice channels only." type="string" variable="$templateSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="templateSid" byreference="false" type="string"/>
+  </method>
+  <method name="setTemplateCustomSubstitutions" start="283" end="287" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions."/>
+      <param description="A stringified JSON object in which the keys are the template's special variables and the values are the variables substitutions." type="string" variable="$templateCustomSubstitutions"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="templateCustomSubstitutions" byreference="false" type="string"/>
+  </method>
+  <method name="setDeviceIp" start="295" end="299" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address."/>
+      <param description="Strongly encouraged if using the auto channel. The IP address of the client's device. If provided, it has to be a valid IPv4 or IPv6 address." type="string" variable="$deviceIp"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="deviceIp" byreference="false" type="string"/>
+  </method>
+  <method name="setEnableSnaClientToken" start="307" end="311" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification."/>
+      <param description="An optional Boolean value to indicate the requirement of sna client token in the SNA URL invocation response for added security. This token must match in the Verification Check request to confirm phone number verification." type="object" variable="$enableSnaClientToken">
+        <type full="Twilio\Rest\Verify\V2\Service\bool" namespace="Twilio\Rest\Verify\V2\Service" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="enableSnaClientToken" byreference="false" type="bool"/>
+  </method>
+  <method name="setRiskCheck" start="317" end="321" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$riskCheck"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="riskCheck" byreference="false" type="string"/>
+  </method>
+  <method name="setTags" start="329" end="333" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length."/>
+      <param description="A string containing a JSON map of key value pairs of tags to be recorded as metadata for the message. The object may contain up to 10 tags. Keys and values can each be up to 128 characters in length." type="string" variable="$tags"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\$this" namespace="Twilio\Rest\Verify\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\CreateVerificationOptions" namespace="Twilio\Rest\Verify\V2\Service" name="CreateVerificationOptions"/>
+    </return>
+    <parameter name="tags" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="340" end="344" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

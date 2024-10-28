@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Wireless\Sim\UsageOptions" namespace="Twilio\Rest\Preview\Wireless\Sim" name="UsageOptions" abstract="true" final="false" start="21" end="41">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless/Sim" file="UsageOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless/Sim/UsageOptions.php" size="2075" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="d3cc447628efdc0efbfc4d86e1b2baf24ac0c430" relative="Twilio/Rest/Preview/Wireless/Sim/UsageOptions.php"/>
+  <method name="fetch" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$end"/>
+      <param type="string" variable="$start"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\Sim\FetchUsageOptions" namespace="Twilio\Rest\Preview\Wireless\Sim" name="FetchUsageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\Sim\FetchUsageOptions" namespace="Twilio\Rest\Preview\Wireless\Sim" name="FetchUsageOptions"/>
+    </return>
+    <parameter name="end" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="start" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

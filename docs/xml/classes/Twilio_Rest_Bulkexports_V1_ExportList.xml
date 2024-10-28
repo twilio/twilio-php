@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Bulkexports\V1\ExportList" namespace="Twilio\Rest\Bulkexports\V1" name="ExportList" abstract="false" final="false" start="30" end="122">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1" file="ExportList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1/ExportList.php" size="3165" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="44a3444dd33477311c3b544ba84bf054117418cd" relative="Twilio/Rest/Bulkexports/V1/ExportList.php"/>
+  <docblock>
+    <description/>
+    <property value="JobList $jobs"/>
+    <method value="\Twilio\Rest\Bulkexports\V1\Export\JobContext jobs(string $jobSid)"/>
+  </docblock>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <member name="_jobs" default="NULL" visibility="protected" static="false" line="32"/>
+  <constructor name="__construct" start="39" end="47" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the ExportList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="44"/>
+    </inline>
+  </constructor>
+  <method name="getContext" start="54" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a ExportContext"/>
+      <param description="The type of communication – Messages, Calls, Conferences, and Participants" type="string" variable="$resourceType"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\ExportContext" namespace="Twilio\Rest\Bulkexports\V1" name="ExportContext"/>
+    </return>
+    <parameter name="resourceType" byreference="false" type="string"/>
+  </method>
+  <method name="getJobs" start="68" end="76" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the jobs"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\Export\JobList" namespace="Twilio\Rest\Bulkexports\V1\Export" name="JobList"/>
+    </return>
+  </method>
+  <method name="__get" start="85" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="\Twilio\ListResource" namespace="\Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="103" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="118" end="121" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

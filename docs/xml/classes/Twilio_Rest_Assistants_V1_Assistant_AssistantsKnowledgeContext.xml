@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Assistants\V1\Assistant\AssistantsKnowledgeContext" namespace="Twilio\Rest\Assistants\V1\Assistant" name="AssistantsKnowledgeContext" abstract="false" final="false" start="26" end="103">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/Assistant" file="AssistantsKnowledgeContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/Assistant/AssistantsKnowledgeContext.php" size="2822" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="8f14503b1a127c5baebd6f3aae41b43eb8ebe5cc" relative="Twilio/Rest/Assistants/V1/Assistant/AssistantsKnowledgeContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="35" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the AssistantsKnowledgeContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The assistant ID." type="string" variable="$assistantId"/>
+      <param description="The knowledge ID." type="string" variable="$id"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="assistantId" byreference="false" type="{unknown}"/>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="42"/>
+    </inline>
+  </constructor>
+  <method name="create" start="61" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the AssistantsKnowledgeInstance"/>
+      <return description="Created AssistantsKnowledgeInstance" type="object">
+        <type full="Twilio\Rest\Assistants\V1\Assistant\AssistantsKnowledgeInstance" namespace="Twilio\Rest\Assistants\V1\Assistant" name="AssistantsKnowledgeInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Assistants\V1\Assistant\AssistantsKnowledgeInstance" namespace="Twilio\Rest\Assistants\V1\Assistant" name="AssistantsKnowledgeInstance"/>
+    </return>
+  </method>
+  <method name="delete" start="82" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the AssistantsKnowledgeInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Assistants\V1\Assistant\bool" namespace="Twilio\Rest\Assistants\V1\Assistant" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="__toString" start="95" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

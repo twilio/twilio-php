@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Voice\V1\DialingPermissions\CountryContext" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="CountryContext" abstract="false" final="false" start="31" end="140">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Voice/V1/DialingPermissions" file="CountryContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Voice/V1/DialingPermissions/CountryContext.php" size="4018" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="484091131b12d5a24552b98c8ece5a1b54a921a4" relative="Twilio/Rest/Voice/V1/DialingPermissions/CountryContext.php"/>
+  <docblock>
+    <description/>
+    <property value="HighriskSpecialPrefixList $highriskSpecialPrefixes"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_highriskSpecialPrefixes" visibility="protected" static="false" line="33"/>
+  <constructor name="__construct" start="41" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the CountryContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the DialingPermissions Country resource to fetch" type="string" variable="$isoCode"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="isoCode" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="47"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="63" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the CountryInstance"/>
+      <return description="Fetched CountryInstance" type="object">
+        <type full="Twilio\Rest\Voice\V1\DialingPermissions\CountryInstance" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="CountryInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\DialingPermissions\CountryInstance" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="CountryInstance"/>
+    </return>
+  </method>
+  <method name="getHighriskSpecialPrefixes" start="80" end="90" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the highriskSpecialPrefixes"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\DialingPermissions\Country\HighriskSpecialPrefixList" namespace="Twilio\Rest\Voice\V1\DialingPermissions\Country" name="HighriskSpecialPrefixList"/>
+    </return>
+  </method>
+  <method name="__get" start="99" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="117" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="132" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

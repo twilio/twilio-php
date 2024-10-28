@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Pricing\V2\NumberList" namespace="Twilio\Rest\Pricing\V2" name="NumberList" abstract="false" final="false" start="23" end="65">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Pricing/V2" file="NumberList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Pricing/V2/NumberList.php" size="1700" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="80e49ceccdb747673b1080caa9c7e5cf92178c1e" relative="Twilio/Rest/Pricing/V2/NumberList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="30" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the NumberList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="35"/>
+    </inline>
+  </constructor>
+  <method name="getContext" start="45" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a NumberContext"/>
+      <param description="The destination phone number, in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, for which to fetch the origin-based voice pricing information. E.164 format consists of a + followed by the country code and subscriber number." type="string" variable="$destinationNumber"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Pricing\V2\NumberContext" namespace="Twilio\Rest\Pricing\V2" name="NumberContext"/>
+    </return>
+    <parameter name="destinationNumber" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="61" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

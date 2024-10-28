@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V3\ChannelOptions" namespace="Twilio\Rest\Chat\V3" name="ChannelOptions" abstract="true" final="false" start="21" end="44">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V3" file="ChannelOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V3/ChannelOptions.php" size="3533" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="3758ffdc01035ef1355d42c8e812dd534271627e" relative="Twilio/Rest/Chat/V3/ChannelOptions.php"/>
+  <method name="update" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$type"/>
+      <param description="The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to." type="string" variable="$messagingServiceSid"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Chat\V3\UpdateChannelOptions" namespace="Twilio\Rest\Chat\V3" name="UpdateChannelOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V3\UpdateChannelOptions" namespace="Twilio\Rest\Chat\V3" name="UpdateChannelOptions"/>
+    </return>
+    <parameter name="type" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messagingServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

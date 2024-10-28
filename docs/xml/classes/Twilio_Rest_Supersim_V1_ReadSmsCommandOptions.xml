@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\ReadSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSmsCommandOptions" abstract="false" final="false" start="118" end="183">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="SmsCommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/SmsCommandOptions.php" size="7048" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="773ed7abc414efb42d211125cdc62463d817141f" relative="Twilio/Rest/Supersim/V1/SmsCommandOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="125" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID or unique name of the Sim resource that SMS Command was sent to or from." type="string" variable="$sim"/>
+      <param description="The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/iot/supersim/api/smscommand-resource#status-values) for a description of each." type="string" variable="$status"/>
+      <param description="The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`." type="string" variable="$direction"/>
+    </docblock>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="direction" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setSim" start="143" end="147" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID or unique name of the Sim resource that SMS Command was sent to or from."/>
+      <param description="The SID or unique name of the Sim resource that SMS Command was sent to or from." type="string" variable="$sim"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSmsCommandOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="string"/>
+  </method>
+  <method name="setStatus" start="155" end="159" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/iot/supersim/api/smscommand-resource#status-values) for a description of each."/>
+      <param description="The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://www.twilio.com/docs/iot/supersim/api/smscommand-resource#status-values) for a description of each." type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSmsCommandOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setDirection" start="167" end="171" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`."/>
+      <param description="The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`." type="string" variable="$direction"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadSmsCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSmsCommandOptions"/>
+    </return>
+    <parameter name="direction" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="178" end="182" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

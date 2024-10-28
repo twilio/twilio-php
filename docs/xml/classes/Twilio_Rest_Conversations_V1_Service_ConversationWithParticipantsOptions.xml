@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\Service\ConversationWithParticipantsOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="ConversationWithParticipantsOptions" abstract="true" final="false" start="21" end="74">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service" file="ConversationWithParticipantsOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/ConversationWithParticipantsOptions.php" size="13727" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="7f8a5a5ad5a429a923533695b5d5f628db7ab694" relative="Twilio/Rest/Conversations/V1/Service/ConversationWithParticipantsOptions.php"/>
+  <method name="create" start="39" end="72" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The human-readable name of this conversation, limited to 256 characters. Optional." type="string" variable="$friendlyName"/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL." type="string" variable="$uniqueName"/>
+      <param description="The date that this resource was created." type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The date that this resource was last updated." type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to." type="string" variable="$messagingServiceSid"/>
+      <param description="An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\&quot;{}\\\&quot; will be returned." type="string" variable="$attributes"/>
+      <param type="string" variable="$state"/>
+      <param description="ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute." type="string" variable="$timersInactive"/>
+      <param description="ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes." type="string" variable="$timersClosed"/>
+      <param description="The default email address that will be used when sending outbound emails in this conversation." type="string" variable="$bindingsEmailAddress"/>
+      <param description="The default name that will be used when sending outbound emails in this conversation." type="string" variable="$bindingsEmailName"/>
+      <param description="The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10." type="array" variable="$participant" of="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\string" namespace="Twilio\Rest\Conversations\V1\Service" name="string"/>
+      </param>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\CreateConversationWithParticipantsOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="CreateConversationWithParticipantsOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\CreateConversationWithParticipantsOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="CreateConversationWithParticipantsOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateCreated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="dateUpdated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="messagingServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="timersInactive" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="timersClosed" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bindingsEmailAddress" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bindingsEmailName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="participant" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

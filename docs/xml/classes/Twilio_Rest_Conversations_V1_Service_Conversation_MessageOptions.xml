@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\Service\Conversation\MessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="MessageOptions" abstract="true" final="false" start="21" end="129">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/Conversation" file="MessageOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/Conversation/MessageOptions.php" size="19280" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="16b12a8d05e2cb6806a60ba9aba7541f67b485a5" relative="Twilio/Rest/Conversations/V1/Service/Conversation/MessageOptions.php"/>
+  <method name="create" start="36" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The channel specific identifier of the message's author. Defaults to `system`." type="string" variable="$author"/>
+      <param description="The content of the message, can be up to 1,600 characters long." type="string" variable="$body"/>
+      <param description="The date that this resource was created." type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The date that this resource was last updated. `null` if the message has not been edited." type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\&quot;{}\\\&quot; will be returned." type="string" variable="$attributes"/>
+      <param description="The Media SID to be attached to the new Message." type="string" variable="$mediaSid"/>
+      <param description="The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template, required for template-generated messages.  **Note** that if this field is set, `Body` and `MediaSid` parameters are ignored." type="string" variable="$contentSid"/>
+      <param description="A structurally valid JSON string that contains values to resolve Rich Content template variables." type="string" variable="$contentVariables"/>
+      <param description="The subject of the message, can be up to 256 characters long." type="string" variable="$subject"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\CreateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="CreateMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\CreateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="CreateMessageOptions"/>
+    </return>
+    <parameter name="author" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="body" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateCreated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="dateUpdated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mediaSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="contentSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="contentVariables" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="subject" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="delete" start="69" end="78" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\DeleteMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="DeleteMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\DeleteMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="DeleteMessageOptions"/>
+    </return>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="85" end="94" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The sort order of the returned messages. Can be: `asc` (ascending) or `desc` (descending), with `asc` as the default." type="string" variable="$order"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\ReadMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="ReadMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\ReadMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="ReadMessageOptions"/>
+    </return>
+    <parameter name="order" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="106" end="127" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The channel specific identifier of the message's author. Defaults to `system`." type="string" variable="$author"/>
+      <param description="The content of the message, can be up to 1,600 characters long." type="string" variable="$body"/>
+      <param description="The date that this resource was created." type="object" variable="$dateCreated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The date that this resource was last updated. `null` if the message has not been edited." type="object" variable="$dateUpdated">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set \\\&quot;{}\\\&quot; will be returned." type="string" variable="$attributes"/>
+      <param description="The subject of the message, can be up to 256 characters long." type="string" variable="$subject"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\Conversation\UpdateMessageOptions" namespace="Twilio\Rest\Conversations\V1\Service\Conversation" name="UpdateMessageOptions"/>
+    </return>
+    <parameter name="author" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="body" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateCreated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="dateUpdated" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="subject" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

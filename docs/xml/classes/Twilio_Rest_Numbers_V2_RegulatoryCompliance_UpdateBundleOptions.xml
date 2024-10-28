@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateBundleOptions" abstract="false" final="false" start="425" end="503">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance" file="BundleOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/BundleOptions.php" size="22117" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="6d3a77d1c2d336281f414f8512db4a78b5fc0692" relative="Twilio/Rest/Numbers/V2/RegulatoryCompliance/BundleOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="433" end="445" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$status"/>
+      <param description="The URL we call to inform your application of status changes." type="string" variable="$statusCallback"/>
+      <param description="The string that you assigned to describe the resource." type="string" variable="$friendlyName"/>
+      <param description="The email address that will receive updates when the Bundle resource changes status." type="string" variable="$email"/>
+    </docblock>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setStatus" start="451" end="455" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateBundleOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallback" start="463" end="467" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we call to inform your application of status changes."/>
+      <param description="The URL we call to inform your application of status changes." type="string" variable="$statusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateBundleOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="475" end="479" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The string that you assigned to describe the resource."/>
+      <param description="The string that you assigned to describe the resource." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateBundleOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setEmail" start="487" end="491" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The email address that will receive updates when the Bundle resource changes status."/>
+      <param description="The email address that will receive updates when the Bundle resource changes status." type="string" variable="$email"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateBundleOptions"/>
+    </return>
+    <parameter name="email" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="498" end="502" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

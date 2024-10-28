@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V1\PortingWebhookConfigurationFetchInstance" namespace="Twilio\Rest\Numbers\V1" name="PortingWebhookConfigurationFetchInstance" abstract="false" final="false" start="35" end="90">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V1" file="PortingWebhookConfigurationFetchInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V1/PortingWebhookConfigurationFetchInstance.php" size="2847" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="0f385b03f160b9656ef5a6e91cfad128426f56eb" relative="Twilio/Rest/Numbers/V1/PortingWebhookConfigurationFetchInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $url"/>
+    <property value="string|null $portInTargetUrl"/>
+    <property value="string|null $portOutTargetUrl"/>
+    <property value="string[]|null $notificationsOf"/>
+    <property value="\DateTime|null $portInTargetDateCreated"/>
+    <property value="\DateTime|null $portOutTargetDateCreated"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="43" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the PortingWebhookConfigurationFetchInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Numbers\V1\mixed" namespace="Twilio\Rest\Numbers\V1" name="mixed"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <inline>
+      <comment value="Marshaled Properties" line="47"/>
+    </inline>
+  </constructor>
+  <method name="__get" start="67" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions" abstract="false" final="false" start="57" end="167">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Monitor/V1" file="EventOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Monitor/V1/EventOptions.php" size="7139" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="3190af4feb1944cfefa3a2db3d36ae4e1ccc1fa4" relative="Twilio/Rest/Monitor/V1/EventOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="67" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only include events initiated by this Actor. Useful for auditing actions taken by specific users or API credentials." type="string" variable="$actorSid"/>
+      <param description="Only include events of this [Event Type](https://www.twilio.com/docs/usage/monitor-events#event-types)." type="string" variable="$eventType"/>
+      <param description="Only include events that refer to this resource. Useful for discovering the history of a specific resource." type="string" variable="$resourceSid"/>
+      <param description="Only include events that originated from this IP address. Useful for tracking suspicious activity originating from the API or the Twilio Console." type="string" variable="$sourceIpAddress"/>
+      <param description="Only include events that occurred on or after this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only include events that occurred on or before this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+    </docblock>
+    <parameter name="actorSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="eventType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="resourceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sourceIpAddress" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="endDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </constructor>
+  <method name="setActorSid" start="91" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include events initiated by this Actor. Useful for auditing actions taken by specific users or API credentials."/>
+      <param description="Only include events initiated by this Actor. Useful for auditing actions taken by specific users or API credentials." type="string" variable="$actorSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Monitor\V1\$this" namespace="Twilio\Rest\Monitor\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions"/>
+    </return>
+    <parameter name="actorSid" byreference="false" type="string"/>
+  </method>
+  <method name="setEventType" start="103" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include events of this [Event Type](https://www.twilio.com/docs/usage/monitor-events#event-types)."/>
+      <param description="Only include events of this [Event Type](https://www.twilio.com/docs/usage/monitor-events#event-types)." type="string" variable="$eventType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Monitor\V1\$this" namespace="Twilio\Rest\Monitor\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions"/>
+    </return>
+    <parameter name="eventType" byreference="false" type="string"/>
+  </method>
+  <method name="setResourceSid" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include events that refer to this resource. Useful for discovering the history of a specific resource."/>
+      <param description="Only include events that refer to this resource. Useful for discovering the history of a specific resource." type="string" variable="$resourceSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Monitor\V1\$this" namespace="Twilio\Rest\Monitor\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions"/>
+    </return>
+    <parameter name="resourceSid" byreference="false" type="string"/>
+  </method>
+  <method name="setSourceIpAddress" start="127" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include events that originated from this IP address. Useful for tracking suspicious activity originating from the API or the Twilio Console."/>
+      <param description="Only include events that originated from this IP address. Useful for tracking suspicious activity originating from the API or the Twilio Console." type="string" variable="$sourceIpAddress"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Monitor\V1\$this" namespace="Twilio\Rest\Monitor\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions"/>
+    </return>
+    <parameter name="sourceIpAddress" byreference="false" type="string"/>
+  </method>
+  <method name="setStartDate" start="139" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include events that occurred on or after this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format."/>
+      <param description="Only include events that occurred on or after this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Monitor\V1\$this" namespace="Twilio\Rest\Monitor\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions"/>
+    </return>
+    <parameter name="startDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setEndDate" start="151" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include events that occurred on or before this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format."/>
+      <param description="Only include events that occurred on or before this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Monitor\V1\$this" namespace="Twilio\Rest\Monitor\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor\V1\ReadEventOptions" namespace="Twilio\Rest\Monitor\V1" name="ReadEventOptions"/>
+    </return>
+    <parameter name="endDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="__toString" start="162" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

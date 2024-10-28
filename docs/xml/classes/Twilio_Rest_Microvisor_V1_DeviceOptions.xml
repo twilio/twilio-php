@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Microvisor\V1\DeviceOptions" namespace="Twilio\Rest\Microvisor\V1" name="DeviceOptions" abstract="true" final="false" start="21" end="49">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Microvisor/V1" file="DeviceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Microvisor/V1/DeviceOptions.php" size="4606" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="67bd8094c95e04cc617f79a8a15d94b05085a03e" relative="Twilio/Rest/Microvisor/V1/DeviceOptions.php"/>
+  <method name="update" start="32" end="47" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A unique and addressable name to be assigned to this Device by the developer. It may be used in place of the Device SID." type="string" variable="$uniqueName"/>
+      <param description="The SID or unique name of the App to be targeted to the Device." type="string" variable="$targetApp"/>
+      <param description="A Boolean flag specifying whether to enable application logging. Logs will be enabled or extended for 24 hours." type="object" variable="$loggingEnabled">
+        <type full="Twilio\Rest\Microvisor\V1\bool" namespace="Twilio\Rest\Microvisor\V1" name="bool"/>
+      </param>
+      <param description="Set to true to restart the App running on the Device." type="object" variable="$restartApp">
+        <type full="Twilio\Rest\Microvisor\V1\bool" namespace="Twilio\Rest\Microvisor\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Microvisor\V1\UpdateDeviceOptions" namespace="Twilio\Rest\Microvisor\V1" name="UpdateDeviceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\UpdateDeviceOptions" namespace="Twilio\Rest\Microvisor\V1" name="UpdateDeviceOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="targetApp" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="loggingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="restartApp" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

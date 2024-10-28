@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="RegulationOptions" abstract="true" final="false" start="21" end="62">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance" file="RegulationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/RegulationOptions.php" size="6317" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="67d302b5d6923885d9d4848ef5525ee0f0f7d6d8" relative="Twilio/Rest/Numbers/V2/RegulatoryCompliance/RegulationOptions.php"/>
+  <method name="fetch" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields" type="object" variable="$includeConstraints">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\bool" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\FetchRegulationOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="FetchRegulationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\FetchRegulationOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="FetchRegulationOptions"/>
+    </return>
+    <parameter name="includeConstraints" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="read" start="45" end="60" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The type of End User the regulation requires - can be `individual` or `business`." type="string" variable="$endUserType"/>
+      <param description="The ISO country code of the phone number's country." type="string" variable="$isoCountry"/>
+      <param description="The type of phone number that the regulatory requiremnt is restricting." type="string" variable="$numberType"/>
+      <param description="A boolean parameter indicating whether to include constraints or not for supporting end user, documents and their fields" type="object" variable="$includeConstraints">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\bool" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\ReadRegulationOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="ReadRegulationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\ReadRegulationOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="ReadRegulationOptions"/>
+    </return>
+    <parameter name="endUserType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="isoCountry" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="numberType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="includeConstraints" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

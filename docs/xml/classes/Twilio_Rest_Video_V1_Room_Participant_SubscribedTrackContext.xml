@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackContext" namespace="Twilio\Rest\Video\V1\Room\Participant" name="SubscribedTrackContext" abstract="false" final="false" start="26" end="95">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Video/V1/Room/Participant" file="SubscribedTrackContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Video/V1/Room/Participant/SubscribedTrackContext.php" size="2754" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="21b6c5e16e6934972d96eafc6f9438d9f329e9df" relative="Twilio/Rest/Video/V1/Room/Participant/SubscribedTrackContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="36" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SubscribedTrackContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Room where the Track resource to fetch is subscribed." type="string" variable="$roomSid"/>
+      <param description="The SID of the participant that subscribes to the Track resource to fetch." type="string" variable="$participantSid"/>
+      <param description="The SID of the RoomParticipantSubscribedTrack resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="roomSid" byreference="false" type="{unknown}"/>
+    <parameter name="participantSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="44"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="66" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SubscribedTrackInstance"/>
+      <return description="Fetched SubscribedTrackInstance" type="object">
+        <type full="Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackInstance" namespace="Twilio\Rest\Video\V1\Room\Participant" name="SubscribedTrackInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\Room\Participant\SubscribedTrackInstance" namespace="Twilio\Rest\Video\V1\Room\Participant" name="SubscribedTrackInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="87" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

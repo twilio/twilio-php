@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Studio\V1\Flow\EngagementOptions" namespace="Twilio\Rest\Studio\V1\Flow" name="EngagementOptions" abstract="true" final="false" start="21" end="41">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Studio/V1/Flow" file="EngagementOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Studio/V1/Flow/EngagementOptions.php" size="3590" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="308cee8df7ac2d08b4c8b19dba71549a71955aee" relative="Twilio/Rest/Studio/V1/Flow/EngagementOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A JSON string we will add to your flow's context and that you can access as variables inside your flow. For example, if you pass in `Parameters={'name':'Zeke'}` then inside a widget you can reference the variable `{{flow.data.name}}` which will return the string 'Zeke'. Note: the JSON value must explicitly be passed as a string, not as a hash object. Depending on your particular HTTP library, you may need to add quotes or URL encode your JSON string." type="array" variable="$parameters"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Studio\V1\Flow\CreateEngagementOptions" namespace="Twilio\Rest\Studio\V1\Flow" name="CreateEngagementOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V1\Flow\CreateEngagementOptions" namespace="Twilio\Rest\Studio\V1\Flow" name="CreateEngagementOptions"/>
+    </return>
+    <parameter name="parameters" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

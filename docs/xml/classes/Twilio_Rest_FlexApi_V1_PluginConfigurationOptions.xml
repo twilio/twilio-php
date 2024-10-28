@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\PluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="PluginConfigurationOptions" abstract="true" final="false" start="21" end="74">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="PluginConfigurationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/PluginConfigurationOptions.php" size="6347" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="c442d8d13da70772e3f85119236f3e4b2d42ffb6" relative="Twilio/Rest/FlexApi/V1/PluginConfigurationOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version." type="array" variable="$plugins" of="object">
+        <type full="Twilio\Rest\FlexApi\V1\array" namespace="Twilio\Rest\FlexApi\V1" name="array"/>
+      </param>
+      <param description="The Flex Plugin Configuration's description." type="string" variable="$description"/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\CreatePluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreatePluginConfigurationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\CreatePluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="CreatePluginConfigurationOptions"/>
+    </return>
+    <parameter name="plugins" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="description" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="fetch" start="48" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\FetchPluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="FetchPluginConfigurationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\FetchPluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="FetchPluginConfigurationOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="63" end="72" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The Flex-Metadata HTTP request header" type="string" variable="$flexMetadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\ReadPluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadPluginConfigurationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\ReadPluginConfigurationOptions" namespace="Twilio\Rest\FlexApi\V1" name="ReadPluginConfigurationOptions"/>
+    </return>
+    <parameter name="flexMetadata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

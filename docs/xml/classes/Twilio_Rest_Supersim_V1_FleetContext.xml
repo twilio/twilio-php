@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\FleetContext" namespace="Twilio\Rest\Supersim\V1" name="FleetContext" abstract="false" final="false" start="27" end="124">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="FleetContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/FleetContext.php" size="3326" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="8e99b0ef3f7fe649001d9b036e37689ceb603339" relative="Twilio/Rest/Supersim/V1/FleetContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="35" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the FleetContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Fleet resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="41"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="57" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the FleetInstance"/>
+      <return description="Fetched FleetInstance" type="object">
+        <type full="Twilio\Rest\Supersim\V1\FleetInstance" namespace="Twilio\Rest\Supersim\V1" name="FleetInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\FleetInstance" namespace="Twilio\Rest\Supersim\V1" name="FleetInstance"/>
+    </return>
+  </method>
+  <method name="update" start="78" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the FleetInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Supersim\V1\array|Options" namespace="Twilio\Rest\Supersim\V1" name="array|Options"/>
+      </param>
+      <return description="Updated FleetInstance" type="object">
+        <type full="Twilio\Rest\Supersim\V1\FleetInstance" namespace="Twilio\Rest\Supersim\V1" name="FleetInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\FleetInstance" namespace="Twilio\Rest\Supersim\V1" name="FleetInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="116" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

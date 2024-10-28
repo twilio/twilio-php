@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\ServiceInstance" namespace="Twilio\Rest\Messaging\V1" name="ServiceInstance" abstract="false" final="false" start="59" end="246">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="ServiceInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/ServiceInstance.php" size="7970" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="430b552722484b961b31af33e30a26a32fac1f0b" relative="Twilio/Rest/Messaging/V1/ServiceInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $sid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $inboundRequestUrl"/>
+    <property value="string|null $inboundMethod"/>
+    <property value="string|null $fallbackUrl"/>
+    <property value="string|null $fallbackMethod"/>
+    <property value="string|null $statusCallback"/>
+    <property value="bool|null $stickySender"/>
+    <property value="bool|null $mmsConverter"/>
+    <property value="bool|null $smartEncoding"/>
+    <property value="string $scanMessageContent"/>
+    <property value="bool|null $fallbackToLongCode"/>
+    <property value="bool|null $areaCodeGeomatch"/>
+    <property value="bool|null $synchronousValidation"/>
+    <property value="int $validityPeriod"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+    <property value="string|null $usecase"/>
+    <property value="bool|null $usAppToPersonRegistered"/>
+    <property value="bool|null $useInboundWebhookOnNumber"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_alphaSenders" visibility="protected" static="false" line="61"/>
+  <member name="_phoneNumbers" visibility="protected" static="false" line="62"/>
+  <member name="_usAppToPersonUsecases" visibility="protected" static="false" line="63"/>
+  <member name="_channelSenders" visibility="protected" static="false" line="64"/>
+  <member name="_shortCodes" visibility="protected" static="false" line="65"/>
+  <member name="_usAppToPerson" visibility="protected" static="false" line="66"/>
+  <constructor name="__construct" start="75" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ServiceInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Messaging\V1\mixed" namespace="Twilio\Rest\Messaging\V1" name="mixed"/>
+      </param>
+      <param description="The SID of the Service resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="79"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="115" end="125" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this ServiceInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\ServiceContext" namespace="Twilio\Rest\Messaging\V1" name="ServiceContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ServiceContext" namespace="Twilio\Rest\Messaging\V1" name="ServiceContext"/>
+    </return>
+  </method>
+  <method name="delete" start="133" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the ServiceInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Messaging\V1\bool" namespace="Twilio\Rest\Messaging\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="145" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ServiceInstance"/>
+      <return description="Fetched ServiceInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\ServiceInstance" namespace="Twilio\Rest\Messaging\V1" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ServiceInstance" namespace="Twilio\Rest\Messaging\V1" name="ServiceInstance"/>
+    </return>
+  </method>
+  <method name="update" start="158" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the ServiceInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Messaging\V1\array|Options" namespace="Twilio\Rest\Messaging\V1" name="array|Options"/>
+      </param>
+      <return description="Updated ServiceInstance" type="object">
+        <type full="Twilio\Rest\Messaging\V1\ServiceInstance" namespace="Twilio\Rest\Messaging\V1" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\ServiceInstance" namespace="Twilio\Rest\Messaging\V1" name="ServiceInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getAlphaSenders" start="167" end="170" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the alphaSenders"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\AlphaSenderList" namespace="Twilio\Rest\Messaging\V1\Service" name="AlphaSenderList"/>
+    </return>
+  </method>
+  <method name="getPhoneNumbers" start="175" end="178" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the phoneNumbers"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\PhoneNumberList" namespace="Twilio\Rest\Messaging\V1\Service" name="PhoneNumberList"/>
+    </return>
+  </method>
+  <method name="getUsAppToPersonUsecases" start="183" end="186" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the usAppToPersonUsecases"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList" namespace="Twilio\Rest\Messaging\V1\Service" name="UsAppToPersonUsecaseList"/>
+    </return>
+  </method>
+  <method name="getChannelSenders" start="191" end="194" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the channelSenders"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\ChannelSenderList" namespace="Twilio\Rest\Messaging\V1\Service" name="ChannelSenderList"/>
+    </return>
+  </method>
+  <method name="getShortCodes" start="199" end="202" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the shortCodes"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\ShortCodeList" namespace="Twilio\Rest\Messaging\V1\Service" name="ShortCodeList"/>
+    </return>
+  </method>
+  <method name="getUsAppToPerson" start="207" end="210" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the usAppToPerson"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\UsAppToPersonList" namespace="Twilio\Rest\Messaging\V1\Service" name="UsAppToPersonList"/>
+    </return>
+  </method>
+  <method name="__get" start="219" end="231" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="238" end="245" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

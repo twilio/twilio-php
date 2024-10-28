@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Voice\V1\ByocTrunkOptions" namespace="Twilio\Rest\Voice\V1" name="ByocTrunkOptions" abstract="true" final="false" start="21" end="110">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Voice/V1" file="ByocTrunkOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Voice/V1/ByocTrunkOptions.php" size="24126" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="70c4a632527f7b64c9304261ca9d3cfb43bd26e2" relative="Twilio/Rest/Voice/V1/ByocTrunkOptions.php"/>
+  <method name="create" start="36" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long." type="string" variable="$friendlyName"/>
+      <param description="The URL we should call when the BYOC Trunk receives a call." type="string" variable="$voiceUrl"/>
+      <param description="The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`." type="string" variable="$voiceMethod"/>
+      <param description="The URL that we should call when an error occurs while retrieving or executing the TwiML from `voice_url`." type="string" variable="$voiceFallbackUrl"/>
+      <param description="The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$voiceFallbackMethod"/>
+      <param description="The URL that we should call to pass status parameters (such as call ended) to your application." type="string" variable="$statusCallbackUrl"/>
+      <param description="The HTTP method we should use to call `status_callback_url`. Can be: `GET` or `POST`." type="string" variable="$statusCallbackMethod"/>
+      <param description="Whether Caller ID Name (CNAM) lookup is enabled for the trunk. If enabled, all inbound calls to the BYOC Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information." type="object" variable="$cnamLookupEnabled">
+        <type full="Twilio\Rest\Voice\V1\bool" namespace="Twilio\Rest\Voice\V1" name="bool"/>
+      </param>
+      <param description="The SID of the Connection Policy that Twilio will use when routing traffic to your communications infrastructure." type="string" variable="$connectionPolicySid"/>
+      <param description="The SID of the SIP Domain that should be used in the `From` header of originating calls sent to your SIP infrastructure. If your SIP infrastructure allows users to \\\&quot;call back\\\&quot; an incoming call, configure this with a [SIP Domain](https://www.twilio.com/docs/voice/api/sending-sip) to ensure proper routing. If not configured, the from domain will default to \\\&quot;sip.twilio.com\\\&quot;." type="string" variable="$fromDomainSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Voice\V1\CreateByocTrunkOptions" namespace="Twilio\Rest\Voice\V1" name="CreateByocTrunkOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\CreateByocTrunkOptions" namespace="Twilio\Rest\Voice\V1" name="CreateByocTrunkOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="cnamLookupEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="connectionPolicySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fromDomainSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="81" end="108" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long." type="string" variable="$friendlyName"/>
+      <param description="The URL we should call when the BYOC Trunk receives a call." type="string" variable="$voiceUrl"/>
+      <param description="The HTTP method we should use to call `voice_url`" type="string" variable="$voiceMethod"/>
+      <param description="The URL that we should call when an error occurs while retrieving or executing the TwiML requested by `voice_url`." type="string" variable="$voiceFallbackUrl"/>
+      <param description="The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$voiceFallbackMethod"/>
+      <param description="The URL that we should call to pass status parameters (such as call ended) to your application." type="string" variable="$statusCallbackUrl"/>
+      <param description="The HTTP method we should use to call `status_callback_url`. Can be: `GET` or `POST`." type="string" variable="$statusCallbackMethod"/>
+      <param description="Whether Caller ID Name (CNAM) lookup is enabled for the trunk. If enabled, all inbound calls to the BYOC Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information." type="object" variable="$cnamLookupEnabled">
+        <type full="Twilio\Rest\Voice\V1\bool" namespace="Twilio\Rest\Voice\V1" name="bool"/>
+      </param>
+      <param description="The SID of the Connection Policy that Twilio will use when routing traffic to your communications infrastructure." type="string" variable="$connectionPolicySid"/>
+      <param description="The SID of the SIP Domain that should be used in the `From` header of originating calls sent to your SIP infrastructure. If your SIP infrastructure allows users to \\\&quot;call back\\\&quot; an incoming call, configure this with a [SIP Domain](https://www.twilio.com/docs/voice/api/sending-sip) to ensure proper routing. If not configured, the from domain will default to \\\&quot;sip.twilio.com\\\&quot;." type="string" variable="$fromDomainSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Voice\V1\UpdateByocTrunkOptions" namespace="Twilio\Rest\Voice\V1" name="UpdateByocTrunkOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\UpdateByocTrunkOptions" namespace="Twilio\Rest\Voice\V1" name="UpdateByocTrunkOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="cnamLookupEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="connectionPolicySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fromDomainSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\ConnectAppOptions" namespace="Twilio\Rest\Api\V2010\Account" name="ConnectAppOptions" abstract="true" final="false" start="21" end="62">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="ConnectAppOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/ConnectAppOptions.php" size="8242" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="31da08ec1d346ee222fe85ec628f6125b5c870a3" relative="Twilio/Rest/Api/V2010/Account/ConnectAppOptions.php"/>
+  <method name="update" start="37" end="60" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL to redirect the user to after we authenticate the user and obtain authorization to access the Connect App." type="string" variable="$authorizeRedirectUrl"/>
+      <param description="The company name to set for the Connect App." type="string" variable="$companyName"/>
+      <param description="The HTTP method to use when calling `deauthorize_callback_url`." type="string" variable="$deauthorizeCallbackMethod"/>
+      <param description="The URL to call using the `deauthorize_callback_method` to de-authorize the Connect App." type="string" variable="$deauthorizeCallbackUrl"/>
+      <param description="A description of the Connect App." type="string" variable="$description"/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param description="A public URL where users can obtain more information about this Connect App." type="string" variable="$homepageUrl"/>
+      <param description="A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`." type="string" variable="$permissions"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\UpdateConnectAppOptions" namespace="Twilio\Rest\Api\V2010\Account" name="UpdateConnectAppOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\UpdateConnectAppOptions" namespace="Twilio\Rest\Api\V2010\Account" name="UpdateConnectAppOptions"/>
+    </return>
+    <parameter name="authorizeRedirectUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="companyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="deauthorizeCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="deauthorizeCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="description" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="homepageUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="permissions" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

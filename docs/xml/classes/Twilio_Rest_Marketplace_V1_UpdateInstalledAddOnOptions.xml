@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Marketplace\V1\UpdateInstalledAddOnOptions" namespace="Twilio\Rest\Marketplace\V1" name="UpdateInstalledAddOnOptions" abstract="false" final="false" start="119" end="169">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Marketplace/V1" file="InstalledAddOnOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Marketplace/V1/InstalledAddOnOptions.php" size="5937" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="11a9353df7090347f103a7e8f6086320eb6d132e" relative="Twilio/Rest/Marketplace/V1/InstalledAddOnOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="125" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured" type="array" variable="$configuration"/>
+      <param description="An application-defined string that uniquely identifies the resource. This value must be unique within the Account." type="string" variable="$uniqueName"/>
+    </docblock>
+    <parameter name="configuration" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setConfiguration" start="141" end="145" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured"/>
+      <param description="Valid JSON object that conform to the configuration schema exposed by the associated AvailableAddOn resource. This is only required by Add-ons that need to be configured" type="array" variable="$configuration"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Marketplace\V1\$this" namespace="Twilio\Rest\Marketplace\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Marketplace\V1\UpdateInstalledAddOnOptions" namespace="Twilio\Rest\Marketplace\V1" name="UpdateInstalledAddOnOptions"/>
+    </return>
+    <parameter name="configuration" byreference="false" type="array"/>
+  </method>
+  <method name="setUniqueName" start="153" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An application-defined string that uniquely identifies the resource. This value must be unique within the Account."/>
+      <param description="An application-defined string that uniquely identifies the resource. This value must be unique within the Account." type="string" variable="$uniqueName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Marketplace\V1\$this" namespace="Twilio\Rest\Marketplace\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Marketplace\V1\UpdateInstalledAddOnOptions" namespace="Twilio\Rest\Marketplace\V1" name="UpdateInstalledAddOnOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="164" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

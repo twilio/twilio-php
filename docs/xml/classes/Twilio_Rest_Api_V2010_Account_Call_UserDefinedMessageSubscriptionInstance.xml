@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageSubscriptionInstance" namespace="Twilio\Rest\Api\V2010\Account\Call" name="UserDefinedMessageSubscriptionInstance" abstract="false" final="false" start="34" end="127">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Call" file="UserDefinedMessageSubscriptionInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Call/UserDefinedMessageSubscriptionInstance.php" size="4330" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="aadefd3a0d6b69cc2e18a1c5bc82631ea11e1d23" relative="Twilio/Rest/Api/V2010/Account/Call/UserDefinedMessageSubscriptionInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $callSid"/>
+    <property value="string|null $sid"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="string|null $uri"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="45" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the UserDefinedMessageSubscriptionInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\mixed" namespace="Twilio\Rest\Api\V2010\Account\Call" name="mixed"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that subscribed to the User Defined Messages." type="string" variable="$accountSid"/>
+      <param description="The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages." type="string" variable="$callSid"/>
+      <param description="The SID that uniquely identifies this User Defined Message Subscription." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="accountSid" byreference="false" type="string"/>
+    <parameter name="callSid" byreference="false" type="string"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="49"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="67" end="79" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this UserDefinedMessageSubscriptionInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageSubscriptionContext" namespace="Twilio\Rest\Api\V2010\Account\Call" name="UserDefinedMessageSubscriptionContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\UserDefinedMessageSubscriptionContext" namespace="Twilio\Rest\Api\V2010\Account\Call" name="UserDefinedMessageSubscriptionContext"/>
+    </return>
+  </method>
+  <method name="delete" start="87" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the UserDefinedMessageSubscriptionInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="__get" start="100" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="119" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

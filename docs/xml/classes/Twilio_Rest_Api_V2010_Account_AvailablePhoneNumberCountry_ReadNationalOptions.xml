@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions" abstract="false" final="false" start="91" end="381">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/AvailablePhoneNumberCountry" file="NationalOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/AvailablePhoneNumberCountry/NationalOptions.php" size="21957" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="9e24dc8facdb3fb8225b964876f0011161915b4a" relative="Twilio/Rest/Api/V2010/Account/AvailablePhoneNumberCountry/NationalOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="113" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada." type="int" variable="$areaCode"/>
+      <param description="The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters." type="string" variable="$contains"/>
+      <param description="Whether the phone numbers can receive text messages. Can be: `true` or `false`." type="object" variable="$smsEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Whether the phone numbers can receive MMS messages. Can be: `true` or `false`." type="object" variable="$mmsEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Whether the phone numbers can receive calls. Can be: `true` or `false`." type="object" variable="$voiceEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`." type="object" variable="$excludeAllAddressRequired">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`." type="object" variable="$excludeLocalAddressRequired">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`." type="object" variable="$excludeForeignAddressRequired">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`." type="object" variable="$beta">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <param description="Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada." type="string" variable="$nearNumber"/>
+      <param description="Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada." type="string" variable="$nearLatLong"/>
+      <param description="The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada." type="int" variable="$distance"/>
+      <param description="Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada." type="string" variable="$inPostalCode"/>
+      <param description="Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada." type="string" variable="$inRegion"/>
+      <param description="Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada." type="string" variable="$inRateCenter"/>
+      <param description="Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada." type="string" variable="$inLata"/>
+      <param description="Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number." type="string" variable="$inLocality"/>
+      <param description="Whether the phone numbers can receive faxes. Can be: `true` or `false`." type="object" variable="$faxEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="areaCode" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="contains" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="mmsEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="voiceEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="excludeAllAddressRequired" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="excludeLocalAddressRequired" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="excludeForeignAddressRequired" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="beta" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="nearNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="nearLatLong" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="distance" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="inPostalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="inRegion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="inRateCenter" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="inLata" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="inLocality" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="faxEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setAreaCode" start="161" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada."/>
+      <param description="The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada." type="int" variable="$areaCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="areaCode" byreference="false" type="int"/>
+  </method>
+  <method name="setContains" start="173" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters."/>
+      <param description="The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters." type="string" variable="$contains"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="contains" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsEnabled" start="185" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the phone numbers can receive text messages. Can be: `true` or `false`."/>
+      <param description="Whether the phone numbers can receive text messages. Can be: `true` or `false`." type="object" variable="$smsEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="smsEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setMmsEnabled" start="197" end="201" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the phone numbers can receive MMS messages. Can be: `true` or `false`."/>
+      <param description="Whether the phone numbers can receive MMS messages. Can be: `true` or `false`." type="object" variable="$mmsEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="mmsEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setVoiceEnabled" start="209" end="213" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the phone numbers can receive calls. Can be: `true` or `false`."/>
+      <param description="Whether the phone numbers can receive calls. Can be: `true` or `false`." type="object" variable="$voiceEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="voiceEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setExcludeAllAddressRequired" start="221" end="225" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`."/>
+      <param description="Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`." type="object" variable="$excludeAllAddressRequired">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="excludeAllAddressRequired" byreference="false" type="bool"/>
+  </method>
+  <method name="setExcludeLocalAddressRequired" start="233" end="237" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`."/>
+      <param description="Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`." type="object" variable="$excludeLocalAddressRequired">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="excludeLocalAddressRequired" byreference="false" type="bool"/>
+  </method>
+  <method name="setExcludeForeignAddressRequired" start="245" end="249" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`."/>
+      <param description="Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`." type="object" variable="$excludeForeignAddressRequired">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="excludeForeignAddressRequired" byreference="false" type="bool"/>
+  </method>
+  <method name="setBeta" start="257" end="261" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`."/>
+      <param description="Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`." type="object" variable="$beta">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="beta" byreference="false" type="bool"/>
+  </method>
+  <method name="setNearNumber" start="269" end="273" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada."/>
+      <param description="Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada." type="string" variable="$nearNumber"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="nearNumber" byreference="false" type="string"/>
+  </method>
+  <method name="setNearLatLong" start="281" end="285" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada."/>
+      <param description="Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada." type="string" variable="$nearLatLong"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="nearLatLong" byreference="false" type="string"/>
+  </method>
+  <method name="setDistance" start="293" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada."/>
+      <param description="The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada." type="int" variable="$distance"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="distance" byreference="false" type="int"/>
+  </method>
+  <method name="setInPostalCode" start="305" end="309" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada."/>
+      <param description="Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada." type="string" variable="$inPostalCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="inPostalCode" byreference="false" type="string"/>
+  </method>
+  <method name="setInRegion" start="317" end="321" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada."/>
+      <param description="Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada." type="string" variable="$inRegion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="inRegion" byreference="false" type="string"/>
+  </method>
+  <method name="setInRateCenter" start="329" end="333" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada."/>
+      <param description="Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada." type="string" variable="$inRateCenter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="inRateCenter" byreference="false" type="string"/>
+  </method>
+  <method name="setInLata" start="341" end="345" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada."/>
+      <param description="Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada." type="string" variable="$inLata"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="inLata" byreference="false" type="string"/>
+  </method>
+  <method name="setInLocality" start="353" end="357" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number."/>
+      <param description="Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number." type="string" variable="$inLocality"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="inLocality" byreference="false" type="string"/>
+  </method>
+  <method name="setFaxEnabled" start="365" end="369" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the phone numbers can receive faxes. Can be: `true` or `false`."/>
+      <param description="Whether the phone numbers can receive faxes. Can be: `true` or `false`." type="object" variable="$faxEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\bool" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\$this" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\ReadNationalOptions" namespace="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry" name="ReadNationalOptions"/>
+    </return>
+    <parameter name="faxEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="376" end="380" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Conference\RecordingOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="RecordingOptions" abstract="true" final="false" start="21" end="61">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Conference" file="RecordingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Conference/RecordingOptions.php" size="8832" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="12b0a727be375335cb0b677d4f95e0e75c89f63e" relative="Twilio/Rest/Api/V2010/Account/Conference/RecordingOptions.php"/>
+  <method name="read" start="31" end="44" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated&lt;=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated&gt;=YYYY-MM-DD` returns recordings generated at or after midnight on a date." type="string" variable="$dateCreatedBefore"/>
+      <param description="The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated&lt;=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated&gt;=YYYY-MM-DD` returns recordings generated at or after midnight on a date." type="string" variable="$dateCreated"/>
+      <param description="The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated&lt;=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated&gt;=YYYY-MM-DD` returns recordings generated at or after midnight on a date." type="string" variable="$dateCreatedAfter"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\ReadRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="ReadRecordingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Conference\ReadRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="ReadRecordingOptions"/>
+    </return>
+    <parameter name="dateCreatedBefore" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateCreated" byreference="false" type="string" default="NULL"/>
+    <parameter name="dateCreatedAfter" byreference="false" type="string" default="NULL"/>
+  </method>
+  <method name="update" start="50" end="59" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`." type="string" variable="$pauseBehavior"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\UpdateRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="UpdateRecordingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Conference\UpdateRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="UpdateRecordingOptions"/>
+    </return>
+    <parameter name="pauseBehavior" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

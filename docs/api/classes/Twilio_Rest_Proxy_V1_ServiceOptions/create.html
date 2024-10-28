@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Proxy\V1\ServiceOptions::create</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Proxy_V1">Twilio\Rest\Proxy\V1</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Proxy_V1_ServiceOptions.html" title="Twilio\Rest\Proxy\V1\ServiceOptions">ServiceOptions</a>
+</li>
+<li class="separator">create</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="#return">Return</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Proxy/V1/ServiceOptions.php.html#line33">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Proxy\V1\ServiceOptions::</small>create</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function create([int
+        $defaultTtl = Values::INT_NONE,
+            [string
+        $callbackUrl = Values::NONE,
+            [string
+        $geoMatchLevel = Values::NONE,
+            [string
+        $numberSelectionBehavior = Values::NONE,
+            [string
+        $interceptCallbackUrl = Values::NONE,
+            [string
+        $outOfSessionCallbackUrl = Values::NONE,
+            [string
+        $chatInstanceSid = Values::NONE]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$defaultTtl</code>
+                —
+                int</dt>
+<dd>The default `ttl` value to set for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.</dd>
+<dt><code>$callbackUrl</code>
+                —
+                string</dt>
+<dd>The URL we should call when the interaction status changes.</dd>
+<dt><code>$geoMatchLevel</code>
+                —
+                string</dt>
+<dd></dd>
+<dt><code>$numberSelectionBehavior</code>
+                —
+                string</dt>
+<dd></dd>
+<dt><code>$interceptCallbackUrl</code>
+                —
+                string</dt>
+<dd>The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.</dd>
+<dt><code>$outOfSessionCallbackUrl</code>
+                —
+                string</dt>
+<dd>The URL we should call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/en-us/serverless/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.</dd>
+<dt><code>$chatInstanceSid</code>
+                —
+                string</dt>
+<dd>The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.</dd>
+</dl>
+<h2 id="return">Returns</h2>
+<dl class="styled">
+<dt>CreateServiceOptions</dt>
+<dd>Options builder<br/>
+</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\FetchWorkflowStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="FetchWorkflowStatisticsOptions" abstract="false" final="false" start="52" end="147">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Workflow" file="WorkflowStatisticsOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Workflow/WorkflowStatisticsOptions.php" size="8196" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="c3c8c4d4e112b4b70fad6460a0cf6cbd535a6c47" relative="Twilio/Rest/Taskrouter/V1/Workspace/Workflow/WorkflowStatisticsOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="61" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends." type="int" variable="$minutes"/>
+      <param description="Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`." type="string" variable="$taskChannel"/>
+      <param description="A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA." type="string" variable="$splitByWaitTime"/>
+    </docblock>
+    <parameter name="minutes" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="startDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="endDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="taskChannel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="splitByWaitTime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setMinutes" start="83" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends."/>
+      <param description="Only calculate statistics since this many minutes in the past. The default 15 minutes. This is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480 minutes (8 hours) to see trends." type="int" variable="$minutes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\FetchWorkflowStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="FetchWorkflowStatisticsOptions"/>
+    </return>
+    <parameter name="minutes" byreference="false" type="int"/>
+  </method>
+  <method name="setStartDate" start="95" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format."/>
+      <param description="Only calculate statistics from this date and time and later, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\FetchWorkflowStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="FetchWorkflowStatisticsOptions"/>
+    </return>
+    <parameter name="startDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setEndDate" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time."/>
+      <param description="Only calculate statistics from this date and time and earlier, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\FetchWorkflowStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="FetchWorkflowStatisticsOptions"/>
+    </return>
+    <parameter name="endDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setTaskChannel" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`."/>
+      <param description="Only calculate real-time statistics on this TaskChannel. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`." type="string" variable="$taskChannel"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\FetchWorkflowStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="FetchWorkflowStatisticsOptions"/>
+    </return>
+    <parameter name="taskChannel" byreference="false" type="string"/>
+  </method>
+  <method name="setSplitByWaitTime" start="131" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA."/>
+      <param description="A comma separated list of values that describes the thresholds, in seconds, to calculate statistics on. For each threshold specified, the number of Tasks canceled and reservations accepted above and below the specified thresholds in seconds are computed. For example, `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that failed to meet an SLA." type="string" variable="$splitByWaitTime"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Workflow\FetchWorkflowStatisticsOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Workflow" name="FetchWorkflowStatisticsOptions"/>
+    </return>
+    <parameter name="splitByWaitTime" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="142" end="146" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\SimOptions" namespace="Twilio\Rest\Supersim\V1" name="SimOptions" abstract="true" final="false" start="21" end="76">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="SimOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/SimOptions.php" size="10059" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="565a7246bf5afafe749ad79fae1fd15d609ce1f4" relative="Twilio/Rest/Supersim/V1/SimOptions.php"/>
+  <method name="read" start="31" end="44" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`." type="string" variable="$status"/>
+      <param description="The SID or unique name of the Fleet to which a list of Sims are assigned." type="string" variable="$fleet"/>
+      <param description="The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs." type="string" variable="$iccid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\ReadSimOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSimOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadSimOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSimOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fleet" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="iccid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="55" end="74" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <param type="string" variable="$status"/>
+      <param description="The SID or unique name of the Fleet to which the SIM resource should be assigned." type="string" variable="$fleet"/>
+      <param description="The URL we should call using the `callback_method` after an asynchronous update has finished." type="string" variable="$callbackUrl"/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST." type="string" variable="$callbackMethod"/>
+      <param description="The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new." type="string" variable="$accountSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fleet" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="accountSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

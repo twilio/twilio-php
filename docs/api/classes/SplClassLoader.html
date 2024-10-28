@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - SplClassLoader</title>
+<link href="../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../classes.html">Classes</a>
+</li>
+<li class="separator">SplClassLoader</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#members">Members</a>
+</li>
+<li>
+<a href="#methods">Methods</a>
+</li>
+<li>
+<a href="../source/Twilio/autoload.php.html#line38">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1 id="introduction"><small>\</small>SplClassLoader</h1>
+<h4>SplClassLoader implementation that implements the technical interoperability standards for PHP 5.3 namespaces and class names.</h4>
+<p>http://groups.google.com/group/php-standards/web/psr-0-final-proposal?pli=1<br/><br/>// Example which loads classes for the Doctrine Common package in the<br/>// Doctrine\Common namespace.<br/>$classLoader = new SplClassLoader('Doctrine\Common', '/path/to/doctrine');<br/>    $classLoader-&gt;register();</p>
+<ul>
+<li>Author: Jonathan H. Wage &lt;jonwage@gmail.com&gt;</li>
+<li>License: http://www.opensource.org/licenses/mit-license.html  MIT License</li>
+</ul>
+<h2 id="synopsis">Synopsis</h2>
+<div class="synopsis">class SplClassLoader
+            {<br/><ul class="none"><li>// members</li><li>private string <a href="#members">$_fileExtension</a> =
+                        '.php';
+                    </li><li>private  <a href="#members">$_namespace</a>;
+                    </li><li>private  <a href="#members">$_includePath</a>;
+                    </li><li>private string <a href="#members">$_namespaceSeparator</a> =
+                        '\\';
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a href="../classes/SplClassLoader/__construct.html" title="SplClassLoader">__construct</a>()
+                    </li><li>public void <a href="../classes/SplClassLoader/setNamespaceSeparator.html" title="SplClassLoader">setNamespaceSeparator</a>()
+                    </li><li>public string <a href="../classes/SplClassLoader/getNamespaceSeparator.html" title="SplClassLoader">getNamespaceSeparator</a>()
+                    </li><li>public void <a href="../classes/SplClassLoader/setIncludePath.html" title="SplClassLoader">setIncludePath</a>()
+                    </li><li>public string <a href="../classes/SplClassLoader/getIncludePath.html" title="SplClassLoader">getIncludePath</a>()
+                    </li><li>public void <a href="../classes/SplClassLoader/setFileExtension.html" title="SplClassLoader">setFileExtension</a>()
+                    </li><li>public string <a href="../classes/SplClassLoader/getFileExtension.html" title="SplClassLoader">getFileExtension</a>()
+                    </li><li>public void <a href="../classes/SplClassLoader/register.html" title="SplClassLoader">register</a>()
+                    </li><li>public void <a href="../classes/SplClassLoader/unregister.html" title="SplClassLoader">unregister</a>()
+                    </li><li>public void <a href="../classes/SplClassLoader/loadClass.html" title="SplClassLoader">loadClass</a>()
+                    </li></ul>
+
+            }<br/></div>
+<h2 id="members">Members</h2>
+<div class="styled members">
+<h4>private</h4>
+<ul class="members">
+<li id="_fileExtension">
+<strong>$_fileExtension</strong>
+</li>
+<li id="_includePath">
+<strong>$_includePath</strong>
+</li>
+<li id="_namespace">
+<strong>$_namespace</strong>
+</li>
+<li id="_namespaceSeparator">
+<strong>$_namespaceSeparator</strong>
+</li>
+</ul>
+</div>
+<h2 id="methods">Methods</h2>
+<div class="styled">
+<h4>public</h4>
+<ul>
+<li id="__construct"><a href="../classes/SplClassLoader/__construct.html" title="SplClassLoader">__construct()</a>
+                — Creates a new &lt;tt&gt;SplClassLoader&lt;/tt&gt; that loads classes of the specified namespace.</li>
+<li id="getFileExtension"><a href="../classes/SplClassLoader/getFileExtension.html" title="SplClassLoader">getFileExtension()</a>
+                — Gets the file extension of class files in the namespace of this class loader.</li>
+<li id="getIncludePath"><a href="../classes/SplClassLoader/getIncludePath.html" title="SplClassLoader">getIncludePath()</a>
+                — Gets the base include path for all class files in the namespace of this class loader.</li>
+<li id="getNamespaceSeparator"><a href="../classes/SplClassLoader/getNamespaceSeparator.html" title="SplClassLoader">getNamespaceSeparator()</a>
+                — Gets the namespace separator used by classes in the namespace of this class loader.</li>
+<li id="loadClass"><a href="../classes/SplClassLoader/loadClass.html" title="SplClassLoader">loadClass()</a>
+                — Loads the given class or interface.</li>
+<li id="register"><a href="../classes/SplClassLoader/register.html" title="SplClassLoader">register()</a>
+                — Installs this class loader on the SPL autoload stack.</li>
+<li id="setFileExtension"><a href="../classes/SplClassLoader/setFileExtension.html" title="SplClassLoader">setFileExtension()</a>
+                — Sets the file extension of class files in the namespace of this class loader.</li>
+<li id="setIncludePath"><a href="../classes/SplClassLoader/setIncludePath.html" title="SplClassLoader">setIncludePath()</a>
+                — Sets the base include path for all class files in the namespace of this class loader.</li>
+<li id="setNamespaceSeparator"><a href="../classes/SplClassLoader/setNamespaceSeparator.html" title="SplClassLoader">setNamespaceSeparator()</a>
+                — Sets the namespace separator used by classes in the namespace of this class loader.</li>
+<li id="unregister"><a href="../classes/SplClassLoader/unregister.html" title="SplClassLoader">unregister()</a>
+                — Uninstalls this class loader from the SPL autoloader stack.</li>
+</ul>
+</div>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

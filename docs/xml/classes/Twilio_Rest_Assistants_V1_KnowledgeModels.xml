@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Assistants\V1\KnowledgeModels" namespace="Twilio\Rest\Assistants\V1" name="KnowledgeModels" abstract="true" final="false" start="19" end="58">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Assistants/V1" file="KnowledgeModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Assistants/V1/KnowledgeModels.php" size="6688" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="b000f04e4cf41a2fd2f623d0c608db4010dd7fcc" relative="Twilio/Rest/Assistants/V1/KnowledgeModels.php"/>
+  <method name="createAssistantsV1ServiceCreatePolicyRequest" start="28" end="31" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $description The description of the policy."/>
+      <property value="string $id The Policy ID."/>
+      <property value="string $name The name of the policy."/>
+      <property value="array $policyDetails"/>
+      <property value="string $type The description of the policy."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Assistants\V1\AssistantsV1ServiceCreatePolicyRequest" namespace="Twilio\Rest\Assistants\V1" name="AssistantsV1ServiceCreatePolicyRequest"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createAssistantsV1ServiceCreateKnowledgeRequest" start="41" end="44" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $assistantId The Assistant ID."/>
+      <property value="string $description The description of the knowledge source."/>
+      <property value="array $knowledgeSourceDetails The details of the knowledge source based on the type."/>
+      <property value="string $name The name of the tool."/>
+      <property value="AssistantsV1ServiceCreatePolicyRequest $policy"/>
+      <property value="string $type The type of the knowledge source."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Assistants\V1\AssistantsV1ServiceCreateKnowledgeRequest" namespace="Twilio\Rest\Assistants\V1" name="AssistantsV1ServiceCreateKnowledgeRequest"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createAssistantsV1ServiceUpdateKnowledgeRequest" start="53" end="56" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $description The description of the knowledge source."/>
+      <property value="array $knowledgeSourceDetails The details of the knowledge source based on the type."/>
+      <property value="string $name The name of the knowledge source."/>
+      <property value="AssistantsV1ServiceCreatePolicyRequest $policy"/>
+      <property value="string $type The description of the knowledge source."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Assistants\V1\AssistantsV1ServiceUpdateKnowledgeRequest" namespace="Twilio\Rest\Assistants\V1" name="AssistantsV1ServiceUpdateKnowledgeRequest"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+</class>

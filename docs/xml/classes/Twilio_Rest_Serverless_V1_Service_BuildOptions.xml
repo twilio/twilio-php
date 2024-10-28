@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Serverless\V1\Service\BuildOptions" namespace="Twilio\Rest\Serverless\V1\Service" name="BuildOptions" abstract="true" final="false" start="22" end="51">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/Service" file="BuildOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/Service/BuildOptions.php" size="4756" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="89b6a8578e8abb5f836d5b3fac2362db87c12272" relative="Twilio/Rest/Serverless/V1/Service/BuildOptions.php"/>
+  <method name="create" start="31" end="46" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The list of Asset Version resource SIDs to include in the Build." type="array" variable="$assetVersions" of="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\string" namespace="Twilio\Rest\Serverless\V1\Service" name="string"/>
+      </param>
+      <param description="The list of the Function Version resource SIDs to include in the Build." type="array" variable="$functionVersions" of="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\string" namespace="Twilio\Rest\Serverless\V1\Service" name="string"/>
+      </param>
+      <param description="A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency." type="string" variable="$dependencies"/>
+      <param description="The Runtime version that will be used to run the Build resource when it is deployed." type="string" variable="$runtime"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\CreateBuildOptions" namespace="Twilio\Rest\Serverless\V1\Service" name="CreateBuildOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\Service\CreateBuildOptions" namespace="Twilio\Rest\Serverless\V1\Service" name="CreateBuildOptions"/>
+    </return>
+    <parameter name="assetVersions" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="functionVersions" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="dependencies" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="runtime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

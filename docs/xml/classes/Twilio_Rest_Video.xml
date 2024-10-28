@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Video" namespace="Twilio\Rest" name="Video" abstract="false" final="false" start="7" end="107">
+  <file path="/twilio/repos/php/src/Twilio/Rest" file="Video.php" realpath="/twilio/repos/php/src/Twilio/Rest/Video.php" size="3892" time="2024-10-28T12:06:41+00:00" unixtime="1730117201" sha1="f1ee58f214842c3400aef1c38c87a3da8f7225f1" relative="Twilio/Rest/Video.php"/>
+  <extends full="Twilio\Rest\VideoBase" namespace="Twilio\Rest" name="VideoBase"/>
+  <method name="getCompositions" start="11" end="14" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;compositions instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionList" namespace="Twilio\Rest\Video\V1" name="CompositionList"/>
+    </return>
+  </method>
+  <method name="contextCompositions" start="20" end="23" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;compositions(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionContext" namespace="Twilio\Rest\Video\V1" name="CompositionContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getCompositionHooks" start="28" end="31" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;compositionHooks instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionHookList" namespace="Twilio\Rest\Video\V1" name="CompositionHookList"/>
+    </return>
+  </method>
+  <method name="contextCompositionHooks" start="37" end="40" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;compositionHooks(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionHookContext" namespace="Twilio\Rest\Video\V1" name="CompositionHookContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getCompositionSettings" start="45" end="48" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;compositionSettings instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionSettingsList" namespace="Twilio\Rest\Video\V1" name="CompositionSettingsList"/>
+    </return>
+  </method>
+  <method name="contextCompositionSettings" start="53" end="56" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;compositionSettings() instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\CompositionSettingsContext" namespace="Twilio\Rest\Video\V1" name="CompositionSettingsContext"/>
+    </return>
+  </method>
+  <method name="getRecordings" start="61" end="64" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;recordings instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RecordingList" namespace="Twilio\Rest\Video\V1" name="RecordingList"/>
+    </return>
+  </method>
+  <method name="contextRecordings" start="70" end="73" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;recordings(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RecordingContext" namespace="Twilio\Rest\Video\V1" name="RecordingContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getRecordingSettings" start="78" end="81" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;recordingSettings instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RecordingSettingsList" namespace="Twilio\Rest\Video\V1" name="RecordingSettingsList"/>
+    </return>
+  </method>
+  <method name="contextRecordingSettings" start="86" end="89" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;recordingSettings() instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RecordingSettingsContext" namespace="Twilio\Rest\Video\V1" name="RecordingSettingsContext"/>
+    </return>
+  </method>
+  <method name="getRooms" start="94" end="97" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;rooms instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RoomList" namespace="Twilio\Rest\Video\V1" name="RoomList"/>
+    </return>
+  </method>
+  <method name="contextRooms" start="103" end="106" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use v1-&gt;rooms(\$sid) instead."/>
+      <param description="The SID that identifies the resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video\V1\RoomContext" namespace="Twilio\Rest\Video\V1" name="RoomContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <parent full="Twilio\Rest\VideoBase" namespace="Twilio\Rest" name="VideoBase">
+    <extends full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    <member name="_v1" visibility="protected" static="false" line="23"/>
+    <constructor name="__construct" start="30" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Construct the Video Domain"/>
+        <param description="Client to communicate with Twilio" type="object" variable="$client">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </param>
+      </docblock>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </parameter>
+    </constructor>
+    <method name="getV1" start="40" end="45" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return description="Version v1 of video" type="object">
+          <type full="Twilio\Rest\Video\V1" namespace="Twilio\Rest\Video" name="V1"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Video\V1" namespace="Twilio\Rest\Video" name="V1"/>
+      </return>
+    </method>
+    <method name="__get" start="54" end="61" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic getter to lazy load version"/>
+        <param description="Version to return" type="string" variable="$name"/>
+        <return description="The requested version" type="object">
+          <type full="\Twilio\Version" namespace="\Twilio" name="Version"/>
+        </return>
+        <throws description="For unknown versions" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+    </method>
+    <method name="__call" start="71" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic caller to get resource contexts"/>
+        <param description="Resource to return" type="string" variable="$name"/>
+        <param description="Context parameters" type="array" variable="$arguments"/>
+        <return description="The requested resource context" type="object">
+          <type full="\Twilio\InstanceContext" namespace="\Twilio" name="InstanceContext"/>
+        </return>
+        <throws description="For unknown resource" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="__toString" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Provide a friendly representation"/>
+        <return description="Machine friendly representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+  <parent full="Twilio\Domain" namespace="Twilio" name="Domain">
+    <member name="client" visibility="protected" static="false" line="19">
+      <docblock>
+        <description/>
+        <var description="Twilio Client" type="object">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="baseUrl" visibility="protected" static="false" line="24">
+      <docblock>
+        <description/>
+        <var description="Base URL for this domain" type="string"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="30" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Construct a new Domain"/>
+        <param description="used to communicate with Twilio" type="object" variable="$client">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </param>
+      </docblock>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </parameter>
+    </constructor>
+    <method name="absoluteUrl" start="41" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Translate version relative URIs into absolute URLs"/>
+        <param description="Version relative URI" type="string" variable="$uri"/>
+        <return description="Absolute URL for this domain" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="request" start="58" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Make an HTTP request to the domain"/>
+        <param description="HTTP Method to make the request with" type="string" variable="$method"/>
+        <param description="Relative uri to make a request to" type="string" variable="$uri"/>
+        <param description="Query string arguments" type="array" variable="$params"/>
+        <param description="Post form data" type="array" variable="$data"/>
+        <param description="HTTP headers to send with the request" type="array" variable="$headers"/>
+        <param description="User to authenticate as" type="string" variable="$user"/>
+        <param description="Password" type="string" variable="$password"/>
+        <param description="Request timeout" type="int" variable="$timeout"/>
+        <return description="the response for the request" type="object">
+          <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="user" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="getClient" start="75" end="77" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </return>
+    </method>
+    <method name="__toString" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

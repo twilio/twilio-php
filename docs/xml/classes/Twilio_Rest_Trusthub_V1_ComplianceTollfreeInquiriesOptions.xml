@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\ComplianceTollfreeInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="ComplianceTollfreeInquiriesOptions" abstract="true" final="false" start="21" end="98">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="ComplianceTollfreeInquiriesOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/ComplianceTollfreeInquiriesOptions.php" size="19239" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="c94f7a615816c2b46d5292871f877e054a438498" relative="Twilio/Rest/Trusthub/V1/ComplianceTollfreeInquiriesOptions.php"/>
+  <method name="create" start="47" end="96" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The name of the business or organization using the Tollfree number." type="string" variable="$businessName"/>
+      <param description="The website of the business or organization using the Tollfree number." type="string" variable="$businessWebsite"/>
+      <param description="The category of the use case for the Tollfree Number. List as many are applicable.." type="array" variable="$useCaseCategories" of="object">
+        <type full="Twilio\Rest\Trusthub\V1\string" namespace="Twilio\Rest\Trusthub\V1" name="string"/>
+      </param>
+      <param description="Use this to further explain how messaging is used by the business or organization." type="string" variable="$useCaseSummary"/>
+      <param description="An example of message content, i.e. a sample message." type="string" variable="$productionMessageSample"/>
+      <param description="Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL." type="array" variable="$optInImageUrls" of="object">
+        <type full="Twilio\Rest\Trusthub\V1\string" namespace="Twilio\Rest\Trusthub\V1" name="string"/>
+      </param>
+      <param type="string" variable="$optInType"/>
+      <param description="Estimate monthly volume of messages from the Tollfree Number." type="string" variable="$messageVolume"/>
+      <param description="The address of the business or organization using the Tollfree number." type="string" variable="$businessStreetAddress"/>
+      <param description="The address of the business or organization using the Tollfree number." type="string" variable="$businessStreetAddress2"/>
+      <param description="The city of the business or organization using the Tollfree number." type="string" variable="$businessCity"/>
+      <param description="The state/province/region of the business or organization using the Tollfree number." type="string" variable="$businessStateProvinceRegion"/>
+      <param description="The postal code of the business or organization using the Tollfree number." type="string" variable="$businessPostalCode"/>
+      <param description="The country of the business or organization using the Tollfree number." type="string" variable="$businessCountry"/>
+      <param description="Additional information to be provided for verification." type="string" variable="$additionalInformation"/>
+      <param description="The first name of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactFirstName"/>
+      <param description="The last name of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactLastName"/>
+      <param description="The email address of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactEmail"/>
+      <param description="The phone number of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactPhone"/>
+      <param description="Theme id for styling the inquiry form." type="string" variable="$themeSetId"/>
+      <param description="Skip the messaging use case screen of the inquiry form." type="object" variable="$skipMessagingUseCase">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CreateComplianceTollfreeInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceTollfreeInquiriesOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateComplianceTollfreeInquiriesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateComplianceTollfreeInquiriesOptions"/>
+    </return>
+    <parameter name="businessName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessWebsite" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="useCaseCategories" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="useCaseSummary" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="productionMessageSample" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="optInImageUrls" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="optInType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messageVolume" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessStreetAddress" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessStreetAddress2" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessCity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessStateProvinceRegion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessPostalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessCountry" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="additionalInformation" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactFirstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactLastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactEmail" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactPhone" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="themeSetId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="skipMessagingUseCase" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

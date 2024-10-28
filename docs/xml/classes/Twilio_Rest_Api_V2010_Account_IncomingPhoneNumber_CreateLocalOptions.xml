@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions" abstract="false" final="false" start="127" end="473">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/IncomingPhoneNumber" file="LocalOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/IncomingPhoneNumber/LocalOptions.php" size="28051" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="19be1891fefc7e98ca51cc5fbabfd94bd2033bb0" relative="Twilio/Rest/Api/V2010/Account/IncomingPhoneNumber/LocalOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="153" end="201" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`." type="string" variable="$apiVersion"/>
+      <param description="A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number." type="string" variable="$friendlyName"/>
+      <param description="The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application." type="string" variable="$smsApplicationSid"/>
+      <param description="The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$smsFallbackMethod"/>
+      <param description="The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`." type="string" variable="$smsFallbackUrl"/>
+      <param description="The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$smsMethod"/>
+      <param description="The URL we should call when the new phone number receives an incoming SMS message." type="string" variable="$smsUrl"/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$statusCallbackMethod"/>
+      <param description="The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa." type="string" variable="$voiceApplicationSid"/>
+      <param description="Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`." type="object" variable="$voiceCallerIdLookup">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\bool" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="bool"/>
+      </param>
+      <param description="The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$voiceFallbackMethod"/>
+      <param description="The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`." type="string" variable="$voiceFallbackUrl"/>
+      <param description="The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$voiceMethod"/>
+      <param description="The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set." type="string" variable="$voiceUrl"/>
+      <param description="The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations." type="string" variable="$identitySid"/>
+      <param description="The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations." type="string" variable="$addressSid"/>
+      <param type="string" variable="$emergencyStatus"/>
+      <param description="The SID of the emergency address configuration to use for emergency calling from the new phone number." type="string" variable="$emergencyAddressSid"/>
+      <param description="The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa." type="string" variable="$trunkSid"/>
+      <param type="string" variable="$voiceReceiveMode"/>
+      <param description="The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations." type="string" variable="$bundleSid"/>
+    </docblock>
+    <parameter name="apiVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsApplicationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceApplicationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceCallerIdLookup" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="voiceFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="identitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyStatus" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="emergencyAddressSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="trunkSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceReceiveMode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bundleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setApiVersion" start="209" end="213" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`."/>
+      <param description="The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`." type="string" variable="$apiVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="apiVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="221" end="225" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number."/>
+      <param description="A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsApplicationSid" start="233" end="237" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application."/>
+      <param description="The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application." type="string" variable="$smsApplicationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="smsApplicationSid" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsFallbackMethod" start="245" end="249" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$smsFallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="smsFallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsFallbackUrl" start="257" end="261" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`."/>
+      <param description="The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`." type="string" variable="$smsFallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="smsFallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsMethod" start="269" end="273" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$smsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="smsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsUrl" start="281" end="285" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call when the new phone number receives an incoming SMS message."/>
+      <param description="The URL we should call when the new phone number receives an incoming SMS message." type="string" variable="$smsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="smsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallback" start="293" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `status_callback_method` to send status information to your application."/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackMethod" start="305" end="309" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$statusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="statusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceApplicationSid" start="317" end="321" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa."/>
+      <param description="The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa." type="string" variable="$voiceApplicationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceApplicationSid" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceCallerIdLookup" start="329" end="333" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`."/>
+      <param description="Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`." type="object" variable="$voiceCallerIdLookup">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\bool" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceCallerIdLookup" byreference="false" type="bool"/>
+  </method>
+  <method name="setVoiceFallbackMethod" start="341" end="345" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$voiceFallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceFallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceFallbackUrl" start="353" end="357" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`."/>
+      <param description="The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`." type="string" variable="$voiceFallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceFallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceMethod" start="365" end="369" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$voiceMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceUrl" start="377" end="381" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set."/>
+      <param description="The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set." type="string" variable="$voiceUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setIdentitySid" start="389" end="393" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations."/>
+      <param description="The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations." type="string" variable="$identitySid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="identitySid" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressSid" start="401" end="405" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations."/>
+      <param description="The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations." type="string" variable="$addressSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="addressSid" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyStatus" start="411" end="415" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$emergencyStatus"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="emergencyStatus" byreference="false" type="string"/>
+  </method>
+  <method name="setEmergencyAddressSid" start="423" end="427" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the emergency address configuration to use for emergency calling from the new phone number."/>
+      <param description="The SID of the emergency address configuration to use for emergency calling from the new phone number." type="string" variable="$emergencyAddressSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="emergencyAddressSid" byreference="false" type="string"/>
+  </method>
+  <method name="setTrunkSid" start="435" end="439" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa."/>
+      <param description="The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa." type="string" variable="$trunkSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="trunkSid" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceReceiveMode" start="445" end="449" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$voiceReceiveMode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="voiceReceiveMode" byreference="false" type="string"/>
+  </method>
+  <method name="setBundleSid" start="457" end="461" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations."/>
+      <param description="The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations." type="string" variable="$bundleSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\$this" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\CreateLocalOptions" namespace="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber" name="CreateLocalOptions"/>
+    </return>
+    <parameter name="bundleSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="468" end="472" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Oauth\V1\AuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="AuthorizeOptions" abstract="true" final="false" start="21" end="50">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Oauth/V1" file="AuthorizeOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Oauth/V1/AuthorizeOptions.php" size="4334" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="1f6b73823fe24e156ca0cd0913ed84f9033f598f" relative="Twilio/Rest/Oauth/V1/AuthorizeOptions.php"/>
+  <method name="fetch" start="31" end="48" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Response Type" type="string" variable="$responseType"/>
+      <param description="The Client Identifier" type="string" variable="$clientId"/>
+      <param description="The url to which response will be redirected to" type="string" variable="$redirectUri"/>
+      <param description="The scope of the access request" type="string" variable="$scope"/>
+      <param description="An opaque value which can be used to maintain state between the request and callback" type="string" variable="$state"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth\V1\FetchAuthorizeOptions" namespace="Twilio\Rest\Oauth\V1" name="FetchAuthorizeOptions"/>
+    </return>
+    <parameter name="responseType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="clientId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="redirectUri" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="scope" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

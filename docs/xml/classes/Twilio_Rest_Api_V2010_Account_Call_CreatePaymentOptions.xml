@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions" abstract="false" final="false" start="97" end="321">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Call" file="PaymentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Call/PaymentOptions.php" size="17556" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="bb65a86864c90ed01da22b2abed8504c8a2dc3d1" relative="Twilio/Rest/Api/V2010/Account/Call/PaymentOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="115" end="147" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$bankAccountType"/>
+      <param description="A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize." type="string" variable="$chargeAmount"/>
+      <param description="The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the Pay Connector are accepted." type="string" variable="$currency"/>
+      <param description="The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions." type="string" variable="$description"/>
+      <param description="A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs." type="string" variable="$input"/>
+      <param description="A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits." type="int" variable="$minPostalCodeLength"/>
+      <param description="A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the &lt;Pay&gt; Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors)." type="array" variable="$parameter"/>
+      <param description="This is the unique name corresponding to the Pay Connector installed in the Twilio Add-ons. Learn more about [&lt;Pay&gt; Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`." type="string" variable="$paymentConnector"/>
+      <param type="string" variable="$paymentMethod"/>
+      <param description="Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`." type="object" variable="$postalCode">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <param description="Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`." type="object" variable="$securityCode">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <param description="The number of seconds that &lt;Pay&gt; should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`." type="int" variable="$timeout"/>
+      <param type="string" variable="$tokenType"/>
+      <param description="Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`" type="string" variable="$validCardTypes"/>
+    </docblock>
+    <parameter name="bankAccountType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="chargeAmount" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="currency" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="description" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="input" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="minPostalCodeLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="parameter" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="paymentConnector" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="paymentMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="postalCode" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="securityCode" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="timeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="tokenType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="validCardTypes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setBankAccountType" start="153" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$bankAccountType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="bankAccountType" byreference="false" type="string"/>
+  </method>
+  <method name="setChargeAmount" start="165" end="169" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize."/>
+      <param description="A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize." type="string" variable="$chargeAmount"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="chargeAmount" byreference="false" type="string"/>
+  </method>
+  <method name="setCurrency" start="177" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the Pay Connector are accepted."/>
+      <param description="The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the Pay Connector are accepted." type="string" variable="$currency"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="currency" byreference="false" type="string"/>
+  </method>
+  <method name="setDescription" start="189" end="193" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions."/>
+      <param description="The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions." type="string" variable="$description"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="description" byreference="false" type="string"/>
+  </method>
+  <method name="setInput" start="201" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs."/>
+      <param description="A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs." type="string" variable="$input"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="input" byreference="false" type="string"/>
+  </method>
+  <method name="setMinPostalCodeLength" start="213" end="217" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits."/>
+      <param description="A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits." type="int" variable="$minPostalCodeLength"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="minPostalCodeLength" byreference="false" type="int"/>
+  </method>
+  <method name="setParameter" start="225" end="229" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the &lt;Pay&gt; Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors)."/>
+      <param description="A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the &lt;Pay&gt; Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors)." type="array" variable="$parameter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="parameter" byreference="false" type="array"/>
+  </method>
+  <method name="setPaymentConnector" start="237" end="241" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This is the unique name corresponding to the Pay Connector installed in the Twilio Add-ons. Learn more about [&lt;Pay&gt; Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`."/>
+      <param description="This is the unique name corresponding to the Pay Connector installed in the Twilio Add-ons. Learn more about [&lt;Pay&gt; Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`." type="string" variable="$paymentConnector"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="paymentConnector" byreference="false" type="string"/>
+  </method>
+  <method name="setPaymentMethod" start="247" end="251" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$paymentMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="paymentMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setPostalCode" start="259" end="263" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`."/>
+      <param description="Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`." type="object" variable="$postalCode">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="postalCode" byreference="false" type="bool"/>
+  </method>
+  <method name="setSecurityCode" start="271" end="275" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`."/>
+      <param description="Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`." type="object" variable="$securityCode">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\bool" namespace="Twilio\Rest\Api\V2010\Account\Call" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="securityCode" byreference="false" type="bool"/>
+  </method>
+  <method name="setTimeout" start="283" end="287" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of seconds that &lt;Pay&gt; should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`."/>
+      <param description="The number of seconds that &lt;Pay&gt; should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`." type="int" variable="$timeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="timeout" byreference="false" type="int"/>
+  </method>
+  <method name="setTokenType" start="293" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$tokenType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="tokenType" byreference="false" type="string"/>
+  </method>
+  <method name="setValidCardTypes" start="305" end="309" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`"/>
+      <param description="Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`" type="string" variable="$validCardTypes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Call\$this" namespace="Twilio\Rest\Api\V2010\Account\Call" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Call\CreatePaymentOptions" namespace="Twilio\Rest\Api\V2010\Account\Call" name="CreatePaymentOptions"/>
+    </return>
+    <parameter name="validCardTypes" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="316" end="320" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

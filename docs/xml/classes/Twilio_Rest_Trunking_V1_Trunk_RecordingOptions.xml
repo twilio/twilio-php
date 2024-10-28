@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trunking\V1\Trunk\RecordingOptions" namespace="Twilio\Rest\Trunking\V1\Trunk" name="RecordingOptions" abstract="true" final="false" start="21" end="42">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trunking/V1/Trunk" file="RecordingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trunking/V1/Trunk/RecordingOptions.php" size="2064" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="5cca94d1b15cc567ca87b8c28e76e191cc37c44a" relative="Twilio/Rest/Trunking/V1/Trunk/RecordingOptions.php"/>
+  <method name="update" start="29" end="40" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$mode"/>
+      <param type="string" variable="$trim"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\Trunk\UpdateRecordingOptions" namespace="Twilio\Rest\Trunking\V1\Trunk" name="UpdateRecordingOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\Trunk\UpdateRecordingOptions" namespace="Twilio\Rest\Trunking\V1\Trunk" name="UpdateRecordingOptions"/>
+    </return>
+    <parameter name="mode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="trim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

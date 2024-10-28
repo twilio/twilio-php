@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\SettingsUpdateOptions" namespace="Twilio\Rest\Supersim\V1" name="SettingsUpdateOptions" abstract="true" final="false" start="21" end="41">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="SettingsUpdateOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/SettingsUpdateOptions.php" size="2774" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="2c662b64bcc52a187ee8c5e9e1ab67cfc9107e5c" relative="Twilio/Rest/Supersim/V1/SettingsUpdateOptions.php"/>
+  <method name="read" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Filter the Settings Updates by a Super SIM's SID or UniqueName." type="string" variable="$sim"/>
+      <param description="Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`." type="string" variable="$status"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\ReadSettingsUpdateOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSettingsUpdateOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadSettingsUpdateOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadSettingsUpdateOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

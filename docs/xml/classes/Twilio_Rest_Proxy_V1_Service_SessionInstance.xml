@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Proxy\V1\Service\SessionInstance" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionInstance" abstract="false" final="false" start="48" end="194">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service" file="SessionInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/SessionInstance.php" size="6235" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="f3c2fe6928b60598f7c33514ab8c638119a4bf62" relative="Twilio/Rest/Proxy/V1/Service/SessionInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $sid"/>
+    <property value="string|null $serviceSid"/>
+    <property value="string|null $accountSid"/>
+    <property value="\DateTime|null $dateStarted"/>
+    <property value="\DateTime|null $dateEnded"/>
+    <property value="\DateTime|null $dateLastInteraction"/>
+    <property value="\DateTime|null $dateExpiry"/>
+    <property value="string|null $uniqueName"/>
+    <property value="string $status"/>
+    <property value="string|null $closedReason"/>
+    <property value="int $ttl"/>
+    <property value="string $mode"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_participants" visibility="protected" static="false" line="50"/>
+  <member name="_interactions" visibility="protected" static="false" line="51"/>
+  <constructor name="__construct" start="61" end="86" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SessionInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\mixed" namespace="Twilio\Rest\Proxy\V1\Service" name="mixed"/>
+      </param>
+      <param description="The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource." type="string" variable="$serviceSid"/>
+      <param description="The Twilio-provided string that uniquely identifies the Session resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="serviceSid" byreference="false" type="string"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="65"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="94" end="105" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this SessionInstance" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\SessionContext" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\SessionContext" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionContext"/>
+    </return>
+  </method>
+  <method name="delete" start="113" end="117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the SessionInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\bool" namespace="Twilio\Rest\Proxy\V1\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="125" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SessionInstance"/>
+      <return description="Fetched SessionInstance" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\SessionInstance" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\SessionInstance" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionInstance"/>
+    </return>
+  </method>
+  <method name="update" start="138" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the SessionInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Proxy\V1\Service\array|Options" namespace="Twilio\Rest\Proxy\V1\Service" name="array|Options"/>
+      </param>
+      <return description="Updated SessionInstance" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\SessionInstance" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\SessionInstance" namespace="Twilio\Rest\Proxy\V1\Service" name="SessionInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getParticipants" start="147" end="150" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the participants"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\ParticipantList" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="ParticipantList"/>
+    </return>
+  </method>
+  <method name="getInteractions" start="155" end="158" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the interactions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\InteractionList" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="InteractionList"/>
+    </return>
+  </method>
+  <method name="__get" start="167" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="186" end="193" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

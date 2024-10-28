@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Taskrouter\V1\Workspace\EventOptions::read</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Taskrouter_V1_Workspace">Twilio\Rest\Taskrouter\V1\Workspace</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Taskrouter_V1_Workspace_EventOptions.html" title="Twilio\Rest\Taskrouter\V1\Workspace\EventOptions">EventOptions</a>
+</li>
+<li class="separator">read</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="#return">Return</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Taskrouter/V1/Workspace/EventOptions.php.html#line38">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Taskrouter\V1\Workspace\EventOptions::</small>read</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function read([<a href="../../classes/DateTime.html" title="DateTime">DateTime</a>
+        $endDate = NULL,
+            [string
+        $eventType = Values::NONE,
+            [int
+        $minutes = Values::INT_NONE,
+            [string
+        $reservationSid = Values::NONE,
+            [<a href="../../classes/DateTime.html" title="DateTime">DateTime</a>
+        $startDate = NULL,
+            [string
+        $taskQueueSid = Values::NONE,
+            [string
+        $taskSid = Values::NONE,
+            [string
+        $workerSid = Values::NONE,
+            [string
+        $workflowSid = Values::NONE,
+            [string
+        $taskChannel = Values::NONE,
+            [string
+        $sid = Values::NONE]]]]]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$endDate</code>
+                —
+                <a href="../../classes/_DateTime.html" title="\DateTime">\DateTime</a></dt>
+<dd>Only include Events that occurred on or before this date, specified in GMT as an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.<br/><br/><br/> </dd>
+<dt><code>$eventType</code>
+                —
+                string</dt>
+<dd>The type of Events to read. Returns only Events of the type specified.</dd>
+<dt><code>$minutes</code>
+                —
+                int</dt>
+<dd>The period of events to read in minutes. Returns only Events that occurred since this many minutes in the past. The default is `15` minutes. Task Attributes for Events occuring more 43,200 minutes ago will be redacted.</dd>
+<dt><code>$reservationSid</code>
+                —
+                string</dt>
+<dd>The SID of the Reservation with the Events to read. Returns only Events that pertain to the specified Reservation.</dd>
+<dt><code>$startDate</code>
+                —
+                <a href="../../classes/_DateTime.html" title="\DateTime">\DateTime</a></dt>
+<dd>Only include Events from on or after this date and time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Task Attributes for Events older than 30 days will be redacted.<br/><br/><br/> </dd>
+<dt><code>$taskQueueSid</code>
+                —
+                string</dt>
+<dd>The SID of the TaskQueue with the Events to read. Returns only the Events that pertain to the specified TaskQueue.</dd>
+<dt><code>$taskSid</code>
+                —
+                string</dt>
+<dd>The SID of the Task with the Events to read. Returns only the Events that pertain to the specified Task.</dd>
+<dt><code>$workerSid</code>
+                —
+                string</dt>
+<dd>The SID of the Worker with the Events to read. Returns only the Events that pertain to the specified Worker.</dd>
+<dt><code>$workflowSid</code>
+                —
+                string</dt>
+<dd>The SID of the Workflow with the Events to read. Returns only the Events that pertain to the specified Workflow.</dd>
+<dt><code>$taskChannel</code>
+                —
+                string</dt>
+<dd>The TaskChannel with the Events to read. Returns only the Events that pertain to the specified TaskChannel.</dd>
+<dt><code>$sid</code>
+                —
+                string</dt>
+<dd>The SID of the Event resource to read.</dd>
+</dl>
+<h2 id="return">Returns</h2>
+<dl class="styled">
+<dt>ReadEventOptions</dt>
+<dd>Options builder<br/>
+</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

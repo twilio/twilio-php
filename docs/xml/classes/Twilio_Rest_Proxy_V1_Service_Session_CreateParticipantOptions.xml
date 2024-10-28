@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Proxy\V1\Service\Session\CreateParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="CreateParticipantOptions" abstract="false" final="false" start="49" end="114">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/Session" file="ParticipantOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Proxy/V1/Service/Session/ParticipantOptions.php" size="4152" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="10df83c34fa53358fe2650c3936a88c2586be301" relative="Twilio/Rest/Proxy/V1/Service/Session/ParticipantOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="56" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII." type="string" variable="$friendlyName"/>
+      <param description="The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool." type="string" variable="$proxyIdentifier"/>
+      <param description="The SID of the Proxy Identifier to assign to the Participant." type="string" variable="$proxyIdentifierSid"/>
+    </docblock>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="proxyIdentifier" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="proxyIdentifierSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setFriendlyName" start="74" end="78" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII."/>
+      <param description="The string that you assigned to describe the participant. This value must be 255 characters or fewer. **This value should not have PII." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\Session\$this" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\CreateParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="CreateParticipantOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setProxyIdentifier" start="86" end="90" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool."/>
+      <param description="The proxy phone number to use for the Participant. If not specified, Proxy will select a number from the pool." type="string" variable="$proxyIdentifier"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\Session\$this" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\CreateParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="CreateParticipantOptions"/>
+    </return>
+    <parameter name="proxyIdentifier" byreference="false" type="string"/>
+  </method>
+  <method name="setProxyIdentifierSid" start="98" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Proxy Identifier to assign to the Participant."/>
+      <param description="The SID of the Proxy Identifier to assign to the Participant." type="string" variable="$proxyIdentifierSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Proxy\V1\Service\Session\$this" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy\V1\Service\Session\CreateParticipantOptions" namespace="Twilio\Rest\Proxy\V1\Service\Session" name="CreateParticipantOptions"/>
+    </return>
+    <parameter name="proxyIdentifierSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="109" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

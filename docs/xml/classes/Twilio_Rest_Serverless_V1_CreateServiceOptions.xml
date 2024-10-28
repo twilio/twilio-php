@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Serverless\V1\CreateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="CreateServiceOptions" abstract="false" final="false" start="67" end="117">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Serverless/V1" file="ServiceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/ServiceOptions.php" size="6547" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="2d94b8e05dda5f7b5bbab1ded7775a66969a4c37" relative="Twilio/Rest/Serverless/V1/ServiceOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="73" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether to inject Account credentials into a function invocation context. The default value is `true`." type="object" variable="$includeCredentials">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <param description="Whether the Service's properties and subresources can be edited via the UI. The default value is `false`." type="object" variable="$uiEditable">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="includeCredentials" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="uiEditable" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setIncludeCredentials" start="89" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to inject Account credentials into a function invocation context. The default value is `true`."/>
+      <param description="Whether to inject Account credentials into a function invocation context. The default value is `true`." type="object" variable="$includeCredentials">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\$this" namespace="Twilio\Rest\Serverless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\CreateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="CreateServiceOptions"/>
+    </return>
+    <parameter name="includeCredentials" byreference="false" type="bool"/>
+  </method>
+  <method name="setUiEditable" start="101" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the Service's properties and subresources can be edited via the UI. The default value is `false`."/>
+      <param description="Whether the Service's properties and subresources can be edited via the UI. The default value is `false`." type="object" variable="$uiEditable">
+        <type full="Twilio\Rest\Serverless\V1\bool" namespace="Twilio\Rest\Serverless\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\$this" namespace="Twilio\Rest\Serverless\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\CreateServiceOptions" namespace="Twilio\Rest\Serverless\V1" name="CreateServiceOptions"/>
+    </return>
+    <parameter name="uiEditable" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="112" end="116" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

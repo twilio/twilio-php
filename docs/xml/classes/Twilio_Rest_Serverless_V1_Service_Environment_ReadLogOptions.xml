@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Serverless\V1\Service\Environment\ReadLogOptions" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="ReadLogOptions" abstract="false" final="false" start="48" end="113">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/Service/Environment" file="LogOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Serverless/V1/Service/Environment/LogOptions.php" size="3967" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="882fd6cdc112c4fca80ab0f9cf60a16ec0865d79" relative="Twilio/Rest/Serverless/V1/Service/Environment/LogOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="55" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the function whose invocation produced the Log resources to read." type="string" variable="$functionSid"/>
+      <param description="The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+    </docblock>
+    <parameter name="functionSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="endDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </constructor>
+  <method name="setFunctionSid" start="73" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the function whose invocation produced the Log resources to read."/>
+      <param description="The SID of the function whose invocation produced the Log resources to read." type="string" variable="$functionSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\Environment\$this" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\Service\Environment\ReadLogOptions" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="ReadLogOptions"/>
+    </return>
+    <parameter name="functionSid" byreference="false" type="string"/>
+  </method>
+  <method name="setStartDate" start="85" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time."/>
+      <param description="The date/time (in GMT, ISO 8601) after which the Log resources must have been created. Defaults to 1 day prior to current date/time." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\Environment\$this" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\Service\Environment\ReadLogOptions" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="ReadLogOptions"/>
+    </return>
+    <parameter name="startDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setEndDate" start="97" end="101" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time."/>
+      <param description="The date/time (in GMT, ISO 8601) before which the Log resources must have been created. Defaults to current date/time." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Serverless\V1\Service\Environment\$this" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless\V1\Service\Environment\ReadLogOptions" namespace="Twilio\Rest\Serverless\V1\Service\Environment" name="ReadLogOptions"/>
+    </return>
+    <parameter name="endDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="__toString" start="108" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

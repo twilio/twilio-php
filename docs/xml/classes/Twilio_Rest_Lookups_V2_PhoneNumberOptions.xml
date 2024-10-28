@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Lookups\V2\PhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="PhoneNumberOptions" abstract="true" final="false" start="21" end="77">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Lookups/V2" file="PhoneNumberOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Lookups/V2/PhoneNumberOptions.php" size="15939" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="cefac68544c37b79185f14fa8398f5ab44a0176d" relative="Twilio/Rest/Lookups/V2/PhoneNumberOptions.php"/>
+  <method name="fetch" start="40" end="75" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill." type="string" variable="$fields"/>
+      <param description="The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format." type="string" variable="$countryCode"/>
+      <param description="User’s first name. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$firstName"/>
+      <param description="User’s last name. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$lastName"/>
+      <param description="User’s first address line. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressLine1"/>
+      <param description="User’s second address line. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressLine2"/>
+      <param description="User’s city. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$city"/>
+      <param description="User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$state"/>
+      <param description="User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$postalCode"/>
+      <param description="User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressCountryCode"/>
+      <param description="User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$nationalId"/>
+      <param description="User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$dateOfBirth"/>
+      <param description="The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests." type="string" variable="$lastVerifiedDate"/>
+      <param description="The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests." type="string" variable="$verificationSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="fields" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="countryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="firstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressLine1" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressLine2" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="city" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="postalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressCountryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="nationalId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateOfBirth" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastVerifiedDate" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verificationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

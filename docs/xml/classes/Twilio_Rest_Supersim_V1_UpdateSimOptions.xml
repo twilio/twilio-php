@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions" abstract="false" final="false" start="147" end="255">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="SimOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/SimOptions.php" size="10059" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="565a7246bf5afafe749ad79fae1fd15d609ce1f4" relative="Twilio/Rest/Supersim/V1/SimOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="157" end="173" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <param type="string" variable="$status"/>
+      <param description="The SID or unique name of the Fleet to which the SIM resource should be assigned." type="string" variable="$fleet"/>
+      <param description="The URL we should call using the `callback_method` after an asynchronous update has finished." type="string" variable="$callbackUrl"/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST." type="string" variable="$callbackMethod"/>
+      <param description="The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new." type="string" variable="$accountSid"/>
+    </docblock>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="fleet" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="accountSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setUniqueName" start="181" end="185" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource."/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="string"/>
+  </method>
+  <method name="setStatus" start="191" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setFleet" start="203" end="207" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID or unique name of the Fleet to which the SIM resource should be assigned."/>
+      <param description="The SID or unique name of the Fleet to which the SIM resource should be assigned." type="string" variable="$fleet"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="fleet" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackUrl" start="215" end="219" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `callback_method` after an asynchronous update has finished."/>
+      <param description="The URL we should call using the `callback_method` after an asynchronous update has finished." type="string" variable="$callbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="callbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackMethod" start="227" end="231" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST."/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST." type="string" variable="$callbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setAccountSid" start="239" end="243" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new."/>
+      <param description="The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new." type="string" variable="$accountSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateSimOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateSimOptions"/>
+    </return>
+    <parameter name="accountSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="250" end="254" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

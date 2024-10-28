@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\ParticipantConversationOptions" namespace="Twilio\Rest\Conversations\V1" name="ParticipantConversationOptions" abstract="true" final="false" start="21" end="41">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1" file="ParticipantConversationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/ParticipantConversationOptions.php" size="4199" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="47fc3e394d911f1f18b250d4c4a37c792bebaac0" relative="Twilio/Rest/Conversations/V1/ParticipantConversationOptions.php"/>
+  <method name="read" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters." type="string" variable="$identity"/>
+      <param description="A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded." type="string" variable="$address"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\ReadParticipantConversationOptions" namespace="Twilio\Rest\Conversations\V1" name="ReadParticipantConversationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ReadParticipantConversationOptions" namespace="Twilio\Rest\Conversations\V1" name="ReadParticipantConversationOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="address" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowList" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowList" abstract="false" final="false" start="27" end="214">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="WorkflowList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/WorkflowList.php" size="7439" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="526aad4ca5ead0572552336b3138f7436cbc2add" relative="Twilio/Rest/Taskrouter/V1/Workspace/WorkflowList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="35" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the WorkflowList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Workspace that the new Workflow to create belongs to." type="string" variable="$workspaceSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="workspaceSid" byreference="false" type="string"/>
+    <inline>
+      <comment value="Path Solution" line="41"/>
+    </inline>
+  </constructor>
+  <method name="create" start="61" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the WorkflowInstance"/>
+      <param description="A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`." type="string" variable="$friendlyName"/>
+      <param description="A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information." type="string" variable="$configuration"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\array|Options" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="array|Options"/>
+      </param>
+      <return description="Created WorkflowInstance" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowInstance" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowInstance" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowInstance"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+    <parameter name="configuration" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="read" start="106" end="109" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reads WorkflowInstance records from the API as a list.">Unlike stream(), this operation is eager and will load `limit` records into
+memory before returning.</description>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\array|Options" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="array|Options"/>
+      </param>
+      <param description="Upper limit for the number of records to return. read()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, read()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="Array of results" type="array" of="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowInstance" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowInstance"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="stream" start="130" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Streams WorkflowInstance records from the API as a generator stream.">This operation lazily loads records as efficiently as possible until the
+limit
+is reached.
+The results are returned as a generator, so this operation is memory
+efficient.</description>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\array|Options" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="array|Options"/>
+      </param>
+      <param description="Upper limit for the number of records to return. stream()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, stream()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="stream of results" type="object">
+        <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="page" start="148" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a single page of WorkflowInstance records from the API.">Request is executed immediately</description>
+      <param description="Number of records to return, defaults to 50" type="mixed" variable="$pageSize"/>
+      <param description="PageToken provided by the API" type="string" variable="$pageToken"/>
+      <param description="Page Number, this value is simply for client state" type="mixed" variable="$pageNumber"/>
+      <return description="Page of WorkflowInstance" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowPage" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowPage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowPage" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowPage"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="getPage" start="177" end="185" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a specific page of WorkflowInstance records from the API.">Request is executed immediately</description>
+      <param description="API-generated URL for the requested results page" type="string" variable="$targetUrl"/>
+      <return description="Page of WorkflowInstance" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowPage" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowPage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowPage" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowPage"/>
+    </return>
+    <parameter name="targetUrl" byreference="false" type="string"/>
+  </method>
+  <method name="getContext" start="193" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a WorkflowContext"/>
+      <param description="The SID of the Workflow resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\WorkflowContext" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkflowContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="210" end="213" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

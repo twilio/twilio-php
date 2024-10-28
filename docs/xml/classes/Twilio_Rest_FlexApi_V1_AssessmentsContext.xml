@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V1\AssessmentsContext" namespace="Twilio\Rest\FlexApi\V1" name="AssessmentsContext" abstract="false" final="false" start="27" end="99">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1" file="AssessmentsContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V1/AssessmentsContext.php" size="2861" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="2319a33cda58747bf50313245242d9f74ad1483b" relative="Twilio/Rest/FlexApi/V1/AssessmentsContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="35" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the AssessmentsContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the assessment to be modified" type="string" variable="$assessmentSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="assessmentSid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="41"/>
+    </inline>
+  </constructor>
+  <method name="update" start="61" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the AssessmentsInstance"/>
+      <param description="The offset of the conversation" type="string" variable="$offset"/>
+      <param description="The answer text selected by user" type="string" variable="$answerText"/>
+      <param description="The id of the answer selected by user" type="string" variable="$answerId"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\FlexApi\V1\array|Options" namespace="Twilio\Rest\FlexApi\V1" name="array|Options"/>
+      </param>
+      <return description="Updated AssessmentsInstance" type="object">
+        <type full="Twilio\Rest\FlexApi\V1\AssessmentsInstance" namespace="Twilio\Rest\FlexApi\V1" name="AssessmentsInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V1\AssessmentsInstance" namespace="Twilio\Rest\FlexApi\V1" name="AssessmentsInstance"/>
+    </return>
+    <parameter name="offset" byreference="false" type="string"/>
+    <parameter name="answerText" byreference="false" type="string"/>
+    <parameter name="answerId" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="91" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

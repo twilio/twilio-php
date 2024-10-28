@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Sync\V1\Service\SyncListOptions" namespace="Twilio\Rest\Sync\V1\Service" name="SyncListOptions" abstract="true" final="false" start="21" end="65">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Sync/V1/Service" file="SyncListOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Sync/V1/Service/SyncListOptions.php" size="6966" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="327bf83a7391a0f1905a13b7112c2b6395e45354" relative="Twilio/Rest/Sync/V1/Service/SyncListOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the resource. This value must be unique within its Service and it can be up to 320 characters long. The `unique_name` value can be used as an alternative to the `sid` in the URL path to address the resource." type="string" variable="$uniqueName"/>
+      <param description="Alias for collection_ttl. If both are provided, this value is ignored." type="int" variable="$ttl"/>
+      <param description="How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync List expires (time-to-live) and is deleted." type="int" variable="$collectionTtl"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\CreateSyncListOptions" namespace="Twilio\Rest\Sync\V1\Service" name="CreateSyncListOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\CreateSyncListOptions" namespace="Twilio\Rest\Sync\V1\Service" name="CreateSyncListOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="collectionTtl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </method>
+  <method name="update" start="52" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An alias for `collection_ttl`. If both are provided, this value is ignored." type="int" variable="$ttl"/>
+      <param description="How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before the Sync List expires (time-to-live) and is deleted." type="int" variable="$collectionTtl"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Sync\V1\Service\UpdateSyncListOptions" namespace="Twilio\Rest\Sync\V1\Service" name="UpdateSyncListOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\Service\UpdateSyncListOptions" namespace="Twilio\Rest\Sync\V1\Service" name="UpdateSyncListOptions"/>
+    </return>
+    <parameter name="ttl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="collectionTtl" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </method>
+</class>

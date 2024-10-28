@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions" abstract="false" final="false" start="100" end="236">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trunking/V1" file="TrunkOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trunking/V1/TrunkOptions.php" size="21638" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="62968ea71dc1fa451640722ffb076aa01e12610b" relative="Twilio/Rest/Trunking/V1/TrunkOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="112" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param description="The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information." type="string" variable="$domainName"/>
+      <param description="The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information." type="string" variable="$disasterRecoveryUrl"/>
+      <param description="The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`." type="string" variable="$disasterRecoveryMethod"/>
+      <param type="string" variable="$transferMode"/>
+      <param description="Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information." type="object" variable="$secure">
+        <type full="Twilio\Rest\Trunking\V1\bool" namespace="Twilio\Rest\Trunking\V1" name="bool"/>
+      </param>
+      <param description="Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information." type="object" variable="$cnamLookupEnabled">
+        <type full="Twilio\Rest\Trunking\V1\bool" namespace="Twilio\Rest\Trunking\V1" name="bool"/>
+      </param>
+      <param type="string" variable="$transferCallerId"/>
+    </docblock>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="domainName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="disasterRecoveryUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="disasterRecoveryMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="transferMode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="secure" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="cnamLookupEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="transferCallerId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setFriendlyName" start="140" end="144" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you create to describe the resource. It can be up to 64 characters long."/>
+      <param description="A descriptive string that you create to describe the resource. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setDomainName" start="152" end="156" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information."/>
+      <param description="The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information." type="string" variable="$domainName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="domainName" byreference="false" type="string"/>
+  </method>
+  <method name="setDisasterRecoveryUrl" start="164" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information."/>
+      <param description="The URL we should call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from the URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information." type="string" variable="$disasterRecoveryUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="disasterRecoveryUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setDisasterRecoveryMethod" start="176" end="180" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`."/>
+      <param description="The HTTP method we should use to call the `disaster_recovery_url`. Can be: `GET` or `POST`." type="string" variable="$disasterRecoveryMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="disasterRecoveryMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setTransferMode" start="186" end="190" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$transferMode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="transferMode" byreference="false" type="string"/>
+  </method>
+  <method name="setSecure" start="198" end="202" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information."/>
+      <param description="Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information." type="object" variable="$secure">
+        <type full="Twilio\Rest\Trunking\V1\bool" namespace="Twilio\Rest\Trunking\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="secure" byreference="false" type="bool"/>
+  </method>
+  <method name="setCnamLookupEnabled" start="210" end="214" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information."/>
+      <param description="Whether Caller ID Name (CNAM) lookup should be enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information." type="object" variable="$cnamLookupEnabled">
+        <type full="Twilio\Rest\Trunking\V1\bool" namespace="Twilio\Rest\Trunking\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="cnamLookupEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setTransferCallerId" start="220" end="224" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$transferCallerId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Trunking\V1\$this" namespace="Twilio\Rest\Trunking\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking\V1\CreateTrunkOptions" namespace="Twilio\Rest\Trunking\V1" name="CreateTrunkOptions"/>
+    </return>
+    <parameter name="transferCallerId" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="231" end="235" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

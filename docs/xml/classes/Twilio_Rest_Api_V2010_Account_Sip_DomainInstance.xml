@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Sip\DomainInstance" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainInstance" abstract="false" final="false" start="54" end="214">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Sip" file="DomainInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Sip/DomainInstance.php" size="7321" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="68f389b82799ab0fb5834cde02b0493fa735d1a4" relative="Twilio/Rest/Api/V2010/Account/Sip/DomainInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $apiVersion"/>
+    <property value="string|null $authType"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $domainName"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string|null $sid"/>
+    <property value="string|null $uri"/>
+    <property value="string|null $voiceFallbackMethod"/>
+    <property value="string|null $voiceFallbackUrl"/>
+    <property value="string|null $voiceMethod"/>
+    <property value="string|null $voiceStatusCallbackMethod"/>
+    <property value="string|null $voiceStatusCallbackUrl"/>
+    <property value="string|null $voiceUrl"/>
+    <property value="array|null $subresourceUris"/>
+    <property value="bool|null $sipRegistration"/>
+    <property value="bool|null $emergencyCallingEnabled"/>
+    <property value="bool|null $secure"/>
+    <property value="string|null $byocTrunkSid"/>
+    <property value="string|null $emergencyCallerSid"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_credentialListMappings" visibility="protected" static="false" line="56"/>
+  <member name="_ipAccessControlListMappings" visibility="protected" static="false" line="57"/>
+  <member name="_auth" visibility="protected" static="false" line="58"/>
+  <constructor name="__construct" start="68" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the DomainInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\mixed" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="mixed"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource." type="string" variable="$accountSid"/>
+      <param description="The Twilio-provided string that uniquely identifies the SipDomain resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="accountSid" byreference="false" type="string"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="72"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="106" end="117" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this DomainInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\DomainContext" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\DomainContext" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainContext"/>
+    </return>
+  </method>
+  <method name="delete" start="125" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the DomainInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\bool" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="137" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the DomainInstance"/>
+      <return description="Fetched DomainInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\DomainInstance" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\DomainInstance" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainInstance"/>
+    </return>
+  </method>
+  <method name="update" start="150" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the DomainInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\array|Options" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="array|Options"/>
+      </param>
+      <return description="Updated DomainInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\DomainInstance" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\DomainInstance" namespace="Twilio\Rest\Api\V2010\Account\Sip" name="DomainInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getCredentialListMappings" start="159" end="162" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the credentialListMappings"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingList" namespace="Twilio\Rest\Api\V2010\Account\Sip\Domain" name="CredentialListMappingList"/>
+    </return>
+  </method>
+  <method name="getIpAccessControlListMappings" start="167" end="170" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the ipAccessControlListMappings"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingList" namespace="Twilio\Rest\Api\V2010\Account\Sip\Domain" name="IpAccessControlListMappingList"/>
+    </return>
+  </method>
+  <method name="getAuth" start="175" end="178" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the auth"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList" namespace="Twilio\Rest\Api\V2010\Account\Sip\Domain" name="AuthTypesList"/>
+    </return>
+  </method>
+  <method name="__get" start="187" end="199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="206" end="213" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

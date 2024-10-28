@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions" namespace="Twilio\Rest\Bulkexports\V1\Export" name="CreateExportCustomJobOptions" abstract="false" final="false" start="47" end="112">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1/Export" file="ExportCustomJobOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Bulkexports/V1/Export/ExportCustomJobOptions.php" size="4921" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="1178b3c01574a604013a938169475761a35c3090" relative="Twilio/Rest/Bulkexports/V1/Export/ExportCustomJobOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="54" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied. If you set neither webhook nor email, you will have to check your job's status manually." type="string" variable="$webhookUrl"/>
+      <param description="This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied." type="string" variable="$webhookMethod"/>
+      <param description="The optional email to send the completion notification to. You can set both webhook, and email, or one or the other. If you set neither, the job will run but you will have to query to determine your job's status." type="string" variable="$email"/>
+    </docblock>
+    <parameter name="webhookUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="webhookMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setWebhookUrl" start="72" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied. If you set neither webhook nor email, you will have to check your job's status manually."/>
+      <param description="The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied. If you set neither webhook nor email, you will have to check your job's status manually." type="string" variable="$webhookUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\$this" namespace="Twilio\Rest\Bulkexports\V1\Export" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions" namespace="Twilio\Rest\Bulkexports\V1\Export" name="CreateExportCustomJobOptions"/>
+    </return>
+    <parameter name="webhookUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setWebhookMethod" start="84" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied."/>
+      <param description="This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied." type="string" variable="$webhookMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\$this" namespace="Twilio\Rest\Bulkexports\V1\Export" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions" namespace="Twilio\Rest\Bulkexports\V1\Export" name="CreateExportCustomJobOptions"/>
+    </return>
+    <parameter name="webhookMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setEmail" start="96" end="100" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The optional email to send the completion notification to. You can set both webhook, and email, or one or the other. If you set neither, the job will run but you will have to query to determine your job's status."/>
+      <param description="The optional email to send the completion notification to. You can set both webhook, and email, or one or the other. If you set neither, the job will run but you will have to query to determine your job's status." type="string" variable="$email"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Bulkexports\V1\Export\$this" namespace="Twilio\Rest\Bulkexports\V1\Export" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports\V1\Export\CreateExportCustomJobOptions" namespace="Twilio\Rest\Bulkexports\V1\Export" name="CreateExportCustomJobOptions"/>
+    </return>
+    <parameter name="email" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

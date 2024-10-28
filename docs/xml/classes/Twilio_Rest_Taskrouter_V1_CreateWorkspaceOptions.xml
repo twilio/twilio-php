@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions" abstract="false" final="false" start="102" end="195">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1" file="WorkspaceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/WorkspaceOptions.php" size="23423" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="04d25b6b3527a3852efa41d1e793a440ebe486cf" relative="Twilio/Rest/Taskrouter/V1/WorkspaceOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="111" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides)." type="string" variable="$eventCallbackUrl"/>
+      <param description="The list of Workspace events for which to call event_callback_url. For example, if `EventsFilter=task.created, task.canceled, worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated." type="string" variable="$eventsFilter"/>
+      <param description="Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. However, all workspaces should be created as multi-tasking. The default is `true`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. In single-tasking mode (legacy mode), each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking](https://www.twilio.com/docs/taskrouter/multitasking)." type="object" variable="$multiTaskEnabled">
+        <type full="Twilio\Rest\Taskrouter\V1\bool" namespace="Twilio\Rest\Taskrouter\V1" name="bool"/>
+      </param>
+      <param description="An available template name. Can be: `NONE` or `FIFO` and the default is `NONE`. Pre-configures the Workspace with the Workflow and Activities specified in the template. `NONE` will create a Workspace with only a set of default activities. `FIFO` will configure TaskRouter with a set of default activities and a single TaskQueue for first-in, first-out distribution, which can be useful when you are getting started with TaskRouter." type="string" variable="$template"/>
+      <param type="string" variable="$prioritizeQueueOrder"/>
+    </docblock>
+    <parameter name="eventCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="eventsFilter" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="multiTaskEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="template" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="prioritizeQueueOrder" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setEventCallbackUrl" start="133" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides)."/>
+      <param description="The URL we should call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides)." type="string" variable="$eventCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\$this" namespace="Twilio\Rest\Taskrouter\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+    </return>
+    <parameter name="eventCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setEventsFilter" start="145" end="149" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The list of Workspace events for which to call event_callback_url. For example, if `EventsFilter=task.created, task.canceled, worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated."/>
+      <param description="The list of Workspace events for which to call event_callback_url. For example, if `EventsFilter=task.created, task.canceled, worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated." type="string" variable="$eventsFilter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\$this" namespace="Twilio\Rest\Taskrouter\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+    </return>
+    <parameter name="eventsFilter" byreference="false" type="string"/>
+  </method>
+  <method name="setMultiTaskEnabled" start="157" end="161" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. However, all workspaces should be created as multi-tasking. The default is `true`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. In single-tasking mode (legacy mode), each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking](https://www.twilio.com/docs/taskrouter/multitasking)."/>
+      <param description="Whether to enable multi-tasking. Can be: `true` to enable multi-tasking, or `false` to disable it. However, all workspaces should be created as multi-tasking. The default is `true`. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. In single-tasking mode (legacy mode), each Worker will only receive a new reservation when the previous task is completed. Learn more at [Multitasking](https://www.twilio.com/docs/taskrouter/multitasking)." type="object" variable="$multiTaskEnabled">
+        <type full="Twilio\Rest\Taskrouter\V1\bool" namespace="Twilio\Rest\Taskrouter\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\$this" namespace="Twilio\Rest\Taskrouter\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+    </return>
+    <parameter name="multiTaskEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="setTemplate" start="169" end="173" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An available template name. Can be: `NONE` or `FIFO` and the default is `NONE`. Pre-configures the Workspace with the Workflow and Activities specified in the template. `NONE` will create a Workspace with only a set of default activities. `FIFO` will configure TaskRouter with a set of default activities and a single TaskQueue for first-in, first-out distribution, which can be useful when you are getting started with TaskRouter."/>
+      <param description="An available template name. Can be: `NONE` or `FIFO` and the default is `NONE`. Pre-configures the Workspace with the Workflow and Activities specified in the template. `NONE` will create a Workspace with only a set of default activities. `FIFO` will configure TaskRouter with a set of default activities and a single TaskQueue for first-in, first-out distribution, which can be useful when you are getting started with TaskRouter." type="string" variable="$template"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\$this" namespace="Twilio\Rest\Taskrouter\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+    </return>
+    <parameter name="template" byreference="false" type="string"/>
+  </method>
+  <method name="setPrioritizeQueueOrder" start="179" end="183" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$prioritizeQueueOrder"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\$this" namespace="Twilio\Rest\Taskrouter\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\CreateWorkspaceOptions" namespace="Twilio\Rest\Taskrouter\V1" name="CreateWorkspaceOptions"/>
+    </return>
+    <parameter name="prioritizeQueueOrder" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="190" end="194" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

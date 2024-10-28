@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Marketplace\V1\ReferralConversionModels" namespace="Twilio\Rest\Marketplace\V1" name="ReferralConversionModels" abstract="true" final="false" start="19" end="29">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Marketplace/V1" file="ReferralConversionModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Marketplace/V1/ReferralConversionModels.php" size="1415" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="a9efa418d423d44a76ffc72249f05ebf27f5fa0b" relative="Twilio/Rest/Marketplace/V1/ReferralConversionModels.php"/>
+  <method name="createCreateReferralConversionRequest" start="24" end="27" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $referralAccountSid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Marketplace\V1\CreateReferralConversionRequest" namespace="Twilio\Rest\Marketplace\V1" name="CreateReferralConversionRequest"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+</class>

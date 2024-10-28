@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions" abstract="false" final="false" start="79" end="309">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Lookups/V2" file="PhoneNumberOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Lookups/V2/PhoneNumberOptions.php" size="15939" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="cefac68544c37b79185f14fa8398f5ab44a0176d" relative="Twilio/Rest/Lookups/V2/PhoneNumberOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="97" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill." type="string" variable="$fields"/>
+      <param description="The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format." type="string" variable="$countryCode"/>
+      <param description="User’s first name. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$firstName"/>
+      <param description="User’s last name. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$lastName"/>
+      <param description="User’s first address line. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressLine1"/>
+      <param description="User’s second address line. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressLine2"/>
+      <param description="User’s city. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$city"/>
+      <param description="User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$state"/>
+      <param description="User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$postalCode"/>
+      <param description="User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressCountryCode"/>
+      <param description="User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$nationalId"/>
+      <param description="User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$dateOfBirth"/>
+      <param description="The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests." type="string" variable="$lastVerifiedDate"/>
+      <param description="The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests." type="string" variable="$verificationSid"/>
+    </docblock>
+    <parameter name="fields" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="countryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="firstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressLine1" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressLine2" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="city" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="state" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="postalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="addressCountryCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="nationalId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dateOfBirth" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastVerifiedDate" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="verificationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setFields" start="137" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill."/>
+      <param description="A comma-separated list of fields to return. Possible values are validation, caller_name, sim_swap, call_forwarding, line_status, line_type_intelligence, identity_match, reassigned_number, sms_pumping_risk, phone_number_quality_score, pre_fill." type="string" variable="$fields"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="fields" byreference="false" type="string"/>
+  </method>
+  <method name="setCountryCode" start="149" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format."/>
+      <param description="The [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) used if the phone number provided is in national format." type="string" variable="$countryCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="countryCode" byreference="false" type="string"/>
+  </method>
+  <method name="setFirstName" start="161" end="165" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s first name. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s first name. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$firstName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="firstName" byreference="false" type="string"/>
+  </method>
+  <method name="setLastName" start="173" end="177" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s last name. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s last name. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$lastName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="lastName" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressLine1" start="185" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s first address line. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s first address line. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressLine1"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="addressLine1" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressLine2" start="197" end="201" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s second address line. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s second address line. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressLine2"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="addressLine2" byreference="false" type="string"/>
+  </method>
+  <method name="setCity" start="209" end="213" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s city. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s city. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$city"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="city" byreference="false" type="string"/>
+  </method>
+  <method name="setState" start="221" end="225" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s country subdivision, such as state, province, or locality. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$state"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="state" byreference="false" type="string"/>
+  </method>
+  <method name="setPostalCode" start="233" end="237" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s postal zip code. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$postalCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="postalCode" byreference="false" type="string"/>
+  </method>
+  <method name="setAddressCountryCode" start="245" end="249" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s country, up to two characters. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$addressCountryCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="addressCountryCode" byreference="false" type="string"/>
+  </method>
+  <method name="setNationalId" start="257" end="261" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s national ID, such as SSN or Passport ID. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$nationalId"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="nationalId" byreference="false" type="string"/>
+  </method>
+  <method name="setDateOfBirth" start="269" end="273" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests."/>
+      <param description="User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests." type="string" variable="$dateOfBirth"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="dateOfBirth" byreference="false" type="string"/>
+  </method>
+  <method name="setLastVerifiedDate" start="281" end="285" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests."/>
+      <param description="The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests." type="string" variable="$lastVerifiedDate"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="lastVerifiedDate" byreference="false" type="string"/>
+  </method>
+  <method name="setVerificationSid" start="293" end="297" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests."/>
+      <param description="The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests." type="string" variable="$verificationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Lookups\V2\$this" namespace="Twilio\Rest\Lookups\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups\V2\FetchPhoneNumberOptions" namespace="Twilio\Rest\Lookups\V2" name="FetchPhoneNumberOptions"/>
+    </return>
+    <parameter name="verificationSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="304" end="308" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="SyncListItemOptions" abstract="true" final="false" start="21" end="76">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Sync/Service/SyncList" file="SyncListItemOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Sync/Service/SyncList/SyncListItemOptions.php" size="5061" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="3c6e441d42c9c16d9af9c7cdcf1c1ecfa002b02b" relative="Twilio/Rest/Preview/Sync/Service/SyncList/SyncListItemOptions.php"/>
+  <method name="delete" start="28" end="37" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncList\DeleteSyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="DeleteSyncListItemOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncList\DeleteSyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="DeleteSyncListItemOptions"/>
+    </return>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="46" end="59" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$order"/>
+      <param type="string" variable="$from"/>
+      <param type="string" variable="$bounds"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncList\ReadSyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="ReadSyncListItemOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncList\ReadSyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="ReadSyncListItemOptions"/>
+    </return>
+    <parameter name="order" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bounds" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="65" end="74" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Sync\Service\SyncList\UpdateSyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="UpdateSyncListItemOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\Service\SyncList\UpdateSyncListItemOptions" namespace="Twilio\Rest\Preview\Sync\Service\SyncList" name="UpdateSyncListItemOptions"/>
+    </return>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

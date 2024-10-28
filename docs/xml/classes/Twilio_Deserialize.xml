@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Deserialize" namespace="Twilio" name="Deserialize" abstract="false" final="false" start="7" end="51">
+  <file path="/twilio/repos/php/src/Twilio" file="Deserialize.php" realpath="/twilio/repos/php/src/Twilio/Deserialize.php" size="1312" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="3419f20c027c0c1a06cfb46d125f0987e40fbbc0" relative="Twilio/Deserialize.php"/>
+  <method name="dateTime" start="17" end="28" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Deserialize a string date into a DateTime object"/>
+      <param description="A date or date and time, can be iso8601, rfc2822," type="string" variable="$s">YYYY-MM-DD format.</param>
+      <return description="DateTime corresponding to the input string, in UTC time." type="object">
+        <type full="\DateTime|string" namespace="" name="DateTime|string"/>
+      </return>
+    </docblock>
+    <parameter name="s" byreference="false" nullable="true" type="string"/>
+  </method>
+  <method name="phoneNumberCapabilities" start="36" end="50" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Deserialize an array into a PhoneNumberCapabilities object"/>
+      <param description="An array" type="object" variable="$arr">
+        <type full="Twilio\array|null" namespace="Twilio" name="array|null"/>
+      </param>
+      <return description="PhoneNumberCapabilities object corresponding to the input array." type="object">
+        <type full="Twilio\PhoneNumberCapabilities|array" namespace="Twilio" name="PhoneNumberCapabilities|array"/>
+      </return>
+    </docblock>
+    <parameter name="arr" byreference="false" nullable="true" type="array"/>
+  </method>
+</class>

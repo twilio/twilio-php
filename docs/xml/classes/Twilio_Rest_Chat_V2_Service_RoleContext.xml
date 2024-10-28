@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\RoleContext" namespace="Twilio\Rest\Chat\V2\Service" name="RoleContext" abstract="false" final="false" start="27" end="131">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service" file="RoleContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/RoleContext.php" size="3984" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="a26b2e96c9a6ec55ca033a2f0552ee2e1d3105a7" relative="Twilio/Rest/Chat/V2/Service/RoleContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="36" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the RoleContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the Role resource under." type="string" variable="$serviceSid"/>
+      <param description="The SID of the Role resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="serviceSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="43"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="62" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the RoleInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\bool" namespace="Twilio\Rest\Chat\V2\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="76" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the RoleInstance"/>
+      <return description="Fetched RoleInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\RoleInstance" namespace="Twilio\Rest\Chat\V2\Service" name="RoleInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\RoleInstance" namespace="Twilio\Rest\Chat\V2\Service" name="RoleInstance"/>
+    </return>
+  </method>
+  <method name="update" start="98" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the RoleInstance"/>
+      <param description="A permission that you grant to the role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. Note that the update action replaces all previously assigned permissions with those defined in the update action. To remove a permission, do not include it in the subsequent update action. The values for this parameter depend on the role's `type`." type="array" variable="$permission" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\string" namespace="Twilio\Rest\Chat\V2\Service" name="string"/>
+      </param>
+      <return description="Updated RoleInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\RoleInstance" namespace="Twilio\Rest\Chat\V2\Service" name="RoleInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\RoleInstance" namespace="Twilio\Rest\Chat\V2\Service" name="RoleInstance"/>
+    </return>
+    <parameter name="permission" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="123" end="130" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

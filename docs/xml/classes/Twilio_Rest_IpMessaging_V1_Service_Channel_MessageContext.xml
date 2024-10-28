@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\IpMessaging\V1\Service\Channel\MessageContext" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="MessageContext" abstract="false" final="false" start="27" end="142">
+  <file path="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel" file="MessageContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/IpMessaging/V1/Service/Channel/MessageContext.php" size="3807" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="2b9ac36dbd03e3e805071a5e811f2a4d202f286f" relative="Twilio/Rest/IpMessaging/V1/Service/Channel/MessageContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="37" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the MessageContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param type="string" variable="$serviceSid"/>
+      <param type="string" variable="$channelSid"/>
+      <param type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="serviceSid" byreference="false" type="{unknown}"/>
+    <parameter name="channelSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="45"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="67" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the MessageInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\bool" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="81" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the MessageInstance"/>
+      <return description="Fetched MessageInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\MessageInstance" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="MessageInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\MessageInstance" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="MessageInstance"/>
+    </return>
+  </method>
+  <method name="update" start="104" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the MessageInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\array|Options" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="array|Options"/>
+      </param>
+      <return description="Updated MessageInstance" type="object">
+        <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\MessageInstance" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="MessageInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging\V1\Service\Channel\MessageInstance" namespace="Twilio\Rest\IpMessaging\V1\Service\Channel" name="MessageInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="134" end="141" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

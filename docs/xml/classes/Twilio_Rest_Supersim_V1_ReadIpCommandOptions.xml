@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions" abstract="false" final="false" start="137" end="217">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="IpCommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/IpCommandOptions.php" size="8177" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="d0bd383c4a242ee1dc5704d63b938e197370f40b" relative="Twilio/Rest/Supersim/V1/IpCommandOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="145" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID or unique name of the Sim resource that IP Command was sent to or from." type="string" variable="$sim"/>
+      <param description="The ICCID of the Sim resource that IP Command was sent to or from." type="string" variable="$simIccid"/>
+      <param description="The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each." type="string" variable="$status"/>
+      <param description="The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`." type="string" variable="$direction"/>
+    </docblock>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="simIccid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="direction" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setSim" start="165" end="169" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID or unique name of the Sim resource that IP Command was sent to or from."/>
+      <param description="The SID or unique name of the Sim resource that IP Command was sent to or from." type="string" variable="$sim"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="string"/>
+  </method>
+  <method name="setSimIccid" start="177" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The ICCID of the Sim resource that IP Command was sent to or from."/>
+      <param description="The ICCID of the Sim resource that IP Command was sent to or from." type="string" variable="$simIccid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions"/>
+    </return>
+    <parameter name="simIccid" byreference="false" type="string"/>
+  </method>
+  <method name="setStatus" start="189" end="193" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each."/>
+      <param description="The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each." type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setDirection" start="201" end="205" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`."/>
+      <param description="The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`." type="string" variable="$direction"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions"/>
+    </return>
+    <parameter name="direction" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="212" end="216" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

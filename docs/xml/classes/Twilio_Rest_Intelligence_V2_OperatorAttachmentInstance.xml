@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\OperatorAttachmentInstance" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentInstance" abstract="false" final="false" start="31" end="132">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2" file="OperatorAttachmentInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/OperatorAttachmentInstance.php" size="4029" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="dcbb4cef7b57d49d90de0e642db74aa1dd76cd9b" relative="Twilio/Rest/Intelligence/V2/OperatorAttachmentInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $serviceSid"/>
+    <property value="string|null $operatorSid"/>
+    <property value="string|null $url"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="41" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the OperatorAttachmentInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Intelligence\V2\mixed" namespace="Twilio\Rest\Intelligence\V2" name="mixed"/>
+      </param>
+      <param description="The unique SID identifier of the Service." type="string" variable="$serviceSid"/>
+      <param description="The unique SID identifier of the Operator. Allows both Custom and Pre-built Operators." type="string" variable="$operatorSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="serviceSid" byreference="false" type="string" default="NULL"/>
+    <parameter name="operatorSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="45"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="61" end="72" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this OperatorAttachmentInstance" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\OperatorAttachmentContext" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\OperatorAttachmentContext" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentContext"/>
+    </return>
+  </method>
+  <method name="create" start="80" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the OperatorAttachmentInstance"/>
+      <return description="Created OperatorAttachmentInstance" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\OperatorAttachmentInstance" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\OperatorAttachmentInstance" namespace="Twilio\Rest\Intelligence\V2" name="OperatorAttachmentInstance"/>
+    </return>
+  </method>
+  <method name="delete" start="92" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the OperatorAttachmentInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\bool" namespace="Twilio\Rest\Intelligence\V2" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="__get" start="105" end="117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="124" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

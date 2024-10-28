@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions" abstract="false" final="false" start="522" end="645">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="TaskOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/TaskOptions.php" size="37543" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="9b8f041d1bc582bb37be4b61245bb6ede4185f9c" relative="Twilio/Rest/Taskrouter/V1/Workspace/TaskOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="533" end="551" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The JSON string that describes the custom attributes of the task." type="string" variable="$attributes"/>
+      <param type="string" variable="$assignmentStatus"/>
+      <param description="The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason." type="string" variable="$reason"/>
+      <param description="The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647)." type="int" variable="$priority"/>
+      <param description="When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`." type="string" variable="$taskChannel"/>
+      <param description="The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900." type="object" variable="$virtualStartTime">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match)." type="string" variable="$ifMatch"/>
+    </docblock>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="assignmentStatus" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="reason" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="priority" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="taskChannel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="virtualStartTime" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setAttributes" start="559" end="563" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The JSON string that describes the custom attributes of the task."/>
+      <param description="The JSON string that describes the custom attributes of the task." type="string" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="string"/>
+  </method>
+  <method name="setAssignmentStatus" start="569" end="573" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$assignmentStatus"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="assignmentStatus" byreference="false" type="string"/>
+  </method>
+  <method name="setReason" start="581" end="585" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason."/>
+      <param description="The reason that the Task was canceled or completed. This parameter is required only if the Task is canceled or completed. Setting this value queues the task for deletion and logs the reason." type="string" variable="$reason"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="reason" byreference="false" type="string"/>
+  </method>
+  <method name="setPriority" start="593" end="597" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647)."/>
+      <param description="The Task's new priority value. When supplied, the Task takes on the specified priority unless it matches a Workflow Target with a Priority set. Value can be 0 to 2^31^ (2,147,483,647)." type="int" variable="$priority"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="priority" byreference="false" type="int"/>
+  </method>
+  <method name="setTaskChannel" start="605" end="609" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`."/>
+      <param description="When MultiTasking is enabled, specify the TaskChannel with the task to update. Can be the TaskChannel's SID or its `unique_name`, such as `voice`, `sms`, or `default`." type="string" variable="$taskChannel"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="taskChannel" byreference="false" type="string"/>
+  </method>
+  <method name="setVirtualStartTime" start="617" end="621" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900."/>
+      <param description="The task's new virtual start time value. When supplied, the Task takes on the specified virtual start time. Value can't be in the future or before the year of 1900." type="object" variable="$virtualStartTime">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="virtualStartTime" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setIfMatch" start="629" end="633" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match)."/>
+      <param description="If provided, applies this mutation if (and only if) the [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) header of the Task matches the provided value. This matches the semantics of (and is implemented with) the HTTP [If-Match header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match)." type="string" variable="$ifMatch"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateTaskOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateTaskOptions"/>
+    </return>
+    <parameter name="ifMatch" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="640" end="644" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

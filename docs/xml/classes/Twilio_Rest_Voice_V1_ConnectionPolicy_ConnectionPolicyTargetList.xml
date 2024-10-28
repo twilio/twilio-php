@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetList" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetList" abstract="false" final="false" start="28" end="208">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Voice/V1/ConnectionPolicy" file="ConnectionPolicyTargetList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Voice/V1/ConnectionPolicy/ConnectionPolicyTargetList.php" size="7195" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="98bbc3d6d377dcbed6d486933d83a967106885c0" relative="Twilio/Rest/Voice/V1/ConnectionPolicy/ConnectionPolicyTargetList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="36" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the ConnectionPolicyTargetList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Connection Policy that owns the Target." type="string" variable="$connectionPolicySid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="connectionPolicySid" byreference="false" type="string"/>
+    <inline>
+      <comment value="Path Solution" line="42"/>
+    </inline>
+  </constructor>
+  <method name="create" start="61" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the ConnectionPolicyTargetInstance"/>
+      <param description="The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported." type="string" variable="$target"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\array|Options" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="array|Options"/>
+      </param>
+      <return description="Created ConnectionPolicyTargetInstance" type="object">
+        <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetInstance" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetInstance" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetInstance"/>
+    </return>
+    <parameter name="target" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="read" start="105" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Reads ConnectionPolicyTargetInstance records from the API as a list.">Unlike stream(), this operation is eager and will load `limit` records into
+memory before returning.</description>
+      <param description="Upper limit for the number of records to return. read()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, read()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="Array of results" type="array" of="object">
+        <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetInstance" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetInstance"/>
+      </return>
+    </docblock>
+    <return type="array" nullable="false"/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="stream" start="128" end="135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Streams ConnectionPolicyTargetInstance records from the API as a generator stream.">This operation lazily loads records as efficiently as possible until the
+limit
+is reached.
+The results are returned as a generator, so this operation is memory
+efficient.</description>
+      <param description="Upper limit for the number of records to return. stream()" type="int" variable="$limit">guarantees to never return more than limit.  Default is no
+                  limit</param>
+      <param description="Number of records to fetch per request, when not set" type="mixed" variable="$pageSize">will use the default value of 50 records.  If no
+                       page_size is defined but a limit is defined, stream()
+                       will attempt to read the limit with the most
+                       efficient page size, i.e. min(limit, 1000)</param>
+      <return description="stream of results" type="object">
+        <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+    </return>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="page" start="146" end="162" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a single page of ConnectionPolicyTargetInstance records from the API.">Request is executed immediately</description>
+      <param description="Number of records to return, defaults to 50" type="mixed" variable="$pageSize"/>
+      <param description="PageToken provided by the API" type="string" variable="$pageToken"/>
+      <param description="Page Number, this value is simply for client state" type="mixed" variable="$pageNumber"/>
+      <return description="Page of ConnectionPolicyTargetInstance" type="object">
+        <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetPage" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetPage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetPage" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetPage"/>
+    </return>
+    <parameter name="pageSize" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="pageNumber" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="getPage" start="171" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve a specific page of ConnectionPolicyTargetInstance records from the API.">Request is executed immediately</description>
+      <param description="API-generated URL for the requested results page" type="string" variable="$targetUrl"/>
+      <return description="Page of ConnectionPolicyTargetInstance" type="object">
+        <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetPage" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetPage"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetPage" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetPage"/>
+    </return>
+    <parameter name="targetUrl" byreference="false" type="string"/>
+  </method>
+  <method name="getContext" start="187" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a ConnectionPolicyTargetContext"/>
+      <param description="The unique string that we created to identify the Target resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\ConnectionPolicy\ConnectionPolicyTargetContext" namespace="Twilio\Rest\Voice\V1\ConnectionPolicy" name="ConnectionPolicyTargetContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="204" end="207" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

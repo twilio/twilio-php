@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue" abstract="false" final="false" start="14" end="89">
+  <file path="/twilio/repos/php/src/Twilio/TwiML/Voice" file="Enqueue.php" realpath="/twilio/repos/php/src/Twilio/TwiML/Voice/Enqueue.php" size="2141" time="2024-10-28T12:06:32+00:00" unixtime="1730117192" sha1="1b46e0ca7bbaf0c1dd182445a64cc99d2b2b3676" relative="Twilio/TwiML/Voice/Enqueue.php"/>
+  <extends full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+  <constructor name="__construct" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Enqueue constructor."/>
+      <param description="Friendly name" type="string" variable="$name"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="task" start="32" end="34" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Task child."/>
+      <param description="TaskRouter task attributes" type="string" variable="$body"/>
+      <param description="Optional attributes" type="array" variable="$attributes"/>
+      <return description="Child element." type="object">
+        <type full="Twilio\TwiML\Voice\Task" namespace="Twilio\TwiML\Voice" name="Task"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Task" namespace="Twilio\TwiML\Voice" name="Task"/>
+    </return>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+    <parameter name="attributes" byreference="false" type="array" default=""/>
+  </method>
+  <method name="setAction" start="41" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Action attribute."/>
+      <param description="Action URL" type="string" variable="$action"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="action" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setMaxQueueSize" start="50" end="52" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add MaxQueueSize attribute."/>
+      <param description="Maximum size of queue" type="int" variable="$maxQueueSize"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="maxQueueSize" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setMethod" start="59" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add Method attribute."/>
+      <param description="Action URL method" type="string" variable="$method"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="method" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setWaitUrl" start="68" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add WaitUrl attribute."/>
+      <param description="Wait URL" type="string" variable="$waitUrl"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="waitUrl" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setWaitUrlMethod" start="77" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add WaitUrlMethod attribute."/>
+      <param description="Wait URL method" type="string" variable="$waitUrlMethod"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="waitUrlMethod" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setWorkflowSid" start="86" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add WorkflowSid attribute."/>
+      <param description="TaskRouter Workflow SID" type="string" variable="$workflowSid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+    </return>
+    <parameter name="workflowSid" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML">
+    <member name="name" visibility="protected" static="false" line="15"/>
+    <member name="attributes" visibility="protected" static="false" line="16"/>
+    <member name="children" visibility="protected" static="false" line="17"/>
+    <constructor name="__construct" start="26" end="34" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="TwiML constructor."/>
+        <param description="XML element name" type="string" variable="$name"/>
+        <param description="XML value" type="string" variable="$value"/>
+        <param description="XML attributes" type="array" variable="$attributes"/>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string" default="NULL"/>
+      <parameter name="attributes" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="append" start="42" end="45" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Add a TwiML element."/>
+        <param description="TwiML element to add" type="object" variable="$twiml">
+          <type full="Twilio\TwiML\TwiML|string" namespace="Twilio\TwiML" name="TwiML|string"/>
+        </param>
+        <return description="$this" type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="twiml" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="nest" start="53" end="56" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Add a TwiML element."/>
+        <param description="TwiML element to add" type="object" variable="$twiml">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </param>
+        <return description="added TwiML element" type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="twiml" byreference="false" type="object">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </parameter>
+    </method>
+    <method name="setAttribute" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set TwiML attribute."/>
+        <param description="name of attribute" type="string" variable="$key"/>
+        <param description="value of attribute" type="string" variable="$value"/>
+        <return description="$this" resolution="static" type="object">
+          <type full="Twilio\TwiML\Voice\Enqueue" namespace="Twilio\TwiML\Voice" name="Enqueue"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="key" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string"/>
+    </method>
+    <method name="addChild" start="76" end="78" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <param description="XML element name" type="string" variable="$name"/>
+        <param description="XML value" type="string" variable="$value"/>
+        <param description="XML attributes" type="array" variable="$attributes"/>
+        <return type="object">
+          <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\TwiML\TwiML" namespace="Twilio\TwiML" name="TwiML"/>
+      </return>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="value" byreference="false" type="string" default="NULL"/>
+      <parameter name="attributes" byreference="false" type="array" default=""/>
+    </method>
+    <method name="asXML" start="85" end="87" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert TwiML to XML string."/>
+        <return description="TwiML XML representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__toString" start="94" end="96" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Convert TwiML to XML string."/>
+        <return description="TwiML XML representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

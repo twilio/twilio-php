@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\WorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="WorkerOptions" abstract="true" final="false" start="21" end="120">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace" file="WorkerOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/WorkerOptions.php" size="19699" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="ebaa9948ef3861e60f01e597f55303e34bb56110" relative="Twilio/Rest/Taskrouter/V1/Workspace/WorkerOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of a valid Activity that will describe the new Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information. If not provided, the new Worker's initial state is the `default_activity_sid` configured on the Workspace." type="string" variable="$activitySid"/>
+      <param description="A valid JSON string that describes the new Worker. For example: `{ \\\&quot;email\\\&quot;: \\\&quot;Bob@example.com\\\&quot;, \\\&quot;phone\\\&quot;: \\\&quot;+5095551234\\\&quot; }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}." type="string" variable="$attributes"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\CreateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateWorkerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\CreateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="CreateWorkerOptions"/>
+    </return>
+    <parameter name="activitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="delete" start="45" end="54" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\DeleteWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="DeleteWorkerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\DeleteWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="DeleteWorkerOptions"/>
+    </return>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="68" end="91" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The `activity_name` of the Worker resources to read." type="string" variable="$activityName"/>
+      <param description="The `activity_sid` of the Worker resources to read." type="string" variable="$activitySid"/>
+      <param description="Whether to return only Worker resources that are available or unavailable. Can be `true`, `1`, or `yes` to return Worker resources that are available, and `false`, or any value returns the Worker resources that are not available." type="string" variable="$available"/>
+      <param description="The `friendly_name` of the Worker resources to read." type="string" variable="$friendlyName"/>
+      <param description="Filter by Workers that would match an expression. In addition to fields in the workers' attributes, the expression can include the following worker fields: `sid`, `friendly_name`, `activity_sid`, or `activity_name`" type="string" variable="$targetWorkersExpression"/>
+      <param description="The `friendly_name` of the TaskQueue that the Workers to read are eligible for." type="string" variable="$taskQueueName"/>
+      <param description="The SID of the TaskQueue that the Workers to read are eligible for." type="string" variable="$taskQueueSid"/>
+      <param description="Sorting parameter for Workers" type="string" variable="$ordering"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadWorkerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\ReadWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="ReadWorkerOptions"/>
+    </return>
+    <parameter name="activityName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="activitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="available" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="targetWorkersExpression" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="taskQueueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="taskQueueSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ordering" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="101" end="118" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of a valid Activity that will describe the Worker's initial state. See [Activities](https://www.twilio.com/docs/taskrouter/api/activity) for more information." type="string" variable="$activitySid"/>
+      <param description="The JSON string that describes the Worker. For example: `{ \\\&quot;email\\\&quot;: \\\&quot;Bob@example.com\\\&quot;, \\\&quot;phone\\\&quot;: \\\&quot;+5095551234\\\&quot; }`. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker. Defaults to {}." type="string" variable="$attributes"/>
+      <param description="A descriptive string that you create to describe the Worker. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param description="Whether to reject the Worker's pending reservations. This option is only valid if the Worker's new [Activity](https://www.twilio.com/docs/taskrouter/api/activity) resource has its `availability` property set to `False`." type="object" variable="$rejectPendingReservations">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="bool"/>
+      </param>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateWorkerOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\UpdateWorkerOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace" name="UpdateWorkerOptions"/>
+    </return>
+    <parameter name="activitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="rejectPendingReservations" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppInstance" abstract="false" final="false" start="36" end="130">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="AuthorizedConnectAppInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/AuthorizedConnectAppInstance.php" size="4461" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="ac6d7032bceef0d775fdb6fe2b8bcb752c353190" relative="Twilio/Rest/Api/V2010/Account/AuthorizedConnectAppInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $connectAppCompanyName"/>
+    <property value="string|null $connectAppDescription"/>
+    <property value="string|null $connectAppFriendlyName"/>
+    <property value="string|null $connectAppHomepageUrl"/>
+    <property value="string|null $connectAppSid"/>
+    <property value="string[]|null $permissions"/>
+    <property value="string|null $uri"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="46" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the AuthorizedConnectAppInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\mixed" namespace="Twilio\Rest\Api\V2010\Account" name="mixed"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resource to fetch." type="string" variable="$accountSid"/>
+      <param description="The SID of the Connect App to fetch." type="string" variable="$connectAppSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="accountSid" byreference="false" type="string"/>
+    <parameter name="connectAppSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="50"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="71" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this AuthorizedConnectAppInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppContext"/>
+    </return>
+  </method>
+  <method name="fetch" start="90" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the AuthorizedConnectAppInstance"/>
+      <return description="Fetched AuthorizedConnectAppInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppInstance" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppInstance"/>
+    </return>
+  </method>
+  <method name="__get" start="103" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="122" end="129" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Wireless\V1\Sim\UsageRecordInstance" namespace="Twilio\Rest\Wireless\V1\Sim" name="UsageRecordInstance" abstract="false" final="false" start="33" end="88">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Wireless/V1/Sim" file="UsageRecordInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Wireless/V1/Sim/UsageRecordInstance.php" size="2613" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="ef79a99b361755761b93b2598e8127a4e3702a20" relative="Twilio/Rest/Wireless/V1/Sim/UsageRecordInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $simSid"/>
+    <property value="string|null $accountSid"/>
+    <property value="array|null $period"/>
+    <property value="array|null $commands"/>
+    <property value="array|null $data"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="42" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the UsageRecordInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Wireless\V1\Sim\mixed" namespace="Twilio\Rest\Wireless\V1\Sim" name="mixed"/>
+      </param>
+      <param description="The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource)  to read the usage from." type="string" variable="$simSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="simSid" byreference="false" type="string"/>
+    <inline>
+      <comment value="Marshaled Properties" line="46"/>
+    </inline>
+  </constructor>
+  <method name="__get" start="65" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="84" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

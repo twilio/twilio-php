@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions" abstract="false" final="false" start="478" end="811">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1" file="TollfreeVerificationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/TollfreeVerificationOptions.php" size="36635" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="e0365e450d53cf85216a457914d54ddfefbcdc8e" relative="Twilio/Rest/Messaging/V1/TollfreeVerificationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="503" end="549" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The name of the business or organization using the Tollfree number." type="string" variable="$businessName"/>
+      <param description="The website of the business or organization using the Tollfree number." type="string" variable="$businessWebsite"/>
+      <param description="The email address to receive the notification about the verification result. ." type="string" variable="$notificationEmail"/>
+      <param description="The category of the use case for the Tollfree Number. List as many are applicable.." type="array" variable="$useCaseCategories" of="object">
+        <type full="Twilio\Rest\Messaging\V1\string" namespace="Twilio\Rest\Messaging\V1" name="string"/>
+      </param>
+      <param description="Use this to further explain how messaging is used by the business or organization." type="string" variable="$useCaseSummary"/>
+      <param description="An example of message content, i.e. a sample message." type="string" variable="$productionMessageSample"/>
+      <param description="Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL." type="array" variable="$optInImageUrls" of="object">
+        <type full="Twilio\Rest\Messaging\V1\string" namespace="Twilio\Rest\Messaging\V1" name="string"/>
+      </param>
+      <param type="string" variable="$optInType"/>
+      <param description="Estimate monthly volume of messages from the Tollfree Number." type="string" variable="$messageVolume"/>
+      <param description="The address of the business or organization using the Tollfree number." type="string" variable="$businessStreetAddress"/>
+      <param description="The address of the business or organization using the Tollfree number." type="string" variable="$businessStreetAddress2"/>
+      <param description="The city of the business or organization using the Tollfree number." type="string" variable="$businessCity"/>
+      <param description="The state/province/region of the business or organization using the Tollfree number." type="string" variable="$businessStateProvinceRegion"/>
+      <param description="The postal code of the business or organization using the Tollfree number." type="string" variable="$businessPostalCode"/>
+      <param description="The country of the business or organization using the Tollfree number." type="string" variable="$businessCountry"/>
+      <param description="Additional information to be provided for verification." type="string" variable="$additionalInformation"/>
+      <param description="The first name of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactFirstName"/>
+      <param description="The last name of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactLastName"/>
+      <param description="The email address of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactEmail"/>
+      <param description="The E.164 formatted phone number of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactPhone"/>
+      <param description="Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'." type="string" variable="$editReason"/>
+    </docblock>
+    <parameter name="businessName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessWebsite" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="notificationEmail" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="useCaseCategories" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="useCaseSummary" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="productionMessageSample" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="optInImageUrls" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="optInType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messageVolume" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessStreetAddress" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessStreetAddress2" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessCity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessStateProvinceRegion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessPostalCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessCountry" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="additionalInformation" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactFirstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactLastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactEmail" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="businessContactPhone" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="editReason" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setBusinessName" start="557" end="561" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The name of the business or organization using the Tollfree number."/>
+      <param description="The name of the business or organization using the Tollfree number." type="string" variable="$businessName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessName" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessWebsite" start="569" end="573" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The website of the business or organization using the Tollfree number."/>
+      <param description="The website of the business or organization using the Tollfree number." type="string" variable="$businessWebsite"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessWebsite" byreference="false" type="string"/>
+  </method>
+  <method name="setNotificationEmail" start="581" end="585" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The email address to receive the notification about the verification result. ."/>
+      <param description="The email address to receive the notification about the verification result. ." type="string" variable="$notificationEmail"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="notificationEmail" byreference="false" type="string"/>
+  </method>
+  <method name="setUseCaseCategories" start="593" end="597" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The category of the use case for the Tollfree Number. List as many are applicable.."/>
+      <param description="The category of the use case for the Tollfree Number. List as many are applicable.." type="array" variable="$useCaseCategories" of="object">
+        <type full="Twilio\Rest\Messaging\V1\string" namespace="Twilio\Rest\Messaging\V1" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="useCaseCategories" byreference="false" type="array"/>
+  </method>
+  <method name="setUseCaseSummary" start="605" end="609" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Use this to further explain how messaging is used by the business or organization."/>
+      <param description="Use this to further explain how messaging is used by the business or organization." type="string" variable="$useCaseSummary"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="useCaseSummary" byreference="false" type="string"/>
+  </method>
+  <method name="setProductionMessageSample" start="617" end="621" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An example of message content, i.e. a sample message."/>
+      <param description="An example of message content, i.e. a sample message." type="string" variable="$productionMessageSample"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="productionMessageSample" byreference="false" type="string"/>
+  </method>
+  <method name="setOptInImageUrls" start="629" end="633" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL."/>
+      <param description="Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL." type="array" variable="$optInImageUrls" of="object">
+        <type full="Twilio\Rest\Messaging\V1\string" namespace="Twilio\Rest\Messaging\V1" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="optInImageUrls" byreference="false" type="array"/>
+  </method>
+  <method name="setOptInType" start="639" end="643" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$optInType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="optInType" byreference="false" type="string"/>
+  </method>
+  <method name="setMessageVolume" start="651" end="655" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Estimate monthly volume of messages from the Tollfree Number."/>
+      <param description="Estimate monthly volume of messages from the Tollfree Number." type="string" variable="$messageVolume"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="messageVolume" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessStreetAddress" start="663" end="667" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The address of the business or organization using the Tollfree number."/>
+      <param description="The address of the business or organization using the Tollfree number." type="string" variable="$businessStreetAddress"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessStreetAddress" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessStreetAddress2" start="675" end="679" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The address of the business or organization using the Tollfree number."/>
+      <param description="The address of the business or organization using the Tollfree number." type="string" variable="$businessStreetAddress2"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessStreetAddress2" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessCity" start="687" end="691" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The city of the business or organization using the Tollfree number."/>
+      <param description="The city of the business or organization using the Tollfree number." type="string" variable="$businessCity"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessCity" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessStateProvinceRegion" start="699" end="703" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The state/province/region of the business or organization using the Tollfree number."/>
+      <param description="The state/province/region of the business or organization using the Tollfree number." type="string" variable="$businessStateProvinceRegion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessStateProvinceRegion" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessPostalCode" start="711" end="715" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The postal code of the business or organization using the Tollfree number."/>
+      <param description="The postal code of the business or organization using the Tollfree number." type="string" variable="$businessPostalCode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessPostalCode" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessCountry" start="723" end="727" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The country of the business or organization using the Tollfree number."/>
+      <param description="The country of the business or organization using the Tollfree number." type="string" variable="$businessCountry"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessCountry" byreference="false" type="string"/>
+  </method>
+  <method name="setAdditionalInformation" start="735" end="739" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Additional information to be provided for verification."/>
+      <param description="Additional information to be provided for verification." type="string" variable="$additionalInformation"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="additionalInformation" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessContactFirstName" start="747" end="751" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The first name of the contact for the business or organization using the Tollfree number."/>
+      <param description="The first name of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactFirstName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessContactFirstName" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessContactLastName" start="759" end="763" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The last name of the contact for the business or organization using the Tollfree number."/>
+      <param description="The last name of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactLastName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessContactLastName" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessContactEmail" start="771" end="775" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The email address of the contact for the business or organization using the Tollfree number."/>
+      <param description="The email address of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactEmail"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessContactEmail" byreference="false" type="string"/>
+  </method>
+  <method name="setBusinessContactPhone" start="783" end="787" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The E.164 formatted phone number of the contact for the business or organization using the Tollfree number."/>
+      <param description="The E.164 formatted phone number of the contact for the business or organization using the Tollfree number." type="string" variable="$businessContactPhone"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="businessContactPhone" byreference="false" type="string"/>
+  </method>
+  <method name="setEditReason" start="795" end="799" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'."/>
+      <param description="Describe why the verification is being edited. If the verification was rejected because of a technical issue, such as the website being down, and the issue has been resolved this parameter should be set to something similar to 'Website fixed'." type="string" variable="$editReason"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\$this" namespace="Twilio\Rest\Messaging\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\UpdateTollfreeVerificationOptions" namespace="Twilio\Rest\Messaging\V1" name="UpdateTollfreeVerificationOptions"/>
+    </return>
+    <parameter name="editReason" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="806" end="810" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

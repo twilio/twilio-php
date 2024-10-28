@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Conference\ParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="ParticipantOptions" abstract="true" final="false" start="21" end="244">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Conference" file="ParticipantOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Conference/ParticipantOptions.php" size="79481" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="370261bc496b729af23127c782cc0dc631582356" relative="Twilio/Rest/Api/V2010/Account/Conference/ParticipantOptions.php"/>
+  <method name="create" start="72" end="171" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `GET` and `POST` and defaults to `POST`." type="string" variable="$statusCallbackMethod"/>
+      <param description="The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`." type="array" variable="$statusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\string" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="string"/>
+      </param>
+      <param description="A label for this participant. If one is supplied, it may subsequently be used to fetch, update or delete the participant." type="string" variable="$label"/>
+      <param description="The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds." type="int" variable="$timeout"/>
+      <param description="Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`." type="object" variable="$record">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`." type="object" variable="$muted">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether to play a notification beep to the conference when the participant joins. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`." type="string" variable="$beep"/>
+      <param description="Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference." type="object" variable="$startConferenceOnEnter">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`." type="object" variable="$endConferenceOnExit">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic)." type="string" variable="$waitUrl"/>
+      <param description="The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file." type="string" variable="$waitMethod"/>
+      <param description="Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`." type="object" variable="$earlyMedia">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`." type="int" variable="$maxParticipants"/>
+      <param description="Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`." type="string" variable="$conferenceRecord"/>
+      <param description="Whether to trim leading and trailing silence from the conference recording. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`." type="string" variable="$conferenceTrim"/>
+      <param description="The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored." type="string" variable="$conferenceStatusCallback"/>
+      <param description="The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$conferenceStatusCallbackMethod"/>
+      <param description="The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`." type="array" variable="$conferenceStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\string" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="string"/>
+      </param>
+      <param description="The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`." type="string" variable="$recordingChannels"/>
+      <param description="The URL that we should call using the `recording_status_callback_method` when the recording status changes." type="string" variable="$recordingStatusCallback"/>
+      <param description="The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$recordingStatusCallbackMethod"/>
+      <param description="The SIP username used for authentication." type="string" variable="$sipAuthUsername"/>
+      <param description="The SIP password for authentication." type="string" variable="$sipAuthPassword"/>
+      <param description="The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`." type="string" variable="$region"/>
+      <param description="The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available." type="string" variable="$conferenceRecordingStatusCallback"/>
+      <param description="The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$conferenceRecordingStatusCallbackMethod"/>
+      <param description="The recording state changes that should generate a call to `recording_status_callback`. Can be: `started`, `in-progress`, `paused`, `resumed`, `stopped`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`." type="array" variable="$recordingStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\string" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="string"/>
+      </param>
+      <param description="The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`" type="array" variable="$conferenceRecordingStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\string" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="string"/>
+      </param>
+      <param description="Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined." type="object" variable="$coaching">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`." type="string" variable="$callSidToCoach"/>
+      <param description="Jitter buffer size for the connecting participant. Twilio will use this setting to apply Jitter Buffer before participant's audio is mixed into the conference. Can be: `off`, `small`, `medium`, and `large`. Default to `large`." type="string" variable="$jitterBufferSize"/>
+      <param description="The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)" type="string" variable="$byoc"/>
+      <param description="The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `callerId` must also be a phone number. If `to` is sip address, this value of `callerId` should be a username portion to be used to populate the From header that is passed to the SIP endpoint." type="string" variable="$callerId"/>
+      <param description="The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)" type="string" variable="$callReason"/>
+      <param description="The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio." type="string" variable="$recordingTrack"/>
+      <param description="The maximum duration of the call in seconds. Constraints depend on account and configuration." type="int" variable="$timeLimit"/>
+      <param description="Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection)." type="string" variable="$machineDetection"/>
+      <param description="The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds." type="int" variable="$machineDetectionTimeout"/>
+      <param description="The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400." type="int" variable="$machineDetectionSpeechThreshold"/>
+      <param description="The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200." type="int" variable="$machineDetectionSpeechEndThreshold"/>
+      <param description="The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000." type="int" variable="$machineDetectionSilenceTimeout"/>
+      <param description="The URL that we should call using the `amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax." type="string" variable="$amdStatusCallback"/>
+      <param description="The HTTP method we should use when calling the `amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`." type="string" variable="$amdStatusCallbackMethod"/>
+      <param description="Whether to trim any leading and trailing silence from the participant recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`." type="string" variable="$trim"/>
+      <param description="A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call." type="string" variable="$callToken"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\CreateParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="CreateParticipantOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Conference\CreateParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="CreateParticipantOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="label" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="timeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="record" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="muted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="beep" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startConferenceOnEnter" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="endConferenceOnExit" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="waitUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="waitMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="earlyMedia" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="maxParticipants" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="conferenceRecord" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceTrim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceStatusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="recordingChannels" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sipAuthUsername" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sipAuthPassword" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="region" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceRecordingStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceRecordingStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="conferenceRecordingStatusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="coaching" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="callSidToCoach" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="jitterBufferSize" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="byoc" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callerId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callReason" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingTrack" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="timeLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="machineDetection" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="machineDetectionTimeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="machineDetectionSpeechThreshold" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="machineDetectionSpeechEndThreshold" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="machineDetectionSilenceTimeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="amdStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="amdStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="trim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="181" end="194" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether to return only participants that are muted. Can be: `true` or `false`." type="object" variable="$muted">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether to return only participants that are on hold. Can be: `true` or `false`." type="object" variable="$hold">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether to return only participants who are coaching another call. Can be: `true` or `false`." type="object" variable="$coaching">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\ReadParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="ReadParticipantOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Conference\ReadParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="ReadParticipantOptions"/>
+    </return>
+    <parameter name="muted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="hold" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="coaching" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="update" start="211" end="242" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`." type="object" variable="$muted">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference." type="object" variable="$hold">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="The URL we call using the `hold_method` for music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `&lt;Play&gt;`, `&lt;Say&gt;`, `&lt;Pause&gt;`, or `&lt;Redirect&gt;` verbs." type="string" variable="$holdUrl"/>
+      <param description="The HTTP method we should use to call `hold_url`. Can be: `GET` or `POST` and the default is `GET`." type="string" variable="$holdMethod"/>
+      <param description="The URL we call using the `announce_method` for an announcement to the participant. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `&lt;Play&gt;`, `&lt;Say&gt;`, `&lt;Pause&gt;`, or `&lt;Redirect&gt;` verbs." type="string" variable="$announceUrl"/>
+      <param description="The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$announceMethod"/>
+      <param description="The URL we call using the `wait_method` for the music to play while participants are waiting for the conference to start. The URL may return an MP3 file, a WAV file, or a TwiML document that contains `&lt;Play&gt;`, `&lt;Say&gt;`, `&lt;Pause&gt;`, or `&lt;Redirect&gt;` verbs. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic)." type="string" variable="$waitUrl"/>
+      <param description="The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file." type="string" variable="$waitMethod"/>
+      <param description="Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`." type="object" variable="$beepOnExit">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`." type="object" variable="$endConferenceOnExit">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined." type="object" variable="$coaching">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\bool" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="bool"/>
+      </param>
+      <param description="The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`." type="string" variable="$callSidToCoach"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Conference\UpdateParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="UpdateParticipantOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Conference\UpdateParticipantOptions" namespace="Twilio\Rest\Api\V2010\Account\Conference" name="UpdateParticipantOptions"/>
+    </return>
+    <parameter name="muted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="hold" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="holdUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="holdMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="announceUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="announceMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="waitUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="waitMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="beepOnExit" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="endConferenceOnExit" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="coaching" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="callSidToCoach" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

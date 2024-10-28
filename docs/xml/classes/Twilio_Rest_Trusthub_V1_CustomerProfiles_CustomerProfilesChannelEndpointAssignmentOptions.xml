@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesChannelEndpointAssignmentOptions" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="CustomerProfilesChannelEndpointAssignmentOptions" abstract="true" final="false" start="21" end="44">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/CustomerProfiles" file="CustomerProfilesChannelEndpointAssignmentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/CustomerProfiles/CustomerProfilesChannelEndpointAssignmentOptions.php" size="2943" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="b9d7758d854ddb72f00318c532644d0f2744ac58" relative="Twilio/Rest/Trusthub/V1/CustomerProfiles/CustomerProfilesChannelEndpointAssignmentOptions.php"/>
+  <method name="read" start="31" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of an channel endpoint" type="string" variable="$channelEndpointSid"/>
+      <param description="comma separated list of channel endpoint sids" type="string" variable="$channelEndpointSids"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\ReadCustomerProfilesChannelEndpointAssignmentOptions" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="ReadCustomerProfilesChannelEndpointAssignmentOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\ReadCustomerProfilesChannelEndpointAssignmentOptions" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="ReadCustomerProfilesChannelEndpointAssignmentOptions"/>
+    </return>
+    <parameter name="channelEndpointSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="channelEndpointSids" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

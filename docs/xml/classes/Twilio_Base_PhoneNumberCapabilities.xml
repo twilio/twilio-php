@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Base\PhoneNumberCapabilities" namespace="Twilio\Base" name="PhoneNumberCapabilities" abstract="false" final="false" start="14" end="80">
+  <file path="/twilio/repos/php/src/Twilio/Base" file="PhoneNumberCapabilities.php" realpath="/twilio/repos/php/src/Twilio/Base/PhoneNumberCapabilities.php" size="1722" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="77de0cf8f97710ee9a544ae172fc2b50e8a1b5c0" relative="Twilio/Base/PhoneNumberCapabilities.php"/>
+  <docblock>
+    <description/>
+    <property value="bool $mms"/>
+    <property value="bool $sms"/>
+    <property value="bool $voice"/>
+    <property value="bool $fax"/>
+  </docblock>
+  <member name="mms" visibility="protected" static="false" line="16"/>
+  <member name="sms" visibility="protected" static="false" line="17"/>
+  <member name="voice" visibility="protected" static="false" line="18"/>
+  <member name="fax" visibility="protected" static="false" line="19"/>
+  <constructor name="__construct" start="21" end="27" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="capabilities" byreference="false" type="array"/>
+  </constructor>
+  <method name="getMms" start="32" end="35" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Access the mms"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getSms" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Access the sms"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getVoice" start="48" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Access the voice"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="getFax" start="56" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Access the fax"/>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="__get" start="61" end="68" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="70" end="79" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+</class>

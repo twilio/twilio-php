@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Verify\V2\Service\Entity\NewFactorOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="NewFactorOptions" abstract="true" final="false" start="21" end="71">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service/Entity" file="NewFactorOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service/Entity/NewFactorOptions.php" size="15179" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="2e41250cac18f9492d51280cb4c889e8d85e6b1f" relative="Twilio/Rest/Verify/V2/Service/Entity/NewFactorOptions.php"/>
+  <method name="create" start="38" end="69" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The algorithm used when `factor_type` is `push`. Algorithm supported: `ES256`" type="string" variable="$bindingAlg"/>
+      <param description="The Ecdsa public key in PKIX, ASN.1 DER format encoded in Base64.  Required when `factor_type` is `push`" type="string" variable="$bindingPublicKey"/>
+      <param description="The ID that uniquely identifies your app in the Google or Apple store, such as `com.example.myapp`. It can be up to 100 characters long.  Required when `factor_type` is `push`." type="string" variable="$configAppId"/>
+      <param type="string" variable="$configNotificationPlatform"/>
+      <param description="For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Must be between 32 and 255 characters long.  Required when `factor_type` is `push`." type="string" variable="$configNotificationToken"/>
+      <param description="The Verify Push SDK version used to configure the factor  Required when `factor_type` is `push`" type="string" variable="$configSdkVersion"/>
+      <param description="The shared secret for TOTP factors encoded in Base32. This can be provided when creating the Factor, otherwise it will be generated.  Used when `factor_type` is `totp`" type="string" variable="$bindingSecret"/>
+      <param description="Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive. The default value is defined at the service level in the property `totp.time_step`. Defaults to 30 seconds if not configured.  Used when `factor_type` is `totp`" type="int" variable="$configTimeStep"/>
+      <param description="The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive. The default value is defined at the service level in the property `totp.skew`. If not configured defaults to 1.  Used when `factor_type` is `totp`" type="int" variable="$configSkew"/>
+      <param description="Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive. The default value is defined at the service level in the property `totp.code_length`. If not configured defaults to 6.  Used when `factor_type` is `totp`" type="int" variable="$configCodeLength"/>
+      <param type="string" variable="$configAlg"/>
+      <param description="Custom metadata associated with the factor. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{\\\&quot;os\\\&quot;: \\\&quot;Android\\\&quot;}`. Can be up to 1024 characters in length." type="array" variable="$metadata"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\Entity\CreateNewFactorOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="CreateNewFactorOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\Entity\CreateNewFactorOptions" namespace="Twilio\Rest\Verify\V2\Service\Entity" name="CreateNewFactorOptions"/>
+    </return>
+    <parameter name="bindingAlg" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bindingPublicKey" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configAppId" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configNotificationPlatform" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configNotificationToken" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configSdkVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="bindingSecret" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configTimeStep" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="configSkew" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="configCodeLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="configAlg" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="metadata" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

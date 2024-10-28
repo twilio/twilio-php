@@ -1,0 +1,184 @@
+table.source {
+    border:0;
+    padding:0;
+    margin:0;
+    border-collapse: collapse;
+}
+
+table.source td {
+    border:1px solid #ccc;
+    vertical-align: top;
+    font-size: 1em;
+    line-height: 1.4em;
+    font-family: monospace;
+}
+
+table.source td.no a {
+    display:block;
+    color: #ccc;
+    text-align: right;
+    padding: 0 8px;
+    text-decoration: none;
+}
+
+table.source pre {
+    padding:0;
+    margin:0;
+}
+
+table.source pre span {
+    display:inline;
+}
+
+table.source td.line div {
+    padding:80px 0 0 0;
+    margin:-80px 0 0 0;
+    cursor: text;
+}
+
+table.source td.line pre:hover {
+    background-color: #eee;
+}
+
+table.source td.line div:target pre {
+    background-color: #ffffc8;
+}
+
+.token {
+    color: #0000BB;
+}
+
+.T_COMMENT, .T_DOC_COMMENT {
+    color: #FF8000;
+}
+
+.T_ABSTRACT,
+.T_ARRAY,
+.T_AS,
+.T_BREAK,
+.T_CALLABLE,
+.T_CASE,
+.T_CATCH,
+.T_CLASS,
+.T_CLONE,
+.T_CONTINUE,
+.T_DEFAULT,
+.T_ECHO,
+.T_ELSE,
+.T_ELSEIF,
+.T_EMPTY,
+.T_ENDDECLARE,
+.T_ENDFOR,
+.T_ENDFOREACH,
+.T_ENDIF,
+.T_ENDSWITCH,
+.T_ENDWHILE,
+.T_EXIT,
+.T_EXTENDS,
+.T_FINAL,
+.T_FINALLY,
+.T_FOREACH,
+.T_FUNCTION,
+.T_GLOBAL,
+.T_IF,
+.T_IMPLEMENTS,
+.T_INCLUDE,
+.T_INCLUDE_ONCE,
+.T_INSTANCEOF,
+.T_INSTEADOF,
+.T_INTERFACE,
+.T_ISSET,
+.T_LOGICAL_AND,
+.T_LOGICAL_OR,
+.T_LOGICAL_XOR,
+.T_NAMESPACE,
+.T_NEW,
+.T_PRIVATE,
+.T_PROTECTED,
+.T_PUBLIC,
+.T_REQUIRE,
+.T_REQUIRE_ONCE,
+.T_RETURN,
+.T_STATIC,
+.T_THROW,
+.T_TRAIT,
+.T_TRY,
+.T_UNSET,
+.T_USE,
+.T_VAR,
+.T_WHILE,
+.T_YIELD,
+.T_PHPDOX_OPEN_BRACKET,
+.T_PHPDOX_CLOSE_BRACKET,
+.T_PHPDOX_OPEN_SQUARE,
+.T_PHPDOX_CLOSE_SQUARE,
+.T_PHPDOX_OPEN_CURLY,
+.T_PHPDOX_CLOSE_CURLY,
+.T_PHPDOX_SEMICOLON,
+.T_PHPDOX_DOT,
+.T_PHPDOX_COMMA,
+.T_PHPDOX_EQUAL,
+.T_PHPDOX_LT,
+.T_PHPDOX_GT,
+.T_PHPDOX_PLUS,
+.T_PHPDOX_MINUS,
+.T_PHPDOX_MULT,
+.T_PHPDOX_DIV,
+.T_PHPDOX_QUESTION_MARK,
+.T_PHPDOX_EXCLAMATION_MARK,
+.T_PHPDOX_COLON,
+.T_PHPDOX_DOUBLE_QUOTES,
+.T_PHPDOX_AT,
+.T_PHPDOX_AMPERSAND,
+.T_PHPDOX_PERCENT,
+.T_PHPDOX_PIPE,
+.T_PHPDOX_DOLLAR,
+.T_PHPDOX_CARET,
+.T_PHPDOX_TILDE,
+.T_PHPDOX_BACKTICK {
+    color: #007700;
+}
+
+.T_CONSTANT_ENCAPSED_STRING, .T_ENCAPSED_AND_WHITESPACE {
+    color: #DD0000;
+}
+
+.covered {
+    background-color: rgba(5, 238, 25, 0.13);
+}
+
+a.covered:hover + div {
+    left:90px;
+}
+
+.coverage_details {
+    position: absolute;
+    left:-10000px;
+    margin:-1.4em 0 0 0;
+    background-color: #eee;
+    box-shadow: 5px 5px 10px #888;
+    z-index: 1;
+    padding:1em;
+}
+
+.coverage_details span {
+    font-weight: bold;
+}
+
+.coverage_details ul {
+    margin:0;
+    padding:1em;
+}
+
+.coverage_details:before {
+    position: absolute;
+    content:"";
+    width: 12px;
+    height: 12px;
+    top: 3px;
+    left: -6px;
+    border:0;
+    background-color: #eee;
+    transform: rotate(45deg);
+    z-index: -1;
+}

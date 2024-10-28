@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\CustomerProfilesInstance" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesInstance" abstract="false" final="false" start="46" end="196">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="CustomerProfilesInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/CustomerProfilesInstance.php" size="6416" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="123764bb9589aa1f07b65b30d19f3d62219f79bd" relative="Twilio/Rest/Trusthub/V1/CustomerProfilesInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $sid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $policySid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string $status"/>
+    <property value="\DateTime|null $validUntil"/>
+    <property value="string|null $email"/>
+    <property value="string|null $statusCallback"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+    <property value="array[]|null $errors"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_customerProfilesChannelEndpointAssignment" visibility="protected" static="false" line="48"/>
+  <member name="_customerProfilesEntityAssignments" visibility="protected" static="false" line="49"/>
+  <member name="_customerProfilesEvaluations" visibility="protected" static="false" line="50"/>
+  <constructor name="__construct" start="59" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the CustomerProfilesInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Trusthub\V1\mixed" namespace="Twilio\Rest\Trusthub\V1" name="mixed"/>
+      </param>
+      <param description="The unique string that we created to identify the Customer-Profile resource." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="63"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="89" end="99" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this CustomerProfilesInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesContext" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesContext" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesContext"/>
+    </return>
+  </method>
+  <method name="delete" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the CustomerProfilesInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the CustomerProfilesInstance"/>
+      <return description="Fetched CustomerProfilesInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesInstance" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesInstance" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesInstance"/>
+    </return>
+  </method>
+  <method name="update" start="132" end="136" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the CustomerProfilesInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Trusthub\V1\array|Options" namespace="Twilio\Rest\Trusthub\V1" name="array|Options"/>
+      </param>
+      <return description="Updated CustomerProfilesInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesInstance" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfilesInstance" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getCustomerProfilesChannelEndpointAssignment" start="141" end="144" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the customerProfilesChannelEndpointAssignment"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesChannelEndpointAssignmentList" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="CustomerProfilesChannelEndpointAssignmentList"/>
+    </return>
+  </method>
+  <method name="getCustomerProfilesEntityAssignments" start="149" end="152" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the customerProfilesEntityAssignments"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEntityAssignmentsList" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="CustomerProfilesEntityAssignmentsList"/>
+    </return>
+  </method>
+  <method name="getCustomerProfilesEvaluations" start="157" end="160" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the customerProfilesEvaluations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEvaluationsList" namespace="Twilio\Rest\Trusthub\V1\CustomerProfiles" name="CustomerProfilesEvaluationsList"/>
+    </return>
+  </method>
+  <method name="__get" start="169" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="188" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

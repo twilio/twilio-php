@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Studio\V2\FlowContext" namespace="Twilio\Rest\Studio\V2" name="FlowContext" abstract="false" final="false" start="40" end="230">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Studio/V2" file="FlowContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Studio/V2/FlowContext.php" size="6263" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="2d3459b59aad0c72ff8c2d1f9d3264c5ee38ac27" relative="Twilio/Rest/Studio/V2/FlowContext.php"/>
+  <docblock>
+    <description/>
+    <property value="ExecutionList $executions"/>
+    <property value="FlowRevisionList $revisions"/>
+    <property value="FlowTestUserList $testUsers"/>
+    <method value="\Twilio\Rest\Studio\V2\Flow\ExecutionContext executions(string $sid)"/>
+    <method value="\Twilio\Rest\Studio\V2\Flow\FlowTestUserContext testUsers()"/>
+    <method value="\Twilio\Rest\Studio\V2\Flow\FlowRevisionContext revisions(string $revision)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_executions" visibility="protected" static="false" line="42"/>
+  <member name="_revisions" visibility="protected" static="false" line="43"/>
+  <member name="_testUsers" visibility="protected" static="false" line="44"/>
+  <constructor name="__construct" start="52" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the FlowContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the Flow resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="58"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="74" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the FlowInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Studio\V2\bool" namespace="Twilio\Rest\Studio\V2" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="88" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the FlowInstance"/>
+      <return description="Fetched FlowInstance" type="object">
+        <type full="Twilio\Rest\Studio\V2\FlowInstance" namespace="Twilio\Rest\Studio\V2" name="FlowInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V2\FlowInstance" namespace="Twilio\Rest\Studio\V2" name="FlowInstance"/>
+    </return>
+  </method>
+  <method name="update" start="110" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the FlowInstance"/>
+      <param type="string" variable="$status"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Studio\V2\array|Options" namespace="Twilio\Rest\Studio\V2" name="array|Options"/>
+      </param>
+      <return description="Updated FlowInstance" type="object">
+        <type full="Twilio\Rest\Studio\V2\FlowInstance" namespace="Twilio\Rest\Studio\V2" name="FlowInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V2\FlowInstance" namespace="Twilio\Rest\Studio\V2" name="FlowInstance"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getExecutions" start="140" end="150" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the executions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V2\Flow\ExecutionList" namespace="Twilio\Rest\Studio\V2\Flow" name="ExecutionList"/>
+    </return>
+  </method>
+  <method name="getRevisions" start="155" end="165" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the revisions"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V2\Flow\FlowRevisionList" namespace="Twilio\Rest\Studio\V2\Flow" name="FlowRevisionList"/>
+    </return>
+  </method>
+  <method name="getTestUsers" start="170" end="180" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the testUsers"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio\V2\Flow\FlowTestUserList" namespace="Twilio\Rest\Studio\V2\Flow" name="FlowTestUserList"/>
+    </return>
+  </method>
+  <method name="__get" start="189" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="207" end="215" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="222" end="229" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

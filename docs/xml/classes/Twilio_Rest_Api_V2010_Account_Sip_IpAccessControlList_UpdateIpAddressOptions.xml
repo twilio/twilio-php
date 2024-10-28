@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\UpdateIpAddressOptions" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="UpdateIpAddressOptions" abstract="false" final="false" start="104" end="169">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Sip/IpAccessControlList" file="IpAddressOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Sip/IpAccessControlList/IpAddressOptions.php" size="6195" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="f9579a58a7e7cb309e6cbb7f66c0979d76e2c315" relative="Twilio/Rest/Api/V2010/Account/Sip/IpAccessControlList/IpAddressOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="111" end="121" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today." type="string" variable="$ipAddress"/>
+      <param description="A human readable descriptive text for this resource, up to 255 characters long." type="string" variable="$friendlyName"/>
+      <param description="An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used." type="int" variable="$cidrPrefixLength"/>
+    </docblock>
+    <parameter name="ipAddress" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="cidrPrefixLength" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </constructor>
+  <method name="setIpAddress" start="129" end="133" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today."/>
+      <param description="An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today." type="string" variable="$ipAddress"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\$this" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\UpdateIpAddressOptions" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="UpdateIpAddressOptions"/>
+    </return>
+    <parameter name="ipAddress" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="141" end="145" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A human readable descriptive text for this resource, up to 255 characters long."/>
+      <param description="A human readable descriptive text for this resource, up to 255 characters long." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\$this" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\UpdateIpAddressOptions" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="UpdateIpAddressOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setCidrPrefixLength" start="153" end="157" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used."/>
+      <param description="An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used." type="int" variable="$cidrPrefixLength"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\$this" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\UpdateIpAddressOptions" namespace="Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList" name="UpdateIpAddressOptions"/>
+    </return>
+    <parameter name="cidrPrefixLength" byreference="false" type="int"/>
+  </method>
+  <method name="__toString" start="164" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

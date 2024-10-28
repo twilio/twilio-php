@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview" namespace="Twilio\Rest" name="Preview" abstract="false" final="false" start="6" end="178">
+  <file path="/twilio/repos/php/src/Twilio/Rest" file="Preview.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview.php" size="7079" time="2024-10-28T12:06:41+00:00" unixtime="1730117201" sha1="40eb8a042a62709fa58492fecce5f7c3fed339af" relative="Twilio/Rest/Preview.php"/>
+  <extends full="Twilio\Rest\PreviewBase" namespace="Twilio\Rest" name="PreviewBase"/>
+  <method name="getFleets" start="11" end="14" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use deployedDevices-&gt;fleets instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\DeployedDevices\FleetList" namespace="Twilio\Rest\Preview\DeployedDevices" name="FleetList"/>
+    </return>
+  </method>
+  <method name="contextFleets" start="20" end="23" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use deployedDevices-&gt;fleets(\$sid) instead."/>
+      <param description="A string that uniquely identifies the Fleet." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\DeployedDevices\FleetContext" namespace="Twilio\Rest\Preview\DeployedDevices" name="FleetContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getAuthorizationDocuments" start="28" end="31" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use hostedNumbers-&gt;authorizationDocuments instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentList" namespace="Twilio\Rest\Preview\HostedNumbers" name="AuthorizationDocumentList"/>
+    </return>
+  </method>
+  <method name="contextAuthorizationDocuments" start="37" end="40" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use hostedNumbers-&gt;authorizationDocuments(\$sid) instead."/>
+      <param description="AuthorizationDocument sid." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\AuthorizationDocumentContext" namespace="Twilio\Rest\Preview\HostedNumbers" name="AuthorizationDocumentContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getHostedNumberOrders" start="45" end="48" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use hostedNumbers-&gt;hostedNumberOrders instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderList" namespace="Twilio\Rest\Preview\HostedNumbers" name="HostedNumberOrderList"/>
+    </return>
+  </method>
+  <method name="contextHostedNumberOrders" start="54" end="57" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use hostedNumbers-&gt;hostedNumberOrders(\$sid) instead"/>
+      <param description="HostedNumberOrder sid." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext" namespace="Twilio\Rest\Preview\HostedNumbers" name="HostedNumberOrderContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getAvailableAddOns" start="62" end="65" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use marketplace-&gt;availableAddOns instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Marketplace\AvailableAddOnList" namespace="Twilio\Rest\Preview\Marketplace" name="AvailableAddOnList"/>
+    </return>
+  </method>
+  <method name="contextAvailableAddOns" start="71" end="74" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use marketplace-&gt;availableAddOns(\$sid) instead."/>
+      <param description="The SID of the AvailableAddOn resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Marketplace\AvailableAddOnContext" namespace="Twilio\Rest\Preview\Marketplace" name="AvailableAddOnContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getInstalledAddOns" start="79" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use marketplace-&gt;installedAddOns instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Marketplace\InstalledAddOnList" namespace="Twilio\Rest\Preview\Marketplace" name="InstalledAddOnList"/>
+    </return>
+  </method>
+  <method name="contextInstalledAddOns" start="88" end="91" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use marketplace-&gt;installedAddOns(\$sid) instead."/>
+      <param description="The SID of the InstalledAddOn resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Marketplace\InstalledAddOnContext" namespace="Twilio\Rest\Preview\Marketplace" name="InstalledAddOnContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getServices" start="96" end="99" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use sync-&gt;services instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\ServiceList" namespace="Twilio\Rest\Preview\Sync" name="ServiceList"/>
+    </return>
+  </method>
+  <method name="contextServices" start="105" end="108" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use sync-&gt;services(\$sid) instead."/>
+      <param description="The sid" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Sync\ServiceContext" namespace="Twilio\Rest\Preview\Sync" name="ServiceContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getAssistants" start="113" end="116" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use understand-&gt;assistants instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Understand\AssistantList" namespace="Twilio\Rest\Preview\Understand" name="AssistantList"/>
+    </return>
+  </method>
+  <method name="contextAssistants" start="123" end="126" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use understand-&gt;assistants(\$sid) instead."/>
+      <param description="A 34 character string that uniquely identifies this" type="string" variable="$sid">resource.</param>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Understand\AssistantContext" namespace="Twilio\Rest\Preview\Understand" name="AssistantContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getCommands" start="131" end="134" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use wireless-&gt;commands instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CommandList" namespace="Twilio\Rest\Preview\Wireless" name="CommandList"/>
+    </return>
+  </method>
+  <method name="contextCommands" start="140" end="143" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use wireless-&gt;commands(\$sid) instead."/>
+      <param description="The sid" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CommandContext" namespace="Twilio\Rest\Preview\Wireless" name="CommandContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getRatePlans" start="148" end="151" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use wireless-&gt;ratePlans instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\RatePlanList" namespace="Twilio\Rest\Preview\Wireless" name="RatePlanList"/>
+    </return>
+  </method>
+  <method name="contextRatePlans" start="157" end="160" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use wireless-&gt;ratePlans(\$sid) instead."/>
+      <param description="The sid" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\RatePlanContext" namespace="Twilio\Rest\Preview\Wireless" name="RatePlanContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getSims" start="165" end="168" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use wireless-&gt;sims instead."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\SimList" namespace="Twilio\Rest\Preview\Wireless" name="SimList"/>
+    </return>
+  </method>
+  <method name="contextSims" start="174" end="177" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <deprecated value="Use wireless-&gt;sims(\$sid) instead."/>
+      <param description="The sid" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\SimContext" namespace="Twilio\Rest\Preview\Wireless" name="SimContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <parent full="Twilio\Rest\PreviewBase" namespace="Twilio\Rest" name="PreviewBase">
+    <extends full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    <member name="_hostedNumbers" visibility="protected" static="false" line="29"/>
+    <member name="_sync" visibility="protected" static="false" line="30"/>
+    <member name="_marketplace" visibility="protected" static="false" line="31"/>
+    <member name="_wireless" visibility="protected" static="false" line="32"/>
+    <constructor name="__construct" start="39" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Construct the Preview Domain"/>
+        <param description="Client to communicate with Twilio" type="object" variable="$client">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </param>
+      </docblock>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </parameter>
+    </constructor>
+    <method name="getHostedNumbers" start="49" end="54" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return description="Version hostedNumbers of preview" type="object">
+          <type full="Twilio\Rest\Preview\HostedNumbers" namespace="Twilio\Rest\Preview" name="HostedNumbers"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Preview\HostedNumbers" namespace="Twilio\Rest\Preview" name="HostedNumbers"/>
+      </return>
+    </method>
+    <method name="getSync" start="59" end="64" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return description="Version sync of preview" type="object">
+          <type full="Twilio\Rest\Preview\Sync" namespace="Twilio\Rest\Preview" name="Sync"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Preview\Sync" namespace="Twilio\Rest\Preview" name="Sync"/>
+      </return>
+    </method>
+    <method name="getMarketplace" start="69" end="74" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return description="Version marketplace of preview" type="object">
+          <type full="Twilio\Rest\Preview\Marketplace" namespace="Twilio\Rest\Preview" name="Marketplace"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Preview\Marketplace" namespace="Twilio\Rest\Preview" name="Marketplace"/>
+      </return>
+    </method>
+    <method name="getWireless" start="79" end="84" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description/>
+        <return description="Version wireless of preview" type="object">
+          <type full="Twilio\Rest\Preview\Wireless" namespace="Twilio\Rest\Preview" name="Wireless"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Preview\Wireless" namespace="Twilio\Rest\Preview" name="Wireless"/>
+      </return>
+    </method>
+    <method name="__get" start="93" end="100" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic getter to lazy load version"/>
+        <param description="Version to return" type="string" variable="$name"/>
+        <return description="The requested version" type="object">
+          <type full="\Twilio\Version" namespace="\Twilio" name="Version"/>
+        </return>
+        <throws description="For unknown versions" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+    </method>
+    <method name="__call" start="110" end="117" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic caller to get resource contexts"/>
+        <param description="Resource to return" type="string" variable="$name"/>
+        <param description="Context parameters" type="array" variable="$arguments"/>
+        <return description="The requested resource context" type="object">
+          <type full="\Twilio\InstanceContext" namespace="\Twilio" name="InstanceContext"/>
+        </return>
+        <throws description="For unknown resource" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="__toString" start="124" end="126" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Provide a friendly representation"/>
+        <return description="Machine friendly representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+  <parent full="Twilio\Domain" namespace="Twilio" name="Domain">
+    <member name="client" visibility="protected" static="false" line="19">
+      <docblock>
+        <description/>
+        <var description="Twilio Client" type="object">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </var>
+      </docblock>
+    </member>
+    <member name="baseUrl" visibility="protected" static="false" line="24">
+      <docblock>
+        <description/>
+        <var description="Base URL for this domain" type="string"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="30" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Construct a new Domain"/>
+        <param description="used to communicate with Twilio" type="object" variable="$client">
+          <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+        </param>
+      </docblock>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </parameter>
+    </constructor>
+    <method name="absoluteUrl" start="41" end="43" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Translate version relative URIs into absolute URLs"/>
+        <param description="Version relative URI" type="string" variable="$uri"/>
+        <return description="Absolute URL for this domain" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="request" start="58" end="73" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Make an HTTP request to the domain"/>
+        <param description="HTTP Method to make the request with" type="string" variable="$method"/>
+        <param description="Relative uri to make a request to" type="string" variable="$uri"/>
+        <param description="Query string arguments" type="array" variable="$params"/>
+        <param description="Post form data" type="array" variable="$data"/>
+        <param description="HTTP headers to send with the request" type="array" variable="$headers"/>
+        <param description="User to authenticate as" type="string" variable="$user"/>
+        <param description="Password" type="string" variable="$password"/>
+        <param description="Request timeout" type="int" variable="$timeout"/>
+        <return description="the response for the request" type="object">
+          <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="user" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="getClient" start="75" end="77" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client"/>
+      </return>
+    </method>
+    <method name="__toString" start="79" end="81" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

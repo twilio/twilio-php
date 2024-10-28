@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Client" namespace="Twilio\Rest" name="Client" abstract="false" final="false" start="101" end="721">
+  <file path="/twilio/repos/php/src/Twilio/Rest" file="Client.php" realpath="/twilio/repos/php/src/Twilio/Rest/Client.php" size="25385" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="b403878d6c55759cc7a4cc2191a40ce2473dba1c" relative="Twilio/Rest/Client.php"/>
+  <docblock>
+    <description compact="A client for accessing the Twilio API."/>
+    <property value="Accounts $accounts"/>
+    <property value="Api $api"/>
+    <property value="Assistants $assistants"/>
+    <property value="Bulkexports $bulkexports"/>
+    <property value="Chat $chat"/>
+    <property value="Content $content"/>
+    <property value="Conversations $conversations"/>
+    <property value="Events $events"/>
+    <property value="FlexApi $flexApi"/>
+    <property value="FrontlineApi $frontlineApi"/>
+    <property value="Iam $iam"/>
+    <property value="Insights $insights"/>
+    <property value="Intelligence $intelligence"/>
+    <property value="IpMessaging $ipMessaging"/>
+    <property value="Lookups $lookups"/>
+    <property value="Marketplace $marketplace"/>
+    <property value="Messaging $messaging"/>
+    <property value="Microvisor $microvisor"/>
+    <property value="Monitor $monitor"/>
+    <property value="Notify $notify"/>
+    <property value="Numbers $numbers"/>
+    <property value="Oauth $oauth"/>
+    <property value="Preview $preview"/>
+    <property value="Pricing $pricing"/>
+    <property value="Proxy $proxy"/>
+    <property value="Routes $routes"/>
+    <property value="Serverless $serverless"/>
+    <property value="Studio $studio"/>
+    <property value="Supersim $supersim"/>
+    <property value="Sync $sync"/>
+    <property value="Taskrouter $taskrouter"/>
+    <property value="Trunking $trunking"/>
+    <property value="Trusthub $trusthub"/>
+    <property value="Verify $verify"/>
+    <property value="Video $video"/>
+    <property value="Voice $voice"/>
+    <property value="Wireless $wireless"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\AddressList $addresses"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\ApplicationList $applications"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList $authorizedConnectApps"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList $availablePhoneNumbers"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\BalanceList $balance"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\CallList $calls"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\ConferenceList $conferences"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\ConnectAppList $connectApps"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList $incomingPhoneNumbers"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\KeyList $keys"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\MessageList $messages"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\NewKeyList $newKeys"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\NewSigningKeyList $newSigningKeys"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\NotificationList $notifications"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList $outgoingCallerIds"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\QueueList $queues"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\RecordingList $recordings"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\ShortCodeList $shortCodes"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\SigningKeyList $signingKeys"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\SipList $sip"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\TokenList $tokens"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\TranscriptionList $transcriptions"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\UsageList $usage"/>
+    <property value="\Twilio\Rest\Api\V2010\Account\ValidationRequestList $validationRequests"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\AddressContext Addresses(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\ApplicationContext Applications(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext AuthorizedConnectApps(string $connectAppSid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext AvailablePhoneNumbers(string $countryCode)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\CallContext Calls(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\ConferenceContext Conferences(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\ConnectAppContext ConnectApps(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext IncomingPhoneNumbers(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\KeyContext Keys(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\MessageContext Messages(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\NotificationContext Notifications(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext OutgoingCallerIds(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\QueueContext Queues(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\RecordingContext Recordings(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\ShortCodeContext ShortCodes(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\SigningKeyContext SigningKeys(string $sid)"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\TranscriptionContext Transcriptions(string $sid)"/>
+  </docblock>
+  <extends full="Twilio\Base\BaseClient" namespace="Twilio\Base" name="BaseClient"/>
+  <member name="_accounts" visibility="protected" static="false" line="102"/>
+  <member name="_api" visibility="protected" static="false" line="103"/>
+  <member name="_assistants" visibility="protected" static="false" line="104"/>
+  <member name="_bulkexports" visibility="protected" static="false" line="105"/>
+  <member name="_chat" visibility="protected" static="false" line="106"/>
+  <member name="_content" visibility="protected" static="false" line="107"/>
+  <member name="_conversations" visibility="protected" static="false" line="108"/>
+  <member name="_events" visibility="protected" static="false" line="109"/>
+  <member name="_flexApi" visibility="protected" static="false" line="110"/>
+  <member name="_frontlineApi" visibility="protected" static="false" line="111"/>
+  <member name="_iam" visibility="protected" static="false" line="112"/>
+  <member name="_insights" visibility="protected" static="false" line="113"/>
+  <member name="_intelligence" visibility="protected" static="false" line="114"/>
+  <member name="_ipMessaging" visibility="protected" static="false" line="115"/>
+  <member name="_lookups" visibility="protected" static="false" line="116"/>
+  <member name="_marketplace" visibility="protected" static="false" line="117"/>
+  <member name="_messaging" visibility="protected" static="false" line="118"/>
+  <member name="_microvisor" visibility="protected" static="false" line="119"/>
+  <member name="_monitor" visibility="protected" static="false" line="120"/>
+  <member name="_notify" visibility="protected" static="false" line="121"/>
+  <member name="_numbers" visibility="protected" static="false" line="122"/>
+  <member name="_oauth" visibility="protected" static="false" line="123"/>
+  <member name="_preview" visibility="protected" static="false" line="124"/>
+  <member name="_pricing" visibility="protected" static="false" line="125"/>
+  <member name="_proxy" visibility="protected" static="false" line="126"/>
+  <member name="_routes" visibility="protected" static="false" line="127"/>
+  <member name="_serverless" visibility="protected" static="false" line="128"/>
+  <member name="_studio" visibility="protected" static="false" line="129"/>
+  <member name="_supersim" visibility="protected" static="false" line="130"/>
+  <member name="_sync" visibility="protected" static="false" line="131"/>
+  <member name="_taskrouter" visibility="protected" static="false" line="132"/>
+  <member name="_trunking" visibility="protected" static="false" line="133"/>
+  <member name="_trusthub" visibility="protected" static="false" line="134"/>
+  <member name="_verify" visibility="protected" static="false" line="135"/>
+  <member name="_video" visibility="protected" static="false" line="136"/>
+  <member name="_voice" visibility="protected" static="false" line="137"/>
+  <member name="_wireless" visibility="protected" static="false" line="138"/>
+  <method name="getAccounts" start="145" end="150" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Accounts Twilio Domain"/>
+      <return description="Accounts Twilio Domain" type="object">
+        <type full="Twilio\Rest\Accounts" namespace="Twilio\Rest" name="Accounts"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Accounts" namespace="Twilio\Rest" name="Accounts"/>
+    </return>
+  </method>
+  <method name="getApi" start="156" end="161" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Api Twilio Domain"/>
+      <return description="Api Twilio Domain" type="object">
+        <type full="Twilio\Rest\Api" namespace="Twilio\Rest" name="Api"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api" namespace="Twilio\Rest" name="Api"/>
+    </return>
+  </method>
+  <method name="getAssistants" start="167" end="172" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Assistants Twilio Domain"/>
+      <return description="Assistants Twilio Domain" type="object">
+        <type full="Twilio\Rest\Assistants" namespace="Twilio\Rest" name="Assistants"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Assistants" namespace="Twilio\Rest" name="Assistants"/>
+    </return>
+  </method>
+  <method name="getBulkexports" start="178" end="183" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Bulkexports Twilio Domain"/>
+      <return description="Bulkexports Twilio Domain" type="object">
+        <type full="Twilio\Rest\Bulkexports" namespace="Twilio\Rest" name="Bulkexports"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Bulkexports" namespace="Twilio\Rest" name="Bulkexports"/>
+    </return>
+  </method>
+  <method name="getChat" start="189" end="194" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Chat Twilio Domain"/>
+      <return description="Chat Twilio Domain" type="object">
+        <type full="Twilio\Rest\Chat" namespace="Twilio\Rest" name="Chat"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat" namespace="Twilio\Rest" name="Chat"/>
+    </return>
+  </method>
+  <method name="getContent" start="200" end="205" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Content Twilio Domain"/>
+      <return description="Content Twilio Domain" type="object">
+        <type full="Twilio\Rest\Content" namespace="Twilio\Rest" name="Content"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Content" namespace="Twilio\Rest" name="Content"/>
+    </return>
+  </method>
+  <method name="getConversations" start="211" end="216" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Conversations Twilio Domain"/>
+      <return description="Conversations Twilio Domain" type="object">
+        <type full="Twilio\Rest\Conversations" namespace="Twilio\Rest" name="Conversations"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations" namespace="Twilio\Rest" name="Conversations"/>
+    </return>
+  </method>
+  <method name="getEvents" start="222" end="227" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Events Twilio Domain"/>
+      <return description="Events Twilio Domain" type="object">
+        <type full="Twilio\Rest\Events" namespace="Twilio\Rest" name="Events"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events" namespace="Twilio\Rest" name="Events"/>
+    </return>
+  </method>
+  <method name="getFlexApi" start="233" end="238" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the FlexApi Twilio Domain"/>
+      <return description="FlexApi Twilio Domain" type="object">
+        <type full="Twilio\Rest\FlexApi" namespace="Twilio\Rest" name="FlexApi"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi" namespace="Twilio\Rest" name="FlexApi"/>
+    </return>
+  </method>
+  <method name="getFrontlineApi" start="244" end="249" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the FrontlineApi Twilio Domain"/>
+      <return description="FrontlineApi Twilio Domain" type="object">
+        <type full="Twilio\Rest\FrontlineApi" namespace="Twilio\Rest" name="FrontlineApi"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FrontlineApi" namespace="Twilio\Rest" name="FrontlineApi"/>
+    </return>
+  </method>
+  <method name="getIam" start="255" end="260" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Iam Twilio Domain"/>
+      <return description="Iam Twilio Domain" type="object">
+        <type full="Twilio\Rest\Iam" namespace="Twilio\Rest" name="Iam"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Iam" namespace="Twilio\Rest" name="Iam"/>
+    </return>
+  </method>
+  <method name="getInsights" start="266" end="271" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Insights Twilio Domain"/>
+      <return description="Insights Twilio Domain" type="object">
+        <type full="Twilio\Rest\Insights" namespace="Twilio\Rest" name="Insights"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights" namespace="Twilio\Rest" name="Insights"/>
+    </return>
+  </method>
+  <method name="getIntelligence" start="277" end="282" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Intelligence Twilio Domain"/>
+      <return description="Intelligence Twilio Domain" type="object">
+        <type full="Twilio\Rest\Intelligence" namespace="Twilio\Rest" name="Intelligence"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence" namespace="Twilio\Rest" name="Intelligence"/>
+    </return>
+  </method>
+  <method name="getIpMessaging" start="288" end="293" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the IpMessaging Twilio Domain"/>
+      <return description="IpMessaging Twilio Domain" type="object">
+        <type full="Twilio\Rest\IpMessaging" namespace="Twilio\Rest" name="IpMessaging"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\IpMessaging" namespace="Twilio\Rest" name="IpMessaging"/>
+    </return>
+  </method>
+  <method name="getLookups" start="299" end="304" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Lookups Twilio Domain"/>
+      <return description="Lookups Twilio Domain" type="object">
+        <type full="Twilio\Rest\Lookups" namespace="Twilio\Rest" name="Lookups"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Lookups" namespace="Twilio\Rest" name="Lookups"/>
+    </return>
+  </method>
+  <method name="getMarketplace" start="310" end="315" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Marketplace Twilio Domain"/>
+      <return description="Marketplace Twilio Domain" type="object">
+        <type full="Twilio\Rest\Marketplace" namespace="Twilio\Rest" name="Marketplace"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Marketplace" namespace="Twilio\Rest" name="Marketplace"/>
+    </return>
+  </method>
+  <method name="getMessaging" start="321" end="326" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Messaging Twilio Domain"/>
+      <return description="Messaging Twilio Domain" type="object">
+        <type full="Twilio\Rest\Messaging" namespace="Twilio\Rest" name="Messaging"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging" namespace="Twilio\Rest" name="Messaging"/>
+    </return>
+  </method>
+  <method name="getMicrovisor" start="332" end="337" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Microvisor Twilio Domain"/>
+      <return description="Microvisor Twilio Domain" type="object">
+        <type full="Twilio\Rest\Microvisor" namespace="Twilio\Rest" name="Microvisor"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor" namespace="Twilio\Rest" name="Microvisor"/>
+    </return>
+  </method>
+  <method name="getMonitor" start="343" end="348" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Monitor Twilio Domain"/>
+      <return description="Monitor Twilio Domain" type="object">
+        <type full="Twilio\Rest\Monitor" namespace="Twilio\Rest" name="Monitor"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Monitor" namespace="Twilio\Rest" name="Monitor"/>
+    </return>
+  </method>
+  <method name="getNotify" start="354" end="359" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Notify Twilio Domain"/>
+      <return description="Notify Twilio Domain" type="object">
+        <type full="Twilio\Rest\Notify" namespace="Twilio\Rest" name="Notify"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify" namespace="Twilio\Rest" name="Notify"/>
+    </return>
+  </method>
+  <method name="getNumbers" start="365" end="370" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Numbers Twilio Domain"/>
+      <return description="Numbers Twilio Domain" type="object">
+        <type full="Twilio\Rest\Numbers" namespace="Twilio\Rest" name="Numbers"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers" namespace="Twilio\Rest" name="Numbers"/>
+    </return>
+  </method>
+  <method name="getOauth" start="376" end="381" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Oauth Twilio Domain"/>
+      <return description="Oauth Twilio Domain" type="object">
+        <type full="Twilio\Rest\Oauth" namespace="Twilio\Rest" name="Oauth"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Oauth" namespace="Twilio\Rest" name="Oauth"/>
+    </return>
+  </method>
+  <method name="getPreview" start="387" end="392" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Preview Twilio Domain"/>
+      <return description="Preview Twilio Domain" type="object">
+        <type full="Twilio\Rest\Preview" namespace="Twilio\Rest" name="Preview"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview" namespace="Twilio\Rest" name="Preview"/>
+    </return>
+  </method>
+  <method name="getPricing" start="398" end="403" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Pricing Twilio Domain"/>
+      <return description="Pricing Twilio Domain" type="object">
+        <type full="Twilio\Rest\Pricing" namespace="Twilio\Rest" name="Pricing"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Pricing" namespace="Twilio\Rest" name="Pricing"/>
+    </return>
+  </method>
+  <method name="getProxy" start="409" end="414" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Proxy Twilio Domain"/>
+      <return description="Proxy Twilio Domain" type="object">
+        <type full="Twilio\Rest\Proxy" namespace="Twilio\Rest" name="Proxy"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Proxy" namespace="Twilio\Rest" name="Proxy"/>
+    </return>
+  </method>
+  <method name="getRoutes" start="420" end="425" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Routes Twilio Domain"/>
+      <return description="Routes Twilio Domain" type="object">
+        <type full="Twilio\Rest\Routes" namespace="Twilio\Rest" name="Routes"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Routes" namespace="Twilio\Rest" name="Routes"/>
+    </return>
+  </method>
+  <method name="getServerless" start="431" end="436" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Serverless Twilio Domain"/>
+      <return description="Serverless Twilio Domain" type="object">
+        <type full="Twilio\Rest\Serverless" namespace="Twilio\Rest" name="Serverless"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Serverless" namespace="Twilio\Rest" name="Serverless"/>
+    </return>
+  </method>
+  <method name="getStudio" start="442" end="447" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Studio Twilio Domain"/>
+      <return description="Studio Twilio Domain" type="object">
+        <type full="Twilio\Rest\Studio" namespace="Twilio\Rest" name="Studio"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Studio" namespace="Twilio\Rest" name="Studio"/>
+    </return>
+  </method>
+  <method name="getSupersim" start="453" end="458" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Supersim Twilio Domain"/>
+      <return description="Supersim Twilio Domain" type="object">
+        <type full="Twilio\Rest\Supersim" namespace="Twilio\Rest" name="Supersim"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim" namespace="Twilio\Rest" name="Supersim"/>
+    </return>
+  </method>
+  <method name="getSync" start="464" end="469" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Sync Twilio Domain"/>
+      <return description="Sync Twilio Domain" type="object">
+        <type full="Twilio\Rest\Sync" namespace="Twilio\Rest" name="Sync"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync" namespace="Twilio\Rest" name="Sync"/>
+    </return>
+  </method>
+  <method name="getTaskrouter" start="475" end="480" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Taskrouter Twilio Domain"/>
+      <return description="Taskrouter Twilio Domain" type="object">
+        <type full="Twilio\Rest\Taskrouter" namespace="Twilio\Rest" name="Taskrouter"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter" namespace="Twilio\Rest" name="Taskrouter"/>
+    </return>
+  </method>
+  <method name="getTrunking" start="486" end="491" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Trunking Twilio Domain"/>
+      <return description="Trunking Twilio Domain" type="object">
+        <type full="Twilio\Rest\Trunking" namespace="Twilio\Rest" name="Trunking"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trunking" namespace="Twilio\Rest" name="Trunking"/>
+    </return>
+  </method>
+  <method name="getTrusthub" start="497" end="502" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Trusthub Twilio Domain"/>
+      <return description="Trusthub Twilio Domain" type="object">
+        <type full="Twilio\Rest\Trusthub" namespace="Twilio\Rest" name="Trusthub"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub" namespace="Twilio\Rest" name="Trusthub"/>
+    </return>
+  </method>
+  <method name="getVerify" start="508" end="513" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Verify Twilio Domain"/>
+      <return description="Verify Twilio Domain" type="object">
+        <type full="Twilio\Rest\Verify" namespace="Twilio\Rest" name="Verify"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify" namespace="Twilio\Rest" name="Verify"/>
+    </return>
+  </method>
+  <method name="getVideo" start="519" end="524" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Video Twilio Domain"/>
+      <return description="Video Twilio Domain" type="object">
+        <type full="Twilio\Rest\Video" namespace="Twilio\Rest" name="Video"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Video" namespace="Twilio\Rest" name="Video"/>
+    </return>
+  </method>
+  <method name="getVoice" start="530" end="535" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Voice Twilio Domain"/>
+      <return description="Voice Twilio Domain" type="object">
+        <type full="Twilio\Rest\Voice" namespace="Twilio\Rest" name="Voice"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice" namespace="Twilio\Rest" name="Voice"/>
+    </return>
+  </method>
+  <method name="getWireless" start="541" end="546" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the Wireless Twilio Domain"/>
+      <return description="Wireless Twilio Domain" type="object">
+        <type full="Twilio\Rest\Wireless" namespace="Twilio\Rest" name="Wireless"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Wireless" namespace="Twilio\Rest" name="Wireless"/>
+    </return>
+  </method>
+  <method name="getAddresses" start="547" end="549" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AddressList" namespace="Twilio\Rest\Api\V2010\Account" name="AddressList"/>
+    </return>
+  </method>
+  <method name="contextAddresses" start="553" end="555" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Address resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AddressContext" namespace="Twilio\Rest\Api\V2010\Account" name="AddressContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getApplications" start="556" end="558" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ApplicationList" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationList"/>
+    </return>
+  </method>
+  <method name="contextApplications" start="562" end="564" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Application resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ApplicationContext" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getAuthorizedConnectApps" start="565" end="567" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppList" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppList"/>
+    </return>
+  </method>
+  <method name="contextAuthorizedConnectApps" start="571" end="573" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The SID of the Connect App to fetch." type="string" variable="$connectAppSid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppContext" namespace="Twilio\Rest\Api\V2010\Account" name="AuthorizedConnectAppContext"/>
+    </return>
+    <parameter name="connectAppSid" byreference="false" type="string"/>
+  </method>
+  <method name="getAvailablePhoneNumbers" start="574" end="576" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryList" namespace="Twilio\Rest\Api\V2010\Account" name="AvailablePhoneNumberCountryList"/>
+    </return>
+  </method>
+  <method name="contextAvailablePhoneNumbers" start="580" end="582" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country to fetch available phone number information about." type="string" variable="$countryCode"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryContext" namespace="Twilio\Rest\Api\V2010\Account" name="AvailablePhoneNumberCountryContext"/>
+    </return>
+    <parameter name="countryCode" byreference="false" type="string"/>
+  </method>
+  <method name="getBalance" start="583" end="585" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\BalanceList" namespace="Twilio\Rest\Api\V2010\Account" name="BalanceList"/>
+    </return>
+  </method>
+  <method name="getCalls" start="586" end="588" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CallList" namespace="Twilio\Rest\Api\V2010\Account" name="CallList"/>
+    </return>
+  </method>
+  <method name="contextCalls" start="592" end="594" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The SID of the Call resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CallContext" namespace="Twilio\Rest\Api\V2010\Account" name="CallContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getConferences" start="595" end="597" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ConferenceList" namespace="Twilio\Rest\Api\V2010\Account" name="ConferenceList"/>
+    </return>
+  </method>
+  <method name="contextConferences" start="601" end="603" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Conference resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ConferenceContext" namespace="Twilio\Rest\Api\V2010\Account" name="ConferenceContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getConnectApps" start="604" end="606" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ConnectAppList" namespace="Twilio\Rest\Api\V2010\Account" name="ConnectAppList"/>
+    </return>
+  </method>
+  <method name="contextConnectApps" start="610" end="612" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ConnectAppContext" namespace="Twilio\Rest\Api\V2010\Account" name="ConnectAppContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getIncomingPhoneNumbers" start="613" end="615" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberList" namespace="Twilio\Rest\Api\V2010\Account" name="IncomingPhoneNumberList"/>
+    </return>
+  </method>
+  <method name="contextIncomingPhoneNumbers" start="619" end="621" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext" namespace="Twilio\Rest\Api\V2010\Account" name="IncomingPhoneNumberContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getKeys" start="622" end="624" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\KeyList" namespace="Twilio\Rest\Api\V2010\Account" name="KeyList"/>
+    </return>
+  </method>
+  <method name="contextKeys" start="628" end="630" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Key resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\KeyContext" namespace="Twilio\Rest\Api\V2010\Account" name="KeyContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getMessages" start="631" end="633" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\MessageList" namespace="Twilio\Rest\Api\V2010\Account" name="MessageList"/>
+    </return>
+  </method>
+  <method name="contextMessages" start="637" end="639" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The SID of the Message resource to be fetched" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\MessageContext" namespace="Twilio\Rest\Api\V2010\Account" name="MessageContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getNewKeys" start="640" end="642" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\NewKeyList" namespace="Twilio\Rest\Api\V2010\Account" name="NewKeyList"/>
+    </return>
+  </method>
+  <method name="getNewSigningKeys" start="643" end="645" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\NewSigningKeyList" namespace="Twilio\Rest\Api\V2010\Account" name="NewSigningKeyList"/>
+    </return>
+  </method>
+  <method name="getNotifications" start="646" end="648" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\NotificationList" namespace="Twilio\Rest\Api\V2010\Account" name="NotificationList"/>
+    </return>
+  </method>
+  <method name="contextNotifications" start="652" end="654" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Notification resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\NotificationContext" namespace="Twilio\Rest\Api\V2010\Account" name="NotificationContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getOutgoingCallerIds" start="655" end="657" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\OutgoingCallerIdList" namespace="Twilio\Rest\Api\V2010\Account" name="OutgoingCallerIdList"/>
+    </return>
+  </method>
+  <method name="contextOutgoingCallerIds" start="661" end="663" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\OutgoingCallerIdContext" namespace="Twilio\Rest\Api\V2010\Account" name="OutgoingCallerIdContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getQueues" start="664" end="666" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\QueueList" namespace="Twilio\Rest\Api\V2010\Account" name="QueueList"/>
+    </return>
+  </method>
+  <method name="contextQueues" start="670" end="672" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Queue resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\QueueContext" namespace="Twilio\Rest\Api\V2010\Account" name="QueueContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getRecordings" start="673" end="675" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\RecordingList" namespace="Twilio\Rest\Api\V2010\Account" name="RecordingList"/>
+    </return>
+  </method>
+  <method name="contextRecordings" start="679" end="681" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Recording resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\RecordingContext" namespace="Twilio\Rest\Api\V2010\Account" name="RecordingContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getShortCodes" start="682" end="684" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ShortCodeList" namespace="Twilio\Rest\Api\V2010\Account" name="ShortCodeList"/>
+    </return>
+  </method>
+  <method name="contextShortCodes" start="688" end="690" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the ShortCode resource to fetch" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ShortCodeContext" namespace="Twilio\Rest\Api\V2010\Account" name="ShortCodeContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getSigningKeys" start="691" end="693" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\SigningKeyList" namespace="Twilio\Rest\Api\V2010\Account" name="SigningKeyList"/>
+    </return>
+  </method>
+  <method name="contextSigningKeys" start="697" end="699" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The sid" type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\SigningKeyContext" namespace="Twilio\Rest\Api\V2010\Account" name="SigningKeyContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getSip" start="700" end="702" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\SipList" namespace="Twilio\Rest\Api\V2010\Account" name="SipList"/>
+    </return>
+  </method>
+  <method name="getTokens" start="703" end="705" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\TokenList" namespace="Twilio\Rest\Api\V2010\Account" name="TokenList"/>
+    </return>
+  </method>
+  <method name="getTranscriptions" start="706" end="708" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\TranscriptionList" namespace="Twilio\Rest\Api\V2010\Account" name="TranscriptionList"/>
+    </return>
+  </method>
+  <method name="contextTranscriptions" start="712" end="714" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description/>
+      <param description="The Twilio-provided string that uniquely identifies the Transcription resource to fetch." type="string" variable="$sid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\TranscriptionContext" namespace="Twilio\Rest\Api\V2010\Account" name="TranscriptionContext"/>
+    </return>
+    <parameter name="sid" byreference="false" type="string"/>
+  </method>
+  <method name="getUsage" start="715" end="717" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\UsageList" namespace="Twilio\Rest\Api\V2010\Account" name="UsageList"/>
+    </return>
+  </method>
+  <method name="getValidationRequests" start="718" end="720" abstract="false" final="false" static="false" visibility="protected">
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ValidationRequestList" namespace="Twilio\Rest\Api\V2010\Account" name="ValidationRequestList"/>
+    </return>
+  </method>
+  <parent full="Twilio\Base\BaseClient" namespace="Twilio\Base" name="BaseClient">
+    <constant type="{unknown}" name="ENV_ACCOUNT_SID" value="'TWILIO_ACCOUNT_SID'"/>
+    <constant type="{unknown}" name="ENV_AUTH_TOKEN" value="'TWILIO_AUTH_TOKEN'"/>
+    <constant type="{unknown}" name="ENV_REGION" value="'TWILIO_REGION'"/>
+    <constant type="{unknown}" name="ENV_EDGE" value="'TWILIO_EDGE'"/>
+    <constant type="{unknown}" name="DEFAULT_REGION" value="'us1'"/>
+    <constant type="{unknown}" name="ENV_LOG" value="'TWILIO_LOG_LEVEL'"/>
+    <member name="username" visibility="protected" static="false" line="25"/>
+    <member name="password" visibility="protected" static="false" line="26"/>
+    <member name="accountSid" visibility="protected" static="false" line="27"/>
+    <member name="region" visibility="protected" static="false" line="28"/>
+    <member name="edge" visibility="protected" static="false" line="29"/>
+    <member name="httpClient" visibility="protected" static="false" line="30"/>
+    <member name="environment" visibility="protected" static="false" line="31"/>
+    <member name="userAgentExtensions" visibility="protected" static="false" line="32"/>
+    <member name="logLevel" visibility="protected" static="false" line="33"/>
+    <member name="_account" visibility="protected" static="false" line="34"/>
+    <constructor name="__construct" start="51" end="80" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Initializes the Twilio Client"/>
+        <param description="Username to authenticate with" type="string" variable="$username"/>
+        <param description="Password to authenticate with" type="string" variable="$password"/>
+        <param description="Account SID to authenticate with, defaults to" type="string" variable="$accountSid">$username</param>
+        <param description="Region to send requests to, defaults to 'us1' if Edge" type="string" variable="$region">provided</param>
+        <param description="HttpClient, defaults to CurlClient" type="object" variable="$httpClient">
+          <type full="Twilio\Http\Client" namespace="Twilio\Http" name="Client"/>
+        </param>
+        <param description="Environment to look for auth details, defaults" type="array" variable="$environment" of="object">to $_ENV<type full="Twilio\Base\mixed" namespace="Twilio\Base" name="mixed"/></param>
+        <param description="Additions to the user agent string" type="array" variable="$userAgentExtensions" of="object">
+          <type full="Twilio\Base\string" namespace="Twilio\Base" name="string"/>
+        </param>
+        <throws description="If valid authentication is not present" type="object">
+          <type full="Twilio\Exceptions\ConfigurationException" namespace="Twilio\Exceptions" name="ConfigurationException"/>
+        </throws>
+      </docblock>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="accountSid" byreference="false" type="string" default="NULL"/>
+      <parameter name="region" byreference="false" type="string" default="NULL"/>
+      <parameter name="httpClient" byreference="false" type="object" default="NULL">
+        <type full="Twilio\Http\Client" namespace="Twilio\Http" name="Client"/>
+      </parameter>
+      <parameter name="environment" byreference="false" type="array" default="NULL"/>
+      <parameter name="userAgentExtensions" byreference="false" type="array" default="NULL"/>
+    </constructor>
+    <method name="getArg" start="89" end="100" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Determines argument value accounting for environment variables."/>
+        <param description="The constructor argument" type="string" variable="$arg"/>
+        <param description="The environment variable name" type="string" variable="$envVar"/>
+        <return description="Argument value" type="object">
+          <type full="Twilio\Base\?string" namespace="Twilio\Base" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+      <parameter name="arg" byreference="false" nullable="true" type="string"/>
+      <parameter name="envVar" byreference="false" type="string"/>
+    </method>
+    <method name="request" start="116" end="185" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Makes a request to the Twilio API using the configured http client Authentication information is automatically added if none is provided"/>
+        <param description="HTTP Method" type="string" variable="$method"/>
+        <param description="Fully qualified url" type="string" variable="$uri"/>
+        <param description="Query string parameters" type="array" variable="$params" of="object">
+          <type full="Twilio\Base\string" namespace="Twilio\Base" name="string"/>
+        </param>
+        <param description="POST body data" type="array" variable="$data" of="object">
+          <type full="Twilio\Base\string" namespace="Twilio\Base" name="string"/>
+        </param>
+        <param description="HTTP Headers" type="array" variable="$headers" of="object">
+          <type full="Twilio\Base\string" namespace="Twilio\Base" name="string"/>
+        </param>
+        <param description="User for Authentication" type="string" variable="$username"/>
+        <param description="Password for Authentication" type="string" variable="$password"/>
+        <param description="Timeout in seconds" type="int" variable="$timeout"/>
+        <return description="Response from the Twilio API" type="object">
+          <type full="\Twilio\Http\Response" namespace="\Twilio\Http" name="Response"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </return>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="uri" byreference="false" type="string"/>
+      <parameter name="params" byreference="false" type="array" default=""/>
+      <parameter name="data" byreference="false" type="array" default=""/>
+      <parameter name="headers" byreference="false" type="array" default=""/>
+      <parameter name="username" byreference="false" type="string" default="NULL"/>
+      <parameter name="password" byreference="false" type="string" default="NULL"/>
+      <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    </method>
+    <method name="buildUri" start="193" end="218" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Build the final request uri"/>
+        <param description="The original request uri" type="string" variable="$uri"/>
+        <return description="Request uri" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+      <parameter name="uri" byreference="false" type="string"/>
+    </method>
+    <method name="__get" start="227" end="235" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic getter to lazy load domains"/>
+        <param description="Domain to return" type="string" variable="$name"/>
+        <return description="The requested domain" type="object">
+          <type full="\Twilio\Domain" namespace="\Twilio" name="Domain"/>
+        </return>
+        <throws description="For unknown domains" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+    </method>
+    <method name="__call" start="245" end="253" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Magic call to lazy load contexts"/>
+        <param description="Context to return" type="string" variable="$name"/>
+        <param description="Context to return" type="array" variable="$arguments" of="object">
+          <type full="Twilio\Base\mixed" namespace="Twilio\Base" name="mixed"/>
+        </param>
+        <return description="The requested context" type="object">
+          <type full="\Twilio\InstanceContext" namespace="\Twilio" name="InstanceContext"/>
+        </return>
+        <throws description="For unknown contexts" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <parameter name="name" byreference="false" type="string"/>
+      <parameter name="arguments" byreference="false" type="array"/>
+    </method>
+    <method name="__toString" start="260" end="263" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Provide a friendly representation"/>
+        <return description="Machine friendly representation" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="validateSslCertificate" start="271" end="278" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Validates connection to new SSL certificate endpoint"/>
+        <param type="object" variable="$client">
+          <type full="Twilio\Http\CurlClient" namespace="Twilio\Http" name="CurlClient"/>
+        </param>
+        <throws description="if request fails" type="object">
+          <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+        </throws>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="client" byreference="false" type="object">
+        <type full="Twilio\Http\CurlClient" namespace="Twilio\Http" name="CurlClient"/>
+      </parameter>
+    </method>
+    <method name="getAccount" start="284" end="287" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description/>
+        <return description="Account provided as the" type="object">authenticating account<type full="\Twilio\Rest\Api\V2010\AccountContext" namespace="\Twilio\Rest\Api\V2010" name="AccountContext"/></return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Rest\Api\V2010\AccountContext" namespace="Twilio\Rest\Api\V2010" name="AccountContext"/>
+      </return>
+    </method>
+    <method name="getUsername" start="294" end="297" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the Username"/>
+        <return description="Current Username" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getPassword" start="304" end="307" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the Password"/>
+        <return description="Current Password" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getAccountSid" start="314" end="317" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the AccountSid"/>
+        <return description="Current AccountSid" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getRegion" start="324" end="327" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the Region"/>
+        <return description="Current Region" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="getEdge" start="334" end="337" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the Edge"/>
+        <return description="Current Edge" type="string"/>
+      </docblock>
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="setEdge" start="344" end="347" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set Edge"/>
+        <param description="Edge to use, unsets the Edge when called with no arguments" type="string" variable="$uri"/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="edge" byreference="false" type="string" default="NULL"/>
+    </method>
+    <method name="getHttpClient" start="354" end="357" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the HttpClient"/>
+        <return description="Current HttpClient" type="object">
+          <type full="Twilio\Http\Client" namespace="Twilio\Http" name="Client"/>
+        </return>
+      </docblock>
+      <return type="object" nullable="false">
+        <type full="Twilio\Http\Client" namespace="Twilio\Http" name="Client"/>
+      </return>
+    </method>
+    <method name="setHttpClient" start="364" end="367" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set the HttpClient"/>
+        <param description="HttpClient to use" type="object" variable="$httpClient">
+          <type full="Twilio\Http\Client" namespace="Twilio\Http" name="Client"/>
+        </param>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="httpClient" byreference="false" type="object">
+        <type full="Twilio\Http\Client" namespace="Twilio\Http" name="Client"/>
+      </parameter>
+    </method>
+    <method name="getLogLevel" start="374" end="377" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve the log level"/>
+        <return description="Current log level" type="object">
+          <type full="Twilio\Base\?string" namespace="Twilio\Base" name="?string"/>
+        </return>
+      </docblock>
+      <return type="string" nullable="true"/>
+    </method>
+    <method name="setLogLevel" start="384" end="387" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Set log level to debug"/>
+        <param description="log level to use" type="string" variable="$logLevel"/>
+      </docblock>
+      <return type="void" nullable="false"/>
+      <parameter name="logLevel" byreference="false" type="string" default="NULL"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\User\UserChannelContext" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserChannelContext" abstract="false" final="false" start="28" end="148">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/User" file="UserChannelContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/User/UserChannelContext.php" size="4561" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="85926e4a6ac5dbac988070ce8f00ad4659dc72c6" relative="Twilio/Rest/Chat/V2/Service/User/UserChannelContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="38" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the UserChannelContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Service](https://www.twilio.com/docs/api/chat/rest/services) to read the resources from." type="string" variable="$serviceSid"/>
+      <param description="The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from." type="string" variable="$userSid"/>
+      <param description="The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource belongs to." type="string" variable="$channelSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="serviceSid" byreference="false" type="{unknown}"/>
+    <parameter name="userSid" byreference="false" type="{unknown}"/>
+    <parameter name="channelSid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="46"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="69" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the UserChannelInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Chat\V2\Service\User\array|Options" namespace="Twilio\Rest\Chat\V2\Service\User" name="array|Options"/>
+      </param>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\User\bool" namespace="Twilio\Rest\Chat\V2\Service\User" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="fetch" start="85" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the UserChannelInstance"/>
+      <return description="Fetched UserChannelInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\User\UserChannelInstance" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserChannelInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\User\UserChannelInstance" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserChannelInstance"/>
+    </return>
+  </method>
+  <method name="update" start="108" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the UserChannelInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Chat\V2\Service\User\array|Options" namespace="Twilio\Rest\Chat\V2\Service\User" name="array|Options"/>
+      </param>
+      <return description="Updated UserChannelInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\User\UserChannelInstance" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserChannelInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\User\UserChannelInstance" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserChannelInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="140" end="147" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

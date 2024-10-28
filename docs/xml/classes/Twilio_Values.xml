@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Values" namespace="Twilio" name="Values" abstract="false" final="false" start="7" end="98">
+  <file path="/twilio/repos/php/src/Twilio" file="Values.php" realpath="/twilio/repos/php/src/Twilio/Values.php" size="2733" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="0f208a0435f5bffea88dc0fca698461c5e6a1002" relative="Twilio/Values.php"/>
+  <implements full="ArrayAccess" namespace="" name="ArrayAccess"/>
+  <constant type="string" name="NONE" value="'Twilio\\Values\\NONE'"/>
+  <constant type="array" name="ARRAY_NONE" value=""/>
+  <constant type="integer" name="INT_NONE" value="0"/>
+  <constant type="boolean" name="BOOL_NONE" value="false"/>
+  <member name="options" visibility="protected" static="false" line="12"/>
+  <member name="noneConstants" default="" type="array" visibility="private" static="true" line="13"/>
+  <method name="array_get" start="15" end="20" abstract="false" final="false" static="true" visibility="public">
+    <parameter name="array" byreference="false" type="array"/>
+    <parameter name="key" byreference="false" type="string"/>
+    <parameter name="default" byreference="false" type="string" default="NULL"/>
+  </method>
+  <method name="of" start="22" end="30" abstract="false" final="false" static="true" visibility="public">
+    <return type="array" nullable="false"/>
+    <parameter name="array" byreference="false" type="array"/>
+  </method>
+  <constructor name="__construct" start="32" end="37" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="options" byreference="false" type="array"/>
+  </constructor>
+  <method name="offsetExists" start="51" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Whether a offset exists"/>
+      <link value="http://php.net/manual/en/arrayaccess.offsetexists.php"/>
+      <param description="&lt;p&gt;" type="mixed" variable="$offset">An offset to check for.
+&lt;/p&gt;</param>
+      <return description="true on success or false on failure." type="object">&lt;/p&gt;
+&lt;p&gt;
+The return value will be casted to boolean if non-boolean was returned.<type full="Twilio\bool" namespace="Twilio" name="bool"/></return>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="offset" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="offsetGet" start="64" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Offset to retrieve"/>
+      <link value="http://php.net/manual/en/arrayaccess.offsetget.php"/>
+      <param description="&lt;p&gt;" type="mixed" variable="$offset">The offset to retrieve.
+&lt;/p&gt;</param>
+      <return description="Can return all value types." type="mixed"/>
+    </docblock>
+    <parameter name="offset" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="offsetSet" start="82" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Offset to set"/>
+      <link value="http://php.net/manual/en/arrayaccess.offsetset.php"/>
+      <param description="&lt;p&gt;" type="mixed" variable="$offset">The offset to assign the value to.
+&lt;/p&gt;</param>
+      <param description="&lt;p&gt;" type="mixed" variable="$value">The value to set.
+&lt;/p&gt;</param>
+      <return type="object">
+        <type full="Twilio\void" namespace="Twilio" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="offset" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="offsetUnset" start="95" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="(PHP 5 &amp;gt;= 5.0.0)&lt;br/&gt; Offset to unset"/>
+      <link value="http://php.net/manual/en/arrayaccess.offsetunset.php"/>
+      <param description="&lt;p&gt;" type="mixed" variable="$offset">The offset to unset.
+&lt;/p&gt;</param>
+      <return type="object">
+        <type full="Twilio\void" namespace="Twilio" name="void"/>
+      </return>
+    </docblock>
+    <return type="void" nullable="false"/>
+    <parameter name="offset" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="ArrayAccess" namespace="" name="ArrayAccess">
+    <method name="offsetExists" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Whether an offset exists">Whether or not an offset exists.</description>
+      <return type="bool"/>
+    </docblock>
+    <parameter name="offset" optional="false" byreference="false" type="object" class="mixed"/>
+  </method>
+    <method name="offsetGet" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Offset to retrieve">Returns the value at specified offset.</description>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="offset" optional="false" byreference="false" type="object" class="mixed"/>
+  </method>
+    <method name="offsetSet" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Assign a value to the specified offset"/>
+      <return type="void"/>
+    </docblock>
+    <parameter name="offset" optional="false" byreference="false" type="object" class="mixed"/>
+    <parameter name="value" optional="false" byreference="false" type="object" class="mixed"/>
+  </method>
+    <method name="offsetUnset" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Unset an offset">Unsets an offset.</description>
+      <return type="void"/>
+    </docblock>
+    <parameter name="offset" optional="false" byreference="false" type="object" class="mixed"/>
+  </method>
+  </interface>
+</class>

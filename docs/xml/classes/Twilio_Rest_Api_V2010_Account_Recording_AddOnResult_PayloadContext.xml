@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadContext" namespace="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult" name="PayloadContext" abstract="false" final="false" start="32" end="176">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Recording/AddOnResult" file="PayloadContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Recording/AddOnResult/PayloadContext.php" size="5354" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="b7bd7cf4e73b5443be804cef659ee7111492d696" relative="Twilio/Rest/Api/V2010/Account/Recording/AddOnResult/PayloadContext.php"/>
+  <docblock>
+    <description/>
+    <property value="DataList $data"/>
+    <method value="\Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\Payload\DataContext data()"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_data" visibility="protected" static="false" line="34"/>
+  <constructor name="__construct" start="45" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the PayloadContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to delete." type="string" variable="$accountSid"/>
+      <param description="The SID of the recording to which the AddOnResult resource that contains the payloads to delete belongs." type="string" variable="$referenceSid"/>
+      <param description="The SID of the AddOnResult to which the payloads to delete belongs." type="string" variable="$addOnResultSid"/>
+      <param description="The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="accountSid" byreference="false" type="{unknown}"/>
+    <parameter name="referenceSid" byreference="false" type="{unknown}"/>
+    <parameter name="addOnResultSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="54"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="79" end="84" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the PayloadInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\bool" namespace="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="93" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the PayloadInstance"/>
+      <return description="Fetched PayloadInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadInstance" namespace="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult" name="PayloadInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\PayloadInstance" namespace="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult" name="PayloadInstance"/>
+    </return>
+  </method>
+  <method name="getData" start="113" end="126" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the data"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\Payload\DataList" namespace="Twilio\Rest\Api\V2010\Account\Recording\AddOnResult\Payload" name="DataList"/>
+    </return>
+  </method>
+  <method name="__get" start="135" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="153" end="161" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="168" end="175" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\Channel\InviteOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="InviteOptions" abstract="true" final="false" start="21" end="55">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/Channel" file="InviteOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/Channel/InviteOptions.php" size="3996" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="b1d44939b885ecad4dcef6b02d9b6f0d54feb494" relative="Twilio/Rest/Chat/V2/Service/Channel/InviteOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the new member." type="string" variable="$roleSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateInviteOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateInviteOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateInviteOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateInviteOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="44" end="53" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more details." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\string" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="string"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\ReadInviteOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="ReadInviteOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\ReadInviteOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="ReadInviteOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+</class>

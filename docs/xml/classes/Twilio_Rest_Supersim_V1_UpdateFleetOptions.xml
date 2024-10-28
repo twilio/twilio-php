@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions" abstract="false" final="false" start="290" end="415">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="FleetOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/FleetOptions.php" size="22136" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="316166da6413b91d83a5cd55300afdf47b1fc40f" relative="Twilio/Rest/Supersim/V1/FleetOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="301" end="319" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <param description="The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to." type="string" variable="$networkAccessProfile"/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$ipCommandsUrl"/>
+      <param description="A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$ipCommandsMethod"/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$smsCommandsUrl"/>
+      <param description="A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$smsCommandsMethod"/>
+      <param description="The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000)." type="int" variable="$dataLimit"/>
+    </docblock>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="networkAccessProfile" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ipCommandsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ipCommandsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsCommandsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsCommandsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dataLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </constructor>
+  <method name="setUniqueName" start="327" end="331" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource."/>
+      <param description="An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource." type="string" variable="$uniqueName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="string"/>
+  </method>
+  <method name="setNetworkAccessProfile" start="339" end="343" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to."/>
+      <param description="The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to." type="string" variable="$networkAccessProfile"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="networkAccessProfile" byreference="false" type="string"/>
+  </method>
+  <method name="setIpCommandsUrl" start="351" end="355" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored."/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$ipCommandsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="ipCommandsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setIpCommandsMethod" start="363" end="367" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`."/>
+      <param description="A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$ipCommandsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="ipCommandsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsCommandsUrl" start="375" end="379" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored."/>
+      <param description="The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored." type="string" variable="$smsCommandsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="smsCommandsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsCommandsMethod" start="387" end="391" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`."/>
+      <param description="A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`." type="string" variable="$smsCommandsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="smsCommandsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setDataLimit" start="399" end="403" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000)."/>
+      <param description="The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000)." type="int" variable="$dataLimit"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\UpdateFleetOptions" namespace="Twilio\Rest\Supersim\V1" name="UpdateFleetOptions"/>
+    </return>
+    <parameter name="dataLimit" byreference="false" type="int"/>
+  </method>
+  <method name="__toString" start="410" end="414" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

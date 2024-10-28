@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions" abstract="false" final="false" start="57" end="167">
+  <file path="/twilio/repos/php/src/Twilio/Rest/FlexApi/V2" file="FlexUserOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/FlexApi/V2/FlexUserOptions.php" size="4690" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="845271056a75d3d7d71897e0172838f68f7ae236" relative="Twilio/Rest/FlexApi/V2/FlexUserOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="67" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="First name of the User." type="string" variable="$firstName"/>
+      <param description="Last name of the User." type="string" variable="$lastName"/>
+      <param description="Email of the User." type="string" variable="$email"/>
+      <param description="Friendly name of the User." type="string" variable="$friendlyName"/>
+      <param description="The unique SID identifier of the Twilio Unified User." type="string" variable="$userSid"/>
+      <param description="The locale preference of the user." type="string" variable="$locale"/>
+    </docblock>
+    <parameter name="firstName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="userSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="locale" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setFirstName" start="91" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="First name of the User."/>
+      <param description="First name of the User." type="string" variable="$firstName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\$this" namespace="Twilio\Rest\FlexApi\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="firstName" byreference="false" type="string"/>
+  </method>
+  <method name="setLastName" start="103" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Last name of the User."/>
+      <param description="Last name of the User." type="string" variable="$lastName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\$this" namespace="Twilio\Rest\FlexApi\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="lastName" byreference="false" type="string"/>
+  </method>
+  <method name="setEmail" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Email of the User."/>
+      <param description="Email of the User." type="string" variable="$email"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\$this" namespace="Twilio\Rest\FlexApi\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="email" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="127" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Friendly name of the User."/>
+      <param description="Friendly name of the User." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\$this" namespace="Twilio\Rest\FlexApi\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setUserSid" start="139" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The unique SID identifier of the Twilio Unified User."/>
+      <param description="The unique SID identifier of the Twilio Unified User." type="string" variable="$userSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\$this" namespace="Twilio\Rest\FlexApi\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="userSid" byreference="false" type="string"/>
+  </method>
+  <method name="setLocale" start="151" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The locale preference of the user."/>
+      <param description="The locale preference of the user." type="string" variable="$locale"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\FlexApi\V2\$this" namespace="Twilio\Rest\FlexApi\V2" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\FlexApi\V2\UpdateFlexUserOptions" namespace="Twilio\Rest\FlexApi\V2" name="UpdateFlexUserOptions"/>
+    </return>
+    <parameter name="locale" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="162" end="166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

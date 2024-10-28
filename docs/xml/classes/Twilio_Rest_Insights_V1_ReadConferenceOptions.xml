@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions" abstract="false" final="false" start="69" end="239">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Insights/V1" file="ConferenceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Insights/V1/ConferenceOptions.php" size="8636" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="4cf7a2c4bb04b7262b2c70c94a4ccc5c1f3c909d" relative="Twilio/Rest/Insights/V1/ConferenceOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="83" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the conference." type="string" variable="$conferenceSid"/>
+      <param description="Custom label for the conference resource, up to 64 characters." type="string" variable="$friendlyName"/>
+      <param description="Conference status." type="string" variable="$status"/>
+      <param description="Conferences created after the provided timestamp specified in ISO 8601 format" type="string" variable="$createdAfter"/>
+      <param description="Conferences created before the provided timestamp specified in ISO 8601 format." type="string" variable="$createdBefore"/>
+      <param description="Twilio region where the conference media was mixed." type="string" variable="$mixerRegion"/>
+      <param description="Tags applied by Twilio for common potential configuration, quality, or performance issues." type="string" variable="$tags"/>
+      <param description="Account SID for the subaccount whose resources you wish to retrieve." type="string" variable="$subaccount"/>
+      <param description="Potential configuration, behavior, or performance issues detected during the conference." type="string" variable="$detectedIssues"/>
+      <param description="Conference end reason; e.g. last participant left, modified by API, etc." type="string" variable="$endReason"/>
+    </docblock>
+    <parameter name="conferenceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="createdAfter" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="createdBefore" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mixerRegion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="tags" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="subaccount" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="detectedIssues" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="endReason" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setConferenceSid" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the conference."/>
+      <param description="The SID of the conference." type="string" variable="$conferenceSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="conferenceSid" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="127" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Custom label for the conference resource, up to 64 characters."/>
+      <param description="Custom label for the conference resource, up to 64 characters." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setStatus" start="139" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Conference status."/>
+      <param description="Conference status." type="string" variable="$status"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="string"/>
+  </method>
+  <method name="setCreatedAfter" start="151" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Conferences created after the provided timestamp specified in ISO 8601 format"/>
+      <param description="Conferences created after the provided timestamp specified in ISO 8601 format" type="string" variable="$createdAfter"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="createdAfter" byreference="false" type="string"/>
+  </method>
+  <method name="setCreatedBefore" start="163" end="167" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Conferences created before the provided timestamp specified in ISO 8601 format."/>
+      <param description="Conferences created before the provided timestamp specified in ISO 8601 format." type="string" variable="$createdBefore"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="createdBefore" byreference="false" type="string"/>
+  </method>
+  <method name="setMixerRegion" start="175" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Twilio region where the conference media was mixed."/>
+      <param description="Twilio region where the conference media was mixed." type="string" variable="$mixerRegion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="mixerRegion" byreference="false" type="string"/>
+  </method>
+  <method name="setTags" start="187" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tags applied by Twilio for common potential configuration, quality, or performance issues."/>
+      <param description="Tags applied by Twilio for common potential configuration, quality, or performance issues." type="string" variable="$tags"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="tags" byreference="false" type="string"/>
+  </method>
+  <method name="setSubaccount" start="199" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Account SID for the subaccount whose resources you wish to retrieve."/>
+      <param description="Account SID for the subaccount whose resources you wish to retrieve." type="string" variable="$subaccount"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="subaccount" byreference="false" type="string"/>
+  </method>
+  <method name="setDetectedIssues" start="211" end="215" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Potential configuration, behavior, or performance issues detected during the conference."/>
+      <param description="Potential configuration, behavior, or performance issues detected during the conference." type="string" variable="$detectedIssues"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="detectedIssues" byreference="false" type="string"/>
+  </method>
+  <method name="setEndReason" start="223" end="227" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Conference end reason; e.g. last participant left, modified by API, etc."/>
+      <param description="Conference end reason; e.g. last participant left, modified by API, etc." type="string" variable="$endReason"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Insights\V1\$this" namespace="Twilio\Rest\Insights\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ReadConferenceOptions" namespace="Twilio\Rest\Insights\V1" name="ReadConferenceOptions"/>
+    </return>
+    <parameter name="endReason" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="234" end="238" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

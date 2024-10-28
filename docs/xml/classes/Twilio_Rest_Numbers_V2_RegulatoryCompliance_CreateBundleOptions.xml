@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions" abstract="false" final="false" start="126" end="234">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance" file="BundleOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/BundleOptions.php" size="22117" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="6d3a77d1c2d336281f414f8512db4a78b5fc0692" relative="Twilio/Rest/Numbers/V2/RegulatoryCompliance/BundleOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="136" end="152" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we call to inform your application of status changes." type="string" variable="$statusCallback"/>
+      <param description="The unique string of a regulation that is associated to the Bundle resource." type="string" variable="$regulationSid"/>
+      <param description="The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request." type="string" variable="$isoCountry"/>
+      <param type="string" variable="$endUserType"/>
+      <param description="The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`." type="string" variable="$numberType"/>
+      <param description="Indicates that Bundle is a Test Bundle and will be Auto-Rejected" type="object" variable="$isTest">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\bool" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="regulationSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="isoCountry" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="endUserType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="numberType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="isTest" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setStatusCallback" start="160" end="164" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we call to inform your application of status changes."/>
+      <param description="The URL we call to inform your application of status changes." type="string" variable="$statusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setRegulationSid" start="172" end="176" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The unique string of a regulation that is associated to the Bundle resource."/>
+      <param description="The unique string of a regulation that is associated to the Bundle resource." type="string" variable="$regulationSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions"/>
+    </return>
+    <parameter name="regulationSid" byreference="false" type="string"/>
+  </method>
+  <method name="setIsoCountry" start="184" end="188" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request."/>
+      <param description="The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Bundle's phone number country ownership request." type="string" variable="$isoCountry"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions"/>
+    </return>
+    <parameter name="isoCountry" byreference="false" type="string"/>
+  </method>
+  <method name="setEndUserType" start="194" end="198" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$endUserType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions"/>
+    </return>
+    <parameter name="endUserType" byreference="false" type="string"/>
+  </method>
+  <method name="setNumberType" start="206" end="210" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`."/>
+      <param description="The type of phone number of the Bundle's ownership request. Can be `local`, `mobile`, `national`, or `toll-free`." type="string" variable="$numberType"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions"/>
+    </return>
+    <parameter name="numberType" byreference="false" type="string"/>
+  </method>
+  <method name="setIsTest" start="218" end="222" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Indicates that Bundle is a Test Bundle and will be Auto-Rejected"/>
+      <param description="Indicates that Bundle is a Test Bundle and will be Auto-Rejected" type="object" variable="$isTest">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\bool" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\CreateBundleOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="CreateBundleOptions"/>
+    </return>
+    <parameter name="isTest" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="229" end="233" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

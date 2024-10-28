@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\User\UserConversationOptions" namespace="Twilio\Rest\Conversations\V1\User" name="UserConversationOptions" abstract="true" final="false" start="21" end="47">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/User" file="UserConversationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/User/UserConversationOptions.php" size="3717" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="741dceb82135f824aa7243ec29910437916312ef" relative="Twilio/Rest/Conversations/V1/User/UserConversationOptions.php"/>
+  <method name="update" start="32" end="45" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$notificationLevel"/>
+      <param description="The date of the last message read in conversation by the user, given in ISO 8601 format." type="object" variable="$lastReadTimestamp">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The index of the last Message in the Conversation that the Participant has read." type="int" variable="$lastReadMessageIndex"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\User\UpdateUserConversationOptions" namespace="Twilio\Rest\Conversations\V1\User" name="UpdateUserConversationOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\User\UpdateUserConversationOptions" namespace="Twilio\Rest\Conversations\V1\User" name="UpdateUserConversationOptions"/>
+    </return>
+    <parameter name="notificationLevel" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="lastReadTimestamp" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="lastReadMessageIndex" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </method>
+</class>

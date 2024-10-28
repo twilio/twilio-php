@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\Transcript\ReadOperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="ReadOperatorResultOptions" abstract="false" final="false" start="92" end="127">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript" file="OperatorResultOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript/OperatorResultOptions.php" size="3854" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="24f4a0de36876a94a537b3317d892fc3d023e558" relative="Twilio/Rest/Intelligence/V2/Transcript/OperatorResultOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="97" end="103" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True." type="object" variable="$redacted">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="redacted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setRedacted" start="111" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True."/>
+      <param description="Grant access to PII redacted/unredacted Language Understanding operator. If redaction is enabled, the default is True." type="object" variable="$redacted">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\$this" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\Transcript\ReadOperatorResultOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="ReadOperatorResultOptions"/>
+    </return>
+    <parameter name="redacted" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="122" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

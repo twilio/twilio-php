@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\UpdateWorkerChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="UpdateWorkerChannelOptions" abstract="false" final="false" start="47" end="97">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Worker" file="WorkerChannelOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Worker/WorkerChannelOptions.php" size="3711" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="01fdda251b77784653f4c898163b91169dc3ac65" relative="Twilio/Rest/Taskrouter/V1/Workspace/Worker/WorkerChannelOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="53" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created." type="int" variable="$capacity"/>
+      <param description="Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type." type="object" variable="$available">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="capacity" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="available" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setCapacity" start="69" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created."/>
+      <param description="The total number of Tasks that the Worker should handle for the TaskChannel type. TaskRouter creates reservations for Tasks of this TaskChannel type up to the specified capacity. If the capacity is 0, no new reservations will be created." type="int" variable="$capacity"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\UpdateWorkerChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="UpdateWorkerChannelOptions"/>
+    </return>
+    <parameter name="capacity" byreference="false" type="int"/>
+  </method>
+  <method name="setAvailable" start="81" end="85" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type."/>
+      <param description="Whether the WorkerChannel is available. Set to `false` to prevent the Worker from receiving any new Tasks of this TaskChannel type." type="object" variable="$available">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\UpdateWorkerChannelOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="UpdateWorkerChannelOptions"/>
+    </return>
+    <parameter name="available" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="92" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

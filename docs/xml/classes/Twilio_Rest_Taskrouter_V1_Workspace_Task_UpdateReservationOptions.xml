@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions" abstract="false" final="false" start="274" end="1115">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Task" file="ReservationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Task/ReservationOptions.php" size="57677" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="dc80ede953878c8ccd351696b76d038481a6bf0c" relative="Twilio/Rest/Taskrouter/V1/Workspace/Task/ReservationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="333" end="447" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$reservationStatus"/>
+      <param description="The new worker activity SID if rejecting a reservation." type="string" variable="$workerActivitySid"/>
+      <param description="The assignment instruction for reservation." type="string" variable="$instruction"/>
+      <param description="The SID of the Activity resource to start after executing a Dequeue instruction." type="string" variable="$dequeuePostWorkActivitySid"/>
+      <param description="The Caller ID of the call to the worker when executing a Dequeue instruction." type="string" variable="$dequeueFrom"/>
+      <param description="Whether to record both legs of a call when executing a Dequeue instruction or which leg to record." type="string" variable="$dequeueRecord"/>
+      <param description="Timeout for call when executing a Dequeue instruction." type="int" variable="$dequeueTimeout"/>
+      <param description="The Contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination." type="string" variable="$dequeueTo"/>
+      <param description="The Callback URL for completed call event when executing a Dequeue instruction." type="string" variable="$dequeueStatusCallbackUrl"/>
+      <param description="The Caller ID of the outbound call when executing a Call instruction." type="string" variable="$callFrom"/>
+      <param description="Whether to record both legs of a call when executing a Call instruction or which leg to record." type="string" variable="$callRecord"/>
+      <param description="Timeout for call when executing a Call instruction." type="int" variable="$callTimeout"/>
+      <param description="The Contact URI of the worker when executing a Call instruction.  Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination." type="string" variable="$callTo"/>
+      <param description="TwiML URI executed on answering the worker's leg as a result of the Call instruction." type="string" variable="$callUrl"/>
+      <param description="The URL to call  for the completed call event when executing a Call instruction." type="string" variable="$callStatusCallbackUrl"/>
+      <param description="Whether to accept a reservation when executing a Call instruction." type="object" variable="$callAccept">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="The Call SID of the call parked in the queue when executing a Redirect instruction." type="string" variable="$redirectCallSid"/>
+      <param description="Whether the reservation should be accepted when executing a Redirect instruction." type="object" variable="$redirectAccept">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="TwiML URI to redirect the call to when executing the Redirect instruction." type="string" variable="$redirectUrl"/>
+      <param description="The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination." type="string" variable="$to"/>
+      <param description="The Caller ID of the call to the worker when executing a Conference instruction." type="string" variable="$from"/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`." type="string" variable="$statusCallbackMethod"/>
+      <param description="The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`." type="string" variable="$statusCallbackEvent"/>
+      <param description="Timeout for call when executing a Conference instruction." type="int" variable="$timeout"/>
+      <param description="Whether to record the participant and their conferences, including the time between conferences. The default is `false`." type="object" variable="$record">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="Whether the agent is muted in the conference. The default is `false`." type="object" variable="$muted">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`." type="string" variable="$beep"/>
+      <param description="Whether to start the conference when the participant joins, if it has not already started. The default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference." type="object" variable="$startConferenceOnEnter">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="Whether to end the conference when the agent leaves." type="object" variable="$endConferenceOnExit">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic)." type="string" variable="$waitUrl"/>
+      <param description="The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file." type="string" variable="$waitMethod"/>
+      <param description="Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`." type="object" variable="$earlyMedia">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`." type="int" variable="$maxParticipants"/>
+      <param description="The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored." type="string" variable="$conferenceStatusCallback"/>
+      <param description="The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$conferenceStatusCallbackMethod"/>
+      <param description="The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`." type="string" variable="$conferenceStatusCallbackEvent"/>
+      <param description="Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`." type="string" variable="$conferenceRecord"/>
+      <param description="How to trim the leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`." type="string" variable="$conferenceTrim"/>
+      <param description="The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`." type="string" variable="$recordingChannels"/>
+      <param description="The URL that we should call using the `recording_status_callback_method` when the recording status changes." type="string" variable="$recordingStatusCallback"/>
+      <param description="The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$recordingStatusCallbackMethod"/>
+      <param description="The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available." type="string" variable="$conferenceRecordingStatusCallback"/>
+      <param description="The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$conferenceRecordingStatusCallbackMethod"/>
+      <param description="The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`." type="string" variable="$region"/>
+      <param description="The SIP username used for authentication." type="string" variable="$sipAuthUsername"/>
+      <param description="The SIP password for authentication." type="string" variable="$sipAuthPassword"/>
+      <param description="The Call progress events sent via webhooks as a result of a Dequeue instruction." type="array" variable="$dequeueStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\string" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="string"/>
+      </param>
+      <param description="The new worker activity SID after executing a Conference instruction." type="string" variable="$postWorkActivitySid"/>
+      <param type="string" variable="$supervisorMode"/>
+      <param description="The Supervisor SID/URI when executing the Supervise instruction." type="string" variable="$supervisor"/>
+      <param description="Whether to end the conference when the customer leaves." type="object" variable="$endConferenceOnCustomerExit">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="Whether to play a notification beep when the customer joins." type="object" variable="$beepOnCustomerEntrance">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <param description="The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`." type="string" variable="$jitterBufferSize"/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+    </docblock>
+    <parameter name="reservationStatus" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="workerActivitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="instruction" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dequeuePostWorkActivitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dequeueFrom" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dequeueRecord" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dequeueTimeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="dequeueTo" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dequeueStatusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callFrom" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callRecord" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callTimeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="callTo" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callStatusCallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callAccept" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="redirectCallSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="redirectAccept" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="redirectUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="to" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="from" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="timeout" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="record" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="muted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="beep" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="startConferenceOnEnter" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="endConferenceOnExit" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="waitUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="waitMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="earlyMedia" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="maxParticipants" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="conferenceStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceStatusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="conferenceRecord" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceTrim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingChannels" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="recordingStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceRecordingStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="conferenceRecordingStatusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="region" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sipAuthUsername" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sipAuthPassword" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dequeueStatusCallbackEvent" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="postWorkActivitySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="supervisorMode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="supervisor" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="endConferenceOnCustomerExit" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="beepOnCustomerEntrance" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="jitterBufferSize" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setReservationStatus" start="453" end="457" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$reservationStatus"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="reservationStatus" byreference="false" type="string"/>
+  </method>
+  <method name="setWorkerActivitySid" start="465" end="469" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The new worker activity SID if rejecting a reservation."/>
+      <param description="The new worker activity SID if rejecting a reservation." type="string" variable="$workerActivitySid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="workerActivitySid" byreference="false" type="string"/>
+  </method>
+  <method name="setInstruction" start="477" end="481" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The assignment instruction for reservation."/>
+      <param description="The assignment instruction for reservation." type="string" variable="$instruction"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="instruction" byreference="false" type="string"/>
+  </method>
+  <method name="setDequeuePostWorkActivitySid" start="489" end="493" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Activity resource to start after executing a Dequeue instruction."/>
+      <param description="The SID of the Activity resource to start after executing a Dequeue instruction." type="string" variable="$dequeuePostWorkActivitySid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeuePostWorkActivitySid" byreference="false" type="string"/>
+  </method>
+  <method name="setDequeueFrom" start="501" end="505" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Caller ID of the call to the worker when executing a Dequeue instruction."/>
+      <param description="The Caller ID of the call to the worker when executing a Dequeue instruction." type="string" variable="$dequeueFrom"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeueFrom" byreference="false" type="string"/>
+  </method>
+  <method name="setDequeueRecord" start="513" end="517" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to record both legs of a call when executing a Dequeue instruction or which leg to record."/>
+      <param description="Whether to record both legs of a call when executing a Dequeue instruction or which leg to record." type="string" variable="$dequeueRecord"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeueRecord" byreference="false" type="string"/>
+  </method>
+  <method name="setDequeueTimeout" start="525" end="529" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Timeout for call when executing a Dequeue instruction."/>
+      <param description="Timeout for call when executing a Dequeue instruction." type="int" variable="$dequeueTimeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeueTimeout" byreference="false" type="int"/>
+  </method>
+  <method name="setDequeueTo" start="537" end="541" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination."/>
+      <param description="The Contact URI of the worker when executing a Dequeue instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination." type="string" variable="$dequeueTo"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeueTo" byreference="false" type="string"/>
+  </method>
+  <method name="setDequeueStatusCallbackUrl" start="549" end="553" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Callback URL for completed call event when executing a Dequeue instruction."/>
+      <param description="The Callback URL for completed call event when executing a Dequeue instruction." type="string" variable="$dequeueStatusCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeueStatusCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCallFrom" start="561" end="565" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Caller ID of the outbound call when executing a Call instruction."/>
+      <param description="The Caller ID of the outbound call when executing a Call instruction." type="string" variable="$callFrom"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callFrom" byreference="false" type="string"/>
+  </method>
+  <method name="setCallRecord" start="573" end="577" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to record both legs of a call when executing a Call instruction or which leg to record."/>
+      <param description="Whether to record both legs of a call when executing a Call instruction or which leg to record." type="string" variable="$callRecord"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callRecord" byreference="false" type="string"/>
+  </method>
+  <method name="setCallTimeout" start="585" end="589" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Timeout for call when executing a Call instruction."/>
+      <param description="Timeout for call when executing a Call instruction." type="int" variable="$callTimeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callTimeout" byreference="false" type="int"/>
+  </method>
+  <method name="setCallTo" start="597" end="601" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Contact URI of the worker when executing a Call instruction.  Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination."/>
+      <param description="The Contact URI of the worker when executing a Call instruction.  Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination." type="string" variable="$callTo"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callTo" byreference="false" type="string"/>
+  </method>
+  <method name="setCallUrl" start="609" end="613" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="TwiML URI executed on answering the worker's leg as a result of the Call instruction."/>
+      <param description="TwiML URI executed on answering the worker's leg as a result of the Call instruction." type="string" variable="$callUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCallStatusCallbackUrl" start="621" end="625" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL to call  for the completed call event when executing a Call instruction."/>
+      <param description="The URL to call  for the completed call event when executing a Call instruction." type="string" variable="$callStatusCallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callStatusCallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCallAccept" start="633" end="637" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to accept a reservation when executing a Call instruction."/>
+      <param description="Whether to accept a reservation when executing a Call instruction." type="object" variable="$callAccept">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="callAccept" byreference="false" type="bool"/>
+  </method>
+  <method name="setRedirectCallSid" start="645" end="649" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Call SID of the call parked in the queue when executing a Redirect instruction."/>
+      <param description="The Call SID of the call parked in the queue when executing a Redirect instruction." type="string" variable="$redirectCallSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="redirectCallSid" byreference="false" type="string"/>
+  </method>
+  <method name="setRedirectAccept" start="657" end="661" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the reservation should be accepted when executing a Redirect instruction."/>
+      <param description="Whether the reservation should be accepted when executing a Redirect instruction." type="object" variable="$redirectAccept">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="redirectAccept" byreference="false" type="bool"/>
+  </method>
+  <method name="setRedirectUrl" start="669" end="673" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="TwiML URI to redirect the call to when executing the Redirect instruction."/>
+      <param description="TwiML URI to redirect the call to when executing the Redirect instruction." type="string" variable="$redirectUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="redirectUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setTo" start="681" end="685" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination."/>
+      <param description="The Contact URI of the worker when executing a Conference instruction. Can be the URI of the Twilio Client, the SIP URI for Programmable SIP, or the [E.164](https://www.twilio.com/docs/glossary/what-e164) formatted phone number, depending on the destination." type="string" variable="$to"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="to" byreference="false" type="string"/>
+  </method>
+  <method name="setFrom" start="693" end="697" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Caller ID of the call to the worker when executing a Conference instruction."/>
+      <param description="The Caller ID of the call to the worker when executing a Conference instruction." type="string" variable="$from"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="from" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallback" start="705" end="709" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `status_callback_method` to send status information to your application."/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackMethod" start="717" end="721" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`."/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `POST` or `GET` and the default is `POST`." type="string" variable="$statusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="statusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackEvent" start="729" end="733" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`."/>
+      <param description="The call progress events that we will send to `status_callback`. Can be: `initiated`, `ringing`, `answered`, or `completed`." type="string" variable="$statusCallbackEvent"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="statusCallbackEvent" byreference="false" type="array"/>
+  </method>
+  <method name="setTimeout" start="741" end="745" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Timeout for call when executing a Conference instruction."/>
+      <param description="Timeout for call when executing a Conference instruction." type="int" variable="$timeout"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="timeout" byreference="false" type="int"/>
+  </method>
+  <method name="setRecord" start="753" end="757" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to record the participant and their conferences, including the time between conferences. The default is `false`."/>
+      <param description="Whether to record the participant and their conferences, including the time between conferences. The default is `false`." type="object" variable="$record">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="record" byreference="false" type="bool"/>
+  </method>
+  <method name="setMuted" start="765" end="769" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether the agent is muted in the conference. The default is `false`."/>
+      <param description="Whether the agent is muted in the conference. The default is `false`." type="object" variable="$muted">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="muted" byreference="false" type="bool"/>
+  </method>
+  <method name="setBeep" start="777" end="781" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`."/>
+      <param description="Whether to play a notification beep when the participant joins or when to play a beep. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`." type="string" variable="$beep"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="beep" byreference="false" type="string"/>
+  </method>
+  <method name="setStartConferenceOnEnter" start="789" end="793" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to start the conference when the participant joins, if it has not already started. The default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference."/>
+      <param description="Whether to start the conference when the participant joins, if it has not already started. The default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference." type="object" variable="$startConferenceOnEnter">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="startConferenceOnEnter" byreference="false" type="bool"/>
+  </method>
+  <method name="setEndConferenceOnExit" start="801" end="805" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to end the conference when the agent leaves."/>
+      <param description="Whether to end the conference when the agent leaves." type="object" variable="$endConferenceOnExit">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="endConferenceOnExit" byreference="false" type="bool"/>
+  </method>
+  <method name="setWaitUrl" start="813" end="817" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic)."/>
+      <param description="The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic)." type="string" variable="$waitUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="waitUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setWaitMethod" start="825" end="829" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file."/>
+      <param description="The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file." type="string" variable="$waitMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="waitMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setEarlyMedia" start="837" end="841" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`."/>
+      <param description="Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. The default is `true`." type="object" variable="$earlyMedia">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="earlyMedia" byreference="false" type="bool"/>
+  </method>
+  <method name="setMaxParticipants" start="849" end="853" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`."/>
+      <param description="The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`." type="int" variable="$maxParticipants"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="maxParticipants" byreference="false" type="int"/>
+  </method>
+  <method name="setConferenceStatusCallback" start="861" end="865" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored."/>
+      <param description="The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored." type="string" variable="$conferenceStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setConferenceStatusCallbackMethod" start="873" end="877" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$conferenceStatusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceStatusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setConferenceStatusCallbackEvent" start="885" end="889" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`."/>
+      <param description="The conference status events that we will send to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `speaker`." type="string" variable="$conferenceStatusCallbackEvent"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceStatusCallbackEvent" byreference="false" type="array"/>
+  </method>
+  <method name="setConferenceRecord" start="897" end="901" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`."/>
+      <param description="Whether to record the conference the participant is joining or when to record the conference. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`." type="string" variable="$conferenceRecord"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceRecord" byreference="false" type="string"/>
+  </method>
+  <method name="setConferenceTrim" start="909" end="913" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="How to trim the leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`."/>
+      <param description="How to trim the leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`." type="string" variable="$conferenceTrim"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceTrim" byreference="false" type="string"/>
+  </method>
+  <method name="setRecordingChannels" start="921" end="925" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`."/>
+      <param description="The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`." type="string" variable="$recordingChannels"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="recordingChannels" byreference="false" type="string"/>
+  </method>
+  <method name="setRecordingStatusCallback" start="933" end="937" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call using the `recording_status_callback_method` when the recording status changes."/>
+      <param description="The URL that we should call using the `recording_status_callback_method` when the recording status changes." type="string" variable="$recordingStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="recordingStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setRecordingStatusCallbackMethod" start="945" end="949" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$recordingStatusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="recordingStatusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setConferenceRecordingStatusCallback" start="957" end="961" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available."/>
+      <param description="The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available." type="string" variable="$conferenceRecordingStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceRecordingStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setConferenceRecordingStatusCallbackMethod" start="969" end="973" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`."/>
+      <param description="The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`." type="string" variable="$conferenceRecordingStatusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="conferenceRecordingStatusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setRegion" start="981" end="985" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`."/>
+      <param description="The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`." type="string" variable="$region"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="region" byreference="false" type="string"/>
+  </method>
+  <method name="setSipAuthUsername" start="993" end="997" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SIP username used for authentication."/>
+      <param description="The SIP username used for authentication." type="string" variable="$sipAuthUsername"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="sipAuthUsername" byreference="false" type="string"/>
+  </method>
+  <method name="setSipAuthPassword" start="1005" end="1009" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SIP password for authentication."/>
+      <param description="The SIP password for authentication." type="string" variable="$sipAuthPassword"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="sipAuthPassword" byreference="false" type="string"/>
+  </method>
+  <method name="setDequeueStatusCallbackEvent" start="1017" end="1021" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Call progress events sent via webhooks as a result of a Dequeue instruction."/>
+      <param description="The Call progress events sent via webhooks as a result of a Dequeue instruction." type="array" variable="$dequeueStatusCallbackEvent" of="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\string" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="dequeueStatusCallbackEvent" byreference="false" type="array"/>
+  </method>
+  <method name="setPostWorkActivitySid" start="1029" end="1033" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The new worker activity SID after executing a Conference instruction."/>
+      <param description="The new worker activity SID after executing a Conference instruction." type="string" variable="$postWorkActivitySid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="postWorkActivitySid" byreference="false" type="string"/>
+  </method>
+  <method name="setSupervisorMode" start="1039" end="1043" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$supervisorMode"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="supervisorMode" byreference="false" type="string"/>
+  </method>
+  <method name="setSupervisor" start="1051" end="1055" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The Supervisor SID/URI when executing the Supervise instruction."/>
+      <param description="The Supervisor SID/URI when executing the Supervise instruction." type="string" variable="$supervisor"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="supervisor" byreference="false" type="string"/>
+  </method>
+  <method name="setEndConferenceOnCustomerExit" start="1063" end="1067" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to end the conference when the customer leaves."/>
+      <param description="Whether to end the conference when the customer leaves." type="object" variable="$endConferenceOnCustomerExit">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="endConferenceOnCustomerExit" byreference="false" type="bool"/>
+  </method>
+  <method name="setBeepOnCustomerEntrance" start="1075" end="1079" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to play a notification beep when the customer joins."/>
+      <param description="Whether to play a notification beep when the customer joins." type="object" variable="$beepOnCustomerEntrance">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\bool" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="beepOnCustomerEntrance" byreference="false" type="bool"/>
+  </method>
+  <method name="setJitterBufferSize" start="1087" end="1091" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`."/>
+      <param description="The jitter buffer size for conference. Can be: `small`, `medium`, `large`, `off`." type="string" variable="$jitterBufferSize"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="jitterBufferSize" byreference="false" type="string"/>
+  </method>
+  <method name="setIfMatch" start="1099" end="1103" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The If-Match HTTP request header"/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Task\UpdateReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Task" name="UpdateReservationOptions"/>
+    </return>
+    <parameter name="ifMatch" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="1110" end="1114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

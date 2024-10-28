@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\BundleCloneInstance" namespace="Twilio\Rest\Numbers\V2" name="BundleCloneInstance" abstract="false" final="false" start="41" end="138">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2" file="BundleCloneInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/BundleCloneInstance.php" size="4668" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="c63d5c86e7bc3a81d93fcd96cd9c1d501008d8bf" relative="Twilio/Rest/Numbers/V2/BundleCloneInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $bundleSid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $regulationSid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string $status"/>
+    <property value="\DateTime|null $validUntil"/>
+    <property value="string|null $email"/>
+    <property value="string|null $statusCallback"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="50" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the BundleCloneInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Numbers\V2\mixed" namespace="Twilio\Rest\Numbers\V2" name="mixed"/>
+      </param>
+      <param description="The unique string that identifies the Bundle to be cloned." type="string" variable="$bundleSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="bundleSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="54"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="78" end="88" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this BundleCloneInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\BundleCloneContext" namespace="Twilio\Rest\Numbers\V2" name="BundleCloneContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\BundleCloneContext" namespace="Twilio\Rest\Numbers\V2" name="BundleCloneContext"/>
+    </return>
+  </method>
+  <method name="create" start="98" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the BundleCloneInstance"/>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned." type="string" variable="$targetAccountSid"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Numbers\V2\array|Options" namespace="Twilio\Rest\Numbers\V2" name="array|Options"/>
+      </param>
+      <return description="Created BundleCloneInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V2\BundleCloneInstance" namespace="Twilio\Rest\Numbers\V2" name="BundleCloneInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\BundleCloneInstance" namespace="Twilio\Rest\Numbers\V2" name="BundleCloneInstance"/>
+    </return>
+    <parameter name="targetAccountSid" byreference="false" type="string"/>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__get" start="111" end="123" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="130" end="137" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions" abstract="false" final="false" start="88" end="196">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/Channel" file="WebhookOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/Channel/WebhookOptions.php" size="16840" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="3ef9ce5b3acfef5e12ca330eeaad4375abe15b37" relative="Twilio/Rest/Chat/V2/Service/Channel/WebhookOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="98" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL of the webhook to call using the `configuration.method`." type="string" variable="$configurationUrl"/>
+      <param type="string" variable="$configurationMethod"/>
+      <param description="The events that cause us to call the Channel Webhook. Used when `type` is `webhook`. This parameter takes only one event. To specify more than one event, repeat this parameter for each event. For the list of possible events, see [Webhook Event Triggers](https://www.twilio.com/docs/chat/webhook-events#webhook-event-trigger)." type="array" variable="$configurationFilters" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\string" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="string"/>
+      </param>
+      <param description="A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`." type="array" variable="$configurationTriggers" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\string" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="string"/>
+      </param>
+      <param description="The SID of the Studio [Flow](https://www.twilio.com/docs/studio/rest-api/flow) to call when an event in `configuration.filters` occurs. Used only when `type` is `studio`." type="string" variable="$configurationFlowSid"/>
+      <param description="The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0." type="int" variable="$configurationRetryCount"/>
+    </docblock>
+    <parameter name="configurationUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationFilters" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="configurationTriggers" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="configurationFlowSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="configurationRetryCount" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+  </constructor>
+  <method name="setConfigurationUrl" start="122" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL of the webhook to call using the `configuration.method`."/>
+      <param description="The URL of the webhook to call using the `configuration.method`." type="string" variable="$configurationUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\$this" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setConfigurationMethod" start="132" end="136" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$configurationMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\$this" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setConfigurationFilters" start="144" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The events that cause us to call the Channel Webhook. Used when `type` is `webhook`. This parameter takes only one event. To specify more than one event, repeat this parameter for each event. For the list of possible events, see [Webhook Event Triggers](https://www.twilio.com/docs/chat/webhook-events#webhook-event-trigger)."/>
+      <param description="The events that cause us to call the Channel Webhook. Used when `type` is `webhook`. This parameter takes only one event. To specify more than one event, repeat this parameter for each event. For the list of possible events, see [Webhook Event Triggers](https://www.twilio.com/docs/chat/webhook-events#webhook-event-trigger)." type="array" variable="$configurationFilters" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\string" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\$this" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationFilters" byreference="false" type="array"/>
+  </method>
+  <method name="setConfigurationTriggers" start="156" end="160" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`."/>
+      <param description="A string that will cause us to call the webhook when it is present in a message body. This parameter takes only one trigger string. To specify more than one, repeat this parameter for each trigger string up to a total of 5 trigger strings. Used only when `type` = `trigger`." type="array" variable="$configurationTriggers" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\string" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\$this" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationTriggers" byreference="false" type="array"/>
+  </method>
+  <method name="setConfigurationFlowSid" start="168" end="172" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the Studio [Flow](https://www.twilio.com/docs/studio/rest-api/flow) to call when an event in `configuration.filters` occurs. Used only when `type` is `studio`."/>
+      <param description="The SID of the Studio [Flow](https://www.twilio.com/docs/studio/rest-api/flow) to call when an event in `configuration.filters` occurs. Used only when `type` is `studio`." type="string" variable="$configurationFlowSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\$this" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationFlowSid" byreference="false" type="string"/>
+  </method>
+  <method name="setConfigurationRetryCount" start="180" end="184" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0."/>
+      <param description="The number of times to retry the webhook if the first attempt fails. Can be an integer between 0 and 3, inclusive, and the default is 0." type="int" variable="$configurationRetryCount"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\Channel\$this" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\Channel\CreateWebhookOptions" namespace="Twilio\Rest\Chat\V2\Service\Channel" name="CreateWebhookOptions"/>
+    </return>
+    <parameter name="configurationRetryCount" byreference="false" type="int"/>
+  </method>
+  <method name="__toString" start="191" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

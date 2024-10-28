@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Marketplace\V1\InstalledAddOn\InstalledAddOnUsageModels" namespace="Twilio\Rest\Marketplace\V1\InstalledAddOn" name="InstalledAddOnUsageModels" abstract="true" final="false" start="19" end="40">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Marketplace/V1/InstalledAddOn" file="InstalledAddOnUsageModels.php" realpath="/twilio/repos/php/src/Twilio/Rest/Marketplace/V1/InstalledAddOn/InstalledAddOnUsageModels.php" size="3637" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="6f20cf256040bf1ae57f27b374a330b2e656f262" relative="Twilio/Rest/Marketplace/V1/InstalledAddOn/InstalledAddOnUsageModels.php"/>
+  <method name="createMarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems" start="26" end="29" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $quantity Total amount in local currency that was billed for this Billing Item. Can be any floating number greater than 0."/>
+      <property value="string $sid BillingSid to use for billing."/>
+      <property value="bool $submitted Whether the billing event was successfully generated for this Billable Item."/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Marketplace\V1\InstalledAddOn\MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems" namespace="Twilio\Rest\Marketplace\V1\InstalledAddOn" name="MarketplaceV1InstalledAddOnInstalledAddOnUsageBillableItems"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+  <method name="createMarketplaceV1InstalledAddOnInstalledAddOnUsage" start="35" end="38" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <property value="string $totalSubmitted Total amount in local currency that was billed in this request. Aggregates all billable_items that were successfully submitted."/>
+      <property value="string[] $billableItems"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Marketplace\V1\InstalledAddOn\MarketplaceV1InstalledAddOnInstalledAddOnUsage" namespace="Twilio\Rest\Marketplace\V1\InstalledAddOn" name="MarketplaceV1InstalledAddOnInstalledAddOnUsage"/>
+    </return>
+    <parameter name="payload" byreference="false" type="array" default=""/>
+  </method>
+</class>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\CustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="CustomOperatorOptions" abstract="true" final="false" start="21" end="59">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2" file="CustomOperatorOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/CustomOperatorOptions.php" size="4286" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="b27908290c4c105c20e663fdeab51cebbd463a49" relative="Twilio/Rest/Intelligence/V2/CustomOperatorOptions.php"/>
+  <method name="read" start="31" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Returns Custom Operators with the provided availability type. Possible values: internal, beta, public, retired." type="string" variable="$availability"/>
+      <param description="Returns Custom Operators that support the provided language code." type="string" variable="$languageCode"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\ReadCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadCustomOperatorOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\ReadCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadCustomOperatorOptions"/>
+    </return>
+    <parameter name="availability" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="languageCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="48" end="57" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The If-Match HTTP request header" type="string" variable="$ifMatch"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\UpdateCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="UpdateCustomOperatorOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\UpdateCustomOperatorOptions" namespace="Twilio\Rest\Intelligence\V2" name="UpdateCustomOperatorOptions"/>
+    </return>
+    <parameter name="ifMatch" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

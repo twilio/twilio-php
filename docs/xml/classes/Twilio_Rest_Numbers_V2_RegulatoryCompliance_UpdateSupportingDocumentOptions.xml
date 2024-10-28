@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateSupportingDocumentOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateSupportingDocumentOptions" abstract="false" final="false" start="101" end="151">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance" file="SupportingDocumentOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V2/RegulatoryCompliance/SupportingDocumentOptions.php" size="4763" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="c86a3458785b0819f10d73acb38840532695c596" relative="Twilio/Rest/Numbers/V2/RegulatoryCompliance/SupportingDocumentOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="107" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The string that you assigned to describe the resource." type="string" variable="$friendlyName"/>
+      <param description="The set of parameters that are the attributes of the Supporting Document resource which are derived Supporting Document Types." type="array" variable="$attributes"/>
+    </docblock>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </constructor>
+  <method name="setFriendlyName" start="123" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The string that you assigned to describe the resource."/>
+      <param description="The string that you assigned to describe the resource." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateSupportingDocumentOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateSupportingDocumentOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setAttributes" start="135" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The set of parameters that are the attributes of the Supporting Document resource which are derived Supporting Document Types."/>
+      <param description="The set of parameters that are the attributes of the Supporting Document resource which are derived Supporting Document Types." type="array" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\$this" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V2\RegulatoryCompliance\UpdateSupportingDocumentOptions" namespace="Twilio\Rest\Numbers\V2\RegulatoryCompliance" name="UpdateSupportingDocumentOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="146" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

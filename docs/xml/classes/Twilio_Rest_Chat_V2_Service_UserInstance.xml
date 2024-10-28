@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\UserInstance" namespace="Twilio\Rest\Chat\V2\Service" name="UserInstance" abstract="false" final="false" start="46" end="190">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service" file="UserInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/UserInstance.php" size="5965" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="8b265c2a569156418f94cbd996b1584c5fdeadb1" relative="Twilio/Rest/Chat/V2/Service/UserInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $sid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $serviceSid"/>
+    <property value="string|null $attributes"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string|null $roleSid"/>
+    <property value="string|null $identity"/>
+    <property value="bool|null $isOnline"/>
+    <property value="bool|null $isNotifiable"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="int $joinedChannelsCount"/>
+    <property value="array|null $links"/>
+    <property value="string|null $url"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_userBindings" visibility="protected" static="false" line="48"/>
+  <member name="_userChannels" visibility="protected" static="false" line="49"/>
+  <constructor name="__construct" start="59" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the UserInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Chat\V2\Service\mixed" namespace="Twilio\Rest\Chat\V2\Service" name="mixed"/>
+      </param>
+      <param description="The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the User resource under." type="string" variable="$serviceSid"/>
+      <param description="The SID of the User resource to delete. This value can be either the `sid` or the `identity` of the User resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="serviceSid" byreference="false" type="string"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="63"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="90" end="101" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this UserInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\UserContext" namespace="Twilio\Rest\Chat\V2\Service" name="UserContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\UserContext" namespace="Twilio\Rest\Chat\V2\Service" name="UserContext"/>
+    </return>
+  </method>
+  <method name="delete" start="109" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the UserInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\bool" namespace="Twilio\Rest\Chat\V2\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="121" end="125" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the UserInstance"/>
+      <return description="Fetched UserInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\UserInstance" namespace="Twilio\Rest\Chat\V2\Service" name="UserInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\UserInstance" namespace="Twilio\Rest\Chat\V2\Service" name="UserInstance"/>
+    </return>
+  </method>
+  <method name="update" start="134" end="138" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the UserInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Chat\V2\Service\array|Options" namespace="Twilio\Rest\Chat\V2\Service" name="array|Options"/>
+      </param>
+      <return description="Updated UserInstance" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\UserInstance" namespace="Twilio\Rest\Chat\V2\Service" name="UserInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\UserInstance" namespace="Twilio\Rest\Chat\V2\Service" name="UserInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getUserBindings" start="143" end="146" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the userBindings"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\User\UserBindingList" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserBindingList"/>
+    </return>
+  </method>
+  <method name="getUserChannels" start="151" end="154" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the userChannels"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\User\UserChannelList" namespace="Twilio\Rest\Chat\V2\Service\User" name="UserChannelList"/>
+    </return>
+  </method>
+  <method name="__get" start="163" end="175" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="182" end="189" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

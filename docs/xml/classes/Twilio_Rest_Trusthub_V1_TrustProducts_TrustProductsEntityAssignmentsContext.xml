@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsContext" namespace="Twilio\Rest\Trusthub\V1\TrustProducts" name="TrustProductsEntityAssignmentsContext" abstract="false" final="false" start="26" end="103">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/TrustProducts" file="TrustProductsEntityAssignmentsContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/TrustProducts/TrustProductsEntityAssignmentsContext.php" size="3062" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="4d2de7ef53fcdabaa559b140e72ce8f7cad4f179" relative="Twilio/Rest/Trusthub/V1/TrustProducts/TrustProductsEntityAssignmentsContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="35" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the TrustProductsEntityAssignmentsContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The unique string that we created to identify the TrustProduct resource." type="string" variable="$trustProductSid"/>
+      <param description="The unique string that we created to identify the Identity resource." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="trustProductSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="42"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="61" end="66" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the TrustProductsEntityAssignmentsInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\TrustProducts\bool" namespace="Twilio\Rest\Trusthub\V1\TrustProducts" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="75" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the TrustProductsEntityAssignmentsInstance"/>
+      <return description="Fetched TrustProductsEntityAssignmentsInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsInstance" namespace="Twilio\Rest\Trusthub\V1\TrustProducts" name="TrustProductsEntityAssignmentsInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsInstance" namespace="Twilio\Rest\Trusthub\V1\TrustProducts" name="TrustProductsEntityAssignmentsInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="95" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

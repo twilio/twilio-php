@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\Service\ReadParticipantConversationOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="ReadParticipantConversationOptions" abstract="false" final="false" start="43" end="93">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service" file="ParticipantConversationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/Service/ParticipantConversationOptions.php" size="4207" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="600174101ef856685addf8d990ec2bb80dc677c4" relative="Twilio/Rest/Conversations/V1/Service/ParticipantConversationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="49" end="57" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters." type="string" variable="$identity"/>
+      <param description="A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded." type="string" variable="$address"/>
+    </docblock>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="address" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setIdentity" start="65" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters."/>
+      <param description="A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters." type="string" variable="$identity"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\$this" namespace="Twilio\Rest\Conversations\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ReadParticipantConversationOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="ReadParticipantConversationOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="string"/>
+  </method>
+  <method name="setAddress" start="77" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded."/>
+      <param description="A unique string identifier for the conversation participant who's not a Conversation User. This parameter could be found in messaging_binding.address field of Participant resource. It should be url-encoded." type="string" variable="$address"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Conversations\V1\Service\$this" namespace="Twilio\Rest\Conversations\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ReadParticipantConversationOptions" namespace="Twilio\Rest\Conversations\V1\Service" name="ReadParticipantConversationOptions"/>
+    </return>
+    <parameter name="address" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="88" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

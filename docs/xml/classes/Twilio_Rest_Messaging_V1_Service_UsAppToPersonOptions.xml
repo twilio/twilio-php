@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Messaging\V1\Service\UsAppToPersonOptions" namespace="Twilio\Rest\Messaging\V1\Service" name="UsAppToPersonOptions" abstract="true" final="false" start="21" end="66">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/Service" file="UsAppToPersonOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Messaging/V1/Service/UsAppToPersonOptions.php" size="15623" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="7ee929d510fa8430586f0f01bfe6970fbd032774" relative="Twilio/Rest/Messaging/V1/Service/UsAppToPersonOptions.php"/>
+  <method name="create" start="35" end="60" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum." type="string" variable="$optInMessage"/>
+      <param description="Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum." type="string" variable="$optOutMessage"/>
+      <param description="When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum." type="string" variable="$helpMessage"/>
+      <param description="If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum." type="array" variable="$optInKeywords" of="object">
+        <type full="Twilio\Rest\Messaging\V1\Service\string" namespace="Twilio\Rest\Messaging\V1\Service" name="string"/>
+      </param>
+      <param description="End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum." type="array" variable="$optOutKeywords" of="object">
+        <type full="Twilio\Rest\Messaging\V1\Service\string" namespace="Twilio\Rest\Messaging\V1\Service" name="string"/>
+      </param>
+      <param description="End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum." type="array" variable="$helpKeywords" of="object">
+        <type full="Twilio\Rest\Messaging\V1\Service\string" namespace="Twilio\Rest\Messaging\V1\Service" name="string"/>
+      </param>
+      <param description="A boolean that specifies whether campaign has Subscriber Optin or not." type="object" variable="$subscriberOptIn">
+        <type full="Twilio\Rest\Messaging\V1\Service\bool" namespace="Twilio\Rest\Messaging\V1\Service" name="bool"/>
+      </param>
+      <param description="A boolean that specifies whether campaign is age gated or not." type="object" variable="$ageGated">
+        <type full="Twilio\Rest\Messaging\V1\Service\bool" namespace="Twilio\Rest\Messaging\V1\Service" name="bool"/>
+      </param>
+      <param description="A boolean that specifies whether campaign allows direct lending or not." type="object" variable="$directLending">
+        <type full="Twilio\Rest\Messaging\V1\Service\bool" namespace="Twilio\Rest\Messaging\V1\Service" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Messaging\V1\Service\CreateUsAppToPersonOptions" namespace="Twilio\Rest\Messaging\V1\Service" name="CreateUsAppToPersonOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Messaging\V1\Service\CreateUsAppToPersonOptions" namespace="Twilio\Rest\Messaging\V1\Service" name="CreateUsAppToPersonOptions"/>
+    </return>
+    <parameter name="optInMessage" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="optOutMessage" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="helpMessage" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="optInKeywords" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="optOutKeywords" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="helpKeywords" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="subscriberOptIn" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="ageGated" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="directLending" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

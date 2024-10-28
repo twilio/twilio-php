@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Version" namespace="Twilio" name="Version" abstract="true" final="false" start="9" end="236">
+  <file path="/twilio/repos/php/src/Twilio" file="Version.php" realpath="/twilio/repos/php/src/Twilio/Version.php" size="7197" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="2a4e68fae2fdf3981c7615921160d11e5f78ea38" relative="Twilio/Version.php"/>
+  <constant type="{unknown}" name="MAX_PAGE_SIZE" value="1000">
+    <docblock>
+      <description/>
+      <const value="int MAX_PAGE_SIZE largest page the Twilio API will return"/>
+    </docblock>
+  </constant>
+  <member name="domain" visibility="protected" static="false" line="18">
+    <docblock>
+      <description/>
+      <var description="$domain" type="object">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="version" visibility="protected" static="false" line="23">
+    <docblock>
+      <description/>
+      <var description="$version" type="string"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="28" end="31" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="object" variable="$domain">
+        <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+      </param>
+    </docblock>
+    <parameter name="domain" byreference="false" type="object">
+      <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    </parameter>
+  </constructor>
+  <method name="absoluteUrl" start="38" end="40" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate an absolute URL from a version relative uri"/>
+      <param description="Version relative uri" type="string" variable="$uri"/>
+      <return description="Absolute URL" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="uri" byreference="false" type="string"/>
+  </method>
+  <method name="relativeUri" start="47" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate a domain relative uri from a version relative uri"/>
+      <param description="Version relative uri" type="string" variable="$uri"/>
+      <return description="Domain relative uri" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+    <parameter name="uri" byreference="false" type="string"/>
+  </method>
+  <method name="request" start="51" end="66" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="username" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="exception" start="79" end="92" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Create the best possible exception for the response.">Attempts to parse the response for Twilio Standard error messages and use
+those to populate the exception, falls back to generic error message and
+HTTP status code.</description>
+      <param description="Error response" type="object" variable="$response">
+        <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+      </param>
+      <param description="Header for exception message" type="string" variable="$header"/>
+      <return type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+    </return>
+    <parameter name="response" byreference="false" type="object">
+      <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+    </parameter>
+    <parameter name="header" byreference="false" type="string"/>
+  </method>
+  <method name="fetch" start="97" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="username" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+    <inline>
+      <comment value="3XX response codes are allowed here to allow for 307 redirect from Deactivations API." line="112"/>
+    </inline>
+  </method>
+  <method name="update" start="123" end="143" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="username" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="delete" start="148" end="168" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="username" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="readLimits" start="170" end="182" abstract="false" final="false" static="false" visibility="public">
+    <return type="array" nullable="false"/>
+    <parameter name="limit" byreference="false" type="int" default="NULL"/>
+    <parameter name="pageSize" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="page" start="184" end="198" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Twilio\Http\Response" namespace="Twilio\Http" name="Response"/>
+    </return>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="username" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="stream" start="200" end="202" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Twilio\Stream" namespace="Twilio" name="Stream"/>
+    </return>
+    <parameter name="page" byreference="false" type="object">
+      <type full="Twilio\Page" namespace="Twilio" name="Page"/>
+    </parameter>
+    <parameter name="limit" byreference="false" type="{unknown}" default="NULL"/>
+    <parameter name="pageLimit" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="create" start="207" end="227" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <throws type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="method" byreference="false" type="string"/>
+    <parameter name="uri" byreference="false" type="string"/>
+    <parameter name="params" byreference="false" type="array" default=""/>
+    <parameter name="data" byreference="false" type="array" default=""/>
+    <parameter name="headers" byreference="false" type="array" default=""/>
+    <parameter name="username" byreference="false" type="string" default="NULL"/>
+    <parameter name="password" byreference="false" type="string" default="NULL"/>
+    <parameter name="timeout" byreference="false" type="int" default="NULL"/>
+  </method>
+  <method name="getDomain" start="229" end="231" abstract="false" final="false" static="false" visibility="public">
+    <return type="object" nullable="false">
+      <type full="Twilio\Domain" namespace="Twilio" name="Domain"/>
+    </return>
+  </method>
+  <method name="__toString" start="233" end="235" abstract="false" final="false" static="false" visibility="public">
+    <return type="string" nullable="false"/>
+  </method>
+  <extenders>
+    <extender full="Twilio\Rest\Accounts\V1" namespace="Twilio\Rest\Accounts" name="V1"/>
+    <extender full="Twilio\Rest\Api\V2010" namespace="Twilio\Rest\Api" name="V2010"/>
+    <extender full="Twilio\Rest\Assistants\V1" namespace="Twilio\Rest\Assistants" name="V1"/>
+    <extender full="Twilio\Rest\Bulkexports\V1" namespace="Twilio\Rest\Bulkexports" name="V1"/>
+    <extender full="Twilio\Rest\Chat\V3" namespace="Twilio\Rest\Chat" name="V3"/>
+    <extender full="Twilio\Rest\Chat\V1" namespace="Twilio\Rest\Chat" name="V1"/>
+    <extender full="Twilio\Rest\Chat\V2" namespace="Twilio\Rest\Chat" name="V2"/>
+    <extender full="Twilio\Rest\Content\V2" namespace="Twilio\Rest\Content" name="V2"/>
+    <extender full="Twilio\Rest\Content\V1" namespace="Twilio\Rest\Content" name="V1"/>
+    <extender full="Twilio\Rest\Conversations\V1" namespace="Twilio\Rest\Conversations" name="V1"/>
+    <extender full="Twilio\Rest\Events\V1" namespace="Twilio\Rest\Events" name="V1"/>
+    <extender full="Twilio\Rest\FlexApi\V2" namespace="Twilio\Rest\FlexApi" name="V2"/>
+    <extender full="Twilio\Rest\FlexApi\V1" namespace="Twilio\Rest\FlexApi" name="V1"/>
+    <extender full="Twilio\Rest\FrontlineApi\V1" namespace="Twilio\Rest\FrontlineApi" name="V1"/>
+    <extender full="Twilio\Rest\Iam\V1" namespace="Twilio\Rest\Iam" name="V1"/>
+    <extender full="Twilio\Rest\Insights\V1" namespace="Twilio\Rest\Insights" name="V1"/>
+    <extender full="Twilio\Rest\Intelligence\V2" namespace="Twilio\Rest\Intelligence" name="V2"/>
+    <extender full="Twilio\Rest\IpMessaging\V1" namespace="Twilio\Rest\IpMessaging" name="V1"/>
+    <extender full="Twilio\Rest\IpMessaging\V2" namespace="Twilio\Rest\IpMessaging" name="V2"/>
+    <extender full="Twilio\Rest\Lookups\V2" namespace="Twilio\Rest\Lookups" name="V2"/>
+    <extender full="Twilio\Rest\Lookups\V1" namespace="Twilio\Rest\Lookups" name="V1"/>
+    <extender full="Twilio\Rest\Marketplace\V1" namespace="Twilio\Rest\Marketplace" name="V1"/>
+    <extender full="Twilio\Rest\Messaging\V1" namespace="Twilio\Rest\Messaging" name="V1"/>
+    <extender full="Twilio\Rest\Microvisor\V1" namespace="Twilio\Rest\Microvisor" name="V1"/>
+    <extender full="Twilio\Rest\Monitor\V1" namespace="Twilio\Rest\Monitor" name="V1"/>
+    <extender full="Twilio\Rest\Notify\V1" namespace="Twilio\Rest\Notify" name="V1"/>
+    <extender full="Twilio\Rest\Numbers\V1" namespace="Twilio\Rest\Numbers" name="V1"/>
+    <extender full="Twilio\Rest\Numbers\V2" namespace="Twilio\Rest\Numbers" name="V2"/>
+    <extender full="Twilio\Rest\Oauth\V1" namespace="Twilio\Rest\Oauth" name="V1"/>
+    <extender full="Twilio\Rest\Preview\HostedNumbers" namespace="Twilio\Rest\Preview" name="HostedNumbers"/>
+    <extender full="Twilio\Rest\Preview\Marketplace" namespace="Twilio\Rest\Preview" name="Marketplace"/>
+    <extender full="Twilio\Rest\Preview\Wireless" namespace="Twilio\Rest\Preview" name="Wireless"/>
+    <extender full="Twilio\Rest\Preview\Sync" namespace="Twilio\Rest\Preview" name="Sync"/>
+    <extender full="Twilio\Rest\Pricing\V2" namespace="Twilio\Rest\Pricing" name="V2"/>
+    <extender full="Twilio\Rest\Pricing\V1" namespace="Twilio\Rest\Pricing" name="V1"/>
+    <extender full="Twilio\Rest\Proxy\V1" namespace="Twilio\Rest\Proxy" name="V1"/>
+    <extender full="Twilio\Rest\Routes\V2" namespace="Twilio\Rest\Routes" name="V2"/>
+    <extender full="Twilio\Rest\Serverless\V1" namespace="Twilio\Rest\Serverless" name="V1"/>
+    <extender full="Twilio\Rest\Studio\V2" namespace="Twilio\Rest\Studio" name="V2"/>
+    <extender full="Twilio\Rest\Studio\V1" namespace="Twilio\Rest\Studio" name="V1"/>
+    <extender full="Twilio\Rest\Supersim\V1" namespace="Twilio\Rest\Supersim" name="V1"/>
+    <extender full="Twilio\Rest\Sync\V1" namespace="Twilio\Rest\Sync" name="V1"/>
+    <extender full="Twilio\Rest\Taskrouter\V1" namespace="Twilio\Rest\Taskrouter" name="V1"/>
+    <extender full="Twilio\Rest\Trunking\V1" namespace="Twilio\Rest\Trunking" name="V1"/>
+    <extender full="Twilio\Rest\Trusthub\V1" namespace="Twilio\Rest\Trusthub" name="V1"/>
+    <extender full="Twilio\Rest\Verify\V2" namespace="Twilio\Rest\Verify" name="V2"/>
+    <extender full="Twilio\Rest\Video\V1" namespace="Twilio\Rest\Video" name="V1"/>
+    <extender full="Twilio\Rest\Voice\V1" namespace="Twilio\Rest\Voice" name="V1"/>
+    <extender full="Twilio\Rest\Wireless\V1" namespace="Twilio\Rest\Wireless" name="V1"/>
+  </extenders>
+</class>

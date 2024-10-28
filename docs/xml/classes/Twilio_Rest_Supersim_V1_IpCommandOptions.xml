@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\IpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="IpCommandOptions" abstract="true" final="false" start="21" end="69">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="IpCommandOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/IpCommandOptions.php" size="8177" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="d0bd383c4a242ee1dc5704d63b938e197370f40b" relative="Twilio/Rest/Supersim/V1/IpCommandOptions.php"/>
+  <method name="create" start="29" end="42" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$payloadType"/>
+      <param description="The URL we should call using the `callback_method` after we have sent the IP Command." type="string" variable="$callbackUrl"/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`." type="string" variable="$callbackMethod"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\CreateIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateIpCommandOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateIpCommandOptions"/>
+    </return>
+    <parameter name="payloadType" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="52" end="67" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID or unique name of the Sim resource that IP Command was sent to or from." type="string" variable="$sim"/>
+      <param description="The ICCID of the Sim resource that IP Command was sent to or from." type="string" variable="$simIccid"/>
+      <param description="The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://www.twilio.com/docs/iot/supersim/api/ipcommand-resource#status-values) for a description of each." type="string" variable="$status"/>
+      <param description="The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`." type="string" variable="$direction"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\ReadIpCommandOptions" namespace="Twilio\Rest\Supersim\V1" name="ReadIpCommandOptions"/>
+    </return>
+    <parameter name="sim" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="simIccid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="direction" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

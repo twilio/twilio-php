@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\TranscriptOptions" namespace="Twilio\Rest\Intelligence\V2" name="TranscriptOptions" abstract="true" final="false" start="21" end="79">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2" file="TranscriptOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/TranscriptOptions.php" size="8519" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="9eaf3579826fa544efd99bdcfaaf8a623fb8ee93" relative="Twilio/Rest/Intelligence/V2/TranscriptOptions.php"/>
+  <method name="create" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Used to store client provided metadata. Maximum of 64 double-byte UTF8 characters." type="string" variable="$customerKey"/>
+      <param description="The date that this Transcript's media was started, given in ISO 8601 format." type="object" variable="$mediaStartTime">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\CreateTranscriptOptions" namespace="Twilio\Rest\Intelligence\V2" name="CreateTranscriptOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\CreateTranscriptOptions" namespace="Twilio\Rest\Intelligence\V2" name="CreateTranscriptOptions"/>
+    </return>
+    <parameter name="customerKey" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="mediaStartTime" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="read" start="54" end="77" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The unique SID identifier of the Service." type="string" variable="$serviceSid"/>
+      <param description="Filter by before StartTime." type="string" variable="$beforeStartTime"/>
+      <param description="Filter by after StartTime." type="string" variable="$afterStartTime"/>
+      <param description="Filter by before DateCreated." type="string" variable="$beforeDateCreated"/>
+      <param description="Filter by after DateCreated." type="string" variable="$afterDateCreated"/>
+      <param description="Filter by status." type="string" variable="$status"/>
+      <param description="Filter by Language Code." type="string" variable="$languageCode"/>
+      <param description="Filter by SourceSid." type="string" variable="$sourceSid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\ReadTranscriptOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadTranscriptOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\ReadTranscriptOptions" namespace="Twilio\Rest\Intelligence\V2" name="ReadTranscriptOptions"/>
+    </return>
+    <parameter name="serviceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="beforeStartTime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="afterStartTime" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="beforeDateCreated" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="afterDateCreated" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="languageCode" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="sourceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

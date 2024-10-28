@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions" abstract="false" final="false" start="162" end="422">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="ApplicationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/ApplicationOptions.php" size="33596" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="0f21a8bdbd9f77625de6f23b47cd98d9b472b803" relative="Twilio/Rest/Api/V2010/Account/ApplicationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="182" end="218" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version." type="string" variable="$apiVersion"/>
+      <param description="The URL we should call when the phone number assigned to this application receives a call." type="string" variable="$voiceUrl"/>
+      <param description="The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`." type="string" variable="$voiceMethod"/>
+      <param description="The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`." type="string" variable="$voiceFallbackUrl"/>
+      <param description="The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$voiceFallbackMethod"/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`." type="string" variable="$statusCallbackMethod"/>
+      <param description="Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`." type="object" variable="$voiceCallerIdLookup">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <param description="The URL we should call when the phone number receives an incoming SMS message." type="string" variable="$smsUrl"/>
+      <param description="The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`." type="string" variable="$smsMethod"/>
+      <param description="The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`." type="string" variable="$smsFallbackUrl"/>
+      <param description="The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$smsFallbackMethod"/>
+      <param description="The URL we should call using a POST method to send status information about SMS messages sent by the application." type="string" variable="$smsStatusCallback"/>
+      <param description="The URL we should call using a POST method to send message status information to your application." type="string" variable="$messageStatusCallback"/>
+      <param description="A descriptive string that you create to describe the new application. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <param description="Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`." type="object" variable="$publicApplicationConnectEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="apiVersion" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="voiceCallerIdLookup" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="smsUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsFallbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="smsStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messageStatusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="publicApplicationConnectEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setApiVersion" start="226" end="230" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version."/>
+      <param description="The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version." type="string" variable="$apiVersion"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="apiVersion" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceUrl" start="238" end="242" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call when the phone number assigned to this application receives a call."/>
+      <param description="The URL we should call when the phone number assigned to this application receives a call." type="string" variable="$voiceUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="voiceUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceMethod" start="250" end="254" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`."/>
+      <param description="The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`." type="string" variable="$voiceMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="voiceMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceFallbackUrl" start="262" end="266" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`."/>
+      <param description="The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`." type="string" variable="$voiceFallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="voiceFallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceFallbackMethod" start="274" end="278" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`."/>
+      <param description="The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$voiceFallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="voiceFallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallback" start="286" end="290" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `status_callback_method` to send status information to your application."/>
+      <param description="The URL we should call using the `status_callback_method` to send status information to your application." type="string" variable="$statusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setStatusCallbackMethod" start="298" end="302" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`."/>
+      <param description="The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`." type="string" variable="$statusCallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="statusCallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setVoiceCallerIdLookup" start="310" end="314" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`."/>
+      <param description="Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`." type="object" variable="$voiceCallerIdLookup">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="voiceCallerIdLookup" byreference="false" type="bool"/>
+  </method>
+  <method name="setSmsUrl" start="322" end="326" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call when the phone number receives an incoming SMS message."/>
+      <param description="The URL we should call when the phone number receives an incoming SMS message." type="string" variable="$smsUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="smsUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsMethod" start="334" end="338" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`."/>
+      <param description="The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`." type="string" variable="$smsMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="smsMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsFallbackUrl" start="346" end="350" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`."/>
+      <param description="The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`." type="string" variable="$smsFallbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="smsFallbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsFallbackMethod" start="358" end="362" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`."/>
+      <param description="The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`." type="string" variable="$smsFallbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="smsFallbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setSmsStatusCallback" start="370" end="374" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using a POST method to send status information about SMS messages sent by the application."/>
+      <param description="The URL we should call using a POST method to send status information about SMS messages sent by the application." type="string" variable="$smsStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="smsStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setMessageStatusCallback" start="382" end="386" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using a POST method to send message status information to your application."/>
+      <param description="The URL we should call using a POST method to send message status information to your application." type="string" variable="$messageStatusCallback"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="messageStatusCallback" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="394" end="398" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you create to describe the new application. It can be up to 64 characters long."/>
+      <param description="A descriptive string that you create to describe the new application. It can be up to 64 characters long." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setPublicApplicationConnectEnabled" start="406" end="410" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`."/>
+      <param description="Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true` or `false`." type="object" variable="$publicApplicationConnectEnabled">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\CreateApplicationOptions" namespace="Twilio\Rest\Api\V2010\Account" name="CreateApplicationOptions"/>
+    </return>
+    <parameter name="publicApplicationConnectEnabled" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="417" end="421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

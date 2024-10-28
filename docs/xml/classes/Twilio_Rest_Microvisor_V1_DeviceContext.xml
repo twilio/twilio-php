@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Microvisor\V1\DeviceContext" namespace="Twilio\Rest\Microvisor\V1" name="DeviceContext" abstract="false" final="false" start="37" end="196">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Microvisor/V1" file="DeviceContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Microvisor/V1/DeviceContext.php" size="5505" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="559d62aff76d212ba008da983f12e9dad72b34dd" relative="Twilio/Rest/Microvisor/V1/DeviceContext.php"/>
+  <docblock>
+    <description/>
+    <property value="DeviceConfigList $deviceConfigs"/>
+    <property value="DeviceSecretList $deviceSecrets"/>
+    <method value="\Twilio\Rest\Microvisor\V1\Device\DeviceSecretContext deviceSecrets(string $key)"/>
+    <method value="\Twilio\Rest\Microvisor\V1\Device\DeviceConfigContext deviceConfigs(string $key)"/>
+  </docblock>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <member name="_deviceConfigs" visibility="protected" static="false" line="39"/>
+  <member name="_deviceSecrets" visibility="protected" static="false" line="40"/>
+  <constructor name="__construct" start="48" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the DeviceContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="A 34-character string that uniquely identifies this Device." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="54"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="70" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the DeviceInstance"/>
+      <return description="Fetched DeviceInstance" type="object">
+        <type full="Twilio\Rest\Microvisor\V1\DeviceInstance" namespace="Twilio\Rest\Microvisor\V1" name="DeviceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\DeviceInstance" namespace="Twilio\Rest\Microvisor\V1" name="DeviceInstance"/>
+    </return>
+  </method>
+  <method name="update" start="91" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the DeviceInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Microvisor\V1\array|Options" namespace="Twilio\Rest\Microvisor\V1" name="array|Options"/>
+      </param>
+      <return description="Updated DeviceInstance" type="object">
+        <type full="Twilio\Rest\Microvisor\V1\DeviceInstance" namespace="Twilio\Rest\Microvisor\V1" name="DeviceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\DeviceInstance" namespace="Twilio\Rest\Microvisor\V1" name="DeviceInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="getDeviceConfigs" start="121" end="131" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the deviceConfigs"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\Device\DeviceConfigList" namespace="Twilio\Rest\Microvisor\V1\Device" name="DeviceConfigList"/>
+    </return>
+  </method>
+  <method name="getDeviceSecrets" start="136" end="146" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the deviceSecrets"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Microvisor\V1\Device\DeviceSecretList" namespace="Twilio\Rest\Microvisor\V1\Device" name="DeviceSecretList"/>
+    </return>
+  </method>
+  <method name="__get" start="155" end="163" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="173" end="181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="188" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

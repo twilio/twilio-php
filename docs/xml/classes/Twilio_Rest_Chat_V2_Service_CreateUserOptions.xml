@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V2\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V2\Service" name="CreateUserOptions" abstract="false" final="false" start="76" end="156">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service" file="UserOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V2/Service/UserOptions.php" size="8467" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="9a83faed9f9c5ffda56d1497f68067c5ce302c34" relative="Twilio/Rest/Chat/V2/Service/UserOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="84" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the new User." type="string" variable="$roleSid"/>
+      <param description="A valid JSON string that contains application-specific data." type="string" variable="$attributes"/>
+      <param description="A descriptive string that you create to describe the new resource. This value is often used for display purposes." type="string" variable="$friendlyName"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+    </docblock>
+    <parameter name="roleSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="attributes" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setRoleSid" start="104" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the new User."/>
+      <param description="The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) to assign to the new User." type="string" variable="$roleSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\$this" namespace="Twilio\Rest\Chat\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V2\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="roleSid" byreference="false" type="string"/>
+  </method>
+  <method name="setAttributes" start="116" end="120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A valid JSON string that contains application-specific data."/>
+      <param description="A valid JSON string that contains application-specific data." type="string" variable="$attributes"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\$this" namespace="Twilio\Rest\Chat\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V2\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="attributes" byreference="false" type="string"/>
+  </method>
+  <method name="setFriendlyName" start="128" end="132" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A descriptive string that you create to describe the new resource. This value is often used for display purposes."/>
+      <param description="A descriptive string that you create to describe the new resource. This value is often used for display purposes." type="string" variable="$friendlyName"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\$this" namespace="Twilio\Rest\Chat\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V2\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="string"/>
+  </method>
+  <method name="setXTwilioWebhookEnabled" start="140" end="144" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The X-Twilio-Webhook-Enabled HTTP request header"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V2\Service\$this" namespace="Twilio\Rest\Chat\V2\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V2\Service\CreateUserOptions" namespace="Twilio\Rest\Chat\V2\Service" name="CreateUserOptions"/>
+    </return>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="151" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

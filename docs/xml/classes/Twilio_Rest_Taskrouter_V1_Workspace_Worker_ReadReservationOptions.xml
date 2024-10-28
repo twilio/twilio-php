@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReadReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="ReadReservationOptions" abstract="false" final="false" start="213" end="248">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Worker" file="ReservationOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Taskrouter/V1/Workspace/Worker/ReservationOptions.php" size="56116" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="dddc7bfc8d6df392f954127458414ce442d94aee" relative="Twilio/Rest/Taskrouter/V1/Workspace/Worker/ReservationOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="218" end="224" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Returns the list of reservations for a worker with a specified ReservationStatus. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`." type="string" variable="$reservationStatus"/>
+    </docblock>
+    <parameter name="reservationStatus" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setReservationStatus" start="232" end="236" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the list of reservations for a worker with a specified ReservationStatus. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`."/>
+      <param description="Returns the list of reservations for a worker with a specified ReservationStatus. Can be: `pending`, `accepted`, `rejected`, `timeout`, `canceled`, or `rescinded`." type="string" variable="$reservationStatus"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\$this" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReadReservationOptions" namespace="Twilio\Rest\Taskrouter\V1\Workspace\Worker" name="ReadReservationOptions"/>
+    </return>
+    <parameter name="reservationStatus" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="243" end="247" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Notify\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="ReadBindingOptions" abstract="false" final="false" start="159" end="239">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Notify/V1/Service" file="BindingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Notify/V1/Service/BindingOptions.php" size="11119" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="ad14761ce0aa24a39ec2b2e42557f26c985af6df" relative="Twilio/Rest/Notify/V1/Service/BindingOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="167" end="179" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <param description="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <param description="Only list Bindings that have all of the specified Tags. The following implicit tags are available: `all`, `apn`, `fcm`, `gcm`, `sms`, `facebook-messenger`. Up to 5 tags are allowed." type="array" variable="$tag" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+    </docblock>
+    <parameter name="startDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="endDate" byreference="false" type="object" default="NULL">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+    <parameter name="identity" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+    <parameter name="tag" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </constructor>
+  <method name="setStartDate" start="187" end="191" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`."/>
+      <param description="Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`." type="object" variable="$startDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="startDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setEndDate" start="199" end="203" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`."/>
+      <param description="Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`." type="object" variable="$endDate">
+        <type full="\DateTime" namespace="" name="DateTime"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="endDate" byreference="false" type="object">
+      <type full="DateTime" namespace="" name="DateTime"/>
+    </parameter>
+  </method>
+  <method name="setIdentity" start="211" end="215" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read."/>
+      <param description="The [User](https://www.twilio.com/docs/chat/rest/user-resource)'s `identity` value of the resources to read." type="array" variable="$identity" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="identity" byreference="false" type="array"/>
+  </method>
+  <method name="setTag" start="223" end="227" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Only list Bindings that have all of the specified Tags. The following implicit tags are available: `all`, `apn`, `fcm`, `gcm`, `sms`, `facebook-messenger`. Up to 5 tags are allowed."/>
+      <param description="Only list Bindings that have all of the specified Tags. The following implicit tags are available: `all`, `apn`, `fcm`, `gcm`, `sms`, `facebook-messenger`. Up to 5 tags are allowed." type="array" variable="$tag" of="object">
+        <type full="Twilio\Rest\Notify\V1\Service\string" namespace="Twilio\Rest\Notify\V1\Service" name="string"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Notify\V1\Service\$this" namespace="Twilio\Rest\Notify\V1\Service" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Notify\V1\Service\ReadBindingOptions" namespace="Twilio\Rest\Notify\V1\Service" name="ReadBindingOptions"/>
+    </return>
+    <parameter name="tag" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="234" end="238" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

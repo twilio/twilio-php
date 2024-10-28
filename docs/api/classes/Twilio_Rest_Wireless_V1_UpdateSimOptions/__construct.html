@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Wireless\V1\UpdateSimOptions::__construct</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Wireless_V1">Twilio\Rest\Wireless\V1</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Wireless_V1_UpdateSimOptions.html" title="Twilio\Rest\Wireless\V1\UpdateSimOptions">UpdateSimOptions</a>
+</li>
+<li class="separator">__construct</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Wireless/V1/SimOptions.php.html#line241">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Wireless\V1\UpdateSimOptions::</small>__construct</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function __construct([string
+        $uniqueName = Values::NONE,
+            [string
+        $callbackMethod = Values::NONE,
+            [string
+        $callbackUrl = Values::NONE,
+            [string
+        $friendlyName = Values::NONE,
+            [string
+        $ratePlan = Values::NONE,
+            [string
+        $status = Values::NONE,
+            [string
+        $commandsCallbackMethod = Values::NONE,
+            [string
+        $commandsCallbackUrl = Values::NONE,
+            [string
+        $smsFallbackMethod = Values::NONE,
+            [string
+        $smsFallbackUrl = Values::NONE,
+            [string
+        $smsMethod = Values::NONE,
+            [string
+        $smsUrl = Values::NONE,
+            [string
+        $voiceFallbackMethod = Values::NONE,
+            [string
+        $voiceFallbackUrl = Values::NONE,
+            [string
+        $voiceMethod = Values::NONE,
+            [string
+        $voiceUrl = Values::NONE,
+            [string
+        $resetStatus = Values::NONE,
+            [string
+        $accountSid = Values::NONE]]]]]]]]]]]]]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$uniqueName</code>
+                —
+                string</dt>
+<dd>An application-defined string that uniquely identifies the resource. It can be used in place of the `sid` in the URL path to address the resource.</dd>
+<dt><code>$callbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use to call `callback_url`. Can be: `POST` or `GET`. The default is `POST`.</dd>
+<dt><code>$callbackUrl</code>
+                —
+                string</dt>
+<dd>The URL we should call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`).</dd>
+<dt><code>$friendlyName</code>
+                —
+                string</dt>
+<dd>A descriptive string that you create to describe the Sim resource. It does not need to be unique.</dd>
+<dt><code>$ratePlan</code>
+                —
+                string</dt>
+<dd>The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned.</dd>
+<dt><code>$status</code>
+                —
+                string</dt>
+<dd></dd>
+<dt><code>$commandsCallbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`.</dd>
+<dt><code>$commandsCallbackUrl</code>
+                —
+                string</dt>
+<dd>The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.</dd>
+<dt><code>$smsFallbackMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`.</dd>
+<dt><code>$smsFallbackUrl</code>
+                —
+                string</dt>
+<dd>The URL we should call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`.</dd>
+<dt><code>$smsMethod</code>
+                —
+                string</dt>
+<dd>The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`.</dd>
+<dt><code>$smsUrl</code>
+                —
+                string</dt>
+<dd>The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource).</dd>
+<dt><code>$voiceFallbackMethod</code>
+                —
+                string</dt>
+<dd>Deprecated.</dd>
+<dt><code>$voiceFallbackUrl</code>
+                —
+                string</dt>
+<dd>Deprecated.</dd>
+<dt><code>$voiceMethod</code>
+                —
+                string</dt>
+<dd>Deprecated.</dd>
+<dt><code>$voiceUrl</code>
+                —
+                string</dt>
+<dd>Deprecated.</dd>
+<dt><code>$resetStatus</code>
+                —
+                string</dt>
+<dd></dd>
+<dt><code>$accountSid</code>
+                —
+                string</dt>
+<dd>The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts).</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationInstance" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationInstance" abstract="false" final="false" start="36" end="154">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service" file="MessagingConfigurationInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Verify/V2/Service/MessagingConfigurationInstance.php" size="5293" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="326aca1eff6b7b6376bdc59af99c6fd2f519eb9f" relative="Twilio/Rest/Verify/V2/Service/MessagingConfigurationInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $serviceSid"/>
+    <property value="string|null $country"/>
+    <property value="string|null $messagingServiceSid"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="46" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the MessagingConfigurationInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Verify\V2\Service\mixed" namespace="Twilio\Rest\Verify\V2\Service" name="mixed"/>
+      </param>
+      <param description="The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with." type="string" variable="$serviceSid"/>
+      <param description="The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`." type="string" variable="$country"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="serviceSid" byreference="false" type="string"/>
+    <parameter name="country" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="50"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="70" end="81" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this MessagingConfigurationInstance" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationContext"/>
+    </return>
+  </method>
+  <method name="delete" start="89" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the MessagingConfigurationInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\bool" namespace="Twilio\Rest\Verify\V2\Service" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="101" end="105" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the MessagingConfigurationInstance"/>
+      <return description="Fetched MessagingConfigurationInstance" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationInstance" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationInstance" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationInstance"/>
+    </return>
+  </method>
+  <method name="update" start="114" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the MessagingConfigurationInstance"/>
+      <param description="The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration." type="string" variable="$messagingServiceSid"/>
+      <return description="Updated MessagingConfigurationInstance" type="object">
+        <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationInstance" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Verify\V2\Service\MessagingConfigurationInstance" namespace="Twilio\Rest\Verify\V2\Service" name="MessagingConfigurationInstance"/>
+    </return>
+    <parameter name="messagingServiceSid" byreference="false" type="string"/>
+  </method>
+  <method name="__get" start="127" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="146" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

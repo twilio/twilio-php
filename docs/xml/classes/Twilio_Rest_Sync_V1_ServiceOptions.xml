@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Sync\V1\ServiceOptions" namespace="Twilio\Rest\Sync\V1" name="ServiceOptions" abstract="true" final="false" start="21" end="92">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Sync/V1" file="ServiceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Sync/V1/ServiceOptions.php" size="20162" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="86e9c3aabcc355b84382299a7da6818f2c2c831e" relative="Twilio/Rest/Sync/V1/ServiceOptions.php"/>
+  <method name="create" start="33" end="54" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A string that you assign to describe the resource." type="string" variable="$friendlyName"/>
+      <param description="The URL we should call when Sync objects are manipulated." type="string" variable="$webhookUrl"/>
+      <param description="Whether the service instance should call `webhook_url` when client endpoints connect to Sync. The default is `false`." type="object" variable="$reachabilityWebhooksEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <param description="Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/sync-permissions) resource." type="object" variable="$aclEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <param description="Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event." type="object" variable="$reachabilityDebouncingEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <param description="The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before the `webhook_url` is called if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the call to `webhook_url`." type="int" variable="$reachabilityDebouncingWindow"/>
+      <param description="Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`." type="object" variable="$webhooksFromRestEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Sync\V1\CreateServiceOptions" namespace="Twilio\Rest\Sync\V1" name="CreateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\CreateServiceOptions" namespace="Twilio\Rest\Sync\V1" name="CreateServiceOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="webhookUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="reachabilityWebhooksEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="aclEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="reachabilityDebouncingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="reachabilityDebouncingWindow" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="webhooksFromRestEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+  <method name="update" start="69" end="90" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we should call when Sync objects are manipulated." type="string" variable="$webhookUrl"/>
+      <param description="A string that you assign to describe the resource." type="string" variable="$friendlyName"/>
+      <param description="Whether the service instance should call `webhook_url` when client endpoints connect to Sync. The default is `false`." type="object" variable="$reachabilityWebhooksEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <param description="Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/sync-permissions) resource." type="object" variable="$aclEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <param description="Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event." type="object" variable="$reachabilityDebouncingEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <param description="The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before the webhook is called if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the webhook from being called." type="int" variable="$reachabilityDebouncingWindow"/>
+      <param description="Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`." type="object" variable="$webhooksFromRestEnabled">
+        <type full="Twilio\Rest\Sync\V1\bool" namespace="Twilio\Rest\Sync\V1" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Sync\V1\UpdateServiceOptions" namespace="Twilio\Rest\Sync\V1" name="UpdateServiceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Sync\V1\UpdateServiceOptions" namespace="Twilio\Rest\Sync\V1" name="UpdateServiceOptions"/>
+    </return>
+    <parameter name="webhookUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="reachabilityWebhooksEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="aclEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="reachabilityDebouncingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="reachabilityDebouncingWindow" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="webhooksFromRestEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

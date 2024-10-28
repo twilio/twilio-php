@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Routes\V2\PhoneNumberInstance" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberInstance" abstract="false" final="false" start="38" end="143">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Routes/V2" file="PhoneNumberInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Routes/V2/PhoneNumberInstance.php" size="4391" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="2198ffb0e2c50866b127f3e9d8fe65f960a42f2a" relative="Twilio/Rest/Routes/V2/PhoneNumberInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $phoneNumber"/>
+    <property value="string|null $url"/>
+    <property value="string|null $sid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="string|null $voiceRegion"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <constructor name="__construct" start="47" end="64" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the PhoneNumberInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Routes\V2\mixed" namespace="Twilio\Rest\Routes\V2" name="mixed"/>
+      </param>
+      <param description="The phone number in E.164 format" type="string" variable="$phoneNumber"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="phoneNumber" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="51"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="72" end="82" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this PhoneNumberInstance" type="object">
+        <type full="Twilio\Rest\Routes\V2\PhoneNumberContext" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Routes\V2\PhoneNumberContext" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberContext"/>
+    </return>
+  </method>
+  <method name="fetch" start="90" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the PhoneNumberInstance"/>
+      <return description="Fetched PhoneNumberInstance" type="object">
+        <type full="Twilio\Rest\Routes\V2\PhoneNumberInstance" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Routes\V2\PhoneNumberInstance" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberInstance"/>
+    </return>
+  </method>
+  <method name="update" start="103" end="107" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the PhoneNumberInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Routes\V2\array|Options" namespace="Twilio\Rest\Routes\V2" name="array|Options"/>
+      </param>
+      <return description="Updated PhoneNumberInstance" type="object">
+        <type full="Twilio\Rest\Routes\V2\PhoneNumberInstance" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Routes\V2\PhoneNumberInstance" namespace="Twilio\Rest\Routes\V2" name="PhoneNumberInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__get" start="116" end="128" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="135" end="142" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

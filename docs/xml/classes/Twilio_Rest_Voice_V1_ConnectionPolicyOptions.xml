@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Voice\V1\ConnectionPolicyOptions" namespace="Twilio\Rest\Voice\V1" name="ConnectionPolicyOptions" abstract="true" final="false" start="21" end="56">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Voice/V1" file="ConnectionPolicyOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Voice/V1/ConnectionPolicyOptions.php" size="3953" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="4f3b781a64f517b99365f424c1b4fa00299050c0" relative="Twilio/Rest/Voice/V1/ConnectionPolicyOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Voice\V1\CreateConnectionPolicyOptions" namespace="Twilio\Rest\Voice\V1" name="CreateConnectionPolicyOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\CreateConnectionPolicyOptions" namespace="Twilio\Rest\Voice\V1" name="CreateConnectionPolicyOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="45" end="54" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A descriptive string that you create to describe the resource. It is not unique and can be up to 255 characters long." type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Voice\V1\UpdateConnectionPolicyOptions" namespace="Twilio\Rest\Voice\V1" name="UpdateConnectionPolicyOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\UpdateConnectionPolicyOptions" namespace="Twilio\Rest\Voice\V1" name="UpdateConnectionPolicyOptions"/>
+    </return>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

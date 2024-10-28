@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Insights\V1\ConferenceInstance" namespace="Twilio\Rest\Insights\V1" name="ConferenceInstance" abstract="false" final="false" start="53" end="170">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Insights/V1" file="ConferenceInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Insights/V1/ConferenceInstance.php" size="6102" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="a6764716912258751cad24ed0779aa10fe5e6c0e" relative="Twilio/Rest/Insights/V1/ConferenceInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $conferenceSid"/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="\DateTime|null $createTime"/>
+    <property value="\DateTime|null $startTime"/>
+    <property value="\DateTime|null $endTime"/>
+    <property value="int|null $durationSeconds"/>
+    <property value="int|null $connectDurationSeconds"/>
+    <property value="string $status"/>
+    <property value="int|null $maxParticipants"/>
+    <property value="int|null $maxConcurrentParticipants"/>
+    <property value="int|null $uniqueParticipants"/>
+    <property value="string $endReason"/>
+    <property value="string|null $endedBy"/>
+    <property value="string $mixerRegion"/>
+    <property value="string $mixerRegionRequested"/>
+    <property value="bool|null $recordingEnabled"/>
+    <property value="array|null $detectedIssues"/>
+    <property value="string[]|null $tags"/>
+    <property value="array|null $tagInfo"/>
+    <property value="string $processingState"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_conferenceParticipants" visibility="protected" static="false" line="55"/>
+  <constructor name="__construct" start="64" end="96" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ConferenceInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Insights\V1\mixed" namespace="Twilio\Rest\Insights\V1" name="mixed"/>
+      </param>
+      <param description="The unique SID identifier of the Conference." type="string" variable="$conferenceSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="conferenceSid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="68"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="104" end="114" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this ConferenceInstance" type="object">
+        <type full="Twilio\Rest\Insights\V1\ConferenceContext" namespace="Twilio\Rest\Insights\V1" name="ConferenceContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ConferenceContext" namespace="Twilio\Rest\Insights\V1" name="ConferenceContext"/>
+    </return>
+  </method>
+  <method name="fetch" start="122" end="126" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ConferenceInstance"/>
+      <return description="Fetched ConferenceInstance" type="object">
+        <type full="Twilio\Rest\Insights\V1\ConferenceInstance" namespace="Twilio\Rest\Insights\V1" name="ConferenceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\ConferenceInstance" namespace="Twilio\Rest\Insights\V1" name="ConferenceInstance"/>
+    </return>
+  </method>
+  <method name="getConferenceParticipants" start="131" end="134" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the conferenceParticipants"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Insights\V1\Conference\ConferenceParticipantList" namespace="Twilio\Rest\Insights\V1\Conference" name="ConferenceParticipantList"/>
+    </return>
+  </method>
+  <method name="__get" start="143" end="155" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="162" end="169" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

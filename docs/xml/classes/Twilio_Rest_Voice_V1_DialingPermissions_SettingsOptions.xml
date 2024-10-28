@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Voice\V1\DialingPermissions\SettingsOptions" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="SettingsOptions" abstract="true" final="false" start="21" end="39">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Voice/V1/DialingPermissions" file="SettingsOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Voice/V1/DialingPermissions/SettingsOptions.php" size="2417" time="2024-10-28T12:06:47+00:00" unixtime="1730117207" sha1="0a112869a8923c3113571abdd579ef5dfa422d68" relative="Twilio/Rest/Voice/V1/DialingPermissions/SettingsOptions.php"/>
+  <method name="update" start="28" end="37" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="`true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`." type="object" variable="$dialingPermissionsInheritance">
+        <type full="Twilio\Rest\Voice\V1\DialingPermissions\bool" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Voice\V1\DialingPermissions\UpdateSettingsOptions" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="UpdateSettingsOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Voice\V1\DialingPermissions\UpdateSettingsOptions" namespace="Twilio\Rest\Voice\V1\DialingPermissions" name="UpdateSettingsOptions"/>
+    </return>
+    <parameter name="dialingPermissionsInheritance" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\CustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CustomerProfilesOptions" abstract="true" final="false" start="21" end="85">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="CustomerProfilesOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/CustomerProfilesOptions.php" size="8348" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="a2976abe2889f8ea1c7d0000e198d62a2897437b" relative="Twilio/Rest/Trusthub/V1/CustomerProfilesOptions.php"/>
+  <method name="create" start="27" end="36" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we call to inform your application of status changes." type="string" variable="$statusCallback"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\CreateCustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateCustomerProfilesOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\CreateCustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="CreateCustomerProfilesOptions"/>
+    </return>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="read" start="46" end="59" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The verification status of the Customer-Profile resource." type="string" variable="$status"/>
+      <param description="The string that you assigned to describe the resource." type="string" variable="$friendlyName"/>
+      <param description="The unique string of a policy that is associated to the Customer-Profile resource." type="string" variable="$policySid"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\ReadCustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="ReadCustomerProfilesOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\ReadCustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="ReadCustomerProfilesOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="policySid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+  <method name="update" start="68" end="83" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$status"/>
+      <param description="The URL we call to inform your application of status changes." type="string" variable="$statusCallback"/>
+      <param description="The string that you assigned to describe the resource." type="string" variable="$friendlyName"/>
+      <param description="The email address that will receive updates when the Customer-Profile resource changes status." type="string" variable="$email"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\UpdateCustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="UpdateCustomerProfilesOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\UpdateCustomerProfilesOptions" namespace="Twilio\Rest\Trusthub\V1" name="UpdateCustomerProfilesOptions"/>
+    </return>
+    <parameter name="status" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="statusCallback" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="email" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

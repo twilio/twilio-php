@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Message\CreateFeedbackOptions" namespace="Twilio\Rest\Api\V2010\Account\Message" name="CreateFeedbackOptions" abstract="false" final="false" start="40" end="73">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Message" file="FeedbackOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Message/FeedbackOptions.php" size="1704" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="7f68f1f1b46f8c0c203f544d098a84f487719c6a" relative="Twilio/Rest/Api/V2010/Account/Message/FeedbackOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="45" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$outcome"/>
+    </docblock>
+    <parameter name="outcome" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setOutcome" start="57" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$outcome"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\Message\$this" namespace="Twilio\Rest\Api\V2010\Account\Message" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Message\CreateFeedbackOptions" namespace="Twilio\Rest\Api\V2010\Account\Message" name="CreateFeedbackOptions"/>
+    </return>
+    <parameter name="outcome" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="68" end="72" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

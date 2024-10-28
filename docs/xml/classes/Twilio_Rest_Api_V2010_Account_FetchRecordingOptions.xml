@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\FetchRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="FetchRecordingOptions" abstract="false" final="false" start="72" end="107">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="RecordingOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/RecordingOptions.php" size="12610" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="cd7f70fcd77610ccf11bcd9eafdf38243aac3b47" relative="Twilio/Rest/Api/V2010/Account/RecordingOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="77" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days." type="object" variable="$includeSoftDeleted">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="includeSoftDeleted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </constructor>
+  <method name="setIncludeSoftDeleted" start="91" end="95" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days."/>
+      <param description="A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days." type="object" variable="$includeSoftDeleted">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\$this" namespace="Twilio\Rest\Api\V2010\Account" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\FetchRecordingOptions" namespace="Twilio\Rest\Api\V2010\Account" name="FetchRecordingOptions"/>
+    </return>
+    <parameter name="includeSoftDeleted" byreference="false" type="bool"/>
+  </method>
+  <method name="__toString" start="102" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

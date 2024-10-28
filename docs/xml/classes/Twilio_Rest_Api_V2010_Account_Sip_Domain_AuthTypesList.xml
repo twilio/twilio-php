@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypesList" namespace="Twilio\Rest\Api\V2010\Account\Sip\Domain" name="AuthTypesList" abstract="false" final="false" start="31" end="135">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Sip/Domain" file="AuthTypesList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/Sip/Domain/AuthTypesList.php" size="3903" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="1917a53a9332fbd3f5cf17fd5eb73803939edd00" relative="Twilio/Rest/Api/V2010/Account/Sip/Domain/AuthTypesList.php"/>
+  <docblock>
+    <description/>
+    <property value="AuthTypeCallsList $calls"/>
+    <property value="AuthTypeRegistrationsList $registrations"/>
+  </docblock>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <member name="_calls" default="NULL" visibility="protected" static="false" line="33"/>
+  <member name="_registrations" default="NULL" visibility="protected" static="false" line="34"/>
+  <constructor name="__construct" start="43" end="59" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the AuthTypesList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resource to fetch." type="string" variable="$accountSid"/>
+      <param description="The SID of the SIP domain that contains the resource to fetch." type="string" variable="$domainSid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="accountSid" byreference="false" type="string"/>
+    <parameter name="domainSid" byreference="false" type="string"/>
+    <inline>
+      <comment value="Path Solution" line="50"/>
+    </inline>
+  </constructor>
+  <method name="getCalls" start="64" end="74" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the calls"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeCallsList" namespace="Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes" name="AuthTypeCallsList"/>
+    </return>
+  </method>
+  <method name="getRegistrations" start="79" end="89" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the registrations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes\AuthTypeRegistrationsList" namespace="Twilio\Rest\Api\V2010\Account\Sip\Domain\AuthTypes" name="AuthTypeRegistrationsList"/>
+    </return>
+  </method>
+  <method name="__get" start="98" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to lazy load subresources"/>
+      <param description="Subresource to return" type="string" variable="$name"/>
+      <return description="The requested subresource" type="object">
+        <type full="\Twilio\ListResource" namespace="\Twilio" name="ListResource"/>
+      </return>
+      <throws description="For unknown subresources" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__call" start="116" end="124" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic caller to get resource contexts"/>
+      <param description="Resource to return" type="string" variable="$name"/>
+      <param description="Context parameters" type="array" variable="$arguments"/>
+      <return description="The requested resource context" type="object">
+        <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+      </return>
+      <throws description="For unknown resource" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+    </return>
+    <parameter name="name" byreference="false" type="string"/>
+    <parameter name="arguments" byreference="false" type="array"/>
+  </method>
+  <method name="__toString" start="131" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

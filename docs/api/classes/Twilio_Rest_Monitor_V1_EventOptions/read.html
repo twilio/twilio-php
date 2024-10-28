@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head><!--Google Tag Manager--><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'%26l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MWRD6S');</script><!--End Google Tag Manager-->
+<title>phpDox - Twilio\Rest\Monitor\V1\EventOptions::read</title>
+<link href="../../css/style.css" media="screen" rel="stylesheet" type="text/css"/>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
+<body><!--Google Tag Manager (noscript)--><noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MWRD6S" style="display:none;visibility:hidden" width="0"></iframe></noscript><!--End Google Tag Manager (noscript)-->
+<nav class="topnav">
+<ul>
+<li>
+<div class="logo"><span>/**</span>phpDox</div>
+</li>
+<li class="separator">
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../namespaces.html">Namespaces</a>
+</li>
+<li>
+<a href="../../interfaces.html">Interfaces</a>
+</li>
+<li>
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../source/index.html">Source</a>
+</li>
+</ul>
+</nav>
+<div id="mainstage">
+<div class="box">
+<ul class="breadcrumb">
+<li>
+<a href="../../index.html">Overview</a>
+</li>
+<li class="separator">
+<a href="../../classes.html">Classes</a>
+</li>
+<li class="separator">
+<a href="../../classes.html#Twilio_Rest_Monitor_V1">Twilio\Rest\Monitor\V1</a>
+</li>
+<li class="separator">
+<a href="../../classes/Twilio_Rest_Monitor_V1_EventOptions.html" title="Twilio\Rest\Monitor\V1\EventOptions">EventOptions</a>
+</li>
+<li class="separator">read</li>
+</ul>
+</div>
+<nav class="box">
+<ul>
+<li>
+<a href="#introduction">Introduction</a>
+</li>
+<li>
+<a href="#synopsis">Synopsis</a>
+</li>
+<li>
+<a href="#parameter">Parameter</a>
+</li>
+<li>
+<a href="#return">Return</a>
+</li>
+<li>
+<a href="../../source/Twilio/Rest/Monitor/V1/EventOptions.php.html#line33">Source</a>
+</li>
+</ul>
+</nav>
+<section>
+<h1><small>Twilio\Rest\Monitor\V1\EventOptions::</small>read</h1>
+<h4></h4>
+<p></p>
+<ul></ul>
+<h2 id="signature">Signature</h2>
+<div class="styled synopsis">
+<code>public function read([string
+        $actorSid = Values::NONE,
+            [string
+        $eventType = Values::NONE,
+            [string
+        $resourceSid = Values::NONE,
+            [string
+        $sourceIpAddress = Values::NONE,
+            [<a href="../../classes/DateTime.html" title="DateTime">DateTime</a>
+        $startDate = NULL,
+            [<a href="../../classes/DateTime.html" title="DateTime">DateTime</a>
+        $endDate = NULL]]]]]] )
+            </code>
+</div>
+<h2 id="parameterlist">Parameters</h2>
+<dl class="styled">
+<dt><code>$actorSid</code>
+                —
+                string</dt>
+<dd>Only include events initiated by this Actor. Useful for auditing actions taken by specific users or API credentials.</dd>
+<dt><code>$eventType</code>
+                —
+                string</dt>
+<dd>Only include events of this [Event Type](https://www.twilio.com/docs/usage/monitor-events#event-types).</dd>
+<dt><code>$resourceSid</code>
+                —
+                string</dt>
+<dd>Only include events that refer to this resource. Useful for discovering the history of a specific resource.</dd>
+<dt><code>$sourceIpAddress</code>
+                —
+                string</dt>
+<dd>Only include events that originated from this IP address. Useful for tracking suspicious activity originating from the API or the Twilio Console.</dd>
+<dt><code>$startDate</code>
+                —
+                <a href="../../classes/_DateTime.html" title="\DateTime">\DateTime</a></dt>
+<dd>Only include events that occurred on or after this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.<br/><br/><br/> </dd>
+<dt><code>$endDate</code>
+                —
+                <a href="../../classes/_DateTime.html" title="\DateTime">\DateTime</a></dt>
+<dd>Only include events that occurred on or before this date. Specify the date in GMT and [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.<br/><br/><br/> </dd>
+</dl>
+<h2 id="return">Returns</h2>
+<dl class="styled">
+<dt>ReadEventOptions</dt>
+<dd>Options builder<br/>
+</dd>
+</dl>
+</section>
+</div>
+<footer>
+<span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2024 by Arne Blankerts and Contributors</span>
+</footer>
+</body>
+</html>

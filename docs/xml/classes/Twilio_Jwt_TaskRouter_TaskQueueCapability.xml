@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Jwt\TaskRouter\TaskQueueCapability" namespace="Twilio\Jwt\TaskRouter" name="TaskQueueCapability" abstract="false" final="false" start="12" end="21">
+  <file path="/twilio/repos/php/src/Twilio/Jwt/TaskRouter" file="TaskQueueCapability.php" realpath="/twilio/repos/php/src/Twilio/Jwt/TaskRouter/TaskQueueCapability.php" size="748" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="7e610fe373fe79ce3efaf2d871acff6ea4705429" relative="Twilio/Jwt/TaskRouter/TaskQueueCapability.php"/>
+  <docblock>
+    <description compact="Twilio TaskRouter TaskQueue Capability assigner"/>
+    <author value="Justin Witz &lt;justin.witz@twilio.com&gt;"/>
+    <license name="http://creativecommons.org/licenses/MIT/ MIT"/>
+  </docblock>
+  <extends full="Twilio\Jwt\TaskRouter\CapabilityToken" namespace="Twilio\Jwt\TaskRouter" name="CapabilityToken"/>
+  <constructor name="__construct" start="13" end="16" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="accountSid" byreference="false" type="string"/>
+    <parameter name="authToken" byreference="false" type="string"/>
+    <parameter name="workspaceSid" byreference="false" type="string"/>
+    <parameter name="taskQueueSid" byreference="false" type="string"/>
+    <parameter name="overrideBaseUrl" byreference="false" type="string" default="NULL"/>
+    <parameter name="overrideBaseWSUrl" byreference="false" type="string" default="NULL"/>
+  </constructor>
+  <method name="setupResource" start="18" end="20" abstract="false" final="false" static="false" visibility="protected">
+    <return type="void" nullable="false"/>
+  </method>
+  <parent full="Twilio\Jwt\TaskRouter\CapabilityToken" namespace="Twilio\Jwt\TaskRouter" name="CapabilityToken">
+    <member name="accountSid" visibility="protected" static="false" line="16"/>
+    <member name="authToken" visibility="protected" static="false" line="17"/>
+    <member name="baseUrl" default="'https://taskrouter.twilio.com/v1'" type="string" visibility="protected" static="false" line="22"/>
+    <member name="baseWsUrl" default="'https://event-bridge.twilio.com/v1/wschannels'" type="string" visibility="protected" static="false" line="23"/>
+    <member name="version" default="'v1'" type="string" visibility="protected" static="false" line="24"/>
+    <member name="workspaceSid" visibility="protected" static="false" line="26"/>
+    <member name="channelId" visibility="protected" static="false" line="27"/>
+    <member name="resourceUrl" visibility="protected" static="false" line="28"/>
+    <member name="required" default="" type="array" visibility="protected" static="false" line="30"/>
+    <member name="optional" default="" type="array" visibility="protected" static="false" line="31"/>
+    <constructor name="__construct" start="33" end="62" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="accountSid" byreference="false" type="string"/>
+      <parameter name="authToken" byreference="false" type="string"/>
+      <parameter name="workspaceSid" byreference="false" type="string"/>
+      <parameter name="channelId" byreference="false" type="string"/>
+      <parameter name="resourceUrl" byreference="false" type="string" default="NULL"/>
+      <parameter name="overrideBaseUrl" byreference="false" type="string" default="NULL"/>
+      <parameter name="overrideBaseWSUrl" byreference="false" type="string" default="NULL"/>
+      <inline>
+        <comment value="add permissions to GET and POST to the event-bridge channel" line="56"/>
+        <comment value="add permissions to fetch the instance resource" line="60"/>
+      </inline>
+    </constructor>
+    <method name="setupResource" start="64" end="65" abstract="false" final="false" static="false" visibility="protected">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="addPolicyDeconstructed" start="67" end="71" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Twilio\Jwt\TaskRouter\Policy" namespace="Twilio\Jwt\TaskRouter" name="Policy"/>
+      </return>
+      <parameter name="url" byreference="false" type="string"/>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="queryFilter" byreference="false" nullable="true" type="array" default=""/>
+      <parameter name="postFilter" byreference="false" nullable="true" type="array" default=""/>
+      <parameter name="allow" byreference="false" type="boolean" default="true"/>
+    </method>
+    <method name="allow" start="73" end="75" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="url" byreference="false" type="string"/>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="queryFilter" byreference="false" nullable="true" type="array" default=""/>
+      <parameter name="postFilter" byreference="false" nullable="true" type="array" default=""/>
+    </method>
+    <method name="deny" start="77" end="79" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+      <parameter name="url" byreference="false" type="string"/>
+      <parameter name="method" byreference="false" type="string"/>
+      <parameter name="queryFilter" byreference="false" type="array" default=""/>
+      <parameter name="postFilter" byreference="false" type="array" default=""/>
+    </method>
+    <method name="allowFetchSubresources" start="97" end="102" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="allowUpdates" start="104" end="109" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="allowUpdatesSubresources" start="111" end="116" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="allowDelete" start="118" end="123" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="allowDeleteSubresources" start="125" end="130" abstract="false" final="false" static="false" visibility="public">
+      <return type="void" nullable="false"/>
+    </method>
+    <method name="generateToken" start="132" end="160" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+      <parameter name="ttl" byreference="false" type="integer" default="3600"/>
+      <parameter name="extraAttributes" byreference="false" type="array" default=""/>
+    </method>
+  </parent>
+</class>

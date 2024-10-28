@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Events\V1\Schema\SchemaVersionContext" namespace="Twilio\Rest\Events\V1\Schema" name="SchemaVersionContext" abstract="false" final="false" start="26" end="89">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Events/V1/Schema" file="SchemaVersionContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Events/V1/Schema/SchemaVersionContext.php" size="2445" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="335aad43391f12e34b88ef57b8c8c9e05a1671c9" relative="Twilio/Rest/Events/V1/Schema/SchemaVersionContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="35" end="53" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SchemaVersionContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The unique identifier of the schema. Each schema can have multiple versions, that share the same id." type="string" variable="$id"/>
+      <param description="The version of the schema" type="int" variable="$schemaVersion"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <parameter name="schemaVersion" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="42"/>
+    </inline>
+  </constructor>
+  <method name="fetch" start="61" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SchemaVersionInstance"/>
+      <return description="Fetched SchemaVersionInstance" type="object">
+        <type full="Twilio\Rest\Events\V1\Schema\SchemaVersionInstance" namespace="Twilio\Rest\Events\V1\Schema" name="SchemaVersionInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Events\V1\Schema\SchemaVersionInstance" namespace="Twilio\Rest\Events\V1\Schema" name="SchemaVersionInstance"/>
+    </return>
+  </method>
+  <method name="__toString" start="81" end="88" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

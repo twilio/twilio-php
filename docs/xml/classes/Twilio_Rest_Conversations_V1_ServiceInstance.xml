@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Conversations\V1\ServiceInstance" namespace="Twilio\Rest\Conversations\V1" name="ServiceInstance" abstract="false" final="false" start="43" end="210">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Conversations/V1" file="ServiceInstance.php" realpath="/twilio/repos/php/src/Twilio/Rest/Conversations/V1/ServiceInstance.php" size="5927" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="107c8de59d5a4a6008bd233699cc568c14c4cb83" relative="Twilio/Rest/Conversations/V1/ServiceInstance.php"/>
+  <docblock>
+    <description/>
+    <property value="string|null $accountSid"/>
+    <property value="string|null $sid"/>
+    <property value="string|null $friendlyName"/>
+    <property value="\DateTime|null $dateCreated"/>
+    <property value="\DateTime|null $dateUpdated"/>
+    <property value="string|null $url"/>
+    <property value="array|null $links"/>
+  </docblock>
+  <extends full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource"/>
+  <member name="_participantConversations" visibility="protected" static="false" line="45"/>
+  <member name="_users" visibility="protected" static="false" line="46"/>
+  <member name="_bindings" visibility="protected" static="false" line="47"/>
+  <member name="_conversationWithParticipants" visibility="protected" static="false" line="48"/>
+  <member name="_conversations" visibility="protected" static="false" line="49"/>
+  <member name="_roles" visibility="protected" static="false" line="50"/>
+  <member name="_configuration" visibility="protected" static="false" line="51"/>
+  <constructor name="__construct" start="60" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ServiceInstance"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The response payload" type="array" variable="$payload" of="object">
+        <type full="Twilio\Rest\Conversations\V1\mixed" namespace="Twilio\Rest\Conversations\V1" name="mixed"/>
+      </param>
+      <param description="A 34 character string that uniquely identifies this resource." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="payload" byreference="false" type="array"/>
+    <parameter name="sid" byreference="false" type="string" default="NULL"/>
+    <inline>
+      <comment value="Marshaled Properties" line="64"/>
+    </inline>
+  </constructor>
+  <method name="proxy" start="84" end="94" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Generate an instance context for the instance, the context is capable of performing various actions.  All instance actions are proxied to the context"/>
+      <return description="Context for this ServiceInstance" type="object">
+        <type full="Twilio\Rest\Conversations\V1\ServiceContext" namespace="Twilio\Rest\Conversations\V1" name="ServiceContext"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ServiceContext" namespace="Twilio\Rest\Conversations\V1" name="ServiceContext"/>
+    </return>
+  </method>
+  <method name="delete" start="102" end="106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the ServiceInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Conversations\V1\bool" namespace="Twilio\Rest\Conversations\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="114" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ServiceInstance"/>
+      <return description="Fetched ServiceInstance" type="object">
+        <type full="Twilio\Rest\Conversations\V1\ServiceInstance" namespace="Twilio\Rest\Conversations\V1" name="ServiceInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\ServiceInstance" namespace="Twilio\Rest\Conversations\V1" name="ServiceInstance"/>
+    </return>
+  </method>
+  <method name="getParticipantConversations" start="123" end="126" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the participantConversations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ParticipantConversationList" namespace="Twilio\Rest\Conversations\V1\Service" name="ParticipantConversationList"/>
+    </return>
+  </method>
+  <method name="getUsers" start="131" end="134" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the users"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\UserList" namespace="Twilio\Rest\Conversations\V1\Service" name="UserList"/>
+    </return>
+  </method>
+  <method name="getBindings" start="139" end="142" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the bindings"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\BindingList" namespace="Twilio\Rest\Conversations\V1\Service" name="BindingList"/>
+    </return>
+  </method>
+  <method name="getConversationWithParticipants" start="147" end="150" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the conversationWithParticipants"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ConversationWithParticipantsList" namespace="Twilio\Rest\Conversations\V1\Service" name="ConversationWithParticipantsList"/>
+    </return>
+  </method>
+  <method name="getConversations" start="155" end="158" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the conversations"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ConversationList" namespace="Twilio\Rest\Conversations\V1\Service" name="ConversationList"/>
+    </return>
+  </method>
+  <method name="getRoles" start="163" end="166" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the roles"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\RoleList" namespace="Twilio\Rest\Conversations\V1\Service" name="RoleList"/>
+    </return>
+  </method>
+  <method name="getConfiguration" start="171" end="174" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Access the configuration"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Conversations\V1\Service\ConfigurationList" namespace="Twilio\Rest\Conversations\V1\Service" name="ConfigurationList"/>
+    </return>
+  </method>
+  <method name="__get" start="183" end="195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Magic getter to access properties"/>
+      <param description="Property to access" type="string" variable="$name"/>
+      <return description="The requested property" type="mixed"/>
+      <throws description="For unknown properties" type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <parameter name="name" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="202" end="209" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceResource" namespace="Twilio" name="InstanceResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="context" visibility="protected" static="false" line="9"/>
+    <member name="properties" default="" type="array" visibility="protected" static="false" line="10"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="11"/>
+    <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="toArray" start="17" end="19" abstract="false" final="false" static="false" visibility="public">
+      <return type="array" nullable="false"/>
+    </method>
+    <method name="__toString" start="21" end="23" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+    <method name="__isset" start="25" end="27" abstract="false" final="false" static="false" visibility="public">
+      <return type="bool" nullable="false"/>
+      <parameter name="name" byreference="false" type="{unknown}"/>
+    </method>
+  </parent>
+</class>

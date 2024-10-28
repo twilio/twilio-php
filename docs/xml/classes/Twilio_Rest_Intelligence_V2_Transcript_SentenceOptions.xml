@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Intelligence\V2\Transcript\SentenceOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="SentenceOptions" abstract="true" final="false" start="21" end="41">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript" file="SentenceOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Intelligence/V2/Transcript/SentenceOptions.php" size="3157" time="2024-10-28T12:06:44+00:00" unixtime="1730117204" sha1="7e1cce06144d3e04881fa205a6ba11268fe9808f" relative="Twilio/Rest/Intelligence/V2/Transcript/SentenceOptions.php"/>
+  <method name="read" start="28" end="39" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param description="Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences." type="object" variable="$redacted">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+      <param description="Returns word level timestamps information, if word_timestamps is enabled. The default is `false`." type="object" variable="$wordTimestamps">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\bool" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="bool"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Intelligence\V2\Transcript\ReadSentenceOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="ReadSentenceOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Intelligence\V2\Transcript\ReadSentenceOptions" namespace="Twilio\Rest\Intelligence\V2\Transcript" name="ReadSentenceOptions"/>
+    </return>
+    <parameter name="redacted" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="wordTimestamps" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+  </method>
+</class>

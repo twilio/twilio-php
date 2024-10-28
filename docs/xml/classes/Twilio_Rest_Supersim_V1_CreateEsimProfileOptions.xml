@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Supersim\V1\CreateEsimProfileOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateEsimProfileOptions" abstract="false" final="false" start="71" end="151">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Supersim/V1" file="EsimProfileOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Supersim/V1/EsimProfileOptions.php" size="9295" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="ab46dc7b8c91ee794369ea2abebbc4fc6f57db88" relative="Twilio/Rest/Supersim/V1/EsimProfileOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="79" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param description="The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`." type="string" variable="$callbackUrl"/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST." type="string" variable="$callbackMethod"/>
+      <param description="When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile." type="object" variable="$generateMatchingId">
+        <type full="Twilio\Rest\Supersim\V1\bool" namespace="Twilio\Rest\Supersim\V1" name="bool"/>
+      </param>
+      <param description="Identifier of the eUICC that will claim the eSIM Profile." type="string" variable="$eid"/>
+    </docblock>
+    <parameter name="callbackUrl" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="callbackMethod" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="generateMatchingId" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="eid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setCallbackUrl" start="99" end="103" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`."/>
+      <param description="The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`." type="string" variable="$callbackUrl"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateEsimProfileOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateEsimProfileOptions"/>
+    </return>
+    <parameter name="callbackUrl" byreference="false" type="string"/>
+  </method>
+  <method name="setCallbackMethod" start="111" end="115" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST."/>
+      <param description="The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST." type="string" variable="$callbackMethod"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateEsimProfileOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateEsimProfileOptions"/>
+    </return>
+    <parameter name="callbackMethod" byreference="false" type="string"/>
+  </method>
+  <method name="setGenerateMatchingId" start="123" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile."/>
+      <param description="When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile." type="object" variable="$generateMatchingId">
+        <type full="Twilio\Rest\Supersim\V1\bool" namespace="Twilio\Rest\Supersim\V1" name="bool"/>
+      </param>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateEsimProfileOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateEsimProfileOptions"/>
+    </return>
+    <parameter name="generateMatchingId" byreference="false" type="bool"/>
+  </method>
+  <method name="setEid" start="135" end="139" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Identifier of the eUICC that will claim the eSIM Profile."/>
+      <param description="Identifier of the eUICC that will claim the eSIM Profile." type="string" variable="$eid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Supersim\V1\$this" namespace="Twilio\Rest\Supersim\V1" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Supersim\V1\CreateEsimProfileOptions" namespace="Twilio\Rest\Supersim\V1" name="CreateEsimProfileOptions"/>
+    </return>
+    <parameter name="eid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="146" end="150" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

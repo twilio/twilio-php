@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/twilio/repos/php/src/Twilio/Jwt/Grants" file="Grant.php" realpath="/twilio/repos/php/src/Twilio/Jwt/Grants/Grant.php" size="329" time="2024-10-24T12:20:49+00:00" unixtime="1729772449" sha1="e5a082d090659bd26b9171f16940fd1bfd483972" relative="Twilio/Jwt/Grants/Grant.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2"/>
+  <line no="3"/>
+  <line no="4">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Twilio</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Jwt</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Grants</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="5"/>
+  <line no="6"/>
+  <line no="7">
+    <token name="T_INTERFACE">interface</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Grant</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="8">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT">     * Returns the grant type</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT">     * @return string type of the grant</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="13">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getGrantKey</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">string</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="14"/>
+  <line no="15">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="16">
+    <token name="T_DOC_COMMENT">     * Returns the grant data</token>
+  </line>
+  <line no="17">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="18">
+    <token name="T_DOC_COMMENT">     * @return array data of the grant</token>
+  </line>
+  <line no="19">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="20">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">getPayload</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="21">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="22"/>
+</source>

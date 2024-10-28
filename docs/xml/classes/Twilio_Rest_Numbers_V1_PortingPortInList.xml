@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Numbers\V1\PortingPortInList" namespace="Twilio\Rest\Numbers\V1" name="PortingPortInList" abstract="false" final="false" start="25" end="90">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Numbers/V1" file="PortingPortInList.php" realpath="/twilio/repos/php/src/Twilio/Rest/Numbers/V1/PortingPortInList.php" size="2301" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="3108a47d9ba1adfed58bcd917700c029c41b28ea" relative="Twilio/Rest/Numbers/V1/PortingPortInList.php"/>
+  <extends full="Twilio\ListResource" namespace="Twilio" name="ListResource"/>
+  <constructor name="__construct" start="32" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Construct the PortingPortInList"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <inline>
+      <comment value="Path Solution" line="37"/>
+    </inline>
+  </constructor>
+  <method name="create" start="50" end="62" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the PortingPortInInstance"/>
+      <return description="Created PortingPortInInstance" type="object">
+        <type full="Twilio\Rest\Numbers\V1\PortingPortInInstance" namespace="Twilio\Rest\Numbers\V1" name="PortingPortInInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V1\PortingPortInInstance" namespace="Twilio\Rest\Numbers\V1" name="PortingPortInInstance"/>
+    </return>
+  </method>
+  <method name="getContext" start="70" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructs a PortingPortInContext"/>
+      <param description="The SID of the Port In request. This is a unique identifier of the port in request." type="string" variable="$portInRequestSid"/>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Numbers\V1\PortingPortInContext" namespace="Twilio\Rest\Numbers\V1" name="PortingPortInContext"/>
+    </return>
+    <parameter name="portInRequestSid" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\ListResource" namespace="Twilio" name="ListResource">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

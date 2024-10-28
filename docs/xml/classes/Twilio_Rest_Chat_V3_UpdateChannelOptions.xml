@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Chat\V3\UpdateChannelOptions" namespace="Twilio\Rest\Chat\V3" name="UpdateChannelOptions" abstract="false" final="false" start="46" end="109">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Chat/V3" file="ChannelOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Chat/V3/ChannelOptions.php" size="3533" time="2024-10-28T12:06:43+00:00" unixtime="1730117203" sha1="3758ffdc01035ef1355d42c8e812dd534271627e" relative="Twilio/Rest/Chat/V3/ChannelOptions.php"/>
+  <extends full="Twilio\Options" namespace="Twilio" name="Options"/>
+  <constructor name="__construct" start="53" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$type"/>
+      <param description="The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to." type="string" variable="$messagingServiceSid"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messagingServiceSid" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </constructor>
+  <method name="setType" start="69" end="73" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$type"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V3\$this" namespace="Twilio\Rest\Chat\V3" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V3\UpdateChannelOptions" namespace="Twilio\Rest\Chat\V3" name="UpdateChannelOptions"/>
+    </return>
+    <parameter name="type" byreference="false" type="string"/>
+  </method>
+  <method name="setMessagingServiceSid" start="81" end="85" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to."/>
+      <param description="The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this channel belongs to." type="string" variable="$messagingServiceSid"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V3\$this" namespace="Twilio\Rest\Chat\V3" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V3\UpdateChannelOptions" namespace="Twilio\Rest\Chat\V3" name="UpdateChannelOptions"/>
+    </return>
+    <parameter name="messagingServiceSid" byreference="false" type="string"/>
+  </method>
+  <method name="setXTwilioWebhookEnabled" start="93" end="97" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The X-Twilio-Webhook-Enabled HTTP request header"/>
+      <param description="The X-Twilio-Webhook-Enabled HTTP request header" type="string" variable="$xTwilioWebhookEnabled"/>
+      <return description="Fluent Builder" type="object">
+        <type full="Twilio\Rest\Chat\V3\$this" namespace="Twilio\Rest\Chat\V3" name="$this"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Chat\V3\UpdateChannelOptions" namespace="Twilio\Rest\Chat\V3" name="UpdateChannelOptions"/>
+    </return>
+    <parameter name="xTwilioWebhookEnabled" byreference="false" type="string"/>
+  </method>
+  <method name="__toString" start="104" end="108" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\Options" namespace="Twilio" name="Options">
+    <implements full="IteratorAggregate" namespace="" name="IteratorAggregate"/>
+    <member name="options" default="" type="array" visibility="protected" static="false" line="8"/>
+    <method name="getIterator" start="10" end="12" abstract="false" final="false" static="false" visibility="public">
+      <return type="object" nullable="false">
+        <type full="Traversable" namespace="" name="Traversable"/>
+      </return>
+    </method>
+  </parent>
+  <interface full="IteratorAggregate" namespace="" name="IteratorAggregate">
+    <extends full="Traversable" namespace="" name="Traversable"/>
+    <method name="getIterator" abstract="false" static="false" visibility="public" final="false">
+    <docblock>
+      <description compact="Retrieve an external iterator"/>
+      <return type="Traversable"/>
+    </docblock>
+  </method>
+  </interface>
+</class>

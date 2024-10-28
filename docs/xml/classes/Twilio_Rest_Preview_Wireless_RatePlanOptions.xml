@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Preview\Wireless\RatePlanOptions" namespace="Twilio\Rest\Preview\Wireless" name="RatePlanOptions" abstract="true" final="false" start="21" end="86">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless" file="RatePlanOptions.php" realpath="/twilio/repos/php/src/Twilio/Rest/Preview/Wireless/RatePlanOptions.php" size="8184" time="2024-10-28T12:06:45+00:00" unixtime="1730117205" sha1="4b8fadb478d18059a46822ef4c10b92aa3444e1a" relative="Twilio/Rest/Preview/Wireless/RatePlanOptions.php"/>
+  <method name="create" start="36" end="63" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$uniqueName"/>
+      <param type="string" variable="$friendlyName"/>
+      <param type="object" variable="$dataEnabled">
+        <type full="Twilio\Rest\Preview\Wireless\bool" namespace="Twilio\Rest\Preview\Wireless" name="bool"/>
+      </param>
+      <param type="int" variable="$dataLimit"/>
+      <param type="string" variable="$dataMetering"/>
+      <param type="object" variable="$messagingEnabled">
+        <type full="Twilio\Rest\Preview\Wireless\bool" namespace="Twilio\Rest\Preview\Wireless" name="bool"/>
+      </param>
+      <param type="object" variable="$voiceEnabled">
+        <type full="Twilio\Rest\Preview\Wireless\bool" namespace="Twilio\Rest\Preview\Wireless" name="bool"/>
+      </param>
+      <param type="object" variable="$commandsEnabled">
+        <type full="Twilio\Rest\Preview\Wireless\bool" namespace="Twilio\Rest\Preview\Wireless" name="bool"/>
+      </param>
+      <param type="object" variable="$nationalRoamingEnabled">
+        <type full="Twilio\Rest\Preview\Wireless\bool" namespace="Twilio\Rest\Preview\Wireless" name="bool"/>
+      </param>
+      <param type="array" variable="$internationalRoaming" of="object">
+        <type full="Twilio\Rest\Preview\Wireless\string" namespace="Twilio\Rest\Preview\Wireless" name="string"/>
+      </param>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\CreateRatePlanOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateRatePlanOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\CreateRatePlanOptions" namespace="Twilio\Rest\Preview\Wireless" name="CreateRatePlanOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="dataEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="dataLimit" byreference="false" type="{unknown}" default="" constant="Values::INT_NONE"/>
+    <parameter name="dataMetering" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="messagingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="voiceEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="commandsEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="nationalRoamingEnabled" byreference="false" type="{unknown}" default="" constant="Values::BOOL_NONE"/>
+    <parameter name="internationalRoaming" byreference="false" type="{unknown}" default="" constant="Values::ARRAY_NONE"/>
+  </method>
+  <method name="update" start="73" end="84" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$uniqueName"/>
+      <param type="string" variable="$friendlyName"/>
+      <return description="Options builder" type="object">
+        <type full="Twilio\Rest\Preview\Wireless\UpdateRatePlanOptions" namespace="Twilio\Rest\Preview\Wireless" name="UpdateRatePlanOptions"/>
+      </return>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Preview\Wireless\UpdateRatePlanOptions" namespace="Twilio\Rest\Preview\Wireless" name="UpdateRatePlanOptions"/>
+    </return>
+    <parameter name="uniqueName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+    <parameter name="friendlyName" byreference="false" type="{unknown}" default="" constant="Values::NONE"/>
+  </method>
+</class>

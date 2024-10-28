@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Api\V2010\Account\ApplicationContext" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationContext" abstract="false" final="false" start="28" end="164">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account" file="ApplicationContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Api/V2010/Account/ApplicationContext.php" size="5001" time="2024-10-28T12:06:42+00:00" unixtime="1730117202" sha1="c1df28e5a08a9512f512bb6c3874d71e37b26b6a" relative="Twilio/Rest/Api/V2010/Account/ApplicationContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="37" end="55" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the ApplicationContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource." type="string" variable="$accountSid"/>
+      <param description="The Twilio-provided string that uniquely identifies the Application resource to delete." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="accountSid" byreference="false" type="{unknown}"/>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="44"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="63" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the ApplicationInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\bool" namespace="Twilio\Rest\Api\V2010\Account" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="77" end="89" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the ApplicationInstance"/>
+      <return description="Fetched ApplicationInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\ApplicationInstance" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ApplicationInstance" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationInstance"/>
+    </return>
+  </method>
+  <method name="update" start="99" end="148" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the ApplicationInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Api\V2010\Account\array|Options" namespace="Twilio\Rest\Api\V2010\Account" name="array|Options"/>
+      </param>
+      <return description="Updated ApplicationInstance" type="object">
+        <type full="Twilio\Rest\Api\V2010\Account\ApplicationInstance" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Api\V2010\Account\ApplicationInstance" namespace="Twilio\Rest\Api\V2010\Account" name="ApplicationInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="156" end="163" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>

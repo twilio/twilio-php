@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Twilio\Rest\Trusthub\V1\SupportingDocumentContext" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentContext" abstract="false" final="false" start="28" end="129">
+  <file path="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1" file="SupportingDocumentContext.php" realpath="/twilio/repos/php/src/Twilio/Rest/Trusthub/V1/SupportingDocumentContext.php" size="3606" time="2024-10-28T12:06:46+00:00" unixtime="1730117206" sha1="45a5f934ab92a884430c6189994d8dee80708f45" relative="Twilio/Rest/Trusthub/V1/SupportingDocumentContext.php"/>
+  <extends full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext"/>
+  <constructor name="__construct" start="36" end="50" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initialize the SupportingDocumentContext"/>
+      <param description="Version that contains the resource" type="object" variable="$version">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </param>
+      <param description="The unique string created by Twilio to identify the Supporting Document resource." type="string" variable="$sid"/>
+    </docblock>
+    <parameter name="version" byreference="false" type="object">
+      <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+    </parameter>
+    <parameter name="sid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Path Solution" line="42"/>
+    </inline>
+  </constructor>
+  <method name="delete" start="58" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Delete the SupportingDocumentInstance"/>
+      <return description="True if delete succeeds, false otherwise" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\bool" namespace="Twilio\Rest\Trusthub\V1" name="bool"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="bool" nullable="false"/>
+  </method>
+  <method name="fetch" start="72" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Fetch the SupportingDocumentInstance"/>
+      <return description="Fetched SupportingDocumentInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentInstance" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentInstance" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentInstance"/>
+    </return>
+  </method>
+  <method name="update" start="93" end="113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Update the SupportingDocumentInstance"/>
+      <param description="Optional Arguments" type="object" variable="$options">
+        <type full="Twilio\Rest\Trusthub\V1\array|Options" namespace="Twilio\Rest\Trusthub\V1" name="array|Options"/>
+      </param>
+      <return description="Updated SupportingDocumentInstance" type="object">
+        <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentInstance" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentInstance"/>
+      </return>
+      <throws description="When an HTTP error occurs." type="object">
+        <type full="Twilio\Exceptions\TwilioException" namespace="Twilio\Exceptions" name="TwilioException"/>
+      </throws>
+    </docblock>
+    <return type="object" nullable="false">
+      <type full="Twilio\Rest\Trusthub\V1\SupportingDocumentInstance" namespace="Twilio\Rest\Trusthub\V1" name="SupportingDocumentInstance"/>
+    </return>
+    <parameter name="options" byreference="false" type="array" default=""/>
+  </method>
+  <method name="__toString" start="121" end="128" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Provide a friendly representation"/>
+      <return description="Machine friendly representation" type="string"/>
+    </docblock>
+    <return type="string" nullable="false"/>
+  </method>
+  <parent full="Twilio\InstanceContext" namespace="Twilio" name="InstanceContext">
+    <member name="version" visibility="protected" static="false" line="8"/>
+    <member name="solution" default="" type="array" visibility="protected" static="false" line="9"/>
+    <member name="uri" visibility="protected" static="false" line="10"/>
+    <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="version" byreference="false" type="object">
+        <type full="Twilio\Version" namespace="Twilio" name="Version"/>
+      </parameter>
+    </constructor>
+    <method name="__toString" start="16" end="18" abstract="false" final="false" static="false" visibility="public">
+      <return type="string" nullable="false"/>
+    </method>
+  </parent>
+</class>
