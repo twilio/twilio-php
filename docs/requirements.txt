@@ -9,4 +9,4 @@ pytz==2016.6.1
 six==1.10.0
 snowballstemmer==1.2.1
 Sphinx==1.4.5
-wheel==0.24.0
+wheel==0.38.1
