@@ -1,6 +1,12 @@
 twilio-php Changelog
 ====================
 
+[2024-10-28] Version 8.3.7
+--------------------------
+**Library - Chore**
+- [PR #817](https://github.com/twilio/twilio-php/pull/817): add .readthedocs.yaml. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 [2024-10-25] Version 8.3.6
 --------------------------
 **Library - Chore**
