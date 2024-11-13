@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Twilio\VersionInfo" namespace="Twilio" name="VersionInfo" abstract="false" final="false" start="7" end="15">
-  <file path="/twilio/repos/php/src/Twilio" file="VersionInfo.php" realpath="/twilio/repos/php/src/Twilio/VersionInfo.php" size="239" time="2024-10-28T12:06:48+00:00" unixtime="1730117208" sha1="4b0e6564655792af0fd1d0170d65ea0fe06dce80" relative="Twilio/VersionInfo.php"/>
-  <constant type="string" name="MAJOR" value="&quot;8&quot;"/>
-  <constant type="string" name="MINOR" value="&quot;3&quot;"/>
-  <constant type="string" name="PATCH" value="&quot;7&quot;"/>
-  <method name="string" start="12" end="14" abstract="false" final="false" static="true" visibility="public"/>
-</class>
