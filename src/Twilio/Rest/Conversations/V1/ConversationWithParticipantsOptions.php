@@ -32,7 +32,7 @@ abstract class ConversationWithParticipantsOptions
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
      * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
      * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
-     * @param string[] $participant The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
+     * @param string[] $participant The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      * @return CreateConversationWithParticipantsOptions Options builder
      */
@@ -87,7 +87,7 @@ class CreateConversationWithParticipantsOptions extends Options
      * @param string $timersClosed ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
      * @param string $bindingsEmailAddress The default email address that will be used when sending outbound emails in this conversation.
      * @param string $bindingsEmailName The default name that will be used when sending outbound emails in this conversation.
-     * @param string[] $participant The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
+     * @param string[] $participant The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
      * @param string $xTwilioWebhookEnabled The X-Twilio-Webhook-Enabled HTTP request header
      */
     public function __construct(
@@ -253,9 +253,9 @@ class CreateConversationWithParticipantsOptions extends Options
     }
 
     /**
-     * The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
+     * The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
      *
-     * @param string[] $participant The participant to be added to the conversation in JSON format. The parameters are as in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
+     * @param string[] $participant The participant to be added to the conversation in JSON format. The JSON object attributes are as parameters in [Participant Resource](https://www.twilio.com/docs/conversations/api/conversation-participant-resource). The maximum number of participants that can be added in a single request is 10.
      * @return $this Fluent Builder
      */
     public function setParticipant(array $participant): self

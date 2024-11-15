@@ -1,6 +1,20 @@
 twilio-php Changelog
 ====================
 
+[2024-11-15] Version 8.3.8
+--------------------------
+**Library - Chore**
+- [PR #829](https://github.com/twilio/twilio-php/pull/829): remove docs folder. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Added `ivr-virtual-agent-custom-voices` and `ivr-virtual-agent-genai` to `usage_record` API.
+- Add open-api file tag to realtime_transcriptions
+
+**Taskrouter**
+- Add `api-tag` property to workers reservation
+- Add `api-tag` property to task reservation
+
+
 [2024-10-28] Version 8.3.7
 --------------------------
 **Library - Chore**
