@@ -219,4 +219,14 @@ class VoiceResponse extends TwiML {
     public function refer($attributes = []): Voice\Refer {
         return $this->nest(new Voice\Refer($attributes));
     }
+
+    /**
+     * Add Comment child.
+     *
+     * @param string $message The content of the comment
+     * @return Voice\Comment Child element.
+     */
+    public function comment($message): Voice\Comment {
+        return $this->nest(new Voice\Comment($message));
+    }
 }
