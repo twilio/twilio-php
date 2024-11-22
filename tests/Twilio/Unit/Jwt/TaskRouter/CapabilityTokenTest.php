@@ -28,38 +28,38 @@ class CapabilityTokenTest extends UnitTest {
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WK789', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[0]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[0]);
         $this->assertEquals(true, $policies[0]->allow);
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WK789', $policies[1]->url);
         $this->assertEquals('POST', $policies[1]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[1]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[1]);
         $this->assertEquals(true, $policies[1]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789', $policies[2]->url);
         $this->assertEquals('GET', $policies[2]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[2]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[2]);
         $this->assertEquals(true, $policies[2]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Activities', $policies[3]->url);
         $this->assertEquals('GET', $policies[3]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[3]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[3]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[3]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[3]);
         $this->assertEquals(true, $policies[3]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Tasks/**', $policies[4]->url);
         $this->assertEquals('GET', $policies[4]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[4]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[4]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[4]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[4]);
         $this->assertEquals(true, $policies[4]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/Workers/WK789/Reservations/**', $policies[5]->url);
         $this->assertEquals('GET', $policies[5]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[5]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[5]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[5]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[5]);
         $this->assertEquals(true, $policies[5]->allow);
     }
 
@@ -132,20 +132,20 @@ class CapabilityTokenTest extends UnitTest {
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WS456', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[0]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[0]);
         $this->assertEquals(true, $policies[0]->allow);
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WS456', $policies[1]->url);
         $this->assertEquals('POST', $policies[1]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[1]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[1]);
         $this->assertEquals(true, $policies[1]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456', $policies[2]->url);
         $this->assertEquals('GET', $policies[2]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[2]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[2]);
         $this->assertEquals(true, $policies[2]->allow);
     }
 
@@ -166,20 +166,20 @@ class CapabilityTokenTest extends UnitTest {
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WS456', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[0]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[0]);
         $this->assertEquals(true, $policies[0]->allow);
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WS456', $policies[1]->url);
         $this->assertEquals('POST', $policies[1]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[1]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[1]);
         $this->assertEquals(true, $policies[1]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456', $policies[2]->url);
         $this->assertEquals('GET', $policies[2]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[2]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[2]);
         $this->assertEquals(true, $policies[2]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/**', $policies[3]->url);
@@ -206,20 +206,20 @@ class CapabilityTokenTest extends UnitTest {
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WQ789', $policies[0]->url);
         $this->assertEquals('GET', $policies[0]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[0]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[0]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[0]);
         $this->assertEquals(true, $policies[0]->allow);
 
         $this->assertEquals('https://event-bridge.twilio.com/v1/wschannels/AC123/WQ789', $policies[1]->url);
         $this->assertEquals('POST', $policies[1]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[1]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[1]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[1]);
         $this->assertEquals(true, $policies[1]->allow);
 
         $this->assertEquals('https://taskrouter.twilio.com/v1/Workspaces/WS456/TaskQueues/WQ789', $policies[2]->url);
         $this->assertEquals('GET', $policies[2]->method);
-        $this->assertObjectNotHasAttribute('query_filter', $policies[2]);
-        $this->assertObjectNotHasAttribute('post_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('query_filter', $policies[2]);
+        $this->assertObjectNotHasProperty('post_filter', $policies[2]);
         $this->assertEquals(true, $policies[2]->allow);
     }
 }
