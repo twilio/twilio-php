@@ -34,6 +34,7 @@ abstract class TranscriptionOptions
      * @param string $speechModel Recognition model used by the transcription engine, among those supported by the provider
      * @param string $hints A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them.
      * @param bool $enableAutomaticPunctuation The provider will add punctuation to recognition result
+     * @param string $intelligenceService The SID or the unique name of the [IntelligentService](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription.
      * @return CreateTranscriptionOptions Options builder
      */
     public static function create(
@@ -50,7 +51,8 @@ abstract class TranscriptionOptions
         bool $profanityFilter = Values::BOOL_NONE,
         string $speechModel = Values::NONE,
         string $hints = Values::NONE,
-        bool $enableAutomaticPunctuation = Values::BOOL_NONE
+        bool $enableAutomaticPunctuation = Values::BOOL_NONE,
+        string $intelligenceService = Values::NONE
 
     ): CreateTranscriptionOptions
     {
@@ -67,7 +69,8 @@ abstract class TranscriptionOptions
             $profanityFilter,
             $speechModel,
             $hints,
-            $enableAutomaticPunctuation
+            $enableAutomaticPunctuation,
+            $intelligenceService
         );
     }
 
@@ -90,6 +93,7 @@ class CreateTranscriptionOptions extends Options
      * @param string $speechModel Recognition model used by the transcription engine, among those supported by the provider
      * @param string $hints A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them.
      * @param bool $enableAutomaticPunctuation The provider will add punctuation to recognition result
+     * @param string $intelligenceService The SID or the unique name of the [IntelligentService](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription.
      */
     public function __construct(
         
@@ -105,7 +109,8 @@ class CreateTranscriptionOptions extends Options
         bool $profanityFilter = Values::BOOL_NONE,
         string $speechModel = Values::NONE,
         string $hints = Values::NONE,
-        bool $enableAutomaticPunctuation = Values::BOOL_NONE
+        bool $enableAutomaticPunctuation = Values::BOOL_NONE,
+        string $intelligenceService = Values::NONE
 
     ) {
         $this->options['name'] = $name;
@@ -121,6 +126,7 @@ class CreateTranscriptionOptions extends Options
         $this->options['speechModel'] = $speechModel;
         $this->options['hints'] = $hints;
         $this->options['enableAutomaticPunctuation'] = $enableAutomaticPunctuation;
+        $this->options['intelligenceService'] = $intelligenceService;
     }
 
     /**
@@ -274,6 +280,18 @@ class CreateTranscriptionOptions extends Options
     public function setEnableAutomaticPunctuation(bool $enableAutomaticPunctuation): self
     {
         $this->options['enableAutomaticPunctuation'] = $enableAutomaticPunctuation;
+        return $this;
+    }
+
+    /**
+     * The SID or the unique name of the [IntelligentService](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription.
+     *
+     * @param string $intelligenceService The SID or the unique name of the [IntelligentService](https://www.twilio.com/docs/voice/intelligence/api/service-resource) to process the transcription.
+     * @return $this Fluent Builder
+     */
+    public function setIntelligenceService(string $intelligenceService): self
+    {
+        $this->options['intelligenceService'] = $intelligenceService;
         return $this;
     }
 

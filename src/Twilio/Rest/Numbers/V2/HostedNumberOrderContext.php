@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Numbers\V2;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
@@ -72,6 +73,39 @@ class HostedNumberOrderContext extends InstanceContext
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
+
+        return new HostedNumberOrderInstance(
+            $this->version,
+            $payload,
+            $this->solution['sid']
+        );
+    }
+
+
+    /**
+     * Update the HostedNumberOrderInstance
+     *
+     * @param string $status
+     * @param array|Options $options Optional Arguments
+     * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $status, array $options = []): HostedNumberOrderInstance
+    {
+
+        $options = new Values($options);
+
+        $data = Values::of([
+            'Status' =>
+                $status,
+            'VerificationCallDelay' =>
+                $options['verificationCallDelay'],
+            'VerificationCallExtension' =>
+                $options['verificationCallExtension'],
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new HostedNumberOrderInstance(
             $this->version,

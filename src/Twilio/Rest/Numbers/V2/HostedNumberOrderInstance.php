@@ -19,6 +19,7 @@ namespace Twilio\Rest\Numbers\V2;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
@@ -45,6 +46,12 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property string|null $contactPhoneNumber
  * @property string|null $bulkHostingRequestSid
  * @property string|null $nextStep
+ * @property int $verificationAttempts
+ * @property string[]|null $verificationCallSids
+ * @property int $verificationCallDelay
+ * @property string|null $verificationCallExtension
+ * @property string|null $verificationCode
+ * @property string $verificationType
  */
 class HostedNumberOrderInstance extends InstanceResource
 {
@@ -80,6 +87,12 @@ class HostedNumberOrderInstance extends InstanceResource
             'contactPhoneNumber' => Values::array_get($payload, 'contact_phone_number'),
             'bulkHostingRequestSid' => Values::array_get($payload, 'bulk_hosting_request_sid'),
             'nextStep' => Values::array_get($payload, 'next_step'),
+            'verificationAttempts' => Values::array_get($payload, 'verification_attempts'),
+            'verificationCallSids' => Values::array_get($payload, 'verification_call_sids'),
+            'verificationCallDelay' => Values::array_get($payload, 'verification_call_delay'),
+            'verificationCallExtension' => Values::array_get($payload, 'verification_call_extension'),
+            'verificationCode' => Values::array_get($payload, 'verification_code'),
+            'verificationType' => Values::array_get($payload, 'verification_type'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -125,6 +138,20 @@ class HostedNumberOrderInstance extends InstanceResource
     {
 
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the HostedNumberOrderInstance
+     *
+     * @param string $status
+     * @param array|Options $options Optional Arguments
+     * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $status, array $options = []): HostedNumberOrderInstance
+    {
+
+        return $this->proxy()->update($status, $options);
     }
 
     /**
