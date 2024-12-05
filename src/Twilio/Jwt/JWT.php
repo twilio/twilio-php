@@ -19,7 +19,7 @@ class JWT {
      * @throws \DomainException
      * @throws \UnexpectedValueException
      */
-    public static function decode(string $jwt, string $key = null, bool $verify = true) {
+    public static function decode(string $jwt, ?string $key = null, bool $verify = true) {
         $tks = \explode('.', $jwt);
         if (\count($tks) !== 3) {
             throw new \UnexpectedValueException('Wrong number of segments');

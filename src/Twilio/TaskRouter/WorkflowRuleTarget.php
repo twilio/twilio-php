@@ -14,7 +14,7 @@ class WorkflowRuleTarget implements \JsonSerializable {
     public $priority;
     public $timeout;
 
-    public function __construct(string $queue, int $priority = null, int $timeout = null, string $expression = null) {
+    public function __construct(string $queue, ?int $priority = null, ?int $timeout = null, ?string $expression = null) {
         $this->queue = $queue;
         $this->priority = $priority;
         $this->timeout = $timeout;

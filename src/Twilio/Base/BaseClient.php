@@ -49,13 +49,13 @@ class BaseClient
      * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct(
-        string $username = null,
-        string $password = null,
-        string $accountSid = null,
-        string $region = null,
-        HttpClient $httpClient = null,
-        array $environment = null,
-        array $userAgentExtensions = null
+        ?string $username = null,
+        ?string $password = null,
+        ?string $accountSid = null,
+        ?string $region = null,
+        ?HttpClient $httpClient = null,
+        ?array $environment = null,
+        ?array $userAgentExtensions = null
     ) {
         $this->environment = $environment ?: \getenv();
 
@@ -119,9 +119,9 @@ class BaseClient
         array $params = [],
         array $data = [],
         array $headers = [],
-        string $username = null,
-        string $password = null,
-        int $timeout = null
+        ?string $username = null,
+        ?string $password = null,
+        ?int $timeout = null
     ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
@@ -341,7 +341,7 @@ class BaseClient
      *
      * @param string $uri Edge to use, unsets the Edge when called with no arguments
      */
-    public function setEdge(string $edge = null): void
+    public function setEdge(?string $edge = null): void
     {
         $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
@@ -381,7 +381,7 @@ class BaseClient
      *
      * @param string $logLevel log level to use
      */
-    public function setLogLevel(string $logLevel = null): void
+    public function setLogLevel(?string $logLevel = null): void
     {
         $this->logLevel = $this->getArg($logLevel, self::ENV_LOG);
     }
