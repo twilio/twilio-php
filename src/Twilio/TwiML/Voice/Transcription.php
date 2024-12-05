@@ -159,4 +159,14 @@ class Transcription extends TwiML {
     public function setEnableAutomaticPunctuation($enableAutomaticPunctuation): self {
         return $this->setAttribute('enableAutomaticPunctuation', $enableAutomaticPunctuation);
     }
+
+    /**
+     * Add IntelligenceService attribute.
+     *
+     * @param string $intelligenceService The SID or the unique name of the
+     *                                    Intelligence Service to be used
+     */
+    public function setIntelligenceService($intelligenceService): self {
+        return $this->setAttribute('intelligenceService', $intelligenceService);
+    }
 }

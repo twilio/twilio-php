@@ -94,6 +94,8 @@ class TranscriptionList extends ListResource
                 $options['hints'],
             'EnableAutomaticPunctuation' =>
                 Serialize::booleanToString($options['enableAutomaticPunctuation']),
+            'IntelligenceService' =>
+                $options['intelligenceService'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
