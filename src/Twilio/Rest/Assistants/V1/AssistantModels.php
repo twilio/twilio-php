@@ -72,8 +72,8 @@ class AssistantsV1ServiceCustomerAi implements \JsonSerializable
         protected $perceptionEngineEnabled;
         protected $personalizationEngineEnabled;
     public function __construct(array $payload = []) {
-        $this->perceptionEngineEnabled = Values::array_get($payload, 'perceptionEngineEnabled');
-        $this->personalizationEngineEnabled = Values::array_get($payload, 'personalizationEngineEnabled');
+        $this->perceptionEngineEnabled = Values::array_get($payload, 'perception_engine_enabled');
+        $this->personalizationEngineEnabled = Values::array_get($payload, 'personalization_engine_enabled');
     }
 
     public function toArray(): array
@@ -101,9 +101,9 @@ class AssistantsV1ServiceSegmentCredential implements \JsonSerializable
         protected $spaceId;
         protected $writeKey;
     public function __construct(array $payload = []) {
-        $this->profileApiKey = Values::array_get($payload, 'profileApiKey');
-        $this->spaceId = Values::array_get($payload, 'spaceId');
-        $this->writeKey = Values::array_get($payload, 'writeKey');
+        $this->profileApiKey = Values::array_get($payload, 'profile_api_key');
+        $this->spaceId = Values::array_get($payload, 'space_id');
+        $this->writeKey = Values::array_get($payload, 'write_key');
     }
 
     public function toArray(): array
@@ -136,11 +136,11 @@ class AssistantsV1ServiceCreateAssistantRequest implements \JsonSerializable
         protected $personalityPrompt;
         protected $segmentCredential;
     public function __construct(array $payload = []) {
-        $this->customerAi = Values::array_get($payload, 'customerAi');
+        $this->customerAi = Values::array_get($payload, 'customer_ai');
         $this->name = Values::array_get($payload, 'name');
         $this->owner = Values::array_get($payload, 'owner');
-        $this->personalityPrompt = Values::array_get($payload, 'personalityPrompt');
-        $this->segmentCredential = Values::array_get($payload, 'segmentCredential');
+        $this->personalityPrompt = Values::array_get($payload, 'personality_prompt');
+        $this->segmentCredential = Values::array_get($payload, 'segment_credential');
     }
 
     public function toArray(): array
@@ -175,11 +175,11 @@ class AssistantsV1ServiceUpdateAssistantRequest implements \JsonSerializable
         protected $personalityPrompt;
         protected $segmentCredential;
     public function __construct(array $payload = []) {
-        $this->customerAi = Values::array_get($payload, 'customerAi');
+        $this->customerAi = Values::array_get($payload, 'customer_ai');
         $this->name = Values::array_get($payload, 'name');
         $this->owner = Values::array_get($payload, 'owner');
-        $this->personalityPrompt = Values::array_get($payload, 'personalityPrompt');
-        $this->segmentCredential = Values::array_get($payload, 'segmentCredential');
+        $this->personalityPrompt = Values::array_get($payload, 'personality_prompt');
+        $this->segmentCredential = Values::array_get($payload, 'segment_credential');
     }
 
     public function toArray(): array
