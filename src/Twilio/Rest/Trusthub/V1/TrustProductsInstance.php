@@ -41,6 +41,7 @@ use Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsList;
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
  * @property array|null $links
+ * @property array[]|null $errors
  */
 class TrustProductsInstance extends InstanceResource
 {
@@ -53,7 +54,7 @@ class TrustProductsInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid The unique string that we created to identify the Customer-Profile resource.
+     * @param string $sid The unique string that we created to identify the Trust Product resource.
      */
     public function __construct(Version $version, array $payload, string $sid = null)
     {
@@ -73,6 +74,7 @@ class TrustProductsInstance extends InstanceResource
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'errors' => Values::array_get($payload, 'errors'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

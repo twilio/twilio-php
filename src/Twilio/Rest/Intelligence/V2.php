@@ -18,18 +18,41 @@ namespace Twilio\Rest\Intelligence;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Intelligence\V2\CustomOperatorList;
+use Twilio\Rest\Intelligence\V2\OperatorList;
+use Twilio\Rest\Intelligence\V2\OperatorAttachmentList;
+use Twilio\Rest\Intelligence\V2\OperatorAttachmentsList;
+use Twilio\Rest\Intelligence\V2\OperatorTypeList;
+use Twilio\Rest\Intelligence\V2\PrebuiltOperatorList;
 use Twilio\Rest\Intelligence\V2\ServiceList;
 use Twilio\Rest\Intelligence\V2\TranscriptList;
 use Twilio\Version;
 
 /**
+ * @property CustomOperatorList $customOperators
+ * @property OperatorList $operators
+ * @property OperatorAttachmentList $operatorAttachment
+ * @property OperatorAttachmentsList $operatorAttachments
+ * @property OperatorTypeList $operatorType
+ * @property PrebuiltOperatorList $prebuiltOperators
  * @property ServiceList $services
  * @property TranscriptList $transcripts
+ * @method \Twilio\Rest\Intelligence\V2\CustomOperatorContext customOperators(string $sid)
+ * @method \Twilio\Rest\Intelligence\V2\OperatorContext operators(string $sid)
+ * @method \Twilio\Rest\Intelligence\V2\OperatorAttachmentContext operatorAttachment(string $serviceSid, string $operatorSid)
+ * @method \Twilio\Rest\Intelligence\V2\OperatorTypeContext operatorType(string $sid)
+ * @method \Twilio\Rest\Intelligence\V2\PrebuiltOperatorContext prebuiltOperators(string $sid)
  * @method \Twilio\Rest\Intelligence\V2\ServiceContext services(string $sid)
  * @method \Twilio\Rest\Intelligence\V2\TranscriptContext transcripts(string $sid)
  */
 class V2 extends Version
 {
+    protected $_customOperators;
+    protected $_operators;
+    protected $_operatorAttachment;
+    protected $_operatorAttachments;
+    protected $_operatorType;
+    protected $_prebuiltOperators;
     protected $_services;
     protected $_transcripts;
 
@@ -42,6 +65,54 @@ class V2 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getCustomOperators(): CustomOperatorList
+    {
+        if (!$this->_customOperators) {
+            $this->_customOperators = new CustomOperatorList($this);
+        }
+        return $this->_customOperators;
+    }
+
+    protected function getOperators(): OperatorList
+    {
+        if (!$this->_operators) {
+            $this->_operators = new OperatorList($this);
+        }
+        return $this->_operators;
+    }
+
+    protected function getOperatorAttachment(): OperatorAttachmentList
+    {
+        if (!$this->_operatorAttachment) {
+            $this->_operatorAttachment = new OperatorAttachmentList($this);
+        }
+        return $this->_operatorAttachment;
+    }
+
+    protected function getOperatorAttachments(): OperatorAttachmentsList
+    {
+        if (!$this->_operatorAttachments) {
+            $this->_operatorAttachments = new OperatorAttachmentsList($this);
+        }
+        return $this->_operatorAttachments;
+    }
+
+    protected function getOperatorType(): OperatorTypeList
+    {
+        if (!$this->_operatorType) {
+            $this->_operatorType = new OperatorTypeList($this);
+        }
+        return $this->_operatorType;
+    }
+
+    protected function getPrebuiltOperators(): PrebuiltOperatorList
+    {
+        if (!$this->_prebuiltOperators) {
+            $this->_prebuiltOperators = new PrebuiltOperatorList($this);
+        }
+        return $this->_prebuiltOperators;
     }
 
     protected function getServices(): ServiceList

@@ -31,7 +31,7 @@ use Twilio\Rest\Studio\V1\Flow\ExecutionList;
  * @property string|null $accountSid
  * @property string|null $friendlyName
  * @property string $status
- * @property int|null $version
+ * @property int $version
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url

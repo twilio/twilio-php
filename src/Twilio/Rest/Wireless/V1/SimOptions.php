@@ -25,7 +25,7 @@ abstract class SimOptions
     /**
      * @param string $status Only return Sim resources with this status.
      * @param string $iccid Only return Sim resources with this ICCID. This will return a list with a maximum size of 1.
-     * @param string $ratePlan The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
+     * @param string $ratePlan The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
      * @param string $eId Deprecated.
      * @param string $simRegistrationCode Only return Sim resources with this registration code. This will return a list with a maximum size of 1.
      * @return ReadSimOptions Options builder
@@ -54,20 +54,20 @@ abstract class SimOptions
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `POST` or `GET`. The default is `POST`.
      * @param string $callbackUrl The URL we should call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`).
      * @param string $friendlyName A descriptive string that you create to describe the Sim resource. It does not need to be unique.
-     * @param string $ratePlan The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
+     * @param string $ratePlan The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
      * @param string $status
      * @param string $commandsCallbackMethod The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`.
-     * @param string $commandsCallbackUrl The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
+     * @param string $commandsCallbackUrl The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
      * @param string $smsFallbackMethod The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`.
      * @param string $smsFallbackUrl The URL we should call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`.
      * @param string $smsMethod The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`.
-     * @param string $smsUrl The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource).
+     * @param string $smsUrl The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource).
      * @param string $voiceFallbackMethod Deprecated.
      * @param string $voiceFallbackUrl Deprecated.
      * @param string $voiceMethod Deprecated.
      * @param string $voiceUrl Deprecated.
      * @param string $resetStatus
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts).
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts).
      * @return UpdateSimOptions Options builder
      */
     public static function update(
@@ -124,7 +124,7 @@ class ReadSimOptions extends Options
     /**
      * @param string $status Only return Sim resources with this status.
      * @param string $iccid Only return Sim resources with this ICCID. This will return a list with a maximum size of 1.
-     * @param string $ratePlan The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
+     * @param string $ratePlan The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
      * @param string $eId Deprecated.
      * @param string $simRegistrationCode Only return Sim resources with this registration code. This will return a list with a maximum size of 1.
      */
@@ -169,9 +169,9 @@ class ReadSimOptions extends Options
     }
 
     /**
-     * The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
+     * The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
      *
-     * @param string $ratePlan The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
+     * @param string $ratePlan The SID or unique name of a [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource). Only return Sim resources assigned to this RatePlan resource.
      * @return $this Fluent Builder
      */
     public function setRatePlan(string $ratePlan): self
@@ -223,20 +223,20 @@ class UpdateSimOptions extends Options
      * @param string $callbackMethod The HTTP method we should use to call `callback_url`. Can be: `POST` or `GET`. The default is `POST`.
      * @param string $callbackUrl The URL we should call using the `callback_url` when the SIM has finished updating. When the SIM transitions from `new` to `ready` or from any status to `deactivated`, we call this URL when the status changes to an intermediate status (`ready` or `deactivated`) and again when the status changes to its final status (`active` or `canceled`).
      * @param string $friendlyName A descriptive string that you create to describe the Sim resource. It does not need to be unique.
-     * @param string $ratePlan The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
+     * @param string $ratePlan The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
      * @param string $status
      * @param string $commandsCallbackMethod The HTTP method we should use to call `commands_callback_url`. Can be: `POST` or `GET`. The default is `POST`.
-     * @param string $commandsCallbackUrl The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
+     * @param string $commandsCallbackUrl The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
      * @param string $smsFallbackMethod The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`. Default is `POST`.
      * @param string $smsFallbackUrl The URL we should call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `sms_url`.
      * @param string $smsMethod The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`. Default is `POST`.
-     * @param string $smsUrl The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource).
+     * @param string $smsUrl The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource).
      * @param string $voiceFallbackMethod Deprecated.
      * @param string $voiceFallbackUrl Deprecated.
      * @param string $voiceMethod Deprecated.
      * @param string $voiceUrl Deprecated.
      * @param string $resetStatus
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts).
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts).
      */
     public function __construct(
         
@@ -329,9 +329,9 @@ class UpdateSimOptions extends Options
     }
 
     /**
-     * The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
+     * The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
      *
-     * @param string $ratePlan The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
+     * @param string $ratePlan The SID or unique name of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource should be assigned.
      * @return $this Fluent Builder
      */
     public function setRatePlan(string $ratePlan): self
@@ -363,9 +363,9 @@ class UpdateSimOptions extends Options
     }
 
     /**
-     * The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
+     * The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
      *
-     * @param string $commandsCallbackUrl The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
+     * @param string $commandsCallbackUrl The URL we should call using the `commands_callback_method` when the SIM sends a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body is ignored.
      * @return $this Fluent Builder
      */
     public function setCommandsCallbackUrl(string $commandsCallbackUrl): self
@@ -411,9 +411,9 @@ class UpdateSimOptions extends Options
     }
 
     /**
-     * The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource).
+     * The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource).
      *
-     * @param string $smsUrl The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/wireless/api/command-resource).
+     * @param string $smsUrl The URL we should call using the `sms_method` when the SIM-connected device sends an SMS message that is not a [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource).
      * @return $this Fluent Builder
      */
     public function setSmsUrl(string $smsUrl): self
@@ -481,9 +481,9 @@ class UpdateSimOptions extends Options
     }
 
     /**
-     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts).
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts).
      *
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/wireless/api/sim-resource#move-sims-between-subaccounts).
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a [Subaccount](https://www.twilio.com/docs/iam/api/subaccounts) of the requesting Account. Only valid when the Sim resource's status is `new`. For more information, see the [Move SIMs between Subaccounts documentation](https://www.twilio.com/docs/iot/wireless/api/sim-resource#move-sims-between-subaccounts).
      * @return $this Fluent Builder
      */
     public function setAccountSid(string $accountSid): self

@@ -28,26 +28,29 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationList;
 
 /**
  * @property string|null $accountSid
- * @property int|null $age
+ * @property int $age
  * @property string $assignmentStatus
  * @property string|null $attributes
  * @property string|null $addons
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property \DateTime|null $taskQueueEnteredDate
- * @property int|null $priority
+ * @property int $priority
  * @property string|null $reason
  * @property string|null $sid
  * @property string|null $taskQueueSid
  * @property string|null $taskQueueFriendlyName
  * @property string|null $taskChannelSid
  * @property string|null $taskChannelUniqueName
- * @property int|null $timeout
+ * @property int $timeout
  * @property string|null $workflowSid
  * @property string|null $workflowFriendlyName
  * @property string|null $workspaceSid
  * @property string|null $url
  * @property array|null $links
+ * @property \DateTime|null $virtualStartTime
+ * @property bool|null $ignoreCapacity
+ * @property string|null $routingTarget
  */
 class TaskInstance extends InstanceResource
 {
@@ -88,6 +91,9 @@ class TaskInstance extends InstanceResource
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'virtualStartTime' => Deserialize::dateTime(Values::array_get($payload, 'virtual_start_time')),
+            'ignoreCapacity' => Values::array_get($payload, 'ignore_capacity'),
+            'routingTarget' => Values::array_get($payload, 'routing_target'),
         ];
 
         $this->solution = ['workspaceSid' => $workspaceSid, 'sid' => $sid ?: $this->properties['sid'], ];

@@ -39,8 +39,8 @@ use Twilio\Rest\IpMessaging\V1\Service\UserList;
  * @property string|null $defaultChannelCreatorRoleSid
  * @property bool|null $readStatusEnabled
  * @property bool|null $reachabilityEnabled
- * @property int|null $typingIndicatorTimeout
- * @property int|null $consumptionReportInterval
+ * @property int $typingIndicatorTimeout
+ * @property int $consumptionReportInterval
  * @property array|null $limits
  * @property array|null $webhooks
  * @property string|null $preWebhookUrl

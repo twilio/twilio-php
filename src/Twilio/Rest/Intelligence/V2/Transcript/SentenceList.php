@@ -119,6 +119,8 @@ class SentenceList extends ListResource
         $params = Values::of([
             'Redacted' =>
                 Serialize::booleanToString($options['redacted']),
+            'WordTimestamps' =>
+                Serialize::booleanToString($options['wordTimestamps']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

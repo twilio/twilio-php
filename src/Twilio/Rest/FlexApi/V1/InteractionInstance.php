@@ -30,6 +30,7 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
  * @property array|null $routing
  * @property string|null $url
  * @property array|null $links
+ * @property string|null $interactionContextSid
  */
 class InteractionInstance extends InstanceResource
 {
@@ -53,6 +54,7 @@ class InteractionInstance extends InstanceResource
             'routing' => Values::array_get($payload, 'routing'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
+            'interactionContextSid' => Values::array_get($payload, 'interaction_context_sid'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

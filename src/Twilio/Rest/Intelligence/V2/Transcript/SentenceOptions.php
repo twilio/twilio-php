@@ -21,17 +21,20 @@ use Twilio\Values;
 abstract class SentenceOptions
 {
     /**
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
+     * @param bool $wordTimestamps Returns word level timestamps information, if word_timestamps is enabled. The default is `false`.
      * @return ReadSentenceOptions Options builder
      */
     public static function read(
         
-        bool $redacted = Values::BOOL_NONE
+        bool $redacted = Values::BOOL_NONE,
+        bool $wordTimestamps = Values::BOOL_NONE
 
     ): ReadSentenceOptions
     {
         return new ReadSentenceOptions(
-            $redacted
+            $redacted,
+            $wordTimestamps
         );
     }
 
@@ -40,25 +43,40 @@ abstract class SentenceOptions
 class ReadSentenceOptions extends Options
     {
     /**
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
+     * @param bool $wordTimestamps Returns word level timestamps information, if word_timestamps is enabled. The default is `false`.
      */
     public function __construct(
         
-        bool $redacted = Values::BOOL_NONE
+        bool $redacted = Values::BOOL_NONE,
+        bool $wordTimestamps = Values::BOOL_NONE
 
     ) {
         $this->options['redacted'] = $redacted;
+        $this->options['wordTimestamps'] = $wordTimestamps;
     }
 
     /**
-     * Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
      *
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. The default is `true` to access redacted sentences.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Sentences. If redaction is enabled, the default is `true` to access redacted sentences.
      * @return $this Fluent Builder
      */
     public function setRedacted(bool $redacted): self
     {
         $this->options['redacted'] = $redacted;
+        return $this;
+    }
+
+    /**
+     * Returns word level timestamps information, if word_timestamps is enabled. The default is `false`.
+     *
+     * @param bool $wordTimestamps Returns word level timestamps information, if word_timestamps is enabled. The default is `false`.
+     * @return $this Fluent Builder
+     */
+    public function setWordTimestamps(bool $wordTimestamps): self
+    {
+        $this->options['wordTimestamps'] = $wordTimestamps;
         return $this;
     }
 

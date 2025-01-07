@@ -100,7 +100,8 @@ class NewFactorList extends ListResource
                 Serialize::jsonObject($options['metadata']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new NewFactorInstance(
             $this->version,

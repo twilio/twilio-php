@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property array|null $category
  * @property string|null $answerSetId
  * @property bool|null $allowNa
- * @property int|null $usage
+ * @property int $usage
  * @property array|null $answerSet
  * @property string|null $url
  */

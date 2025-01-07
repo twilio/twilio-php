@@ -65,7 +65,8 @@ class AwsList extends ListResource
                 $options['accountSid'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new AwsInstance(
             $this->version,

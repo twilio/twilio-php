@@ -28,9 +28,9 @@ use Twilio\Deserialize;
 /**
  * @property string|null $callSid
  * @property \DateTime|null $dateEnqueued
- * @property int|null $position
+ * @property int $position
  * @property string|null $uri
- * @property int|null $waitTime
+ * @property int $waitTime
  * @property string|null $queueSid
  */
 class MemberInstance extends InstanceResource

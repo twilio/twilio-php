@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class SettingOptions
 {
     /**
-     * @param string $subaccountSid 
+     * @param string $subaccountSid The unique SID identifier of the Subaccount.
      * @return FetchSettingOptions Options builder
      */
     public static function fetch(
@@ -36,9 +36,9 @@ abstract class SettingOptions
     }
 
     /**
-     * @param bool $advancedFeatures 
-     * @param bool $voiceTrace 
-     * @param string $subaccountSid 
+     * @param bool $advancedFeatures A boolean flag to enable Advanced Features for Voice Insights.
+     * @param bool $voiceTrace A boolean flag to enable Voice Trace.
+     * @param string $subaccountSid The unique SID identifier of the Subaccount.
      * @return UpdateSettingOptions Options builder
      */
     public static function update(
@@ -61,7 +61,7 @@ abstract class SettingOptions
 class FetchSettingOptions extends Options
     {
     /**
-     * @param string $subaccountSid 
+     * @param string $subaccountSid The unique SID identifier of the Subaccount.
      */
     public function __construct(
         
@@ -72,9 +72,9 @@ class FetchSettingOptions extends Options
     }
 
     /**
-     * 
+     * The unique SID identifier of the Subaccount.
      *
-     * @param string $subaccountSid 
+     * @param string $subaccountSid The unique SID identifier of the Subaccount.
      * @return $this Fluent Builder
      */
     public function setSubaccountSid(string $subaccountSid): self
@@ -98,9 +98,9 @@ class FetchSettingOptions extends Options
 class UpdateSettingOptions extends Options
     {
     /**
-     * @param bool $advancedFeatures 
-     * @param bool $voiceTrace 
-     * @param string $subaccountSid 
+     * @param bool $advancedFeatures A boolean flag to enable Advanced Features for Voice Insights.
+     * @param bool $voiceTrace A boolean flag to enable Voice Trace.
+     * @param string $subaccountSid The unique SID identifier of the Subaccount.
      */
     public function __construct(
         
@@ -115,9 +115,9 @@ class UpdateSettingOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag to enable Advanced Features for Voice Insights.
      *
-     * @param bool $advancedFeatures 
+     * @param bool $advancedFeatures A boolean flag to enable Advanced Features for Voice Insights.
      * @return $this Fluent Builder
      */
     public function setAdvancedFeatures(bool $advancedFeatures): self
@@ -127,9 +127,9 @@ class UpdateSettingOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag to enable Voice Trace.
      *
-     * @param bool $voiceTrace 
+     * @param bool $voiceTrace A boolean flag to enable Voice Trace.
      * @return $this Fluent Builder
      */
     public function setVoiceTrace(bool $voiceTrace): self
@@ -139,9 +139,9 @@ class UpdateSettingOptions extends Options
     }
 
     /**
-     * 
+     * The unique SID identifier of the Subaccount.
      *
-     * @param string $subaccountSid 
+     * @param string $subaccountSid The unique SID identifier of the Subaccount.
      * @return $this Fluent Builder
      */
     public function setSubaccountSid(string $subaccountSid): self

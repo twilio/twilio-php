@@ -24,24 +24,24 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
+use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
 use Twilio\Rest\Conversations\V1\Service\Conversation\WebhookList;
 use Twilio\Rest\Conversations\V1\Service\Conversation\ParticipantList;
-use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
 
 
 /**
+ * @property MessageList $messages
  * @property WebhookList $webhooks
  * @property ParticipantList $participants
- * @property MessageList $messages
  * @method \Twilio\Rest\Conversations\V1\Service\Conversation\ParticipantContext participants(string $sid)
- * @method \Twilio\Rest\Conversations\V1\Service\Conversation\MessageContext messages(string $sid)
  * @method \Twilio\Rest\Conversations\V1\Service\Conversation\WebhookContext webhooks(string $sid)
+ * @method \Twilio\Rest\Conversations\V1\Service\Conversation\MessageContext messages(string $sid)
  */
 class ConversationContext extends InstanceContext
     {
+    protected $_messages;
     protected $_webhooks;
     protected $_participants;
-    protected $_messages;
 
     /**
      * Initialize the ConversationContext
@@ -82,8 +82,7 @@ class ConversationContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
@@ -97,7 +96,8 @@ class ConversationContext extends InstanceContext
     public function fetch(): ConversationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ConversationInstance(
             $this->version,
@@ -139,10 +139,13 @@ class ConversationContext extends InstanceContext
                 $options['timersClosed'],
             'UniqueName' =>
                 $options['uniqueName'],
+            'Bindings.Email.Address' =>
+                $options['bindingsEmailAddress'],
+            'Bindings.Email.Name' =>
+                $options['bindingsEmailName'],
         ]);
 
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ConversationInstance(
@@ -153,6 +156,22 @@ class ConversationContext extends InstanceContext
         );
     }
 
+
+    /**
+     * Access the messages
+     */
+    protected function getMessages(): MessageList
+    {
+        if (!$this->_messages) {
+            $this->_messages = new MessageList(
+                $this->version,
+                $this->solution['chatServiceSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_messages;
+    }
 
     /**
      * Access the webhooks
@@ -184,22 +203,6 @@ class ConversationContext extends InstanceContext
         }
 
         return $this->_participants;
-    }
-
-    /**
-     * Access the messages
-     */
-    protected function getMessages(): MessageList
-    {
-        if (!$this->_messages) {
-            $this->_messages = new MessageList(
-                $this->version,
-                $this->solution['chatServiceSid'],
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_messages;
     }
 
     /**

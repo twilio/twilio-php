@@ -69,7 +69,8 @@ class BrandVettingList extends ListResource
                 $options['vettingId'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new BrandVettingInstance(
             $this->version,

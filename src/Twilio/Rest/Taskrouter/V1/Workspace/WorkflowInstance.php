@@ -38,7 +38,7 @@ use Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowRealTimeStatisticsList;
  * @property string|null $fallbackAssignmentCallbackUrl
  * @property string|null $friendlyName
  * @property string|null $sid
- * @property int|null $taskReservationTimeout
+ * @property int $taskReservationTimeout
  * @property string|null $workspaceSid
  * @property string|null $url
  * @property array|null $links

@@ -37,7 +37,7 @@ use Twilio\Deserialize;
  * @property bool|null $wasEdited
  * @property string|null $from
  * @property string|null $body
- * @property int|null $index
+ * @property int $index
  * @property string|null $url
  */
 class MessageInstance extends InstanceResource

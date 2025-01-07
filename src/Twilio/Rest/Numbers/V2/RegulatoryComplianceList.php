@@ -20,36 +20,36 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeList;
-use Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentList;
 
 
 /**
- * @property BundleList $bundles
  * @property RegulationList $regulations
+ * @property SupportingDocumentList $supportingDocuments
+ * @property BundleList $bundles
  * @property EndUserTypeList $endUserTypes
  * @property EndUserList $endUsers
  * @property SupportingDocumentTypeList $supportingDocumentTypes
- * @property SupportingDocumentList $supportingDocuments
+ * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentContext supportingDocuments(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserContext endUsers(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\BundleContext bundles(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentTypeContext supportingDocumentTypes(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\RegulationContext regulations(string $sid)
  * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\EndUserTypeContext endUserTypes(string $sid)
- * @method \Twilio\Rest\Numbers\V2\RegulatoryCompliance\SupportingDocumentContext supportingDocuments(string $sid)
  */
 class RegulatoryComplianceList extends ListResource
     {
-    protected $_bundles = null;
     protected $_regulations = null;
+    protected $_supportingDocuments = null;
+    protected $_bundles = null;
     protected $_endUserTypes = null;
     protected $_endUsers = null;
     protected $_supportingDocumentTypes = null;
-    protected $_supportingDocuments = null;
 
     /**
      * Construct the RegulatoryComplianceList
@@ -67,19 +67,6 @@ class RegulatoryComplianceList extends ListResource
     }
 
     /**
-     * Access the bundles
-     */
-    protected function getBundles(): BundleList
-    {
-        if (!$this->_bundles) {
-            $this->_bundles = new BundleList(
-                $this->version
-            );
-        }
-        return $this->_bundles;
-    }
-
-    /**
      * Access the regulations
      */
     protected function getRegulations(): RegulationList
@@ -90,6 +77,32 @@ class RegulatoryComplianceList extends ListResource
             );
         }
         return $this->_regulations;
+    }
+
+    /**
+     * Access the supportingDocuments
+     */
+    protected function getSupportingDocuments(): SupportingDocumentList
+    {
+        if (!$this->_supportingDocuments) {
+            $this->_supportingDocuments = new SupportingDocumentList(
+                $this->version
+            );
+        }
+        return $this->_supportingDocuments;
+    }
+
+    /**
+     * Access the bundles
+     */
+    protected function getBundles(): BundleList
+    {
+        if (!$this->_bundles) {
+            $this->_bundles = new BundleList(
+                $this->version
+            );
+        }
+        return $this->_bundles;
     }
 
     /**
@@ -129,19 +142,6 @@ class RegulatoryComplianceList extends ListResource
             );
         }
         return $this->_supportingDocumentTypes;
-    }
-
-    /**
-     * Access the supportingDocuments
-     */
-    protected function getSupportingDocuments(): SupportingDocumentList
-    {
-        if (!$this->_supportingDocuments) {
-            $this->_supportingDocuments = new SupportingDocumentList(
-                $this->version
-            );
-        }
-        return $this->_supportingDocuments;
     }
 
     /**

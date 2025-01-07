@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class MediaOptions
 {
     /**
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media.
      * @return FetchMediaOptions Options builder
      */
     public static function fetch(
@@ -40,7 +40,7 @@ abstract class MediaOptions
 class FetchMediaOptions extends Options
     {
     /**
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media.
      */
     public function __construct(
         
@@ -51,9 +51,9 @@ class FetchMediaOptions extends Options
     }
 
     /**
-     * Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media.
+     * Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media.
      *
-     * @param bool $redacted Grant access to PII Redacted/Unredacted Media. The default is `true` to access redacted media.
+     * @param bool $redacted Grant access to PII Redacted/Unredacted Media. If redaction is enabled, the default is `true` to access redacted media.
      * @return $this Fluent Builder
      */
     public function setRedacted(bool $redacted): self

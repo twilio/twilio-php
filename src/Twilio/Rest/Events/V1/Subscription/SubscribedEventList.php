@@ -69,7 +69,8 @@ class SubscribedEventList extends ListResource
                 $options['schemaVersion'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SubscribedEventInstance(
             $this->version,

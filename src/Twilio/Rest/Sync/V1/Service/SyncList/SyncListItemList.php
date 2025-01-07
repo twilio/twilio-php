@@ -80,7 +80,8 @@ class SyncListItemList extends ListResource
                 $options['collectionTtl'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SyncListItemInstance(
             $this->version,

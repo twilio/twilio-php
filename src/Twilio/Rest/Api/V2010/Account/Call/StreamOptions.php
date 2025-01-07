@@ -22,10 +22,10 @@ use Twilio\Values;
 abstract class StreamOptions
 {
     /**
-     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
+     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream.
      * @param string $track
-     * @param string $statusCallback Absolute URL of the status callback.
-     * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST).
+     * @param string $statusCallback Absolute URL to which Twilio sends status callback HTTP requests.
+     * @param string $statusCallbackMethod The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET` and `POST`. Default is `POST`.
      * @param string $parameter1Name Parameter name
      * @param string $parameter1Value Parameter value
      * @param string $parameter2Name Parameter name
@@ -645,10 +645,10 @@ abstract class StreamOptions
 class CreateStreamOptions extends Options
     {
     /**
-     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
+     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream.
      * @param string $track
-     * @param string $statusCallback Absolute URL of the status callback.
-     * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST).
+     * @param string $statusCallback Absolute URL to which Twilio sends status callback HTTP requests.
+     * @param string $statusCallbackMethod The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET` and `POST`. Default is `POST`.
      * @param string $parameter1Name Parameter name
      * @param string $parameter1Value Parameter value
      * @param string $parameter2Name Parameter name
@@ -1259,9 +1259,9 @@ class CreateStreamOptions extends Options
     }
 
     /**
-     * The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
+     * The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream.
      *
-     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This may be used to stop the Stream.
+     * @param string $name The user-specified name of this Stream, if one was given when the Stream was created. This can be used to stop the Stream.
      * @return $this Fluent Builder
      */
     public function setName(string $name): self
@@ -1281,9 +1281,9 @@ class CreateStreamOptions extends Options
     }
 
     /**
-     * Absolute URL of the status callback.
+     * Absolute URL to which Twilio sends status callback HTTP requests.
      *
-     * @param string $statusCallback Absolute URL of the status callback.
+     * @param string $statusCallback Absolute URL to which Twilio sends status callback HTTP requests.
      * @return $this Fluent Builder
      */
     public function setStatusCallback(string $statusCallback): self
@@ -1293,9 +1293,9 @@ class CreateStreamOptions extends Options
     }
 
     /**
-     * The http method for the status_callback (one of GET, POST).
+     * The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET` and `POST`. Default is `POST`.
      *
-     * @param string $statusCallbackMethod The http method for the status_callback (one of GET, POST).
+     * @param string $statusCallbackMethod The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET` and `POST`. Default is `POST`.
      * @return $this Fluent Builder
      */
     public function setStatusCallbackMethod(string $statusCallbackMethod): self

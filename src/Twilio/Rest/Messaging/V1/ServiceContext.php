@@ -26,29 +26,33 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Rest\Messaging\V1\Service\AlphaSenderList;
 use Twilio\Rest\Messaging\V1\Service\PhoneNumberList;
+use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
+use Twilio\Rest\Messaging\V1\Service\ChannelSenderList;
 use Twilio\Rest\Messaging\V1\Service\ShortCodeList;
 use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
-use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 
 
 /**
  * @property AlphaSenderList $alphaSenders
  * @property PhoneNumberList $phoneNumbers
+ * @property UsAppToPersonUsecaseList $usAppToPersonUsecases
+ * @property ChannelSenderList $channelSenders
  * @property ShortCodeList $shortCodes
  * @property UsAppToPersonList $usAppToPerson
- * @property UsAppToPersonUsecaseList $usAppToPersonUsecases
- * @method \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext alphaSenders(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\UsAppToPersonContext usAppToPerson(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext alphaSenders(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\Service\ChannelSenderContext channelSenders(string $sid)
  */
 class ServiceContext extends InstanceContext
     {
     protected $_alphaSenders;
     protected $_phoneNumbers;
+    protected $_usAppToPersonUsecases;
+    protected $_channelSenders;
     protected $_shortCodes;
     protected $_usAppToPerson;
-    protected $_usAppToPersonUsecases;
 
     /**
      * Initialize the ServiceContext
@@ -81,7 +85,8 @@ class ServiceContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -94,7 +99,8 @@ class ServiceContext extends InstanceContext
     public function fetch(): ServiceInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ServiceInstance(
             $this->version,
@@ -151,7 +157,8 @@ class ServiceContext extends InstanceContext
                 Serialize::booleanToString($options['useInboundWebhookOnNumber']),
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ServiceInstance(
             $this->version,
@@ -192,6 +199,36 @@ class ServiceContext extends InstanceContext
     }
 
     /**
+     * Access the usAppToPersonUsecases
+     */
+    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList
+    {
+        if (!$this->_usAppToPersonUsecases) {
+            $this->_usAppToPersonUsecases = new UsAppToPersonUsecaseList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_usAppToPersonUsecases;
+    }
+
+    /**
+     * Access the channelSenders
+     */
+    protected function getChannelSenders(): ChannelSenderList
+    {
+        if (!$this->_channelSenders) {
+            $this->_channelSenders = new ChannelSenderList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_channelSenders;
+    }
+
+    /**
      * Access the shortCodes
      */
     protected function getShortCodes(): ShortCodeList
@@ -219,21 +256,6 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_usAppToPerson;
-    }
-
-    /**
-     * Access the usAppToPersonUsecases
-     */
-    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList
-    {
-        if (!$this->_usAppToPersonUsecases) {
-            $this->_usAppToPersonUsecases = new UsAppToPersonUsecaseList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_usAppToPersonUsecases;
     }
 
     /**

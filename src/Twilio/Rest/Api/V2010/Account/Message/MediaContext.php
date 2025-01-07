@@ -18,6 +18,7 @@
 namespace Twilio\Rest\Api\V2010\Account\Message;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
@@ -28,9 +29,9 @@ class MediaContext extends InstanceContext
      * Initialize the MediaContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to delete.
-     * @param string $messageSid The SID of the Message resource that this Media resource belongs to.
-     * @param string $sid The Twilio-provided string that uniquely identifies the Media resource to delete
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is associated with the Media resource.
+     * @param string $messageSid The SID of the Message resource that is associated with the Media resource.
+     * @param string $sid The unique identifier of the to-be-deleted Media resource.
      */
     public function __construct(
         Version $version,
@@ -65,7 +66,8 @@ class MediaContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -78,7 +80,8 @@ class MediaContext extends InstanceContext
     public function fetch(): MediaInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new MediaInstance(
             $this->version,

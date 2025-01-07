@@ -22,9 +22,10 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Rest\Conversations\V1\Service\ParticipantConversationList;
 use Twilio\Rest\Conversations\V1\Service\UserList;
 use Twilio\Rest\Conversations\V1\Service\BindingList;
-use Twilio\Rest\Conversations\V1\Service\ParticipantConversationList;
+use Twilio\Rest\Conversations\V1\Service\ConversationWithParticipantsList;
 use Twilio\Rest\Conversations\V1\Service\ConversationList;
 use Twilio\Rest\Conversations\V1\Service\RoleList;
 use Twilio\Rest\Conversations\V1\Service\ConfigurationList;
@@ -41,9 +42,10 @@ use Twilio\Rest\Conversations\V1\Service\ConfigurationList;
  */
 class ServiceInstance extends InstanceResource
 {
+    protected $_participantConversations;
     protected $_users;
     protected $_bindings;
-    protected $_participantConversations;
+    protected $_conversationWithParticipants;
     protected $_conversations;
     protected $_roles;
     protected $_configuration;
@@ -116,6 +118,14 @@ class ServiceInstance extends InstanceResource
     }
 
     /**
+     * Access the participantConversations
+     */
+    protected function getParticipantConversations(): ParticipantConversationList
+    {
+        return $this->proxy()->participantConversations;
+    }
+
+    /**
      * Access the users
      */
     protected function getUsers(): UserList
@@ -132,11 +142,11 @@ class ServiceInstance extends InstanceResource
     }
 
     /**
-     * Access the participantConversations
+     * Access the conversationWithParticipants
      */
-    protected function getParticipantConversations(): ParticipantConversationList
+    protected function getConversationWithParticipants(): ConversationWithParticipantsList
     {
-        return $this->proxy()->participantConversations;
+        return $this->proxy()->conversationWithParticipants;
     }
 
     /**

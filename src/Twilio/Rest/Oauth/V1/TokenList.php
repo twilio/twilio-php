@@ -46,12 +46,12 @@ class TokenList extends ListResource
      * Create the TokenInstance
      *
      * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     * @param string $clientSid A 34 character string that uniquely identifies this OAuth App.
+     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param array|Options $options Optional Arguments
      * @return TokenInstance Created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $grantType, string $clientSid, array $options = []): TokenInstance
+    public function create(string $grantType, string $clientId, array $options = []): TokenInstance
     {
 
         $options = new Values($options);
@@ -59,23 +59,24 @@ class TokenList extends ListResource
         $data = Values::of([
             'GrantType' =>
                 $grantType,
-            'ClientSid' =>
-                $clientSid,
+            'ClientId' =>
+                $clientId,
             'ClientSecret' =>
                 $options['clientSecret'],
             'Code' =>
                 $options['code'],
-            'CodeVerifier' =>
-                $options['codeVerifier'],
-            'DeviceCode' =>
-                $options['deviceCode'],
+            'RedirectUri' =>
+                $options['redirectUri'],
+            'Audience' =>
+                $options['audience'],
             'RefreshToken' =>
                 $options['refreshToken'],
-            'DeviceId' =>
-                $options['deviceId'],
+            'Scope' =>
+                $options['scope'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TokenInstance(
             $this->version,

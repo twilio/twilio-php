@@ -68,7 +68,8 @@ class SmsCommandList extends ListResource
                 $options['callbackUrl'],
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SmsCommandInstance(
             $this->version,

@@ -21,8 +21,8 @@ use Twilio\Values;
 abstract class MetricOptions
 {
     /**
-     * @param string $edge 
-     * @param string $direction 
+     * @param string $edge The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
+     * @param string $direction The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`.
      * @return ReadMetricOptions Options builder
      */
     public static function read(
@@ -43,8 +43,8 @@ abstract class MetricOptions
 class ReadMetricOptions extends Options
     {
     /**
-     * @param string $edge 
-     * @param string $direction 
+     * @param string $edge The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
+     * @param string $direction The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`.
      */
     public function __construct(
         
@@ -57,9 +57,9 @@ class ReadMetricOptions extends Options
     }
 
     /**
-     * 
+     * The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
      *
-     * @param string $edge 
+     * @param string $edge The Edge of this Metric. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
      * @return $this Fluent Builder
      */
     public function setEdge(string $edge): self
@@ -69,9 +69,9 @@ class ReadMetricOptions extends Options
     }
 
     /**
-     * 
+     * The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`.
      *
-     * @param string $direction 
+     * @param string $direction The Direction of this Metric. One of `unknown`, `inbound`, `outbound` or `both`.
      * @return $this Fluent Builder
      */
     public function setDirection(string $direction): self

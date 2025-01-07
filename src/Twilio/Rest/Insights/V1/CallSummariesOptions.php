@@ -21,29 +21,38 @@ use Twilio\Values;
 abstract class CallSummariesOptions
 {
     /**
-     * @param string $from 
-     * @param string $to 
-     * @param string $fromCarrier 
-     * @param string $toCarrier 
-     * @param string $fromCountryCode 
-     * @param string $toCountryCode 
-     * @param bool $branded 
-     * @param bool $verifiedCaller 
-     * @param bool $hasTag 
-     * @param string $startTime 
-     * @param string $endTime 
-     * @param string $callType 
-     * @param string $callState 
-     * @param string $direction 
-     * @param string $processingState 
-     * @param string $sortBy 
-     * @param string $subaccount 
-     * @param bool $abnormalSession 
-     * @param string $answeredBy 
-     * @param string $connectivityIssues 
-     * @param string $qualityIssues 
-     * @param bool $spam 
-     * @param string $callScores 
+     * @param string $from A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $to A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $fromCarrier An origination carrier.
+     * @param string $toCarrier A destination carrier.
+     * @param string $fromCountryCode A source country code based on phone number in From.
+     * @param string $toCountryCode A destination country code. Based on phone number in To.
+     * @param bool $verifiedCaller A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.One of 'true' or 'false'.
+     * @param bool $hasTag A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
+     * @param string $startTime A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
+     * @param string $endTime An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
+     * @param string $callType A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
+     * @param string $callState A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
+     * @param string $direction A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
+     * @param string $processingState A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
+     * @param string $sortBy A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
+     * @param string $subaccount A unique SID identifier of a Subaccount.
+     * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
+     * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
+     * @param string $answeredByAnnotation Either machine or human.
+     * @param string $connectivityIssueAnnotation A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $qualityIssueAnnotation A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param bool $spamAnnotation A boolean flag indicating spam calls.
+     * @param string $callScoreAnnotation A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     * @param bool $brandedEnabled A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'
+     * @param bool $voiceIntegrityEnabled A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'
+     * @param string $brandedBundleSid A unique SID identifier of the Branded Call.
+     * @param string $voiceIntegrityBundleSid A unique SID identifier of the Voice Integrity Profile.
+     * @param string $voiceIntegrityUseCase A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'.
+     * @param string $businessProfileIdentity A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.
+     * @param string $businessProfileIndustry A Business Industry of the calls. Is of type enum. One of 'automotive', 'agriculture', 'banking', 'consumer', 'construction', 'education', 'engineering', 'energy', 'oil_and_gas', 'fast_moving_consumer_goods', 'financial', 'fintech', 'food_and_beverage', 'government', 'healthcare', 'hospitality', 'insurance', 'legal', 'manufacturing', 'media', 'online', 'professional_services', 'raw_materials', 'real_estate', 'religion', 'retail', 'jewelry', 'technology', 'telecommunications', 'transportation', 'travel', 'electronics', 'not_for_profit'
+     * @param string $businessProfileBundleSid A unique SID identifier of the Business Profile.
+     * @param string $businessProfileType A Business Profile Type of the calls. Is of type enum. One of 'primary', 'secondary'.
      * @return ReadCallSummariesOptions Options builder
      */
     public static function read(
@@ -54,7 +63,6 @@ abstract class CallSummariesOptions
         string $toCarrier = Values::NONE,
         string $fromCountryCode = Values::NONE,
         string $toCountryCode = Values::NONE,
-        bool $branded = Values::BOOL_NONE,
         bool $verifiedCaller = Values::BOOL_NONE,
         bool $hasTag = Values::BOOL_NONE,
         string $startTime = Values::NONE,
@@ -67,10 +75,20 @@ abstract class CallSummariesOptions
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::BOOL_NONE,
         string $answeredBy = Values::NONE,
-        string $connectivityIssues = Values::NONE,
-        string $qualityIssues = Values::NONE,
-        bool $spam = Values::BOOL_NONE,
-        string $callScores = Values::NONE
+        string $answeredByAnnotation = Values::NONE,
+        string $connectivityIssueAnnotation = Values::NONE,
+        string $qualityIssueAnnotation = Values::NONE,
+        bool $spamAnnotation = Values::BOOL_NONE,
+        string $callScoreAnnotation = Values::NONE,
+        bool $brandedEnabled = Values::BOOL_NONE,
+        bool $voiceIntegrityEnabled = Values::BOOL_NONE,
+        string $brandedBundleSid = Values::NONE,
+        string $voiceIntegrityBundleSid = Values::NONE,
+        string $voiceIntegrityUseCase = Values::NONE,
+        string $businessProfileIdentity = Values::NONE,
+        string $businessProfileIndustry = Values::NONE,
+        string $businessProfileBundleSid = Values::NONE,
+        string $businessProfileType = Values::NONE
 
     ): ReadCallSummariesOptions
     {
@@ -81,7 +99,6 @@ abstract class CallSummariesOptions
             $toCarrier,
             $fromCountryCode,
             $toCountryCode,
-            $branded,
             $verifiedCaller,
             $hasTag,
             $startTime,
@@ -94,10 +111,20 @@ abstract class CallSummariesOptions
             $subaccount,
             $abnormalSession,
             $answeredBy,
-            $connectivityIssues,
-            $qualityIssues,
-            $spam,
-            $callScores
+            $answeredByAnnotation,
+            $connectivityIssueAnnotation,
+            $qualityIssueAnnotation,
+            $spamAnnotation,
+            $callScoreAnnotation,
+            $brandedEnabled,
+            $voiceIntegrityEnabled,
+            $brandedBundleSid,
+            $voiceIntegrityBundleSid,
+            $voiceIntegrityUseCase,
+            $businessProfileIdentity,
+            $businessProfileIndustry,
+            $businessProfileBundleSid,
+            $businessProfileType
         );
     }
 
@@ -106,29 +133,38 @@ abstract class CallSummariesOptions
 class ReadCallSummariesOptions extends Options
     {
     /**
-     * @param string $from 
-     * @param string $to 
-     * @param string $fromCarrier 
-     * @param string $toCarrier 
-     * @param string $fromCountryCode 
-     * @param string $toCountryCode 
-     * @param bool $branded 
-     * @param bool $verifiedCaller 
-     * @param bool $hasTag 
-     * @param string $startTime 
-     * @param string $endTime 
-     * @param string $callType 
-     * @param string $callState 
-     * @param string $direction 
-     * @param string $processingState 
-     * @param string $sortBy 
-     * @param string $subaccount 
-     * @param bool $abnormalSession 
-     * @param string $answeredBy 
-     * @param string $connectivityIssues 
-     * @param string $qualityIssues 
-     * @param bool $spam 
-     * @param string $callScores 
+     * @param string $from A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $to A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
+     * @param string $fromCarrier An origination carrier.
+     * @param string $toCarrier A destination carrier.
+     * @param string $fromCountryCode A source country code based on phone number in From.
+     * @param string $toCountryCode A destination country code. Based on phone number in To.
+     * @param bool $verifiedCaller A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.One of 'true' or 'false'.
+     * @param bool $hasTag A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
+     * @param string $startTime A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
+     * @param string $endTime An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
+     * @param string $callType A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
+     * @param string $callState A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
+     * @param string $direction A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
+     * @param string $processingState A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
+     * @param string $sortBy A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
+     * @param string $subaccount A unique SID identifier of a Subaccount.
+     * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
+     * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
+     * @param string $answeredByAnnotation Either machine or human.
+     * @param string $connectivityIssueAnnotation A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+     * @param string $qualityIssueAnnotation A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
+     * @param bool $spamAnnotation A boolean flag indicating spam calls.
+     * @param string $callScoreAnnotation A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     * @param bool $brandedEnabled A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'
+     * @param bool $voiceIntegrityEnabled A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'
+     * @param string $brandedBundleSid A unique SID identifier of the Branded Call.
+     * @param string $voiceIntegrityBundleSid A unique SID identifier of the Voice Integrity Profile.
+     * @param string $voiceIntegrityUseCase A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'.
+     * @param string $businessProfileIdentity A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.
+     * @param string $businessProfileIndustry A Business Industry of the calls. Is of type enum. One of 'automotive', 'agriculture', 'banking', 'consumer', 'construction', 'education', 'engineering', 'energy', 'oil_and_gas', 'fast_moving_consumer_goods', 'financial', 'fintech', 'food_and_beverage', 'government', 'healthcare', 'hospitality', 'insurance', 'legal', 'manufacturing', 'media', 'online', 'professional_services', 'raw_materials', 'real_estate', 'religion', 'retail', 'jewelry', 'technology', 'telecommunications', 'transportation', 'travel', 'electronics', 'not_for_profit'
+     * @param string $businessProfileBundleSid A unique SID identifier of the Business Profile.
+     * @param string $businessProfileType A Business Profile Type of the calls. Is of type enum. One of 'primary', 'secondary'.
      */
     public function __construct(
         
@@ -138,7 +174,6 @@ class ReadCallSummariesOptions extends Options
         string $toCarrier = Values::NONE,
         string $fromCountryCode = Values::NONE,
         string $toCountryCode = Values::NONE,
-        bool $branded = Values::BOOL_NONE,
         bool $verifiedCaller = Values::BOOL_NONE,
         bool $hasTag = Values::BOOL_NONE,
         string $startTime = Values::NONE,
@@ -151,10 +186,20 @@ class ReadCallSummariesOptions extends Options
         string $subaccount = Values::NONE,
         bool $abnormalSession = Values::BOOL_NONE,
         string $answeredBy = Values::NONE,
-        string $connectivityIssues = Values::NONE,
-        string $qualityIssues = Values::NONE,
-        bool $spam = Values::BOOL_NONE,
-        string $callScores = Values::NONE
+        string $answeredByAnnotation = Values::NONE,
+        string $connectivityIssueAnnotation = Values::NONE,
+        string $qualityIssueAnnotation = Values::NONE,
+        bool $spamAnnotation = Values::BOOL_NONE,
+        string $callScoreAnnotation = Values::NONE,
+        bool $brandedEnabled = Values::BOOL_NONE,
+        bool $voiceIntegrityEnabled = Values::BOOL_NONE,
+        string $brandedBundleSid = Values::NONE,
+        string $voiceIntegrityBundleSid = Values::NONE,
+        string $voiceIntegrityUseCase = Values::NONE,
+        string $businessProfileIdentity = Values::NONE,
+        string $businessProfileIndustry = Values::NONE,
+        string $businessProfileBundleSid = Values::NONE,
+        string $businessProfileType = Values::NONE
 
     ) {
         $this->options['from'] = $from;
@@ -163,7 +208,6 @@ class ReadCallSummariesOptions extends Options
         $this->options['toCarrier'] = $toCarrier;
         $this->options['fromCountryCode'] = $fromCountryCode;
         $this->options['toCountryCode'] = $toCountryCode;
-        $this->options['branded'] = $branded;
         $this->options['verifiedCaller'] = $verifiedCaller;
         $this->options['hasTag'] = $hasTag;
         $this->options['startTime'] = $startTime;
@@ -176,16 +220,26 @@ class ReadCallSummariesOptions extends Options
         $this->options['subaccount'] = $subaccount;
         $this->options['abnormalSession'] = $abnormalSession;
         $this->options['answeredBy'] = $answeredBy;
-        $this->options['connectivityIssues'] = $connectivityIssues;
-        $this->options['qualityIssues'] = $qualityIssues;
-        $this->options['spam'] = $spam;
-        $this->options['callScores'] = $callScores;
+        $this->options['answeredByAnnotation'] = $answeredByAnnotation;
+        $this->options['connectivityIssueAnnotation'] = $connectivityIssueAnnotation;
+        $this->options['qualityIssueAnnotation'] = $qualityIssueAnnotation;
+        $this->options['spamAnnotation'] = $spamAnnotation;
+        $this->options['callScoreAnnotation'] = $callScoreAnnotation;
+        $this->options['brandedEnabled'] = $brandedEnabled;
+        $this->options['voiceIntegrityEnabled'] = $voiceIntegrityEnabled;
+        $this->options['brandedBundleSid'] = $brandedBundleSid;
+        $this->options['voiceIntegrityBundleSid'] = $voiceIntegrityBundleSid;
+        $this->options['voiceIntegrityUseCase'] = $voiceIntegrityUseCase;
+        $this->options['businessProfileIdentity'] = $businessProfileIdentity;
+        $this->options['businessProfileIndustry'] = $businessProfileIndustry;
+        $this->options['businessProfileBundleSid'] = $businessProfileBundleSid;
+        $this->options['businessProfileType'] = $businessProfileType;
     }
 
     /**
-     * 
+     * A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      *
-     * @param string $from 
+     * @param string $from A calling party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      * @return $this Fluent Builder
      */
     public function setFrom(string $from): self
@@ -195,9 +249,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      *
-     * @param string $to 
+     * @param string $to A called party. Could be an E.164 number, a SIP URI, or a Twilio Client registered name.
      * @return $this Fluent Builder
      */
     public function setTo(string $to): self
@@ -207,9 +261,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * An origination carrier.
      *
-     * @param string $fromCarrier 
+     * @param string $fromCarrier An origination carrier.
      * @return $this Fluent Builder
      */
     public function setFromCarrier(string $fromCarrier): self
@@ -219,9 +273,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A destination carrier.
      *
-     * @param string $toCarrier 
+     * @param string $toCarrier A destination carrier.
      * @return $this Fluent Builder
      */
     public function setToCarrier(string $toCarrier): self
@@ -231,9 +285,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A source country code based on phone number in From.
      *
-     * @param string $fromCountryCode 
+     * @param string $fromCountryCode A source country code based on phone number in From.
      * @return $this Fluent Builder
      */
     public function setFromCountryCode(string $fromCountryCode): self
@@ -243,9 +297,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A destination country code. Based on phone number in To.
      *
-     * @param string $toCountryCode 
+     * @param string $toCountryCode A destination country code. Based on phone number in To.
      * @return $this Fluent Builder
      */
     public function setToCountryCode(string $toCountryCode): self
@@ -255,21 +309,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.One of 'true' or 'false'.
      *
-     * @param bool $branded 
-     * @return $this Fluent Builder
-     */
-    public function setBranded(bool $branded): self
-    {
-        $this->options['branded'] = $branded;
-        return $this;
-    }
-
-    /**
-     * 
-     *
-     * @param bool $verifiedCaller 
+     * @param bool $verifiedCaller A boolean flag indicating whether or not the caller was verified using SHAKEN/STIR.One of 'true' or 'false'.
      * @return $this Fluent Builder
      */
     public function setVerifiedCaller(bool $verifiedCaller): self
@@ -279,9 +321,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
      *
-     * @param bool $hasTag 
+     * @param bool $hasTag A boolean flag indicating the presence of one or more [Voice Insights Call Tags](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-tags).
      * @return $this Fluent Builder
      */
     public function setHasTag(bool $hasTag): self
@@ -291,9 +333,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
      *
-     * @param string $startTime 
+     * @param string $startTime A Start time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 4h.
      * @return $this Fluent Builder
      */
     public function setStartTime(string $startTime): self
@@ -303,9 +345,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
      *
-     * @param string $endTime 
+     * @param string $endTime An End Time of the calls. xm (x minutes), xh (x hours), xd (x days), 1w, 30m, 3d, 4w or datetime-ISO. Defaults to 0m.
      * @return $this Fluent Builder
      */
     public function setEndTime(string $endTime): self
@@ -315,9 +357,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
      *
-     * @param string $callType 
+     * @param string $callType A Call Type of the calls. One of `carrier`, `sip`, `trunking` or `client`.
      * @return $this Fluent Builder
      */
     public function setCallType(string $callType): self
@@ -327,9 +369,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
      *
-     * @param string $callState 
+     * @param string $callState A Call State of the calls. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
      * @return $this Fluent Builder
      */
     public function setCallState(string $callState): self
@@ -339,9 +381,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
      *
-     * @param string $direction 
+     * @param string $direction A Direction of the calls. One of `outbound_api`, `outbound_dial`, `inbound`, `trunking_originating`, `trunking_terminating`.
      * @return $this Fluent Builder
      */
     public function setDirection(string $direction): self
@@ -351,9 +393,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
      *
-     * @param string $processingState 
+     * @param string $processingState A Processing State of the Call Summaries. One of `completed`, `partial` or `all`.
      * @return $this Fluent Builder
      */
     public function setProcessingState(string $processingState): self
@@ -363,9 +405,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
      *
-     * @param string $sortBy 
+     * @param string $sortBy A Sort By criterion for the returned list of Call Summaries. One of `start_time` or `end_time`.
      * @return $this Fluent Builder
      */
     public function setSortBy(string $sortBy): self
@@ -375,9 +417,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A unique SID identifier of a Subaccount.
      *
-     * @param string $subaccount 
+     * @param string $subaccount A unique SID identifier of a Subaccount.
      * @return $this Fluent Builder
      */
     public function setSubaccount(string $subaccount): self
@@ -387,9 +429,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
      *
-     * @param bool $abnormalSession 
+     * @param bool $abnormalSession A boolean flag indicating an abnormal session where the last SIP response was not 200 OK.
      * @return $this Fluent Builder
      */
     public function setAbnormalSession(bool $abnormalSession): self
@@ -399,9 +441,9 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
      *
-     * @param string $answeredBy 
+     * @param string $answeredBy An Answered By value for the calls based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`.
      * @return $this Fluent Builder
      */
     public function setAnsweredBy(string $answeredBy): self
@@ -411,50 +453,170 @@ class ReadCallSummariesOptions extends Options
     }
 
     /**
-     * 
+     * Either machine or human.
      *
-     * @param string $connectivityIssues 
+     * @param string $answeredByAnnotation Either machine or human.
      * @return $this Fluent Builder
      */
-    public function setConnectivityIssues(string $connectivityIssues): self
+    public function setAnsweredByAnnotation(string $answeredByAnnotation): self
     {
-        $this->options['connectivityIssues'] = $connectivityIssues;
+        $this->options['answeredByAnnotation'] = $answeredByAnnotation;
         return $this;
     }
 
     /**
-     * 
+     * A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
      *
-     * @param string $qualityIssues 
+     * @param string $connectivityIssueAnnotation A Connectivity Issue with the calls. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
      * @return $this Fluent Builder
      */
-    public function setQualityIssues(string $qualityIssues): self
+    public function setConnectivityIssueAnnotation(string $connectivityIssueAnnotation): self
     {
-        $this->options['qualityIssues'] = $qualityIssues;
+        $this->options['connectivityIssueAnnotation'] = $connectivityIssueAnnotation;
         return $this;
     }
 
     /**
-     * 
+     * A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
      *
-     * @param bool $spam 
+     * @param string $qualityIssueAnnotation A subjective Quality Issue with the calls. One of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, `static_noise`.
      * @return $this Fluent Builder
      */
-    public function setSpam(bool $spam): self
+    public function setQualityIssueAnnotation(string $qualityIssueAnnotation): self
     {
-        $this->options['spam'] = $spam;
+        $this->options['qualityIssueAnnotation'] = $qualityIssueAnnotation;
         return $this;
     }
 
     /**
-     * 
+     * A boolean flag indicating spam calls.
      *
-     * @param string $callScores 
+     * @param bool $spamAnnotation A boolean flag indicating spam calls.
      * @return $this Fluent Builder
      */
-    public function setCallScores(string $callScores): self
+    public function setSpamAnnotation(bool $spamAnnotation): self
     {
-        $this->options['callScores'] = $callScores;
+        $this->options['spamAnnotation'] = $spamAnnotation;
+        return $this;
+    }
+
+    /**
+     * A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     *
+     * @param string $callScoreAnnotation A Call Score of the calls. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for the rated call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad].
+     * @return $this Fluent Builder
+     */
+    public function setCallScoreAnnotation(string $callScoreAnnotation): self
+    {
+        $this->options['callScoreAnnotation'] = $callScoreAnnotation;
+        return $this;
+    }
+
+    /**
+     * A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'
+     *
+     * @param bool $brandedEnabled A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'
+     * @return $this Fluent Builder
+     */
+    public function setBrandedEnabled(bool $brandedEnabled): self
+    {
+        $this->options['brandedEnabled'] = $brandedEnabled;
+        return $this;
+    }
+
+    /**
+     * A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'
+     *
+     * @param bool $voiceIntegrityEnabled A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'
+     * @return $this Fluent Builder
+     */
+    public function setVoiceIntegrityEnabled(bool $voiceIntegrityEnabled): self
+    {
+        $this->options['voiceIntegrityEnabled'] = $voiceIntegrityEnabled;
+        return $this;
+    }
+
+    /**
+     * A unique SID identifier of the Branded Call.
+     *
+     * @param string $brandedBundleSid A unique SID identifier of the Branded Call.
+     * @return $this Fluent Builder
+     */
+    public function setBrandedBundleSid(string $brandedBundleSid): self
+    {
+        $this->options['brandedBundleSid'] = $brandedBundleSid;
+        return $this;
+    }
+
+    /**
+     * A unique SID identifier of the Voice Integrity Profile.
+     *
+     * @param string $voiceIntegrityBundleSid A unique SID identifier of the Voice Integrity Profile.
+     * @return $this Fluent Builder
+     */
+    public function setVoiceIntegrityBundleSid(string $voiceIntegrityBundleSid): self
+    {
+        $this->options['voiceIntegrityBundleSid'] = $voiceIntegrityBundleSid;
+        return $this;
+    }
+
+    /**
+     * A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'.
+     *
+     * @param string $voiceIntegrityUseCase A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'.
+     * @return $this Fluent Builder
+     */
+    public function setVoiceIntegrityUseCase(string $voiceIntegrityUseCase): self
+    {
+        $this->options['voiceIntegrityUseCase'] = $voiceIntegrityUseCase;
+        return $this;
+    }
+
+    /**
+     * A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.
+     *
+     * @param string $businessProfileIdentity A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.
+     * @return $this Fluent Builder
+     */
+    public function setBusinessProfileIdentity(string $businessProfileIdentity): self
+    {
+        $this->options['businessProfileIdentity'] = $businessProfileIdentity;
+        return $this;
+    }
+
+    /**
+     * A Business Industry of the calls. Is of type enum. One of 'automotive', 'agriculture', 'banking', 'consumer', 'construction', 'education', 'engineering', 'energy', 'oil_and_gas', 'fast_moving_consumer_goods', 'financial', 'fintech', 'food_and_beverage', 'government', 'healthcare', 'hospitality', 'insurance', 'legal', 'manufacturing', 'media', 'online', 'professional_services', 'raw_materials', 'real_estate', 'religion', 'retail', 'jewelry', 'technology', 'telecommunications', 'transportation', 'travel', 'electronics', 'not_for_profit'
+     *
+     * @param string $businessProfileIndustry A Business Industry of the calls. Is of type enum. One of 'automotive', 'agriculture', 'banking', 'consumer', 'construction', 'education', 'engineering', 'energy', 'oil_and_gas', 'fast_moving_consumer_goods', 'financial', 'fintech', 'food_and_beverage', 'government', 'healthcare', 'hospitality', 'insurance', 'legal', 'manufacturing', 'media', 'online', 'professional_services', 'raw_materials', 'real_estate', 'religion', 'retail', 'jewelry', 'technology', 'telecommunications', 'transportation', 'travel', 'electronics', 'not_for_profit'
+     * @return $this Fluent Builder
+     */
+    public function setBusinessProfileIndustry(string $businessProfileIndustry): self
+    {
+        $this->options['businessProfileIndustry'] = $businessProfileIndustry;
+        return $this;
+    }
+
+    /**
+     * A unique SID identifier of the Business Profile.
+     *
+     * @param string $businessProfileBundleSid A unique SID identifier of the Business Profile.
+     * @return $this Fluent Builder
+     */
+    public function setBusinessProfileBundleSid(string $businessProfileBundleSid): self
+    {
+        $this->options['businessProfileBundleSid'] = $businessProfileBundleSid;
+        return $this;
+    }
+
+    /**
+     * A Business Profile Type of the calls. Is of type enum. One of 'primary', 'secondary'.
+     *
+     * @param string $businessProfileType A Business Profile Type of the calls. Is of type enum. One of 'primary', 'secondary'.
+     * @return $this Fluent Builder
+     */
+    public function setBusinessProfileType(string $businessProfileType): self
+    {
+        $this->options['businessProfileType'] = $businessProfileType;
         return $this;
     }
 

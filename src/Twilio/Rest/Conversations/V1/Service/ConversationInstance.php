@@ -23,9 +23,9 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
 use Twilio\Rest\Conversations\V1\Service\Conversation\WebhookList;
 use Twilio\Rest\Conversations\V1\Service\Conversation\ParticipantList;
-use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
 
 
 /**
@@ -46,9 +46,9 @@ use Twilio\Rest\Conversations\V1\Service\Conversation\MessageList;
  */
 class ConversationInstance extends InstanceResource
 {
+    protected $_messages;
     protected $_webhooks;
     protected $_participants;
-    protected $_messages;
 
     /**
      * Initialize the ConversationInstance
@@ -141,6 +141,14 @@ class ConversationInstance extends InstanceResource
     }
 
     /**
+     * Access the messages
+     */
+    protected function getMessages(): MessageList
+    {
+        return $this->proxy()->messages;
+    }
+
+    /**
      * Access the webhooks
      */
     protected function getWebhooks(): WebhookList
@@ -154,14 +162,6 @@ class ConversationInstance extends InstanceResource
     protected function getParticipants(): ParticipantList
     {
         return $this->proxy()->participants;
-    }
-
-    /**
-     * Access the messages
-     */
-    protected function getMessages(): MessageList
-    {
-        return $this->proxy()->messages;
     }
 
     /**

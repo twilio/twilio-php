@@ -23,9 +23,9 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
-use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ReplaceItemsList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\EvaluationList;
+use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\BundleCopyList;
 use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
 
 
@@ -45,9 +45,9 @@ use Twilio\Rest\Numbers\V2\RegulatoryCompliance\Bundle\ItemAssignmentList;
  */
 class BundleInstance extends InstanceResource
 {
-    protected $_bundleCopies;
     protected $_replaceItems;
     protected $_evaluations;
+    protected $_bundleCopies;
     protected $_itemAssignments;
 
     /**
@@ -136,14 +136,6 @@ class BundleInstance extends InstanceResource
     }
 
     /**
-     * Access the bundleCopies
-     */
-    protected function getBundleCopies(): BundleCopyList
-    {
-        return $this->proxy()->bundleCopies;
-    }
-
-    /**
      * Access the replaceItems
      */
     protected function getReplaceItems(): ReplaceItemsList
@@ -157,6 +149,14 @@ class BundleInstance extends InstanceResource
     protected function getEvaluations(): EvaluationList
     {
         return $this->proxy()->evaluations;
+    }
+
+    /**
+     * Access the bundleCopies
+     */
+    protected function getBundleCopies(): BundleCopyList
+    {
+        return $this->proxy()->bundleCopies;
     }
 
     /**

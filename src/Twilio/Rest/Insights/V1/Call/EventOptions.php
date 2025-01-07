@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class EventOptions
 {
     /**
-     * @param string $edge 
+     * @param string $edge The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
      * @return ReadEventOptions Options builder
      */
     public static function read(
@@ -40,7 +40,7 @@ abstract class EventOptions
 class ReadEventOptions extends Options
     {
     /**
-     * @param string $edge 
+     * @param string $edge The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
      */
     public function __construct(
         
@@ -51,9 +51,9 @@ class ReadEventOptions extends Options
     }
 
     /**
-     * 
+     * The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
      *
-     * @param string $edge 
+     * @param string $edge The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
      * @return $this Fluent Builder
      */
     public function setEdge(string $edge): self

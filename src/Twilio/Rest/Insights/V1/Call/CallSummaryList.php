@@ -26,7 +26,7 @@ class CallSummaryList extends ListResource
      * Construct the CallSummaryList
      *
      * @param Version $version Version that contains the resource
-     * @param string $callSid 
+     * @param string $callSid The unique SID identifier of the Call.
      */
     public function __construct(
         Version $version,

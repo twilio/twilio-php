@@ -26,7 +26,9 @@ use Twilio\Rest\Messaging\V1\DomainConfigMessagingServiceList;
 use Twilio\Rest\Messaging\V1\ExternalCampaignList;
 use Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceList;
 use Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceDomainAssociationList;
+use Twilio\Rest\Messaging\V1\RequestManagedCertList;
 use Twilio\Rest\Messaging\V1\ServiceList;
+use Twilio\Rest\Messaging\V1\TollfreeVerificationList;
 use Twilio\Rest\Messaging\V1\UsecaseList;
 use Twilio\Version;
 
@@ -39,11 +41,14 @@ use Twilio\Version;
  * @property ExternalCampaignList $externalCampaign
  * @property LinkshorteningMessagingServiceList $linkshorteningMessagingService
  * @property LinkshorteningMessagingServiceDomainAssociationList $linkshorteningMessagingServiceDomainAssociation
+ * @property RequestManagedCertList $requestManagedCert
  * @property ServiceList $services
+ * @property TollfreeVerificationList $tollfreeVerifications
  * @property UsecaseList $usecases
  * @method \Twilio\Rest\Messaging\V1\BrandRegistrationContext brandRegistrations(string $sid)
  * @method \Twilio\Rest\Messaging\V1\LinkshorteningMessagingServiceContext linkshorteningMessagingService(string $domainSid, string $messagingServiceSid)
  * @method \Twilio\Rest\Messaging\V1\ServiceContext services(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\TollfreeVerificationContext tollfreeVerifications(string $sid)
  */
 class V1 extends Version
 {
@@ -55,7 +60,9 @@ class V1 extends Version
     protected $_externalCampaign;
     protected $_linkshorteningMessagingService;
     protected $_linkshorteningMessagingServiceDomainAssociation;
+    protected $_requestManagedCert;
     protected $_services;
+    protected $_tollfreeVerifications;
     protected $_usecases;
 
     /**
@@ -133,12 +140,28 @@ class V1 extends Version
         return $this->_linkshorteningMessagingServiceDomainAssociation;
     }
 
+    protected function getRequestManagedCert(): RequestManagedCertList
+    {
+        if (!$this->_requestManagedCert) {
+            $this->_requestManagedCert = new RequestManagedCertList($this);
+        }
+        return $this->_requestManagedCert;
+    }
+
     protected function getServices(): ServiceList
     {
         if (!$this->_services) {
             $this->_services = new ServiceList($this);
         }
         return $this->_services;
+    }
+
+    protected function getTollfreeVerifications(): TollfreeVerificationList
+    {
+        if (!$this->_tollfreeVerifications) {
+            $this->_tollfreeVerifications = new TollfreeVerificationList($this);
+        }
+        return $this->_tollfreeVerifications;
     }
 
     protected function getUsecases(): UsecaseList

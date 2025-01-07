@@ -25,9 +25,9 @@ use Twilio\Version;
 
 
 /**
- * @property int|null $totalAttempts
- * @property int|null $totalConverted
- * @property int|null $totalUnconverted
+ * @property int $totalAttempts
+ * @property int $totalConverted
+ * @property int $totalUnconverted
  * @property string|null $conversionRatePercentage
  * @property string|null $url
  */

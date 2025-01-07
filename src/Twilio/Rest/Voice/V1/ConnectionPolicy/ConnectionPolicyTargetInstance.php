@@ -31,8 +31,8 @@ use Twilio\Deserialize;
  * @property string|null $sid
  * @property string|null $friendlyName
  * @property string|null $target
- * @property int|null $priority
- * @property int|null $weight
+ * @property int $priority
+ * @property int $weight
  * @property bool|null $enabled
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated

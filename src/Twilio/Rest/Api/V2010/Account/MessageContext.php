@@ -41,8 +41,8 @@ class MessageContext extends InstanceContext
      * Initialize the MessageContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
-     * @param string $sid The Twilio-provided string that uniquely identifies the Message resource to delete.
+     * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) creating the Message resource.
+     * @param string $sid The SID of the Message resource you wish to delete
      */
     public function __construct(
         Version $version,
@@ -73,7 +73,8 @@ class MessageContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -86,7 +87,8 @@ class MessageContext extends InstanceContext
     public function fetch(): MessageInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new MessageInstance(
             $this->version,
@@ -116,7 +118,8 @@ class MessageContext extends InstanceContext
                 $options['status'],
         ]);
 
-        $payload = $this->version->update('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new MessageInstance(
             $this->version,

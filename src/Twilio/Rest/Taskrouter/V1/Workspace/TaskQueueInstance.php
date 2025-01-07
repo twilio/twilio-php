@@ -35,7 +35,7 @@ use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueRealTimeStatisticsLis
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $friendlyName
- * @property int|null $maxReservedWorkers
+ * @property int $maxReservedWorkers
  * @property string|null $reservationActivitySid
  * @property string|null $reservationActivityName
  * @property string|null $sid

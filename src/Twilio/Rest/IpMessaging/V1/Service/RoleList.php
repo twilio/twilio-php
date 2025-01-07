@@ -70,7 +70,8 @@ class RoleList extends ListResource
                 Serialize::map($permission,function ($e) { return $e; }),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new RoleInstance(
             $this->version,

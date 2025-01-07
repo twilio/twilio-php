@@ -73,9 +73,12 @@ class BundleList extends ListResource
                 $options['endUserType'],
             'NumberType' =>
                 $options['numberType'],
+            'IsTest' =>
+                Serialize::booleanToString($options['isTest']),
         ]);
 
-        $payload = $this->version->create('POST', $this->uri, [], $data);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new BundleInstance(
             $this->version,

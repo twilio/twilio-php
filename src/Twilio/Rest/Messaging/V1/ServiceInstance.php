@@ -25,9 +25,10 @@ use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Messaging\V1\Service\AlphaSenderList;
 use Twilio\Rest\Messaging\V1\Service\PhoneNumberList;
+use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
+use Twilio\Rest\Messaging\V1\Service\ChannelSenderList;
 use Twilio\Rest\Messaging\V1\Service\ShortCodeList;
 use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
-use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 
 
 /**
@@ -48,7 +49,7 @@ use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
  * @property bool|null $fallbackToLongCode
  * @property bool|null $areaCodeGeomatch
  * @property bool|null $synchronousValidation
- * @property int|null $validityPeriod
+ * @property int $validityPeriod
  * @property string|null $url
  * @property array|null $links
  * @property string|null $usecase
@@ -59,9 +60,10 @@ class ServiceInstance extends InstanceResource
 {
     protected $_alphaSenders;
     protected $_phoneNumbers;
+    protected $_usAppToPersonUsecases;
+    protected $_channelSenders;
     protected $_shortCodes;
     protected $_usAppToPerson;
-    protected $_usAppToPersonUsecases;
 
     /**
      * Initialize the ServiceInstance
@@ -176,6 +178,22 @@ class ServiceInstance extends InstanceResource
     }
 
     /**
+     * Access the usAppToPersonUsecases
+     */
+    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList
+    {
+        return $this->proxy()->usAppToPersonUsecases;
+    }
+
+    /**
+     * Access the channelSenders
+     */
+    protected function getChannelSenders(): ChannelSenderList
+    {
+        return $this->proxy()->channelSenders;
+    }
+
+    /**
      * Access the shortCodes
      */
     protected function getShortCodes(): ShortCodeList
@@ -189,14 +207,6 @@ class ServiceInstance extends InstanceResource
     protected function getUsAppToPerson(): UsAppToPersonList
     {
         return $this->proxy()->usAppToPerson;
-    }
-
-    /**
-     * Access the usAppToPersonUsecases
-     */
-    protected function getUsAppToPersonUsecases(): UsAppToPersonUsecaseList
-    {
-        return $this->proxy()->usAppToPersonUsecases;
     }
 
     /**

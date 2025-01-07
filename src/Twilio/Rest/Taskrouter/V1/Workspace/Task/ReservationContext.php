@@ -68,7 +68,8 @@ class ReservationContext extends InstanceContext
     public function fetch(): ReservationInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ReservationInstance(
             $this->version,
@@ -199,10 +200,11 @@ class ReservationContext extends InstanceContext
                 Serialize::booleanToString($options['endConferenceOnCustomerExit']),
             'BeepOnCustomerEntrance' =>
                 Serialize::booleanToString($options['beepOnCustomerEntrance']),
+            'JitterBufferSize' =>
+                $options['jitterBufferSize'],
         ]);
 
-        $headers = Values::of(['If-Match' => $options['ifMatch']]);
-
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ReservationInstance(

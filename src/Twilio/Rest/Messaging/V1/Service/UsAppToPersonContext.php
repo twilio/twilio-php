@@ -18,8 +18,10 @@
 namespace Twilio\Rest\Messaging\V1\Service;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 
 
 class UsAppToPersonContext extends InstanceContext
@@ -28,7 +30,7 @@ class UsAppToPersonContext extends InstanceContext
      * Initialize the UsAppToPersonContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/services/api) to create the resources from.
+     * @param string $messagingServiceSid The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to create the resources from.
      * @param string $sid The SID of the US A2P Compliance resource to delete `QE2c6890da8086d771620e9b13fadeba0b`.
      */
     public function __construct(
@@ -60,7 +62,8 @@ class UsAppToPersonContext extends InstanceContext
     public function delete(): bool
     {
 
-        return $this->version->delete('DELETE', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
     }
 
 
@@ -73,7 +76,53 @@ class UsAppToPersonContext extends InstanceContext
     public function fetch(): UsAppToPersonInstance
     {
 
-        $payload = $this->version->fetch('GET', $this->uri);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
+
+        return new UsAppToPersonInstance(
+            $this->version,
+            $payload,
+            $this->solution['messagingServiceSid'],
+            $this->solution['sid']
+        );
+    }
+
+
+    /**
+     * Update the UsAppToPersonInstance
+     *
+     * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
+     * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.
+     * @param string[] $messageSamples An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars.
+     * @param string $messageFlow Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
+     * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
+     * @param bool $ageGated A boolean that specifies whether campaign requires age gate for federally legal content.
+     * @param bool $directLending A boolean that specifies whether campaign allows direct lending or not.
+     * @return UsAppToPersonInstance Updated UsAppToPersonInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $messageSamples, string $messageFlow, string $description, bool $ageGated, bool $directLending): UsAppToPersonInstance
+    {
+
+        $data = Values::of([
+            'HasEmbeddedLinks' =>
+                Serialize::booleanToString($hasEmbeddedLinks),
+            'HasEmbeddedPhone' =>
+                Serialize::booleanToString($hasEmbeddedPhone),
+            'MessageSamples' =>
+                Serialize::map($messageSamples,function ($e) { return $e; }),
+            'MessageFlow' =>
+                $messageFlow,
+            'Description' =>
+                $description,
+            'AgeGated' =>
+                Serialize::booleanToString($ageGated),
+            'DirectLending' =>
+                Serialize::booleanToString($directLending),
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new UsAppToPersonInstance(
             $this->version,
