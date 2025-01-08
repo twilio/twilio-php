@@ -18,7 +18,7 @@ class AccessToken {
     /** @var string[] $customClaims */
     private $customClaims;
 
-    public function __construct(string $accountSid, string $signingKeySid, string $secret, int $ttl = 3600, string $identity = null, string $region = null) {
+    public function __construct(string $accountSid, string $signingKeySid, string $secret, int $ttl = 3600, ?string $identity = null, ?string $region = null) {
         $this->signingKeySid = $signingKeySid;
         $this->accountSid = $accountSid;
         $this->secret = $secret;

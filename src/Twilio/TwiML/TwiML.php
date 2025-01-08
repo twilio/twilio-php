@@ -23,7 +23,7 @@ abstract class TwiML {
      * @param string $value XML value
      * @param array $attributes XML attributes
      */
-    public function __construct(string $name, string $value = null, array $attributes = []) {
+    public function __construct(string $name, ?string $value = null, array $attributes = []) {
         $this->name = $name;
         $this->attributes = $attributes;
         $this->children = [];
@@ -73,7 +73,7 @@ abstract class TwiML {
      * @param array $attributes XML attributes
      * @return TwiML
      */
-    public function addChild(string $name, string $value = null, array $attributes = []): TwiML {
+    public function addChild(string $name, ?string $value = null, array $attributes = []): TwiML {
         return $this->nest(new GenericNode($name, $value, $attributes));
     }
 

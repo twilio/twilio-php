@@ -94,7 +94,7 @@ class ValuesTest extends UnitTest
         int $intVal = Values::INT_NONE,
         bool $boolVal = Values::BOOL_NONE,
         string $stringVal = Values::NONE,
-        \DateTime $dateTimeVal = null
+        ?\DateTime $dateTimeVal = null
     ): array
     {
         $arr = [];
