@@ -197,7 +197,7 @@ abstract class Version {
         );
     }
 
-    public function stream(Page $page, ?int $limit = null, ?int $pageLimit = null): Stream {
+    public function stream(Page $page, $limit = null, $pageLimit = null): Stream {
         return new Stream($page, $limit, $pageLimit);
     }
 
