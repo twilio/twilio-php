@@ -75,7 +75,7 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
         $this->description = Values::array_get($payload, 'description');
         $this->id = Values::array_get($payload, 'id');
         $this->name = Values::array_get($payload, 'name');
-        $this->policyDetails = Values::array_get($payload, 'policyDetails');
+        $this->policyDetails = Values::array_get($payload, 'policy_details');
         $this->type = Values::array_get($payload, 'type');
     }
 
@@ -113,9 +113,9 @@ class AssistantsV1ServiceCreateKnowledgeRequest implements \JsonSerializable
         protected $policy;
         protected $type;
     public function __construct(array $payload = []) {
-        $this->assistantId = Values::array_get($payload, 'assistantId');
+        $this->assistantId = Values::array_get($payload, 'assistant_id');
         $this->description = Values::array_get($payload, 'description');
-        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledgeSourceDetails');
+        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledge_source_details');
         $this->name = Values::array_get($payload, 'name');
         $this->policy = Values::array_get($payload, 'policy');
         $this->type = Values::array_get($payload, 'type');
@@ -155,7 +155,7 @@ class AssistantsV1ServiceUpdateKnowledgeRequest implements \JsonSerializable
         protected $type;
     public function __construct(array $payload = []) {
         $this->description = Values::array_get($payload, 'description');
-        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledgeSourceDetails');
+        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledge_source_details');
         $this->name = Values::array_get($payload, 'name');
         $this->policy = Values::array_get($payload, 'policy');
         $this->type = Values::array_get($payload, 'type');
