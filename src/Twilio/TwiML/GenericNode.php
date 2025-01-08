@@ -4,8 +4,6 @@ namespace Twilio\TwiML;
 
 class GenericNode extends TwiML {
 
-    protected $value;
-
     /**
      * GenericNode constructor.
      *
