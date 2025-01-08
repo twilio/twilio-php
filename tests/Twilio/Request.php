@@ -14,7 +14,7 @@ class Request {
 
     public function __construct(string $method, string $url,
                                 ?array $params = [], array $data = [], array $headers = [],
-                                ?string $user = null, ?string $password = null) {
+                                string $user = null, string $password = null) {
         $this->method = $method;
         $this->url = $url;
         $this->params = $params;
