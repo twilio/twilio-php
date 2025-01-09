@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2025-01-09] Version 8.3.10
+---------------------------
+**Library - Fix**
+- [PR #834](https://github.com/twilio/twilio-php/pull/834): avoid deprecation messages for PHP 8.4. Thanks to [@phpfui](https://github.com/phpfui)!
+
+**Library - Chore**
+- [PR #837](https://github.com/twilio/twilio-php/pull/837): revert 'fix: avoid deprecation messages for PHP 8.4'. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Numbers**
+- Change beta feature flag to use v2/BulkHostedNumberOrders
+
+
 [2024-12-05] Version 8.3.9
 --------------------------
 **Api**

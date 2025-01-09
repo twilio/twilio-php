@@ -37,6 +37,7 @@ abstract class KnowledgeModels
      * @property string $name The name of the tool.
      * @property AssistantsV1ServiceCreatePolicyRequest $policy
      * @property string $type The type of the knowledge source.
+     * @property string $embeddingModel The embedding model to be used for the knowledge source. It's required for 'Database' type but disallowed for other types.
     */
     public static function createAssistantsV1ServiceCreateKnowledgeRequest(array $payload = []): AssistantsV1ServiceCreateKnowledgeRequest
     {
@@ -49,6 +50,7 @@ abstract class KnowledgeModels
      * @property string $name The name of the knowledge source.
      * @property AssistantsV1ServiceCreatePolicyRequest $policy
      * @property string $type The description of the knowledge source.
+     * @property string $embeddingModel The embedding model to be used for the knowledge source. It's only applicable to 'Database' type.
     */
     public static function createAssistantsV1ServiceUpdateKnowledgeRequest(array $payload = []): AssistantsV1ServiceUpdateKnowledgeRequest
     {
@@ -75,7 +77,7 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
         $this->description = Values::array_get($payload, 'description');
         $this->id = Values::array_get($payload, 'id');
         $this->name = Values::array_get($payload, 'name');
-        $this->policyDetails = Values::array_get($payload, 'policyDetails');
+        $this->policyDetails = Values::array_get($payload, 'policy_details');
         $this->type = Values::array_get($payload, 'type');
     }
 
@@ -105,6 +107,7 @@ class AssistantsV1ServiceCreateKnowledgeRequest implements \JsonSerializable
      * @property string $name The name of the tool.
      * @property AssistantsV1ServiceCreatePolicyRequest $policy
      * @property string $type The type of the knowledge source.
+     * @property string $embeddingModel The embedding model to be used for the knowledge source. It's required for 'Database' type but disallowed for other types.
     */
         protected $assistantId;
         protected $description;
@@ -112,13 +115,15 @@ class AssistantsV1ServiceCreateKnowledgeRequest implements \JsonSerializable
         protected $name;
         protected $policy;
         protected $type;
+        protected $embeddingModel;
     public function __construct(array $payload = []) {
-        $this->assistantId = Values::array_get($payload, 'assistantId');
+        $this->assistantId = Values::array_get($payload, 'assistant_id');
         $this->description = Values::array_get($payload, 'description');
-        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledgeSourceDetails');
+        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledge_source_details');
         $this->name = Values::array_get($payload, 'name');
         $this->policy = Values::array_get($payload, 'policy');
         $this->type = Values::array_get($payload, 'type');
+        $this->embeddingModel = Values::array_get($payload, 'embedding_model');
     }
 
     public function toArray(): array
@@ -134,7 +139,8 @@ class AssistantsV1ServiceCreateKnowledgeRequest implements \JsonSerializable
             'knowledgeSourceDetails' => $this->knowledgeSourceDetails,
             'name' => $this->name,
             'policy' => $this->policy,
-            'type' => $this->type
+            'type' => $this->type,
+            'embeddingModel' => $this->embeddingModel
         ];
     }
 }
@@ -147,18 +153,21 @@ class AssistantsV1ServiceUpdateKnowledgeRequest implements \JsonSerializable
      * @property string $name The name of the knowledge source.
      * @property AssistantsV1ServiceCreatePolicyRequest $policy
      * @property string $type The description of the knowledge source.
+     * @property string $embeddingModel The embedding model to be used for the knowledge source. It's only applicable to 'Database' type.
     */
         protected $description;
         protected $knowledgeSourceDetails;
         protected $name;
         protected $policy;
         protected $type;
+        protected $embeddingModel;
     public function __construct(array $payload = []) {
         $this->description = Values::array_get($payload, 'description');
-        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledgeSourceDetails');
+        $this->knowledgeSourceDetails = Values::array_get($payload, 'knowledge_source_details');
         $this->name = Values::array_get($payload, 'name');
         $this->policy = Values::array_get($payload, 'policy');
         $this->type = Values::array_get($payload, 'type');
+        $this->embeddingModel = Values::array_get($payload, 'embedding_model');
     }
 
     public function toArray(): array
@@ -173,7 +182,8 @@ class AssistantsV1ServiceUpdateKnowledgeRequest implements \JsonSerializable
             'knowledgeSourceDetails' => $this->knowledgeSourceDetails,
             'name' => $this->name,
             'policy' => $this->policy,
-            'type' => $this->type
+            'type' => $this->type,
+            'embeddingModel' => $this->embeddingModel
         ];
     }
 }

@@ -32,10 +32,10 @@ use Twilio\Deserialize;
  * @property string|null $secret
  * @property array|null $policy
  */
-class KeyInstance extends InstanceResource
+class NewApiKeyInstance extends InstanceResource
 {
     /**
-     * Initialize the KeyInstance
+     * Initialize the NewApiKeyInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -85,7 +85,7 @@ class KeyInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Iam.V1.KeyInstance]';
+        return '[Twilio.Iam.V1.NewApiKeyInstance]';
     }
 }
 
