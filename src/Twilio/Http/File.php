@@ -24,7 +24,7 @@ final class File {
      * @param string|resource|mixed|null $contents
      * @param string $contentType
      */
-    public function __construct(string $fileName, $contents = null, string $contentType = null) {
+    public function __construct(string $fileName, $contents = null, ?string $contentType = null) {
         $this->fileName = $fileName;
         $this->contents = $contents;
         $this->contentType = $contentType;
