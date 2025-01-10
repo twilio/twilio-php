@@ -84,8 +84,8 @@ class AssistantsV1ServiceCustomerAi implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'perceptionEngineEnabled' => $this->perceptionEngineEnabled,
-            'personalizationEngineEnabled' => $this->personalizationEngineEnabled
+            'perception_engine_enabled' => $this->perceptionEngineEnabled,
+            'personalization_engine_enabled' => $this->personalizationEngineEnabled
         ];
     }
 }
@@ -114,9 +114,9 @@ class AssistantsV1ServiceSegmentCredential implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'profileApiKey' => $this->profileApiKey,
-            'spaceId' => $this->spaceId,
-            'writeKey' => $this->writeKey
+            'profile_api_key' => $this->profileApiKey,
+            'space_id' => $this->spaceId,
+            'write_key' => $this->writeKey
         ];
     }
 }
@@ -151,11 +151,11 @@ class AssistantsV1ServiceCreateAssistantRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'customerAi' => $this->customerAi,
+            'customer_ai' => $this->customerAi,
             'name' => $this->name,
             'owner' => $this->owner,
-            'personalityPrompt' => $this->personalityPrompt,
-            'segmentCredential' => $this->segmentCredential
+            'personality_prompt' => $this->personalityPrompt,
+            'segment_credential' => $this->segmentCredential
         ];
     }
 }
@@ -190,11 +190,11 @@ class AssistantsV1ServiceUpdateAssistantRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'customerAi' => $this->customerAi,
+            'customer_ai' => $this->customerAi,
             'name' => $this->name,
             'owner' => $this->owner,
-            'personalityPrompt' => $this->personalityPrompt,
-            'segmentCredential' => $this->segmentCredential
+            'personality_prompt' => $this->personalityPrompt,
+            'segment_credential' => $this->segmentCredential
         ];
     }
 }

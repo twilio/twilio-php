@@ -58,9 +58,9 @@ class AssistantsV1ServiceCreateFeedbackRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'messageId' => $this->messageId,
+            'message_id' => $this->messageId,
             'score' => $this->score,
-            'sessionId' => $this->sessionId,
+            'session_id' => $this->sessionId,
             'text' => $this->text
         ];
     }

@@ -663,9 +663,9 @@ class CatalogItem implements \JsonSerializable
     {
         return [
             'id' => $this->id,
-            'sectionTitle' => $this->sectionTitle,
+            'section_title' => $this->sectionTitle,
             'name' => $this->name,
-            'mediaUrl' => $this->mediaUrl,
+            'media_url' => $this->mediaUrl,
             'price' => $this->price,
             'description' => $this->description
         ];
@@ -710,7 +710,7 @@ class TwilioCatalog implements \JsonSerializable
             'subtitle' => $this->subtitle,
             'id' => $this->id,
             'items' => $this->items,
-            'dynamicItems' => $this->dynamicItems
+            'dynamic_items' => $this->dynamicItems
         ];
     }
 }
@@ -874,7 +874,7 @@ class FlowsPage implements \JsonSerializable
     {
         return [
             'id' => $this->id,
-            'nextPageId' => $this->nextPageId,
+            'next_page_id' => $this->nextPageId,
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'layout' => $this->layout
@@ -916,9 +916,9 @@ class TwilioFlows implements \JsonSerializable
     {
         return [
             'body' => $this->body,
-            'buttonText' => $this->buttonText,
+            'button_text' => $this->buttonText,
             'subtitle' => $this->subtitle,
-            'mediaUrl' => $this->mediaUrl,
+            'media_url' => $this->mediaUrl,
             'pages' => $this->pages,
             'type' => $this->type
         ];
@@ -958,7 +958,7 @@ class WhatsappCard implements \JsonSerializable
             'body' => $this->body,
             'footer' => $this->footer,
             'media' => $this->media,
-            'headerText' => $this->headerText,
+            'header_text' => $this->headerText,
             'actions' => $this->actions
         ];
     }
@@ -986,7 +986,7 @@ class AuthenticationAction implements \JsonSerializable
     {
         return [
             'type' => $this->type,
-            'copyCodeText' => $this->copyCodeText
+            'copy_code_text' => $this->copyCodeText
         ];
     }
 }
@@ -1015,8 +1015,8 @@ class WhatsappAuthentication implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'addSecurityRecommendation' => $this->addSecurityRecommendation,
-            'codeExpirationMinutes' => $this->codeExpirationMinutes,
+            'add_security_recommendation' => $this->addSecurityRecommendation,
+            'code_expiration_minutes' => $this->codeExpirationMinutes,
             'actions' => $this->actions
         ];
     }
@@ -1051,18 +1051,18 @@ class Types implements \JsonSerializable
         protected $whatsappCard;
         protected $whatsappAuthentication;
     public function __construct(array $payload = []) {
-        $this->twilioText = Values::array_get($payload, 'twilio_text');
-        $this->twilioMedia = Values::array_get($payload, 'twilio_media');
-        $this->twilioLocation = Values::array_get($payload, 'twilio_location');
-        $this->twilioListPicker = Values::array_get($payload, 'twilio_list_picker');
-        $this->twilioCallToAction = Values::array_get($payload, 'twilio_call_to_action');
-        $this->twilioQuickReply = Values::array_get($payload, 'twilio_quick_reply');
-        $this->twilioCard = Values::array_get($payload, 'twilio_card');
-        $this->twilioCatalog = Values::array_get($payload, 'twilio_catalog');
-        $this->twilioCarousel = Values::array_get($payload, 'twilio_carousel');
-        $this->twilioFlows = Values::array_get($payload, 'twilio_flows');
-        $this->whatsappCard = Values::array_get($payload, 'whatsapp_card');
-        $this->whatsappAuthentication = Values::array_get($payload, 'whatsapp_authentication');
+        $this->twilioText = Values::array_get($payload, 'twilio/text');
+        $this->twilioMedia = Values::array_get($payload, 'twilio/media');
+        $this->twilioLocation = Values::array_get($payload, 'twilio/location');
+        $this->twilioListPicker = Values::array_get($payload, 'twilio/list-picker');
+        $this->twilioCallToAction = Values::array_get($payload, 'twilio/call-to-action');
+        $this->twilioQuickReply = Values::array_get($payload, 'twilio/quick-reply');
+        $this->twilioCard = Values::array_get($payload, 'twilio/card');
+        $this->twilioCatalog = Values::array_get($payload, 'twilio/catalog');
+        $this->twilioCarousel = Values::array_get($payload, 'twilio/carousel');
+        $this->twilioFlows = Values::array_get($payload, 'twilio/flows');
+        $this->whatsappCard = Values::array_get($payload, 'whatsapp/card');
+        $this->whatsappAuthentication = Values::array_get($payload, 'whatsapp/authentication');
     }
 
     public function toArray(): array
@@ -1073,18 +1073,18 @@ class Types implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'twilioText' => $this->twilioText,
-            'twilioMedia' => $this->twilioMedia,
-            'twilioLocation' => $this->twilioLocation,
-            'twilioListPicker' => $this->twilioListPicker,
-            'twilioCallToAction' => $this->twilioCallToAction,
-            'twilioQuickReply' => $this->twilioQuickReply,
-            'twilioCard' => $this->twilioCard,
-            'twilioCatalog' => $this->twilioCatalog,
-            'twilioCarousel' => $this->twilioCarousel,
-            'twilioFlows' => $this->twilioFlows,
-            'whatsappCard' => $this->whatsappCard,
-            'whatsappAuthentication' => $this->whatsappAuthentication
+            'twilio/text' => $this->twilioText,
+            'twilio/media' => $this->twilioMedia,
+            'twilio/location' => $this->twilioLocation,
+            'twilio/list-picker' => $this->twilioListPicker,
+            'twilio/call-to-action' => $this->twilioCallToAction,
+            'twilio/quick-reply' => $this->twilioQuickReply,
+            'twilio/card' => $this->twilioCard,
+            'twilio/catalog' => $this->twilioCatalog,
+            'twilio/carousel' => $this->twilioCarousel,
+            'twilio/flows' => $this->twilioFlows,
+            'whatsapp/card' => $this->whatsappCard,
+            'whatsapp/authentication' => $this->whatsappAuthentication
         ];
     }
 }
@@ -1116,7 +1116,7 @@ class ContentCreateRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'friendlyName' => $this->friendlyName,
+            'friendly_name' => $this->friendlyName,
             'variables' => $this->variables,
             'language' => $this->language,
             'types' => $this->types
