@@ -19,7 +19,7 @@ use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Version;
 
-class KeyPage extends Page
+class NewApiKeyPage extends Page
     {
     /**
      * @param Version $version Version that contains the resource
@@ -36,11 +36,11 @@ class KeyPage extends Page
 
     /**
      * @param array $payload Payload response from the API
-     * @return KeyInstance \Twilio\Rest\Iam\V1\KeyInstance
+     * @return NewApiKeyInstance \Twilio\Rest\Iam\V1\NewApiKeyInstance
      */
-    public function buildInstance(array $payload): KeyInstance
+    public function buildInstance(array $payload): NewApiKeyInstance
     {
-        return new KeyInstance($this->version, $payload);
+        return new NewApiKeyInstance($this->version, $payload);
     }
 
     /**
@@ -50,6 +50,6 @@ class KeyPage extends Page
      */
     public function __toString(): string
     {
-        return '[Twilio.Iam.V1.KeyPage]';
+        return '[Twilio.Iam.V1.NewApiKeyPage]';
     }
 }
