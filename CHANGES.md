@@ -1,6 +1,15 @@
 twilio-php Changelog
 ====================
 
+[2025-01-10] Version 8.3.11
+---------------------------
+**Library - Fix**
+- [PR #839](https://github.com/twilio/twilio-php/pull/839): Php8.4 take 2. Thanks to [@phpfui](https://github.com/phpfui)!
+
+**Library - Chore**
+- [PR #840](https://github.com/twilio/twilio-php/pull/840): fix model names in json serialize and payload. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+
 [2025-01-09] Version 8.3.10
 ---------------------------
 **Library - Fix**
