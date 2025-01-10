@@ -93,7 +93,7 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
             'description' => $this->description,
             'id' => $this->id,
             'name' => $this->name,
-            'policyDetails' => $this->policyDetails,
+            'policy_details' => $this->policyDetails,
             'type' => $this->type
         ];
     }
@@ -135,7 +135,7 @@ class AssistantsV1ServiceCreateToolRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'assistantId' => $this->assistantId,
+            'assistant_id' => $this->assistantId,
             'description' => $this->description,
             'enabled' => $this->enabled,
             'meta' => $this->meta,
@@ -182,7 +182,7 @@ class AssistantsV1ServiceUpdateToolRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'assistantId' => $this->assistantId,
+            'assistant_id' => $this->assistantId,
             'description' => $this->description,
             'enabled' => $this->enabled,
             'meta' => $this->meta,

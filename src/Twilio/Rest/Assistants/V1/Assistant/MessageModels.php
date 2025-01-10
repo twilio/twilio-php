@@ -63,7 +63,7 @@ class AssistantsV1ServiceAssistantSendMessageRequest implements \JsonSerializabl
     {
         return [
             'identity' => $this->identity,
-            'sessionId' => $this->sessionId,
+            'session_id' => $this->sessionId,
             'body' => $this->body,
             'webhook' => $this->webhook,
             'mode' => $this->mode

@@ -91,8 +91,8 @@ class MarketplaceV1InstalledAddOnInstalledAddOnUsage implements \JsonSerializabl
     public function jsonSerialize(): array
     {
         return [
-            'totalSubmitted' => $this->totalSubmitted,
-            'billableItems' => $this->billableItems
+            'total_submitted' => $this->totalSubmitted,
+            'billable_items' => $this->billableItems
         ];
     }
 }

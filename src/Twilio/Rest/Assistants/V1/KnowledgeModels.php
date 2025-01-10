@@ -92,7 +92,7 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
             'description' => $this->description,
             'id' => $this->id,
             'name' => $this->name,
-            'policyDetails' => $this->policyDetails,
+            'policy_details' => $this->policyDetails,
             'type' => $this->type
         ];
     }
@@ -134,13 +134,13 @@ class AssistantsV1ServiceCreateKnowledgeRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'assistantId' => $this->assistantId,
+            'assistant_id' => $this->assistantId,
             'description' => $this->description,
-            'knowledgeSourceDetails' => $this->knowledgeSourceDetails,
+            'knowledge_source_details' => $this->knowledgeSourceDetails,
             'name' => $this->name,
             'policy' => $this->policy,
             'type' => $this->type,
-            'embeddingModel' => $this->embeddingModel
+            'embedding_model' => $this->embeddingModel
         ];
     }
 }
@@ -179,11 +179,11 @@ class AssistantsV1ServiceUpdateKnowledgeRequest implements \JsonSerializable
     {
         return [
             'description' => $this->description,
-            'knowledgeSourceDetails' => $this->knowledgeSourceDetails,
+            'knowledge_source_details' => $this->knowledgeSourceDetails,
             'name' => $this->name,
             'policy' => $this->policy,
             'type' => $this->type,
-            'embeddingModel' => $this->embeddingModel
+            'embedding_model' => $this->embeddingModel
         ];
     }
 }
