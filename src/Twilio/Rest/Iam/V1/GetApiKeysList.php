@@ -110,6 +110,8 @@ class GetApiKeysList extends ListResource
         $options = new Values($options);
 
         $params = Values::of([
+            'AccountSid' =>
+                $options['accountSid'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
