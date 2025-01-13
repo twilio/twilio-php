@@ -1,6 +1,19 @@
 twilio-php Changelog
 ====================
 
+[2025-01-13] Version 8.3.12
+---------------------------
+**Library - Chore**
+- [PR #841](https://github.com/twilio/twilio-php/pull/841): update changelog for 8.3.11. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #840](https://github.com/twilio/twilio-php/pull/840): fix model names in json serialize and payload. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Fix**
+- [PR #839](https://github.com/twilio/twilio-php/pull/839): Php8.4 take 2. Thanks to [@phpfui](https://github.com/phpfui)!
+
+**Messaging**
+- Adds validity period Default value in service resource documentation
+
+
 [2025-01-10] Version 8.3.11
 ---------------------------
 **Library - Fix**

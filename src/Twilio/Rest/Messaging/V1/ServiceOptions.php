@@ -32,7 +32,7 @@ abstract class ServiceOptions
      * @param string $scanMessageContent
      * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
-     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      * @param bool $synchronousValidation Reserved.
      * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
@@ -93,7 +93,7 @@ abstract class ServiceOptions
      * @param string $scanMessageContent
      * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
-     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      * @param bool $synchronousValidation Reserved.
      * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
@@ -156,7 +156,7 @@ class CreateServiceOptions extends Options
      * @param string $scanMessageContent
      * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
-     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      * @param bool $synchronousValidation Reserved.
      * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
@@ -328,9 +328,9 @@ class CreateServiceOptions extends Options
     }
 
     /**
-     * How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      *
-     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      * @return $this Fluent Builder
      */
     public function setValidityPeriod(int $validityPeriod): self
@@ -405,7 +405,7 @@ class UpdateServiceOptions extends Options
      * @param string $scanMessageContent
      * @param bool $fallbackToLongCode [OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures.
      * @param bool $areaCodeGeomatch Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
-     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      * @param bool $synchronousValidation Reserved.
      * @param string $usecase A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
      * @param bool $useInboundWebhookOnNumber A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
@@ -591,9 +591,9 @@ class UpdateServiceOptions extends Options
     }
 
     /**
-     * How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      *
-     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`.
+     * @param int $validityPeriod How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `14,400`. Default value is `14,400`.
      * @return $this Fluent Builder
      */
     public function setValidityPeriod(int $validityPeriod): self
