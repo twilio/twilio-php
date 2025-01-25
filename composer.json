@@ -17,7 +17,7 @@
     "require-dev": {
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
         "phpunit/phpunit": ">=7.0 < 10",
-        "friendsofphp/php-cs-fixer": "^3.68"
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
