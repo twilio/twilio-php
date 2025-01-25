@@ -48,7 +48,7 @@ class AssistantsV1ServiceAssistantSendMessageRequest implements \JsonSerializabl
         protected $mode;
     public function __construct(array $payload = []) {
         $this->identity = Values::array_get($payload, 'identity');
-        $this->sessionId = Values::array_get($payload, 'sessionId');
+        $this->sessionId = Values::array_get($payload, 'session_id');
         $this->body = Values::array_get($payload, 'body');
         $this->webhook = Values::array_get($payload, 'webhook');
         $this->mode = Values::array_get($payload, 'mode');
@@ -63,7 +63,7 @@ class AssistantsV1ServiceAssistantSendMessageRequest implements \JsonSerializabl
     {
         return [
             'identity' => $this->identity,
-            'sessionId' => $this->sessionId,
+            'session_id' => $this->sessionId,
             'body' => $this->body,
             'webhook' => $this->webhook,
             'mode' => $this->mode

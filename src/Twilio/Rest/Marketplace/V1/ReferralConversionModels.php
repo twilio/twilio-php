@@ -35,7 +35,7 @@ class CreateReferralConversionRequest implements \JsonSerializable
     */
         protected $referralAccountSid;
     public function __construct(array $payload = []) {
-        $this->referralAccountSid = Values::array_get($payload, 'referralAccountSid');
+        $this->referralAccountSid = Values::array_get($payload, 'referral_account_sid');
     }
 
     public function toArray(): array
@@ -46,7 +46,7 @@ class CreateReferralConversionRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'referralAccountSid' => $this->referralAccountSid
+            'referral_account_sid' => $this->referralAccountSid
         ];
     }
 }

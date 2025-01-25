@@ -79,8 +79,8 @@ class MarketplaceV1InstalledAddOnInstalledAddOnUsage implements \JsonSerializabl
         protected $totalSubmitted;
         protected $billableItems;
     public function __construct(array $payload = []) {
-        $this->totalSubmitted = Values::array_get($payload, 'totalSubmitted');
-        $this->billableItems = Values::array_get($payload, 'billableItems');
+        $this->totalSubmitted = Values::array_get($payload, 'total_submitted');
+        $this->billableItems = Values::array_get($payload, 'billable_items');
     }
 
     public function toArray(): array
@@ -91,8 +91,8 @@ class MarketplaceV1InstalledAddOnInstalledAddOnUsage implements \JsonSerializabl
     public function jsonSerialize(): array
     {
         return [
-            'totalSubmitted' => $this->totalSubmitted,
-            'billableItems' => $this->billableItems
+            'total_submitted' => $this->totalSubmitted,
+            'billable_items' => $this->billableItems
         ];
     }
 }

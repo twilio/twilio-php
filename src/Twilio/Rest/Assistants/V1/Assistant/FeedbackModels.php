@@ -44,9 +44,9 @@ class AssistantsV1ServiceCreateFeedbackRequest implements \JsonSerializable
         protected $sessionId;
         protected $text;
     public function __construct(array $payload = []) {
-        $this->messageId = Values::array_get($payload, 'messageId');
+        $this->messageId = Values::array_get($payload, 'message_id');
         $this->score = Values::array_get($payload, 'score');
-        $this->sessionId = Values::array_get($payload, 'sessionId');
+        $this->sessionId = Values::array_get($payload, 'session_id');
         $this->text = Values::array_get($payload, 'text');
     }
 
@@ -58,9 +58,9 @@ class AssistantsV1ServiceCreateFeedbackRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'messageId' => $this->messageId,
+            'message_id' => $this->messageId,
             'score' => $this->score,
-            'sessionId' => $this->sessionId,
+            'session_id' => $this->sessionId,
             'text' => $this->text
         ];
     }
