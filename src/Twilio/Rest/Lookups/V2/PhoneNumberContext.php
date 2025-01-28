@@ -89,6 +89,8 @@ class PhoneNumberContext extends InstanceContext
                 $options['lastVerifiedDate'],
             'VerificationSid' =>
                 $options['verificationSid'],
+            'PartnerSubId' =>
+                $options['partnerSubId'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
