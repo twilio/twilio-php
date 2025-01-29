@@ -2,7 +2,9 @@
 namespace Twilio\AuthStrategy;
 
 /**
- * @property string $authType
+ * Class AuthStrategy
+ * Abstract parent class for all authentication strategies - Basic, Bearer Token, NoAuth etc.
+ * @property string $authType The type of authentication strategy
  */
 
 abstract class AuthStrategy {
@@ -16,6 +18,17 @@ abstract class AuthStrategy {
         return $this->authType;
     }
 
+    /**
+     * Returns the value to be set in the authentication header
+     *
+     * @return string the authentication string
+     */
     abstract public function getAuthString(): string;
+
+    /**
+     * Returns true if the authentication strategy requires authentication and false otherwise
+     *
+     * @return bool whether the authentication strategy requires authentication
+     */
     abstract public function requiresAuthentication(): bool;
 }

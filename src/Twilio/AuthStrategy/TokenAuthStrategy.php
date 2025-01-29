@@ -5,8 +5,10 @@ use Twilio\Http\BearerToken\TokenManager;
 use Twilio\Jwt\JWT;
 
 /**
- * @property string $token
- * @property TokenManager $tokenManager
+ * Class TokenAuthStrategy
+ * Implementation of the AuthStrategy for Bearer Token Authentication
+ * @property string $token The bearer token
+ * @property TokenManager $tokenManager The manager for the bearer token
  */
 
 class TokenAuthStrategy extends AuthStrategy {
@@ -18,27 +20,23 @@ class TokenAuthStrategy extends AuthStrategy {
         $this->tokenManager = $tokenManager;
     }
 
-    public function getAuthString(): string {
-        return $this->fetchToken();
-    }
-
-    public function requiresAuthentication(): bool {
-        return true;
-    }
-
-    public function fetchToken(): string {
-       if(empty($this->token) || $this->isTokenExpired($this->token)) {
-           $this->token = $this->tokenManager->fetchToken();
-       }
-        return $this->token;
-    }
-
+    /**
+     * Checks if the token is expired or not
+     *
+     * @param string $token the token to be checked
+     *
+     * @return bool whether the token is expired or not
+     */
     public function isTokenExpired(string $token): bool {
+        // Decode the JWT token
         $decodedToken = JWT::decode($token);
+
+        // If the token doesn't have an expiration, consider it expired
         if($decodedToken === null || $decodedToken->exp === null) {
-            // If the token doesn't have an expiration, consider it expired
             return false;
         }
+
+        // Calculate the expiration time with a buffer of 30 seconds
         $expiresAt = $decodedToken->exp * 1000;
         $bufferMilliseconds = 30 * 1000;
         $bufferExpiresAt = $expiresAt - $bufferMilliseconds;
@@ -47,5 +45,33 @@ class TokenAuthStrategy extends AuthStrategy {
         return time() > $bufferExpiresAt;
     }
 
+    /**
+     * Fetches the bearer token
+     *
+     * @return string the bearer token
+     */
+    public function fetchToken(): string {
+        if(empty($this->token) || $this->isTokenExpired($this->token)) {
+            $this->token = $this->tokenManager->fetchToken();
+        }
+        return $this->token;
+    }
 
+    /**
+     * Returns the bearer token authentication string
+     *
+     * @return string the bearer token authentication string
+     */
+    public function getAuthString(): string {
+        return "Bearer " . $this->fetchToken();
+    }
+
+    /**
+     * Returns true since the bearer token authentication strategy requires authentication
+     *
+     * @return bool true
+     */
+    public function requiresAuthentication(): bool {
+        return true;
+    }
 }

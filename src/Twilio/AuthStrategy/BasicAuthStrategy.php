@@ -2,6 +2,8 @@
 namespace Twilio\AuthStrategy;
 
 /**
+ * Class BasicAuthStrategy
+ * Implementation of the AuthStrategy for Basic authentication
  * @property string $username
  * @property string $password
  */
@@ -16,10 +18,20 @@ class BasicAuthStrategy extends AuthStrategy {
         $this->password = $password;
     }
 
+    /**
+     * Returns the base64 encoded string concatenating the username and password
+     *
+     * @return string the base64 encoded string
+     */
     public function getAuthString(): string {
         return base64_encode($this->username . ':' . $this->password);
     }
 
+    /**
+     * Returns true since the basic authentication strategy requires authentication
+     *
+     * @return bool true
+     */
     public function requiresAuthentication(): bool {
        return true;
     }
