@@ -35,7 +35,6 @@ use Twilio\Rest\Events\V1\Subscription\SubscribedEventList;
  * @property string|null $sinkSid
  * @property string|null $url
  * @property array|null $links
- * @property bool|null $receiveEventsFromSubaccounts
  */
 class SubscriptionInstance extends InstanceResource
 {
@@ -62,7 +61,6 @@ class SubscriptionInstance extends InstanceResource
             'sinkSid' => Values::array_get($payload, 'sink_sid'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
-            'receiveEventsFromSubaccounts' => Values::array_get($payload, 'receive_events_from_subaccounts'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

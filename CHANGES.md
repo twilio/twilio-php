@@ -1,6 +1,28 @@
 twilio-php Changelog
 ====================
 
+[2025-01-31] Version 8.4.0
+--------------------------
+**Library - Chore**
+- [PR #841](https://github.com/twilio/twilio-php/pull/841): update changelog for 8.3.11. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #840](https://github.com/twilio/twilio-php/pull/840): fix model names in json serialize and payload. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Add open-api file tag to `conference/call recordings` and `recording_transcriptions`.
+
+**Events**
+- Add support for subaccount subscriptions (beta)
+
+**Insights**
+- add new region to conference APIs
+
+**Lookups**
+- Add new `parnter_sub_id` query parameter to the lookup request
+
+**Twiml**
+- Convert Twiml Attribute `speechModel` of type enum to string **(breaking change)**
+
+
 [2025-01-28] Version 8.3.13
 ---------------------------
 **Api**
