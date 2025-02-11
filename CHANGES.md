@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2025-02-11] Version 8.3.14
+---------------------------
+**Api**
+- Change downstream url and change media type for file `base/api/v2010/validation_request.json`.
+
+**Intelligence**
+- Add json_results for Generative JSON operator results
+
+**Messaging**
+- Add DestinationAlphaSender API to support Country-Specific Alpha Senders
+
+**Video**
+- Change codec type from enum to case-insensitive enum in recording and room_recording apis
+
+
 [2025-01-28] Version 8.3.13
 ---------------------------
 **Api**

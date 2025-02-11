@@ -68,7 +68,7 @@ abstract class AddressOptions
     }
 
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long.
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      * @param string $customerName The name to associate with the address.
      * @param string $street The number and street address of the address.
      * @param string $city The city of the address.
@@ -262,7 +262,7 @@ class ReadAddressOptions extends Options
 class UpdateAddressOptions extends Options
     {
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long.
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      * @param string $customerName The name to associate with the address.
      * @param string $street The number and street address of the address.
      * @param string $city The city of the address.
@@ -297,9 +297,9 @@ class UpdateAddressOptions extends Options
     }
 
     /**
-     * A descriptive string that you create to describe the address. It can be up to 64 characters long.
+     * A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      *
-     * @param string $friendlyName A descriptive string that you create to describe the address. It can be up to 64 characters long.
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self
