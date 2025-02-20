@@ -15,73 +15,82 @@
  */
 
 
-namespace Twilio\Rest\FlexApi\V1\Interaction;
+namespace Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantList;
-use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInviteList;
-use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionTransferList;
+use Twilio\Deserialize;
 
 
 /**
  * @property string|null $sid
+ * @property string|null $instanceSid
+ * @property string|null $accountSid
  * @property string|null $interactionSid
+ * @property string|null $channelSid
+ * @property string|null $executionSid
  * @property string $type
  * @property string $status
- * @property int|null $errorCode
- * @property string|null $errorMessage
+ * @property string|null $from
+ * @property string|null $to
+ * @property string|null $noteSid
+ * @property string|null $summarySid
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  * @property string|null $url
- * @property array|null $links
  */
-class InteractionChannelInstance extends InstanceResource
+class InteractionTransferInstance extends InstanceResource
 {
-    protected $_participants;
-    protected $_invites;
-    protected $_transfers;
-
     /**
-     * Initialize the InteractionChannelInstance
+     * Initialize the InteractionTransferInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $interactionSid The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
-     * @param string $sid The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
+     * @param string $interactionSid The Interaction Sid for the Interaction
+     * @param string $channelSid The Channel Sid for the Channel.
+     * @param string $sid The unique string created by Twilio to identify a Transfer resource.
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid, string $sid = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
             'sid' => Values::array_get($payload, 'sid'),
+            'instanceSid' => Values::array_get($payload, 'instance_sid'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
             'interactionSid' => Values::array_get($payload, 'interaction_sid'),
+            'channelSid' => Values::array_get($payload, 'channel_sid'),
+            'executionSid' => Values::array_get($payload, 'execution_sid'),
             'type' => Values::array_get($payload, 'type'),
             'status' => Values::array_get($payload, 'status'),
-            'errorCode' => Values::array_get($payload, 'error_code'),
-            'errorMessage' => Values::array_get($payload, 'error_message'),
+            'from' => Values::array_get($payload, 'from'),
+            'to' => Values::array_get($payload, 'to'),
+            'noteSid' => Values::array_get($payload, 'note_sid'),
+            'summarySid' => Values::array_get($payload, 'summary_sid'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),
-            'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['interactionSid' => $interactionSid, 'sid' => $sid ?: $this->properties['sid'], ];
+        $this->solution = ['interactionSid' => $interactionSid, 'channelSid' => $channelSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }
 
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
      *
-     * @return InteractionChannelContext Context for this InteractionChannelInstance
+     * @return InteractionTransferContext Context for this InteractionTransferInstance
      */
-    protected function proxy(): InteractionChannelContext
+    protected function proxy(): InteractionTransferContext
     {
         if (!$this->context) {
-            $this->context = new InteractionChannelContext(
+            $this->context = new InteractionTransferContext(
                 $this->version,
                 $this->solution['interactionSid'],
+                $this->solution['channelSid'],
                 $this->solution['sid']
             );
         }
@@ -90,53 +99,27 @@ class InteractionChannelInstance extends InstanceResource
     }
 
     /**
-     * Fetch the InteractionChannelInstance
+     * Fetch the InteractionTransferInstance
      *
-     * @return InteractionChannelInstance Fetched InteractionChannelInstance
+     * @return InteractionTransferInstance Fetched InteractionTransferInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InteractionChannelInstance
+    public function fetch(): InteractionTransferInstance
     {
 
         return $this->proxy()->fetch();
     }
 
     /**
-     * Update the InteractionChannelInstance
+     * Update the InteractionTransferInstance
      *
-     * @param string $status
-     * @param array|Options $options Optional Arguments
-     * @return InteractionChannelInstance Updated InteractionChannelInstance
+     * @return InteractionTransferInstance Updated InteractionTransferInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $status, array $options = []): InteractionChannelInstance
+    public function update(): InteractionTransferInstance
     {
 
-        return $this->proxy()->update($status, $options);
-    }
-
-    /**
-     * Access the participants
-     */
-    protected function getParticipants(): InteractionChannelParticipantList
-    {
-        return $this->proxy()->participants;
-    }
-
-    /**
-     * Access the invites
-     */
-    protected function getInvites(): InteractionChannelInviteList
-    {
-        return $this->proxy()->invites;
-    }
-
-    /**
-     * Access the transfers
-     */
-    protected function getTransfers(): InteractionTransferList
-    {
-        return $this->proxy()->transfers;
+        return $this->proxy()->update();
     }
 
     /**
@@ -171,7 +154,7 @@ class InteractionChannelInstance extends InstanceResource
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V1.InteractionChannelInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InteractionTransferInstance ' . \implode(' ', $context) . ']';
     }
 }
 
