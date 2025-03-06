@@ -2,6 +2,14 @@
 
 _MAJOR version bumps will have upgrade notes posted here._
 
+[2023-03-25] 8.x.x to 9.x.x
+---------------------------
+Twilio Php Helper Library’s major version 9.0.0 is now available. We ensured that you can upgrade to Php helper Library 9.0.0 version without any breaking changes of existing apis
+
+Behind the scenes Php Helper is now auto-generated via OpenAPI with this release. This enables us to rapidly add new features and enhance consistency across versions and languages.
+
+Twiml Attribute speechModel is now of type string.
+
 [2023-03-25] 7.x.x to 8.x.x
 ---------------------------
 Twilio Php Helper Library’s major version 8.0.0 is now available. We ensured that you can upgrade to Php helper Library 8.0.0 version without any breaking changes of existing apis
