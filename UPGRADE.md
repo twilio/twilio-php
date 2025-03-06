@@ -2,7 +2,7 @@
 
 _MAJOR version bumps will have upgrade notes posted here._
 
-[2023-03-25] 8.x.x to 9.x.x
+[2025-03-07] 8.x.x to 9.x.x
 ---------------------------
 Twilio Php Helper Library’s major version 9.0.0 is now available. We ensured that you can upgrade to Php helper Library 9.0.0 version without any breaking changes of existing apis
 
