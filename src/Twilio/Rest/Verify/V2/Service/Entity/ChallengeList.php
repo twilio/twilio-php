@@ -77,7 +77,7 @@ class ChallengeList extends ListResource
             'Details.Message' =>
                 $options['detailsMessage'],
             'Details.Fields' =>
-                Serialize::map($options['detailsFields'], function ($e) { return Serialize::jsonObject($e); }),
+                Serialize::map($options['detailsFields'], function ($e) { return $e; }),
             'HiddenDetails' =>
                 Serialize::jsonObject($options['hiddenDetails']),
             'AuthPayload' =>

@@ -74,7 +74,7 @@ class SessionList extends ListResource
             'Status' =>
                 $options['status'],
             'Participants' =>
-                Serialize::map($options['participants'], function ($e) { return Serialize::jsonObject($e); }),
+                Serialize::map($options['participants'], function ($e) { return $e; }),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

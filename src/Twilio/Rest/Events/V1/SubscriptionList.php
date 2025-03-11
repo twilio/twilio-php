@@ -49,7 +49,7 @@ class SubscriptionList extends ListResource
      *
      * @param string $description A human readable description for the Subscription **This value should not contain PII.**
      * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
-     * @param array[] $types An array of objects containing the subscribed Event Types
+     * @param object[] $types An array of objects containing the subscribed Event Types
      * @param array|Options $options Optional Arguments
      * @return SubscriptionInstance Created SubscriptionInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -65,7 +65,7 @@ class SubscriptionList extends ListResource
             'SinkSid' =>
                 $sinkSid,
             'Types' =>
-                Serialize::map($types,function ($e) { return Serialize::jsonObject($e); }),
+                Serialize::map($types,function ($e) { return $e; }),
             'ReceiveEventsFromSubaccounts' =>
                 Serialize::booleanToString($options['receiveEventsFromSubaccounts']),
         ]);

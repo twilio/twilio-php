@@ -26,7 +26,7 @@ abstract class SessionOptions
      * @param int $ttl The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
      * @param string $mode
      * @param string $status
-     * @param array[] $participants The Participant objects to include in the new session.
+     * @param object[] $participants The Participant objects to include in the new session.
      * @return CreateSessionOptions Options builder
      */
     public static function create(
@@ -84,7 +84,7 @@ class CreateSessionOptions extends Options
      * @param int $ttl The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
      * @param string $mode
      * @param string $status
-     * @param array[] $participants The Participant objects to include in the new session.
+     * @param object[] $participants The Participant objects to include in the new session.
      */
     public function __construct(
         
@@ -163,7 +163,7 @@ class CreateSessionOptions extends Options
     /**
      * The Participant objects to include in the new session.
      *
-     * @param array[] $participants The Participant objects to include in the new session.
+     * @param object[] $participants The Participant objects to include in the new session.
      * @return $this Fluent Builder
      */
     public function setParticipants(array $participants): self

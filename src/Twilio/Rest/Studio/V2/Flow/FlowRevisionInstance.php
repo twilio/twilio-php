@@ -33,7 +33,7 @@ use Twilio\Deserialize;
  * @property int $revision
  * @property string|null $commitMessage
  * @property bool|null $valid
- * @property array[]|null $errors
+ * @property object[]|null $errors
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url

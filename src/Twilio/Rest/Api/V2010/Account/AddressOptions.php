@@ -49,6 +49,7 @@ abstract class AddressOptions
     /**
      * @param string $customerName The `customer_name` of the Address resources to read.
      * @param string $friendlyName The string that identifies the Address resources to read.
+     * @param bool $emergencyEnabled Whether the address can be associated to a number for emergency calling.
      * @param string $isoCountry The ISO country code of the Address resources to read.
      * @return ReadAddressOptions Options builder
      */
@@ -56,6 +57,7 @@ abstract class AddressOptions
         
         string $customerName = Values::NONE,
         string $friendlyName = Values::NONE,
+        bool $emergencyEnabled = Values::BOOL_NONE,
         string $isoCountry = Values::NONE
 
     ): ReadAddressOptions
@@ -63,6 +65,7 @@ abstract class AddressOptions
         return new ReadAddressOptions(
             $customerName,
             $friendlyName,
+            $emergencyEnabled,
             $isoCountry
         );
     }
@@ -197,17 +200,20 @@ class ReadAddressOptions extends Options
     /**
      * @param string $customerName The `customer_name` of the Address resources to read.
      * @param string $friendlyName The string that identifies the Address resources to read.
+     * @param bool $emergencyEnabled Whether the address can be associated to a number for emergency calling.
      * @param string $isoCountry The ISO country code of the Address resources to read.
      */
     public function __construct(
         
         string $customerName = Values::NONE,
         string $friendlyName = Values::NONE,
+        bool $emergencyEnabled = Values::BOOL_NONE,
         string $isoCountry = Values::NONE
 
     ) {
         $this->options['customerName'] = $customerName;
         $this->options['friendlyName'] = $friendlyName;
+        $this->options['emergencyEnabled'] = $emergencyEnabled;
         $this->options['isoCountry'] = $isoCountry;
     }
 
@@ -232,6 +238,18 @@ class ReadAddressOptions extends Options
     public function setFriendlyName(string $friendlyName): self
     {
         $this->options['friendlyName'] = $friendlyName;
+        return $this;
+    }
+
+    /**
+     * Whether the address can be associated to a number for emergency calling.
+     *
+     * @param bool $emergencyEnabled Whether the address can be associated to a number for emergency calling.
+     * @return $this Fluent Builder
+     */
+    public function setEmergencyEnabled(bool $emergencyEnabled): self
+    {
+        $this->options['emergencyEnabled'] = $emergencyEnabled;
         return $this;
     }
 

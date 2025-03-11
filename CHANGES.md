@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2025-03-11] Version 8.4.0
+--------------------------
+**Api**
+- Add the missing `emergency_enabled` field for `Address Service` endpoints
+
+**Messaging**
+- Add missing enums for A2P and TF
+
+**Numbers**
+- add missing enum values to hosted_number_order_status
+
+**Twiml**
+- Convert Twiml Attribute `speechModel` of type enum to string **(breaking change)**
+
+
 [2025-02-20] Version 8.3.15
 ---------------------------
 **Flex**
