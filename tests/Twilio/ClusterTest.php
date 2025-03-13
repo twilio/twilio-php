@@ -70,7 +70,7 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
     public function testListParams(): void
     {
         $sinkConfiguration = ["destination" => "http://example.org/webhook", "method" => "post", "batch_events" => false];
-        $types = [["type" => "com.twilio.messaging.message.delivered"], ["type" => "com.twilio.messaging.message.sent"]];
+        $types = ["{\"type\": \"com.twilio.messaging.message.delivered\"}", "{\"type\": \"com.twilio.messaging.message.sent\"}"];
 
         $sink = self::$twilio->events->v1->sinks->create("test sink php", $sinkConfiguration, "webhook");
         $this->assertNotNull($sink);
