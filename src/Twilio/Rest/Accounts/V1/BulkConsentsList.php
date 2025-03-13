@@ -54,7 +54,7 @@ class BulkConsentsList extends ListResource
 
         $data = Values::of([
             'Items' =>
-                Serialize::map($items,function ($e) { return $e; }),
+                Serialize::map($items,function ($e) { return Serialize::jsonObject($e); }),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

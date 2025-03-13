@@ -65,7 +65,7 @@ class SubscriptionList extends ListResource
             'SinkSid' =>
                 $sinkSid,
             'Types' =>
-                Serialize::map($types,function ($e) { return $e; }),
+                Serialize::map($types,function ($e) { return Serialize::jsonObject($e); }),
             'ReceiveEventsFromSubaccounts' =>
                 Serialize::booleanToString($options['receiveEventsFromSubaccounts']),
         ]);
