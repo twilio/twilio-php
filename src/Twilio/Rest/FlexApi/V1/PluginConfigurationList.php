@@ -61,7 +61,7 @@ class PluginConfigurationList extends ListResource
             'Name' =>
                 $name,
             'Plugins' =>
-                Serialize::map($options['plugins'], function ($e) { return $e; }),
+                Serialize::map($options['plugins'], function ($e) { return Serialize::jsonObject($e); }),
             'Description' =>
                 $options['description'],
         ]);
