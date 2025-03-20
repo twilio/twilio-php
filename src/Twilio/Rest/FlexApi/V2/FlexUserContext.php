@@ -87,14 +87,8 @@ class FlexUserContext extends InstanceContext
         $options = new Values($options);
 
         $data = Values::of([
-            'FirstName' =>
-                $options['firstName'],
-            'LastName' =>
-                $options['lastName'],
             'Email' =>
                 $options['email'],
-            'FriendlyName' =>
-                $options['friendlyName'],
             'UserSid' =>
                 $options['userSid'],
             'Locale' =>

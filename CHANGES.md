@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2025-03-20] Version 8.4.1
+--------------------------
+**Library - Chore**
+- [PR #851](https://github.com/twilio/twilio-php/pull/851): fix seralization. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Accounts**
+- Update Safelist API docs as part of prefix supoort
+
+**Flex**
+- Removing `first_name`, `last_name`, and `friendly_name` from the Flex User API
+
+**Messaging**
+- Add missing tests under transaction/phone_numbers and transaction/short_code
+
+
 [2025-03-11] Version 8.4.0
 --------------------------
 **Api**
