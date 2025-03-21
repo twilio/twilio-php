@@ -25,8 +25,26 @@ class ClientCredentialProviderTest extends UnitTest {
         $this->assertEquals('client-credentials', $this->clientCredentialProvider->getAuthType());
     }
 
+    public function testSetTokenManager(): void {
+        $tokenManager = new ApiTokenManager();
+        $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->setTokenManager($tokenManager)->build();
+        $this->assertEquals($tokenManager, $this->clientCredentialProvider->tokenManager);
+    }
+
+    public function testInvalidGetter(): void {
+        $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->build();
+        $this->expectExceptionMessage('Unknown property invalid');
+        $this->clientCredentialProvider->invalid;
+    }
+
+    public function testInvalidSetter(): void {
+        $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->build();
+        $this->expectExceptionMessage('Unknown property invalid');
+        $this->clientCredentialProvider->invalid = 'invalid';
+    }
+
     public function testAuthStrategyIsTokenAuthStrategy(): void {
-        $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->setTokenManager(new ApiTokenManager())->build();
+        $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->build();
         $this->assertInstanceOf(TokenAuthStrategy::class, $this->clientCredentialProvider->toAuthStrategy());
     }
 }
