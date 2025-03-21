@@ -87,7 +87,7 @@ class CurlClient implements Client {
     public function options(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             ?string $user = null, ?string $password = null,
-                            ?int $timeout = null, ?AuthStrategy $authStrategy): array {
+                            ?int $timeout = null, ?AuthStrategy $authStrategy = null): array {
         $timeout = $timeout ?? self::DEFAULT_TIMEOUT;
         $options = $this->curlOptions + [
             CURLOPT_URL => $url,
