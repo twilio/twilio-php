@@ -11,6 +11,7 @@ use Twilio\Rest\Client;
 use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
 use Twilio\Tests\Unit\UnitTest;
+use Twilio\CredentialProvider\NoAuthCredentialProvider;
 
 class ClientTest extends UnitTest {
 
@@ -30,6 +31,26 @@ class ClientTest extends UnitTest {
         $this->expectException(ConfigurationException::class);
         $client = new Client('username', null, null, null, null, []);
         $client->request("GET", "https://api.twilio.com");
+    }
+
+    public function testSetCredentialProvider(): void {
+        $client = new Client();
+        $client->setCredentialProvider(new NoAuthCredentialProvider());
+        $this->assertEquals("", $client->getAccountSid());
+    }
+
+    public function testInvalidateBasicAuth(): void {
+        $client = new Client();
+        $client->invalidateBasicAuth();
+        $this->assertEquals("", $client->getUsername());
+        $this->assertEquals("", $client->getPassword());
+    }
+
+    public function testRequestWithAuthStrategy(): void {
+        $client = new Client();
+        $client->setCredentialProvider(new NoAuthCredentialProvider());
+        $client->request("GET", "https://api.twilio.com");
+        $this->assertEquals("", $client->getUsername());
     }
 
     public function testUsernamePulledFromEnvironment(): void {

@@ -85,13 +85,13 @@ class BaseClient
 
     public function setCredentialProvider(CredentialProvider $credentialProvider): void {
         $this->credentialProvider = $credentialProvider;
-        $this->accountSid = null;
+        $this->accountSid = "";
         $this->invalidateBasicAuth();
     }
 
     public function invalidateBasicAuth(): void {
-        $this->username = null;
-        $this->password = null;
+        $this->username = "";
+        $this->password = "";
     }
 
     public function invalidateOAuth(): void {
