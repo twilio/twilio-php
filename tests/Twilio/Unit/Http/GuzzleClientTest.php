@@ -56,6 +56,20 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertFalse($options['allow_redirects']);
     }
 
+    public function testBasicAuth(): void
+    {
+        $this->mockHandler->append(new Response());
+        $response = $this->client->request('POST',
+            'https://www.whatever.com',
+            ['myquerykey' => 'myqueryvalue'],
+            ['myparamkey' => 'myparamvalue'],
+            [],
+            "user",
+            "password"
+        );
+        $this->assertSame([], $response->getHeaders());
+    }
+
     public function testAuthStrategy(): void
     {
         $this->mockHandler->append(new Response());
