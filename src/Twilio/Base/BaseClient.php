@@ -69,10 +69,6 @@ class BaseClient
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
 
-        if (!$this->username || !$this->password) {
-            throw new ConfigurationException('Credentials are required to create a Client');
-        }
-
         $this->setAccountSid($accountSid);
         $this->invalidateOAuth();
 
@@ -147,7 +143,7 @@ class BaseClient
         ?string $username = null,
         ?string $password = null,
         ?int $timeout = null,
-        ?AuthStrategy $authStrategy = null,
+        ?AuthStrategy $authStrategy = null
     ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
@@ -158,11 +154,11 @@ class BaseClient
 
         if (!$authStrategy) {
             if (!$username) {
-                throw new TwilioException("username is required");
+                throw new ConfigurationException('username is required');
             }
 
             if (!$password) {
-                throw new TwilioException("password is required");
+                throw new ConfigurationException("password is required");
             }
         }
 

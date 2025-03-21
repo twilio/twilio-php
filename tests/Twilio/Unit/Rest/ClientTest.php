@@ -16,17 +16,20 @@ class ClientTest extends UnitTest {
 
     public function testThrowsWhenUsernameAndPasswordMissing(): void {
         $this->expectException(ConfigurationException::class);
-        new Client(null, null, null, null, null, []);
+        $client = new Client(null, null, null, null, null, []);
+        $client->request("GET", "https://api.twilio.com");
     }
 
     public function testThrowsWhenUsernameMissing(): void {
         $this->expectException(ConfigurationException::class);
-        new Client(null, 'password', null, null, null, []);
+        $client = new Client(null, 'password', null, null, null, []);
+        $client->request("GET", "https://api.twilio.com");
     }
 
     public function testThrowsWhenPasswordMissing(): void {
         $this->expectException(ConfigurationException::class);
-        new Client('username', null, null, null, null, []);
+        $client = new Client('username', null, null, null, null, []);
+        $client->request("GET", "https://api.twilio.com");
     }
 
     public function testUsernamePulledFromEnvironment(): void {
