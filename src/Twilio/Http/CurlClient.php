@@ -4,6 +4,7 @@
 namespace Twilio\Http;
 
 
+use Twilio\AuthStrategy\AuthStrategy;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\EnvironmentException;
 
@@ -21,9 +22,9 @@ class CurlClient implements Client {
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             ?string $user = null, ?string $password = null,
-                            ?int $timeout = null): Response {
+                            ?int $timeout = null, ?AuthStrategy $authStrategy = null): Response {
         $options = $this->options($method, $url, $params, $data, $headers,
-                                  $user, $password, $timeout);
+                                  $user, $password, $timeout, $authStrategy);
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
@@ -86,7 +87,7 @@ class CurlClient implements Client {
     public function options(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
                             ?string $user = null, ?string $password = null,
-                            ?int $timeout = null): array {
+                            ?int $timeout = null, ?AuthStrategy $authStrategy = null): array {
         $timeout = $timeout ?? self::DEFAULT_TIMEOUT;
         $options = $this->curlOptions + [
             CURLOPT_URL => $url,
@@ -103,6 +104,9 @@ class CurlClient implements Client {
 
         if ($user && $password) {
             $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . \base64_encode("$user:$password");
+        }
+        elseif ($authStrategy) {
+            $options[CURLOPT_HTTPHEADER][] = 'Authorization: ' . $authStrategy->getAuthString();
         }
 
         $query = $this->buildQuery($params);

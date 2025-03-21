@@ -1,6 +1,8 @@
 <?php
 namespace Twilio\Base;
 
+use Twilio\AuthStrategy\AuthStrategy;
+use Twilio\CredentialProvider\CredentialProvider;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
@@ -24,6 +26,7 @@ class BaseClient
 
     protected $username;
     protected $password;
+    protected $credentialProvider;
     protected $accountSid;
     protected $region;
     protected $edge;
@@ -66,17 +69,33 @@ class BaseClient
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
 
-        if (!$this->username || !$this->password) {
-            throw new ConfigurationException('Credentials are required to create a Client');
-        }
-
-        $this->accountSid = $accountSid ?: $this->username;
+        $this->setAccountSid($accountSid);
+        $this->invalidateOAuth();
 
         if ($httpClient) {
             $this->httpClient = $httpClient;
         } else {
             $this->httpClient = new CurlClient();
         }
+    }
+
+    public function setAccountSid(?string $accountSid = null): void {
+        $this->accountSid = $accountSid ?: $this->username;
+    }
+
+    public function setCredentialProvider(CredentialProvider $credentialProvider): void {
+        $this->credentialProvider = $credentialProvider;
+        $this->accountSid = "";
+        $this->invalidateBasicAuth();
+    }
+
+    public function invalidateBasicAuth(): void {
+        $this->username = "";
+        $this->password = "";
+    }
+
+    public function invalidateOAuth(): void {
+        $this->credentialProvider = null;
     }
 
     /**
@@ -110,8 +129,10 @@ class BaseClient
      * @param string[] $headers HTTP Headers
      * @param string $username User for Authentication
      * @param string $password Password for Authentication
+     * @param AuthStrategy $authStrategy AuthStrategy for Authentication
      * @param int $timeout Timeout in seconds
      * @return \Twilio\Http\Response Response from the Twilio API
+     * @throws TwilioException
      */
     public function request(
         string $method,
@@ -121,10 +142,26 @@ class BaseClient
         array $headers = [],
         ?string $username = null,
         ?string $password = null,
-        ?int $timeout = null
+        ?int $timeout = null,
+        ?AuthStrategy $authStrategy = null
     ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
+        $authStrategy = $authStrategy ?: null;
+        if ($this->credentialProvider) {
+            $authStrategy = $this->credentialProvider->toAuthStrategy();
+        }
+
+        if (!$authStrategy) {
+            if (!$username) {
+                throw new ConfigurationException('username is required');
+            }
+
+            if (!$password) {
+                throw new ConfigurationException("password is required");
+            }
+        }
+
         $logLevel = (getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? 'debug' : $this->getLogLevel());
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
@@ -169,7 +206,8 @@ class BaseClient
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            $authStrategy
         );
 
         if ($logLevel === 'debug') {
