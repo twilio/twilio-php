@@ -29,7 +29,7 @@ class TokenAuthStrategy extends AuthStrategy {
      */
     public function isTokenExpired(string $token): bool {
         // Decode the JWT token
-        $decodedToken = JWT::decode($token);
+        $decodedToken = JWT::decode($token, null, false);
 
         // If the token doesn't have an expiration, consider it expired
         if($decodedToken === null || $decodedToken->exp === null) {
