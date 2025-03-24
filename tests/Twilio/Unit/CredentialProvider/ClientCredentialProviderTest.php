@@ -28,7 +28,7 @@ class ClientCredentialProviderTest extends UnitTest {
     public function testSetTokenManager(): void {
         $tokenManager = new ApiTokenManager();
         $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->setTokenManager($tokenManager)->build();
-        $this->assertEquals($tokenManager, $this->clientCredentialProvider->tokenManager);
+        $this->assertEquals($tokenManager, $this->clientCredentialProvider->getTokenManager());
     }
 
     public function testInvalidGetter(): void {

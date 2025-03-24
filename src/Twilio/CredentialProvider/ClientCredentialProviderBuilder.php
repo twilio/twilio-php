@@ -32,7 +32,7 @@ class ClientCredentialProviderBuilder {
     }
 
     public function setTokenManager(TokenManager $tokenManager): ClientCredentialProviderBuilder {
-        $this->instance->tokenManager = $tokenManager;
+        $this->instance->setTokenManager($tokenManager);
         return $this;
     }
 
