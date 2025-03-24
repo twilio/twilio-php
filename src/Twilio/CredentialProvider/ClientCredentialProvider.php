@@ -5,10 +5,12 @@ use Twilio\AuthStrategy\AuthStrategy;
 use Twilio\AuthStrategy\TokenAuthStrategy;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\BearerToken\ApiTokenManager;
+use Twilio\Http\BearerToken\TokenManager;
 
 
 class ClientCredentialProvider extends CredentialProvider {
     private $options;
+    private $tokenManager;
 
     public function __construct() {
         parent::__construct("client-credentials");
@@ -20,10 +22,24 @@ class ClientCredentialProvider extends CredentialProvider {
             "redirectUri" =>null,
             "audience" => null,
             "refreshToken" => null,
-            "scope" => null,
-            "tokenManager" => null
+            "scope" => null
         ];
     }
+
+    /**
+     * @return TokenManager
+     */
+    public function getTokenManager(): TokenManager {
+        return $this->tokenManager;
+    }
+
+    /**
+     * @param TokenManager $tokenManager
+     */
+    public function setTokenManager(TokenManager $tokenManager): void {
+        $this->tokenManager = $tokenManager;
+    }
+
 
     public function __get(string $name)
     {
@@ -43,8 +59,8 @@ class ClientCredentialProvider extends CredentialProvider {
     }
 
     public function toAuthStrategy(): AuthStrategy {
-        if ($this->options["tokenManager"] === null) {
-            $this->options["tokenManager"] = new ApiTokenManager($this->options);
+        if ($this->tokenManager === null) {
+            $this->tokenManager = new ApiTokenManager($this->options);
         }
         return new TokenAuthStrategy($this->tokenManager);
     }
