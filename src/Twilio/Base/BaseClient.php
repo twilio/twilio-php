@@ -49,7 +49,6 @@ class BaseClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
      * @param string[] $userAgentExtensions Additions to the user agent string
-     * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct(
         ?string $username = null,
@@ -62,15 +61,15 @@ class BaseClient
     ) {
         $this->environment = $environment ?: \getenv();
 
-        $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
-        $this->password = $this->getArg($password, self::ENV_AUTH_TOKEN);
+        $this->setUsername($this->getArg($username, self::ENV_ACCOUNT_SID));
+        $this->setPassword($this->getArg($password, self::ENV_AUTH_TOKEN));
         $this->region = $this->getArg($region, self::ENV_REGION);
         $this->edge = $this->getArg(null, self::ENV_EDGE);
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
 
-        $this->setAccountSid($accountSid);
         $this->invalidateOAuth();
+        $this->setAccountSid($accountSid);
 
         if ($httpClient) {
             $this->httpClient = $httpClient;
@@ -79,23 +78,31 @@ class BaseClient
         }
     }
 
+    public function setUsername(?string $username): void {
+        $this->username = $username;
+    }
+
+    public function setPassword(?string $password): void {
+        $this->password = $password;
+    }
+
     public function setAccountSid(?string $accountSid = null): void {
         $this->accountSid = $accountSid ?: $this->username;
     }
 
     public function setCredentialProvider(CredentialProvider $credentialProvider): void {
         $this->credentialProvider = $credentialProvider;
-        $this->accountSid = "";
+        $this->setAccountSid("");
         $this->invalidateBasicAuth();
     }
 
     public function invalidateBasicAuth(): void {
-        $this->username = "";
-        $this->password = "";
+        $this->setUsername("");
+        $this->setPassword("");
     }
 
     public function invalidateOAuth(): void {
-        $this->credentialProvider = null;
+        $this->setCredentialProvider(null);
     }
 
     /**
@@ -129,8 +136,8 @@ class BaseClient
      * @param string[] $headers HTTP Headers
      * @param string $username User for Authentication
      * @param string $password Password for Authentication
-     * @param AuthStrategy $authStrategy AuthStrategy for Authentication
      * @param int $timeout Timeout in seconds
+     * @param AuthStrategy $authStrategy AuthStrategy for Authentication
      * @return \Twilio\Http\Response Response from the Twilio API
      * @throws TwilioException
      */
