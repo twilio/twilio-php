@@ -24,11 +24,4 @@ abstract class AuthStrategy {
      * @return string the authentication string
      */
     abstract public function getAuthString(): string;
-
-    /**
-     * Returns true if the authentication strategy requires authentication and false otherwise
-     *
-     * @return bool whether the authentication strategy requires authentication
-     */
-    abstract public function requiresAuthentication(): bool;
 }

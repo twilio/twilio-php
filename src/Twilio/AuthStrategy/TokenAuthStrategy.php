@@ -32,7 +32,7 @@ class TokenAuthStrategy extends AuthStrategy {
         $decodedToken = JWT::decode($token, null, false);
 
         // If the token doesn't have an expiration, consider it expired
-        if($decodedToken === null || $decodedToken->exp === null) {
+        if ($decodedToken === null || $decodedToken->exp === null) {
             return false;
         }
 
@@ -51,7 +51,7 @@ class TokenAuthStrategy extends AuthStrategy {
      * @return string the bearer token
      */
     public function fetchToken(): string {
-        if(empty($this->token) || $this->isTokenExpired($this->token)) {
+        if (empty($this->token) || $this->isTokenExpired($this->token)) {
             $this->token = $this->tokenManager->fetchToken();
         }
         return $this->token;
@@ -64,14 +64,5 @@ class TokenAuthStrategy extends AuthStrategy {
      */
     public function getAuthString(): string {
         return "Bearer " . $this->fetchToken();
-    }
-
-    /**
-     * Returns true since the bearer token authentication strategy requires authentication
-     *
-     * @return bool true
-     */
-    public function requiresAuthentication(): bool {
-        return true;
     }
 }

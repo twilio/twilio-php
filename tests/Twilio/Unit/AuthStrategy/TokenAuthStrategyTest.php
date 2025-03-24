@@ -25,8 +25,4 @@ class TokenAuthStrategyTest extends UnitTest {
         $tokenString = $token->generateToken();
         $this->assertFalse($this->tokenAuthStrategy->isTokenExpired($tokenString));
     }
-
-    public function testRequiresAuthentication(): void {
-        $this->assertTrue($this->tokenAuthStrategy->requiresAuthentication());
-    }
 }

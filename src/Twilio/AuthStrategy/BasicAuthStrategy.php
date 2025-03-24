@@ -26,13 +26,4 @@ class BasicAuthStrategy extends AuthStrategy {
     public function getAuthString(): string {
         return base64_encode($this->username . ':' . $this->password);
     }
-
-    /**
-     * Returns true since the basic authentication strategy requires authentication
-     *
-     * @return bool true
-     */
-    public function requiresAuthentication(): bool {
-       return true;
-    }
 }
