@@ -69,7 +69,7 @@ class BaseClient
         $this->userAgentExtensions = $userAgentExtensions ?: [];
 
         $this->invalidateOAuth();
-        $this->setAccountSid($accountSid);
+        $this->setAccountSid($accountSid ?: $this->username);
 
         if ($httpClient) {
             $this->httpClient = $httpClient;
@@ -86,12 +86,16 @@ class BaseClient
         $this->password = $password;
     }
 
-    public function setAccountSid(?string $accountSid = null): void {
-        $this->accountSid = $accountSid ?: $this->username;
+    public function setAccountSid(?string $accountSid): void {
+        $this->accountSid = $accountSid;
+    }
+
+    private function _setCredentialProvider($credentialProvider): void {
+        $this->credentialProvider = $credentialProvider;
     }
 
     public function setCredentialProvider(CredentialProvider $credentialProvider): void {
-        $this->credentialProvider = $credentialProvider;
+        $this->_setCredentialProvider($credentialProvider);
         $this->setAccountSid("");
         $this->invalidateBasicAuth();
     }
@@ -102,7 +106,7 @@ class BaseClient
     }
 
     public function invalidateOAuth(): void {
-        $this->setCredentialProvider(null);
+        $this->_setCredentialProvider(null);
     }
 
     /**
