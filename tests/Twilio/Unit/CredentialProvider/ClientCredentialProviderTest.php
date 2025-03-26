@@ -23,6 +23,7 @@ class ClientCredentialProviderTest extends UnitTest {
     public function testAuthTypeIsClientCredentials(): void {
         $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->setGrantType("client-credentials")->build();
         $this->assertEquals('client-credentials', $this->clientCredentialProvider->getAuthType());
+        $this->assertEquals('client-credentials', $this->clientCredentialProvider->grantType);
     }
 
     public function testSetTokenManager(): void {

@@ -63,7 +63,7 @@ class TokenAuthStrategy extends AuthStrategy {
      *
      * @return string the bearer token authentication string
      */
-    public function getAuthString(): string {
-        return "Bearer " . $this->fetchToken();
+    public function getAuthString(?Client $client = null): string {
+        return "Bearer " . $this->fetchToken($client);
     }
 }

@@ -34,13 +34,13 @@ class TokenAuthStrategyTest extends UnitTest {
         $this->assertFalse($this->tokenAuthStrategy->isTokenExpired($tokenString));
     }
 
-    public function testFetchToken(): void {
+    public function testAuthString(): void {
         $curlMock = $this->createMock(CurlClient::class);
         $curlMock->expects($this->once())
             ->method('request')
             ->willReturn(new Response(200, '{"access_token": "access_token"}', []));
         $client = new Client(null, null, null, null, $curlMock, null);
-        $token = $this->tokenAuthStrategy->fetchToken($client);
-        $this->assertEquals("access_token", $token);
+        $token = $this->tokenAuthStrategy->getAuthString($client);
+        $this->assertEquals("Bearer access_token", $token);
     }
 }
