@@ -1,9 +1,8 @@
 <?php
 namespace Twilio\AuthStrategy;
 
+use Twilio\Rest\Client;
 use Twilio\Http\BearerToken\TokenManager;
-use Twilio\Jwt\JWT;
-
 /**
  * Class TokenAuthStrategy
  * Implementation of the AuthStrategy for Bearer Token Authentication
@@ -29,20 +28,22 @@ class TokenAuthStrategy extends AuthStrategy {
      */
     public function isTokenExpired(string $token): bool {
         // Decode the JWT token
-        $decodedToken = JWT::decode($token, null, false);
+        $decodedToken = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $token)[1]))), true);
+
+        $expireField = $decodedToken['exp'];
 
         // If the token doesn't have an expiration, consider it expired
-        if ($decodedToken === null || $decodedToken->exp === null) {
+        if ($decodedToken === null || $expireField === null) {
             return false;
         }
 
         // Calculate the expiration time with a buffer of 30 seconds
-        $expiresAt = $decodedToken->exp * 1000;
+        $expiresAt = $expireField * 1000;
         $bufferMilliseconds = 30 * 1000;
         $bufferExpiresAt = $expiresAt - $bufferMilliseconds;
 
         // Return true if the current time is after the expiration time with buffer
-        return time() > $bufferExpiresAt;
+        return round(microtime(true)*1000) > $bufferExpiresAt;
     }
 
     /**
@@ -50,9 +51,9 @@ class TokenAuthStrategy extends AuthStrategy {
      *
      * @return string the bearer token
      */
-    public function fetchToken(): string {
+    public function fetchToken(?Client $client = null): string {
         if (empty($this->token) || $this->isTokenExpired($this->token)) {
-            $this->token = $this->tokenManager->fetchToken();
+            $this->token = $this->tokenManager->fetchToken($client);
         }
         return $this->token;
     }
