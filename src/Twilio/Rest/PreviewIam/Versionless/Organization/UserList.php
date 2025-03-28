@@ -58,9 +58,8 @@ class UserList extends ListResource
     public function create(ScimUser $scimUser): UserInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/scim+json' ]);
         $data = $scimUser->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new UserInstance(
@@ -142,7 +141,9 @@ class UserList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/scim+json']);
+
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new UserPage($this->version, $response, $this->solution);
     }

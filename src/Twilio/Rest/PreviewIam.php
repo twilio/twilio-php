@@ -4,7 +4,7 @@ namespace Twilio\Rest;
 
 use Twilio\Rest\PreviewIam\V1\AuthorizeList;
 use \Twilio\Rest\PreviewIam\V1\TokenList;
-use Twilio\Rest\PreviewIam\Versionless\OrganizationList;
+use Twilio\Rest\PreviewIam\Versionless\OrganizationContext;
 use Twilio\Rest\PreviewIam\Versionless;
 
 class PreviewIam extends PreviewIamBase {
@@ -24,13 +24,11 @@ class PreviewIam extends PreviewIamBase {
         return $this->v1->authorize;
     }
 
-    /* getter for organization resource */
-    protected function getOrganization(): OrganizationList {
-        if ($this->_organization !== null) {
+    protected function contextOrganization(string $orgSid): OrganizationContext {
+        if ($this->_organization === null) {
             $versionless = new Versionless($this);
-            $this->_organization = $versionless->organization;
+            $this->_organization = $versionless->organization($orgSid);
         }
         return $this->_organization;
     }
-
 }

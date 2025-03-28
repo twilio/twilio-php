@@ -21,6 +21,8 @@ abstract class Page implements \Iterator {
         'num_pages',
         'start',
         'uri',
+        'totalResults',
+        'schemas'
     ];
 
     protected $version;

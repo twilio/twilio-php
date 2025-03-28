@@ -30,12 +30,14 @@ class OrgsTokenManager extends TokenManager {
      * Fetches the bearer token
      * @throws TwilioException
      */
-    public function fetchToken(): string {
+    public function fetchToken(?Client $client = null): string {
+        if ($client === null) {
+            $client = new Client();
+        }
         $noAuthCredentialProvider = new NoAuthCredentialProvider();
-        $client = new Client();
         $client->setCredentialProvider($noAuthCredentialProvider);
-        $previewIamBase = new PreviewIamBase($client);
-        $v1 = new V1($previewIamBase);
+        $base = new PreviewIamBase($client);
+        $v1 = new V1($base);
         $tokenList = new TokenList($v1);
 
         try {

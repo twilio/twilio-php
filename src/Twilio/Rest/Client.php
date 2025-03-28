@@ -41,6 +41,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Numbers $numbers
  * @property Oauth $oauth
  * @property Preview $preview
+ * @property PreviewIam $previewIam
  * @property Pricing $pricing
  * @property Proxy $proxy
  * @property Routes $routes
@@ -122,6 +123,7 @@ class Client extends BaseClient {
     protected $_numbers;
     protected $_oauth;
     protected $_preview;
+    protected $_previewIam;
     protected $_pricing;
     protected $_proxy;
     protected $_routes;
@@ -389,6 +391,17 @@ class Client extends BaseClient {
             $this->_preview = new Preview($this);
         }
         return $this->_preview;
+    }
+    /**
+     * Access the PreviewIam Twilio Domain
+     *
+     * @return PreviewIam PreviewIam Twilio Domain
+     */
+    protected function getPreviewIam(): PreviewIam {
+        if (!$this->_previewIam) {
+            $this->_previewIam = new PreviewIam($this);
+        }
+        return $this->_previewIam;
     }
     /**
      * Access the Pricing Twilio Domain
