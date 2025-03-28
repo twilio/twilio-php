@@ -35,8 +35,4 @@ class BasicAuthStrategyTest extends UnitTest {
         $auth = base64_encode($this->username . ':' . $this->password);
         $this->assertEquals($auth, $this->basicAuthStrategy->getAuthString());
     }
-
-    public function testRequiresAuthentication(): void {
-        $this->assertTrue($this->basicAuthStrategy->requiresAuthentication());
-    }
 }

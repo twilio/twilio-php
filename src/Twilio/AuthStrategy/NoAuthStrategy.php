@@ -20,13 +20,4 @@ class NoAuthStrategy extends AuthStrategy {
     public function getAuthString(): string {
         return "";
     }
-
-    /**
-     * Returns false since the NoAuthStrategy does not require authentication
-     *
-     * @return bool false
-     */
-    public function requiresAuthentication(): bool {
-       return false;
-    }
 }

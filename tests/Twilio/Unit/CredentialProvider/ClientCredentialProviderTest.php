@@ -23,12 +23,13 @@ class ClientCredentialProviderTest extends UnitTest {
     public function testAuthTypeIsClientCredentials(): void {
         $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->setGrantType("client-credentials")->build();
         $this->assertEquals('client-credentials', $this->clientCredentialProvider->getAuthType());
+        $this->assertEquals('client-credentials', $this->clientCredentialProvider->grantType);
     }
 
     public function testSetTokenManager(): void {
         $tokenManager = new ApiTokenManager();
         $this->clientCredentialProvider = $this->clientCredentialProviderBuilder->setTokenManager($tokenManager)->build();
-        $this->assertEquals($tokenManager, $this->clientCredentialProvider->tokenManager);
+        $this->assertEquals($tokenManager, $this->clientCredentialProvider->getTokenManager());
     }
 
     public function testInvalidGetter(): void {
