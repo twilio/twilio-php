@@ -96,7 +96,6 @@ class BaseClient
 
     public function setCredentialProvider(CredentialProvider $credentialProvider): void {
         $this->_setCredentialProvider($credentialProvider);
-        $this->setAccountSid("");
         $this->invalidateBasicAuth();
     }
 

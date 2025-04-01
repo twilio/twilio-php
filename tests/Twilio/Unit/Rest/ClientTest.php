@@ -36,7 +36,8 @@ class ClientTest extends UnitTest {
     public function testSetCredentialProvider(): void {
         $client = new Client();
         $client->setCredentialProvider(new NoAuthCredentialProvider());
-        $this->assertEquals("", $client->getAccountSid());
+        $this->assertEquals("", $client->getUsername());
+        $this->assertEquals("", $client->getPassword());
     }
 
     public function testInvalidateBasicAuth(): void {
