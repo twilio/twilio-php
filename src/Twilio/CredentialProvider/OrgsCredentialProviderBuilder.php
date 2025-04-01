@@ -5,8 +5,8 @@ namespace Twilio\CredentialProvider;
 use Twilio\Http\BearerToken\TokenManager;
 
 /**
- * Class ClientCredentialProviderBuilder
- * Builder class for ClientCredentialProvider
+ * Class OrgsCredentialProviderBuilder
+ * Builder class for OrgsCredentialProvider
  */
 
 class OrgsCredentialProviderBuilder {
@@ -32,7 +32,7 @@ class OrgsCredentialProviderBuilder {
     }
 
     public function setTokenManager(TokenManager $tokenManager): OrgsCredentialProviderBuilder {
-        $this->instance->tokenManager = $tokenManager;
+        $this->instance->setTokenManager($tokenManager);
         return $this;
     }
 
