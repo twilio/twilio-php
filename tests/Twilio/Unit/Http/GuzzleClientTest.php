@@ -12,6 +12,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Utils;
+use Twilio\AuthStrategy\NoAuthStrategy;
 use Twilio\Exceptions\HttpException;
 use Twilio\Http\File;
 use Twilio\Http\GuzzleClient;
@@ -51,8 +52,38 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertStringMatchesFormat('application/x-www-form-urlencoded', $request->getHeaderLine('Content-Type'));
 
         $options = $this->mockHandler->getLastOptions();
-      
+
         $this->assertFalse($options['allow_redirects']);
+    }
+
+    public function testBasicAuth(): void
+    {
+        $this->mockHandler->append(new Response());
+        $response = $this->client->request('POST',
+            'https://www.whatever.com',
+            ['myquerykey' => 'myqueryvalue'],
+            ['myparamkey' => 'myparamvalue'],
+            [],
+            "user",
+            "password"
+        );
+        $this->assertSame([], $response->getHeaders());
+    }
+
+    public function testAuthStrategy(): void
+    {
+        $this->mockHandler->append(new Response());
+        $response = $this->client->request('POST',
+            'https://www.whatever.com',
+            ['myquerykey' => 'myqueryvalue'],
+            ['myparamkey' => 'myparamvalue'],
+            [],
+            null,
+            null,
+            null,
+            new NoAuthStrategy()
+        );
+        $this->assertSame([], $response->getHeaders());
     }
 
     public function testPostMethodArray(): void {

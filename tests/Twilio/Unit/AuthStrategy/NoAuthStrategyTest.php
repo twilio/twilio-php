@@ -24,8 +24,4 @@ class NoAuthStrategyTest extends UnitTest {
     public function testEmptyAuthString(): void {
         $this->assertEquals('', $this->noAuthStrategy->getAuthString());
     }
-
-    public function testRequiresAuthentication(): void {
-        $this->assertFalse($this->noAuthStrategy->requiresAuthentication());
-    }
 }

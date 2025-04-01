@@ -1,6 +1,8 @@
 <?php
 namespace Twilio\Http\BearerToken;
 
+use Twilio\Rest\Client;
+
 /**
  * Class TokenManager
  * Abstract parent class for all token managers
@@ -14,5 +16,5 @@ abstract class TokenManager {
      *
      * @return string the bearer token
      */
-    abstract public function fetchToken(): string;
+    abstract public function fetchToken(?Client $client = null): string;
 }
