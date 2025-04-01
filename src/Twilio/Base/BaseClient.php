@@ -183,7 +183,7 @@ class BaseClient
             $headers['User-Agent'] .= ' ' . implode(' ', $this->userAgentExtensions);
         }
 
-        if (!\array_key_exists('Accept', $headers)) {
+        if ($method !== "DELETE" && !\array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
         }
 

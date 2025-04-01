@@ -117,7 +117,6 @@ class AccountList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
-
         $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new AccountPage($this->version, $response, $this->solution);

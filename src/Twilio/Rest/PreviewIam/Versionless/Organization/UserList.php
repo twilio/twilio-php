@@ -142,7 +142,6 @@ class UserList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/scim+json']);
-
         $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new UserPage($this->version, $response, $this->solution);
