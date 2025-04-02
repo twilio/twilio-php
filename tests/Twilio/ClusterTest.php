@@ -138,5 +138,4 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
         self::assertNotNull($users);
         self::assertNotNull($users[0]->id);
     }
-
 }
