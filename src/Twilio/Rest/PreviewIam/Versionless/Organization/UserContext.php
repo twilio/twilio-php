@@ -76,7 +76,7 @@ class UserContext extends InstanceContext
     public function fetch(): UserInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/scim+json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new UserInstance(
@@ -101,9 +101,8 @@ class UserContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/scim+json' , 'If-Match' => $options['ifMatch']]);
         $data = $scimUser->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->update('PUT', $this->uri, [], $data, $headers);
 
         return new UserInstance(

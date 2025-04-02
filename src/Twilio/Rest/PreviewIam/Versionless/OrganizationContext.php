@@ -75,7 +75,7 @@ class OrganizationContext extends InstanceContext
     public function fetch(): OrganizationInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/scim+json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new OrganizationInstance(

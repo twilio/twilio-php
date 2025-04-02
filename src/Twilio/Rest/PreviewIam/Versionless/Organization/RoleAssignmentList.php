@@ -59,9 +59,8 @@ class RoleAssignmentList extends ListResource
     public function create(PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest): RoleAssignmentInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $publicApiCreateRoleAssignmentRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new RoleAssignmentInstance(
@@ -149,7 +148,8 @@ class RoleAssignmentList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new RoleAssignmentPage($this->version, $response, $this->solution);
     }
