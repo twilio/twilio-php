@@ -52,7 +52,7 @@ class StepInstance extends InstanceResource
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      * @param string $sid The SID of the Step resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid, ?string $sid = null)
     {
         parent::__construct($version);
 

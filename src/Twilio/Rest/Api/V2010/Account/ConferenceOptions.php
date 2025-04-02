@@ -34,12 +34,12 @@ abstract class ConferenceOptions
      */
     public static function read(
         
-        string $dateCreatedBefore = null,
-        string $dateCreated = null,
-        string $dateCreatedAfter = null,
-        string $dateUpdatedBefore = null,
-        string $dateUpdated = null,
-        string $dateUpdatedAfter = null,
+        ?string $dateCreatedBefore = null,
+        ?string $dateCreated = null,
+        ?string $dateCreatedAfter = null,
+        ?string $dateUpdatedBefore = null,
+        ?string $dateUpdated = null,
+        ?string $dateUpdatedAfter = null,
         string $friendlyName = Values::NONE,
         string $status = Values::NONE
 
@@ -95,12 +95,12 @@ class ReadConferenceOptions extends Options
      */
     public function __construct(
         
-        string $dateCreatedBefore = null,
-        string $dateCreated = null,
-        string $dateCreatedAfter = null,
-        string $dateUpdatedBefore = null,
-        string $dateUpdated = null,
-        string $dateUpdatedAfter = null,
+        ?string $dateCreatedBefore = null,
+        ?string $dateCreated = null,
+        ?string $dateCreatedAfter = null,
+        ?string $dateUpdatedBefore = null,
+        ?string $dateUpdated = null,
+        ?string $dateUpdatedAfter = null,
         string $friendlyName = Values::NONE,
         string $status = Values::NONE
 

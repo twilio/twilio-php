@@ -30,8 +30,8 @@ abstract class LastMonthOptions
     public static function read(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ): ReadLastMonthOptions
@@ -57,8 +57,8 @@ class ReadLastMonthOptions extends Options
     public function __construct(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ) {

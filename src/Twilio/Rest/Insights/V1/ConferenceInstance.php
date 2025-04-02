@@ -61,7 +61,7 @@ class ConferenceInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $conferenceSid The unique SID identifier of the Conference.
      */
-    public function __construct(Version $version, array $payload, string $conferenceSid = null)
+    public function __construct(Version $version, array $payload, ?string $conferenceSid = null)
     {
         parent::__construct($version);
 

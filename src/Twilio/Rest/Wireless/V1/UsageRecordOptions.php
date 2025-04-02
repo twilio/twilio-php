@@ -28,8 +28,8 @@ abstract class UsageRecordOptions
      */
     public static function read(
         
-        \DateTime $end = null,
-        \DateTime $start = null,
+        ?\DateTime $end = null,
+        ?\DateTime $start = null,
         string $granularity = Values::NONE
 
     ): ReadUsageRecordOptions
@@ -52,8 +52,8 @@ class ReadUsageRecordOptions extends Options
      */
     public function __construct(
         
-        \DateTime $end = null,
-        \DateTime $start = null,
+        ?\DateTime $end = null,
+        ?\DateTime $start = null,
         string $granularity = Values::NONE
 
     ) {

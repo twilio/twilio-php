@@ -46,7 +46,7 @@ class JobInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $jobSid The unique string that that we created to identify the Bulk Export job
      */
-    public function __construct(Version $version, array $payload, string $jobSid = null)
+    public function __construct(Version $version, array $payload, ?string $jobSid = null)
     {
         parent::__construct($version);
 

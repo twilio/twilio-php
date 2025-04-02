@@ -41,7 +41,7 @@ class AvailableAddOnExtensionInstance extends InstanceResource
      * @param string $availableAddOnSid The SID of the AvailableAddOn resource with the extension to fetch.
      * @param string $sid The SID of the AvailableAddOn Extension resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $availableAddOnSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $availableAddOnSid, ?string $sid = null)
     {
         parent::__construct($version);
 

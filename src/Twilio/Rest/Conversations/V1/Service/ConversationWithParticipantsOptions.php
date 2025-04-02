@@ -40,8 +40,8 @@ abstract class ConversationWithParticipantsOptions
         
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $messagingServiceSid = Values::NONE,
         string $attributes = Values::NONE,
         string $state = Values::NONE,
@@ -94,8 +94,8 @@ class CreateConversationWithParticipantsOptions extends Options
         
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $messagingServiceSid = Values::NONE,
         string $attributes = Values::NONE,
         string $state = Values::NONE,

@@ -52,7 +52,7 @@ class ExecutionStepInstance extends InstanceResource
      * @param string $executionSid The SID of the Execution resource with the Step to fetch.
      * @param string $sid The SID of the ExecutionStep resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, ?string $sid = null)
     {
         parent::__construct($version);
 

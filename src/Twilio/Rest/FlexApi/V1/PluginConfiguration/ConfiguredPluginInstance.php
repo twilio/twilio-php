@@ -53,7 +53,7 @@ class ConfiguredPluginInstance extends InstanceResource
      * @param string $configurationSid The SID of the Flex Plugin Configuration the resource to belongs to.
      * @param string $pluginSid The unique string that we created to identify the Flex Plugin resource.
      */
-    public function __construct(Version $version, array $payload, string $configurationSid, string $pluginSid = null)
+    public function __construct(Version $version, array $payload, string $configurationSid, ?string $pluginSid = null)
     {
         parent::__construct($version);
 

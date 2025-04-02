@@ -152,12 +152,12 @@ abstract class CallOptions
         string $from = Values::NONE,
         string $parentCallSid = Values::NONE,
         string $status = Values::NONE,
-        string $startTimeBefore = null,
-        string $startTime = null,
-        string $startTimeAfter = null,
-        string $endTimeBefore = null,
-        string $endTime = null,
-        string $endTimeAfter = null
+        ?string $startTimeBefore = null,
+        ?string $startTime = null,
+        ?string $startTimeAfter = null,
+        ?string $endTimeBefore = null,
+        ?string $endTime = null,
+        ?string $endTimeAfter = null
 
     ): ReadCallOptions
     {
@@ -755,12 +755,12 @@ class ReadCallOptions extends Options
         string $from = Values::NONE,
         string $parentCallSid = Values::NONE,
         string $status = Values::NONE,
-        string $startTimeBefore = null,
-        string $startTime = null,
-        string $startTimeAfter = null,
-        string $endTimeBefore = null,
-        string $endTime = null,
-        string $endTimeAfter = null
+        ?string $startTimeBefore = null,
+        ?string $startTime = null,
+        ?string $startTimeAfter = null,
+        ?string $endTimeBefore = null,
+        ?string $endTime = null,
+        ?string $endTimeAfter = null
 
     ) {
         $this->options['to'] = $to;

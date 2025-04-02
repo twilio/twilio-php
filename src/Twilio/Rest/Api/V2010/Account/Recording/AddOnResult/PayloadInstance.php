@@ -52,7 +52,7 @@ class PayloadInstance extends InstanceResource
      * @param string $addOnResultSid The SID of the AddOnResult to which the payloads to delete belongs.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $referenceSid, string $addOnResultSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $referenceSid, string $addOnResultSid, ?string $sid = null)
     {
         parent::__construct($version);
 

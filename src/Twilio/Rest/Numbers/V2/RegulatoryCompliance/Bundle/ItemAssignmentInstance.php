@@ -42,7 +42,7 @@ class ItemAssignmentInstance extends InstanceResource
      * @param string $bundleSid The unique string that we created to identify the Bundle resource.
      * @param string $sid The unique string that we created to identify the Identity resource.
      */
-    public function __construct(Version $version, array $payload, string $bundleSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $bundleSid, ?string $sid = null)
     {
         parent::__construct($version);
 

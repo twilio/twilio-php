@@ -89,8 +89,8 @@ abstract class RoomOptions
         
         string $status = Values::NONE,
         string $uniqueName = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null
 
     ): ReadRoomOptions
     {
@@ -363,8 +363,8 @@ class ReadRoomOptions extends Options
         
         string $status = Values::NONE,
         string $uniqueName = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null
 
     ) {
         $this->options['status'] = $status;

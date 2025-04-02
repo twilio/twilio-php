@@ -53,7 +53,7 @@ class NotificationInstance extends InstanceResource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resource to fetch.
      * @param string $sid The Twilio-provided string that uniquely identifies the Notification resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $sid = null)
     {
         parent::__construct($version);
 
