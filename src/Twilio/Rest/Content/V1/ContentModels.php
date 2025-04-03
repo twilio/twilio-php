@@ -222,6 +222,16 @@ abstract class ContentModels
     }
 
     /**
+     * @property string $id
+     * @property string $title
+     * @property string $timeSlots
+    */
+    public static function createTwilioSchedule(array $payload = []): TwilioSchedule
+    {
+        return new TwilioSchedule($payload);
+    }
+
+    /**
      * @property string $body
      * @property string $footer
      * @property string[] $media
@@ -263,6 +273,7 @@ abstract class ContentModels
      * @property TwilioCatalog $twilioCatalog
      * @property TwilioCarousel $twilioCarousel
      * @property TwilioFlows $twilioFlows
+     * @property TwilioSchedule $twilioSchedule
      * @property WhatsappCard $whatsappCard
      * @property WhatsappAuthentication $whatsappAuthentication
     */
@@ -925,6 +936,37 @@ class TwilioFlows implements \JsonSerializable
     }
 }
 
+class TwilioSchedule implements \JsonSerializable
+{
+    /**
+     * @property string $id
+     * @property string $title
+     * @property string $timeSlots
+    */
+        protected $id;
+        protected $title;
+        protected $timeSlots;
+    public function __construct(array $payload = []) {
+        $this->id = Values::array_get($payload, 'id');
+        $this->title = Values::array_get($payload, 'title');
+        $this->timeSlots = Values::array_get($payload, 'timeSlots');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'timeSlots' => $this->timeSlots
+        ];
+    }
+}
+
 class WhatsappCard implements \JsonSerializable
 {
     /**
@@ -1035,6 +1077,7 @@ class Types implements \JsonSerializable
      * @property TwilioCatalog $twilioCatalog
      * @property TwilioCarousel $twilioCarousel
      * @property TwilioFlows $twilioFlows
+     * @property TwilioSchedule $twilioSchedule
      * @property WhatsappCard $whatsappCard
      * @property WhatsappAuthentication $whatsappAuthentication
     */
@@ -1048,6 +1091,7 @@ class Types implements \JsonSerializable
         protected $twilioCatalog;
         protected $twilioCarousel;
         protected $twilioFlows;
+        protected $twilioSchedule;
         protected $whatsappCard;
         protected $whatsappAuthentication;
     public function __construct(array $payload = []) {
@@ -1061,6 +1105,7 @@ class Types implements \JsonSerializable
         $this->twilioCatalog = Values::array_get($payload, 'twilio/catalog');
         $this->twilioCarousel = Values::array_get($payload, 'twilio/carousel');
         $this->twilioFlows = Values::array_get($payload, 'twilio/flows');
+        $this->twilioSchedule = Values::array_get($payload, 'twilio/schedule');
         $this->whatsappCard = Values::array_get($payload, 'whatsapp/card');
         $this->whatsappAuthentication = Values::array_get($payload, 'whatsapp/authentication');
     }
@@ -1083,6 +1128,7 @@ class Types implements \JsonSerializable
             'twilio/catalog' => $this->twilioCatalog,
             'twilio/carousel' => $this->twilioCarousel,
             'twilio/flows' => $this->twilioFlows,
+            'twilio/schedule' => $this->twilioSchedule,
             'whatsapp/card' => $this->whatsappCard,
             'whatsapp/authentication' => $this->whatsappAuthentication
         ];

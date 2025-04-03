@@ -32,7 +32,7 @@ use Twilio\Deserialize;
  * @property string|null $mimeType
  * @property string $status
  * @property string|null $failureReason
- * @property array[]|null $errors
+ * @property object[]|null $errors
  * @property string|null $type
  * @property array|null $attributes
  * @property \DateTime|null $dateCreated

@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string|null $networkAccessProfileSid
  * @property string|null $friendlyName
  * @property string|null $isoCountry
- * @property array[]|null $identifiers
+ * @property object[]|null $identifiers
  * @property string|null $url
  */
 class NetworkAccessProfileNetworkInstance extends InstanceResource

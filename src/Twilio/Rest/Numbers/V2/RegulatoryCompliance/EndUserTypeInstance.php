@@ -27,7 +27,7 @@ use Twilio\Version;
  * @property string|null $sid
  * @property string|null $friendlyName
  * @property string|null $machineName
- * @property array[]|null $fields
+ * @property object[]|null $fields
  * @property string|null $url
  */
 class EndUserTypeInstance extends InstanceResource

@@ -60,7 +60,7 @@ use Twilio\Deserialize;
  * @property int|null $errorCode
  * @property \DateTime|null $editExpiration
  * @property bool|null $editAllowed
- * @property array[]|null $rejectionReasons
+ * @property object[]|null $rejectionReasons
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
  */

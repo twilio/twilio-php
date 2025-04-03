@@ -41,7 +41,7 @@ use Twilio\Rest\Trusthub\V1\TrustProducts\TrustProductsEntityAssignmentsList;
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
  * @property array|null $links
- * @property array[]|null $errors
+ * @property object[]|null $errors
  */
 class TrustProductsInstance extends InstanceResource
 {

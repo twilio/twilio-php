@@ -32,6 +32,7 @@ abstract class RatePlanOptions
      * @param string[] $internationalRoaming The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`.
      * @param int $nationalRoamingDataLimit The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info.
      * @param int $internationalRoamingDataLimit The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.
+     * @param string $dataLimitStrategy
      * @return CreateRatePlanOptions Options builder
      */
     public static function create(
@@ -46,7 +47,8 @@ abstract class RatePlanOptions
         bool $nationalRoamingEnabled = Values::BOOL_NONE,
         array $internationalRoaming = Values::ARRAY_NONE,
         int $nationalRoamingDataLimit = Values::INT_NONE,
-        int $internationalRoamingDataLimit = Values::INT_NONE
+        int $internationalRoamingDataLimit = Values::INT_NONE,
+        string $dataLimitStrategy = Values::NONE
 
     ): CreateRatePlanOptions
     {
@@ -61,7 +63,8 @@ abstract class RatePlanOptions
             $nationalRoamingEnabled,
             $internationalRoaming,
             $nationalRoamingDataLimit,
-            $internationalRoamingDataLimit
+            $internationalRoamingDataLimit,
+            $dataLimitStrategy
         );
     }
 
@@ -102,6 +105,7 @@ class CreateRatePlanOptions extends Options
      * @param string[] $internationalRoaming The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`.
      * @param int $nationalRoamingDataLimit The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming) for more info.
      * @param int $internationalRoamingDataLimit The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.
+     * @param string $dataLimitStrategy
      */
     public function __construct(
         
@@ -115,7 +119,8 @@ class CreateRatePlanOptions extends Options
         bool $nationalRoamingEnabled = Values::BOOL_NONE,
         array $internationalRoaming = Values::ARRAY_NONE,
         int $nationalRoamingDataLimit = Values::INT_NONE,
-        int $internationalRoamingDataLimit = Values::INT_NONE
+        int $internationalRoamingDataLimit = Values::INT_NONE,
+        string $dataLimitStrategy = Values::NONE
 
     ) {
         $this->options['uniqueName'] = $uniqueName;
@@ -129,6 +134,7 @@ class CreateRatePlanOptions extends Options
         $this->options['internationalRoaming'] = $internationalRoaming;
         $this->options['nationalRoamingDataLimit'] = $nationalRoamingDataLimit;
         $this->options['internationalRoamingDataLimit'] = $internationalRoamingDataLimit;
+        $this->options['dataLimitStrategy'] = $dataLimitStrategy;
     }
 
     /**
@@ -260,6 +266,16 @@ class CreateRatePlanOptions extends Options
     public function setInternationalRoamingDataLimit(int $internationalRoamingDataLimit): self
     {
         $this->options['internationalRoamingDataLimit'] = $internationalRoamingDataLimit;
+        return $this;
+    }
+
+    /**
+     * @param string $dataLimitStrategy
+     * @return $this Fluent Builder
+     */
+    public function setDataLimitStrategy(string $dataLimitStrategy): self
+    {
+        $this->options['dataLimitStrategy'] = $dataLimitStrategy;
         return $this;
     }
 

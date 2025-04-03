@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property array[]|null $usecases
+ * @property object[]|null $usecases
  */
 class UsecaseInstance extends InstanceResource
 {

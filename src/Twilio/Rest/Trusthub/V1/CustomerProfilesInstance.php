@@ -41,7 +41,7 @@ use Twilio\Rest\Trusthub\V1\CustomerProfiles\CustomerProfilesEvaluationsList;
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
  * @property array|null $links
- * @property array[]|null $errors
+ * @property object[]|null $errors
  */
 class CustomerProfilesInstance extends InstanceResource
 {

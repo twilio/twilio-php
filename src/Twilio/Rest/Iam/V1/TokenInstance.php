@@ -21,21 +21,19 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\Deserialize;
 
 
 /**
- * @property string|null $sid
- * @property string|null $friendlyName
- * @property \DateTime|null $dateCreated
- * @property \DateTime|null $dateUpdated
- * @property string|null $secret
- * @property array|null $policy
+ * @property string|null $accessToken
+ * @property string|null $refreshToken
+ * @property string|null $idToken
+ * @property string|null $tokenType
+ * @property int|null $expiresIn
  */
-class KeyInstance extends InstanceResource
+class TokenInstance extends InstanceResource
 {
     /**
-     * Initialize the KeyInstance
+     * Initialize the TokenInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -46,12 +44,11 @@ class KeyInstance extends InstanceResource
 
         // Marshaled Properties
         $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'secret' => Values::array_get($payload, 'secret'),
-            'policy' => Values::array_get($payload, 'policy'),
+            'accessToken' => Values::array_get($payload, 'access_token'),
+            'refreshToken' => Values::array_get($payload, 'refresh_token'),
+            'idToken' => Values::array_get($payload, 'id_token'),
+            'tokenType' => Values::array_get($payload, 'token_type'),
+            'expiresIn' => Values::array_get($payload, 'expires_in'),
         ];
 
         $this->solution = [];
@@ -85,7 +82,7 @@ class KeyInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Iam.V1.KeyInstance]';
+        return '[Twilio.Iam.V1.TokenInstance]';
     }
 }
 
