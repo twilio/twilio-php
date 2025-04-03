@@ -39,7 +39,7 @@ class CountryInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $isoCountry The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the pricing information to fetch.
      */
-    public function __construct(Version $version, array $payload, string $isoCountry = null)
+    public function __construct(Version $version, array $payload, ?string $isoCountry = null)
     {
         parent::__construct($version);
 

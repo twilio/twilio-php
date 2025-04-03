@@ -54,7 +54,7 @@ class PortingPortInPhoneNumberInstance extends InstanceResource
      * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
      * @param string $phoneNumberSid The SID of the Port In request phone number. This is a unique identifier of the phone number.
      */
-    public function __construct(Version $version, array $payload, string $portInRequestSid = null, string $phoneNumberSid = null)
+    public function __construct(Version $version, array $payload, ?string $portInRequestSid = null, ?string $phoneNumberSid = null)
     {
         parent::__construct($version);
 

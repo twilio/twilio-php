@@ -44,7 +44,7 @@ class MediaInstance extends InstanceResource
      * @param string $messageSid The SID of the Message resource that is associated with the Media resource.
      * @param string $sid The unique identifier of the to-be-deleted Media resource.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $messageSid, ?string $sid = null)
     {
         parent::__construct($version);
 

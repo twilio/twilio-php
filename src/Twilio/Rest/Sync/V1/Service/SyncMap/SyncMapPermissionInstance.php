@@ -44,7 +44,7 @@ class SyncMapPermissionInstance extends InstanceResource
      * @param string $mapSid The SID of the Sync Map with the Sync Map Permission resource to delete. Can be the Sync Map resource's `sid` or its `unique_name`.
      * @param string $identity The application-defined string that uniquely identifies the User's Sync Map Permission resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, string $identity = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, ?string $identity = null)
     {
         parent::__construct($version);
 

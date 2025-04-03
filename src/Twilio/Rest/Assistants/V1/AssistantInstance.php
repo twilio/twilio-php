@@ -39,16 +39,6 @@ use Twilio\Rest\Assistants\V1\Assistant\MessageList;
  * @property string $personalityPrompt
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $accountSid
- * @property array $customerAi
- * @property string $id
- * @property string $model
- * @property string $name
- * @property string $owner
- * @property string $url
- * @property string $personalityPrompt
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
  * @property string[] $knowledge
  * @property string[] $tools
  */
@@ -66,7 +56,7 @@ class AssistantInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $id
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         parent::__construct($version);
 

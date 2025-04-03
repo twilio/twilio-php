@@ -46,7 +46,7 @@ class CountryInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $isoCode The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the DialingPermissions Country resource to fetch
      */
-    public function __construct(Version $version, array $payload, string $isoCode = null)
+    public function __construct(Version $version, array $payload, ?string $isoCode = null)
     {
         parent::__construct($version);
 

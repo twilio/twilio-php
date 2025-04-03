@@ -49,7 +49,7 @@ class ReservationInstance extends InstanceResource
      * @param string $taskSid The SID of the reserved Task resource with the TaskReservation resource to fetch.
      * @param string $sid The SID of the TaskReservation resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $taskSid, ?string $sid = null)
     {
         parent::__construct($version);
 

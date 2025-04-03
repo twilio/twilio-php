@@ -43,7 +43,7 @@ class TrustProductsChannelEndpointAssignmentInstance extends InstanceResource
      * @param string $trustProductSid The unique string that we created to identify the CustomerProfile resource.
      * @param string $sid The unique string that we created to identify the resource.
      */
-    public function __construct(Version $version, array $payload, string $trustProductSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $trustProductSid, ?string $sid = null)
     {
         parent::__construct($version);
 

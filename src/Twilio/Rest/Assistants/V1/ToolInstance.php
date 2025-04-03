@@ -36,17 +36,6 @@ use Twilio\Deserialize;
  * @property string $url
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $accountSid
- * @property string $description
- * @property bool $enabled
- * @property string $id
- * @property array $meta
- * @property string $name
- * @property bool $requiresAuth
- * @property string $type
- * @property string $url
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
  * @property string[] $policies
  */
 class ToolInstance extends InstanceResource
@@ -58,7 +47,7 @@ class ToolInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $id The tool ID.
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         parent::__construct($version);
 
