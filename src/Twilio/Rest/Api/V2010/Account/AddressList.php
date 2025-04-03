@@ -174,6 +174,8 @@ class AddressList extends ListResource
                 $options['customerName'],
             'FriendlyName' =>
                 $options['friendlyName'],
+            'EmergencyEnabled' =>
+                Serialize::booleanToString($options['emergencyEnabled']),
             'IsoCountry' =>
                 $options['isoCountry'],
             'PageToken' => $pageToken,

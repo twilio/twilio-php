@@ -15,94 +15,90 @@
  */
 
 
-namespace Twilio\Rest\FlexApi\V2;
+namespace Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel;
 
 use Twilio\Exceptions\TwilioException;
-use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 
 
-class FlexUserContext extends InstanceContext
+class InteractionTransferContext extends InstanceContext
     {
     /**
-     * Initialize the FlexUserContext
+     * Initialize the InteractionTransferContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $instanceSid The unique ID created by Twilio to identify a Flex instance.
-     * @param string $flexUserSid The unique id for the flex user to be retrieved.
+     * @param string $interactionSid The Interaction Sid for the Interaction
+     * @param string $channelSid The Channel Sid for the Channel.
+     * @param string $sid The unique string created by Twilio to identify a Transfer resource.
      */
     public function __construct(
         Version $version,
-        $instanceSid,
-        $flexUserSid
+        $interactionSid,
+        $channelSid,
+        $sid
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'instanceSid' =>
-            $instanceSid,
-        'flexUserSid' =>
-            $flexUserSid,
+        'interactionSid' =>
+            $interactionSid,
+        'channelSid' =>
+            $channelSid,
+        'sid' =>
+            $sid,
         ];
 
-        $this->uri = '/Instances/' . \rawurlencode($instanceSid)
-        .'/Users/' . \rawurlencode($flexUserSid)
+        $this->uri = '/Interactions/' . \rawurlencode($interactionSid)
+        .'/Channels/' . \rawurlencode($channelSid)
+        .'/Transfers/' . \rawurlencode($sid)
         .'';
     }
 
     /**
-     * Fetch the FlexUserInstance
+     * Fetch the InteractionTransferInstance
      *
-     * @return FlexUserInstance Fetched FlexUserInstance
+     * @return InteractionTransferInstance Fetched InteractionTransferInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): FlexUserInstance
+    public function fetch(): InteractionTransferInstance
     {
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
-        return new FlexUserInstance(
+        return new InteractionTransferInstance(
             $this->version,
             $payload,
-            $this->solution['instanceSid'],
-            $this->solution['flexUserSid']
+            $this->solution['interactionSid'],
+            $this->solution['channelSid'],
+            $this->solution['sid']
         );
     }
 
 
     /**
-     * Update the FlexUserInstance
+     * Update the InteractionTransferInstance
      *
-     * @param array|Options $options Optional Arguments
-     * @return FlexUserInstance Updated FlexUserInstance
+     * @return InteractionTransferInstance Updated InteractionTransferInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): FlexUserInstance
+    public function update(): InteractionTransferInstance
     {
 
-        $options = new Values($options);
-
-        $data = Values::of([
-            'Email' =>
-                $options['email'],
-            'UserSid' =>
-                $options['userSid'],
-            'Locale' =>
-                $options['locale'],
-        ]);
-
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $data = $body->toArray();
+        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
-        return new FlexUserInstance(
+        return new InteractionTransferInstance(
             $this->version,
             $payload,
-            $this->solution['instanceSid'],
-            $this->solution['flexUserSid']
+            $this->solution['interactionSid'],
+            $this->solution['channelSid'],
+            $this->solution['sid']
         );
     }
 
@@ -118,6 +114,6 @@ class FlexUserContext extends InstanceContext
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
         }
-        return '[Twilio.FlexApi.V2.FlexUserContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.FlexApi.V1.InteractionTransferContext ' . \implode(' ', $context) . ']';
     }
 }

@@ -20,6 +20,20 @@ use Twilio\Values;
 
 abstract class SubscriptionOptions
 {
+    /**
+     * @param bool $receiveEventsFromSubaccounts Receive events from all children accounts in the parent account subscription.
+     * @return CreateSubscriptionOptions Options builder
+     */
+    public static function create(
+        
+        bool $receiveEventsFromSubaccounts = Values::BOOL_NONE
+
+    ): CreateSubscriptionOptions
+    {
+        return new CreateSubscriptionOptions(
+            $receiveEventsFromSubaccounts
+        );
+    }
 
 
 
@@ -41,23 +55,62 @@ abstract class SubscriptionOptions
     /**
      * @param string $description A human readable description for the Subscription.
      * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
+     * @param bool $receiveEventsFromSubaccounts Receive events from all children accounts in the parent account subscription.
      * @return UpdateSubscriptionOptions Options builder
      */
     public static function update(
         
         string $description = Values::NONE,
-        string $sinkSid = Values::NONE
+        string $sinkSid = Values::NONE,
+        bool $receiveEventsFromSubaccounts = Values::BOOL_NONE
 
     ): UpdateSubscriptionOptions
     {
         return new UpdateSubscriptionOptions(
             $description,
-            $sinkSid
+            $sinkSid,
+            $receiveEventsFromSubaccounts
         );
     }
 
 }
 
+class CreateSubscriptionOptions extends Options
+    {
+    /**
+     * @param bool $receiveEventsFromSubaccounts Receive events from all children accounts in the parent account subscription.
+     */
+    public function __construct(
+        
+        bool $receiveEventsFromSubaccounts = Values::BOOL_NONE
+
+    ) {
+        $this->options['receiveEventsFromSubaccounts'] = $receiveEventsFromSubaccounts;
+    }
+
+    /**
+     * Receive events from all children accounts in the parent account subscription.
+     *
+     * @param bool $receiveEventsFromSubaccounts Receive events from all children accounts in the parent account subscription.
+     * @return $this Fluent Builder
+     */
+    public function setReceiveEventsFromSubaccounts(bool $receiveEventsFromSubaccounts): self
+    {
+        $this->options['receiveEventsFromSubaccounts'] = $receiveEventsFromSubaccounts;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Events.V1.CreateSubscriptionOptions ' . $options . ']';
+    }
+}
 
 
 
@@ -103,15 +156,18 @@ class UpdateSubscriptionOptions extends Options
     /**
      * @param string $description A human readable description for the Subscription.
      * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
+     * @param bool $receiveEventsFromSubaccounts Receive events from all children accounts in the parent account subscription.
      */
     public function __construct(
         
         string $description = Values::NONE,
-        string $sinkSid = Values::NONE
+        string $sinkSid = Values::NONE,
+        bool $receiveEventsFromSubaccounts = Values::BOOL_NONE
 
     ) {
         $this->options['description'] = $description;
         $this->options['sinkSid'] = $sinkSid;
+        $this->options['receiveEventsFromSubaccounts'] = $receiveEventsFromSubaccounts;
     }
 
     /**
@@ -135,6 +191,18 @@ class UpdateSubscriptionOptions extends Options
     public function setSinkSid(string $sinkSid): self
     {
         $this->options['sinkSid'] = $sinkSid;
+        return $this;
+    }
+
+    /**
+     * Receive events from all children accounts in the parent account subscription.
+     *
+     * @param bool $receiveEventsFromSubaccounts Receive events from all children accounts in the parent account subscription.
+     * @return $this Fluent Builder
+     */
+    public function setReceiveEventsFromSubaccounts(bool $receiveEventsFromSubaccounts): self
+    {
+        $this->options['receiveEventsFromSubaccounts'] = $receiveEventsFromSubaccounts;
         return $this;
     }
 

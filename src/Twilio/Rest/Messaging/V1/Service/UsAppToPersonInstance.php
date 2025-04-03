@@ -52,7 +52,7 @@ use Twilio\Deserialize;
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
  * @property bool|null $mock
- * @property array[]|null $errors
+ * @property object[]|null $errors
  */
 class UsAppToPersonInstance extends InstanceResource
 {

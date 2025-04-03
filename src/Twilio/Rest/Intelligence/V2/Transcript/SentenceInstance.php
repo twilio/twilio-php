@@ -31,7 +31,7 @@ use Twilio\Version;
  * @property string|null $transcript
  * @property string|null $sid
  * @property string|null $confidence
- * @property array[]|null $words
+ * @property object[]|null $words
  */
 class SentenceInstance extends InstanceResource
 {
