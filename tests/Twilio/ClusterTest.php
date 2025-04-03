@@ -103,12 +103,13 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(self::$twilio->events->v1->sinks($sink->sid)->delete());
     }
 
-    public function testPublicOAuth(): void
+    public function testFetchMessageUsingPublicOAuth(): void
     {
        $clientCredentialProvider = (new ClientCredentialProviderBuilder())->setClientId(self::$clientId)->setClientSecret(self::$clientSecret)->build();
        $client = new Client();
        $client->setCredentialProvider($clientCredentialProvider);
        $client->setAccountSid(self::$accountSid);
+
        $message = $client->messages(self::$messageSid)->fetch();
        self::assertNotNull($message);
        self::assertEquals(self::$messageSid, $message->sid);
@@ -118,7 +119,7 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    public function testOrgsApi(): void
+    public function testOrgsApiUserListAndFetchAndOrgsApiAccountsList(): void
     {
         $orgsCredentialProvider = (new OrgsCredentialProviderBuilder())->setClientId(self::$orgsClientId)->setClientSecret(self::$orgsClientSecret)->build();
         $client = new Client();
