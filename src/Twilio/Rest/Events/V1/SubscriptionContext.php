@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Serialize;
 use Twilio\Rest\Events\V1\Subscription\SubscribedEventList;
 
 
@@ -107,6 +108,8 @@ class SubscriptionContext extends InstanceContext
                 $options['description'],
             'SinkSid' =>
                 $options['sinkSid'],
+            'ReceiveEventsFromSubaccounts' =>
+                Serialize::booleanToString($options['receiveEventsFromSubaccounts']),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

@@ -22,7 +22,7 @@ abstract class SafelistOptions
 {
 
     /**
-     * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      * @return DeleteSafelistOptions Options builder
      */
     public static function delete(
@@ -37,7 +37,7 @@ abstract class SafelistOptions
     }
 
     /**
-     * @param string $phoneNumber The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      * @return FetchSafelistOptions Options builder
      */
     public static function fetch(
@@ -57,7 +57,7 @@ abstract class SafelistOptions
 class DeleteSafelistOptions extends Options
     {
     /**
-     * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      */
     public function __construct(
         
@@ -68,9 +68,9 @@ class DeleteSafelistOptions extends Options
     }
 
     /**
-     * The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * The phone number or phone number 1k prefix to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      *
-     * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      * @return $this Fluent Builder
      */
     public function setPhoneNumber(string $phoneNumber): self
@@ -94,7 +94,7 @@ class DeleteSafelistOptions extends Options
 class FetchSafelistOptions extends Options
     {
     /**
-     * @param string $phoneNumber The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      */
     public function __construct(
         
@@ -105,9 +105,9 @@ class FetchSafelistOptions extends Options
     }
 
     /**
-     * The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      *
-     * @param string $phoneNumber The phone number to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be fetched from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      * @return $this Fluent Builder
      */
     public function setPhoneNumber(string $phoneNumber): self

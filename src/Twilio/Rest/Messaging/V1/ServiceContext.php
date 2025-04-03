@@ -26,6 +26,7 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Rest\Messaging\V1\Service\AlphaSenderList;
 use Twilio\Rest\Messaging\V1\Service\PhoneNumberList;
+use Twilio\Rest\Messaging\V1\Service\DestinationAlphaSenderList;
 use Twilio\Rest\Messaging\V1\Service\UsAppToPersonUsecaseList;
 use Twilio\Rest\Messaging\V1\Service\ChannelSenderList;
 use Twilio\Rest\Messaging\V1\Service\ShortCodeList;
@@ -35,6 +36,7 @@ use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
 /**
  * @property AlphaSenderList $alphaSenders
  * @property PhoneNumberList $phoneNumbers
+ * @property DestinationAlphaSenderList $destinationAlphaSenders
  * @property UsAppToPersonUsecaseList $usAppToPersonUsecases
  * @property ChannelSenderList $channelSenders
  * @property ShortCodeList $shortCodes
@@ -43,12 +45,14 @@ use Twilio\Rest\Messaging\V1\Service\UsAppToPersonList;
  * @method \Twilio\Rest\Messaging\V1\Service\UsAppToPersonContext usAppToPerson(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\AlphaSenderContext alphaSenders(string $sid)
+ * @method \Twilio\Rest\Messaging\V1\Service\DestinationAlphaSenderContext destinationAlphaSenders(string $sid)
  * @method \Twilio\Rest\Messaging\V1\Service\ChannelSenderContext channelSenders(string $sid)
  */
 class ServiceContext extends InstanceContext
     {
     protected $_alphaSenders;
     protected $_phoneNumbers;
+    protected $_destinationAlphaSenders;
     protected $_usAppToPersonUsecases;
     protected $_channelSenders;
     protected $_shortCodes;
@@ -196,6 +200,21 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_phoneNumbers;
+    }
+
+    /**
+     * Access the destinationAlphaSenders
+     */
+    protected function getDestinationAlphaSenders(): DestinationAlphaSenderList
+    {
+        if (!$this->_destinationAlphaSenders) {
+            $this->_destinationAlphaSenders = new DestinationAlphaSenderList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_destinationAlphaSenders;
     }
 
     /**

@@ -81,7 +81,7 @@ abstract class ReservationOptions
      * @param string $recordingStatusCallbackMethod The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
      * @param string $conferenceRecordingStatusCallback The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
      * @param string $conferenceRecordingStatusCallbackMethod The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-     * @param string $region The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+     * @param string $region The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
      * @param string $sipAuthUsername The SIP username used for authentication.
      * @param string $sipAuthPassword The SIP password for authentication.
      * @param string[] $dequeueStatusCallbackEvent The call progress events sent via webhooks as a result of a Dequeue instruction.
@@ -294,7 +294,7 @@ class UpdateReservationOptions extends Options
      * @param string $recordingStatusCallbackMethod The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
      * @param string $conferenceRecordingStatusCallback The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
      * @param string $conferenceRecordingStatusCallbackMethod The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
-     * @param string $region The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+     * @param string $region The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
      * @param string $sipAuthUsername The SIP username used for authentication.
      * @param string $sipAuthPassword The SIP password for authentication.
      * @param string[] $dequeueStatusCallbackEvent The call progress events sent via webhooks as a result of a Dequeue instruction.
@@ -943,9 +943,9 @@ class UpdateReservationOptions extends Options
     }
 
     /**
-     * The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+     * The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
      *
-     * @param string $region The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+     * @param string $region The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
      * @return $this Fluent Builder
      */
     public function setRegion(string $region): self

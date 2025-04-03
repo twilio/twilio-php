@@ -79,6 +79,8 @@ class RatePlanList extends ListResource
                 $options['nationalRoamingDataLimit'],
             'InternationalRoamingDataLimit' =>
                 $options['internationalRoamingDataLimit'],
+            'DataLimitStrategy' =>
+                $options['dataLimitStrategy'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);

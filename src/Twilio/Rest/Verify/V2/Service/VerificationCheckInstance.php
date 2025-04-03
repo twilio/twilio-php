@@ -36,7 +36,7 @@ use Twilio\Deserialize;
  * @property string|null $payee
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
- * @property array[]|null $snaAttemptsErrorCodes
+ * @property object[]|null $snaAttemptsErrorCodes
  */
 class VerificationCheckInstance extends InstanceResource
 {

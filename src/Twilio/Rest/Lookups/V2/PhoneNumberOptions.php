@@ -35,6 +35,7 @@ abstract class PhoneNumberOptions
      * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests.
      * @param string $lastVerifiedDate The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests.
      * @param string $verificationSid The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests.
+     * @param string $partnerSubId The optional partnerSubId parameter to provide context for your sub-accounts, tenantIDs, sender IDs or other segmentation, enhancing the accuracy of the risk analysis.
      * @return FetchPhoneNumberOptions Options builder
      */
     public static function fetch(
@@ -52,7 +53,8 @@ abstract class PhoneNumberOptions
         string $nationalId = Values::NONE,
         string $dateOfBirth = Values::NONE,
         string $lastVerifiedDate = Values::NONE,
-        string $verificationSid = Values::NONE
+        string $verificationSid = Values::NONE,
+        string $partnerSubId = Values::NONE
 
     ): FetchPhoneNumberOptions
     {
@@ -70,7 +72,8 @@ abstract class PhoneNumberOptions
             $nationalId,
             $dateOfBirth,
             $lastVerifiedDate,
-            $verificationSid
+            $verificationSid,
+            $partnerSubId
         );
     }
 
@@ -93,6 +96,7 @@ class FetchPhoneNumberOptions extends Options
      * @param string $dateOfBirth User’s date of birth, in YYYYMMDD format. This query parameter is only used (optionally) for identity_match package requests.
      * @param string $lastVerifiedDate The date you obtained consent to call or text the end-user of the phone number or a date on which you are reasonably certain that the end-user could still be reached at that number. This query parameter is only used (optionally) for reassigned_number package requests.
      * @param string $verificationSid The unique identifier associated with a verification process through verify API. This query parameter is only used (optionally) for pre_fill package requests.
+     * @param string $partnerSubId The optional partnerSubId parameter to provide context for your sub-accounts, tenantIDs, sender IDs or other segmentation, enhancing the accuracy of the risk analysis.
      */
     public function __construct(
         
@@ -109,7 +113,8 @@ class FetchPhoneNumberOptions extends Options
         string $nationalId = Values::NONE,
         string $dateOfBirth = Values::NONE,
         string $lastVerifiedDate = Values::NONE,
-        string $verificationSid = Values::NONE
+        string $verificationSid = Values::NONE,
+        string $partnerSubId = Values::NONE
 
     ) {
         $this->options['fields'] = $fields;
@@ -126,6 +131,7 @@ class FetchPhoneNumberOptions extends Options
         $this->options['dateOfBirth'] = $dateOfBirth;
         $this->options['lastVerifiedDate'] = $lastVerifiedDate;
         $this->options['verificationSid'] = $verificationSid;
+        $this->options['partnerSubId'] = $partnerSubId;
     }
 
     /**
@@ -293,6 +299,18 @@ class FetchPhoneNumberOptions extends Options
     public function setVerificationSid(string $verificationSid): self
     {
         $this->options['verificationSid'] = $verificationSid;
+        return $this;
+    }
+
+    /**
+     * The optional partnerSubId parameter to provide context for your sub-accounts, tenantIDs, sender IDs or other segmentation, enhancing the accuracy of the risk analysis.
+     *
+     * @param string $partnerSubId The optional partnerSubId parameter to provide context for your sub-accounts, tenantIDs, sender IDs or other segmentation, enhancing the accuracy of the risk analysis.
+     * @return $this Fluent Builder
+     */
+    public function setPartnerSubId(string $partnerSubId): self
+    {
+        $this->options['partnerSubId'] = $partnerSubId;
         return $this;
     }
 

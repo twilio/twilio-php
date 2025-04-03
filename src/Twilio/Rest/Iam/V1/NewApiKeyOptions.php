@@ -18,13 +18,13 @@ namespace Twilio\Rest\Iam\V1;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class KeyOptions
+abstract class NewApiKeyOptions
 {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $keyType
      * @param array $policy The \\\\`Policy\\\\` object is a collection that specifies the allowed Twilio permissions for the restricted key. For more information on the permissions available with restricted API keys, refer to the [Twilio documentation](https://www.twilio.com/docs/iam/api-keys/restricted-api-keys#permissions-available-with-restricted-api-keys).
-     * @return CreateKeyOptions Options builder
+     * @return CreateNewApiKeyOptions Options builder
      */
     public static function create(
         
@@ -32,9 +32,9 @@ abstract class KeyOptions
         string $keyType = Values::NONE,
         array $policy = Values::ARRAY_NONE
 
-    ): CreateKeyOptions
+    ): CreateNewApiKeyOptions
     {
-        return new CreateKeyOptions(
+        return new CreateNewApiKeyOptions(
             $friendlyName,
             $keyType,
             $policy
@@ -43,7 +43,7 @@ abstract class KeyOptions
 
 }
 
-class CreateKeyOptions extends Options
+class CreateNewApiKeyOptions extends Options
     {
     /**
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
@@ -104,7 +104,7 @@ class CreateKeyOptions extends Options
     public function __toString(): string
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Iam.V1.CreateKeyOptions ' . $options . ']';
+        return '[Twilio.Iam.V1.CreateNewApiKeyOptions ' . $options . ']';
     }
 }
 
