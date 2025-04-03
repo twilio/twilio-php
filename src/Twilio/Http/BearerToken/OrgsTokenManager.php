@@ -3,9 +3,9 @@ namespace Twilio\Http\BearerToken;
 use Twilio\CredentialProvider\NoAuthCredentialProvider;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
-use Twilio\Rest\PreviewIam\V1;
-use Twilio\Rest\PreviewIam\V1\TokenList;
-use Twilio\Rest\PreviewIamBase;
+use Twilio\Rest\Iam\V1;
+use Twilio\Rest\Iam\V1\TokenList;
+use Twilio\Rest\IamBase;
 
 
 /**
@@ -36,7 +36,7 @@ class OrgsTokenManager extends TokenManager {
         }
         $noAuthCredentialProvider = new NoAuthCredentialProvider();
         $client->setCredentialProvider($noAuthCredentialProvider);
-        $base = new PreviewIamBase($client);
+        $base = new IamBase($client);
         $v1 = new V1($base);
         $tokenList = new TokenList($v1);
 
