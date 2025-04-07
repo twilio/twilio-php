@@ -38,7 +38,7 @@ class FormInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $formType The Type of this Form. Currently only `form-push` is supported.
      */
-    public function __construct(Version $version, array $payload, string $formType = null)
+    public function __construct(Version $version, array $payload, ?string $formType = null)
     {
         parent::__construct($version);
 

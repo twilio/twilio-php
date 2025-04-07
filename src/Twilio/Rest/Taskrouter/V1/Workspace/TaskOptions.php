@@ -39,7 +39,7 @@ abstract class TaskOptions
         string $taskChannel = Values::NONE,
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $virtualStartTime = null,
+        ?\DateTime $virtualStartTime = null,
         string $routingTarget = Values::NONE,
         string $ignoreCapacity = Values::NONE,
         string $taskQueueSid = Values::NONE
@@ -134,7 +134,7 @@ abstract class TaskOptions
         string $reason = Values::NONE,
         int $priority = Values::INT_NONE,
         string $taskChannel = Values::NONE,
-        \DateTime $virtualStartTime = null,
+        ?\DateTime $virtualStartTime = null,
         string $ifMatch = Values::NONE
 
     ): UpdateTaskOptions
@@ -172,7 +172,7 @@ class CreateTaskOptions extends Options
         string $taskChannel = Values::NONE,
         string $workflowSid = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $virtualStartTime = null,
+        ?\DateTime $virtualStartTime = null,
         string $routingTarget = Values::NONE,
         string $ignoreCapacity = Values::NONE,
         string $taskQueueSid = Values::NONE
@@ -537,7 +537,7 @@ class UpdateTaskOptions extends Options
         string $reason = Values::NONE,
         int $priority = Values::INT_NONE,
         string $taskChannel = Values::NONE,
-        \DateTime $virtualStartTime = null,
+        ?\DateTime $virtualStartTime = null,
         string $ifMatch = Values::NONE
 
     ) {

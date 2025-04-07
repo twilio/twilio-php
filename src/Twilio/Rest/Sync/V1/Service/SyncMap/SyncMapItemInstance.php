@@ -49,7 +49,7 @@ class SyncMapItemInstance extends InstanceResource
      * @param string $mapSid The SID of the Sync Map to add the new Map Item to. Can be the Sync Map resource's `sid` or its `unique_name`.
      * @param string $key The `key` value of the Sync Map Item resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, string $key = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $mapSid, ?string $key = null)
     {
         parent::__construct($version);
 

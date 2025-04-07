@@ -54,7 +54,7 @@ class MessageInstance extends InstanceResource
      * @param string $channelSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, ?string $sid = null)
     {
         parent::__construct($version);
 

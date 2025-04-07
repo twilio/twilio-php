@@ -32,8 +32,8 @@ abstract class VerificationAttemptsSummaryOptions
     public static function fetch(
         
         string $verifyServiceSid = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $country = Values::NONE,
         string $channel = Values::NONE,
         string $destinationPrefix = Values::NONE
@@ -65,8 +65,8 @@ class FetchVerificationAttemptsSummaryOptions extends Options
     public function __construct(
         
         string $verifyServiceSid = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $country = Values::NONE,
         string $channel = Values::NONE,
         string $destinationPrefix = Values::NONE

@@ -47,7 +47,7 @@ class IpAddressInstance extends InstanceResource
      * @param string $ipAccessControlListSid The IpAccessControlList Sid with which to associate the created IpAddress resource.
      * @param string $sid A 34 character string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $ipAccessControlListSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $ipAccessControlListSid, ?string $sid = null)
     {
         parent::__construct($version);
 

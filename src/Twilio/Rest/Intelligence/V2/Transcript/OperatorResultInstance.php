@@ -52,7 +52,7 @@ class OperatorResultInstance extends InstanceResource
      * @param string $transcriptSid A 34 character string that uniquely identifies this Transcript.
      * @param string $operatorSid A 34 character string that identifies this Language Understanding operator sid.
      */
-    public function __construct(Version $version, array $payload, string $transcriptSid, string $operatorSid = null)
+    public function __construct(Version $version, array $payload, string $transcriptSid, ?string $operatorSid = null)
     {
         parent::__construct($version);
 

@@ -42,7 +42,7 @@ class InstalledAddOnExtensionInstance extends InstanceResource
      * @param string $installedAddOnSid The SID of the InstalledAddOn resource with the extension to fetch.
      * @param string $sid The SID of the InstalledAddOn Extension resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $installedAddOnSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $installedAddOnSid, ?string $sid = null)
     {
         parent::__construct($version);
 

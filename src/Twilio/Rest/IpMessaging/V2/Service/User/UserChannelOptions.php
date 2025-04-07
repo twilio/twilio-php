@@ -33,7 +33,7 @@ abstract class UserChannelOptions
         
         string $notificationLevel = Values::NONE,
         int $lastConsumedMessageIndex = Values::INT_NONE,
-        \DateTime $lastConsumptionTimestamp = null
+        ?\DateTime $lastConsumptionTimestamp = null
 
     ): UpdateUserChannelOptions
     {
@@ -60,7 +60,7 @@ class UpdateUserChannelOptions extends Options
         
         string $notificationLevel = Values::NONE,
         int $lastConsumedMessageIndex = Values::INT_NONE,
-        \DateTime $lastConsumptionTimestamp = null
+        ?\DateTime $lastConsumptionTimestamp = null
 
     ) {
         $this->options['notificationLevel'] = $notificationLevel;

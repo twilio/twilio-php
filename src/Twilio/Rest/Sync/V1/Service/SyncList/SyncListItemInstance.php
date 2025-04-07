@@ -49,7 +49,7 @@ class SyncListItemInstance extends InstanceResource
      * @param string $listSid The SID of the Sync List to add the new List Item to. Can be the Sync List resource's `sid` or its `unique_name`.
      * @param int $index The index of the Sync List Item resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, int $index = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, ?int $index = null)
     {
         parent::__construct($version);
 

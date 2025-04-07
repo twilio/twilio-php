@@ -76,9 +76,9 @@ abstract class BundleOptions
         bool $hasValidUntilDate = Values::BOOL_NONE,
         string $sortBy = Values::NONE,
         string $sortDirection = Values::NONE,
-        string $validUntilDateBefore = null,
-        string $validUntilDate = null,
-        string $validUntilDateAfter = null
+        ?string $validUntilDateBefore = null,
+        ?string $validUntilDate = null,
+        ?string $validUntilDateAfter = null
 
     ): ReadBundleOptions
     {
@@ -260,9 +260,9 @@ class ReadBundleOptions extends Options
         bool $hasValidUntilDate = Values::BOOL_NONE,
         string $sortBy = Values::NONE,
         string $sortDirection = Values::NONE,
-        string $validUntilDateBefore = null,
-        string $validUntilDate = null,
-        string $validUntilDateAfter = null
+        ?string $validUntilDateBefore = null,
+        ?string $validUntilDate = null,
+        ?string $validUntilDateAfter = null
 
     ) {
         $this->options['status'] = $status;

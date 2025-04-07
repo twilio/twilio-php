@@ -53,7 +53,7 @@ class ParticipantInstance extends InstanceResource
      * @param string $conferenceSid The SID of the participant's conference.
      * @param string $callSid The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, string $callSid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, ?string $callSid = null)
     {
         parent::__construct($version);
 

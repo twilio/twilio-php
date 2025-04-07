@@ -50,7 +50,7 @@ class AddOnResultInstance extends InstanceResource
      * @param string $referenceSid The SID of the recording to which the result to delete belongs.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $referenceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $referenceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

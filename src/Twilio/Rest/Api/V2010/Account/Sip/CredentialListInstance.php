@@ -46,7 +46,7 @@ class CredentialListInstance extends InstanceResource
      * @param string $accountSid The unique id of the Account that is responsible for this resource.
      * @param string $sid The credential list Sid that uniquely identifies this resource
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $sid = null)
     {
         parent::__construct($version);
 

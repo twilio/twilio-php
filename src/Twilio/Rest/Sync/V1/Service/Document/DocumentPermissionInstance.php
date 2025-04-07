@@ -44,7 +44,7 @@ class DocumentPermissionInstance extends InstanceResource
      * @param string $documentSid The SID of the Sync Document with the Document Permission resource to delete. Can be the Document resource's `sid` or its `unique_name`.
      * @param string $identity The application-defined string that uniquely identifies the User's Document Permission resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $documentSid, string $identity = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $documentSid, ?string $identity = null)
     {
         parent::__construct($version);
 

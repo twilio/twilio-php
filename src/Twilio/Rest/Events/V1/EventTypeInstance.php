@@ -44,7 +44,7 @@ class EventTypeInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $type A string that uniquely identifies this Event Type.
      */
-    public function __construct(Version $version, array $payload, string $type = null)
+    public function __construct(Version $version, array $payload, ?string $type = null)
     {
         parent::__construct($version);
 

@@ -38,7 +38,7 @@ class LinkshorteningMessagingServiceInstance extends InstanceResource
      * @param string $domainSid The domain SID to associate with a messaging service. With URL shortening enabled, links in messages sent with the associated messaging service will be shortened to the provided domain
      * @param string $messagingServiceSid A messaging service SID to associate with a domain. With URL shortening enabled, links in messages sent with the provided messaging service will be shortened to the associated domain
      */
-    public function __construct(Version $version, array $payload, string $domainSid = null, string $messagingServiceSid = null)
+    public function __construct(Version $version, array $payload, ?string $domainSid = null, ?string $messagingServiceSid = null)
     {
         parent::__construct($version);
 

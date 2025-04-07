@@ -51,7 +51,7 @@ class InteractionChannelInstance extends InstanceResource
      * @param string $interactionSid The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
      * @param string $sid The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $interactionSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -58,7 +58,7 @@ class ParticipantInstance extends InstanceResource
      * @param string $roomSid The SID of the room with the Participant resource to fetch.
      * @param string $sid The SID of the RoomParticipant resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $roomSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -39,7 +39,7 @@ class AccountConfigInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $key The config key; up to 100 characters.
      */
-    public function __construct(Version $version, array $payload, string $key = null)
+    public function __construct(Version $version, array $payload, ?string $key = null)
     {
         parent::__construct($version);
 

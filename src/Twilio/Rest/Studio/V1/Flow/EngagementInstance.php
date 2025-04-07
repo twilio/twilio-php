@@ -52,7 +52,7 @@ class EngagementInstance extends InstanceResource
      * @param string $flowSid The SID of the Flow.
      * @param string $sid The SID of the Engagement resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, ?string $sid = null)
     {
         parent::__construct($version);
 

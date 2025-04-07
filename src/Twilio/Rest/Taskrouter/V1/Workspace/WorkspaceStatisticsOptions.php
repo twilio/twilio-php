@@ -31,8 +31,8 @@ abstract class WorkspaceStatisticsOptions
     public static function fetch(
         
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 
@@ -61,8 +61,8 @@ class FetchWorkspaceStatisticsOptions extends Options
     public function __construct(
         
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 

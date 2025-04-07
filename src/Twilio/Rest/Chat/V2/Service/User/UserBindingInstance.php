@@ -49,7 +49,7 @@ class UserBindingInstance extends InstanceResource
      * @param string $userSid The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resources to delete.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
      * @param string $sid The SID of the User Binding resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, ?string $sid = null)
     {
         parent::__construct($version);
 

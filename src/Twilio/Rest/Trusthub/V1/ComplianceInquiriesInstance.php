@@ -39,7 +39,7 @@ class ComplianceInquiriesInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $customerId The unique CustomerId matching the Customer Profile/Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Compliance Inquiry creation call.
      */
-    public function __construct(Version $version, array $payload, string $customerId = null)
+    public function __construct(Version $version, array $payload, ?string $customerId = null)
     {
         parent::__construct($version);
 

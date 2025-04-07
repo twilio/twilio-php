@@ -39,7 +39,7 @@ class InsightsQuestionnairesCategoryInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $categorySid The SID of the category to be deleted
      */
-    public function __construct(Version $version, array $payload, string $categorySid = null)
+    public function __construct(Version $version, array $payload, ?string $categorySid = null)
     {
         parent::__construct($version);
 

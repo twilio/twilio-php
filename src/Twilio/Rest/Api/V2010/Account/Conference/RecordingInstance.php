@@ -55,7 +55,7 @@ class RecordingInstance extends InstanceResource
      * @param string $conferenceSid The Conference SID that identifies the conference associated with the recording to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Conference Recording resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $conferenceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -68,8 +68,8 @@ abstract class CompositionOptions
     public static function read(
         
         string $status = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $roomSid = Values::NONE
 
     ): ReadCompositionOptions
@@ -237,8 +237,8 @@ class ReadCompositionOptions extends Options
     public function __construct(
         
         string $status = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $roomSid = Values::NONE
 
     ) {

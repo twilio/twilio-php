@@ -31,9 +31,9 @@ abstract class NotificationOptions
     public static function read(
         
         int $log = Values::INT_NONE,
-        string $messageDateBefore = null,
-        string $messageDate = null,
-        string $messageDateAfter = null
+        ?string $messageDateBefore = null,
+        ?string $messageDate = null,
+        ?string $messageDateAfter = null
 
     ): ReadNotificationOptions
     {
@@ -59,9 +59,9 @@ class ReadNotificationOptions extends Options
     public function __construct(
         
         int $log = Values::INT_NONE,
-        string $messageDateBefore = null,
-        string $messageDate = null,
-        string $messageDateAfter = null
+        ?string $messageDateBefore = null,
+        ?string $messageDate = null,
+        ?string $messageDateAfter = null
 
     ) {
         $this->options['log'] = $log;

@@ -47,7 +47,7 @@ class BindingInstance extends InstanceResource
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the Binding resource from.
      * @param string $sid The SID of the Binding resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $chatServiceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

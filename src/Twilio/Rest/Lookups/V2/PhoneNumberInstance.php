@@ -52,7 +52,7 @@ class PhoneNumberInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $phoneNumber The phone number to lookup in E.164 or national format. Default country code is +1 (North America).
      */
-    public function __construct(Version $version, array $payload, string $phoneNumber = null)
+    public function __construct(Version $version, array $payload, ?string $phoneNumber = null)
     {
         parent::__construct($version);
 

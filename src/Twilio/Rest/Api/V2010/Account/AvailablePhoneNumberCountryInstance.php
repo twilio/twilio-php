@@ -55,7 +55,7 @@ class AvailablePhoneNumberCountryInstance extends InstanceResource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resource.
      * @param string $countryCode The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country to fetch available phone number information about.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $countryCode = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $countryCode = null)
     {
         parent::__construct($version);
 

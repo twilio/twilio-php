@@ -47,7 +47,7 @@ class SubscribedTrackInstance extends InstanceResource
      * @param string $participantSid The SID of the participant that subscribes to the Track resource to fetch.
      * @param string $sid The SID of the RoomParticipantSubscribedTrack resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid, ?string $sid = null)
     {
         parent::__construct($version);
 

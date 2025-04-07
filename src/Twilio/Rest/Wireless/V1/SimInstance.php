@@ -65,7 +65,7 @@ class SimInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID or the `unique_name` of the Sim resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

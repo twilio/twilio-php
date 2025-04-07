@@ -44,7 +44,7 @@ class PaymentInstance extends InstanceResource
      * @param string $callSid The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF.
      * @param string $sid The SID of Payments session that needs to be updated.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, ?string $sid = null)
     {
         parent::__construct($version);
 

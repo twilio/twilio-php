@@ -41,7 +41,7 @@ class SigningKeyInstance extends InstanceResource
      * @param string $accountSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $sid = null)
     {
         parent::__construct($version);
 

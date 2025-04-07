@@ -36,8 +36,8 @@ abstract class RecordingOptions
         string $status = Values::NONE,
         string $sourceSid = Values::NONE,
         array $groupingSid = Values::ARRAY_NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $mediaType = Values::NONE
 
     ): ReadRecordingOptions
@@ -71,8 +71,8 @@ class ReadRecordingOptions extends Options
         string $status = Values::NONE,
         string $sourceSid = Values::NONE,
         array $groupingSid = Values::ARRAY_NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $mediaType = Values::NONE
 
     ) {

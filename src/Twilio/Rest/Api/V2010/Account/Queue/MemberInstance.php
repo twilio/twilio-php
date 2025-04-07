@@ -44,7 +44,7 @@ class MemberInstance extends InstanceResource
      * @param string $queueSid The SID of the Queue in which to find the members to fetch.
      * @param string $callSid The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $queueSid, string $callSid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $queueSid, ?string $callSid = null)
     {
         parent::__construct($version);
 

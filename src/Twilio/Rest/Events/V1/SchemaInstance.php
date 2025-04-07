@@ -43,7 +43,7 @@ class SchemaInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $id The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         parent::__construct($version);
 

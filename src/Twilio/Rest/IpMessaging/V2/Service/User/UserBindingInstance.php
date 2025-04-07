@@ -49,7 +49,7 @@ class UserBindingInstance extends InstanceResource
      * @param string $userSid 
      * @param string $sid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, ?string $sid = null)
     {
         parent::__construct($version);
 

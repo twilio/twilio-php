@@ -45,7 +45,7 @@ class AssetVersionInstance extends InstanceResource
      * @param string $assetSid The SID of the Asset resource that is the parent of the Asset Version resource to fetch.
      * @param string $sid The SID of the Asset Version resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $assetSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $assetSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -47,7 +47,7 @@ class AssistantsToolInstance extends InstanceResource
      * @param string $assistantId The assistant ID.
      * @param string $id The tool ID.
      */
-    public function __construct(Version $version, array $payload, string $assistantId, string $id = null)
+    public function __construct(Version $version, array $payload, string $assistantId, ?string $id = null)
     {
         parent::__construct($version);
 

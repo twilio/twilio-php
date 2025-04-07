@@ -95,7 +95,7 @@ class AccountInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The Account Sid that uniquely identifies the account to fetch
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -53,7 +53,7 @@ class SyncMapInstance extends InstanceResource
      * @param string $serviceSid The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the Sync Map in.
      * @param string $sid The SID of the Sync Map resource to delete. Can be the Sync Map's `sid` or its `unique_name`.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

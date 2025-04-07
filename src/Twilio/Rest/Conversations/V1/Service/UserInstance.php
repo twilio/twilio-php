@@ -53,7 +53,7 @@ class UserInstance extends InstanceResource
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is associated with.
      * @param string $sid The SID of the User resource to delete. This value can be either the `sid` or the `identity` of the User resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $chatServiceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

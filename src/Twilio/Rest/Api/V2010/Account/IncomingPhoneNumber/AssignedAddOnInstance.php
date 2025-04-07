@@ -51,7 +51,7 @@ class AssignedAddOnInstance extends InstanceResource
      * @param string $resourceSid The SID of the Phone Number to assign the Add-on.
      * @param string $sid The Twilio-provided string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

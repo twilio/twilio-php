@@ -58,7 +58,7 @@ class ConversationInstance extends InstanceResource
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Conversation resource is associated with.
      * @param string $sid A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $chatServiceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

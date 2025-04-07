@@ -45,7 +45,7 @@ class CredentialInstance extends InstanceResource
      * @param string $credentialListSid The unique id that identifies the credential list to include the created credential.
      * @param string $sid The unique id that identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $credentialListSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $credentialListSid, ?string $sid = null)
     {
         parent::__construct($version);
 

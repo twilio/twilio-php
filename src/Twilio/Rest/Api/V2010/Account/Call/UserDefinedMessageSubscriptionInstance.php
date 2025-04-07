@@ -42,7 +42,7 @@ class UserDefinedMessageSubscriptionInstance extends InstanceResource
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined Messages subscription is associated with. This refers to the Call SID that is producing the user defined messages.
      * @param string $sid The SID that uniquely identifies this User Defined Message Subscription.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -47,7 +47,7 @@ class InviteInstance extends InstanceResource
      * @param string $channelSid The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the new resource belongs to.
      * @param string $sid The Twilio-provided string that uniquely identifies the Invite resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, ?string $sid = null)
     {
         parent::__construct($version);
 

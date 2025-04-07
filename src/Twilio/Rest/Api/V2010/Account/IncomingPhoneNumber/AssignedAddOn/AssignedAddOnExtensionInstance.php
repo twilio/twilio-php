@@ -46,7 +46,7 @@ class AssignedAddOnExtensionInstance extends InstanceResource
      * @param string $assignedAddOnSid The SID that uniquely identifies the assigned Add-on installation.
      * @param string $sid The Twilio-provided string that uniquely identifies the resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $assignedAddOnSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $resourceSid, string $assignedAddOnSid, ?string $sid = null)
     {
         parent::__construct($version);
 

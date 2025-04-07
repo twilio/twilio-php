@@ -34,8 +34,8 @@ abstract class RoomOptions
         array $roomType = Values::ARRAY_NONE,
         array $codec = Values::ARRAY_NONE,
         string $roomName = Values::NONE,
-        \DateTime $createdAfter = null,
-        \DateTime $createdBefore = null
+        ?\DateTime $createdAfter = null,
+        ?\DateTime $createdBefore = null
 
     ): ReadRoomOptions
     {
@@ -65,8 +65,8 @@ class ReadRoomOptions extends Options
         array $roomType = Values::ARRAY_NONE,
         array $codec = Values::ARRAY_NONE,
         string $roomName = Values::NONE,
-        \DateTime $createdAfter = null,
-        \DateTime $createdBefore = null
+        ?\DateTime $createdAfter = null,
+        ?\DateTime $createdBefore = null
 
     ) {
         $this->options['roomType'] = $roomType;

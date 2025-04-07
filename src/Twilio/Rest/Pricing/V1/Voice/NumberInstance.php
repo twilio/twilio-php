@@ -41,7 +41,7 @@ class NumberInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $number The phone number to fetch.
      */
-    public function __construct(Version $version, array $payload, string $number = null)
+    public function __construct(Version $version, array $payload, ?string $number = null)
     {
         parent::__construct($version);
 

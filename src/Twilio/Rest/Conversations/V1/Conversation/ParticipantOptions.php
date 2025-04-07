@@ -37,8 +37,8 @@ abstract class ParticipantOptions
         string $identity = Values::NONE,
         string $messagingBindingAddress = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $messagingBindingProjectedAddress = Values::NONE,
         string $roleSid = Values::NONE,
@@ -91,8 +91,8 @@ abstract class ParticipantOptions
      */
     public static function update(
         
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $roleSid = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
@@ -138,8 +138,8 @@ class CreateParticipantOptions extends Options
         string $identity = Values::NONE,
         string $messagingBindingAddress = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $messagingBindingProjectedAddress = Values::NONE,
         string $roleSid = Values::NONE,
@@ -332,8 +332,8 @@ class UpdateParticipantOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $roleSid = Values::NONE,
         string $messagingBindingProxyAddress = Values::NONE,

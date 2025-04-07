@@ -37,7 +37,7 @@ class LinkshorteningMessagingServiceDomainAssociationInstance extends InstanceRe
      * @param mixed[] $payload The response payload
      * @param string $messagingServiceSid Unique string used to identify the Messaging service that this domain should be associated with.
      */
-    public function __construct(Version $version, array $payload, string $messagingServiceSid = null)
+    public function __construct(Version $version, array $payload, ?string $messagingServiceSid = null)
     {
         parent::__construct($version);
 

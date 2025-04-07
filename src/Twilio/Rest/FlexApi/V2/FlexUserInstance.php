@@ -52,7 +52,7 @@ class FlexUserInstance extends InstanceResource
      * @param string $instanceSid The unique ID created by Twilio to identify a Flex instance.
      * @param string $flexUserSid The unique id for the flex user to be retrieved.
      */
-    public function __construct(Version $version, array $payload, string $instanceSid = null, string $flexUserSid = null)
+    public function __construct(Version $version, array $payload, ?string $instanceSid = null, ?string $flexUserSid = null)
     {
         parent::__construct($version);
 

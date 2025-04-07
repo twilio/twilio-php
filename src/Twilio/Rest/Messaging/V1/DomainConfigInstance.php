@@ -45,7 +45,7 @@ class DomainConfigInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $domainSid Unique string used to identify the domain that this config should be associated with.
      */
-    public function __construct(Version $version, array $payload, string $domainSid = null)
+    public function __construct(Version $version, array $payload, ?string $domainSid = null)
     {
         parent::__construct($version);
 

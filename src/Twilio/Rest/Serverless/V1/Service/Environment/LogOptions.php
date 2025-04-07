@@ -30,8 +30,8 @@ abstract class LogOptions
     public static function read(
         
         string $functionSid = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null
 
     ): ReadLogOptions
     {
@@ -55,8 +55,8 @@ class ReadLogOptions extends Options
     public function __construct(
         
         string $functionSid = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null
 
     ) {
         $this->options['functionSid'] = $functionSid;

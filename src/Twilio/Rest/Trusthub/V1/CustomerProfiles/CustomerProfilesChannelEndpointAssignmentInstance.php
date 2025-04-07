@@ -43,7 +43,7 @@ class CustomerProfilesChannelEndpointAssignmentInstance extends InstanceResource
      * @param string $customerProfileSid The unique string that we created to identify the CustomerProfile resource.
      * @param string $sid The unique string that we created to identify the resource.
      */
-    public function __construct(Version $version, array $payload, string $customerProfileSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $customerProfileSid, ?string $sid = null)
     {
         parent::__construct($version);
 

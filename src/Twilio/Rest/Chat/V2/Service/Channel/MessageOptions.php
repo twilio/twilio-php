@@ -35,8 +35,8 @@ abstract class MessageOptions
         
         string $from = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $lastUpdatedBy = Values::NONE,
         string $body = Values::NONE,
         string $mediaSid = Values::NONE,
@@ -101,8 +101,8 @@ abstract class MessageOptions
         
         string $body = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $lastUpdatedBy = Values::NONE,
         string $from = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
@@ -138,8 +138,8 @@ class CreateMessageOptions extends Options
         
         string $from = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $lastUpdatedBy = Values::NONE,
         string $body = Values::NONE,
         string $mediaSid = Values::NONE,
@@ -354,8 +354,8 @@ class UpdateMessageOptions extends Options
         
         string $body = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $lastUpdatedBy = Values::NONE,
         string $from = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE

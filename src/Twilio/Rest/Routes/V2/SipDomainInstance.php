@@ -44,7 +44,7 @@ class SipDomainInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sipDomain 
      */
-    public function __construct(Version $version, array $payload, string $sipDomain = null)
+    public function __construct(Version $version, array $payload, ?string $sipDomain = null)
     {
         parent::__construct($version);
 

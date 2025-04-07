@@ -30,7 +30,7 @@ abstract class ChallengeOptions
      */
     public static function create(
         
-        \DateTime $expirationDate = null,
+        ?\DateTime $expirationDate = null,
         string $detailsMessage = Values::NONE,
         array $detailsFields = Values::ARRAY_NONE,
         array $hiddenDetails = Values::ARRAY_NONE,
@@ -100,7 +100,7 @@ class CreateChallengeOptions extends Options
      */
     public function __construct(
         
-        \DateTime $expirationDate = null,
+        ?\DateTime $expirationDate = null,
         string $detailsMessage = Values::NONE,
         array $detailsFields = Values::ARRAY_NONE,
         array $hiddenDetails = Values::ARRAY_NONE,

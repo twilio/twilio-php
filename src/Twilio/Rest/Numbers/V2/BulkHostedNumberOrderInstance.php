@@ -45,7 +45,7 @@ class BulkHostedNumberOrderInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $bulkHostingSid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
      */
-    public function __construct(Version $version, array $payload, string $bulkHostingSid = null)
+    public function __construct(Version $version, array $payload, ?string $bulkHostingSid = null)
     {
         parent::__construct($version);
 

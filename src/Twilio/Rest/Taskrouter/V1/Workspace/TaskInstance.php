@@ -64,7 +64,7 @@ class TaskInstance extends InstanceResource
      * @param string $workspaceSid The SID of the Workspace that the new Task belongs to.
      * @param string $sid The SID of the Task resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $workspaceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -37,11 +37,11 @@ abstract class EventOptions
      */
     public static function read(
         
-        \DateTime $endDate = null,
+        ?\DateTime $endDate = null,
         string $eventType = Values::NONE,
         int $minutes = Values::INT_NONE,
         string $reservationSid = Values::NONE,
-        \DateTime $startDate = null,
+        ?\DateTime $startDate = null,
         string $taskQueueSid = Values::NONE,
         string $taskSid = Values::NONE,
         string $workerSid = Values::NONE,
@@ -86,11 +86,11 @@ class ReadEventOptions extends Options
      */
     public function __construct(
         
-        \DateTime $endDate = null,
+        ?\DateTime $endDate = null,
         string $eventType = Values::NONE,
         int $minutes = Values::INT_NONE,
         string $reservationSid = Values::NONE,
-        \DateTime $startDate = null,
+        ?\DateTime $startDate = null,
         string $taskQueueSid = Values::NONE,
         string $taskSid = Values::NONE,
         string $workerSid = Values::NONE,

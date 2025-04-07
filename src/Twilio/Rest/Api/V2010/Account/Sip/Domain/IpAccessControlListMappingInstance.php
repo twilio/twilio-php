@@ -44,7 +44,7 @@ class IpAccessControlListMappingInstance extends InstanceResource
      * @param string $domainSid A 34 character string that uniquely identifies the SIP domain.
      * @param string $sid A 34 character string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, ?string $sid = null)
     {
         parent::__construct($version);
 

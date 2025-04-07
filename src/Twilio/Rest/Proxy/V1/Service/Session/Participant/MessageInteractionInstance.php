@@ -58,7 +58,7 @@ class MessageInteractionInstance extends InstanceResource
      * @param string $participantSid The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the MessageInteraction resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $participantSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $participantSid, ?string $sid = null)
     {
         parent::__construct($version);
 

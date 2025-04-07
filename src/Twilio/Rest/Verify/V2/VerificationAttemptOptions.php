@@ -34,8 +34,8 @@ abstract class VerificationAttemptOptions
      */
     public static function read(
         
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $channelDataTo = Values::NONE,
         string $country = Values::NONE,
         string $channel = Values::NONE,
@@ -74,8 +74,8 @@ class ReadVerificationAttemptOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $channelDataTo = Values::NONE,
         string $country = Values::NONE,
         string $channel = Values::NONE,

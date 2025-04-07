@@ -49,7 +49,7 @@ class FunctionVersionInstance extends InstanceResource
      * @param string $functionSid The SID of the function that is the parent of the Function Version resource to fetch.
      * @param string $sid The SID of the Function Version resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $functionSid, ?string $sid = null)
     {
         parent::__construct($version);
 

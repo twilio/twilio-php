@@ -42,7 +42,7 @@ class PhoneNumberInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $phoneNumber The phone number to lookup in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
      */
-    public function __construct(Version $version, array $payload, string $phoneNumber = null)
+    public function __construct(Version $version, array $payload, ?string $phoneNumber = null)
     {
         parent::__construct($version);
 

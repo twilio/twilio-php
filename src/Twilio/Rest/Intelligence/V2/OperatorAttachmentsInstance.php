@@ -37,7 +37,7 @@ class OperatorAttachmentsInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique SID identifier of the Service.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid = null)
+    public function __construct(Version $version, array $payload, ?string $serviceSid = null)
     {
         parent::__construct($version);
 

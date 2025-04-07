@@ -54,7 +54,7 @@ class NotificationInstance extends InstanceResource
      * @param string $callSid The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resource to fetch.
      * @param string $sid The Twilio-provided string that uniquely identifies the Call Notification resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, ?string $sid = null)
     {
         parent::__construct($version);
 

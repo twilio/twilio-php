@@ -49,7 +49,7 @@ class ReservationInstance extends InstanceResource
      * @param string $workerSid The SID of the reserved Worker resource with the WorkerReservation resource to fetch.
      * @param string $sid The SID of the WorkerReservation resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $workerSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $workspaceSid, string $workerSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -51,7 +51,7 @@ class ExecutionInstance extends InstanceResource
      * @param string $flowSid The SID of the Excecution's Flow.
      * @param string $sid The SID of the Execution resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, ?string $sid = null)
     {
         parent::__construct($version);
 

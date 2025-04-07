@@ -43,7 +43,7 @@ class NumberInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $destinationNumber The destination phone number, in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, for which to fetch the origin-based voice pricing information. E.164 format consists of a + followed by the country code and subscriber number.
      */
-    public function __construct(Version $version, array $payload, string $destinationNumber = null)
+    public function __construct(Version $version, array $payload, ?string $destinationNumber = null)
     {
         parent::__construct($version);
 

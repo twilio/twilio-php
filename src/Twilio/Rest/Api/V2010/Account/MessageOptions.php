@@ -67,7 +67,7 @@ abstract class MessageOptions
         string $trafficType = Values::NONE,
         bool $shortenUrls = Values::BOOL_NONE,
         string $scheduleType = Values::NONE,
-        \DateTime $sendAt = null,
+        ?\DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
         string $riskCheck = Values::NONE
@@ -115,9 +115,9 @@ abstract class MessageOptions
         
         string $to = Values::NONE,
         string $from = Values::NONE,
-        string $dateSentBefore = null,
-        string $dateSent = null,
-        string $dateSentAfter = null
+        ?string $dateSentBefore = null,
+        ?string $dateSent = null,
+        ?string $dateSentAfter = null
 
     ): ReadMessageOptions
     {
@@ -198,7 +198,7 @@ class CreateMessageOptions extends Options
         string $trafficType = Values::NONE,
         bool $shortenUrls = Values::BOOL_NONE,
         string $scheduleType = Values::NONE,
-        \DateTime $sendAt = null,
+        ?\DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
         string $riskCheck = Values::NONE
@@ -522,9 +522,9 @@ class ReadMessageOptions extends Options
         
         string $to = Values::NONE,
         string $from = Values::NONE,
-        string $dateSentBefore = null,
-        string $dateSent = null,
-        string $dateSentAfter = null
+        ?string $dateSentBefore = null,
+        ?string $dateSent = null,
+        ?string $dateSentAfter = null
 
     ) {
         $this->options['to'] = $to;

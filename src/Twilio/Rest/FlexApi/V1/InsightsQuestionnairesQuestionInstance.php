@@ -45,7 +45,7 @@ class InsightsQuestionnairesQuestionInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $questionSid The SID of the question
      */
-    public function __construct(Version $version, array $payload, string $questionSid = null)
+    public function __construct(Version $version, array $payload, ?string $questionSid = null)
     {
         parent::__construct($version);
 

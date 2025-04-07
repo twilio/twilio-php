@@ -45,7 +45,7 @@ class StreamInstance extends InstanceResource
      * @param string $callSid The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Stream resource is associated with.
      * @param string $sid The SID or the `name` of the Stream resource to be stopped
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $callSid, ?string $sid = null)
     {
         parent::__construct($version);
 

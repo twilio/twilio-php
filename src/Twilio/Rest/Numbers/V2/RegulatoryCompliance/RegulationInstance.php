@@ -42,7 +42,7 @@ class RegulationInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the Regulation resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -30,8 +30,8 @@ abstract class AlertOptions
     public static function read(
         
         string $logLevel = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null
 
     ): ReadAlertOptions
     {
@@ -55,8 +55,8 @@ class ReadAlertOptions extends Options
     public function __construct(
         
         string $logLevel = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null
 
     ) {
         $this->options['logLevel'] = $logLevel;

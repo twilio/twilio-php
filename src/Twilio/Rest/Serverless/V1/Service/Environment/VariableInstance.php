@@ -47,7 +47,7 @@ class VariableInstance extends InstanceResource
      * @param string $environmentSid The SID of the Environment in which the Variable resource exists.
      * @param string $sid The SID of the Variable resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, ?string $sid = null)
     {
         parent::__construct($version);
 

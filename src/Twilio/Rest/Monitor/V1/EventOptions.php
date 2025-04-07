@@ -36,8 +36,8 @@ abstract class EventOptions
         string $eventType = Values::NONE,
         string $resourceSid = Values::NONE,
         string $sourceIpAddress = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null
 
     ): ReadEventOptions
     {
@@ -70,8 +70,8 @@ class ReadEventOptions extends Options
         string $eventType = Values::NONE,
         string $resourceSid = Values::NONE,
         string $sourceIpAddress = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null
 
     ) {
         $this->options['actorSid'] = $actorSid;

@@ -41,7 +41,7 @@ class DeviceConfigInstance extends InstanceResource
      * @param string $deviceSid A 34-character string that uniquely identifies the Device.
      * @param string $key The config key; up to 100 characters.
      */
-    public function __construct(Version $version, array $payload, string $deviceSid, string $key = null)
+    public function __construct(Version $version, array $payload, string $deviceSid, ?string $key = null)
     {
         parent::__construct($version);
 

@@ -30,8 +30,8 @@ abstract class WorkerStatisticsOptions
     public static function fetch(
         
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         string $taskChannel = Values::NONE
 
     ): FetchWorkerStatisticsOptions
@@ -57,8 +57,8 @@ class FetchWorkerStatisticsOptions extends Options
     public function __construct(
         
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         string $taskChannel = Values::NONE
 
     ) {
