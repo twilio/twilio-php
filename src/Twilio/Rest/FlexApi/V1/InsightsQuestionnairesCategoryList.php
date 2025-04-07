@@ -61,7 +61,7 @@ class InsightsQuestionnairesCategoryList extends ListResource
                 $name,
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new InsightsQuestionnairesCategoryInstance(
@@ -142,7 +142,8 @@ class InsightsQuestionnairesCategoryList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new InsightsQuestionnairesCategoryPage($this->version, $response, $this->solution);
     }

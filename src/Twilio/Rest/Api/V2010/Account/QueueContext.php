@@ -84,7 +84,7 @@ class QueueContext extends InstanceContext
     public function fetch(): QueueInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new QueueInstance(
@@ -115,7 +115,7 @@ class QueueContext extends InstanceContext
                 $options['maxSize'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new QueueInstance(

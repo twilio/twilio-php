@@ -88,7 +88,7 @@ class AssistantContext extends InstanceContext
     public function fetch(): AssistantInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AssistantInstance(
@@ -108,9 +108,8 @@ class AssistantContext extends InstanceContext
     public function update(): AssistantInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $assistantsV1ServiceUpdateAssistantRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->update('PUT', $this->uri, [], $data, $headers);
 
         return new AssistantInstance(

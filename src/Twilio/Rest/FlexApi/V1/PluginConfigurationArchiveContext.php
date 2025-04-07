@@ -60,7 +60,7 @@ class PluginConfigurationArchiveContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Flex-Metadata' => $options['flexMetadata']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
         $payload = $this->version->update('POST', $this->uri, [], [], $headers);
 
         return new PluginConfigurationArchiveInstance(

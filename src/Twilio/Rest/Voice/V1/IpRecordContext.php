@@ -71,7 +71,7 @@ class IpRecordContext extends InstanceContext
     public function fetch(): IpRecordInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new IpRecordInstance(
@@ -99,7 +99,7 @@ class IpRecordContext extends InstanceContext
                 $options['friendlyName'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new IpRecordInstance(

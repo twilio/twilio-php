@@ -57,9 +57,8 @@ class ApprovalCreateList extends ListResource
     public function create(ContentApprovalRequest $contentApprovalRequest): ApprovalCreateInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $contentApprovalRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ApprovalCreateInstance(

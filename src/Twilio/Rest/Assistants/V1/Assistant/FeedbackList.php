@@ -58,9 +58,8 @@ class FeedbackList extends ListResource
     public function create(AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest): FeedbackInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $assistantsV1ServiceCreateFeedbackRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new FeedbackInstance(
@@ -140,7 +139,8 @@ class FeedbackList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new FeedbackPage($this->version, $response, $this->solution);
     }

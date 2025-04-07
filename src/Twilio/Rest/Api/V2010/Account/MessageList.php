@@ -114,7 +114,7 @@ class MessageList extends ListResource
                 $options['contentSid'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new MessageInstance(
@@ -208,7 +208,8 @@ class MessageList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new MessagePage($this->version, $response, $this->solution);
     }

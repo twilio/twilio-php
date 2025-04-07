@@ -73,7 +73,7 @@ class IpCommandList extends ListResource
                 $options['callbackMethod'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new IpCommandInstance(
@@ -164,7 +164,8 @@ class IpCommandList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new IpCommandPage($this->version, $response, $this->solution);
     }

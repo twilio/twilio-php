@@ -69,7 +69,7 @@ class TranscriptList extends ListResource
                 Serialize::iso8601DateTime($options['mediaStartTime']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TranscriptInstance(
@@ -168,7 +168,8 @@ class TranscriptList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new TranscriptPage($this->version, $response, $this->solution);
     }

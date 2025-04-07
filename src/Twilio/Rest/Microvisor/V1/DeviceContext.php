@@ -70,7 +70,7 @@ class DeviceContext extends InstanceContext
     public function fetch(): DeviceInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new DeviceInstance(
@@ -104,7 +104,7 @@ class DeviceContext extends InstanceContext
                 Serialize::booleanToString($options['restartApp']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new DeviceInstance(

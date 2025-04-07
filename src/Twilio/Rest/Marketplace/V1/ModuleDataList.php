@@ -61,7 +61,7 @@ class ModuleDataList extends ListResource
                 $options['configuration'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ModuleDataInstance(
@@ -80,7 +80,7 @@ class ModuleDataList extends ListResource
     public function fetch(): ModuleDataInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ModuleDataInstance(

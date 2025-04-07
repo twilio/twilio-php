@@ -78,7 +78,7 @@ class InsightsQuestionnairesContext extends InstanceContext
 
         $options = new Values($options);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InsightsQuestionnairesInstance(
@@ -113,7 +113,7 @@ class InsightsQuestionnairesContext extends InstanceContext
                 Serialize::map($options['questionSids'], function ($e) { return $e; }),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InsightsQuestionnairesInstance(

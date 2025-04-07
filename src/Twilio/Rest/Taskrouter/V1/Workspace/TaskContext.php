@@ -88,7 +88,7 @@ class TaskContext extends InstanceContext
     public function fetch(): TaskInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new TaskInstance(
@@ -127,7 +127,7 @@ class TaskContext extends InstanceContext
                 Serialize::iso8601DateTime($options['virtualStartTime']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new TaskInstance(

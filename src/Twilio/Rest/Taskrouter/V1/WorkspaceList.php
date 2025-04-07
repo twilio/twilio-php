@@ -72,7 +72,7 @@ class WorkspaceList extends ListResource
                 $options['prioritizeQueueOrder'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new WorkspaceInstance(
@@ -157,7 +157,8 @@ class WorkspaceList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new WorkspacePage($this->version, $response, $this->solution);
     }

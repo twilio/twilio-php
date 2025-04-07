@@ -53,9 +53,8 @@ class KnowledgeList extends ListResource
     public function create(AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest): KnowledgeInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $assistantsV1ServiceCreateKnowledgeRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new KnowledgeInstance(
@@ -140,7 +139,8 @@ class KnowledgeList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new KnowledgePage($this->version, $response, $this->solution);
     }

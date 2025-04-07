@@ -62,9 +62,8 @@ class InteractionTransferList extends ListResource
     public function create(): InteractionTransferInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $body->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new InteractionTransferInstance(

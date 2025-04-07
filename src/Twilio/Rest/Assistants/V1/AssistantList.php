@@ -52,9 +52,8 @@ class AssistantList extends ListResource
     public function create(AssistantsV1ServiceCreateAssistantRequest $assistantsV1ServiceCreateAssistantRequest): AssistantInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $assistantsV1ServiceCreateAssistantRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new AssistantInstance(
@@ -133,7 +132,8 @@ class AssistantList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new AssistantPage($this->version, $response, $this->solution);
     }

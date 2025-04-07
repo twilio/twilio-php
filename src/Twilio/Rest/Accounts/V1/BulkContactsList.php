@@ -57,7 +57,7 @@ class BulkContactsList extends ListResource
                 Serialize::map($items,function ($e) { return Serialize::jsonObject($e); }),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new BulkContactsInstance(

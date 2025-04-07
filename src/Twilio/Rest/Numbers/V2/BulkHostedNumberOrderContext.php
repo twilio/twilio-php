@@ -65,7 +65,7 @@ class BulkHostedNumberOrderContext extends InstanceContext
                 $options['orderStatus'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new BulkHostedNumberOrderInstance(

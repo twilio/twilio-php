@@ -68,7 +68,7 @@ class InsightsQuestionnairesList extends ListResource
                 Serialize::map($options['questionSids'], function ($e) { return $e; }),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new InsightsQuestionnairesInstance(
@@ -155,7 +155,8 @@ class InsightsQuestionnairesList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new InsightsQuestionnairesPage($this->version, $response, $this->solution);
     }

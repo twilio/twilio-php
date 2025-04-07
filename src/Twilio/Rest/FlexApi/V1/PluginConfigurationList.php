@@ -66,7 +66,7 @@ class PluginConfigurationList extends ListResource
                 $options['description'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Flex-Metadata' => $options['flexMetadata']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new PluginConfigurationInstance(
@@ -147,7 +147,8 @@ class PluginConfigurationList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new PluginConfigurationPage($this->version, $response, $this->solution);
     }

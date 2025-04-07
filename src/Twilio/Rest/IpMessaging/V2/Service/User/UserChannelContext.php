@@ -82,7 +82,7 @@ class UserChannelContext extends InstanceContext
     public function fetch(): UserChannelInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new UserChannelInstance(
@@ -116,7 +116,7 @@ class UserChannelContext extends InstanceContext
                 Serialize::iso8601DateTime($options['lastConsumptionTimestamp']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new UserChannelInstance(

@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2025-04-07] Version 8.5.0
+--------------------------
+**Library - Docs**
+- [PR #862](https://github.com/twilio/twilio-php/pull/862): update readme for oauth feature. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Feature**
+- [PR #854](https://github.com/twilio/twilio-php/pull/854): merge OAuth support into main. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Studio**
+- Add documentation for parent_step_sid field in Step resource
+
+
 [2025-03-20] Version 8.4.1
 --------------------------
 **Library - Chore**

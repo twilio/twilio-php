@@ -65,7 +65,7 @@ class AuthorizationDocumentContext extends InstanceContext
     public function fetch(): AuthorizationDocumentInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AuthorizationDocumentInstance(
@@ -105,7 +105,7 @@ class AuthorizationDocumentContext extends InstanceContext
                 $options['contactPhoneNumber'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AuthorizationDocumentInstance(

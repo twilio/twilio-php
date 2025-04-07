@@ -63,7 +63,7 @@ class NetworkAccessProfileList extends ListResource
                 Serialize::map($options['networks'], function ($e) { return $e; }),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new NetworkAccessProfileInstance(
@@ -142,7 +142,8 @@ class NetworkAccessProfileList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new NetworkAccessProfilePage($this->version, $response, $this->solution);
     }

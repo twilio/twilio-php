@@ -72,7 +72,7 @@ class AddressConfigurationContext extends InstanceContext
     public function fetch(): AddressConfigurationInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new AddressConfigurationInstance(
@@ -116,7 +116,7 @@ class AddressConfigurationContext extends InstanceContext
                 $options['autoCreationStudioRetryCount'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new AddressConfigurationInstance(
