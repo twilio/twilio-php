@@ -36,17 +36,6 @@ use Twilio\Deserialize;
  * @property string $url
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $accountSid
- * @property string $description
- * @property bool $enabled
- * @property string $id
- * @property array $meta
- * @property string $name
- * @property bool $requiresAuth
- * @property string $type
- * @property string $url
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
  * @property string[] $policies
  */
 class ToolInstance extends InstanceResource
@@ -64,17 +53,6 @@ class ToolInstance extends InstanceResource
 
         // Marshaled Properties
         $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'description' => Values::array_get($payload, 'description'),
-            'enabled' => Values::array_get($payload, 'enabled'),
-            'id' => Values::array_get($payload, 'id'),
-            'meta' => Values::array_get($payload, 'meta'),
-            'name' => Values::array_get($payload, 'name'),
-            'requiresAuth' => Values::array_get($payload, 'requires_auth'),
-            'type' => Values::array_get($payload, 'type'),
-            'url' => Values::array_get($payload, 'url'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'description' => Values::array_get($payload, 'description'),
             'enabled' => Values::array_get($payload, 'enabled'),
