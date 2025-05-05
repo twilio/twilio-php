@@ -1,6 +1,24 @@
 twilio-php Changelog
 ====================
 
+[2025-05-05] Version 8.6.0
+--------------------------
+**Api**
+- Add `response_key` for `Usage Triggers` fetch endpoint.
+
+**Flex**
+- Add Update Interaction API
+- Adding `webhook_ttid` as optional parameter in Interactions API
+
+**Serverless**
+- Add node22 as a valid Build runtime
+- Add node20 as a valid Build runtime
+
+**Video**
+- removed `transcribe_participants_on_connect` and `transcriptions_configuration` from the room resource **(breaking change)**
+- Added `transcribe_participants_on_connect` and `transcriptions_configuration` to the room resource
+
+
 [2025-04-07] Version 8.5.0
 --------------------------
 **Library - Docs**

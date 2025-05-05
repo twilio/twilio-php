@@ -32,10 +32,10 @@ use Twilio\Deserialize;
  * @property \DateTime|null $portInTargetDateCreated
  * @property \DateTime|null $portOutTargetDateCreated
  */
-class WebhookInstance extends InstanceResource
+class PortingWebhookConfigurationFetchInstance extends InstanceResource
 {
     /**
-     * Initialize the WebhookInstance
+     * Initialize the PortingWebhookConfigurationFetchInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -85,7 +85,7 @@ class WebhookInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V1.WebhookInstance]';
+        return '[Twilio.Numbers.V1.PortingWebhookConfigurationFetchInstance]';
     }
 }
 

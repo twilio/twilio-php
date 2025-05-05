@@ -28,9 +28,11 @@ abstract class RoomOptions
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`.
      * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50.
      * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect.
+     * @param bool $transcribeParticipantsOnConnect Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used.
      * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
      * @param string $mediaRegion The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers).
      * @param array $recordingRules A collection of Recording Rules that describe how to include or exclude matching tracks for recording
+     * @param array $transcriptionsConfiguration A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used.
      * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
      * @param int $maxParticipantDuration The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
      * @param int $emptyRoomTimeout Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions).
@@ -47,9 +49,11 @@ abstract class RoomOptions
         string $statusCallbackMethod = Values::NONE,
         int $maxParticipants = Values::INT_NONE,
         bool $recordParticipantsOnConnect = Values::BOOL_NONE,
+        bool $transcribeParticipantsOnConnect = Values::BOOL_NONE,
         array $videoCodecs = Values::ARRAY_NONE,
         string $mediaRegion = Values::NONE,
         array $recordingRules = Values::ARRAY_NONE,
+        array $transcriptionsConfiguration = Values::ARRAY_NONE,
         bool $audioOnly = Values::BOOL_NONE,
         int $maxParticipantDuration = Values::INT_NONE,
         int $emptyRoomTimeout = Values::INT_NONE,
@@ -66,9 +70,11 @@ abstract class RoomOptions
             $statusCallbackMethod,
             $maxParticipants,
             $recordParticipantsOnConnect,
+            $transcribeParticipantsOnConnect,
             $videoCodecs,
             $mediaRegion,
             $recordingRules,
+            $transcriptionsConfiguration,
             $audioOnly,
             $maxParticipantDuration,
             $emptyRoomTimeout,
@@ -115,9 +121,11 @@ class CreateRoomOptions extends Options
      * @param string $statusCallbackMethod The HTTP method Twilio should use to call `status_callback`. Can be `POST` or `GET`.
      * @param int $maxParticipants The maximum number of concurrent Participants allowed in the room. The maximum allowed value is 50.
      * @param bool $recordParticipantsOnConnect Whether to start recording when Participants connect.
+     * @param bool $transcribeParticipantsOnConnect Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used.
      * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
      * @param string $mediaRegion The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#group-rooms-media-servers).
      * @param array $recordingRules A collection of Recording Rules that describe how to include or exclude matching tracks for recording
+     * @param array $transcriptionsConfiguration A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used.
      * @param bool $audioOnly When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
      * @param int $maxParticipantDuration The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
      * @param int $emptyRoomTimeout Configures how long (in minutes) a room will remain active after last participant leaves. Valid values range from 1 to 60 minutes (no fractions).
@@ -133,9 +141,11 @@ class CreateRoomOptions extends Options
         string $statusCallbackMethod = Values::NONE,
         int $maxParticipants = Values::INT_NONE,
         bool $recordParticipantsOnConnect = Values::BOOL_NONE,
+        bool $transcribeParticipantsOnConnect = Values::BOOL_NONE,
         array $videoCodecs = Values::ARRAY_NONE,
         string $mediaRegion = Values::NONE,
         array $recordingRules = Values::ARRAY_NONE,
+        array $transcriptionsConfiguration = Values::ARRAY_NONE,
         bool $audioOnly = Values::BOOL_NONE,
         int $maxParticipantDuration = Values::INT_NONE,
         int $emptyRoomTimeout = Values::INT_NONE,
@@ -150,9 +160,11 @@ class CreateRoomOptions extends Options
         $this->options['statusCallbackMethod'] = $statusCallbackMethod;
         $this->options['maxParticipants'] = $maxParticipants;
         $this->options['recordParticipantsOnConnect'] = $recordParticipantsOnConnect;
+        $this->options['transcribeParticipantsOnConnect'] = $transcribeParticipantsOnConnect;
         $this->options['videoCodecs'] = $videoCodecs;
         $this->options['mediaRegion'] = $mediaRegion;
         $this->options['recordingRules'] = $recordingRules;
+        $this->options['transcriptionsConfiguration'] = $transcriptionsConfiguration;
         $this->options['audioOnly'] = $audioOnly;
         $this->options['maxParticipantDuration'] = $maxParticipantDuration;
         $this->options['emptyRoomTimeout'] = $emptyRoomTimeout;
@@ -243,6 +255,18 @@ class CreateRoomOptions extends Options
     }
 
     /**
+     * Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used.
+     *
+     * @param bool $transcribeParticipantsOnConnect Whether to start transcriptions when Participants connect. If TranscriptionsConfiguration is not provided, default settings will be used.
+     * @return $this Fluent Builder
+     */
+    public function setTranscribeParticipantsOnConnect(bool $transcribeParticipantsOnConnect): self
+    {
+        $this->options['transcribeParticipantsOnConnect'] = $transcribeParticipantsOnConnect;
+        return $this;
+    }
+
+    /**
      * An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
      *
      * @param string $videoCodecs An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`.
@@ -275,6 +299,18 @@ class CreateRoomOptions extends Options
     public function setRecordingRules(array $recordingRules): self
     {
         $this->options['recordingRules'] = $recordingRules;
+        return $this;
+    }
+
+    /**
+     * A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used.
+     *
+     * @param array $transcriptionsConfiguration A collection of properties that describe transcription behaviour. If TranscribeParticipantsOnConnect is set to true and TranscriptionsConfiguration is not provided, default settings will be used.
+     * @return $this Fluent Builder
+     */
+    public function setTranscriptionsConfiguration(array $transcriptionsConfiguration): self
+    {
+        $this->options['transcriptionsConfiguration'] = $transcriptionsConfiguration;
         return $this;
     }
 
