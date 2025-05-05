@@ -97,7 +97,7 @@ class RecordingContext extends InstanceContext
                 Serialize::booleanToString($options['includeSoftDeleted']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new RecordingInstance(

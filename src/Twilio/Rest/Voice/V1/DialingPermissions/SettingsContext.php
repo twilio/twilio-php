@@ -53,7 +53,7 @@ class SettingsContext extends InstanceContext
     public function fetch(): SettingsInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SettingsInstance(
@@ -80,7 +80,7 @@ class SettingsContext extends InstanceContext
                 Serialize::booleanToString($options['dialingPermissionsInheritance']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SettingsInstance(

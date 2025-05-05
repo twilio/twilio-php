@@ -76,7 +76,7 @@ class ConnectionPolicyTargetList extends ListResource
                 Serialize::booleanToString($options['enabled']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ConnectionPolicyTargetInstance(
@@ -156,7 +156,8 @@ class ConnectionPolicyTargetList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new ConnectionPolicyTargetPage($this->version, $response, $this->solution);
     }

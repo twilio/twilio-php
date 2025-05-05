@@ -87,7 +87,7 @@ class ConversationList extends ListResource
                 $options['bindingsEmailName'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ConversationInstance(
@@ -177,7 +177,8 @@ class ConversationList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new ConversationPage($this->version, $response, $this->solution);
     }

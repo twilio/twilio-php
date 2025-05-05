@@ -70,7 +70,7 @@ class InteractionChannelInviteList extends ListResource
                 Serialize::jsonObject($routing),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new InteractionChannelInviteInstance(
@@ -151,7 +151,8 @@ class InteractionChannelInviteList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new InteractionChannelInvitePage($this->version, $response, $this->solution);
     }

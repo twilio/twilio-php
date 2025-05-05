@@ -57,7 +57,7 @@ class SafelistList extends ListResource
                 $phoneNumber,
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SafelistInstance(
@@ -106,7 +106,7 @@ class SafelistList extends ListResource
                 $options['phoneNumber'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new SafelistInstance(

@@ -79,7 +79,7 @@ class ConnectionPolicyContext extends InstanceContext
     public function fetch(): ConnectionPolicyInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ConnectionPolicyInstance(
@@ -107,7 +107,7 @@ class ConnectionPolicyContext extends InstanceContext
                 $options['friendlyName'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ConnectionPolicyInstance(

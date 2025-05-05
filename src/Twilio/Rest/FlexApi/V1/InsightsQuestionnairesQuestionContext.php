@@ -92,7 +92,7 @@ class InsightsQuestionnairesQuestionContext extends InstanceContext
                 $options['answerSetId'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InsightsQuestionnairesQuestionInstance(

@@ -67,7 +67,7 @@ class NewApiKeyList extends ListResource
                 Serialize::jsonObject($options['policy']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new NewApiKeyInstance(

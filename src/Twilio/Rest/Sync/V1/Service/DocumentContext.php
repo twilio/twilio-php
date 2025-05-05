@@ -85,7 +85,7 @@ class DocumentContext extends InstanceContext
     public function fetch(): DocumentInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new DocumentInstance(
@@ -116,7 +116,7 @@ class DocumentContext extends InstanceContext
                 $options['ttl'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new DocumentInstance(

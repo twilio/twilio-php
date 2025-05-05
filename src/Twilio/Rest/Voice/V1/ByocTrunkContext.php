@@ -72,7 +72,7 @@ class ByocTrunkContext extends InstanceContext
     public function fetch(): ByocTrunkInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ByocTrunkInstance(
@@ -118,7 +118,7 @@ class ByocTrunkContext extends InstanceContext
                 $options['fromDomainSid'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ByocTrunkInstance(

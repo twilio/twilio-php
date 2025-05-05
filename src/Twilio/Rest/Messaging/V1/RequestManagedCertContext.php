@@ -56,7 +56,7 @@ class RequestManagedCertContext extends InstanceContext
     public function update(): RequestManagedCertInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], [], $headers);
 
         return new RequestManagedCertInstance(

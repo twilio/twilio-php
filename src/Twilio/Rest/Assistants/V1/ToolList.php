@@ -53,9 +53,8 @@ class ToolList extends ListResource
     public function create(AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest): ToolInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $assistantsV1ServiceCreateToolRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new ToolInstance(
@@ -140,7 +139,8 @@ class ToolList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new ToolPage($this->version, $response, $this->solution);
     }

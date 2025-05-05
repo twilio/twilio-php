@@ -66,7 +66,7 @@ class InteractionTransferContext extends InstanceContext
     public function fetch(): InteractionTransferInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InteractionTransferInstance(
@@ -88,9 +88,8 @@ class InteractionTransferContext extends InstanceContext
     public function update(): InteractionTransferInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $body->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InteractionTransferInstance(
