@@ -19,6 +19,7 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
@@ -66,6 +67,34 @@ class InteractionContext extends InstanceContext
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
+
+        return new InteractionInstance(
+            $this->version,
+            $payload,
+            $this->solution['sid']
+        );
+    }
+
+
+    /**
+     * Update the InteractionInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return InteractionInstance Updated InteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): InteractionInstance
+    {
+
+        $options = new Values($options);
+
+        $data = Values::of([
+            'WebhookTtid' =>
+                $options['webhookTtid'],
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InteractionInstance(
             $this->version,
