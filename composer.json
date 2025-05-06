@@ -16,7 +16,8 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "phpunit/phpunit": ">=7.0 < 10"
+        "phpunit/phpunit": ">=7.0 < 10",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
@@ -31,6 +32,12 @@
             "": "src/Twilio/",
             "Twilio\\Tests\\": "tests/Twilio/"
         }
+    },
+    "scripts": {
+        "php84-fix": [
+            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+            "vendor/bin/php-cs-fixer -vvv fix --using-cache=no ."
+        ]
     },
     "config": {
         "lock": false
