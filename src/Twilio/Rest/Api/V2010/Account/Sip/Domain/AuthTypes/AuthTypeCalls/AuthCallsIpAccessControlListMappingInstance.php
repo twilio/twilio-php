@@ -42,7 +42,7 @@ class AuthCallsIpAccessControlListMappingInstance extends InstanceResource
      * @param string $domainSid The SID of the SIP domain that will contain the new resource.
      * @param string $sid The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $domainSid, ?string $sid = null)
     {
         parent::__construct($version);
 

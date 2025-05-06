@@ -41,7 +41,7 @@ class SubscribedEventInstance extends InstanceResource
      * @param string $subscriptionSid The unique SID identifier of the Subscription.
      * @param string $type Type of event being subscribed to.
      */
-    public function __construct(Version $version, array $payload, string $subscriptionSid, string $type = null)
+    public function __construct(Version $version, array $payload, string $subscriptionSid, ?string $type = null)
     {
         parent::__construct($version);
 

@@ -32,7 +32,7 @@ class ArchivedCallInstance extends InstanceResource
      * @param \DateTime $date The date of the Call in UTC.
      * @param string $sid The Twilio-provided Call SID that uniquely identifies the Call resource to delete
      */
-    public function __construct(Version $version, array $payload, \DateTime $date = null, string $sid = null)
+    public function __construct(Version $version, array $payload, ?\DateTime $date = null, ?string $sid = null)
     {
         parent::__construct($version);
 

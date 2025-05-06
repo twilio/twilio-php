@@ -47,7 +47,7 @@ class BundleCloneInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $bundleSid The unique string that identifies the Bundle to be cloned.
      */
-    public function __construct(Version $version, array $payload, string $bundleSid = null)
+    public function __construct(Version $version, array $payload, ?string $bundleSid = null)
     {
         parent::__construct($version);
 

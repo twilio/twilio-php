@@ -37,7 +37,7 @@ class SafelistInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $phoneNumber The phone number to be removed from SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      */
-    public function __construct(Version $version, array $payload, string $phoneNumber = null)
+    public function __construct(Version $version, array $payload, ?string $phoneNumber = null)
     {
         parent::__construct($version);
 

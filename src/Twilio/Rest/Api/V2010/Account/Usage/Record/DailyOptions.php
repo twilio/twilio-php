@@ -30,8 +30,8 @@ abstract class DailyOptions
     public static function read(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ): ReadDailyOptions
@@ -57,8 +57,8 @@ class ReadDailyOptions extends Options
     public function __construct(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ) {

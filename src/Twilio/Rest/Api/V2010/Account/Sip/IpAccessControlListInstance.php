@@ -46,7 +46,7 @@ class IpAccessControlListInstance extends InstanceResource
      * @param string $accountSid The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
      * @param string $sid A 34 character string that uniquely identifies the resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $sid = null)
     {
         parent::__construct($version);
 

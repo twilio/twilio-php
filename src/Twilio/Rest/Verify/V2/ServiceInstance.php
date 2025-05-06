@@ -71,7 +71,7 @@ class ServiceInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the Verification Service resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -48,7 +48,7 @@ class OriginationUrlInstance extends InstanceResource
      * @param string $trunkSid The SID of the Trunk to associate the resource with.
      * @param string $sid The unique string that we created to identify the OriginationUrl resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $trunkSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $trunkSid, ?string $sid = null)
     {
         parent::__construct($version);
 

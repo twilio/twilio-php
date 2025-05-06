@@ -32,7 +32,7 @@ abstract class SessionOptions
     public static function create(
         
         string $uniqueName = Values::NONE,
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $mode = Values::NONE,
         string $status = Values::NONE,
@@ -61,7 +61,7 @@ abstract class SessionOptions
      */
     public static function update(
         
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $status = Values::NONE
 
@@ -89,7 +89,7 @@ class CreateSessionOptions extends Options
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $mode = Values::NONE,
         string $status = Values::NONE,
@@ -196,7 +196,7 @@ class UpdateSessionOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $status = Values::NONE
 

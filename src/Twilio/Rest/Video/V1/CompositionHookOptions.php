@@ -71,8 +71,8 @@ abstract class CompositionHookOptions
     public static function read(
         
         bool $enabled = Values::BOOL_NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $friendlyName = Values::NONE
 
     ): ReadCompositionHookOptions
@@ -294,8 +294,8 @@ class ReadCompositionHookOptions extends Options
     public function __construct(
         
         bool $enabled = Values::BOOL_NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $friendlyName = Values::NONE
 
     ) {

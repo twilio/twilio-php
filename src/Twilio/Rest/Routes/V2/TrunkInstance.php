@@ -44,7 +44,7 @@ class TrunkInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sipTrunkDomain The absolute URL of the SIP Trunk
      */
-    public function __construct(Version $version, array $payload, string $sipTrunkDomain = null)
+    public function __construct(Version $version, array $payload, ?string $sipTrunkDomain = null)
     {
         parent::__construct($version);
 

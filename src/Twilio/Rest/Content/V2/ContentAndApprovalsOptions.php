@@ -36,8 +36,8 @@ abstract class ContentAndApprovalsOptions
         
         string $sortByDate = Values::NONE,
         string $sortByContentName = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $contentName = Values::NONE,
         string $content = Values::NONE,
         array $language = Values::ARRAY_NONE,
@@ -78,8 +78,8 @@ class ReadContentAndApprovalsOptions extends Options
         
         string $sortByDate = Values::NONE,
         string $sortByContentName = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null,
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null,
         string $contentName = Values::NONE,
         string $content = Values::NONE,
         array $language = Values::ARRAY_NONE,

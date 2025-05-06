@@ -56,7 +56,7 @@ class ServiceInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The `sid` or `unique_name` of the Service resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

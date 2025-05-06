@@ -43,7 +43,7 @@ class MessagingConfigurationInstance extends InstanceResource
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.
      * @param string $country The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $country = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $country = null)
     {
         parent::__construct($version);
 

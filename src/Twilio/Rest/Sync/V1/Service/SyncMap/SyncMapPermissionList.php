@@ -68,7 +68,7 @@ class SyncMapPermissionList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SyncMapPermissionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array
+    public function read(?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
@@ -91,7 +91,7 @@ class SyncMapPermissionList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream
+    public function stream(?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 

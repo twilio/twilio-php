@@ -40,7 +40,7 @@ class OrganizationInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $organizationSid
      */
-    public function __construct(Version $version, array $payload, string $organizationSid = null)
+    public function __construct(Version $version, array $payload, ?string $organizationSid = null)
     {
         parent::__construct($version);
 

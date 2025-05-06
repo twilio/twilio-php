@@ -45,7 +45,7 @@ class WebhookInstance extends InstanceResource
      * @param string $conversationSid The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.
      * @param string $sid A 34 character string that uniquely identifies this resource.
      */
-    public function __construct(Version $version, array $payload, string $conversationSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $conversationSid, ?string $sid = null)
     {
         parent::__construct($version);
 

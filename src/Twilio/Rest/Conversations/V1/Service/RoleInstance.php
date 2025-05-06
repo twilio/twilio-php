@@ -45,7 +45,7 @@ class RoleInstance extends InstanceResource
      * @param string $chatServiceSid The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) to create the Role resource under.
      * @param string $sid The SID of the Role resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $chatServiceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $chatServiceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

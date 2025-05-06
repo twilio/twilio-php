@@ -47,7 +47,7 @@ class PluginVersionArchiveInstance extends InstanceResource
      * @param string $pluginSid The SID of the Flex Plugin the resource to belongs to.
      * @param string $sid The SID of the Flex Plugin Version resource to archive.
      */
-    public function __construct(Version $version, array $payload, string $pluginSid = null, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $pluginSid = null, ?string $sid = null)
     {
         parent::__construct($version);
 
