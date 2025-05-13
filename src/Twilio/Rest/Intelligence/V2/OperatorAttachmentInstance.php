@@ -38,7 +38,7 @@ class OperatorAttachmentInstance extends InstanceResource
      * @param string $serviceSid The unique SID identifier of the Service.
      * @param string $operatorSid The unique SID identifier of the Operator. Allows both Custom and Pre-built Operators.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid = null, string $operatorSid = null)
+    public function __construct(Version $version, array $payload, ?string $serviceSid = null, ?string $operatorSid = null)
     {
         parent::__construct($version);
 

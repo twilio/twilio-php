@@ -33,8 +33,8 @@ abstract class RoomRecordingOptions
         
         string $status = Values::NONE,
         string $sourceSid = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null
 
     ): ReadRoomRecordingOptions
     {
@@ -62,8 +62,8 @@ class ReadRoomRecordingOptions extends Options
         
         string $status = Values::NONE,
         string $sourceSid = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null
 
     ) {
         $this->options['status'] = $status;

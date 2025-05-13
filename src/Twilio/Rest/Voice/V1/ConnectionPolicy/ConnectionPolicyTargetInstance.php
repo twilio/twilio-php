@@ -48,7 +48,7 @@ class ConnectionPolicyTargetInstance extends InstanceResource
      * @param string $connectionPolicySid The SID of the Connection Policy that owns the Target.
      * @param string $sid The unique string that we created to identify the Target resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $connectionPolicySid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $connectionPolicySid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -44,7 +44,7 @@ class SyncListPermissionInstance extends InstanceResource
      * @param string $listSid The SID of the Sync List with the Sync List Permission resource to delete. Can be the Sync List resource's `sid` or its `unique_name`.
      * @param string $identity The application-defined string that uniquely identifies the User's Sync List Permission resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, string $identity = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $listSid, ?string $identity = null)
     {
         parent::__construct($version);
 

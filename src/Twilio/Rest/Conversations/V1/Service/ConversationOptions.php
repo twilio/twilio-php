@@ -41,8 +41,8 @@ abstract class ConversationOptions
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE,
         string $messagingServiceSid = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $state = Values::NONE,
         string $timersInactive = Values::NONE,
         string $timersClosed = Values::NONE,
@@ -123,8 +123,8 @@ abstract class ConversationOptions
     public static function update(
         
         string $friendlyName = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $messagingServiceSid = Values::NONE,
         string $state = Values::NONE,
@@ -177,8 +177,8 @@ class CreateConversationOptions extends Options
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE,
         string $messagingServiceSid = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $state = Values::NONE,
         string $timersInactive = Values::NONE,
         string $timersClosed = Values::NONE,
@@ -479,8 +479,8 @@ class UpdateConversationOptions extends Options
     public function __construct(
         
         string $friendlyName = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $messagingServiceSid = Values::NONE,
         string $state = Values::NONE,

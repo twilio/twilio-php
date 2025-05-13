@@ -51,7 +51,7 @@ class KnowledgeInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $id the Knowledge ID.
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         parent::__construct($version);
 

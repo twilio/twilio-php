@@ -53,7 +53,7 @@ class EventInstance extends InstanceResource
      * @param string $workspaceSid The SID of the Workspace with the Event to fetch.
      * @param string $sid The SID of the Event resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $workspaceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $workspaceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

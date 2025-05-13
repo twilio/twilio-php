@@ -157,39 +157,99 @@ class ConversationRelay extends TwiML {
     }
 
     /**
-     * Add Interruptible attribute.
-     *
-     * @param bool $interruptible Whether caller's speaking can interrupt the play
-     *                            of text-to-speech
-     */
-    public function setInterruptible($interruptible): self {
-        return $this->setAttribute('interruptible', $interruptible);
-    }
-
-    /**
-     * Add InterruptByDtmf attribute.
-     *
-     * @param bool $interruptByDtmf Whether DTMF tone can interrupt the play of
-     *                              text-to-speech
-     */
-    public function setInterruptByDtmf($interruptByDtmf): self {
-        return $this->setAttribute('interruptByDtmf', $interruptByDtmf);
-    }
-
-    /**
      * Add WelcomeGreetingInterruptible attribute.
      *
-     * @param bool $welcomeGreetingInterruptible Whether caller's speaking can
-     *                                           interrupt the welcome greeting
+     * @param string $welcomeGreetingInterruptible "Whether and how the input from
+     *                                             a caller, such as speaking or
+     *                                             DTMF can interrupt the welcome
+     *                                             greeting
      */
     public function setWelcomeGreetingInterruptible($welcomeGreetingInterruptible): self {
         return $this->setAttribute('welcomeGreetingInterruptible', $welcomeGreetingInterruptible);
     }
 
     /**
+     * Add Interruptible attribute.
+     *
+     * @param string $interruptible Whether and how the input from a caller, such
+     *                              as speaking or DTMF can interrupt the play of
+     *                              text-to-speech
+     */
+    public function setInterruptible($interruptible): self {
+        return $this->setAttribute('interruptible', $interruptible);
+    }
+
+    /**
+     * Add Preemptible attribute.
+     *
+     * @param bool $preemptible Whether subsequent text-to-speech or play media can
+     *                          interrupt the on-going play of text-to-speech or
+     *                          media
+     */
+    public function setPreemptible($preemptible): self {
+        return $this->setAttribute('preemptible', $preemptible);
+    }
+
+    /**
+     * Add Hints attribute.
+     *
+     * @param string $hints Phrases to help better accuracy in speech recognition
+     *                      of these pharases
+     */
+    public function setHints($hints): self {
+        return $this->setAttribute('hints', $hints);
+    }
+
+    /**
+     * Add IntelligenceService attribute.
+     *
+     * @param string $intelligenceService The Conversational Intelligence Service
+     *                                    id or unique name to be used for the
+     *                                    session
+     */
+    public function setIntelligenceService($intelligenceService): self {
+        return $this->setAttribute('intelligenceService', $intelligenceService);
+    }
+
+    /**
+     * Add ReportInputDuringAgentSpeech attribute.
+     *
+     * @param bool $reportInputDuringAgentSpeech Whether prompts should be reported
+     *                                           to WebSocket server when
+     *                                           text-to-speech playing and
+     *                                           interrupt is disabled
+     */
+    public function setReportInputDuringAgentSpeech($reportInputDuringAgentSpeech): self {
+        return $this->setAttribute('reportInputDuringAgentSpeech', $reportInputDuringAgentSpeech);
+    }
+
+    /**
+     * Add ElevenlabsTextNormalization attribute.
+     *
+     * @param string $elevenlabsTextNormalization When using ElevenLabs as TTS
+     *                                            provider, this parameter allows
+     *                                            you to enable or disable its text
+     *                                            normalization feature
+     */
+    public function setElevenlabsTextNormalization($elevenlabsTextNormalization): self {
+        return $this->setAttribute('elevenlabsTextNormalization', $elevenlabsTextNormalization);
+    }
+
+    /**
+     * Add InterruptSensitivity attribute.
+     *
+     * @param string $interruptSensitivity Set the sensitivity of the interrupt
+     *                                     feature for speech. The value can be
+     *                                     low, medium, or high
+     */
+    public function setInterruptSensitivity($interruptSensitivity): self {
+        return $this->setAttribute('interruptSensitivity', $interruptSensitivity);
+    }
+
+    /**
      * Add Debug attribute.
      *
-     * @param bool $debug Whether debugging on the session is enabled
+     * @param string $debug Multiple debug options to be used for troubleshooting
      */
     public function setDebug($debug): self {
         return $this->setAttribute('debug', $debug);

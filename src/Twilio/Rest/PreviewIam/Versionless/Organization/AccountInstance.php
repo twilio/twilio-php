@@ -41,7 +41,7 @@ class AccountInstance extends InstanceResource
      * @param string $organizationSid
      * @param string $accountSid
      */
-    public function __construct(Version $version, array $payload, string $organizationSid, string $accountSid = null)
+    public function __construct(Version $version, array $payload, string $organizationSid, ?string $accountSid = null)
     {
         parent::__construct($version);
 

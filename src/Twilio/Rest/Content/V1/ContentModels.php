@@ -39,6 +39,8 @@ abstract class ContentModels
      * @property string $latitude
      * @property string $longitude
      * @property string $label
+     * @property string $id
+     * @property string $address
     */
     public static function createTwilioLocation(array $payload = []): TwilioLocation
     {
@@ -71,6 +73,7 @@ abstract class ContentModels
      * @property string $url
      * @property string $phone
      * @property string $code
+     * @property string $id
     */
     public static function createCallToActionAction(array $payload = []): CallToActionAction
     {
@@ -351,14 +354,20 @@ class TwilioLocation implements \JsonSerializable
      * @property string $latitude
      * @property string $longitude
      * @property string $label
+     * @property string $id
+     * @property string $address
     */
         protected $latitude;
         protected $longitude;
         protected $label;
+        protected $id;
+        protected $address;
     public function __construct(array $payload = []) {
         $this->latitude = Values::array_get($payload, 'latitude');
         $this->longitude = Values::array_get($payload, 'longitude');
         $this->label = Values::array_get($payload, 'label');
+        $this->id = Values::array_get($payload, 'id');
+        $this->address = Values::array_get($payload, 'address');
     }
 
     public function toArray(): array
@@ -371,7 +380,9 @@ class TwilioLocation implements \JsonSerializable
         return [
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
-            'label' => $this->label
+            'label' => $this->label,
+            'id' => $this->id,
+            'address' => $this->address
         ];
     }
 }
@@ -446,18 +457,21 @@ class CallToActionAction implements \JsonSerializable
      * @property string $url
      * @property string $phone
      * @property string $code
+     * @property string $id
     */
         protected $type;
         protected $title;
         protected $url;
         protected $phone;
         protected $code;
+        protected $id;
     public function __construct(array $payload = []) {
         $this->type = Values::array_get($payload, 'type');
         $this->title = Values::array_get($payload, 'title');
         $this->url = Values::array_get($payload, 'url');
         $this->phone = Values::array_get($payload, 'phone');
         $this->code = Values::array_get($payload, 'code');
+        $this->id = Values::array_get($payload, 'id');
     }
 
     public function toArray(): array
@@ -472,7 +486,8 @@ class CallToActionAction implements \JsonSerializable
             'title' => $this->title,
             'url' => $this->url,
             'phone' => $this->phone,
-            'code' => $this->code
+            'code' => $this->code,
+            'id' => $this->id
         ];
     }
 }

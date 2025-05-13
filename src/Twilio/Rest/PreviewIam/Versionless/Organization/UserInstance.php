@@ -47,7 +47,7 @@ class UserInstance extends InstanceResource
      * @param string $organizationSid
      * @param string $id
      */
-    public function __construct(Version $version, array $payload, string $organizationSid, string $id = null)
+    public function __construct(Version $version, array $payload, string $organizationSid, ?string $id = null)
     {
         parent::__construct($version);
 

@@ -39,7 +39,7 @@ class RoleAssignmentInstance extends InstanceResource
      * @param string $organizationSid
      * @param string $sid
      */
-    public function __construct(Version $version, array $payload, string $organizationSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $organizationSid, ?string $sid = null)
     {
         parent::__construct($version);
 

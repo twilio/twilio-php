@@ -52,7 +52,7 @@ class InteractionTransferInstance extends InstanceResource
      * @param string $channelSid The Channel Sid for the Channel.
      * @param string $sid The unique string created by Twilio to identify a Transfer resource.
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $interactionSid, string $channelSid, ?string $sid = null)
     {
         parent::__construct($version);
 

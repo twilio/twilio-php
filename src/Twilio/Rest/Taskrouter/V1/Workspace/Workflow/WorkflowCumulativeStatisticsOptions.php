@@ -30,9 +30,9 @@ abstract class WorkflowCumulativeStatisticsOptions
      */
     public static function fetch(
         
-        \DateTime $endDate = null,
+        ?\DateTime $endDate = null,
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
+        ?\DateTime $startDate = null,
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 
@@ -60,9 +60,9 @@ class FetchWorkflowCumulativeStatisticsOptions extends Options
      */
     public function __construct(
         
-        \DateTime $endDate = null,
+        ?\DateTime $endDate = null,
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
+        ?\DateTime $startDate = null,
         string $taskChannel = Values::NONE,
         string $splitByWaitTime = Values::NONE
 

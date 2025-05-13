@@ -34,7 +34,7 @@ abstract class TranscriptionOptions
      * @param string $speechModel Recognition model used by the transcription engine, among those supported by the provider
      * @param string $hints A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them.
      * @param bool $enableAutomaticPunctuation The provider will add punctuation to recognition result
-     * @param string $intelligenceService The SID or unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
+     * @param string $intelligenceService The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
      * @return CreateTranscriptionOptions Options builder
      */
     public static function create(
@@ -93,7 +93,7 @@ class CreateTranscriptionOptions extends Options
      * @param string $speechModel Recognition model used by the transcription engine, among those supported by the provider
      * @param string $hints A Phrase contains words and phrase \\\"hints\\\" so that the speech recognition engine is more likely to recognize them.
      * @param bool $enableAutomaticPunctuation The provider will add punctuation to recognition result
-     * @param string $intelligenceService The SID or unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
+     * @param string $intelligenceService The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
      */
     public function __construct(
         
@@ -284,9 +284,9 @@ class CreateTranscriptionOptions extends Options
     }
 
     /**
-     * The SID or unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
+     * The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
      *
-     * @param string $intelligenceService The SID or unique name of the [Voice Intelligence Service](https://www.twilio.com/docs/voice/intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
+     * @param string $intelligenceService The SID or unique name of the [Intelligence Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for persisting transcripts and running post-call Language Operators .
      * @return $this Fluent Builder
      */
     public function setIntelligenceService(string $intelligenceService): self

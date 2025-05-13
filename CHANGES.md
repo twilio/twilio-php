@@ -1,6 +1,21 @@
 twilio-php Changelog
 ====================
 
+[2025-05-13] Version 8.6.1
+--------------------------
+**Library - Fix**
+- [PR #844](https://github.com/twilio/twilio-php/pull/844): PHP 8.4 deprecation fix. Thanks to [@phpfui](https://github.com/phpfui)!
+
+**Accounts**
+- Changes to add date_of_consent param in Bulk Consent API
+
+**Api**
+- Change `friendly_name`, `date_created` and `date_updated` properties to type `string`.
+
+**Twiml**
+- Update twiml definition for `<ConversationRelay>` and `<Assistant>`
+
+
 [2025-05-05] Version 8.6.0
 --------------------------
 **Api**

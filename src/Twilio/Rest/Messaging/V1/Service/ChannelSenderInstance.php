@@ -45,7 +45,7 @@ class ChannelSenderInstance extends InstanceResource
      * @param string $messagingServiceSid The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create the resource under.
      * @param string $sid The SID of the Channel Sender resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $messagingServiceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $messagingServiceSid, ?string $sid = null)
     {
         parent::__construct($version);
 
