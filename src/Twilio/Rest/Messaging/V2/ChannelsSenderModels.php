@@ -43,32 +43,14 @@ abstract class ChannelsSenderModels
     }
 
     /**
-     * @property string|null $email The email of the sender.
-     * @property string|null $label The label of the sender.
-    */
-    public static function createMessagingV2ChannelsSenderProfileEmails(array $payload = []): MessagingV2ChannelsSenderProfileEmails
-    {
-        return new MessagingV2ChannelsSenderProfileEmails($payload);
-    }
-
-    /**
-     * @property string|null $label The label of the sender.
-     * @property string|null $website The website of the sender.
-    */
-    public static function createMessagingV2ChannelsSenderProfileWebsites(array $payload = []): MessagingV2ChannelsSenderProfileWebsites
-    {
-        return new MessagingV2ChannelsSenderProfileWebsites($payload);
-    }
-
-    /**
      * @property string|null $name The name of the sender.
      * @property string|null $about The about text of the sender.
      * @property string|null $address The address of the sender.
      * @property string|null $description The description of the sender.
-     * @property MessagingV2ChannelsSenderProfileEmails[] $emails The emails of the sender.
+     * @property array|null $emails The emails of the sender.
      * @property string|null $logoUrl The logo URL of the sender.
      * @property string|null $vertical The vertical of the sender. Allowed values are: - \"Automotive\" - \"Beauty, Spa and Salon\" - \"Clothing and Apparel\" - \"Education\" - \"Entertainment\" - \"Event Planning and Service\" - \"Finance and Banking\" - \"Food and Grocery\" - \"Public Service\" - \"Hotel and Lodging\" - \"Medical and Health\" - \"Non-profit\" - \"Professional Services\" - \"Shopping and Retail\" - \"Travel and Transportation\" - \"Restaurant\" - \"Other\"
-     * @property MessagingV2ChannelsSenderProfileWebsites[] $websites The websites of the sender.
+     * @property array|null $websites The websites of the sender.
     */
     public static function createMessagingV2ChannelsSenderProfile(array $payload = []): MessagingV2ChannelsSenderProfile
     {
@@ -176,60 +158,6 @@ class MessagingV2ChannelsSenderWebhook implements \JsonSerializable
     }
 }
 
-class MessagingV2ChannelsSenderProfileEmails implements \JsonSerializable
-{
-    /**
-     * @property string|null $email The email of the sender.
-     * @property string|null $label The label of the sender.
-    */
-        protected $email;
-        protected $label;
-    public function __construct(array $payload = []) {
-        $this->email = Values::array_get($payload, 'email');
-        $this->label = Values::array_get($payload, 'label');
-    }
-
-    public function toArray(): array
-    {
-        return $this->jsonSerialize();
-    }
-
-    public function jsonSerialize(): array
-    {
-        return [
-            'email' => $this->email,
-            'label' => $this->label
-        ];
-    }
-}
-
-class MessagingV2ChannelsSenderProfileWebsites implements \JsonSerializable
-{
-    /**
-     * @property string|null $label The label of the sender.
-     * @property string|null $website The website of the sender.
-    */
-        protected $label;
-        protected $website;
-    public function __construct(array $payload = []) {
-        $this->label = Values::array_get($payload, 'label');
-        $this->website = Values::array_get($payload, 'website');
-    }
-
-    public function toArray(): array
-    {
-        return $this->jsonSerialize();
-    }
-
-    public function jsonSerialize(): array
-    {
-        return [
-            'label' => $this->label,
-            'website' => $this->website
-        ];
-    }
-}
-
 class MessagingV2ChannelsSenderProfile implements \JsonSerializable
 {
     /**
@@ -237,10 +165,10 @@ class MessagingV2ChannelsSenderProfile implements \JsonSerializable
      * @property string|null $about The about text of the sender.
      * @property string|null $address The address of the sender.
      * @property string|null $description The description of the sender.
-     * @property MessagingV2ChannelsSenderProfileEmails[] $emails The emails of the sender.
+     * @property array|null $emails The emails of the sender.
      * @property string|null $logoUrl The logo URL of the sender.
      * @property string|null $vertical The vertical of the sender. Allowed values are: - \"Automotive\" - \"Beauty, Spa and Salon\" - \"Clothing and Apparel\" - \"Education\" - \"Entertainment\" - \"Event Planning and Service\" - \"Finance and Banking\" - \"Food and Grocery\" - \"Public Service\" - \"Hotel and Lodging\" - \"Medical and Health\" - \"Non-profit\" - \"Professional Services\" - \"Shopping and Retail\" - \"Travel and Transportation\" - \"Restaurant\" - \"Other\"
-     * @property MessagingV2ChannelsSenderProfileWebsites[] $websites The websites of the sender.
+     * @property array|null $websites The websites of the sender.
     */
         protected $name;
         protected $about;

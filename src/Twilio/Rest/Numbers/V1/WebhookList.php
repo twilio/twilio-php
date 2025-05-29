@@ -22,10 +22,10 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class PortingWebhookConfigurationFetchList extends ListResource
+class WebhookList extends ListResource
     {
     /**
-     * Construct the PortingWebhookConfigurationFetchList
+     * Construct the WebhookList
      *
      * @param Version $version Version that contains the resource
      */
@@ -42,18 +42,18 @@ class PortingWebhookConfigurationFetchList extends ListResource
     }
 
     /**
-     * Fetch the PortingWebhookConfigurationFetchInstance
+     * Fetch the WebhookInstance
      *
-     * @return PortingWebhookConfigurationFetchInstance Fetched PortingWebhookConfigurationFetchInstance
+     * @return WebhookInstance Fetched WebhookInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): PortingWebhookConfigurationFetchInstance
+    public function fetch(): WebhookInstance
     {
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
-        return new PortingWebhookConfigurationFetchInstance(
+        return new WebhookInstance(
             $this->version,
             $payload
         );
@@ -67,6 +67,6 @@ class PortingWebhookConfigurationFetchList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V1.PortingWebhookConfigurationFetchList]';
+        return '[Twilio.Numbers.V1.WebhookList]';
     }
 }

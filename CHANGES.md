@@ -1,6 +1,18 @@
 twilio-php Changelog
 ====================
 
+[2025-05-29] Version 8.6.2
+--------------------------
+**Api**
+- Added several usage category enums to `usage_record` API
+
+**Numbers**
+- Update the porting documentation
+
+**Verify**
+- Update `ienum` type for Channels in Verify Attempts API
+
+
 [2025-05-13] Version 8.6.1
 --------------------------
 **Library - Fix**
