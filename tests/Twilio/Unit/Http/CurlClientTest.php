@@ -360,7 +360,7 @@ class CurlClientTest extends UnitTest {
 
     public function testFileProtocolThrowsException(): void {
         $this->expectException(EnvironmentException::class);
-        $this->expectExceptionMessage('Protocol "file" disabled');
+        $this->expectExceptionMessage('Protocol "file" not supported or disabled in libcurl');
 
         $client = new CurlClient();
         $client->request('GET', 'file:///tmp/test-file');
