@@ -5,6 +5,7 @@ namespace Twilio\Tests\Unit\Http;
 
 
 use Twilio\AuthStrategy\NoAuthStrategy;
+use Twilio\Exceptions\EnvironmentException;
 use Twilio\Http\CurlClient;
 use Twilio\Http\File;
 use Twilio\Values;
@@ -355,5 +356,13 @@ class CurlClientTest extends UnitTest {
                 ],
             ],
         ];
+    }
+
+    public function testFileProtocolThrowsException(): void {
+        $this->expectException(EnvironmentException::class);
+        $this->expectExceptionMessage('Protocol "file" not supported or disabled in libcurl');
+
+        $client = new CurlClient();
+        $client->request('GET', 'file:///tmp/test-file');
     }
 }
