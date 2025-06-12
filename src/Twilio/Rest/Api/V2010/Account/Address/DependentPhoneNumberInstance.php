@@ -22,7 +22,6 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
-use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
@@ -35,14 +34,14 @@ use Twilio\Base\PhoneNumberCapabilities;
  * @property string|null $voiceFallbackMethod
  * @property string|null $voiceFallbackUrl
  * @property bool|null $voiceCallerIdLookup
- * @property string|null $dateCreated
- * @property string|null $dateUpdated
+ * @property \DateTime|null $dateCreated
+ * @property \DateTime|null $dateUpdated
  * @property string|null $smsFallbackMethod
  * @property string|null $smsFallbackUrl
  * @property string|null $smsMethod
  * @property string|null $smsUrl
  * @property string $addressRequirements
- * @property PhoneNumberCapabilities|null $capabilities
+ * @property array|null $capabilities
  * @property string|null $statusCallback
  * @property string|null $statusCallbackMethod
  * @property string|null $apiVersion
@@ -78,14 +77,14 @@ class DependentPhoneNumberInstance extends InstanceResource
             'voiceFallbackMethod' => Values::array_get($payload, 'voice_fallback_method'),
             'voiceFallbackUrl' => Values::array_get($payload, 'voice_fallback_url'),
             'voiceCallerIdLookup' => Values::array_get($payload, 'voice_caller_id_lookup'),
-            'dateCreated' => Values::array_get($payload, 'date_created'),
-            'dateUpdated' => Values::array_get($payload, 'date_updated'),
+            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
+            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'smsFallbackMethod' => Values::array_get($payload, 'sms_fallback_method'),
             'smsFallbackUrl' => Values::array_get($payload, 'sms_fallback_url'),
             'smsMethod' => Values::array_get($payload, 'sms_method'),
             'smsUrl' => Values::array_get($payload, 'sms_url'),
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
-            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
+            'capabilities' => Values::array_get($payload, 'capabilities'),
             'statusCallback' => Values::array_get($payload, 'status_callback'),
             'statusCallbackMethod' => Values::array_get($payload, 'status_callback_method'),
             'apiVersion' => Values::array_get($payload, 'api_version'),

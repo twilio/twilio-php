@@ -37,6 +37,20 @@ abstract class DestinationAlphaSenderOptions
 
 
 
+    /**
+     * @param string $isoCountryCode Optional filter to return only alphanumeric sender IDs associated with the specified two-character ISO country code.
+     * @return ReadDestinationAlphaSenderOptions Options builder
+     */
+    public static function read(
+        
+        string $isoCountryCode = Values::NONE
+
+    ): ReadDestinationAlphaSenderOptions
+    {
+        return new ReadDestinationAlphaSenderOptions(
+            $isoCountryCode
+        );
+    }
 
 }
 
@@ -79,4 +93,40 @@ class CreateDestinationAlphaSenderOptions extends Options
 
 
 
+class ReadDestinationAlphaSenderOptions extends Options
+    {
+    /**
+     * @param string $isoCountryCode Optional filter to return only alphanumeric sender IDs associated with the specified two-character ISO country code.
+     */
+    public function __construct(
+        
+        string $isoCountryCode = Values::NONE
+
+    ) {
+        $this->options['isoCountryCode'] = $isoCountryCode;
+    }
+
+    /**
+     * Optional filter to return only alphanumeric sender IDs associated with the specified two-character ISO country code.
+     *
+     * @param string $isoCountryCode Optional filter to return only alphanumeric sender IDs associated with the specified two-character ISO country code.
+     * @return $this Fluent Builder
+     */
+    public function setIsoCountryCode(string $isoCountryCode): self
+    {
+        $this->options['isoCountryCode'] = $isoCountryCode;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Messaging.V1.ReadDestinationAlphaSenderOptions ' . $options . ']';
+    }
+}
 

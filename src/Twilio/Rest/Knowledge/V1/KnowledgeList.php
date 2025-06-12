@@ -18,6 +18,7 @@ namespace Twilio\Rest\Knowledge\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
@@ -68,6 +69,7 @@ class KnowledgeList extends ListResource
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -78,9 +80,9 @@ class KnowledgeList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return KnowledgeInstance[] Array of results
      */
-    public function read(?int $limit = null, $pageSize = null): array
+    public function read(array $options = [], ?int $limit = null, $pageSize = null): array
     {
-        return \iterator_to_array($this->stream($limit, $pageSize), false);
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
@@ -91,6 +93,7 @@ class KnowledgeList extends ListResource
      * The results are returned as a generator, so this operation is memory
      * efficient.
      *
+     * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -101,11 +104,11 @@ class KnowledgeList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(?int $limit = null, $pageSize = null): Stream
+    public function stream(array $options = [], ?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
-        $page = $this->page($limits['pageSize']);
+        $page = $this->page($options, $limits['pageSize']);
 
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
@@ -120,13 +123,17 @@ class KnowledgeList extends ListResource
      * @return KnowledgePage Page of KnowledgeInstance
      */
     public function page(
+        array $options = [],
         $pageSize = Values::NONE,
         string $pageToken = Values::NONE,
         $pageNumber = Values::NONE
     ): KnowledgePage
     {
+        $options = new Values($options);
 
         $params = Values::of([
+            'Tags' =>
+                $options['tags'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
