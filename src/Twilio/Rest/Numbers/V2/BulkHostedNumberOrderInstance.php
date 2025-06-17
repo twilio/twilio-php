@@ -34,7 +34,7 @@ use Twilio\Deserialize;
  * @property \DateTime|null $dateCompleted
  * @property string|null $url
  * @property int $totalCount
- * @property array[]|null $results
+ * @property object[]|null $results
  */
 class BulkHostedNumberOrderInstance extends InstanceResource
 {
@@ -45,7 +45,7 @@ class BulkHostedNumberOrderInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $bulkHostingSid A 34 character string that uniquely identifies this BulkHostedNumberOrder.
      */
-    public function __construct(Version $version, array $payload, string $bulkHostingSid = null)
+    public function __construct(Version $version, array $payload, ?string $bulkHostingSid = null)
     {
         parent::__construct($version);
 

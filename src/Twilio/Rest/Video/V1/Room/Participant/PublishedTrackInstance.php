@@ -46,7 +46,7 @@ class PublishedTrackInstance extends InstanceResource
      * @param string $participantSid The SID of the Participant resource with the published track to fetch.
      * @param string $sid The SID of the RoomParticipantPublishedTrack resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $roomSid, string $participantSid, ?string $sid = null)
     {
         parent::__construct($version);
 

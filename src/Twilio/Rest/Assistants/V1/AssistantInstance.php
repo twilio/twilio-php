@@ -39,16 +39,6 @@ use Twilio\Rest\Assistants\V1\Assistant\MessageList;
  * @property string $personalityPrompt
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
- * @property string $accountSid
- * @property array $customerAi
- * @property string $id
- * @property string $model
- * @property string $name
- * @property string $owner
- * @property string $url
- * @property string $personalityPrompt
- * @property \DateTime $dateCreated
- * @property \DateTime $dateUpdated
  * @property string[] $knowledge
  * @property string[] $tools
  */
@@ -66,22 +56,12 @@ class AssistantInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $id
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'accountSid' => Values::array_get($payload, 'account_sid'),
-            'customerAi' => Values::array_get($payload, 'customer_ai'),
-            'id' => Values::array_get($payload, 'id'),
-            'model' => Values::array_get($payload, 'model'),
-            'name' => Values::array_get($payload, 'name'),
-            'owner' => Values::array_get($payload, 'owner'),
-            'url' => Values::array_get($payload, 'url'),
-            'personalityPrompt' => Values::array_get($payload, 'personality_prompt'),
-            'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
-            'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'customerAi' => Values::array_get($payload, 'customer_ai'),
             'id' => Values::array_get($payload, 'id'),

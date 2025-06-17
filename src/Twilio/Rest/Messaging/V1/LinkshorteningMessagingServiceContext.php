@@ -61,7 +61,7 @@ class LinkshorteningMessagingServiceContext extends InstanceContext
     public function create(): LinkshorteningMessagingServiceInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
         return new LinkshorteningMessagingServiceInstance(

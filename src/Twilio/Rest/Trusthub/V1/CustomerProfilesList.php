@@ -69,7 +69,7 @@ class CustomerProfilesList extends ListResource
                 $options['statusCallback'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new CustomerProfilesInstance(
@@ -95,7 +95,7 @@ class CustomerProfilesList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CustomerProfilesInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    public function read(array $options = [], ?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
@@ -119,7 +119,7 @@ class CustomerProfilesList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    public function stream(array $options = [], ?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
@@ -158,7 +158,8 @@ class CustomerProfilesList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new CustomerProfilesPage($this->version, $response, $this->solution);
     }

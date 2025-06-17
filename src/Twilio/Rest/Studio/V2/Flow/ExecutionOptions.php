@@ -44,8 +44,8 @@ abstract class ExecutionOptions
      */
     public static function read(
         
-        \DateTime $dateCreatedFrom = null,
-        \DateTime $dateCreatedTo = null
+        ?\DateTime $dateCreatedFrom = null,
+        ?\DateTime $dateCreatedTo = null
 
     ): ReadExecutionOptions
     {
@@ -105,8 +105,8 @@ class ReadExecutionOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateCreatedFrom = null,
-        \DateTime $dateCreatedTo = null
+        ?\DateTime $dateCreatedFrom = null,
+        ?\DateTime $dateCreatedTo = null
 
     ) {
         $this->options['dateCreatedFrom'] = $dateCreatedFrom;

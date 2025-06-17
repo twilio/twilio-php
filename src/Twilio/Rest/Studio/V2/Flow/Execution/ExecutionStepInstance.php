@@ -30,6 +30,7 @@ use Twilio\Rest\Studio\V2\Flow\Execution\ExecutionStep\ExecutionStepContextList;
  * @property string|null $accountSid
  * @property string|null $flowSid
  * @property string|null $executionSid
+ * @property string|null $parentStepSid
  * @property string|null $name
  * @property array|null $context
  * @property string|null $transitionedFrom
@@ -52,7 +53,7 @@ class ExecutionStepInstance extends InstanceResource
      * @param string $executionSid The SID of the Execution resource with the Step to fetch.
      * @param string $sid The SID of the ExecutionStep resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -62,6 +63,7 @@ class ExecutionStepInstance extends InstanceResource
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'flowSid' => Values::array_get($payload, 'flow_sid'),
             'executionSid' => Values::array_get($payload, 'execution_sid'),
+            'parentStepSid' => Values::array_get($payload, 'parent_step_sid'),
             'name' => Values::array_get($payload, 'name'),
             'context' => Values::array_get($payload, 'context'),
             'transitionedFrom' => Values::array_get($payload, 'transitioned_from'),

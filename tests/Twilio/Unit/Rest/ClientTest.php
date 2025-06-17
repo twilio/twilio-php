@@ -11,22 +11,47 @@ use Twilio\Rest\Client;
 use Twilio\Tests\Holodeck;
 use Twilio\Tests\Request;
 use Twilio\Tests\Unit\UnitTest;
+use Twilio\CredentialProvider\NoAuthCredentialProvider;
 
 class ClientTest extends UnitTest {
 
     public function testThrowsWhenUsernameAndPasswordMissing(): void {
         $this->expectException(ConfigurationException::class);
-        new Client(null, null, null, null, null, []);
+        $client = new Client(null, null, null, null, null, []);
+        $client->request("GET", "https://api.twilio.com");
     }
 
     public function testThrowsWhenUsernameMissing(): void {
         $this->expectException(ConfigurationException::class);
-        new Client(null, 'password', null, null, null, []);
+        $client = new Client(null, 'password', null, null, null, []);
+        $client->request("GET", "https://api.twilio.com");
     }
 
     public function testThrowsWhenPasswordMissing(): void {
         $this->expectException(ConfigurationException::class);
-        new Client('username', null, null, null, null, []);
+        $client = new Client('username', null, null, null, null, []);
+        $client->request("GET", "https://api.twilio.com");
+    }
+
+    public function testSetCredentialProvider(): void {
+        $client = new Client();
+        $client->setCredentialProvider(new NoAuthCredentialProvider());
+        $this->assertEquals("", $client->getUsername());
+        $this->assertEquals("", $client->getPassword());
+    }
+
+    public function testInvalidateBasicAuth(): void {
+        $client = new Client();
+        $client->invalidateBasicAuth();
+        $this->assertEquals("", $client->getUsername());
+        $this->assertEquals("", $client->getPassword());
+    }
+
+    public function testRequestWithAuthStrategy(): void {
+        $client = new Client();
+        $client->setCredentialProvider(new NoAuthCredentialProvider());
+        $client->request("GET", "https://api.twilio.com");
+        $this->assertEquals("", $client->getUsername());
     }
 
     public function testUsernamePulledFromEnvironment(): void {

@@ -50,7 +50,7 @@ class MemberInstance extends InstanceResource
      * @param string $channelSid The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the new Member resource belongs to. This value can be the Channel resource's `sid` or `unique_name`.
      * @param string $sid The SID of the Member resource to delete. This value can be either the Member's `sid` or its `identity` value.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $channelSid, ?string $sid = null)
     {
         parent::__construct($version);
 

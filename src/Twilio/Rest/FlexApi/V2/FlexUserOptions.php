@@ -22,30 +22,21 @@ abstract class FlexUserOptions
 {
 
     /**
-     * @param string $firstName First name of the User.
-     * @param string $lastName Last name of the User.
      * @param string $email Email of the User.
-     * @param string $friendlyName Friendly name of the User.
      * @param string $userSid The unique SID identifier of the Twilio Unified User.
      * @param string $locale The locale preference of the user.
      * @return UpdateFlexUserOptions Options builder
      */
     public static function update(
         
-        string $firstName = Values::NONE,
-        string $lastName = Values::NONE,
         string $email = Values::NONE,
-        string $friendlyName = Values::NONE,
         string $userSid = Values::NONE,
         string $locale = Values::NONE
 
     ): UpdateFlexUserOptions
     {
         return new UpdateFlexUserOptions(
-            $firstName,
-            $lastName,
             $email,
-            $friendlyName,
             $userSid,
             $locale
         );
@@ -57,53 +48,20 @@ abstract class FlexUserOptions
 class UpdateFlexUserOptions extends Options
     {
     /**
-     * @param string $firstName First name of the User.
-     * @param string $lastName Last name of the User.
      * @param string $email Email of the User.
-     * @param string $friendlyName Friendly name of the User.
      * @param string $userSid The unique SID identifier of the Twilio Unified User.
      * @param string $locale The locale preference of the user.
      */
     public function __construct(
         
-        string $firstName = Values::NONE,
-        string $lastName = Values::NONE,
         string $email = Values::NONE,
-        string $friendlyName = Values::NONE,
         string $userSid = Values::NONE,
         string $locale = Values::NONE
 
     ) {
-        $this->options['firstName'] = $firstName;
-        $this->options['lastName'] = $lastName;
         $this->options['email'] = $email;
-        $this->options['friendlyName'] = $friendlyName;
         $this->options['userSid'] = $userSid;
         $this->options['locale'] = $locale;
-    }
-
-    /**
-     * First name of the User.
-     *
-     * @param string $firstName First name of the User.
-     * @return $this Fluent Builder
-     */
-    public function setFirstName(string $firstName): self
-    {
-        $this->options['firstName'] = $firstName;
-        return $this;
-    }
-
-    /**
-     * Last name of the User.
-     *
-     * @param string $lastName Last name of the User.
-     * @return $this Fluent Builder
-     */
-    public function setLastName(string $lastName): self
-    {
-        $this->options['lastName'] = $lastName;
-        return $this;
     }
 
     /**
@@ -115,18 +73,6 @@ class UpdateFlexUserOptions extends Options
     public function setEmail(string $email): self
     {
         $this->options['email'] = $email;
-        return $this;
-    }
-
-    /**
-     * Friendly name of the User.
-     *
-     * @param string $friendlyName Friendly name of the User.
-     * @return $this Fluent Builder
-     */
-    public function setFriendlyName(string $friendlyName): self
-    {
-        $this->options['friendlyName'] = $friendlyName;
         return $this;
     }
 

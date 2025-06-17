@@ -72,7 +72,7 @@ class FlexFlowContext extends InstanceContext
     public function fetch(): FlexFlowInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new FlexFlowInstance(
@@ -132,7 +132,7 @@ class FlexFlowContext extends InstanceContext
                 $options['integrationRetryCount'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new FlexFlowInstance(

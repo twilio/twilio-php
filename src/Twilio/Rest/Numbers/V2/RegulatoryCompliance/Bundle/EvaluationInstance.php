@@ -30,7 +30,7 @@ use Twilio\Deserialize;
  * @property string|null $regulationSid
  * @property string|null $bundleSid
  * @property string $status
- * @property array[]|null $results
+ * @property object[]|null $results
  * @property \DateTime|null $dateCreated
  * @property string|null $url
  */
@@ -44,7 +44,7 @@ class EvaluationInstance extends InstanceResource
      * @param string $bundleSid The unique string that identifies the Bundle resource.
      * @param string $sid The unique string that identifies the Evaluation resource.
      */
-    public function __construct(Version $version, array $payload, string $bundleSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $bundleSid, ?string $sid = null)
     {
         parent::__construct($version);
 

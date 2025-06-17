@@ -85,7 +85,7 @@ class SyncMapItemContext extends InstanceContext
     public function fetch(): SyncMapItemInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SyncMapItemInstance(
@@ -121,7 +121,7 @@ class SyncMapItemContext extends InstanceContext
                 $options['collectionTtl'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SyncMapItemInstance(

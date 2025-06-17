@@ -64,7 +64,7 @@ class ConferenceParticipantInstance extends InstanceResource
      * @param string $conferenceSid The unique SID identifier of the Conference.
      * @param string $participantSid The unique SID identifier of the Participant.
      */
-    public function __construct(Version $version, array $payload, string $conferenceSid, string $participantSid = null)
+    public function __construct(Version $version, array $payload, string $conferenceSid, ?string $participantSid = null)
     {
         parent::__construct($version);
 

@@ -1,6 +1,8 @@
 <?php
 namespace Twilio\Base;
 
+use Twilio\AuthStrategy\AuthStrategy;
+use Twilio\CredentialProvider\CredentialProvider;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
@@ -24,6 +26,7 @@ class BaseClient
 
     protected $username;
     protected $password;
+    protected $credentialProvider;
     protected $accountSid;
     protected $region;
     protected $edge;
@@ -46,37 +49,63 @@ class BaseClient
      * @param mixed[] $environment Environment to look for auth details, defaults
      *                             to $_ENV
      * @param string[] $userAgentExtensions Additions to the user agent string
-     * @throws ConfigurationException If valid authentication is not present
      */
     public function __construct(
-        string $username = null,
-        string $password = null,
-        string $accountSid = null,
-        string $region = null,
-        HttpClient $httpClient = null,
-        array $environment = null,
-        array $userAgentExtensions = null
+        ?string $username = null,
+        ?string $password = null,
+        ?string $accountSid = null,
+        ?string $region = null,
+        ?HttpClient $httpClient = null,
+        ?array $environment = null,
+        ?array $userAgentExtensions = null
     ) {
         $this->environment = $environment ?: \getenv();
 
-        $this->username = $this->getArg($username, self::ENV_ACCOUNT_SID);
-        $this->password = $this->getArg($password, self::ENV_AUTH_TOKEN);
+        $this->setUsername($this->getArg($username, self::ENV_ACCOUNT_SID));
+        $this->setPassword($this->getArg($password, self::ENV_AUTH_TOKEN));
         $this->region = $this->getArg($region, self::ENV_REGION);
         $this->edge = $this->getArg(null, self::ENV_EDGE);
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
 
-        if (!$this->username || !$this->password) {
-            throw new ConfigurationException('Credentials are required to create a Client');
-        }
-
-        $this->accountSid = $accountSid ?: $this->username;
+        $this->invalidateOAuth();
+        $this->setAccountSid($accountSid ?: $this->username);
 
         if ($httpClient) {
             $this->httpClient = $httpClient;
         } else {
             $this->httpClient = new CurlClient();
         }
+    }
+
+    public function setUsername(?string $username): void {
+        $this->username = $username;
+    }
+
+    public function setPassword(?string $password): void {
+        $this->password = $password;
+    }
+
+    public function setAccountSid(?string $accountSid): void {
+        $this->accountSid = $accountSid;
+    }
+
+    private function _setCredentialProvider($credentialProvider): void {
+        $this->credentialProvider = $credentialProvider;
+    }
+
+    public function setCredentialProvider(CredentialProvider $credentialProvider): void {
+        $this->_setCredentialProvider($credentialProvider);
+        $this->invalidateBasicAuth();
+    }
+
+    public function invalidateBasicAuth(): void {
+        $this->setUsername("");
+        $this->setPassword("");
+    }
+
+    public function invalidateOAuth(): void {
+        $this->_setCredentialProvider(null);
     }
 
     /**
@@ -111,7 +140,9 @@ class BaseClient
      * @param string $username User for Authentication
      * @param string $password Password for Authentication
      * @param int $timeout Timeout in seconds
+     * @param AuthStrategy $authStrategy AuthStrategy for Authentication
      * @return \Twilio\Http\Response Response from the Twilio API
+     * @throws TwilioException
      */
     public function request(
         string $method,
@@ -119,12 +150,28 @@ class BaseClient
         array $params = [],
         array $data = [],
         array $headers = [],
-        string $username = null,
-        string $password = null,
-        int $timeout = null
+        ?string $username = null,
+        ?string $password = null,
+        ?int $timeout = null,
+        ?AuthStrategy $authStrategy = null
     ): \Twilio\Http\Response{
         $username = $username ?: $this->username;
         $password = $password ?: $this->password;
+        $authStrategy = $authStrategy ?: null;
+        if ($this->credentialProvider) {
+            $authStrategy = $this->credentialProvider->toAuthStrategy();
+        }
+
+        if (!$authStrategy) {
+            if (!$username) {
+                throw new ConfigurationException('username is required');
+            }
+
+            if (!$password) {
+                throw new ConfigurationException("password is required");
+            }
+        }
+
         $logLevel = (getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? 'debug' : $this->getLogLevel());
 
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
@@ -136,7 +183,8 @@ class BaseClient
             $headers['User-Agent'] .= ' ' . implode(' ', $this->userAgentExtensions);
         }
 
-        if (!\array_key_exists('Accept', $headers)) {
+        // skip adding Accept header in case of delete operation
+        if ($method !== "DELETE" && !\array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
         }
 
@@ -169,7 +217,8 @@ class BaseClient
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            $authStrategy
         );
 
         if ($logLevel === 'debug') {
@@ -341,7 +390,7 @@ class BaseClient
      *
      * @param string $uri Edge to use, unsets the Edge when called with no arguments
      */
-    public function setEdge(string $edge = null): void
+    public function setEdge(?string $edge = null): void
     {
         $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
@@ -381,7 +430,7 @@ class BaseClient
      *
      * @param string $logLevel log level to use
      */
-    public function setLogLevel(string $logLevel = null): void
+    public function setLogLevel(?string $logLevel = null): void
     {
         $this->logLevel = $this->getArg($logLevel, self::ENV_LOG);
     }

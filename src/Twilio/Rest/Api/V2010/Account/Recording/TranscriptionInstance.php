@@ -50,7 +50,7 @@ class TranscriptionInstance extends InstanceResource
      * @param string $recordingSid The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcription to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Transcription resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $recordingSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, string $recordingSid, ?string $sid = null)
     {
         parent::__construct($version);
 

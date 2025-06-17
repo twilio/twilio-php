@@ -35,6 +35,7 @@ use Twilio\Rest\Assistants\V1\Knowledge\KnowledgeStatusList;
  * @property string $status
  * @property string $type
  * @property string $url
+ * @property string $embeddingModel
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
@@ -50,7 +51,7 @@ class KnowledgeInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $id the Knowledge ID.
      */
-    public function __construct(Version $version, array $payload, string $id = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         parent::__construct($version);
 
@@ -64,6 +65,7 @@ class KnowledgeInstance extends InstanceResource
             'status' => Values::array_get($payload, 'status'),
             'type' => Values::array_get($payload, 'type'),
             'url' => Values::array_get($payload, 'url'),
+            'embeddingModel' => Values::array_get($payload, 'embedding_model'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
         ];

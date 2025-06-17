@@ -48,7 +48,7 @@ class UserChannelInstance extends InstanceResource
      * @param string $userSid 
      * @param string $channelSid 
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $channelSid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, ?string $channelSid = null)
     {
         parent::__construct($version);
 

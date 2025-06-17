@@ -72,7 +72,7 @@ class ApiKeyContext extends InstanceContext
     public function fetch(): ApiKeyInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ApiKeyInstance(
@@ -102,7 +102,7 @@ class ApiKeyContext extends InstanceContext
                 Serialize::jsonObject($options['policy']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ApiKeyInstance(

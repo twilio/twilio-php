@@ -57,9 +57,8 @@ class MessageList extends ListResource
     public function create(AssistantsV1ServiceAssistantSendMessageRequest $assistantsV1ServiceAssistantSendMessageRequest): MessageInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
         $data = $assistantsV1ServiceAssistantSendMessageRequest->toArray();
-        $headers['Content-Type'] = 'application/json';
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new MessageInstance(

@@ -34,7 +34,7 @@ use Twilio\Deserialize;
  * @property string|null $targetPortInTimeRangeEnd
  * @property string|null $portInRequestStatus
  * @property array|null $losingCarrierInformation
- * @property array[]|null $phoneNumbers
+ * @property object[]|null $phoneNumbers
  * @property string[]|null $documents
  * @property \DateTime|null $dateCreated
  */
@@ -47,7 +47,7 @@ class PortingPortInInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $portInRequestSid The SID of the Port In request. This is a unique identifier of the port in request.
      */
-    public function __construct(Version $version, array $payload, string $portInRequestSid = null)
+    public function __construct(Version $version, array $payload, ?string $portInRequestSid = null)
     {
         parent::__construct($version);
 

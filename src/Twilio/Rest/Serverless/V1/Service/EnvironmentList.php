@@ -69,7 +69,7 @@ class EnvironmentList extends ListResource
                 $options['domainSuffix'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new EnvironmentInstance(
@@ -95,7 +95,7 @@ class EnvironmentList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return EnvironmentInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array
+    public function read(?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
@@ -118,7 +118,7 @@ class EnvironmentList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream
+    public function stream(?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
@@ -149,7 +149,8 @@ class EnvironmentList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new EnvironmentPage($this->version, $response, $this->solution);
     }

@@ -37,6 +37,7 @@ abstract class MessageOptions
      * @param string $addressRetention
      * @param bool $smartEncoded Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`.
      * @param string[] $persistentAction Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp).
+     * @param string $trafficType
      * @param bool $shortenUrls For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided.
      * @param string $scheduleType
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be in ISO 8601 format.
@@ -63,9 +64,10 @@ abstract class MessageOptions
         string $addressRetention = Values::NONE,
         bool $smartEncoded = Values::BOOL_NONE,
         array $persistentAction = Values::ARRAY_NONE,
+        string $trafficType = Values::NONE,
         bool $shortenUrls = Values::BOOL_NONE,
         string $scheduleType = Values::NONE,
-        \DateTime $sendAt = null,
+        ?\DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
         string $riskCheck = Values::NONE
@@ -89,6 +91,7 @@ abstract class MessageOptions
             $addressRetention,
             $smartEncoded,
             $persistentAction,
+            $trafficType,
             $shortenUrls,
             $scheduleType,
             $sendAt,
@@ -112,9 +115,9 @@ abstract class MessageOptions
         
         string $to = Values::NONE,
         string $from = Values::NONE,
-        string $dateSentBefore = null,
-        string $dateSent = null,
-        string $dateSentAfter = null
+        ?string $dateSentBefore = null,
+        ?string $dateSent = null,
+        ?string $dateSentAfter = null
 
     ): ReadMessageOptions
     {
@@ -166,6 +169,7 @@ class CreateMessageOptions extends Options
      * @param string $addressRetention
      * @param bool $smartEncoded Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`.
      * @param string[] $persistentAction Rich actions for non-SMS/MMS channels. Used for [sending location in WhatsApp messages](https://www.twilio.com/docs/whatsapp/message-features#location-messages-with-whatsapp).
+     * @param string $trafficType
      * @param bool $shortenUrls For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided.
      * @param string $scheduleType
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be in ISO 8601 format.
@@ -191,9 +195,10 @@ class CreateMessageOptions extends Options
         string $addressRetention = Values::NONE,
         bool $smartEncoded = Values::BOOL_NONE,
         array $persistentAction = Values::ARRAY_NONE,
+        string $trafficType = Values::NONE,
         bool $shortenUrls = Values::BOOL_NONE,
         string $scheduleType = Values::NONE,
-        \DateTime $sendAt = null,
+        ?\DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
         string $riskCheck = Values::NONE
@@ -215,6 +220,7 @@ class CreateMessageOptions extends Options
         $this->options['addressRetention'] = $addressRetention;
         $this->options['smartEncoded'] = $smartEncoded;
         $this->options['persistentAction'] = $persistentAction;
+        $this->options['trafficType'] = $trafficType;
         $this->options['shortenUrls'] = $shortenUrls;
         $this->options['scheduleType'] = $scheduleType;
         $this->options['sendAt'] = $sendAt;
@@ -412,6 +418,16 @@ class CreateMessageOptions extends Options
     }
 
     /**
+     * @param string $trafficType
+     * @return $this Fluent Builder
+     */
+    public function setTrafficType(string $trafficType): self
+    {
+        $this->options['trafficType'] = $trafficType;
+        return $this;
+    }
+
+    /**
      * For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided.
      *
      * @param bool $shortenUrls For Messaging Services with [Link Shortening configured](https://www.twilio.com/docs/messaging/features/link-shortening) only: A Boolean indicating whether or not Twilio should shorten links in the `body` of the Message. Default value is `false`. If `true`, the `messaging_service_sid` parameter must also be provided.
@@ -506,9 +522,9 @@ class ReadMessageOptions extends Options
         
         string $to = Values::NONE,
         string $from = Values::NONE,
-        string $dateSentBefore = null,
-        string $dateSent = null,
-        string $dateSentAfter = null
+        ?string $dateSentBefore = null,
+        ?string $dateSent = null,
+        ?string $dateSentAfter = null
 
     ) {
         $this->options['to'] = $to;

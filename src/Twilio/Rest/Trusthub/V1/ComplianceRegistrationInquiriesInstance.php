@@ -39,7 +39,7 @@ class ComplianceRegistrationInquiriesInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $registrationId The unique RegistrationId matching the Regulatory Compliance Inquiry that should be resumed or resubmitted. This value will have been returned by the initial Regulatory Compliance Inquiry creation call.
      */
-    public function __construct(Version $version, array $payload, string $registrationId = null)
+    public function __construct(Version $version, array $payload, ?string $registrationId = null)
     {
         parent::__construct($version);
 

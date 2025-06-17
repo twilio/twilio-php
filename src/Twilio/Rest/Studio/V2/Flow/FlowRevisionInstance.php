@@ -33,7 +33,7 @@ use Twilio\Deserialize;
  * @property int $revision
  * @property string|null $commitMessage
  * @property bool|null $valid
- * @property array[]|null $errors
+ * @property object[]|null $errors
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
@@ -48,7 +48,7 @@ class FlowRevisionInstance extends InstanceResource
      * @param string $sid The SID of the Flow resource to fetch.
      * @param string $revision Specific Revision number or can be `LatestPublished` and `LatestRevision`.
      */
-    public function __construct(Version $version, array $payload, string $sid, string $revision = null)
+    public function __construct(Version $version, array $payload, string $sid, ?string $revision = null)
     {
         parent::__construct($version);
 

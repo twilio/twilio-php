@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        php: [ 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3 ]
+        php: [ 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4 ]
         dependencies:
           - "lowest"
           - "highest"
@@ -57,6 +57,12 @@ jobs:
           TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
           TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
           TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
+          TWILIO_ORGS_CLIENT_ID: ${{ secrets.TWILIO_ORGS_CLIENT_ID }}
+          TWILIO_ORGS_CLIENT_SECRET: ${{ secrets.TWILIO_ORGS_CLIENT_SECRET }}
+          TWILIO_ORG_SID: ${{ secrets.TWILIO_ORG_SID }}
+          TWILIO_CLIENT_ID: ${{ secrets.TWILIO_CLIENT_ID }}
+          TWILIO_CLIENT_SECRET: ${{ secrets.TWILIO_CLIENT_SECRET }}
+          TWILIO_MESSAGE_SID: ${{ secrets.TWILIO_MESSAGE_SID }}
         run: make cluster-test
 
       - name: Install SonarCloud scanner and run analysis

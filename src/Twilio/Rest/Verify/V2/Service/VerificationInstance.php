@@ -35,7 +35,7 @@ use Twilio\Deserialize;
  * @property array|null $lookup
  * @property string|null $amount
  * @property string|null $payee
- * @property array[]|null $sendCodeAttempts
+ * @property object[]|null $sendCodeAttempts
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property array|null $sna
@@ -51,7 +51,7 @@ class VerificationInstance extends InstanceResource
      * @param string $serviceSid The SID of the verification [Service](https://www.twilio.com/docs/verify/api/service) to create the resource under.
      * @param string $sid The Twilio-provided string that uniquely identifies the Verification resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

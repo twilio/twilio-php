@@ -30,9 +30,9 @@ use Twilio\Rest\Serverless\V1\Service\Build\BuildStatusList;
  * @property string|null $accountSid
  * @property string|null $serviceSid
  * @property string $status
- * @property array[]|null $assetVersions
- * @property array[]|null $functionVersions
- * @property array[]|null $dependencies
+ * @property object[]|null $assetVersions
+ * @property object[]|null $functionVersions
+ * @property object[]|null $dependencies
  * @property string $runtime
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
@@ -51,7 +51,7 @@ class BuildInstance extends InstanceResource
      * @param string $serviceSid The SID of the Service to create the Build resource under.
      * @param string $sid The SID of the Build resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

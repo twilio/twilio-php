@@ -28,10 +28,12 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Events $events
  * @property FlexApi $flexApi
  * @property FrontlineApi $frontlineApi
+ * @property PreviewIam $previewIam
  * @property Iam $iam
  * @property Insights $insights
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
+ * @property Knowledge $knowledge
  * @property Lookups $lookups
  * @property Marketplace $marketplace
  * @property Messaging $messaging
@@ -109,10 +111,12 @@ class Client extends BaseClient {
     protected $_events;
     protected $_flexApi;
     protected $_frontlineApi;
+    protected $_previewIam;
     protected $_iam;
     protected $_insights;
     protected $_intelligence;
     protected $_ipMessaging;
+    protected $_knowledge;
     protected $_lookups;
     protected $_marketplace;
     protected $_messaging;
@@ -248,6 +252,17 @@ class Client extends BaseClient {
         return $this->_frontlineApi;
     }
     /**
+     * Access the PreviewIam Twilio Domain
+     *
+     * @return PreviewIam PreviewIam Twilio Domain
+     */
+    protected function getPreviewIam(): PreviewIam {
+        if (!$this->_previewIam) {
+            $this->_previewIam = new PreviewIam($this);
+        }
+        return $this->_previewIam;
+    }
+    /**
      * Access the Iam Twilio Domain
      *
      * @return Iam Iam Twilio Domain
@@ -290,6 +305,17 @@ class Client extends BaseClient {
             $this->_ipMessaging = new IpMessaging($this);
         }
         return $this->_ipMessaging;
+    }
+    /**
+     * Access the Knowledge Twilio Domain
+     *
+     * @return Knowledge Knowledge Twilio Domain
+     */
+    protected function getKnowledge(): Knowledge {
+        if (!$this->_knowledge) {
+            $this->_knowledge = new Knowledge($this);
+        }
+        return $this->_knowledge;
     }
     /**
      * Access the Lookups Twilio Domain

@@ -56,7 +56,7 @@ class SinkTestList extends ListResource
     public function create(): SinkTestInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
         return new SinkTestInstance(

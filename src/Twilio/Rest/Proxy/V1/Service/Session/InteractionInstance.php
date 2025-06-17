@@ -56,7 +56,7 @@ class InteractionInstance extends InstanceResource
      * @param string $sessionSid The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) of the resource to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Interaction resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $sessionSid, ?string $sid = null)
     {
         parent::__construct($version);
 

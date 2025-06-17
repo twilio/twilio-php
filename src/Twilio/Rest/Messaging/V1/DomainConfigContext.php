@@ -58,7 +58,7 @@ class DomainConfigContext extends InstanceContext
     public function fetch(): DomainConfigInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new DomainConfigInstance(
@@ -92,7 +92,7 @@ class DomainConfigContext extends InstanceContext
                 Serialize::booleanToString($options['disableHttps']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new DomainConfigInstance(

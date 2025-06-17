@@ -54,7 +54,7 @@ class EnvironmentInstance extends InstanceResource
      * @param string $serviceSid The SID of the Service to create the Environment resource under.
      * @param string $sid The SID of the Environment resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

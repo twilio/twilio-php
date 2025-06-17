@@ -27,7 +27,7 @@ use Twilio\Version;
  * @property string|null $sid
  * @property string|null $friendlyName
  * @property string|null $machineName
- * @property array[]|null $fields
+ * @property object[]|null $fields
  * @property string|null $url
  */
 class EndUserTypeInstance extends InstanceResource
@@ -39,7 +39,7 @@ class EndUserTypeInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that identifies the End-User Type resource.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

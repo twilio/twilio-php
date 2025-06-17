@@ -32,6 +32,7 @@ use Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList;
  * @property string|null $engagementSid
  * @property string|null $name
  * @property array|null $context
+ * @property string|null $parentStepSid
  * @property string|null $transitionedFrom
  * @property string|null $transitionedTo
  * @property \DateTime|null $dateCreated
@@ -52,7 +53,7 @@ class StepInstance extends InstanceResource
      * @param string $engagementSid The SID of the Engagement with the Step to fetch.
      * @param string $sid The SID of the Step resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, string $engagementSid, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -64,6 +65,7 @@ class StepInstance extends InstanceResource
             'engagementSid' => Values::array_get($payload, 'engagement_sid'),
             'name' => Values::array_get($payload, 'name'),
             'context' => Values::array_get($payload, 'context'),
+            'parentStepSid' => Values::array_get($payload, 'parent_step_sid'),
             'transitionedFrom' => Values::array_get($payload, 'transitioned_from'),
             'transitionedTo' => Values::array_get($payload, 'transitioned_to'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),

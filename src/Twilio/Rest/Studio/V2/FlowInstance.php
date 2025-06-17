@@ -37,8 +37,8 @@ use Twilio\Rest\Studio\V2\Flow\FlowTestUserList;
  * @property int $revision
  * @property string|null $commitMessage
  * @property bool|null $valid
- * @property array[]|null $errors
- * @property array[]|null $warnings
+ * @property object[]|null $errors
+ * @property object[]|null $warnings
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $webhookUrl
@@ -58,7 +58,7 @@ class FlowInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Flow resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

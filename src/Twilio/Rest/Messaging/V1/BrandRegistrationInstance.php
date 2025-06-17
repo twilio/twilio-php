@@ -37,7 +37,7 @@ use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
  * @property string $status
  * @property string|null $tcrId
  * @property string|null $failureReason
- * @property array[]|null $errors
+ * @property object[]|null $errors
  * @property string|null $url
  * @property int|null $brandScore
  * @property string[]|null $brandFeedback
@@ -61,7 +61,7 @@ class BrandRegistrationInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Brand Registration resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

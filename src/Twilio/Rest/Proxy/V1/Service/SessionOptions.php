@@ -26,13 +26,13 @@ abstract class SessionOptions
      * @param int $ttl The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
      * @param string $mode
      * @param string $status
-     * @param array[] $participants The Participant objects to include in the new session.
+     * @param object[] $participants The Participant objects to include in the new session.
      * @return CreateSessionOptions Options builder
      */
     public static function create(
         
         string $uniqueName = Values::NONE,
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $mode = Values::NONE,
         string $status = Values::NONE,
@@ -61,7 +61,7 @@ abstract class SessionOptions
      */
     public static function update(
         
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $status = Values::NONE
 
@@ -84,12 +84,12 @@ class CreateSessionOptions extends Options
      * @param int $ttl The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
      * @param string $mode
      * @param string $status
-     * @param array[] $participants The Participant objects to include in the new session.
+     * @param object[] $participants The Participant objects to include in the new session.
      */
     public function __construct(
         
         string $uniqueName = Values::NONE,
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $mode = Values::NONE,
         string $status = Values::NONE,
@@ -163,7 +163,7 @@ class CreateSessionOptions extends Options
     /**
      * The Participant objects to include in the new session.
      *
-     * @param array[] $participants The Participant objects to include in the new session.
+     * @param object[] $participants The Participant objects to include in the new session.
      * @return $this Fluent Builder
      */
     public function setParticipants(array $participants): self
@@ -196,7 +196,7 @@ class UpdateSessionOptions extends Options
      */
     public function __construct(
         
-        \DateTime $dateExpiry = null,
+        ?\DateTime $dateExpiry = null,
         int $ttl = Values::INT_NONE,
         string $status = Values::NONE
 

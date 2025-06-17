@@ -30,8 +30,8 @@ abstract class YearlyOptions
     public static function read(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ): ReadYearlyOptions
@@ -57,8 +57,8 @@ class ReadYearlyOptions extends Options
     public function __construct(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ) {

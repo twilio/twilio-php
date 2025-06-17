@@ -30,8 +30,8 @@ abstract class AllTimeOptions
     public static function read(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ): ReadAllTimeOptions
@@ -57,8 +57,8 @@ class ReadAllTimeOptions extends Options
     public function __construct(
         
         string $category = Values::NONE,
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         bool $includeSubaccounts = Values::BOOL_NONE
 
     ) {

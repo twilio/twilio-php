@@ -6,6 +6,7 @@ namespace Twilio\Tests;
 
 use Twilio\Http\Client;
 use Twilio\Http\Response;
+use Twilio\AuthStrategy\AuthStrategy;
 
 class Holodeck implements Client {
     private $requests = [];
@@ -13,9 +14,9 @@ class Holodeck implements Client {
 
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
-                            string $user = null, string $password = null,
-                            int $timeout = null): Response {
-        $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password);
+                            ?string $user = null, ?string $password = null,
+                            ?int $timeout = null, ?AuthStrategy $authStrategy = null): Response {
+        $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password, $authStrategy);
         if (\count($this->responses) === 0) {
             return new Response(404, null, null);
         }

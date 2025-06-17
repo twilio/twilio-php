@@ -9,6 +9,7 @@ use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Request;
 use Twilio\Exceptions\HttpException;
+use Twilio\AuthStrategy\AuthStrategy;
 
 final class GuzzleClient implements Client {
     /**
@@ -22,14 +23,20 @@ final class GuzzleClient implements Client {
 
     public function request(string $method, string $url,
                             array $params = [], array $data = [], array $headers = [],
-                            string $user = null, string $password = null,
-                            int $timeout = null): Response {
+                            ?string $user = null, ?string $password = null,
+                            ?int $timeout = null, ?AuthStrategy $authStrategy = null): Response {
         try {
             $options = [
                 'timeout' => $timeout,
-                'auth' => [$user, $password],
                 'allow_redirects' => false,
             ];
+
+            if($user && $password) {
+                $headers['Authorization'] = 'Basic ' . base64_encode($user . ':' . $password);
+            }
+            elseif ($authStrategy) {
+                $headers['Authorization'] = $authStrategy->getAuthString();
+            }
 
             if ($params) {
                 $options['query'] = Query::build($params, PHP_QUERY_RFC1738);

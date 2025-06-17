@@ -72,7 +72,7 @@ class TollfreeVerificationContext extends InstanceContext
     public function fetch(): TollfreeVerificationInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new TollfreeVerificationInstance(
@@ -140,7 +140,7 @@ class TollfreeVerificationContext extends InstanceContext
                 $options['editReason'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new TollfreeVerificationInstance(

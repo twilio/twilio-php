@@ -61,7 +61,7 @@ class OperatorAttachmentContext extends InstanceContext
     public function create(): OperatorAttachmentInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], [], $headers);
 
         return new OperatorAttachmentInstance(

@@ -26,17 +26,21 @@ use Twilio\InstanceContext;
 use Twilio\Serialize;
 use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantList;
 use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInviteList;
+use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionTransferList;
 
 
 /**
  * @property InteractionChannelParticipantList $participants
  * @property InteractionChannelInviteList $invites
+ * @property InteractionTransferList $transfers
+ * @method \Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionTransferContext transfers(string $sid)
  * @method \Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantContext participants(string $sid)
  */
 class InteractionChannelContext extends InstanceContext
     {
     protected $_participants;
     protected $_invites;
+    protected $_transfers;
 
     /**
      * Initialize the InteractionChannelContext
@@ -74,7 +78,7 @@ class InteractionChannelContext extends InstanceContext
     public function fetch(): InteractionChannelInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InteractionChannelInstance(
@@ -106,7 +110,7 @@ class InteractionChannelContext extends InstanceContext
                 Serialize::jsonObject($options['routing']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InteractionChannelInstance(
@@ -148,6 +152,22 @@ class InteractionChannelContext extends InstanceContext
         }
 
         return $this->_invites;
+    }
+
+    /**
+     * Access the transfers
+     */
+    protected function getTransfers(): InteractionTransferList
+    {
+        if (!$this->_transfers) {
+            $this->_transfers = new InteractionTransferList(
+                $this->version,
+                $this->solution['interactionSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_transfers;
     }
 
     /**

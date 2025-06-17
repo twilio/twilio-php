@@ -78,7 +78,7 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
         $this->description = Values::array_get($payload, 'description');
         $this->id = Values::array_get($payload, 'id');
         $this->name = Values::array_get($payload, 'name');
-        $this->policyDetails = Values::array_get($payload, 'policyDetails');
+        $this->policyDetails = Values::array_get($payload, 'policy_details');
         $this->type = Values::array_get($payload, 'type');
     }
 
@@ -93,7 +93,7 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
             'description' => $this->description,
             'id' => $this->id,
             'name' => $this->name,
-            'policyDetails' => $this->policyDetails,
+            'policy_details' => $this->policyDetails,
             'type' => $this->type
         ];
     }
@@ -118,7 +118,7 @@ class AssistantsV1ServiceCreateToolRequest implements \JsonSerializable
         protected $policy;
         protected $type;
     public function __construct(array $payload = []) {
-        $this->assistantId = Values::array_get($payload, 'assistantId');
+        $this->assistantId = Values::array_get($payload, 'assistant_id');
         $this->description = Values::array_get($payload, 'description');
         $this->enabled = Values::array_get($payload, 'enabled');
         $this->meta = Values::array_get($payload, 'meta');
@@ -135,7 +135,7 @@ class AssistantsV1ServiceCreateToolRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'assistantId' => $this->assistantId,
+            'assistant_id' => $this->assistantId,
             'description' => $this->description,
             'enabled' => $this->enabled,
             'meta' => $this->meta,
@@ -165,7 +165,7 @@ class AssistantsV1ServiceUpdateToolRequest implements \JsonSerializable
         protected $policy;
         protected $type;
     public function __construct(array $payload = []) {
-        $this->assistantId = Values::array_get($payload, 'assistantId');
+        $this->assistantId = Values::array_get($payload, 'assistant_id');
         $this->description = Values::array_get($payload, 'description');
         $this->enabled = Values::array_get($payload, 'enabled');
         $this->meta = Values::array_get($payload, 'meta');
@@ -182,7 +182,7 @@ class AssistantsV1ServiceUpdateToolRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'assistantId' => $this->assistantId,
+            'assistant_id' => $this->assistantId,
             'description' => $this->description,
             'enabled' => $this->enabled,
             'meta' => $this->meta,

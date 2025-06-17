@@ -32,8 +32,8 @@ abstract class ParticipantOptions
         
         string $status = Values::NONE,
         string $identity = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null
 
     ): ReadParticipantOptions
     {
@@ -75,8 +75,8 @@ class ReadParticipantOptions extends Options
         
         string $status = Values::NONE,
         string $identity = Values::NONE,
-        \DateTime $dateCreatedAfter = null,
-        \DateTime $dateCreatedBefore = null
+        ?\DateTime $dateCreatedAfter = null,
+        ?\DateTime $dateCreatedBefore = null
 
     ) {
         $this->options['status'] = $status;

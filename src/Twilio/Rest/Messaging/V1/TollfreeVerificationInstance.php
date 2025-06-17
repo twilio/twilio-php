@@ -60,7 +60,7 @@ use Twilio\Deserialize;
  * @property int|null $errorCode
  * @property \DateTime|null $editExpiration
  * @property bool|null $editAllowed
- * @property array[]|null $rejectionReasons
+ * @property object[]|null $rejectionReasons
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
  */
@@ -73,7 +73,7 @@ class TollfreeVerificationInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string to identify Tollfree Verification.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -8,6 +8,7 @@ package.xml
 docs
 .phpintel/
 tests/.phpunit.result.cache
+.php-cs-fixer.cache
 
 # You should be keeping these in a global gitignore, see for example
 # https://help.github.com/articles/ignoring-files#global-gitignore

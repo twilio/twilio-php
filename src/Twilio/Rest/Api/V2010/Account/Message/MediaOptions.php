@@ -30,9 +30,9 @@ abstract class MediaOptions
      */
     public static function read(
         
-        string $dateCreatedBefore = null,
-        string $dateCreated = null,
-        string $dateCreatedAfter = null
+        ?string $dateCreatedBefore = null,
+        ?string $dateCreated = null,
+        ?string $dateCreatedAfter = null
 
     ): ReadMediaOptions
     {
@@ -56,9 +56,9 @@ class ReadMediaOptions extends Options
      */
     public function __construct(
         
-        string $dateCreatedBefore = null,
-        string $dateCreated = null,
-        string $dateCreatedAfter = null
+        ?string $dateCreatedBefore = null,
+        ?string $dateCreated = null,
+        ?string $dateCreatedAfter = null
 
     ) {
         $this->options['dateCreatedBefore'] = $dateCreatedBefore;

@@ -50,7 +50,7 @@ class BindingInstance extends InstanceResource
      * @param string $serviceSid The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) to create the resource under.
      * @param string $sid The Twilio-provided string that uniquely identifies the Binding resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

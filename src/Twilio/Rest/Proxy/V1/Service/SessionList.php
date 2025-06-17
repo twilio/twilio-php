@@ -77,7 +77,7 @@ class SessionList extends ListResource
                 Serialize::map($options['participants'], function ($e) { return Serialize::jsonObject($e); }),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SessionInstance(
@@ -103,7 +103,7 @@ class SessionList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return SessionInstance[] Array of results
      */
-    public function read(int $limit = null, $pageSize = null): array
+    public function read(?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
@@ -126,7 +126,7 @@ class SessionList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(int $limit = null, $pageSize = null): Stream
+    public function stream(?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
@@ -157,7 +157,8 @@ class SessionList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new SessionPage($this->version, $response, $this->solution);
     }

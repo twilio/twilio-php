@@ -27,7 +27,7 @@ use Twilio\Deserialize;
 /**
  * @property string|null $requestId
  * @property string|null $url
- * @property array[]|null $results
+ * @property object[]|null $results
  * @property string|null $friendlyName
  * @property string|null $status
  * @property \DateTime|null $dateCreated
@@ -42,7 +42,7 @@ class BulkEligibilityInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $requestId The SID of the bulk eligibility check that you want to know about.
      */
-    public function __construct(Version $version, array $payload, string $requestId = null)
+    public function __construct(Version $version, array $payload, ?string $requestId = null)
     {
         parent::__construct($version);
 

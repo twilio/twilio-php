@@ -28,7 +28,7 @@ use Twilio\Version;
  * @property string|null $networkAccessProfileSid
  * @property string|null $friendlyName
  * @property string|null $isoCountry
- * @property array[]|null $identifiers
+ * @property object[]|null $identifiers
  * @property string|null $url
  */
 class NetworkAccessProfileNetworkInstance extends InstanceResource
@@ -41,7 +41,7 @@ class NetworkAccessProfileNetworkInstance extends InstanceResource
      * @param string $networkAccessProfileSid The unique string that identifies the Network Access Profile resource.
      * @param string $sid The SID of the Network resource to be removed from the Network Access Profile resource.
      */
-    public function __construct(Version $version, array $payload, string $networkAccessProfileSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $networkAccessProfileSid, ?string $sid = null)
     {
         parent::__construct($version);
 

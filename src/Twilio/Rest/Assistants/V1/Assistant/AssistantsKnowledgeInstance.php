@@ -33,6 +33,7 @@ use Twilio\Deserialize;
  * @property string $status
  * @property string $type
  * @property string $url
+ * @property string $embeddingModel
  * @property \DateTime $dateCreated
  * @property \DateTime $dateUpdated
  */
@@ -46,7 +47,7 @@ class AssistantsKnowledgeInstance extends InstanceResource
      * @param string $assistantId The assistant ID.
      * @param string $id The knowledge ID.
      */
-    public function __construct(Version $version, array $payload, string $assistantId, string $id = null)
+    public function __construct(Version $version, array $payload, string $assistantId, ?string $id = null)
     {
         parent::__construct($version);
 
@@ -60,6 +61,7 @@ class AssistantsKnowledgeInstance extends InstanceResource
             'status' => Values::array_get($payload, 'status'),
             'type' => Values::array_get($payload, 'type'),
             'url' => Values::array_get($payload, 'url'),
+            'embeddingModel' => Values::array_get($payload, 'embedding_model'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
         ];
