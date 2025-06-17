@@ -1,8 +1,6 @@
 <?php
 
-namespace Twilio\TwiML\Voice;
-
-use Twilio\TwiML\TwiML;
+namespace Twilio\TwiML;
 
 class Comment extends TwiML {
     /**
