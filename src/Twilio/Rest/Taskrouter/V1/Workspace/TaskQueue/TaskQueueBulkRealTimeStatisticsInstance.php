@@ -26,7 +26,7 @@ use Twilio\Version;
 /**
  * @property string|null $accountSid
  * @property string|null $workspaceSid
- * @property object[]|null $taskQueueData
+ * @property array[]|null $taskQueueData
  * @property int $taskQueueResponseCount
  * @property string|null $url
  */

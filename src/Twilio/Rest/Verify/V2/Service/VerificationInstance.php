@@ -35,7 +35,7 @@ use Twilio\Deserialize;
  * @property array|null $lookup
  * @property string|null $amount
  * @property string|null $payee
- * @property object[]|null $sendCodeAttempts
+ * @property array[]|null $sendCodeAttempts
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property array|null $sna

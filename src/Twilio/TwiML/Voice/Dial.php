@@ -99,6 +99,17 @@ class Dial extends TwiML {
     }
 
     /**
+     * Add WhatsApp child.
+     *
+     * @param string $phoneNumber WhatsApp Phone Number to dial
+     * @param array $attributes Optional attributes
+     * @return WhatsApp Child element.
+     */
+    public function whatsApp($phoneNumber, $attributes = []): WhatsApp {
+        return $this->nest(new WhatsApp($phoneNumber, $attributes));
+    }
+
+    /**
      * Add Action attribute.
      *
      * @param string $action Action URL

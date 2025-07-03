@@ -26,7 +26,7 @@ abstract class VerificationAttemptOptions
      * @param \DateTime $dateCreatedBefore Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z.
      * @param string $channelDataTo Destination of a verification. It is phone number in E.164 format.
      * @param string $country Filter used to query Verification Attempts sent to the specified destination country.
-     * @param string $channel Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL`
+     * @param string $channel Filter used to query Verification Attempts by communication channel.
      * @param string $verifyServiceSid Filter used to query Verification Attempts by verify service. Only attempts of the provided SID will be returned.
      * @param string $verificationSid Filter used to return all the Verification Attempts of a single verification. Only attempts of the provided verification SID will be returned.
      * @param string $status Filter used to query Verification Attempts by conversion status. Valid values are `UNCONVERTED`, for attempts that were not converted, and `CONVERTED`, for attempts that were confirmed.
@@ -67,7 +67,7 @@ class ReadVerificationAttemptOptions extends Options
      * @param \DateTime $dateCreatedBefore Datetime filter used to consider only Verification Attempts created before this datetime on the summary aggregation. Given as GMT in ISO 8601 formatted datetime string: yyyy-MM-dd'T'HH:mm:ss'Z.
      * @param string $channelDataTo Destination of a verification. It is phone number in E.164 format.
      * @param string $country Filter used to query Verification Attempts sent to the specified destination country.
-     * @param string $channel Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL`
+     * @param string $channel Filter used to query Verification Attempts by communication channel.
      * @param string $verifyServiceSid Filter used to query Verification Attempts by verify service. Only attempts of the provided SID will be returned.
      * @param string $verificationSid Filter used to return all the Verification Attempts of a single verification. Only attempts of the provided verification SID will be returned.
      * @param string $status Filter used to query Verification Attempts by conversion status. Valid values are `UNCONVERTED`, for attempts that were not converted, and `CONVERTED`, for attempts that were confirmed.
@@ -143,9 +143,9 @@ class ReadVerificationAttemptOptions extends Options
     }
 
     /**
-     * Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL`
+     * Filter used to query Verification Attempts by communication channel.
      *
-     * @param string $channel Filter used to query Verification Attempts by communication channel. Valid values are `SMS` and `CALL`
+     * @param string $channel Filter used to query Verification Attempts by communication channel.
      * @return $this Fluent Builder
      */
     public function setChannel(string $channel): self

@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class PluginConfigurationOptions
 {
     /**
-     * @param object[] $plugins A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
+     * @param array[] $plugins A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
      * @param string $description The Flex Plugin Configuration's description.
      * @param string $flexMetadata The Flex-Metadata HTTP request header
      * @return CreatePluginConfigurationOptions Options builder
@@ -76,7 +76,7 @@ abstract class PluginConfigurationOptions
 class CreatePluginConfigurationOptions extends Options
     {
     /**
-     * @param object[] $plugins A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
+     * @param array[] $plugins A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
      * @param string $description The Flex Plugin Configuration's description.
      * @param string $flexMetadata The Flex-Metadata HTTP request header
      */
@@ -95,7 +95,7 @@ class CreatePluginConfigurationOptions extends Options
     /**
      * A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
      *
-     * @param object[] $plugins A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
+     * @param array[] $plugins A list of objects that describe the plugin versions included in the configuration. Each object contains the sid of the plugin version.
      * @return $this Fluent Builder
      */
     public function setPlugins(array $plugins): self

@@ -31,7 +31,7 @@ use Twilio\Version;
  * @property bool|null $extractMatch
  * @property string|null $matchProbability
  * @property string|null $normalizedResult
- * @property object[]|null $utteranceResults
+ * @property array[]|null $utteranceResults
  * @property bool|null $utteranceMatch
  * @property string|null $predictedLabel
  * @property string|null $predictedProbability

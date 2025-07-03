@@ -30,7 +30,7 @@ use Twilio\Deserialize;
  * @property string|null $regulationSid
  * @property string|null $bundleSid
  * @property string $status
- * @property object[]|null $results
+ * @property array[]|null $results
  * @property \DateTime|null $dateCreated
  * @property string|null $url
  */

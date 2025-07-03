@@ -30,7 +30,7 @@ use Twilio\Version;
  * @property string|null $name
  * @property string|null $description
  * @property bool|null $active
- * @property object[]|null $questions
+ * @property array[]|null $questions
  * @property string|null $url
  */
 class InsightsQuestionnairesInstance extends InstanceResource

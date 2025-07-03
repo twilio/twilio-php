@@ -34,8 +34,8 @@ use Twilio\Deserialize;
  * @property string|null $taskrouterWorkspaceSid
  * @property string|null $taskrouterTargetWorkflowSid
  * @property string|null $taskrouterTargetTaskqueueSid
- * @property object[]|null $taskrouterTaskqueues
- * @property object[]|null $taskrouterSkills
+ * @property array[]|null $taskrouterTaskqueues
+ * @property array[]|null $taskrouterSkills
  * @property array|null $taskrouterWorkerChannels
  * @property array|null $taskrouterWorkerAttributes
  * @property string|null $taskrouterOfflineActivitySid
@@ -59,7 +59,7 @@ use Twilio\Deserialize;
  * @property array|null $publicAttributes
  * @property bool|null $pluginServiceEnabled
  * @property array|null $pluginServiceAttributes
- * @property object[]|null $integrations
+ * @property array[]|null $integrations
  * @property array|null $outboundCallFlows
  * @property string[]|null $serverlessServiceSids
  * @property array|null $queueStatsConfiguration
@@ -69,7 +69,7 @@ use Twilio\Deserialize;
  * @property array|null $flexInsightsHr
  * @property bool|null $flexInsightsDrilldown
  * @property string|null $flexUrl
- * @property object[]|null $channelConfigs
+ * @property array[]|null $channelConfigs
  * @property array|null $debuggerIntegration
  * @property array|null $flexUiStatusReport
  * @property array|null $agentConvEndMethods

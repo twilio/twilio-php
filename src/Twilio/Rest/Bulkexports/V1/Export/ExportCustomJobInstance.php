@@ -32,7 +32,7 @@ use Twilio\Version;
  * @property string|null $webhookMethod
  * @property string|null $email
  * @property string|null $jobSid
- * @property array|null $details
+ * @property array[]|null $details
  * @property string|null $jobQueuePosition
  * @property string|null $estimatedCompletionTime
  */

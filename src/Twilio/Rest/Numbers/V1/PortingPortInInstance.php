@@ -34,7 +34,7 @@ use Twilio\Deserialize;
  * @property string|null $targetPortInTimeRangeEnd
  * @property string|null $portInRequestStatus
  * @property array|null $losingCarrierInformation
- * @property object[]|null $phoneNumbers
+ * @property array[]|null $phoneNumbers
  * @property string[]|null $documents
  * @property \DateTime|null $dateCreated
  */

@@ -33,11 +33,9 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Insights $insights
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
- * @property Knowledge $knowledge
  * @property Lookups $lookups
  * @property Marketplace $marketplace
  * @property Messaging $messaging
- * @property Microvisor $microvisor
  * @property Monitor $monitor
  * @property Notify $notify
  * @property Numbers $numbers
@@ -116,11 +114,9 @@ class Client extends BaseClient {
     protected $_insights;
     protected $_intelligence;
     protected $_ipMessaging;
-    protected $_knowledge;
     protected $_lookups;
     protected $_marketplace;
     protected $_messaging;
-    protected $_microvisor;
     protected $_monitor;
     protected $_notify;
     protected $_numbers;
@@ -307,17 +303,6 @@ class Client extends BaseClient {
         return $this->_ipMessaging;
     }
     /**
-     * Access the Knowledge Twilio Domain
-     *
-     * @return Knowledge Knowledge Twilio Domain
-     */
-    protected function getKnowledge(): Knowledge {
-        if (!$this->_knowledge) {
-            $this->_knowledge = new Knowledge($this);
-        }
-        return $this->_knowledge;
-    }
-    /**
      * Access the Lookups Twilio Domain
      *
      * @return Lookups Lookups Twilio Domain
@@ -349,17 +334,6 @@ class Client extends BaseClient {
             $this->_messaging = new Messaging($this);
         }
         return $this->_messaging;
-    }
-    /**
-     * Access the Microvisor Twilio Domain
-     *
-     * @return Microvisor Microvisor Twilio Domain
-     */
-    protected function getMicrovisor(): Microvisor {
-        if (!$this->_microvisor) {
-            $this->_microvisor = new Microvisor($this);
-        }
-        return $this->_microvisor;
     }
     /**
      * Access the Monitor Twilio Domain

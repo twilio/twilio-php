@@ -24,7 +24,7 @@ use Twilio\Version;
 
 
 /**
- * @property object[]|null $results
+ * @property array[]|null $results
  */
 class EligibilityInstance extends InstanceResource
 {

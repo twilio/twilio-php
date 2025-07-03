@@ -26,7 +26,7 @@ use Twilio\Version;
 /**
  * @property string|null $resourceType
  * @property string|null $friendlyName
- * @property array|null $details
+ * @property array[]|null $details
  * @property string|null $startDay
  * @property string|null $endDay
  * @property string|null $jobSid

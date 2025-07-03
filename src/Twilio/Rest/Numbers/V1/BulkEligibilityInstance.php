@@ -27,7 +27,7 @@ use Twilio\Deserialize;
 /**
  * @property string|null $requestId
  * @property string|null $url
- * @property object[]|null $results
+ * @property array[]|null $results
  * @property string|null $friendlyName
  * @property string|null $status
  * @property \DateTime|null $dateCreated

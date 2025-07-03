@@ -23,6 +23,7 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Video\V1\Room\RecordingRulesList;
+use Twilio\Rest\Video\V1\Room\TranscriptionsList;
 use Twilio\Rest\Video\V1\Room\ParticipantList;
 use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 
@@ -56,6 +57,7 @@ use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 class RoomInstance extends InstanceResource
 {
     protected $_recordingRules;
+    protected $_transcriptions;
     protected $_participants;
     protected $_recordings;
 
@@ -150,6 +152,14 @@ class RoomInstance extends InstanceResource
     protected function getRecordingRules(): RecordingRulesList
     {
         return $this->proxy()->recordingRules;
+    }
+
+    /**
+     * Access the transcriptions
+     */
+    protected function getTranscriptions(): TranscriptionsList
+    {
+        return $this->proxy()->transcriptions;
     }
 
     /**

@@ -29,7 +29,7 @@ use Twilio\Deserialize;
  * @property string|null $accountSid
  * @property \DateTime|null $startTime
  * @property \DateTime|null $endTime
- * @property object[]|null $activityDurations
+ * @property array[]|null $activityDurations
  * @property int $reservationsCreated
  * @property int $reservationsAccepted
  * @property int $reservationsRejected

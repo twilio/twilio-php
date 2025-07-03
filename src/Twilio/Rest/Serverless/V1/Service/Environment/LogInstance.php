@@ -33,7 +33,7 @@ use Twilio\Deserialize;
  * @property string|null $deploymentSid
  * @property string|null $functionSid
  * @property string|null $requestSid
- * @property string $level
+ * @property string|null $level
  * @property string|null $message
  * @property \DateTime|null $dateCreated
  * @property string|null $url

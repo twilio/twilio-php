@@ -29,7 +29,7 @@ use Twilio\Deserialize;
  * @property string|null $iccid
  * @property string|null $simSid
  * @property string $status
- * @property object[]|null $packages
+ * @property array[]|null $packages
  * @property \DateTime|null $dateCompleted
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated

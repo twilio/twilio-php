@@ -1,6 +1,33 @@
 twilio-php Changelog
 ====================
 
+[2025-07-03] Version 8.6.4
+--------------------------
+**Library - Docs**
+- [PR #868](https://github.com/twilio/twilio-php/pull/868): add php 8.4 in supported version. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Bulkexports**
+- Changed the type of 'details' field to be a list of objects instead of a single object
+
+**Conversations**
+- Updates to `method` casing for ConfgurationAddress, ConversationScopedWebhook, and ServiceConversationScopedWebhook for RestProxy compatibility
+
+**Proxy**
+- remove shortcodes resource as its no longer used
+
+**Serverless**
+- Change log field level from type `ienum` to `string` in Logs api
+
+**Taskrouter**
+- Remove `URL-encoded` from attributes param definition in tasks
+
+**Trunking**
+- Added `symmetric_rtp_enabled` property on Trunks.
+
+**Twiml**
+- Add support for `<WhatsApp>` noun under `<Dial>` verb
+
+
 [2025-06-12] Version 8.6.3
 --------------------------
 **Library - Fix**
