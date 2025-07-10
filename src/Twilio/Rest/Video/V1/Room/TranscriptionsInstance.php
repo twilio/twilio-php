@@ -30,13 +30,13 @@ use Twilio\Deserialize;
  * @property string|null $accountSid
  * @property string|null $roomSid
  * @property string $status
- * @property string|null $identity
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property \DateTime|null $startTime
  * @property \DateTime|null $endTime
  * @property int|null $duration
  * @property string|null $url
+ * @property array|null $configuration
  */
 class TranscriptionsInstance extends InstanceResource
 {
@@ -58,13 +58,13 @@ class TranscriptionsInstance extends InstanceResource
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
             'status' => Values::array_get($payload, 'status'),
-            'identity' => Values::array_get($payload, 'identity'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'startTime' => Deserialize::dateTime(Values::array_get($payload, 'start_time')),
             'endTime' => Deserialize::dateTime(Values::array_get($payload, 'end_time')),
             'duration' => Values::array_get($payload, 'duration'),
             'url' => Values::array_get($payload, 'url'),
+            'configuration' => Values::array_get($payload, 'configuration'),
         ];
 
         $this->solution = ['roomSid' => $roomSid, 'ttid' => $ttid ?: $this->properties['ttid'], ];

@@ -19,8 +19,8 @@ use Twilio\Values;
 abstract class LookupOverrideModels
 {
     /**
-     * @property string $lineType
-     * @property string $reason
+     * @property string $lineType The new line type to override the original line type
+     * @property string $reason The reason for the override
     */
     public static function createOverridesRequest(array $payload = []): OverridesRequest
     {
@@ -32,8 +32,8 @@ abstract class LookupOverrideModels
 class OverridesRequest implements \JsonSerializable
 {
     /**
-     * @property string $lineType
-     * @property string $reason
+     * @property string $lineType The new line type to override the original line type
+     * @property string $reason The reason for the override
     */
         protected $lineType;
         protected $reason;
