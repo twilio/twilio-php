@@ -49,10 +49,15 @@ class RateLimitRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'limit' => $this->limit,
-            'ttl' => $this->ttl
+        $jsonString = [
         ];
+        if (isset($this->limit)) {
+            $jsonString['limit'] = $this->limit;
+        }
+        if (isset($this->ttl)) {
+            $jsonString['ttl'] = $this->ttl;
+        }
+        return $jsonString;
     }
 }
 

@@ -106,12 +106,21 @@ class MessagingV2ChannelsSenderConfiguration implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'waba_id' => $this->wabaId,
-            'verification_method' => $this->verificationMethod,
-            'verification_code' => $this->verificationCode,
-            'voice_application_sid' => $this->voiceApplicationSid
+        $jsonString = [
         ];
+        if (isset($this->wabaId)) {
+            $jsonString['waba_id'] = $this->wabaId;
+        }
+        if (isset($this->verificationMethod)) {
+            $jsonString['verification_method'] = $this->verificationMethod;
+        }
+        if (isset($this->verificationCode)) {
+            $jsonString['verification_code'] = $this->verificationCode;
+        }
+        if (isset($this->voiceApplicationSid)) {
+            $jsonString['voice_application_sid'] = $this->voiceApplicationSid;
+        }
+        return $jsonString;
     }
 }
 
@@ -147,14 +156,27 @@ class MessagingV2ChannelsSenderWebhook implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'callback_url' => $this->callbackUrl,
-            'callback_method' => $this->callbackMethod,
-            'fallback_url' => $this->fallbackUrl,
-            'fallback_method' => $this->fallbackMethod,
-            'status_callback_url' => $this->statusCallbackUrl,
-            'status_callback_method' => $this->statusCallbackMethod
+        $jsonString = [
         ];
+        if (isset($this->callbackUrl)) {
+            $jsonString['callback_url'] = $this->callbackUrl;
+        }
+        if (isset($this->callbackMethod)) {
+            $jsonString['callback_method'] = $this->callbackMethod;
+        }
+        if (isset($this->fallbackUrl)) {
+            $jsonString['fallback_url'] = $this->fallbackUrl;
+        }
+        if (isset($this->fallbackMethod)) {
+            $jsonString['fallback_method'] = $this->fallbackMethod;
+        }
+        if (isset($this->statusCallbackUrl)) {
+            $jsonString['status_callback_url'] = $this->statusCallbackUrl;
+        }
+        if (isset($this->statusCallbackMethod)) {
+            $jsonString['status_callback_method'] = $this->statusCallbackMethod;
+        }
+        return $jsonString;
     }
 }
 
@@ -196,16 +218,33 @@ class MessagingV2ChannelsSenderProfile implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'name' => $this->name,
-            'about' => $this->about,
-            'address' => $this->address,
-            'description' => $this->description,
-            'emails' => $this->emails,
-            'logo_url' => $this->logoUrl,
-            'vertical' => $this->vertical,
-            'websites' => $this->websites
+        $jsonString = [
         ];
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
+        if (isset($this->about)) {
+            $jsonString['about'] = $this->about;
+        }
+        if (isset($this->address)) {
+            $jsonString['address'] = $this->address;
+        }
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->emails)) {
+            $jsonString['emails'] = $this->emails;
+        }
+        if (isset($this->logoUrl)) {
+            $jsonString['logo_url'] = $this->logoUrl;
+        }
+        if (isset($this->vertical)) {
+            $jsonString['vertical'] = $this->vertical;
+        }
+        if (isset($this->websites)) {
+            $jsonString['websites'] = $this->websites;
+        }
+        return $jsonString;
     }
 }
 
@@ -235,12 +274,19 @@ class MessagingV2ChannelsSenderRequestsCreate implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'sender_id' => $this->senderId,
-            'configuration' => $this->configuration,
-            'webhook' => $this->webhook,
-            'profile' => $this->profile
+        $jsonString = [
+            'sender_id' => $this->senderId
         ];
+        if (isset($this->configuration)) {
+            $jsonString['configuration'] = $this->configuration;
+        }
+        if (isset($this->webhook)) {
+            $jsonString['webhook'] = $this->webhook;
+        }
+        if (isset($this->profile)) {
+            $jsonString['profile'] = $this->profile;
+        }
+        return $jsonString;
     }
 }
 
@@ -267,11 +313,18 @@ class MessagingV2ChannelsSenderRequestsUpdate implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'configuration' => $this->configuration,
-            'webhook' => $this->webhook,
-            'profile' => $this->profile
+        $jsonString = [
         ];
+        if (isset($this->configuration)) {
+            $jsonString['configuration'] = $this->configuration;
+        }
+        if (isset($this->webhook)) {
+            $jsonString['webhook'] = $this->webhook;
+        }
+        if (isset($this->profile)) {
+            $jsonString['profile'] = $this->profile;
+        }
+        return $jsonString;
     }
 }
 

@@ -88,13 +88,22 @@ class AssistantsV1ServiceCreatePolicyRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'description' => $this->description,
-            'id' => $this->id,
-            'name' => $this->name,
-            'policy_details' => $this->policyDetails,
-            'type' => $this->type
+        $jsonString = [
+            'policy_details' => $this->policyDetails
         ];
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        return $jsonString;
     }
 }
 
@@ -133,15 +142,26 @@ class AssistantsV1ServiceCreateKnowledgeRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'assistant_id' => $this->assistantId,
-            'description' => $this->description,
-            'knowledge_source_details' => $this->knowledgeSourceDetails,
+        $jsonString = [
             'name' => $this->name,
-            'policy' => $this->policy,
-            'type' => $this->type,
-            'embedding_model' => $this->embeddingModel
+            'type' => $this->type
         ];
+        if (isset($this->assistantId)) {
+            $jsonString['assistant_id'] = $this->assistantId;
+        }
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->knowledgeSourceDetails)) {
+            $jsonString['knowledge_source_details'] = $this->knowledgeSourceDetails;
+        }
+        if (isset($this->policy)) {
+            $jsonString['policy'] = $this->policy;
+        }
+        if (isset($this->embeddingModel)) {
+            $jsonString['embedding_model'] = $this->embeddingModel;
+        }
+        return $jsonString;
     }
 }
 
@@ -177,14 +197,27 @@ class AssistantsV1ServiceUpdateKnowledgeRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'description' => $this->description,
-            'knowledge_source_details' => $this->knowledgeSourceDetails,
-            'name' => $this->name,
-            'policy' => $this->policy,
-            'type' => $this->type,
-            'embedding_model' => $this->embeddingModel
+        $jsonString = [
         ];
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->knowledgeSourceDetails)) {
+            $jsonString['knowledge_source_details'] = $this->knowledgeSourceDetails;
+        }
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
+        if (isset($this->policy)) {
+            $jsonString['policy'] = $this->policy;
+        }
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->embeddingModel)) {
+            $jsonString['embedding_model'] = $this->embeddingModel;
+        }
+        return $jsonString;
     }
 }
 

@@ -53,11 +53,12 @@ class PublicApiCreateRoleAssignmentRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'role_sid' => $this->roleSid,
             'scope' => $this->scope,
             'identity' => $this->identity
         ];
+        return $jsonString;
     }
 }
 
