@@ -163,6 +163,14 @@ class CallSummariesList extends ListResource
                 Serialize::booleanToString($options['voiceIntegrityEnabled']),
             'BrandedBundleSid' =>
                 $options['brandedBundleSid'],
+            'BrandedLogo' =>
+                Serialize::booleanToString($options['brandedLogo']),
+            'BrandedType' =>
+                $options['brandedType'],
+            'BrandedUseCase' =>
+                $options['brandedUseCase'],
+            'BrandedCallReason' =>
+                $options['brandedCallReason'],
             'VoiceIntegrityBundleSid' =>
                 $options['voiceIntegrityBundleSid'],
             'VoiceIntegrityUseCase' =>

@@ -105,8 +105,6 @@ class SubscriptionContext extends InstanceContext
         $data = Values::of([
             'Description' =>
                 $options['description'],
-            'SinkSid' =>
-                $options['sinkSid'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);

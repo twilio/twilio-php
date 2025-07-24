@@ -40,19 +40,16 @@ abstract class SubscriptionOptions
 
     /**
      * @param string $description A human readable description for the Subscription.
-     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
      * @return UpdateSubscriptionOptions Options builder
      */
     public static function update(
         
-        string $description = Values::NONE,
-        string $sinkSid = Values::NONE
+        string $description = Values::NONE
 
     ): UpdateSubscriptionOptions
     {
         return new UpdateSubscriptionOptions(
-            $description,
-            $sinkSid
+            $description
         );
     }
 
@@ -102,16 +99,13 @@ class UpdateSubscriptionOptions extends Options
     {
     /**
      * @param string $description A human readable description for the Subscription.
-     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
      */
     public function __construct(
         
-        string $description = Values::NONE,
-        string $sinkSid = Values::NONE
+        string $description = Values::NONE
 
     ) {
         $this->options['description'] = $description;
-        $this->options['sinkSid'] = $sinkSid;
     }
 
     /**
@@ -123,18 +117,6 @@ class UpdateSubscriptionOptions extends Options
     public function setDescription(string $description): self
     {
         $this->options['description'] = $description;
-        return $this;
-    }
-
-    /**
-     * The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
-     *
-     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
-     * @return $this Fluent Builder
-     */
-    public function setSinkSid(string $sinkSid): self
-    {
-        $this->options['sinkSid'] = $sinkSid;
         return $this;
     }
 

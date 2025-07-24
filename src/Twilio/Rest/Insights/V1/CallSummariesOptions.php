@@ -47,6 +47,10 @@ abstract class CallSummariesOptions
      * @param bool $brandedEnabled A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'
      * @param bool $voiceIntegrityEnabled A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'
      * @param string $brandedBundleSid A unique SID identifier of the Branded Call.
+     * @param bool $brandedLogo Indicates whether the branded logo was displayed during the in_brand branded call. Possible values are true (logo was present) or false (logo was not present).
+     * @param string $brandedType Indicates whether the Branded Call is in_band vs out_of_band.
+     * @param string $brandedUseCase Specifies the user-defined purpose for the call, as provided during the setup of in_band branded calling.
+     * @param string $brandedCallReason Specifies the user-defined reason for the call, which will be displayed to the end user on their mobile device during an in_band branded call.
      * @param string $voiceIntegrityBundleSid A unique SID identifier of the Voice Integrity Profile.
      * @param string $voiceIntegrityUseCase A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'.
      * @param string $businessProfileIdentity A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.
@@ -83,6 +87,10 @@ abstract class CallSummariesOptions
         bool $brandedEnabled = Values::BOOL_NONE,
         bool $voiceIntegrityEnabled = Values::BOOL_NONE,
         string $brandedBundleSid = Values::NONE,
+        bool $brandedLogo = Values::BOOL_NONE,
+        string $brandedType = Values::NONE,
+        string $brandedUseCase = Values::NONE,
+        string $brandedCallReason = Values::NONE,
         string $voiceIntegrityBundleSid = Values::NONE,
         string $voiceIntegrityUseCase = Values::NONE,
         string $businessProfileIdentity = Values::NONE,
@@ -119,6 +127,10 @@ abstract class CallSummariesOptions
             $brandedEnabled,
             $voiceIntegrityEnabled,
             $brandedBundleSid,
+            $brandedLogo,
+            $brandedType,
+            $brandedUseCase,
+            $brandedCallReason,
             $voiceIntegrityBundleSid,
             $voiceIntegrityUseCase,
             $businessProfileIdentity,
@@ -159,6 +171,10 @@ class ReadCallSummariesOptions extends Options
      * @param bool $brandedEnabled A boolean flag indicating whether or not the calls were branded using Twilio Branded Calls. One of 'true' or 'false'
      * @param bool $voiceIntegrityEnabled A boolean flag indicating whether or not the phone number had voice integrity enabled.One of 'true' or 'false'
      * @param string $brandedBundleSid A unique SID identifier of the Branded Call.
+     * @param bool $brandedLogo Indicates whether the branded logo was displayed during the in_brand branded call. Possible values are true (logo was present) or false (logo was not present).
+     * @param string $brandedType Indicates whether the Branded Call is in_band vs out_of_band.
+     * @param string $brandedUseCase Specifies the user-defined purpose for the call, as provided during the setup of in_band branded calling.
+     * @param string $brandedCallReason Specifies the user-defined reason for the call, which will be displayed to the end user on their mobile device during an in_band branded call.
      * @param string $voiceIntegrityBundleSid A unique SID identifier of the Voice Integrity Profile.
      * @param string $voiceIntegrityUseCase A Voice Integrity Use Case . Is of type enum. One of 'abandoned_cart', 'appointment_reminders', 'appointment_scheduling', 'asset_management', 'automated_support', 'call_tracking', 'click_to_call', 'contact_tracing', 'contactless_delivery', 'customer_support', 'dating/social', 'delivery_notifications', 'distance_learning', 'emergency_notifications', 'employee_notifications', 'exam_proctoring', 'field_notifications', 'first_responder', 'fraud_alerts', 'group_messaging', 'identify_&_verification', 'intelligent_routing', 'lead_alerts', 'lead_distribution', 'lead_generation', 'lead_management', 'lead_nurturing', 'marketing_events', 'mass_alerts', 'meetings/collaboration', 'order_notifications', 'outbound_dialer', 'pharmacy', 'phone_system', 'purchase_confirmation', 'remote_appointments', 'rewards_program', 'self-service', 'service_alerts', 'shift_management', 'survey/research', 'telehealth', 'telemarketing', 'therapy_(individual+group)'.
      * @param string $businessProfileIdentity A Business Identity of the calls. Is of type enum. One of 'direct_customer', 'isv_reseller_or_partner'.
@@ -194,6 +210,10 @@ class ReadCallSummariesOptions extends Options
         bool $brandedEnabled = Values::BOOL_NONE,
         bool $voiceIntegrityEnabled = Values::BOOL_NONE,
         string $brandedBundleSid = Values::NONE,
+        bool $brandedLogo = Values::BOOL_NONE,
+        string $brandedType = Values::NONE,
+        string $brandedUseCase = Values::NONE,
+        string $brandedCallReason = Values::NONE,
         string $voiceIntegrityBundleSid = Values::NONE,
         string $voiceIntegrityUseCase = Values::NONE,
         string $businessProfileIdentity = Values::NONE,
@@ -228,6 +248,10 @@ class ReadCallSummariesOptions extends Options
         $this->options['brandedEnabled'] = $brandedEnabled;
         $this->options['voiceIntegrityEnabled'] = $voiceIntegrityEnabled;
         $this->options['brandedBundleSid'] = $brandedBundleSid;
+        $this->options['brandedLogo'] = $brandedLogo;
+        $this->options['brandedType'] = $brandedType;
+        $this->options['brandedUseCase'] = $brandedUseCase;
+        $this->options['brandedCallReason'] = $brandedCallReason;
         $this->options['voiceIntegrityBundleSid'] = $voiceIntegrityBundleSid;
         $this->options['voiceIntegrityUseCase'] = $voiceIntegrityUseCase;
         $this->options['businessProfileIdentity'] = $businessProfileIdentity;
@@ -545,6 +569,54 @@ class ReadCallSummariesOptions extends Options
     public function setBrandedBundleSid(string $brandedBundleSid): self
     {
         $this->options['brandedBundleSid'] = $brandedBundleSid;
+        return $this;
+    }
+
+    /**
+     * Indicates whether the branded logo was displayed during the in_brand branded call. Possible values are true (logo was present) or false (logo was not present).
+     *
+     * @param bool $brandedLogo Indicates whether the branded logo was displayed during the in_brand branded call. Possible values are true (logo was present) or false (logo was not present).
+     * @return $this Fluent Builder
+     */
+    public function setBrandedLogo(bool $brandedLogo): self
+    {
+        $this->options['brandedLogo'] = $brandedLogo;
+        return $this;
+    }
+
+    /**
+     * Indicates whether the Branded Call is in_band vs out_of_band.
+     *
+     * @param string $brandedType Indicates whether the Branded Call is in_band vs out_of_band.
+     * @return $this Fluent Builder
+     */
+    public function setBrandedType(string $brandedType): self
+    {
+        $this->options['brandedType'] = $brandedType;
+        return $this;
+    }
+
+    /**
+     * Specifies the user-defined purpose for the call, as provided during the setup of in_band branded calling.
+     *
+     * @param string $brandedUseCase Specifies the user-defined purpose for the call, as provided during the setup of in_band branded calling.
+     * @return $this Fluent Builder
+     */
+    public function setBrandedUseCase(string $brandedUseCase): self
+    {
+        $this->options['brandedUseCase'] = $brandedUseCase;
+        return $this;
+    }
+
+    /**
+     * Specifies the user-defined reason for the call, which will be displayed to the end user on their mobile device during an in_band branded call.
+     *
+     * @param string $brandedCallReason Specifies the user-defined reason for the call, which will be displayed to the end user on their mobile device during an in_band branded call.
+     * @return $this Fluent Builder
+     */
+    public function setBrandedCallReason(string $brandedCallReason): self
+    {
+        $this->options['brandedCallReason'] = $brandedCallReason;
         return $this;
     }
 
