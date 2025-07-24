@@ -119,18 +119,39 @@ class IdentityMatchParameters implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'first_name' => $this->firstName,
-            'last_name' => $this->lastName,
-            'address_line1' => $this->addressLine1,
-            'address_line2' => $this->addressLine2,
-            'city' => $this->city,
-            'state' => $this->state,
-            'postal_code' => $this->postalCode,
-            'address_country_code' => $this->addressCountryCode,
-            'national_id' => $this->nationalId,
-            'date_of_birth' => $this->dateOfBirth
+        $jsonString = [
         ];
+        if (isset($this->firstName)) {
+            $jsonString['first_name'] = $this->firstName;
+        }
+        if (isset($this->lastName)) {
+            $jsonString['last_name'] = $this->lastName;
+        }
+        if (isset($this->addressLine1)) {
+            $jsonString['address_line1'] = $this->addressLine1;
+        }
+        if (isset($this->addressLine2)) {
+            $jsonString['address_line2'] = $this->addressLine2;
+        }
+        if (isset($this->city)) {
+            $jsonString['city'] = $this->city;
+        }
+        if (isset($this->state)) {
+            $jsonString['state'] = $this->state;
+        }
+        if (isset($this->postalCode)) {
+            $jsonString['postal_code'] = $this->postalCode;
+        }
+        if (isset($this->addressCountryCode)) {
+            $jsonString['address_country_code'] = $this->addressCountryCode;
+        }
+        if (isset($this->nationalId)) {
+            $jsonString['national_id'] = $this->nationalId;
+        }
+        if (isset($this->dateOfBirth)) {
+            $jsonString['date_of_birth'] = $this->dateOfBirth;
+        }
+        return $jsonString;
     }
 }
 
@@ -151,9 +172,12 @@ class ReassignedNumberRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'last_verified_date' => $this->lastVerifiedDate
+        $jsonString = [
         ];
+        if (isset($this->lastVerifiedDate)) {
+            $jsonString['last_verified_date'] = $this->lastVerifiedDate;
+        }
+        return $jsonString;
     }
 }
 
@@ -174,9 +198,12 @@ class SmsPumpingRiskParameters implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'partner_sub_id' => $this->partnerSubId
+        $jsonString = [
         ];
+        if (isset($this->partnerSubId)) {
+            $jsonString['partner_sub_id'] = $this->partnerSubId;
+        }
+        return $jsonString;
     }
 }
 
@@ -215,15 +242,28 @@ class LookupRequestWithCorId implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'correlation_id' => $this->correlationId,
-            'phone_number' => $this->phoneNumber,
-            'fields' => $this->fields,
-            'country_code' => $this->countryCode,
-            'identity_match' => $this->identityMatch,
-            'reassigned_number' => $this->reassignedNumber,
-            'sms_pumping_risk' => $this->smsPumpingRisk
+        $jsonString = [
+            'phone_number' => $this->phoneNumber
         ];
+        if (isset($this->correlationId)) {
+            $jsonString['correlation_id'] = $this->correlationId;
+        }
+        if (isset($this->fields)) {
+            $jsonString['fields'] = $this->fields;
+        }
+        if (isset($this->countryCode)) {
+            $jsonString['country_code'] = $this->countryCode;
+        }
+        if (isset($this->identityMatch)) {
+            $jsonString['identity_match'] = $this->identityMatch;
+        }
+        if (isset($this->reassignedNumber)) {
+            $jsonString['reassigned_number'] = $this->reassignedNumber;
+        }
+        if (isset($this->smsPumpingRisk)) {
+            $jsonString['sms_pumping_risk'] = $this->smsPumpingRisk;
+        }
+        return $jsonString;
     }
 }
 
@@ -244,9 +284,12 @@ class LookupRequest1 implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'phone_numbers' => $this->phoneNumbers
+        $jsonString = [
         ];
+        if (isset($this->phoneNumbers)) {
+            $jsonString['phone_numbers'] = $this->phoneNumbers;
+        }
+        return $jsonString;
     }
 }
 

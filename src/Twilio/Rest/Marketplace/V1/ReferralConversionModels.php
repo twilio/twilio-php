@@ -45,9 +45,12 @@ class CreateReferralConversionRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'referral_account_sid' => $this->referralAccountSid
+        $jsonString = [
         ];
+        if (isset($this->referralAccountSid)) {
+            $jsonString['referral_account_sid'] = $this->referralAccountSid;
+        }
+        return $jsonString;
     }
 }
 

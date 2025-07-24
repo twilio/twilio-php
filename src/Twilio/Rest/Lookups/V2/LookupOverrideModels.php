@@ -49,10 +49,15 @@ class OverridesRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'line_type' => $this->lineType,
-            'reason' => $this->reason
+        $jsonString = [
         ];
+        if (isset($this->lineType)) {
+            $jsonString['line_type'] = $this->lineType;
+        }
+        if (isset($this->reason)) {
+            $jsonString['reason'] = $this->reason;
+        }
+        return $jsonString;
     }
 }
 

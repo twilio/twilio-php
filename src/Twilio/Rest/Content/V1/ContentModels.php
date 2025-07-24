@@ -315,9 +315,10 @@ class TwilioText implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'body' => $this->body
         ];
+        return $jsonString;
     }
 }
 
@@ -341,10 +342,13 @@ class TwilioMedia implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'body' => $this->body,
+        $jsonString = [
             'media' => $this->media
         ];
+        if (isset($this->body)) {
+            $jsonString['body'] = $this->body;
+        }
+        return $jsonString;
     }
 }
 
@@ -377,13 +381,20 @@ class TwilioLocation implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'label' => $this->label,
-            'id' => $this->id,
-            'address' => $this->address
+            'longitude' => $this->longitude
         ];
+        if (isset($this->label)) {
+            $jsonString['label'] = $this->label;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->address)) {
+            $jsonString['address'] = $this->address;
+        }
+        return $jsonString;
     }
 }
 
@@ -410,11 +421,14 @@ class ListItem implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'id' => $this->id,
-            'item' => $this->item,
-            'description' => $this->description
+            'item' => $this->item
         ];
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        return $jsonString;
     }
 }
 
@@ -441,11 +455,12 @@ class TwilioListPicker implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'body' => $this->body,
             'button' => $this->button,
             'items' => $this->items
         ];
+        return $jsonString;
     }
 }
 
@@ -481,14 +496,23 @@ class CallToActionAction implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'type' => $this->type,
-            'title' => $this->title,
-            'url' => $this->url,
-            'phone' => $this->phone,
-            'code' => $this->code,
-            'id' => $this->id
+            'title' => $this->title
         ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
+        if (isset($this->phone)) {
+            $jsonString['phone'] = $this->phone;
+        }
+        if (isset($this->code)) {
+            $jsonString['code'] = $this->code;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        return $jsonString;
     }
 }
 
@@ -512,10 +536,15 @@ class TwilioCallToAction implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'body' => $this->body,
-            'actions' => $this->actions
+        $jsonString = [
         ];
+        if (isset($this->body)) {
+            $jsonString['body'] = $this->body;
+        }
+        if (isset($this->actions)) {
+            $jsonString['actions'] = $this->actions;
+        }
+        return $jsonString;
     }
 }
 
@@ -542,11 +571,14 @@ class QuickReplyAction implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'type' => $this->type,
-            'title' => $this->title,
-            'id' => $this->id
+            'title' => $this->title
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        return $jsonString;
     }
 }
 
@@ -570,10 +602,11 @@ class TwilioQuickReply implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'body' => $this->body,
             'actions' => $this->actions
         ];
+        return $jsonString;
     }
 }
 
@@ -609,14 +642,23 @@ class CardAction implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'type' => $this->type,
-            'title' => $this->title,
-            'url' => $this->url,
-            'phone' => $this->phone,
-            'id' => $this->id,
-            'code' => $this->code
+            'title' => $this->title
         ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
+        if (isset($this->phone)) {
+            $jsonString['phone'] = $this->phone;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->code)) {
+            $jsonString['code'] = $this->code;
+        }
+        return $jsonString;
     }
 }
 
@@ -646,12 +688,19 @@ class TwilioCard implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'title' => $this->title,
-            'subtitle' => $this->subtitle,
-            'media' => $this->media,
-            'actions' => $this->actions
+        $jsonString = [
+            'title' => $this->title
         ];
+        if (isset($this->subtitle)) {
+            $jsonString['subtitle'] = $this->subtitle;
+        }
+        if (isset($this->media)) {
+            $jsonString['media'] = $this->media;
+        }
+        if (isset($this->actions)) {
+            $jsonString['actions'] = $this->actions;
+        }
+        return $jsonString;
     }
 }
 
@@ -687,14 +736,27 @@ class CatalogItem implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'id' => $this->id,
-            'section_title' => $this->sectionTitle,
-            'name' => $this->name,
-            'media_url' => $this->mediaUrl,
-            'price' => $this->price,
-            'description' => $this->description
+        $jsonString = [
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->sectionTitle)) {
+            $jsonString['section_title'] = $this->sectionTitle;
+        }
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
+        if (isset($this->mediaUrl)) {
+            $jsonString['media_url'] = $this->mediaUrl;
+        }
+        if (isset($this->price)) {
+            $jsonString['price'] = $this->price;
+        }
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        return $jsonString;
     }
 }
 
@@ -730,14 +792,25 @@ class TwilioCatalog implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'title' => $this->title,
-            'body' => $this->body,
-            'subtitle' => $this->subtitle,
-            'id' => $this->id,
-            'items' => $this->items,
-            'dynamic_items' => $this->dynamicItems
+        $jsonString = [
+            'body' => $this->body
         ];
+        if (isset($this->title)) {
+            $jsonString['title'] = $this->title;
+        }
+        if (isset($this->subtitle)) {
+            $jsonString['subtitle'] = $this->subtitle;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->items)) {
+            $jsonString['items'] = $this->items;
+        }
+        if (isset($this->dynamicItems)) {
+            $jsonString['dynamic_items'] = $this->dynamicItems;
+        }
+        return $jsonString;
     }
 }
 
@@ -770,13 +843,20 @@ class CarouselAction implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'type' => $this->type,
-            'title' => $this->title,
-            'url' => $this->url,
-            'phone' => $this->phone,
-            'id' => $this->id
+            'title' => $this->title
         ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
+        if (isset($this->phone)) {
+            $jsonString['phone'] = $this->phone;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        return $jsonString;
     }
 }
 
@@ -806,12 +886,21 @@ class CarouselCard implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'title' => $this->title,
-            'body' => $this->body,
-            'media' => $this->media,
-            'actions' => $this->actions
+        $jsonString = [
         ];
+        if (isset($this->title)) {
+            $jsonString['title'] = $this->title;
+        }
+        if (isset($this->body)) {
+            $jsonString['body'] = $this->body;
+        }
+        if (isset($this->media)) {
+            $jsonString['media'] = $this->media;
+        }
+        if (isset($this->actions)) {
+            $jsonString['actions'] = $this->actions;
+        }
+        return $jsonString;
     }
 }
 
@@ -835,10 +924,11 @@ class TwilioCarousel implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'body' => $this->body,
             'cards' => $this->cards
         ];
+        return $jsonString;
     }
 }
 
@@ -862,10 +952,11 @@ class FlowsPageComponent implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'label' => $this->label,
             'type' => $this->type
         ];
+        return $jsonString;
     }
 }
 
@@ -898,13 +989,20 @@ class FlowsPage implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'id' => $this->id,
-            'next_page_id' => $this->nextPageId,
-            'title' => $this->title,
-            'subtitle' => $this->subtitle,
             'layout' => $this->layout
         ];
+        if (isset($this->nextPageId)) {
+            $jsonString['next_page_id'] = $this->nextPageId;
+        }
+        if (isset($this->title)) {
+            $jsonString['title'] = $this->title;
+        }
+        if (isset($this->subtitle)) {
+            $jsonString['subtitle'] = $this->subtitle;
+        }
+        return $jsonString;
     }
 }
 
@@ -940,7 +1038,7 @@ class TwilioFlows implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'body' => $this->body,
             'button_text' => $this->buttonText,
             'subtitle' => $this->subtitle,
@@ -948,6 +1046,7 @@ class TwilioFlows implements \JsonSerializable
             'pages' => $this->pages,
             'type' => $this->type
         ];
+        return $jsonString;
     }
 }
 
@@ -974,11 +1073,12 @@ class TwilioSchedule implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'id' => $this->id,
             'title' => $this->title,
             'timeSlots' => $this->timeSlots
         ];
+        return $jsonString;
     }
 }
 
@@ -1011,13 +1111,22 @@ class WhatsappCard implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'body' => $this->body,
-            'footer' => $this->footer,
-            'media' => $this->media,
-            'header_text' => $this->headerText,
-            'actions' => $this->actions
+        $jsonString = [
+            'body' => $this->body
         ];
+        if (isset($this->footer)) {
+            $jsonString['footer'] = $this->footer;
+        }
+        if (isset($this->media)) {
+            $jsonString['media'] = $this->media;
+        }
+        if (isset($this->headerText)) {
+            $jsonString['header_text'] = $this->headerText;
+        }
+        if (isset($this->actions)) {
+            $jsonString['actions'] = $this->actions;
+        }
+        return $jsonString;
     }
 }
 
@@ -1041,10 +1150,11 @@ class AuthenticationAction implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'type' => $this->type,
             'copy_code_text' => $this->copyCodeText
         ];
+        return $jsonString;
     }
 }
 
@@ -1071,11 +1181,16 @@ class WhatsappAuthentication implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'add_security_recommendation' => $this->addSecurityRecommendation,
-            'code_expiration_minutes' => $this->codeExpirationMinutes,
+        $jsonString = [
             'actions' => $this->actions
         ];
+        if (isset($this->addSecurityRecommendation)) {
+            $jsonString['add_security_recommendation'] = $this->addSecurityRecommendation;
+        }
+        if (isset($this->codeExpirationMinutes)) {
+            $jsonString['code_expiration_minutes'] = $this->codeExpirationMinutes;
+        }
+        return $jsonString;
     }
 }
 
@@ -1132,21 +1247,48 @@ class Types implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'twilio/text' => $this->twilioText,
-            'twilio/media' => $this->twilioMedia,
-            'twilio/location' => $this->twilioLocation,
-            'twilio/list-picker' => $this->twilioListPicker,
-            'twilio/call-to-action' => $this->twilioCallToAction,
-            'twilio/quick-reply' => $this->twilioQuickReply,
-            'twilio/card' => $this->twilioCard,
-            'twilio/catalog' => $this->twilioCatalog,
-            'twilio/carousel' => $this->twilioCarousel,
-            'twilio/flows' => $this->twilioFlows,
-            'twilio/schedule' => $this->twilioSchedule,
-            'whatsapp/card' => $this->whatsappCard,
-            'whatsapp/authentication' => $this->whatsappAuthentication
+        $jsonString = [
         ];
+        if (isset($this->twilioText)) {
+            $jsonString['twilio/text'] = $this->twilioText;
+        }
+        if (isset($this->twilioMedia)) {
+            $jsonString['twilio/media'] = $this->twilioMedia;
+        }
+        if (isset($this->twilioLocation)) {
+            $jsonString['twilio/location'] = $this->twilioLocation;
+        }
+        if (isset($this->twilioListPicker)) {
+            $jsonString['twilio/list-picker'] = $this->twilioListPicker;
+        }
+        if (isset($this->twilioCallToAction)) {
+            $jsonString['twilio/call-to-action'] = $this->twilioCallToAction;
+        }
+        if (isset($this->twilioQuickReply)) {
+            $jsonString['twilio/quick-reply'] = $this->twilioQuickReply;
+        }
+        if (isset($this->twilioCard)) {
+            $jsonString['twilio/card'] = $this->twilioCard;
+        }
+        if (isset($this->twilioCatalog)) {
+            $jsonString['twilio/catalog'] = $this->twilioCatalog;
+        }
+        if (isset($this->twilioCarousel)) {
+            $jsonString['twilio/carousel'] = $this->twilioCarousel;
+        }
+        if (isset($this->twilioFlows)) {
+            $jsonString['twilio/flows'] = $this->twilioFlows;
+        }
+        if (isset($this->twilioSchedule)) {
+            $jsonString['twilio/schedule'] = $this->twilioSchedule;
+        }
+        if (isset($this->whatsappCard)) {
+            $jsonString['whatsapp/card'] = $this->whatsappCard;
+        }
+        if (isset($this->whatsappAuthentication)) {
+            $jsonString['whatsapp/authentication'] = $this->whatsappAuthentication;
+        }
+        return $jsonString;
     }
 }
 
@@ -1176,12 +1318,17 @@ class ContentCreateRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'friendly_name' => $this->friendlyName,
-            'variables' => $this->variables,
+        $jsonString = [
             'language' => $this->language,
             'types' => $this->types
         ];
+        if (isset($this->friendlyName)) {
+            $jsonString['friendly_name'] = $this->friendlyName;
+        }
+        if (isset($this->variables)) {
+            $jsonString['variables'] = $this->variables;
+        }
+        return $jsonString;
     }
 }
 
