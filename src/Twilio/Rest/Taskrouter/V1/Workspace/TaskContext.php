@@ -93,7 +93,7 @@ class TaskContext extends InstanceContext
 
         return new TaskInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
@@ -132,7 +132,7 @@ class TaskContext extends InstanceContext
 
         return new TaskInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
