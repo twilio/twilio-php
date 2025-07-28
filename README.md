@@ -542,6 +542,7 @@ For complete examples, see:
 - [Basic Content API usage](./example/content.php)
 - [Advanced Content features](./example/content_advanced.php)
 - [Content management operations](./example/content_management.php)
+- [Comprehensive Content API Guide](./advanced-examples/content-api-guide.md)
 
 ## Use a custom HTTP Client
 
