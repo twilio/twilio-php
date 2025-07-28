@@ -399,6 +399,150 @@ print $client->lastResponse->statusCode;
 print $client->lastResponse->body;
 ```
 
+## Working with the Content API
+
+The Twilio Content API allows you to create, manage, and send rich content templates for messaging. Content templates support text, media, interactive elements, and more.
+
+### Basic Content Creation
+
+```php
+<?php
+require_once './vendor/autoload.php';
+use Twilio\Rest\Client;
+use Twilio\Rest\Content\V1\ContentModels;
+
+$sid = "ACXXXXXX";
+$token = "YYYYYY";
+$client = new Client($sid, $token);
+
+// Create a simple text content template
+$textContent = ContentModels::createTwilioText([
+    'body' => 'Hello {{name}}, welcome to our service!'
+]);
+
+$contentRequest = ContentModels::createContentCreateRequest([
+    'friendly_name' => 'Welcome Message',
+    'language' => 'en',
+    'variables' => [
+        'name' => 'Customer Name'
+    ],
+    'types' => ContentModels::createTypes([
+        'twilio/text' => $textContent
+    ])
+]);
+
+$content = $client->content->v1->contents->create($contentRequest);
+print "Content created with SID: " . $content->sid;
+```
+
+### Creating Interactive Content
+
+```php
+<?php
+// Create a call-to-action content with buttons
+$callToActionContent = ContentModels::createTwilioCallToAction([
+    'body' => 'Ready to get started? Choose an option:',
+    'actions' => [
+        ContentModels::createCallToActionAction([
+            'type' => 'URL',
+            'title' => 'Visit Website',
+            'url' => 'https://example.com'
+        ]),
+        ContentModels::createCallToActionAction([
+            'type' => 'PHONE_NUMBER',
+            'title' => 'Call Support',
+            'phone' => '+1234567890'
+        ])
+    ]
+]);
+
+$ctaRequest = ContentModels::createContentCreateRequest([
+    'friendly_name' => 'Get Started CTA',
+    'language' => 'en',
+    'types' => ContentModels::createTypes([
+        'twilio/call-to-action' => $callToActionContent
+    ])
+]);
+
+$ctaContent = $client->content->v1->contents->create($ctaRequest);
+```
+
+### Creating Media Content
+
+```php
+<?php
+// Create content with media attachments
+$mediaContent = ContentModels::createTwilioMedia([
+    'body' => 'Check out our latest product: {{product_name}}',
+    'media' => ['https://example.com/product-image.jpg']
+]);
+
+$mediaRequest = ContentModels::createContentCreateRequest([
+    'friendly_name' => 'Product Announcement',
+    'language' => 'en',
+    'variables' => [
+        'product_name' => 'Product Name'
+    ],
+    'types' => ContentModels::createTypes([
+        'twilio/media' => $mediaContent
+    ])
+]);
+
+$mediaContentInstance = $client->content->v1->contents->create($mediaRequest);
+```
+
+### Listing and Managing Content
+
+```php
+<?php
+// List all content templates
+$contentList = $client->content->v1->contents->read();
+foreach ($contentList as $content) {
+    print "Name: " . $content->friendlyName . " | SID: " . $content->sid . "\n";
+}
+
+// Fetch a specific content template
+$specificContent = $client->content->v1->contents('CTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')->fetch();
+print "Content: " . $specificContent->friendlyName;
+
+// Delete a content template
+$deleted = $client->content->v1->contents('CTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')->delete();
+```
+
+### Content API Versions
+
+The Content API has two versions:
+
+- **V1**: Full CRUD operations (create, read, update, delete) with approval management
+- **V2**: Enhanced read operations with improved filtering and content management
+
+```php
+<?php
+// Using V1 API (recommended for content creation)
+$v1Contents = $client->content->v1->contents->read();
+
+// Using V2 API (for enhanced content listing)
+$v2Contents = $client->content->v2->contents->read();
+```
+
+### Supported Content Types
+
+The Content API supports various content types:
+
+- **Text**: Simple text messages with variable placeholders
+- **Media**: Text with image, video, or document attachments
+- **Location**: Share location information
+- **List Picker**: Interactive list selection
+- **Call-to-Action**: Buttons for URLs, phone calls, etc.
+- **Quick Reply**: Fast response options
+- **Cards**: Rich media cards with actions
+- **Carousel**: Multiple cards in a scrollable format
+
+For complete examples, see:
+- [Basic Content API usage](./example/content.php)
+- [Advanced Content features](./example/content_advanced.php)
+- [Content management operations](./example/content_management.php)
+
 ## Use a custom HTTP Client
 
 To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
