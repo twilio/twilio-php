@@ -24,6 +24,7 @@ use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistrationOtpList;
 use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
+use Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistration2FaList;
 
 
 /**
@@ -37,7 +38,7 @@ use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
  * @property string $status
  * @property string|null $tcrId
  * @property string|null $failureReason
- * @property object[]|null $errors
+ * @property array[]|null $errors
  * @property string|null $url
  * @property int|null $brandScore
  * @property string[]|null $brandFeedback
@@ -53,6 +54,7 @@ class BrandRegistrationInstance extends InstanceResource
 {
     protected $_brandRegistrationOtps;
     protected $_brandVettings;
+    protected $_brandRegistration2Fa;
 
     /**
      * Initialize the BrandRegistrationInstance
@@ -149,6 +151,14 @@ class BrandRegistrationInstance extends InstanceResource
     protected function getBrandVettings(): BrandVettingList
     {
         return $this->proxy()->brandVettings;
+    }
+
+    /**
+     * Access the brandRegistration2Fa
+     */
+    protected function getBrandRegistration2Fa(): BrandRegistration2FaList
+    {
+        return $this->proxy()->brandRegistration2Fa;
     }
 
     /**

@@ -14,13 +14,10 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
-use Twilio\Rest\Voice\V1;
 
 /**
- * @property \Twilio\Rest\Voice\V1 $v1
  */
 class VoiceBase extends Domain {
-    protected $_v1;
 
     /**
      * Construct the Voice Domain
@@ -33,16 +30,6 @@ class VoiceBase extends Domain {
         $this->baseUrl = 'https://voice.twilio.com';
     }
 
-
-    /**
-     * @return V1 Version v1 of voice
-     */
-    protected function getV1(): V1 {
-        if (!$this->_v1) {
-            $this->_v1 = new V1($this);
-        }
-        return $this->_v1;
-    }
 
     /**
      * Magic getter to lazy load version

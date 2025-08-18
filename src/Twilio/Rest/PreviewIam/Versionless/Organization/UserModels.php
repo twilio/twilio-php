@@ -88,10 +88,15 @@ class ScimName implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'givenName' => $this->givenName,
-            'familyName' => $this->familyName
+        $jsonString = [
         ];
+        if (isset($this->givenName)) {
+            $jsonString['givenName'] = $this->givenName;
+        }
+        if (isset($this->familyName)) {
+            $jsonString['familyName'] = $this->familyName;
+        }
+        return $jsonString;
     }
 }
 
@@ -118,11 +123,18 @@ class ScimEmailAddress implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'primary' => $this->primary,
-            'value' => $this->value,
-            'type' => $this->type
+        $jsonString = [
         ];
+        if (isset($this->primary)) {
+            $jsonString['primary'] = $this->primary;
+        }
+        if (isset($this->value)) {
+            $jsonString['value'] = $this->value;
+        }
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        return $jsonString;
     }
 }
 
@@ -152,12 +164,21 @@ class ScimMeta implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'resourceType' => $this->resourceType,
-            'created' => $this->created,
-            'lastModified' => $this->lastModified,
-            'version' => $this->version
+        $jsonString = [
         ];
+        if (isset($this->resourceType)) {
+            $jsonString['resourceType'] = $this->resourceType;
+        }
+        if (isset($this->created)) {
+            $jsonString['created'] = $this->created;
+        }
+        if (isset($this->lastModified)) {
+            $jsonString['lastModified'] = $this->lastModified;
+        }
+        if (isset($this->version)) {
+            $jsonString['version'] = $this->version;
+        }
+        return $jsonString;
     }
 }
 
@@ -208,19 +229,40 @@ class ScimUser implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
-            'id' => $this->id,
-            'externalId' => $this->externalId,
-            'userName' => $this->userName,
-            'displayName' => $this->displayName,
-            'name' => $this->name,
-            'emails' => $this->emails,
-            'active' => $this->active,
-            'locale' => $this->locale,
-            'timezone' => $this->timezone,
-            'schemas' => $this->schemas,
-            'meta' => $this->meta
+        $jsonString = [
+            'userName' => $this->userName
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->externalId)) {
+            $jsonString['externalId'] = $this->externalId;
+        }
+        if (isset($this->displayName)) {
+            $jsonString['displayName'] = $this->displayName;
+        }
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
+        if (isset($this->emails)) {
+            $jsonString['emails'] = $this->emails;
+        }
+        if (isset($this->active)) {
+            $jsonString['active'] = $this->active;
+        }
+        if (isset($this->locale)) {
+            $jsonString['locale'] = $this->locale;
+        }
+        if (isset($this->timezone)) {
+            $jsonString['timezone'] = $this->timezone;
+        }
+        if (isset($this->schemas)) {
+            $jsonString['schemas'] = $this->schemas;
+        }
+        if (isset($this->meta)) {
+            $jsonString['meta'] = $this->meta;
+        }
+        return $jsonString;
     }
 }
 

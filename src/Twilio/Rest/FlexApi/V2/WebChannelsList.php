@@ -64,6 +64,8 @@ class WebChannelsList extends ListResource
                 $options['customerFriendlyName'],
             'PreEngagementData' =>
                 $options['preEngagementData'],
+            'Identity' =>
+                $options['identity'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Ui-Version' => $options['uiVersion']]);

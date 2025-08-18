@@ -29,6 +29,7 @@ use Twilio\Deserialize;
  * @property string|null $friendlyName
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
+ * @property string[] $flags
  */
 class GetApiKeysInstance extends InstanceResource
 {
@@ -48,6 +49,7 @@ class GetApiKeysInstance extends InstanceResource
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
+            'flags' => Values::array_get($payload, 'flags'),
         ];
 
         $this->solution = [];

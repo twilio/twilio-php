@@ -35,6 +35,9 @@ use Twilio\Deserialize;
  * @property string|null $portInRequestStatus
  * @property array|null $losingCarrierInformation
  * @property array[]|null $phoneNumbers
+ * @property string|null $bundleSid
+ * @property string|null $portabilityAdvanceCarrier
+ * @property string|null $autoCancelApprovalNumbers
  * @property string[]|null $documents
  * @property \DateTime|null $dateCreated
  */
@@ -63,6 +66,9 @@ class PortingPortInInstance extends InstanceResource
             'portInRequestStatus' => Values::array_get($payload, 'port_in_request_status'),
             'losingCarrierInformation' => Values::array_get($payload, 'losing_carrier_information'),
             'phoneNumbers' => Values::array_get($payload, 'phone_numbers'),
+            'bundleSid' => Values::array_get($payload, 'bundle_sid'),
+            'portabilityAdvanceCarrier' => Values::array_get($payload, 'portability_advance_carrier'),
+            'autoCancelApprovalNumbers' => Values::array_get($payload, 'auto_cancel_approval_numbers'),
             'documents' => Values::array_get($payload, 'documents'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
         ];

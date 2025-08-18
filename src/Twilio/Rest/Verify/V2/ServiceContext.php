@@ -165,6 +165,12 @@ class ServiceContext extends InstanceContext
                 $options['whatsappMsgServiceSid'],
             'Whatsapp.From' =>
                 $options['whatsappFrom'],
+            'Passkeys.RelyingParty.Id' =>
+                $options['passkeysRelyingPartyId'],
+            'Passkeys.RelyingParty.Name' =>
+                $options['passkeysRelyingPartyName'],
+            'Passkeys.RelyingParty.Origins' =>
+                $options['passkeysRelyingPartyOrigins'],
             'VerifyEventSubscriptionEnabled' =>
                 Serialize::booleanToString($options['verifyEventSubscriptionEnabled']),
         ]);

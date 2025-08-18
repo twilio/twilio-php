@@ -24,17 +24,21 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistrationOtpList;
 use Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingList;
+use Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistration2FaList;
 
 
 /**
  * @property BrandRegistrationOtpList $brandRegistrationOtps
  * @property BrandVettingList $brandVettings
+ * @property BrandRegistration2FaList $brandRegistration2Fa
  * @method \Twilio\Rest\Messaging\V1\BrandRegistration\BrandVettingContext brandVettings(string $brandVettingSid)
+ * @method \Twilio\Rest\Messaging\V1\BrandRegistration\BrandRegistration2FaContext brandRegistration2Fa()
  */
 class BrandRegistrationContext extends InstanceContext
     {
     protected $_brandRegistrationOtps;
     protected $_brandVettings;
+    protected $_brandRegistration2Fa;
 
     /**
      * Initialize the BrandRegistrationContext
@@ -126,6 +130,21 @@ class BrandRegistrationContext extends InstanceContext
         }
 
         return $this->_brandVettings;
+    }
+
+    /**
+     * Access the brandRegistration2Fa
+     */
+    protected function getBrandRegistration2Fa(): BrandRegistration2FaList
+    {
+        if (!$this->_brandRegistration2Fa) {
+            $this->_brandRegistration2Fa = new BrandRegistration2FaList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_brandRegistration2Fa;
     }
 
     /**

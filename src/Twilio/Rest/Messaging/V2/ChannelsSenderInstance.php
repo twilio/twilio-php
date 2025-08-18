@@ -32,6 +32,7 @@ use Twilio\Version;
  * @property string|null $profile
  * @property string|null $properties
  * @property string[]|null $offlineReasons
+ * @property string|null $compliance
  * @property string|null $url
  */
 class ChannelsSenderInstance extends InstanceResource
@@ -57,6 +58,7 @@ class ChannelsSenderInstance extends InstanceResource
             'profile' => Values::array_get($payload, 'profile'),
             'properties' => Values::array_get($payload, 'properties'),
             'offlineReasons' => Values::array_get($payload, 'offline_reasons'),
+            'compliance' => Values::array_get($payload, 'compliance'),
             'url' => Values::array_get($payload, 'url'),
         ];
 
