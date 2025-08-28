@@ -35,6 +35,7 @@ use Twilio\Rest\Studio\V1\Flow\Engagement\Step\StepContextList;
  * @property string|null $parentStepSid
  * @property string|null $transitionedFrom
  * @property string|null $transitionedTo
+ * @property string|null $type
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
@@ -68,6 +69,7 @@ class StepInstance extends InstanceResource
             'parentStepSid' => Values::array_get($payload, 'parent_step_sid'),
             'transitionedFrom' => Values::array_get($payload, 'transitioned_from'),
             'transitionedTo' => Values::array_get($payload, 'transitioned_to'),
+            'type' => Values::array_get($payload, 'type'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

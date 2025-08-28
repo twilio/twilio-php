@@ -133,6 +133,9 @@ abstract class ServiceOptions
      * @param string $passkeysRelyingPartyId The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys.
      * @param string $passkeysRelyingPartyName The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys.
      * @param string $passkeysRelyingPartyOrigins The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`.
+     * @param string $passkeysAuthenticatorAttachment The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`.
+     * @param string $passkeysDiscoverableCredentials Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
+     * @param string $passkeysUserVerification The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
      * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      * @return UpdateServiceOptions Options builder
      */
@@ -160,6 +163,9 @@ abstract class ServiceOptions
         string $passkeysRelyingPartyId = Values::NONE,
         string $passkeysRelyingPartyName = Values::NONE,
         string $passkeysRelyingPartyOrigins = Values::NONE,
+        string $passkeysAuthenticatorAttachment = Values::NONE,
+        string $passkeysDiscoverableCredentials = Values::NONE,
+        string $passkeysUserVerification = Values::NONE,
         bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
 
     ): UpdateServiceOptions
@@ -187,6 +193,9 @@ abstract class ServiceOptions
             $passkeysRelyingPartyId,
             $passkeysRelyingPartyName,
             $passkeysRelyingPartyOrigins,
+            $passkeysAuthenticatorAttachment,
+            $passkeysDiscoverableCredentials,
+            $passkeysUserVerification,
             $verifyEventSubscriptionEnabled
         );
     }
@@ -618,6 +627,9 @@ class UpdateServiceOptions extends Options
      * @param string $passkeysRelyingPartyId The Relying Party ID for Passkeys. This is the domain of your application, e.g. `example.com`. It is used to identify your application when creating Passkeys.
      * @param string $passkeysRelyingPartyName The Relying Party Name for Passkeys. This is the name of your application, e.g. `Example App`. It is used to identify your application when creating Passkeys.
      * @param string $passkeysRelyingPartyOrigins The Relying Party Origins for Passkeys. This is the origin of your application, e.g. `login.example.com,www.example.com`. It is used to identify your application when creating Passkeys, it can have multiple origins split by `,`.
+     * @param string $passkeysAuthenticatorAttachment The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`.
+     * @param string $passkeysDiscoverableCredentials Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
+     * @param string $passkeysUserVerification The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
      * @param bool $verifyEventSubscriptionEnabled Whether to allow verifications from the service to reach the stream-events sinks if configured
      */
     public function __construct(
@@ -644,6 +656,9 @@ class UpdateServiceOptions extends Options
         string $passkeysRelyingPartyId = Values::NONE,
         string $passkeysRelyingPartyName = Values::NONE,
         string $passkeysRelyingPartyOrigins = Values::NONE,
+        string $passkeysAuthenticatorAttachment = Values::NONE,
+        string $passkeysDiscoverableCredentials = Values::NONE,
+        string $passkeysUserVerification = Values::NONE,
         bool $verifyEventSubscriptionEnabled = Values::BOOL_NONE
 
     ) {
@@ -669,6 +684,9 @@ class UpdateServiceOptions extends Options
         $this->options['passkeysRelyingPartyId'] = $passkeysRelyingPartyId;
         $this->options['passkeysRelyingPartyName'] = $passkeysRelyingPartyName;
         $this->options['passkeysRelyingPartyOrigins'] = $passkeysRelyingPartyOrigins;
+        $this->options['passkeysAuthenticatorAttachment'] = $passkeysAuthenticatorAttachment;
+        $this->options['passkeysDiscoverableCredentials'] = $passkeysDiscoverableCredentials;
+        $this->options['passkeysUserVerification'] = $passkeysUserVerification;
         $this->options['verifyEventSubscriptionEnabled'] = $verifyEventSubscriptionEnabled;
     }
 
@@ -933,6 +951,42 @@ class UpdateServiceOptions extends Options
     public function setPasskeysRelyingPartyOrigins(string $passkeysRelyingPartyOrigins): self
     {
         $this->options['passkeysRelyingPartyOrigins'] = $passkeysRelyingPartyOrigins;
+        return $this;
+    }
+
+    /**
+     * The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`.
+     *
+     * @param string $passkeysAuthenticatorAttachment The Authenticator Attachment for Passkeys. This is the type of authenticator that will be used to create Passkeys. It can be empty or it can have the values `platform`, `cross-platform` or `any`.
+     * @return $this Fluent Builder
+     */
+    public function setPasskeysAuthenticatorAttachment(string $passkeysAuthenticatorAttachment): self
+    {
+        $this->options['passkeysAuthenticatorAttachment'] = $passkeysAuthenticatorAttachment;
+        return $this;
+    }
+
+    /**
+     * Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
+     *
+     * @param string $passkeysDiscoverableCredentials Indicates whether credentials must be discoverable by the authenticator. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
+     * @return $this Fluent Builder
+     */
+    public function setPasskeysDiscoverableCredentials(string $passkeysDiscoverableCredentials): self
+    {
+        $this->options['passkeysDiscoverableCredentials'] = $passkeysDiscoverableCredentials;
+        return $this;
+    }
+
+    /**
+     * The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
+     *
+     * @param string $passkeysUserVerification The User Verification for Passkeys. This is the type of user verification that will be used to create Passkeys. It can be empty or it can have the values `required`, `preferred` or `discouraged`.
+     * @return $this Fluent Builder
+     */
+    public function setPasskeysUserVerification(string $passkeysUserVerification): self
+    {
+        $this->options['passkeysUserVerification'] = $passkeysUserVerification;
         return $this;
     }
 

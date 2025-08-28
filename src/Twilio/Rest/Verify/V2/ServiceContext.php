@@ -171,6 +171,12 @@ class ServiceContext extends InstanceContext
                 $options['passkeysRelyingPartyName'],
             'Passkeys.RelyingParty.Origins' =>
                 $options['passkeysRelyingPartyOrigins'],
+            'Passkeys.AuthenticatorAttachment' =>
+                $options['passkeysAuthenticatorAttachment'],
+            'Passkeys.DiscoverableCredentials' =>
+                $options['passkeysDiscoverableCredentials'],
+            'Passkeys.UserVerification' =>
+                $options['passkeysUserVerification'],
             'VerifyEventSubscriptionEnabled' =>
                 Serialize::booleanToString($options['verifyEventSubscriptionEnabled']),
         ]);
