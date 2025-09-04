@@ -29,7 +29,7 @@ class ChannelsSenderContext extends InstanceContext
      * Initialize the ChannelsSenderContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this Sender.
+     * @param string $sid The SID of the sender.
      */
     public function __construct(
         Version $version,

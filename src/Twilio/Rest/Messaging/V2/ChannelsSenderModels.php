@@ -19,10 +19,10 @@ use Twilio\Values;
 abstract class ChannelsSenderModels
 {
     /**
-     * @property string|null $wabaId The ID of the WhatsApp Business Account to use for this sender.
-     * @property string|null $verificationMethod The method to use for verification. Either \"sms\" or \"voice\".
-     * @property string|null $verificationCode The verification code to use for this sender.
-     * @property string|null $voiceApplicationSid The SID of the Twilio Voice application to use for this sender.
+     * @property string|null $wabaId The ID of the WhatsApp Business Account (WABA) to use for this sender.
+     * @property string|null $verificationMethod The verification method.
+     * @property string|null $verificationCode The verification code.
+     * @property string|null $voiceApplicationSid The SID of the Twilio Voice application.
     */
     public static function createMessagingV2ChannelsSenderConfiguration(array $payload = []): MessagingV2ChannelsSenderConfiguration
     {
@@ -31,11 +31,11 @@ abstract class ChannelsSenderModels
 
     /**
      * @property string|null $callbackUrl The URL to send the webhook to.
-     * @property string|null $callbackMethod The HTTP method to use for the webhook. Either \"POST\" or \"PUT\".
+     * @property string|null $callbackMethod The HTTP method for the webhook.
      * @property string|null $fallbackUrl The URL to send the fallback webhook to.
-     * @property string|null $fallbackMethod The HTTP method to use for the fallback webhook. Either \"POST\" or \"PUT\".
+     * @property string|null $fallbackMethod The HTTP method for the fallback webhook.
      * @property string|null $statusCallbackUrl The URL to send the status callback to.
-     * @property string|null $statusCallbackMethod The HTTP method to use for the status callback.
+     * @property string|null $statusCallbackMethod The HTTP method for the status callback.
     */
     public static function createMessagingV2ChannelsSenderWebhook(array $payload = []): MessagingV2ChannelsSenderWebhook
     {
@@ -43,19 +43,19 @@ abstract class ChannelsSenderModels
     }
 
     /**
-     * @property string|null $name The name of the sender.
-     * @property string|null $about The about text of the sender.
+     * @property string|null $name The name of the sender. Required for WhatsApp senders and must follow [Meta's display name guidelines](https://www.facebook.com/business/help/757569725593362).
+     * @property string|null $about The profile about text for the sender.
      * @property string|null $address The address of the sender.
      * @property string|null $description The description of the sender.
      * @property string|null $logoUrl The logo URL of the sender.
      * @property string|null $bannerUrl The banner URL of the sender.
-     * @property string|null $privacyUrl The privacy URL of the sender. Publicly accessible URI associated with the Sender, must use the HTTP or HTTPS protocol
+     * @property string|null $privacyUrl The privacy URL of the sender. Must be a publicly accessible HTTP or HTTPS URI associated with the sender.
      * @property string|null $termsOfServiceUrl The terms of service URL of the sender.
-     * @property string|null $accentColor string - Color theme of the Sender (required, in hex format, need to be a minimum 4.5:1 contrast ratio relative to white)
-     * @property string|null $vertical The vertical of the sender. Allowed values are: - \"Automotive\" - \"Beauty, Spa and Salon\" - \"Clothing and Apparel\" - \"Education\" - \"Entertainment\" - \"Event Planning and Service\" - \"Finance and Banking\" - \"Food and Grocery\" - \"Public Service\" - \"Hotel and Lodging\" - \"Medical and Health\" - \"Non-profit\" - \"Professional Services\" - \"Shopping and Retail\" - \"Travel and Transportation\" - \"Restaurant\" - \"Other\"
-     * @property array|null $websites The websites of the sender
-     * @property array|null $emails The emails of the sender
-     * @property array|null $phoneNumbers The phone numbers of the sender
+     * @property string|null $accentColor The color theme of the sender. Must be in hex format and have at least a 4:5:1 contrast ratio against white.
+     * @property string|null $vertical The vertical of the sender. Allowed values are: - `Automotive` - `Beauty, Spa and Salon` - `Clothing and Apparel` - `Education` - `Entertainment` - `Event Planning and Service` - `Finance and Banking` - `Food and Grocery` - `Public Service` - `Hotel and Lodging` - `Medical and Health` - `Non-profit` - `Professional Services` - `Shopping and Retail` - `Travel and Transportation` - `Restaurant` - `Other`
+     * @property array|null $websites The websites of the sender.
+     * @property array|null $emails The emails of the sender.
+     * @property array|null $phoneNumbers The phone numbers of the sender.
     */
     public static function createMessagingV2ChannelsSenderProfile(array $payload = []): MessagingV2ChannelsSenderProfile
     {
@@ -63,7 +63,7 @@ abstract class ChannelsSenderModels
     }
 
     /**
-     * @property string $senderId The ID of this Sender prefixed with the channel, e.g., `whatsapp:E.164`
+     * @property string $senderId The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format.
      * @property MessagingV2ChannelsSenderConfiguration $configuration
      * @property MessagingV2ChannelsSenderWebhook $webhook
      * @property MessagingV2ChannelsSenderProfile $profile
@@ -88,10 +88,10 @@ abstract class ChannelsSenderModels
 class MessagingV2ChannelsSenderConfiguration implements \JsonSerializable
 {
     /**
-     * @property string|null $wabaId The ID of the WhatsApp Business Account to use for this sender.
-     * @property string|null $verificationMethod The method to use for verification. Either \"sms\" or \"voice\".
-     * @property string|null $verificationCode The verification code to use for this sender.
-     * @property string|null $voiceApplicationSid The SID of the Twilio Voice application to use for this sender.
+     * @property string|null $wabaId The ID of the WhatsApp Business Account (WABA) to use for this sender.
+     * @property string|null $verificationMethod The verification method.
+     * @property string|null $verificationCode The verification code.
+     * @property string|null $voiceApplicationSid The SID of the Twilio Voice application.
     */
         protected $wabaId;
         protected $verificationMethod;
@@ -133,11 +133,11 @@ class MessagingV2ChannelsSenderWebhook implements \JsonSerializable
 {
     /**
      * @property string|null $callbackUrl The URL to send the webhook to.
-     * @property string|null $callbackMethod The HTTP method to use for the webhook. Either \"POST\" or \"PUT\".
+     * @property string|null $callbackMethod The HTTP method for the webhook.
      * @property string|null $fallbackUrl The URL to send the fallback webhook to.
-     * @property string|null $fallbackMethod The HTTP method to use for the fallback webhook. Either \"POST\" or \"PUT\".
+     * @property string|null $fallbackMethod The HTTP method for the fallback webhook.
      * @property string|null $statusCallbackUrl The URL to send the status callback to.
-     * @property string|null $statusCallbackMethod The HTTP method to use for the status callback.
+     * @property string|null $statusCallbackMethod The HTTP method for the status callback.
     */
         protected $callbackUrl;
         protected $callbackMethod;
@@ -188,19 +188,19 @@ class MessagingV2ChannelsSenderWebhook implements \JsonSerializable
 class MessagingV2ChannelsSenderProfile implements \JsonSerializable
 {
     /**
-     * @property string|null $name The name of the sender.
-     * @property string|null $about The about text of the sender.
+     * @property string|null $name The name of the sender. Required for WhatsApp senders and must follow [Meta's display name guidelines](https://www.facebook.com/business/help/757569725593362).
+     * @property string|null $about The profile about text for the sender.
      * @property string|null $address The address of the sender.
      * @property string|null $description The description of the sender.
      * @property string|null $logoUrl The logo URL of the sender.
      * @property string|null $bannerUrl The banner URL of the sender.
-     * @property string|null $privacyUrl The privacy URL of the sender. Publicly accessible URI associated with the Sender, must use the HTTP or HTTPS protocol
+     * @property string|null $privacyUrl The privacy URL of the sender. Must be a publicly accessible HTTP or HTTPS URI associated with the sender.
      * @property string|null $termsOfServiceUrl The terms of service URL of the sender.
-     * @property string|null $accentColor string - Color theme of the Sender (required, in hex format, need to be a minimum 4.5:1 contrast ratio relative to white)
-     * @property string|null $vertical The vertical of the sender. Allowed values are: - \"Automotive\" - \"Beauty, Spa and Salon\" - \"Clothing and Apparel\" - \"Education\" - \"Entertainment\" - \"Event Planning and Service\" - \"Finance and Banking\" - \"Food and Grocery\" - \"Public Service\" - \"Hotel and Lodging\" - \"Medical and Health\" - \"Non-profit\" - \"Professional Services\" - \"Shopping and Retail\" - \"Travel and Transportation\" - \"Restaurant\" - \"Other\"
-     * @property array|null $websites The websites of the sender
-     * @property array|null $emails The emails of the sender
-     * @property array|null $phoneNumbers The phone numbers of the sender
+     * @property string|null $accentColor The color theme of the sender. Must be in hex format and have at least a 4:5:1 contrast ratio against white.
+     * @property string|null $vertical The vertical of the sender. Allowed values are: - `Automotive` - `Beauty, Spa and Salon` - `Clothing and Apparel` - `Education` - `Entertainment` - `Event Planning and Service` - `Finance and Banking` - `Food and Grocery` - `Public Service` - `Hotel and Lodging` - `Medical and Health` - `Non-profit` - `Professional Services` - `Shopping and Retail` - `Travel and Transportation` - `Restaurant` - `Other`
+     * @property array|null $websites The websites of the sender.
+     * @property array|null $emails The emails of the sender.
+     * @property array|null $phoneNumbers The phone numbers of the sender.
     */
         protected $name;
         protected $about;
@@ -286,7 +286,7 @@ class MessagingV2ChannelsSenderProfile implements \JsonSerializable
 class MessagingV2ChannelsSenderRequestsCreate implements \JsonSerializable
 {
     /**
-     * @property string $senderId The ID of this Sender prefixed with the channel, e.g., `whatsapp:E.164`
+     * @property string $senderId The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format.
      * @property MessagingV2ChannelsSenderConfiguration $configuration
      * @property MessagingV2ChannelsSenderWebhook $webhook
      * @property MessagingV2ChannelsSenderProfile $profile

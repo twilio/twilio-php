@@ -166,7 +166,7 @@ class ChannelsSenderList extends ListResource
     /**
      * Constructs a ChannelsSenderContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this Sender.
+     * @param string $sid The SID of the sender.
      */
     public function getContext(
         string $sid

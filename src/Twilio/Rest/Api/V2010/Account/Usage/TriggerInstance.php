@@ -40,7 +40,7 @@ use Twilio\Deserialize;
  * @property string $triggerBy
  * @property string|null $triggerValue
  * @property string|null $uri
- * @property string $usageCategory
+ * @property string|null $usageCategory
  * @property string|null $usageRecordUri
  */
 class TriggerInstance extends InstanceResource
