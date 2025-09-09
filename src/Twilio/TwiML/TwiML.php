@@ -20,7 +20,7 @@ abstract class TwiML {
      * TwiML constructor.
      *
      * @param string $name XML element name
-     * @param string $value XML value
+     * @param ?string $value XML value
      * @param array $attributes XML attributes
      */
     public function __construct(string $name, ?string $value = null, array $attributes = []) {
@@ -69,7 +69,7 @@ abstract class TwiML {
 
     /**
      * @param string $name XML element name
-     * @param string $value XML value
+     * @param ?string $value XML value
      * @param array $attributes XML attributes
      * @return TwiML
      */

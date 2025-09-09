@@ -111,8 +111,8 @@ class RequestValidator {
      * Time insensitive compare, function's runtime is governed by the length
      * of the first argument, not the difference between the arguments.
      *
-     * @param string $a First part of the comparison pair
-     * @param string $b Second part of the comparison pair
+     * @param ?string $a First part of the comparison pair
+     * @param ?string $b Second part of the comparison pair
      * @return bool True if $a === $b, false otherwise.
      */
     public static function compare(?string $a, ?string $b): bool {

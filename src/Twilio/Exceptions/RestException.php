@@ -44,7 +44,7 @@ class RestException extends TwilioException {
 
     /**
      * Get the details of the RestException
-     * @return exception details
+     * @return array details
      */
     public function getDetails(): array {
         return $this->details;
