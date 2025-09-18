@@ -24,7 +24,9 @@ use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Intelligence\V2\Transcript\SentenceList;
 use Twilio\Rest\Intelligence\V2\Transcript\OperatorResultList;
+use Twilio\Rest\Intelligence\V2\Transcript\EncryptedSentencesList;
 use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
+use Twilio\Rest\Intelligence\V2\Transcript\EncryptedOperatorResultsList;
 
 
 /**
@@ -42,13 +44,16 @@ use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
  * @property int $duration
  * @property string|null $url
  * @property bool|null $redaction
+ * @property string|null $encryptionCredentialSid
  * @property array|null $links
  */
 class TranscriptInstance extends InstanceResource
 {
     protected $_sentences;
     protected $_operatorResults;
+    protected $_encryptedSentences;
     protected $_media;
+    protected $_encryptedOperatorResults;
 
     /**
      * Initialize the TranscriptInstance
@@ -77,6 +82,7 @@ class TranscriptInstance extends InstanceResource
             'duration' => Values::array_get($payload, 'duration'),
             'url' => Values::array_get($payload, 'url'),
             'redaction' => Values::array_get($payload, 'redaction'),
+            'encryptionCredentialSid' => Values::array_get($payload, 'encryption_credential_sid'),
             'links' => Values::array_get($payload, 'links'),
         ];
 
@@ -142,11 +148,27 @@ class TranscriptInstance extends InstanceResource
     }
 
     /**
+     * Access the encryptedSentences
+     */
+    protected function getEncryptedSentences(): EncryptedSentencesList
+    {
+        return $this->proxy()->encryptedSentences;
+    }
+
+    /**
      * Access the media
      */
     protected function getMedia(): MediaList
     {
         return $this->proxy()->media;
+    }
+
+    /**
+     * Access the encryptedOperatorResults
+     */
+    protected function getEncryptedOperatorResults(): EncryptedOperatorResultsList
+    {
+        return $this->proxy()->encryptedOperatorResults;
     }
 
     /**

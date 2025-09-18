@@ -93,6 +93,16 @@ class Connect extends TwiML {
     }
 
     /**
+     * Add AiSession child.
+     *
+     * @param array $attributes Optional attributes
+     * @return AiSession Child element.
+     */
+    public function aiSession($attributes = []): AiSession {
+        return $this->nest(new AiSession($attributes));
+    }
+
+    /**
      * Add Action attribute.
      *
      * @param string $action Action URL

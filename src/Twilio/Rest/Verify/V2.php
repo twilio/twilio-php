@@ -19,6 +19,7 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Verify\V2\FormList;
+use Twilio\Rest\Verify\V2\NewChallengeList;
 use Twilio\Rest\Verify\V2\SafelistList;
 use Twilio\Rest\Verify\V2\ServiceList;
 use Twilio\Rest\Verify\V2\TemplateList;
@@ -28,6 +29,7 @@ use Twilio\Version;
 
 /**
  * @property FormList $forms
+ * @property NewChallengeList $newChallenge
  * @property SafelistList $safelist
  * @property ServiceList $services
  * @property TemplateList $templates
@@ -41,6 +43,7 @@ use Twilio\Version;
 class V2 extends Version
 {
     protected $_forms;
+    protected $_newChallenge;
     protected $_safelist;
     protected $_services;
     protected $_templates;
@@ -64,6 +67,14 @@ class V2 extends Version
             $this->_forms = new FormList($this);
         }
         return $this->_forms;
+    }
+
+    protected function getNewChallenge(): NewChallengeList
+    {
+        if (!$this->_newChallenge) {
+            $this->_newChallenge = new NewChallengeList($this);
+        }
+        return $this->_newChallenge;
     }
 
     protected function getSafelist(): SafelistList

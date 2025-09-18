@@ -24,21 +24,29 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Intelligence\V2\Transcript\SentenceList;
 use Twilio\Rest\Intelligence\V2\Transcript\OperatorResultList;
+use Twilio\Rest\Intelligence\V2\Transcript\EncryptedSentencesList;
 use Twilio\Rest\Intelligence\V2\Transcript\MediaList;
+use Twilio\Rest\Intelligence\V2\Transcript\EncryptedOperatorResultsList;
 
 
 /**
  * @property SentenceList $sentences
  * @property OperatorResultList $operatorResults
+ * @property EncryptedSentencesList $encryptedSentences
  * @property MediaList $media
+ * @property EncryptedOperatorResultsList $encryptedOperatorResults
+ * @method \Twilio\Rest\Intelligence\V2\Transcript\EncryptedSentencesContext encryptedSentences()
  * @method \Twilio\Rest\Intelligence\V2\Transcript\MediaContext media()
+ * @method \Twilio\Rest\Intelligence\V2\Transcript\EncryptedOperatorResultsContext encryptedOperatorResults()
  * @method \Twilio\Rest\Intelligence\V2\Transcript\OperatorResultContext operatorResults(string $operatorSid)
  */
 class TranscriptContext extends InstanceContext
     {
     protected $_sentences;
     protected $_operatorResults;
+    protected $_encryptedSentences;
     protected $_media;
+    protected $_encryptedOperatorResults;
 
     /**
      * Initialize the TranscriptContext
@@ -127,6 +135,21 @@ class TranscriptContext extends InstanceContext
     }
 
     /**
+     * Access the encryptedSentences
+     */
+    protected function getEncryptedSentences(): EncryptedSentencesList
+    {
+        if (!$this->_encryptedSentences) {
+            $this->_encryptedSentences = new EncryptedSentencesList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_encryptedSentences;
+    }
+
+    /**
      * Access the media
      */
     protected function getMedia(): MediaList
@@ -139,6 +162,21 @@ class TranscriptContext extends InstanceContext
         }
 
         return $this->_media;
+    }
+
+    /**
+     * Access the encryptedOperatorResults
+     */
+    protected function getEncryptedOperatorResults(): EncryptedOperatorResultsList
+    {
+        if (!$this->_encryptedOperatorResults) {
+            $this->_encryptedOperatorResults = new EncryptedOperatorResultsList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_encryptedOperatorResults;
     }
 
     /**

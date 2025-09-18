@@ -112,6 +112,8 @@ class ServiceContext extends InstanceContext
                 $options['webhookUrl'],
             'WebhookHttpMethod' =>
                 $options['webhookHttpMethod'],
+            'EncryptionCredentialSid' =>
+                $options['encryptionCredentialSid'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
