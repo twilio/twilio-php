@@ -154,7 +154,7 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
 
     public function testErrorOnCreatingTokenWithInvalidOAuthCredentials(): void {
         $this->expectException(TwilioException::class);
-        $this->expectExceptionMessage("[HTTP 400] Unable to create record: client_id is invalid");
+        $this->expectExceptionMessage("[HTTP 400] Unable to create record: HTTP 400 Bad Request");
         $client = new Client();
         $client->setCredentialProvider(new NoAuthCredentialProvider());
         $client->iam->v1->token->create("client_credentials", "client_id", ["clientSecret" => "client_secret"]);
