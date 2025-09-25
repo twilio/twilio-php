@@ -22,7 +22,7 @@ final class File {
     /**
      * @param string $fileName full file path or file name for passed $contents
      * @param string|resource|mixed|null $contents
-     * @param string $contentType
+     * @param ?string $contentType
      */
     public function __construct(string $fileName, $contents = null, ?string $contentType = null) {
         $this->fileName = $fileName;

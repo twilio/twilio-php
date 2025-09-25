@@ -4,6 +4,7 @@ namespace Twilio\TwiML;
 
 use DOMDocument;
 use DOMElement;
+use DOMException;
 
 /**
  * @property $name string XML element name
@@ -20,7 +21,7 @@ abstract class TwiML {
      * TwiML constructor.
      *
      * @param string $name XML element name
-     * @param string $value XML value
+     * @param ?string $value XML value
      * @param array $attributes XML attributes
      */
     public function __construct(string $name, ?string $value = null, array $attributes = []) {
@@ -69,7 +70,7 @@ abstract class TwiML {
 
     /**
      * @param string $name XML element name
-     * @param string $value XML value
+     * @param ?string $value XML value
      * @param array $attributes XML attributes
      * @return TwiML
      */
@@ -90,6 +91,7 @@ abstract class TwiML {
      * Convert TwiML to XML string.
      *
      * @return string TwiML XML representation
+     * @throws DOMException
      */
     public function __toString(): string {
         return $this->xml()->saveXML();
@@ -101,6 +103,7 @@ abstract class TwiML {
      * @param TwiML $twiml TwiML element to convert to XML
      * @param DOMDocument $document XML document for the element
      * @return DOMElement $element
+     * @throws DOMException
      */
     private function buildElement(TwiML $twiml, DOMDocument $document): DOMElement {
         $element = $document->createElement($twiml->name);
@@ -127,6 +130,7 @@ abstract class TwiML {
      * Build XML element.
      *
      * @return DOMDocument Build TwiML element
+     * @throws DOMException
      */
     private function xml(): DOMDocument {
         $document = new DOMDocument('1.0', 'UTF-8');

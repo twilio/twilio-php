@@ -50,9 +50,9 @@ abstract class Domain {
      * @param array $params Query string arguments
      * @param array $data Post form data
      * @param array $headers HTTP headers to send with the request
-     * @param string $user User to authenticate as
-     * @param string $password Password
-     * @param int $timeout Request timeout
+     * @param ?string $user User to authenticate as
+     * @param ?string $password Password
+     * @param ?int $timeout Request timeout
      * @return Response the response for the request
      */
     public function request(string $method, string $uri,
