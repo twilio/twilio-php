@@ -15,12 +15,15 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Oauth\V1;
+use Twilio\Rest\Oauth\V2;
 
 /**
  * @property \Twilio\Rest\Oauth\V1 $v1
+ * @property \Twilio\Rest\Oauth\V2 $v2
  */
 class OauthBase extends Domain {
     protected $_v1;
+    protected $_v2;
 
     /**
      * Construct the Oauth Domain
@@ -42,6 +45,16 @@ class OauthBase extends Domain {
             $this->_v1 = new V1($this);
         }
         return $this->_v1;
+    }
+
+    /**
+     * @return V2 Version v2 of oauth
+     */
+    protected function getV2(): V2 {
+        if (!$this->_v2) {
+            $this->_v2 = new V2($this);
+        }
+        return $this->_v2;
     }
 
     /**

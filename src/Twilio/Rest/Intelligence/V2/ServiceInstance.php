@@ -42,6 +42,7 @@ use Twilio\Deserialize;
  * @property string $webhookHttpMethod
  * @property string[]|null $readOnlyAttachedOperatorSids
  * @property int $version
+ * @property string|null $encryptionCredentialSid
  */
 class ServiceInstance extends InstanceResource
 {
@@ -74,6 +75,7 @@ class ServiceInstance extends InstanceResource
             'webhookHttpMethod' => Values::array_get($payload, 'webhook_http_method'),
             'readOnlyAttachedOperatorSids' => Values::array_get($payload, 'read_only_attached_operator_sids'),
             'version' => Values::array_get($payload, 'version'),
+            'encryptionCredentialSid' => Values::array_get($payload, 'encryption_credential_sid'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];

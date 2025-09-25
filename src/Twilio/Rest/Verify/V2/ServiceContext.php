@@ -30,7 +30,9 @@ use Twilio\Rest\Verify\V2\Service\VerificationList;
 use Twilio\Rest\Verify\V2\Service\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\WebhookList;
+use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
+use Twilio\Rest\Verify\V2\Service\VerifyFactorList;
 
 
 /**
@@ -40,7 +42,9 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @property AccessTokenList $accessTokens
  * @property RateLimitList $rateLimits
  * @property WebhookList $webhooks
+ * @property NewFactorList $newFactors
  * @property MessagingConfigurationList $messagingConfigurations
+ * @property VerifyFactorList $verifyFactor
  * @method \Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\AccessTokenContext accessTokens(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\WebhookContext webhooks(string $sid)
@@ -56,7 +60,9 @@ class ServiceContext extends InstanceContext
     protected $_accessTokens;
     protected $_rateLimits;
     protected $_webhooks;
+    protected $_newFactors;
     protected $_messagingConfigurations;
+    protected $_verifyFactor;
 
     /**
      * Initialize the ServiceContext
@@ -283,6 +289,21 @@ class ServiceContext extends InstanceContext
     }
 
     /**
+     * Access the newFactors
+     */
+    protected function getNewFactors(): NewFactorList
+    {
+        if (!$this->_newFactors) {
+            $this->_newFactors = new NewFactorList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_newFactors;
+    }
+
+    /**
      * Access the messagingConfigurations
      */
     protected function getMessagingConfigurations(): MessagingConfigurationList
@@ -295,6 +316,21 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_messagingConfigurations;
+    }
+
+    /**
+     * Access the verifyFactor
+     */
+    protected function getVerifyFactor(): VerifyFactorList
+    {
+        if (!$this->_verifyFactor) {
+            $this->_verifyFactor = new VerifyFactorList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_verifyFactor;
     }
 
     /**
