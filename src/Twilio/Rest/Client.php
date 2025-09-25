@@ -33,6 +33,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Insights $insights
  * @property Intelligence $intelligence
  * @property IpMessaging $ipMessaging
+ * @property Knowledge $knowledge
  * @property Lookups $lookups
  * @property Marketplace $marketplace
  * @property Messaging $messaging
@@ -114,6 +115,7 @@ class Client extends BaseClient {
     protected $_insights;
     protected $_intelligence;
     protected $_ipMessaging;
+    protected $_knowledge;
     protected $_lookups;
     protected $_marketplace;
     protected $_messaging;
@@ -301,6 +303,17 @@ class Client extends BaseClient {
             $this->_ipMessaging = new IpMessaging($this);
         }
         return $this->_ipMessaging;
+    }
+    /**
+     * Access the Knowledge Twilio Domain
+     *
+     * @return Knowledge Knowledge Twilio Domain
+     */
+    protected function getKnowledge(): Knowledge {
+        if (!$this->_knowledge) {
+            $this->_knowledge = new Knowledge($this);
+        }
+        return $this->_knowledge;
     }
     /**
      * Access the Lookups Twilio Domain

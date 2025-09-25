@@ -70,6 +70,28 @@ class NewFactorList extends ListResource
 
 
     /**
+     * Update the NewFactorInstance
+     *
+     * @param VerifyPasskeysFactorRequest $verifyPasskeysFactorRequest
+     * @return NewFactorInstance Updated NewFactorInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(VerifyPasskeysFactorRequest $verifyPasskeysFactorRequest): NewFactorInstance
+    {
+
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $verifyPasskeysFactorRequest->toArray();
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+
+        return new NewFactorInstance(
+            $this->version,
+            $payload,
+            $this->solution['serviceSid']
+        );
+    }
+
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

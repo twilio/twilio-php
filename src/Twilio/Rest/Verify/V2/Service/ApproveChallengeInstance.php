@@ -15,7 +15,7 @@
  */
 
 
-namespace Twilio\Rest\Verify\V2;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
@@ -45,16 +45,16 @@ use Twilio\Deserialize;
  * @property string|null $url
  * @property array|null $links
  */
-class NewChallengeInstance extends InstanceResource
+class ApproveChallengeInstance extends InstanceResource
 {
     /**
-     * Initialize the NewChallengeInstance
+     * Initialize the ApproveChallengeInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The unique SID identifier of the Service.
      */
-    public function __construct(Version $version, array $payload, ?string $serviceSid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid)
     {
         parent::__construct($version);
 
@@ -81,38 +81,7 @@ class NewChallengeInstance extends InstanceResource
             'links' => Values::array_get($payload, 'links'),
         ];
 
-        $this->solution = ['serviceSid' => $serviceSid ?: $this->properties['serviceSid'], ];
-    }
-
-    /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return NewChallengeContext Context for this NewChallengeInstance
-     */
-    protected function proxy(): NewChallengeContext
-    {
-        if (!$this->context) {
-            $this->context = new NewChallengeContext(
-                $this->version,
-                $this->solution['serviceSid']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Create the NewChallengeInstance
-     *
-     * @param CreatePasskeysChallengeRequest $createPasskeysChallengeRequest
-     * @return NewChallengeInstance Created NewChallengeInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(CreatePasskeysChallengeRequest $createPasskeysChallengeRequest): NewChallengeInstance
-    {
-
-        return $this->proxy()->create($createPasskeysChallengeRequest);
+        $this->solution = ['serviceSid' => $serviceSid, ];
     }
 
     /**
@@ -143,11 +112,7 @@ class NewChallengeInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Verify.V2.NewChallengeInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Verify.V2.ApproveChallengeInstance]';
     }
 }
 

@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 
-namespace Twilio\Rest\Verify\V2;
+namespace Twilio\Rest\Verify\V2\Service;
 
 use Twilio\Values;
 abstract class NewChallengeModels

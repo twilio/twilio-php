@@ -29,10 +29,12 @@ use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
 use Twilio\Rest\Verify\V2\Service\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
+use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\WebhookList;
 use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
-use Twilio\Rest\Verify\V2\Service\VerifyFactorList;
+use Twilio\Rest\Verify\V2\Service\ApproveChallengeList;
+use Twilio\Rest\Verify\V2\Service\NewChallengeList;
 
 
 /**
@@ -41,14 +43,17 @@ use Twilio\Rest\Verify\V2\Service\VerifyFactorList;
  * @property VerificationList $verifications
  * @property AccessTokenList $accessTokens
  * @property RateLimitList $rateLimits
+ * @property NewFactorList $newFactors
  * @property WebhookList $webhooks
  * @property NewFactorList $newFactors
  * @property MessagingConfigurationList $messagingConfigurations
- * @property VerifyFactorList $verifyFactor
+ * @property ApproveChallengeList $approveChallenge
+ * @property NewChallengeList $newChallenge
  * @method \Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\AccessTokenContext accessTokens(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\WebhookContext webhooks(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext messagingConfigurations(string $country)
+ * @method \Twilio\Rest\Verify\V2\Service\NewChallengeContext newChallenge()
  * @method \Twilio\Rest\Verify\V2\Service\EntityContext entities(string $identity)
  * @method \Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)
  */
@@ -59,10 +64,12 @@ class ServiceContext extends InstanceContext
     protected $_verifications;
     protected $_accessTokens;
     protected $_rateLimits;
+    protected $_newFactors;
     protected $_webhooks;
     protected $_newFactors;
     protected $_messagingConfigurations;
-    protected $_verifyFactor;
+    protected $_approveChallenge;
+    protected $_newChallenge;
 
     /**
      * Initialize the ServiceContext
@@ -274,6 +281,21 @@ class ServiceContext extends InstanceContext
     }
 
     /**
+     * Access the newFactors
+     */
+    protected function getNewFactors(): NewFactorList
+    {
+        if (!$this->_newFactors) {
+            $this->_newFactors = new NewFactorList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_newFactors;
+    }
+
+    /**
      * Access the webhooks
      */
     protected function getWebhooks(): WebhookList
@@ -319,18 +341,33 @@ class ServiceContext extends InstanceContext
     }
 
     /**
-     * Access the verifyFactor
+     * Access the approveChallenge
      */
-    protected function getVerifyFactor(): VerifyFactorList
+    protected function getApproveChallenge(): ApproveChallengeList
     {
-        if (!$this->_verifyFactor) {
-            $this->_verifyFactor = new VerifyFactorList(
+        if (!$this->_approveChallenge) {
+            $this->_approveChallenge = new ApproveChallengeList(
                 $this->version,
                 $this->solution['sid']
             );
         }
 
-        return $this->_verifyFactor;
+        return $this->_approveChallenge;
+    }
+
+    /**
+     * Access the newChallenge
+     */
+    protected function getNewChallenge(): NewChallengeList
+    {
+        if (!$this->_newChallenge) {
+            $this->_newChallenge = new NewChallengeList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_newChallenge;
     }
 
     /**

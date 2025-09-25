@@ -33,8 +33,8 @@ use Twilio\Deserialize;
  * @property string|null $targetPortInTimeRangeStart
  * @property string|null $targetPortInTimeRangeEnd
  * @property string|null $portInRequestStatus
- * @property array|null $losingCarrierInformation
- * @property array[]|null $phoneNumbers
+ * @property string $losingCarrierInformation
+ * @property string[]|null $phoneNumbers
  * @property string|null $bundleSid
  * @property string|null $portabilityAdvanceCarrier
  * @property string|null $autoCancelApprovalNumbers

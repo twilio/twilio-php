@@ -25,28 +25,30 @@ use Twilio\Deserialize;
 
 
 /**
+ * @property array $options
  * @property string|null $sid
  * @property string|null $accountSid
  * @property string|null $serviceSid
  * @property string|null $entitySid
  * @property string|null $identity
- * @property array|null $binding
- * @property array|null $options
+ * @property string|null $factorSid
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
- * @property string|null $friendlyName
+ * @property \DateTime|null $dateResponded
+ * @property \DateTime|null $expirationDate
  * @property string $status
- * @property string $factorType
- * @property array|null $config
+ * @property string $respondedReason
+ * @property array|null $details
+ * @property array|null $hiddenDetails
  * @property array|null $metadata
- * @property string|null $url
- * @property string|null $friendlyName
  * @property string $factorType
+ * @property string|null $url
+ * @property array|null $links
  */
-class NewFactorInstance extends InstanceResource
+class NewChallengeInstance extends InstanceResource
 {
     /**
-     * Initialize the NewFactorInstance
+     * Initialize the NewChallengeInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -58,26 +60,59 @@ class NewFactorInstance extends InstanceResource
 
         // Marshaled Properties
         $this->properties = [
+            'options' => Values::array_get($payload, 'options'),
             'sid' => Values::array_get($payload, 'sid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'entitySid' => Values::array_get($payload, 'entity_sid'),
             'identity' => Values::array_get($payload, 'identity'),
-            'binding' => Values::array_get($payload, 'binding'),
-            'options' => Values::array_get($payload, 'options'),
+            'factorSid' => Values::array_get($payload, 'factor_sid'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
+            'dateResponded' => Deserialize::dateTime(Values::array_get($payload, 'date_responded')),
+            'expirationDate' => Deserialize::dateTime(Values::array_get($payload, 'expiration_date')),
             'status' => Values::array_get($payload, 'status'),
-            'factorType' => Values::array_get($payload, 'factor_type'),
-            'config' => Values::array_get($payload, 'config'),
+            'respondedReason' => Values::array_get($payload, 'responded_reason'),
+            'details' => Values::array_get($payload, 'details'),
+            'hiddenDetails' => Values::array_get($payload, 'hidden_details'),
             'metadata' => Values::array_get($payload, 'metadata'),
-            'url' => Values::array_get($payload, 'url'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'factorType' => Values::array_get($payload, 'factor_type'),
+            'url' => Values::array_get($payload, 'url'),
+            'links' => Values::array_get($payload, 'links'),
         ];
 
         $this->solution = ['serviceSid' => $serviceSid, ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return NewChallengeContext Context for this NewChallengeInstance
+     */
+    protected function proxy(): NewChallengeContext
+    {
+        if (!$this->context) {
+            $this->context = new NewChallengeContext(
+                $this->version,
+                $this->solution['serviceSid']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Create the NewChallengeInstance
+     *
+     * @param CreatePasskeysChallengeRequest $createPasskeysChallengeRequest
+     * @return NewChallengeInstance Created NewChallengeInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(CreatePasskeysChallengeRequest $createPasskeysChallengeRequest): NewChallengeInstance
+    {
+
+        return $this->proxy()->create($createPasskeysChallengeRequest);
     }
 
     /**
@@ -108,7 +143,11 @@ class NewFactorInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Verify.V2.NewFactorInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Verify.V2.NewChallengeInstance ' . \implode(' ', $context) . ']';
     }
 }
 
