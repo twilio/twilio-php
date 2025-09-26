@@ -31,7 +31,6 @@ use Twilio\Rest\Verify\V2\Service\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
 use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\WebhookList;
-use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
 use Twilio\Rest\Verify\V2\Service\ApproveChallengeList;
 use Twilio\Rest\Verify\V2\Service\NewChallengeList;
