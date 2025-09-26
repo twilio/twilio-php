@@ -21,8 +21,6 @@ use Twilio\Values;
 abstract class TokenOptions
 {
     /**
-     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param string $clientSecret The credential for confidential OAuth App.
      * @param string $code JWT token related to the authorization code grant type.
      * @param string $redirectUri The redirect uri
@@ -32,9 +30,7 @@ abstract class TokenOptions
      * @return CreateTokenOptions Options builder
      */
     public static function create(
-        
-        string $grantType = Values::NONE,
-        string $clientId = Values::NONE,
+
         string $clientSecret = Values::NONE,
         string $code = Values::NONE,
         string $redirectUri = Values::NONE,
@@ -45,8 +41,6 @@ abstract class TokenOptions
     ): CreateTokenOptions
     {
         return new CreateTokenOptions(
-            $grantType,
-            $clientId,
             $clientSecret,
             $code,
             $redirectUri,
@@ -61,8 +55,6 @@ abstract class TokenOptions
 class CreateTokenOptions extends Options
     {
     /**
-     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param string $clientSecret The credential for confidential OAuth App.
      * @param string $code JWT token related to the authorization code grant type.
      * @param string $redirectUri The redirect uri
@@ -71,9 +63,7 @@ class CreateTokenOptions extends Options
      * @param string $scope The scope of token
      */
     public function __construct(
-        
-        string $grantType = Values::NONE,
-        string $clientId = Values::NONE,
+
         string $clientSecret = Values::NONE,
         string $code = Values::NONE,
         string $redirectUri = Values::NONE,
@@ -82,38 +72,12 @@ class CreateTokenOptions extends Options
         string $scope = Values::NONE
 
     ) {
-        $this->options['grantType'] = $grantType;
-        $this->options['clientId'] = $clientId;
         $this->options['clientSecret'] = $clientSecret;
         $this->options['code'] = $code;
         $this->options['redirectUri'] = $redirectUri;
         $this->options['audience'] = $audience;
         $this->options['refreshToken'] = $refreshToken;
         $this->options['scope'] = $scope;
-    }
-
-    /**
-     * Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     *
-     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     * @return $this Fluent Builder
-     */
-    public function setGrantType(string $grantType): self
-    {
-        $this->options['grantType'] = $grantType;
-        return $this;
-    }
-
-    /**
-     * A 34 character string that uniquely identifies this OAuth App.
-     *
-     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
-     * @return $this Fluent Builder
-     */
-    public function setClientId(string $clientId): self
-    {
-        $this->options['clientId'] = $clientId;
-        return $this;
     }
 
     /**

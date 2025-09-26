@@ -45,20 +45,22 @@ class TokenList extends ListResource
     /**
      * Create the TokenInstance
      *
+     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
+     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param array|Options $options Optional Arguments
      * @return TokenInstance Created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): TokenInstance
+    public function create(string $grantType, string $clientId, array $options = []): TokenInstance
     {
 
         $options = new Values($options);
 
         $data = Values::of([
             'grant_type' =>
-                $options['grantType'],
+                $grantType,
             'client_id' =>
-                $options['clientId'],
+                $clientId,
             'client_secret' =>
                 $options['clientSecret'],
             'code' =>
