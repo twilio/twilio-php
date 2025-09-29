@@ -32,7 +32,7 @@ abstract class TokenOptions
      * @return CreateTokenOptions Options builder
      */
     public static function create(
-        
+
         string $grantType = Values::NONE,
         string $clientId = Values::NONE,
         string $clientSecret = Values::NONE,
@@ -71,7 +71,7 @@ class CreateTokenOptions extends Options
      * @param string $scope The scope of token
      */
     public function __construct(
-        
+
         string $grantType = Values::NONE,
         string $clientId = Values::NONE,
         string $clientSecret = Values::NONE,

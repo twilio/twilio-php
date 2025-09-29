@@ -3,9 +3,9 @@ namespace Twilio\Http\BearerToken;
 use Twilio\CredentialProvider\NoAuthCredentialProvider;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
-use Twilio\Rest\Iam\V1;
-use Twilio\Rest\Iam\V1\TokenList;
-use Twilio\Rest\IamBase;
+use Twilio\Rest\Oauth\V2;
+use Twilio\Rest\Oauth\V2\TokenList;
+use Twilio\Rest\OauthBase;
 
 
 /**
@@ -36,14 +36,12 @@ class OrgsTokenManager extends TokenManager {
         }
         $noAuthCredentialProvider = new NoAuthCredentialProvider();
         $client->setCredentialProvider($noAuthCredentialProvider);
-        $base = new IamBase($client);
-        $v1 = new V1($base);
-        $tokenList = new TokenList($v1);
+        $base = new OauthBase($client);
+        $v2 = new V2($base);
+        $tokenList = new TokenList($v2);
 
         try {
             return $tokenList->create(
-                $this->options['grantType'],
-                $this->options['clientId'],
                 $this->options
             )->accessToken;
         }
