@@ -110,7 +110,7 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
         $client = new Client();
         $noAuthCredentialProvider = new NoAuthCredentialProvider();
         $client->setCredentialProvider($noAuthCredentialProvider);
-        $token = $client->iam->v1->token->create("client_credentials", self::$clientId, ['clientSecret' => self::$clientSecret]);
+        $token = $client->oauth->v2->token->create(['grantType' => "client_credentials", 'clientId' => self::$clientId, 'clientSecret' => self::$clientSecret]);
         $this->assertNotNull($token);
         $this->assertNotNull($token->accessToken);
     }
@@ -154,10 +154,10 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
 
     public function testErrorOnCreatingTokenWithInvalidOAuthCredentials(): void {
         $this->expectException(TwilioException::class);
-        $this->expectExceptionMessage("[HTTP 400] Unable to create record: HTTP 400 Bad Request");
+        $this->expectExceptionMessage("[HTTP 401] Unable to create record: Invalid credentials");
         $client = new Client();
         $client->setCredentialProvider(new NoAuthCredentialProvider());
-        $client->iam->v1->token->create("client_credentials", "client_id", ["clientSecret" => "client_secret"]);
+        $client->oauth->v2->token->create(['grantType' => "client_credentials", 'clientId' => "client_id", 'clientSecret' => "client_secret"]);
     }
 
     public function testErrorOnListingOrgsApiUsersWithInvalidOrgSid(): void {
