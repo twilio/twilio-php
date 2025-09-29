@@ -3,8 +3,8 @@ namespace Twilio\Http\BearerToken;
 use Twilio\CredentialProvider\NoAuthCredentialProvider;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
-use Twilio\Rest\OAuth\V2;
-use Twilio\Rest\OAuth\V2\TokenList;
+use Twilio\Rest\Oauth\V2;
+use Twilio\Rest\Oauth\V2\TokenList;
 use Twilio\Rest\OauthBase;
 
 
