@@ -42,8 +42,6 @@ class ApiTokenManager extends TokenManager {
 
         try {
             return $tokenList->create(
-                $this->options['grantType'],
-                $this->options['clientId'],
                 $this->options
             )->accessToken;
         }
