@@ -22,10 +22,10 @@ use Twilio\Values;
 use Twilio\Version;
 
 
-class NewFactorList extends ListResource
+class NewVerifyFactorList extends ListResource
     {
     /**
-     * Construct the NewFactorList
+     * Construct the NewVerifyFactorList
      *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The unique SID identifier of the Service.
@@ -44,24 +44,24 @@ class NewFactorList extends ListResource
         ];
 
         $this->uri = '/Services/' . \rawurlencode($serviceSid)
-        .'/Passkeys/Factors';
+        .'/Passkeys/VerifyFactor';
     }
 
     /**
-     * Create the NewFactorInstance
+     * Update the NewVerifyFactorInstance
      *
-     * @param CreateNewPasskeysFactorRequest $createNewPasskeysFactorRequest
-     * @return NewFactorInstance Created NewFactorInstance
+     * @param VerifyPasskeysFactorRequest $verifyPasskeysFactorRequest
+     * @return NewVerifyFactorInstance Updated NewVerifyFactorInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(CreateNewPasskeysFactorRequest $createNewPasskeysFactorRequest): NewFactorInstance
+    public function update(VerifyPasskeysFactorRequest $verifyPasskeysFactorRequest): NewVerifyFactorInstance
     {
 
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $createNewPasskeysFactorRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        $data = $verifyPasskeysFactorRequest->toArray();
+        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
-        return new NewFactorInstance(
+        return new NewVerifyFactorInstance(
             $this->version,
             $payload,
             $this->solution['serviceSid']
@@ -76,6 +76,6 @@ class NewFactorList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Verify.V2.NewFactorList]';
+        return '[Twilio.Verify.V2.NewVerifyFactorList]';
     }
 }

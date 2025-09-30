@@ -54,12 +54,25 @@ use Twilio\Deserialize;
  * @property string|null $messageVolume
  * @property string|null $additionalInformation
  * @property string|null $tollfreePhoneNumberSid
+ * @property string|null $tollfreePhoneNumber
  * @property string $status
  * @property string|null $url
  * @property string|null $rejectionReason
  * @property int|null $errorCode
  * @property \DateTime|null $editExpiration
  * @property bool|null $editAllowed
+ * @property string|null $businessRegistrationNumber
+ * @property string|null $businessRegistrationAuthority
+ * @property string|null $businessRegistrationCountry
+ * @property string|null $businessType
+ * @property string|null $businessRegistrationPhoneNumber
+ * @property string|null $doingBusinessAs
+ * @property string|null $optInConfirmationMessage
+ * @property string|null $helpMessageSample
+ * @property string|null $privacyPolicyUrl
+ * @property string|null $termsAndConditionsUrl
+ * @property bool|null $ageGatedContent
+ * @property string[]|null $optInKeywords
  * @property array[]|null $rejectionReasons
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
@@ -107,12 +120,25 @@ class TollfreeVerificationInstance extends InstanceResource
             'messageVolume' => Values::array_get($payload, 'message_volume'),
             'additionalInformation' => Values::array_get($payload, 'additional_information'),
             'tollfreePhoneNumberSid' => Values::array_get($payload, 'tollfree_phone_number_sid'),
+            'tollfreePhoneNumber' => Values::array_get($payload, 'tollfree_phone_number'),
             'status' => Values::array_get($payload, 'status'),
             'url' => Values::array_get($payload, 'url'),
             'rejectionReason' => Values::array_get($payload, 'rejection_reason'),
             'errorCode' => Values::array_get($payload, 'error_code'),
             'editExpiration' => Deserialize::dateTime(Values::array_get($payload, 'edit_expiration')),
             'editAllowed' => Values::array_get($payload, 'edit_allowed'),
+            'businessRegistrationNumber' => Values::array_get($payload, 'business_registration_number'),
+            'businessRegistrationAuthority' => Values::array_get($payload, 'business_registration_authority'),
+            'businessRegistrationCountry' => Values::array_get($payload, 'business_registration_country'),
+            'businessType' => Values::array_get($payload, 'business_type'),
+            'businessRegistrationPhoneNumber' => Values::array_get($payload, 'business_registration_phone_number'),
+            'doingBusinessAs' => Values::array_get($payload, 'doing_business_as'),
+            'optInConfirmationMessage' => Values::array_get($payload, 'opt_in_confirmation_message'),
+            'helpMessageSample' => Values::array_get($payload, 'help_message_sample'),
+            'privacyPolicyUrl' => Values::array_get($payload, 'privacy_policy_url'),
+            'termsAndConditionsUrl' => Values::array_get($payload, 'terms_and_conditions_url'),
+            'ageGatedContent' => Values::array_get($payload, 'age_gated_content'),
+            'optInKeywords' => Values::array_get($payload, 'opt_in_keywords'),
             'rejectionReasons' => Values::array_get($payload, 'rejection_reasons'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
             'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),

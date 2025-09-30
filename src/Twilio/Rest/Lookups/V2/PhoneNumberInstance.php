@@ -29,19 +29,19 @@ use Twilio\Version;
  * @property string|null $countryCode
  * @property string|null $phoneNumber
  * @property string|null $nationalFormat
- * @property bool|null $valid
- * @property string[]|null $validationErrors
- * @property array|null $callerName
- * @property array|null $simSwap
- * @property array|null $callForwarding
- * @property array|null $lineStatus
- * @property array|null $lineTypeIntelligence
- * @property array|null $identityMatch
- * @property array|null $reassignedNumber
- * @property array|null $smsPumpingRisk
+ * @property bool $valid
+ * @property string[] $validationErrors
+ * @property string $callerName
+ * @property string $simSwap
+ * @property string $callForwarding
+ * @property string $lineTypeIntelligence
+ * @property string $lineStatus
+ * @property string $identityMatch
+ * @property string $reassignedNumber
+ * @property string $smsPumpingRisk
  * @property array|null $phoneNumberQualityScore
  * @property array|null $preFill
- * @property string|null $url
+ * @property string $url
  */
 class PhoneNumberInstance extends InstanceResource
 {
@@ -67,8 +67,8 @@ class PhoneNumberInstance extends InstanceResource
             'callerName' => Values::array_get($payload, 'caller_name'),
             'simSwap' => Values::array_get($payload, 'sim_swap'),
             'callForwarding' => Values::array_get($payload, 'call_forwarding'),
-            'lineStatus' => Values::array_get($payload, 'line_status'),
             'lineTypeIntelligence' => Values::array_get($payload, 'line_type_intelligence'),
+            'lineStatus' => Values::array_get($payload, 'line_status'),
             'identityMatch' => Values::array_get($payload, 'identity_match'),
             'reassignedNumber' => Values::array_get($payload, 'reassigned_number'),
             'smsPumpingRisk' => Values::array_get($payload, 'sms_pumping_risk'),

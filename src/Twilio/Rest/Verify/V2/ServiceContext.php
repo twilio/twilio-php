@@ -29,7 +29,7 @@ use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
 use Twilio\Rest\Verify\V2\Service\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
-use Twilio\Rest\Verify\V2\Service\NewFactorList;
+use Twilio\Rest\Verify\V2\Service\NewVerifyFactorList;
 use Twilio\Rest\Verify\V2\Service\WebhookList;
 use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
@@ -43,7 +43,7 @@ use Twilio\Rest\Verify\V2\Service\NewChallengeList;
  * @property VerificationList $verifications
  * @property AccessTokenList $accessTokens
  * @property RateLimitList $rateLimits
- * @property NewFactorList $newFactors
+ * @property NewVerifyFactorList $newVerifyFactors
  * @property WebhookList $webhooks
  * @property NewFactorList $newFactors
  * @property MessagingConfigurationList $messagingConfigurations
@@ -64,7 +64,7 @@ class ServiceContext extends InstanceContext
     protected $_verifications;
     protected $_accessTokens;
     protected $_rateLimits;
-    protected $_newFactors;
+    protected $_newVerifyFactors;
     protected $_webhooks;
     protected $_newFactors;
     protected $_messagingConfigurations;
@@ -281,18 +281,18 @@ class ServiceContext extends InstanceContext
     }
 
     /**
-     * Access the newFactors
+     * Access the newVerifyFactors
      */
-    protected function getNewFactors(): NewFactorList
+    protected function getNewVerifyFactors(): NewVerifyFactorList
     {
-        if (!$this->_newFactors) {
-            $this->_newFactors = new NewFactorList(
+        if (!$this->_newVerifyFactors) {
+            $this->_newVerifyFactors = new NewVerifyFactorList(
                 $this->version,
                 $this->solution['sid']
             );
         }
 
-        return $this->_newFactors;
+        return $this->_newVerifyFactors;
     }
 
     /**

@@ -30,8 +30,6 @@ use Twilio\Deserialize;
  * @property string|null $serviceSid
  * @property string|null $entitySid
  * @property string|null $identity
- * @property array|null $binding
- * @property array|null $options
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $friendlyName
@@ -41,10 +39,10 @@ use Twilio\Deserialize;
  * @property array|null $metadata
  * @property string|null $url
  */
-class NewFactorInstance extends InstanceResource
+class NewVerifyFactorInstance extends InstanceResource
 {
     /**
-     * Initialize the NewFactorInstance
+     * Initialize the NewVerifyFactorInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -61,8 +59,6 @@ class NewFactorInstance extends InstanceResource
             'serviceSid' => Values::array_get($payload, 'service_sid'),
             'entitySid' => Values::array_get($payload, 'entity_sid'),
             'identity' => Values::array_get($payload, 'identity'),
-            'binding' => Values::array_get($payload, 'binding'),
-            'options' => Values::array_get($payload, 'options'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),
@@ -104,7 +100,7 @@ class NewFactorInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Verify.V2.NewFactorInstance]';
+        return '[Twilio.Verify.V2.NewVerifyFactorInstance]';
     }
 }
 

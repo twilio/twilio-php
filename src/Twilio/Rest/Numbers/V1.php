@@ -20,6 +20,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Numbers\V1\BulkEligibilityList;
 use Twilio\Rest\Numbers\V1\EligibilityList;
+use Twilio\Rest\Numbers\V1\PortingAllPortInList;
 use Twilio\Rest\Numbers\V1\PortingPortInList;
 use Twilio\Rest\Numbers\V1\PortingPortInPhoneNumberList;
 use Twilio\Rest\Numbers\V1\PortingPortabilityList;
@@ -32,6 +33,7 @@ use Twilio\Version;
 /**
  * @property BulkEligibilityList $bulkEligibilities
  * @property EligibilityList $eligibilities
+ * @property PortingAllPortInList $portingAllPortIns
  * @property PortingPortInList $portingPortIns
  * @property PortingPortInPhoneNumberList $portingPortInPhoneNumber
  * @property PortingPortabilityList $portingPortabilities
@@ -49,6 +51,7 @@ class V1 extends Version
 {
     protected $_bulkEligibilities;
     protected $_eligibilities;
+    protected $_portingAllPortIns;
     protected $_portingPortIns;
     protected $_portingPortInPhoneNumber;
     protected $_portingPortabilities;
@@ -82,6 +85,14 @@ class V1 extends Version
             $this->_eligibilities = new EligibilityList($this);
         }
         return $this->_eligibilities;
+    }
+
+    protected function getPortingAllPortIns(): PortingAllPortInList
+    {
+        if (!$this->_portingAllPortIns) {
+            $this->_portingAllPortIns = new PortingAllPortInList($this);
+        }
+        return $this->_portingAllPortIns;
     }
 
     protected function getPortingPortIns(): PortingPortInList

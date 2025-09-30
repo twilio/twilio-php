@@ -51,7 +51,7 @@ class QueryList extends ListResource
     {
 
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $lookupRequest1->toArray();
+        $data = $lookupRequest->toArray();
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new QueryInstance(

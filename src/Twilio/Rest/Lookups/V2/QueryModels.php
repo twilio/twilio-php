@@ -38,17 +38,17 @@ abstract class QueryModels
     /**
      * @property string $lastVerifiedDate
     */
-    public static function createReassignedNumberRequest(array $payload = []): ReassignedNumberRequest
+    public static function createReassignedNumberParameters(array $payload = []): ReassignedNumberParameters
     {
-        return new ReassignedNumberRequest($payload);
+        return new ReassignedNumberParameters($payload);
     }
 
     /**
      * @property string $partnerSubId
     */
-    public static function createSmsPumpingRiskParameters(array $payload = []): SmsPumpingRiskParameters
+    public static function createRiskParameters(array $payload = []): RiskParameters
     {
-        return new SmsPumpingRiskParameters($payload);
+        return new RiskParameters($payload);
     }
 
     /**
@@ -57,20 +57,20 @@ abstract class QueryModels
      * @property string[][] $fields
      * @property string $countryCode
      * @property IdentityMatchParameters $identityMatch
-     * @property ReassignedNumberRequest $reassignedNumber
-     * @property SmsPumpingRiskParameters $smsPumpingRisk
+     * @property ReassignedNumberParameters $reassignedNumber
+     * @property RiskParameters $smsPumpingRisk
     */
-    public static function createLookupRequestWithCorId(array $payload = []): LookupRequestWithCorId
+    public static function createLookupBatchRequest(array $payload = []): LookupBatchRequest
     {
-        return new LookupRequestWithCorId($payload);
+        return new LookupBatchRequest($payload);
     }
 
     /**
-     * @property LookupRequestWithCorId[] $phoneNumbers
+     * @property LookupBatchRequest[] $phoneNumbers
     */
-    public static function createLookupRequest1(array $payload = []): LookupRequest1
+    public static function createLookupRequest(array $payload = []): LookupRequest
     {
-        return new LookupRequest1($payload);
+        return new LookupRequest($payload);
     }
 
 }
@@ -155,7 +155,7 @@ class IdentityMatchParameters implements \JsonSerializable
     }
 }
 
-class ReassignedNumberRequest implements \JsonSerializable
+class ReassignedNumberParameters implements \JsonSerializable
 {
     /**
      * @property string $lastVerifiedDate
@@ -181,7 +181,7 @@ class ReassignedNumberRequest implements \JsonSerializable
     }
 }
 
-class SmsPumpingRiskParameters implements \JsonSerializable
+class RiskParameters implements \JsonSerializable
 {
     /**
      * @property string $partnerSubId
@@ -207,7 +207,7 @@ class SmsPumpingRiskParameters implements \JsonSerializable
     }
 }
 
-class LookupRequestWithCorId implements \JsonSerializable
+class LookupBatchRequest implements \JsonSerializable
 {
     /**
      * @property string $correlationId Unique identifier used to match request with response
@@ -215,8 +215,8 @@ class LookupRequestWithCorId implements \JsonSerializable
      * @property string[][] $fields
      * @property string $countryCode
      * @property IdentityMatchParameters $identityMatch
-     * @property ReassignedNumberRequest $reassignedNumber
-     * @property SmsPumpingRiskParameters $smsPumpingRisk
+     * @property ReassignedNumberParameters $reassignedNumber
+     * @property RiskParameters $smsPumpingRisk
     */
         protected $correlationId;
         protected $phoneNumber;
@@ -267,10 +267,10 @@ class LookupRequestWithCorId implements \JsonSerializable
     }
 }
 
-class LookupRequest1 implements \JsonSerializable
+class LookupRequest implements \JsonSerializable
 {
     /**
-     * @property LookupRequestWithCorId[] $phoneNumbers
+     * @property LookupBatchRequest[] $phoneNumbers
     */
         protected $phoneNumbers;
     public function __construct(array $payload = []) {
