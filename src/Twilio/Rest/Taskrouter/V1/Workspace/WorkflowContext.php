@@ -97,7 +97,7 @@ class WorkflowContext extends InstanceContext
 
         return new WorkflowInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
@@ -136,7 +136,7 @@ class WorkflowContext extends InstanceContext
 
         return new WorkflowInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
