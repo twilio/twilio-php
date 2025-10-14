@@ -1,6 +1,16 @@
 twilio-php Changelog
 ====================
 
+[2025-10-14] Version 8.8.4
+--------------------------
+**Api**
+- Updated description for property `CallerDisplayName` for participant create request
+- Updated description for property `CallerDisplayName` for participant create request
+
+**Accounts**
+- FILE_IS_AUTO_GENERATED: false
+
+
 [2025-09-30] Version 8.8.3
 --------------------------
 **Library - Chore**

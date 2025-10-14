@@ -113,6 +113,30 @@ class TollfreeVerificationList extends ListResource
                 $options['businessContactPhone'],
             'ExternalReferenceId' =>
                 $options['externalReferenceId'],
+            'BusinessRegistrationNumber' =>
+                $options['businessRegistrationNumber'],
+            'BusinessRegistrationAuthority' =>
+                $options['businessRegistrationAuthority'],
+            'BusinessRegistrationCountry' =>
+                $options['businessRegistrationCountry'],
+            'BusinessType' =>
+                $options['businessType'],
+            'BusinessRegistrationPhoneNumber' =>
+                $options['businessRegistrationPhoneNumber'],
+            'DoingBusinessAs' =>
+                $options['doingBusinessAs'],
+            'OptInConfirmationMessage' =>
+                $options['optInConfirmationMessage'],
+            'HelpMessageSample' =>
+                $options['helpMessageSample'],
+            'PrivacyPolicyUrl' =>
+                $options['privacyPolicyUrl'],
+            'TermsAndConditionsUrl' =>
+                $options['termsAndConditionsUrl'],
+            'AgeGatedContent' =>
+                Serialize::booleanToString($options['ageGatedContent']),
+            'OptInKeywords' =>
+                Serialize::map($options['optInKeywords'], function ($e) { return $e; }),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
