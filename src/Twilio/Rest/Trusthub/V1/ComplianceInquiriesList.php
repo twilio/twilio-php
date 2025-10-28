@@ -45,23 +45,22 @@ class ComplianceInquiriesList extends ListResource
     /**
      * Create the ComplianceInquiriesInstance
      *
-     * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
      * @param array|Options $options Optional Arguments
      * @return ComplianceInquiriesInstance Created ComplianceInquiriesInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $primaryProfileSid, array $options = []): ComplianceInquiriesInstance
+    public function create(array $options = []): ComplianceInquiriesInstance
     {
 
         $options = new Values($options);
 
         $data = Values::of([
-            'PrimaryProfileSid' =>
-                $primaryProfileSid,
             'NotificationEmail' =>
                 $options['notificationEmail'],
             'ThemeSetId' =>
                 $options['themeSetId'],
+            'PrimaryProfileSid' =>
+                $options['primaryProfileSid'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);

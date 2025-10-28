@@ -1,6 +1,31 @@
 twilio-php Changelog
 ====================
 
+[2025-10-28] Version 8.8.5
+--------------------------
+**Library - Chore**
+- [PR #885](https://github.com/twilio/twilio-php/pull/885): add params to patch operation. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Ai**
+- Add `error` as possible transcript status
+- Add `error` as possible transcript status
+
+**Chat**
+- Updated v2 UserChannel `channel_status` from `not_participating` to `notParticipating`
+
+**Intelligence**
+- Make intelligence work with RestProxy
+- Add additional enums to better represent the possible states
+- Add `error` enum to transcription status to better align with possible outputs
+- Add `json` output type to text classification
+
+**Trusthub**
+- Remove required parameter Primary Profile Sid from compliance_inquiry and compliance_inquiry_individual
+
+**Accounts**
+- Add Messaging GeoPermissions API changes
+
+
 [2025-10-14] Version 8.8.4
 --------------------------
 **Api**

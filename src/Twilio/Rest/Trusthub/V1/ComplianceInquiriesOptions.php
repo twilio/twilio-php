@@ -23,18 +23,21 @@ abstract class ComplianceInquiriesOptions
     /**
      * @param string $notificationEmail The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used.
      * @param string $themeSetId Theme id for styling the inquiry form.
+     * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
      * @return CreateComplianceInquiriesOptions Options builder
      */
     public static function create(
         
         string $notificationEmail = Values::NONE,
-        string $themeSetId = Values::NONE
+        string $themeSetId = Values::NONE,
+        string $primaryProfileSid = Values::NONE
 
     ): CreateComplianceInquiriesOptions
     {
         return new CreateComplianceInquiriesOptions(
             $notificationEmail,
-            $themeSetId
+            $themeSetId,
+            $primaryProfileSid
         );
     }
 
@@ -60,15 +63,18 @@ class CreateComplianceInquiriesOptions extends Options
     /**
      * @param string $notificationEmail The email address that approval status updates will be sent to. If not specified, the email address associated with your primary customer profile will be used.
      * @param string $themeSetId Theme id for styling the inquiry form.
+     * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
      */
     public function __construct(
         
         string $notificationEmail = Values::NONE,
-        string $themeSetId = Values::NONE
+        string $themeSetId = Values::NONE,
+        string $primaryProfileSid = Values::NONE
 
     ) {
         $this->options['notificationEmail'] = $notificationEmail;
         $this->options['themeSetId'] = $themeSetId;
+        $this->options['primaryProfileSid'] = $primaryProfileSid;
     }
 
     /**
@@ -92,6 +98,18 @@ class CreateComplianceInquiriesOptions extends Options
     public function setThemeSetId(string $themeSetId): self
     {
         $this->options['themeSetId'] = $themeSetId;
+        return $this;
+    }
+
+    /**
+     * The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
+     *
+     * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
+     * @return $this Fluent Builder
+     */
+    public function setPrimaryProfileSid(string $primaryProfileSid): self
+    {
+        $this->options['primaryProfileSid'] = $primaryProfileSid;
         return $this;
     }
 
