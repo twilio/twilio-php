@@ -173,9 +173,14 @@ class BaseClient
         }
 
         $logLevel = (getenv('DEBUG_HTTP_TRAFFIC') === 'true' ? 'debug' : $this->getLogLevel());
-
+        $os = PHP_OS;
+        $arch = 'default_arch';
+        if (function_exists('php_uname')) {
+            $os = php_uname("s");
+            $arch = php_uname("m");
+        }
         $headers['User-Agent'] = 'twilio-php/' . VersionInfo::string() .
-            ' (' . php_uname("s") . ' ' . php_uname("m") . ')' .
+            ' (' . $os . ' ' . $arch . ')' .
             ' PHP/' . PHP_VERSION;
         $headers['Accept-Charset'] = 'utf-8';
 
