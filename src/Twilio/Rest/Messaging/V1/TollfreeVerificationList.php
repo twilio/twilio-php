@@ -225,6 +225,8 @@ class TollfreeVerificationList extends ListResource
                 $options['externalReferenceId'],
             'IncludeSubAccounts' =>
                 Serialize::booleanToString($options['includeSubAccounts']),
+            'TrustProductSid' =>
+                Serialize::map($options['trustProductSid'], function ($e) { return $e; }),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

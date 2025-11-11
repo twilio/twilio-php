@@ -52,6 +52,16 @@ class Start extends TwiML {
     }
 
     /**
+     * Add Recording child.
+     *
+     * @param array $attributes Optional attributes
+     * @return Recording Child element.
+     */
+    public function recording($attributes = []): Recording {
+        return $this->nest(new Recording($attributes));
+    }
+
+    /**
      * Add Action attribute.
      *
      * @param string $action Action URL
