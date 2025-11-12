@@ -42,6 +42,7 @@ use Twilio\Rest\Trunking\V1\Trunk\RecordingList;
  * @property string $transferCallerId
  * @property bool|null $cnamLookupEnabled
  * @property string|null $authType
+ * @property bool|null $symmetricRtpEnabled
  * @property string[]|null $authTypeSet
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
@@ -64,7 +65,7 @@ class TrunkInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The unique string that we created to identify the Trunk resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -81,6 +82,7 @@ class TrunkInstance extends InstanceResource
             'transferCallerId' => Values::array_get($payload, 'transfer_caller_id'),
             'cnamLookupEnabled' => Values::array_get($payload, 'cnam_lookup_enabled'),
             'authType' => Values::array_get($payload, 'auth_type'),
+            'symmetricRtpEnabled' => Values::array_get($payload, 'symmetric_rtp_enabled'),
             'authTypeSet' => Values::array_get($payload, 'auth_type_set'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),

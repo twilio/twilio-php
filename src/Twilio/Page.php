@@ -21,6 +21,8 @@ abstract class Page implements \Iterator {
         'num_pages',
         'start',
         'uri',
+        'totalResults',
+        'schemas'
     ];
 
     protected $version;
@@ -68,7 +70,7 @@ abstract class Page implements \Iterator {
         return \array_key_exists('meta', $this->payload) && \array_key_exists($key, $this->payload['meta']);
     }
 
-    protected function getMeta(string $key, string $default = null): ?string {
+    protected function getMeta(string $key, ?string $default = null): ?string {
         return $this->hasMeta($key) ? $this->payload['meta'][$key] : $default;
     }
 
@@ -97,18 +99,24 @@ abstract class Page implements \Iterator {
     public function getPreviousPageUrl(): ?string {
         if ($this->hasMeta('previous_page_url')) {
             return $this->getMeta('previous_page_url');
-        } else if (\array_key_exists('previous_page_uri', $this->payload) && $this->payload['previous_page_uri']) {
+        }
+
+        if (\array_key_exists('previous_page_uri', $this->payload) && $this->payload['previous_page_uri']) {
             return $this->getVersion()->getDomain()->absoluteUrl($this->payload['previous_page_uri']);
         }
+
         return null;
     }
 
     public function getNextPageUrl(): ?string {
         if ($this->hasMeta('next_page_url')) {
             return $this->getMeta('next_page_url');
-        } else if (\array_key_exists('next_page_uri', $this->payload) && $this->payload['next_page_uri']) {
+        }
+
+        if (\array_key_exists('next_page_uri', $this->payload) && $this->payload['next_page_uri']) {
             return $this->getVersion()->getDomain()->absoluteUrl($this->payload['next_page_uri']);
         }
+
         return null;
     }
 

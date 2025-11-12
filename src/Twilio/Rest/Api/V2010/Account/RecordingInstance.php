@@ -40,7 +40,7 @@ use Twilio\Rest\Api\V2010\Account\Recording\TranscriptionList;
  * @property string|null $price
  * @property string|null $priceUnit
  * @property string $status
- * @property int $channels
+ * @property int|null $channels
  * @property string $source
  * @property int|null $errorCode
  * @property string|null $uri
@@ -61,7 +61,7 @@ class RecordingInstance extends InstanceResource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to delete.
      * @param string $sid The Twilio-provided string that uniquely identifies the Recording resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $sid = null)
     {
         parent::__construct($version);
 

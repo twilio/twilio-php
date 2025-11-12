@@ -43,7 +43,7 @@ class PluginConfigurationArchiveInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Flex Plugin Configuration resource to archive.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

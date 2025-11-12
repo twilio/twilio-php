@@ -33,7 +33,7 @@ use Twilio\Deserialize;
  * @property string|null $deploymentSid
  * @property string|null $functionSid
  * @property string|null $requestSid
- * @property string $level
+ * @property string|null $level
  * @property string|null $message
  * @property \DateTime|null $dateCreated
  * @property string|null $url
@@ -49,7 +49,7 @@ class LogInstance extends InstanceResource
      * @param string $environmentSid The SID of the environment with the Log resource to fetch.
      * @param string $sid The SID of the Log resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, ?string $sid = null)
     {
         parent::__construct($version);
 

@@ -47,36 +47,6 @@ class ReferralConversionInstance extends InstanceResource
     }
 
     /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return ReferralConversionContext Context for this ReferralConversionInstance
-     */
-    protected function proxy(): ReferralConversionContext
-    {
-        if (!$this->context) {
-            $this->context = new ReferralConversionContext(
-                $this->version
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Create the ReferralConversionInstance
-     *
-     * @param CreateReferralConversionRequest $createReferralConversionRequest
-     * @return ReferralConversionInstance Created ReferralConversionInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(CreateReferralConversionRequest $createReferralConversionRequest): ReferralConversionInstance
-    {
-
-        return $this->proxy()->create($createReferralConversionRequest);
-    }
-
-    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access
@@ -104,11 +74,7 @@ class ReferralConversionInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Marketplace.V1.ReferralConversionInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Marketplace.V1.ReferralConversionInstance]';
     }
 }
 

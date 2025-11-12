@@ -83,7 +83,7 @@ class InstalledAddOnContext extends InstanceContext
     public function fetch(): InstalledAddOnInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InstalledAddOnInstance(
@@ -113,7 +113,7 @@ class InstalledAddOnContext extends InstanceContext
                 $options['uniqueName'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InstalledAddOnInstance(

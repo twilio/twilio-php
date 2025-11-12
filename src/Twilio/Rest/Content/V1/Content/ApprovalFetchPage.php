@@ -40,7 +40,7 @@ class ApprovalFetchPage extends Page
      */
     public function buildInstance(array $payload): ApprovalFetchInstance
     {
-        return new ApprovalFetchInstance($this->version, $payload, $this->solution['contentSid']);
+        return new ApprovalFetchInstance($this->version, $payload, $this->solution['sid']);
     }
 
     /**

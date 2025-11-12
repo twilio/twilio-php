@@ -94,9 +94,11 @@ class TranscriptionList extends ListResource
                 $options['hints'],
             'EnableAutomaticPunctuation' =>
                 Serialize::booleanToString($options['enableAutomaticPunctuation']),
+            'IntelligenceService' =>
+                $options['intelligenceService'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TranscriptionInstance(

@@ -79,7 +79,7 @@ class SubscriptionContext extends InstanceContext
     public function fetch(): SubscriptionInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SubscriptionInstance(
@@ -105,11 +105,9 @@ class SubscriptionContext extends InstanceContext
         $data = Values::of([
             'Description' =>
                 $options['description'],
-            'SinkSid' =>
-                $options['sinkSid'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SubscriptionInstance(

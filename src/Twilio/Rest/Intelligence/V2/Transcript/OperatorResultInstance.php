@@ -38,6 +38,7 @@ use Twilio\Version;
  * @property array|null $labelProbabilities
  * @property array|null $extractResults
  * @property array|null $textGenerationResults
+ * @property array|null $jsonResults
  * @property string|null $transcriptSid
  * @property string|null $url
  */
@@ -51,7 +52,7 @@ class OperatorResultInstance extends InstanceResource
      * @param string $transcriptSid A 34 character string that uniquely identifies this Transcript.
      * @param string $operatorSid A 34 character string that identifies this Language Understanding operator sid.
      */
-    public function __construct(Version $version, array $payload, string $transcriptSid, string $operatorSid = null)
+    public function __construct(Version $version, array $payload, string $transcriptSid, ?string $operatorSid = null)
     {
         parent::__construct($version);
 
@@ -70,6 +71,7 @@ class OperatorResultInstance extends InstanceResource
             'labelProbabilities' => Values::array_get($payload, 'label_probabilities'),
             'extractResults' => Values::array_get($payload, 'extract_results'),
             'textGenerationResults' => Values::array_get($payload, 'text_generation_results'),
+            'jsonResults' => Values::array_get($payload, 'json_results'),
             'transcriptSid' => Values::array_get($payload, 'transcript_sid'),
             'url' => Values::array_get($payload, 'url'),
         ];

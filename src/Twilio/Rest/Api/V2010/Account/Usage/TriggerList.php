@@ -54,7 +54,7 @@ class TriggerList extends ListResource
      *
      * @param string $callbackUrl The URL we should call using `callback_method` when the trigger fires.
      * @param string $triggerValue The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
-     * @param string $usageCategory
+     * @param string $usageCategory The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
      * @param array|Options $options Optional Arguments
      * @return TriggerInstance Created TriggerInstance
      * @throws TwilioException When an HTTP error occurs.
@@ -81,7 +81,7 @@ class TriggerList extends ListResource
                 $options['triggerBy'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new TriggerInstance(
@@ -108,7 +108,7 @@ class TriggerList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return TriggerInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    public function read(array $options = [], ?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
@@ -132,7 +132,7 @@ class TriggerList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    public function stream(array $options = [], ?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
@@ -171,7 +171,8 @@ class TriggerList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new TriggerPage($this->version, $response, $this->solution);
     }

@@ -24,8 +24,8 @@ use Twilio\Version;
 
 
 /**
- * @property string[] $billableItems
  * @property string $totalSubmitted
+ * @property string[] $billableItems
  */
 class InstalledAddOnUsageInstance extends InstanceResource
 {
@@ -34,7 +34,7 @@ class InstalledAddOnUsageInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $installedAddOnSid 
+     * @param string $installedAddOnSid Customer Installation SID to report usage on.
      */
     public function __construct(Version $version, array $payload, string $installedAddOnSid)
     {
@@ -42,8 +42,8 @@ class InstalledAddOnUsageInstance extends InstanceResource
 
         // Marshaled Properties
         $this->properties = [
-            'billableItems' => Values::array_get($payload, 'billable_items'),
             'totalSubmitted' => Values::array_get($payload, 'total_submitted'),
+            'billableItems' => Values::array_get($payload, 'billable_items'),
         ];
 
         $this->solution = ['installedAddOnSid' => $installedAddOnSid, ];

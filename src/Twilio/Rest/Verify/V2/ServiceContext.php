@@ -29,8 +29,12 @@ use Twilio\Rest\Verify\V2\Service\VerificationCheckList;
 use Twilio\Rest\Verify\V2\Service\VerificationList;
 use Twilio\Rest\Verify\V2\Service\AccessTokenList;
 use Twilio\Rest\Verify\V2\Service\RateLimitList;
+use Twilio\Rest\Verify\V2\Service\NewVerifyFactorList;
 use Twilio\Rest\Verify\V2\Service\WebhookList;
+use Twilio\Rest\Verify\V2\Service\NewFactorList;
 use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
+use Twilio\Rest\Verify\V2\Service\ApproveChallengeList;
+use Twilio\Rest\Verify\V2\Service\NewChallengeList;
 
 
 /**
@@ -39,12 +43,17 @@ use Twilio\Rest\Verify\V2\Service\MessagingConfigurationList;
  * @property VerificationList $verifications
  * @property AccessTokenList $accessTokens
  * @property RateLimitList $rateLimits
+ * @property NewVerifyFactorList $newVerifyFactors
  * @property WebhookList $webhooks
+ * @property NewFactorList $newFactors
  * @property MessagingConfigurationList $messagingConfigurations
+ * @property ApproveChallengeList $approveChallenge
+ * @property NewChallengeList $newChallenge
  * @method \Twilio\Rest\Verify\V2\Service\VerificationContext verifications(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\AccessTokenContext accessTokens(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\WebhookContext webhooks(string $sid)
  * @method \Twilio\Rest\Verify\V2\Service\MessagingConfigurationContext messagingConfigurations(string $country)
+ * @method \Twilio\Rest\Verify\V2\Service\NewChallengeContext newChallenge()
  * @method \Twilio\Rest\Verify\V2\Service\EntityContext entities(string $identity)
  * @method \Twilio\Rest\Verify\V2\Service\RateLimitContext rateLimits(string $sid)
  */
@@ -55,8 +64,12 @@ class ServiceContext extends InstanceContext
     protected $_verifications;
     protected $_accessTokens;
     protected $_rateLimits;
+    protected $_newVerifyFactors;
     protected $_webhooks;
+    protected $_newFactors;
     protected $_messagingConfigurations;
+    protected $_approveChallenge;
+    protected $_newChallenge;
 
     /**
      * Initialize the ServiceContext
@@ -103,7 +116,7 @@ class ServiceContext extends InstanceContext
     public function fetch(): ServiceInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ServiceInstance(
@@ -165,11 +178,23 @@ class ServiceContext extends InstanceContext
                 $options['whatsappMsgServiceSid'],
             'Whatsapp.From' =>
                 $options['whatsappFrom'],
+            'Passkeys.RelyingParty.Id' =>
+                $options['passkeysRelyingPartyId'],
+            'Passkeys.RelyingParty.Name' =>
+                $options['passkeysRelyingPartyName'],
+            'Passkeys.RelyingParty.Origins' =>
+                $options['passkeysRelyingPartyOrigins'],
+            'Passkeys.AuthenticatorAttachment' =>
+                $options['passkeysAuthenticatorAttachment'],
+            'Passkeys.DiscoverableCredentials' =>
+                $options['passkeysDiscoverableCredentials'],
+            'Passkeys.UserVerification' =>
+                $options['passkeysUserVerification'],
             'VerifyEventSubscriptionEnabled' =>
                 Serialize::booleanToString($options['verifyEventSubscriptionEnabled']),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ServiceInstance(
@@ -256,6 +281,21 @@ class ServiceContext extends InstanceContext
     }
 
     /**
+     * Access the newVerifyFactors
+     */
+    protected function getNewVerifyFactors(): NewVerifyFactorList
+    {
+        if (!$this->_newVerifyFactors) {
+            $this->_newVerifyFactors = new NewVerifyFactorList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_newVerifyFactors;
+    }
+
+    /**
      * Access the webhooks
      */
     protected function getWebhooks(): WebhookList
@@ -271,6 +311,21 @@ class ServiceContext extends InstanceContext
     }
 
     /**
+     * Access the newFactors
+     */
+    protected function getNewFactors(): NewFactorList
+    {
+        if (!$this->_newFactors) {
+            $this->_newFactors = new NewFactorList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_newFactors;
+    }
+
+    /**
      * Access the messagingConfigurations
      */
     protected function getMessagingConfigurations(): MessagingConfigurationList
@@ -283,6 +338,36 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_messagingConfigurations;
+    }
+
+    /**
+     * Access the approveChallenge
+     */
+    protected function getApproveChallenge(): ApproveChallengeList
+    {
+        if (!$this->_approveChallenge) {
+            $this->_approveChallenge = new ApproveChallengeList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_approveChallenge;
+    }
+
+    /**
+     * Access the newChallenge
+     */
+    protected function getNewChallenge(): NewChallengeList
+    {
+        if (!$this->_newChallenge) {
+            $this->_newChallenge = new NewChallengeList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_newChallenge;
     }
 
     /**

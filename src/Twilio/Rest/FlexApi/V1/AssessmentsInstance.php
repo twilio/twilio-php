@@ -49,7 +49,7 @@ class AssessmentsInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $assessmentSid The SID of the assessment to be modified
      */
-    public function __construct(Version $version, array $payload, string $assessmentSid = null)
+    public function __construct(Version $version, array $payload, ?string $assessmentSid = null)
     {
         parent::__construct($version);
 

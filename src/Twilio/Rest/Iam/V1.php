@@ -21,12 +21,14 @@ use Twilio\InstanceContext;
 use Twilio\Rest\Iam\V1\ApiKeyList;
 use Twilio\Rest\Iam\V1\GetApiKeysList;
 use Twilio\Rest\Iam\V1\NewApiKeyList;
+use Twilio\Rest\Iam\V1\TokenList;
 use Twilio\Version;
 
 /**
  * @property ApiKeyList $apiKey
  * @property GetApiKeysList $getApiKeys
  * @property NewApiKeyList $newApiKey
+ * @property TokenList $token
  * @method \Twilio\Rest\Iam\V1\ApiKeyContext apiKey(string $sid)
  */
 class V1 extends Version
@@ -34,6 +36,7 @@ class V1 extends Version
     protected $_apiKey;
     protected $_getApiKeys;
     protected $_newApiKey;
+    protected $_token;
 
     /**
      * Construct the V1 version of Iam
@@ -68,6 +71,14 @@ class V1 extends Version
             $this->_newApiKey = new NewApiKeyList($this);
         }
         return $this->_newApiKey;
+    }
+
+    protected function getToken(): TokenList
+    {
+        if (!$this->_token) {
+            $this->_token = new TokenList($this);
+        }
+        return $this->_token;
     }
 
     /**

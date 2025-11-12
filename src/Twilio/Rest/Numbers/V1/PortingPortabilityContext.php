@@ -63,9 +63,11 @@ class PortingPortabilityContext extends InstanceContext
         $params = Values::of([
             'TargetAccountSid' =>
                 $options['targetAccountSid'],
+            'AddressSid' =>
+                $options['addressSid'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new PortingPortabilityInstance(

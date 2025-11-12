@@ -24,6 +24,7 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelParticipantList;
 use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionChannelInviteList;
+use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannel\InteractionTransferList;
 
 
 /**
@@ -40,6 +41,7 @@ class InteractionChannelInstance extends InstanceResource
 {
     protected $_participants;
     protected $_invites;
+    protected $_transfers;
 
     /**
      * Initialize the InteractionChannelInstance
@@ -49,7 +51,7 @@ class InteractionChannelInstance extends InstanceResource
      * @param string $interactionSid The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
      * @param string $sid The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
      */
-    public function __construct(Version $version, array $payload, string $interactionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $interactionSid, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -127,6 +129,14 @@ class InteractionChannelInstance extends InstanceResource
     protected function getInvites(): InteractionChannelInviteList
     {
         return $this->proxy()->invites;
+    }
+
+    /**
+     * Access the transfers
+     */
+    protected function getTransfers(): InteractionTransferList
+    {
+        return $this->proxy()->transfers;
     }
 
     /**

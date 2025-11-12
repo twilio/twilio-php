@@ -23,9 +23,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
-use Twilio\Rest\Proxy\V1\Service\PhoneNumberList;
-use Twilio\Rest\Proxy\V1\Service\ShortCodeList;
 use Twilio\Rest\Proxy\V1\Service\SessionList;
+use Twilio\Rest\Proxy\V1\Service\PhoneNumberList;
 
 
 /**
@@ -46,9 +45,8 @@ use Twilio\Rest\Proxy\V1\Service\SessionList;
  */
 class ServiceInstance extends InstanceResource
 {
-    protected $_phoneNumbers;
-    protected $_shortCodes;
     protected $_sessions;
+    protected $_phoneNumbers;
 
     /**
      * Initialize the ServiceInstance
@@ -57,7 +55,7 @@ class ServiceInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The Twilio-provided string that uniquely identifies the Service resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -138,27 +136,19 @@ class ServiceInstance extends InstanceResource
     }
 
     /**
-     * Access the phoneNumbers
-     */
-    protected function getPhoneNumbers(): PhoneNumberList
-    {
-        return $this->proxy()->phoneNumbers;
-    }
-
-    /**
-     * Access the shortCodes
-     */
-    protected function getShortCodes(): ShortCodeList
-    {
-        return $this->proxy()->shortCodes;
-    }
-
-    /**
      * Access the sessions
      */
     protected function getSessions(): SessionList
     {
         return $this->proxy()->sessions;
+    }
+
+    /**
+     * Access the phoneNumbers
+     */
+    protected function getPhoneNumbers(): PhoneNumberList
+    {
+        return $this->proxy()->phoneNumbers;
     }
 
     /**

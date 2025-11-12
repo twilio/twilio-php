@@ -24,8 +24,8 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
 use Twilio\Rest\Conversations\V1\Conversation\ParticipantList;
-use Twilio\Rest\Conversations\V1\Conversation\WebhookList;
 use Twilio\Rest\Conversations\V1\Conversation\MessageList;
+use Twilio\Rest\Conversations\V1\Conversation\WebhookList;
 
 
 /**
@@ -47,8 +47,8 @@ use Twilio\Rest\Conversations\V1\Conversation\MessageList;
 class ConversationInstance extends InstanceResource
 {
     protected $_participants;
-    protected $_webhooks;
     protected $_messages;
+    protected $_webhooks;
 
     /**
      * Initialize the ConversationInstance
@@ -57,7 +57,7 @@ class ConversationInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid A 34 character string that uniquely identifies this resource. Can also be the `unique_name` of the Conversation.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -147,19 +147,19 @@ class ConversationInstance extends InstanceResource
     }
 
     /**
-     * Access the webhooks
-     */
-    protected function getWebhooks(): WebhookList
-    {
-        return $this->proxy()->webhooks;
-    }
-
-    /**
      * Access the messages
      */
     protected function getMessages(): MessageList
     {
         return $this->proxy()->messages;
+    }
+
+    /**
+     * Access the webhooks
+     */
+    protected function getWebhooks(): WebhookList
+    {
+        return $this->proxy()->webhooks;
     }
 
     /**

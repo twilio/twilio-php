@@ -12,7 +12,7 @@ class Values implements \ArrayAccess {
     protected $options;
     private static $noneConstants = array(self::NONE, self::ARRAY_NONE, self::INT_NONE, self::BOOL_NONE);
 
-    public static function array_get(array $array, string $key, string $default = null) {
+    public static function array_get(array $array, string $key, ?string $default = null) {
         if (\array_key_exists($key, $array)) {
             return $array[$key];
         }
@@ -38,7 +38,7 @@ class Values implements \ArrayAccess {
 
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
-     * Whether a offset exists
+     * Whether an offset exists
      * @link http://php.net/manual/en/arrayaccess.offsetexists.php
      * @param mixed $offset <p>
      * An offset to check for.

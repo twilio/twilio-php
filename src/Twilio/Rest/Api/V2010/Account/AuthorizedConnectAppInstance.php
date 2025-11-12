@@ -43,7 +43,7 @@ class AuthorizedConnectAppInstance extends InstanceResource
      * @param string $accountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resource to fetch.
      * @param string $connectAppSid The SID of the Connect App to fetch.
      */
-    public function __construct(Version $version, array $payload, string $accountSid, string $connectAppSid = null)
+    public function __construct(Version $version, array $payload, string $accountSid, ?string $connectAppSid = null)
     {
         parent::__construct($version);
 

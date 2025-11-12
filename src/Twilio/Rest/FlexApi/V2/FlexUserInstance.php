@@ -33,11 +33,8 @@ use Twilio\Deserialize;
  * @property string|null $workerSid
  * @property string|null $workspaceSid
  * @property string|null $flexTeamSid
- * @property string|null $firstName
- * @property string|null $lastName
  * @property string|null $username
  * @property string|null $email
- * @property string|null $friendlyName
  * @property string|null $locale
  * @property string[]|null $roles
  * @property \DateTime|null $createdDate
@@ -55,7 +52,7 @@ class FlexUserInstance extends InstanceResource
      * @param string $instanceSid The unique ID created by Twilio to identify a Flex instance.
      * @param string $flexUserSid The unique id for the flex user to be retrieved.
      */
-    public function __construct(Version $version, array $payload, string $instanceSid = null, string $flexUserSid = null)
+    public function __construct(Version $version, array $payload, ?string $instanceSid = null, ?string $flexUserSid = null)
     {
         parent::__construct($version);
 
@@ -68,11 +65,8 @@ class FlexUserInstance extends InstanceResource
             'workerSid' => Values::array_get($payload, 'worker_sid'),
             'workspaceSid' => Values::array_get($payload, 'workspace_sid'),
             'flexTeamSid' => Values::array_get($payload, 'flex_team_sid'),
-            'firstName' => Values::array_get($payload, 'first_name'),
-            'lastName' => Values::array_get($payload, 'last_name'),
             'username' => Values::array_get($payload, 'username'),
             'email' => Values::array_get($payload, 'email'),
-            'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'locale' => Values::array_get($payload, 'locale'),
             'roles' => Values::array_get($payload, 'roles'),
             'createdDate' => Deserialize::dateTime(Values::array_get($payload, 'created_date')),

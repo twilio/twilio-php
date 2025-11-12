@@ -28,7 +28,7 @@ abstract class TranscriptOptions
     public static function create(
         
         string $customerKey = Values::NONE,
-        \DateTime $mediaStartTime = null
+        ?\DateTime $mediaStartTime = null
 
     ): CreateTranscriptOptions
     {
@@ -87,7 +87,7 @@ class CreateTranscriptOptions extends Options
     public function __construct(
         
         string $customerKey = Values::NONE,
-        \DateTime $mediaStartTime = null
+        ?\DateTime $mediaStartTime = null
 
     ) {
         $this->options['customerKey'] = $customerKey;

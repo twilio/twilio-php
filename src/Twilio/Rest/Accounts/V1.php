@@ -19,21 +19,30 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Accounts\V1\AuthTokenPromotionList;
+use Twilio\Rest\Accounts\V1\BulkConsentsList;
+use Twilio\Rest\Accounts\V1\BulkContactsList;
 use Twilio\Rest\Accounts\V1\CredentialList;
+use Twilio\Rest\Accounts\V1\MessagingGeopermissionsList;
 use Twilio\Rest\Accounts\V1\SafelistList;
 use Twilio\Rest\Accounts\V1\SecondaryAuthTokenList;
 use Twilio\Version;
 
 /**
  * @property AuthTokenPromotionList $authTokenPromotion
+ * @property BulkConsentsList $bulkConsents
+ * @property BulkContactsList $bulkContacts
  * @property CredentialList $credentials
+ * @property MessagingGeopermissionsList $messagingGeopermissions
  * @property SafelistList $safelist
  * @property SecondaryAuthTokenList $secondaryAuthToken
  */
 class V1 extends Version
 {
     protected $_authTokenPromotion;
+    protected $_bulkConsents;
+    protected $_bulkContacts;
     protected $_credentials;
+    protected $_messagingGeopermissions;
     protected $_safelist;
     protected $_secondaryAuthToken;
 
@@ -56,12 +65,36 @@ class V1 extends Version
         return $this->_authTokenPromotion;
     }
 
+    protected function getBulkConsents(): BulkConsentsList
+    {
+        if (!$this->_bulkConsents) {
+            $this->_bulkConsents = new BulkConsentsList($this);
+        }
+        return $this->_bulkConsents;
+    }
+
+    protected function getBulkContacts(): BulkContactsList
+    {
+        if (!$this->_bulkContacts) {
+            $this->_bulkContacts = new BulkContactsList($this);
+        }
+        return $this->_bulkContacts;
+    }
+
     protected function getCredentials(): CredentialList
     {
         if (!$this->_credentials) {
             $this->_credentials = new CredentialList($this);
         }
         return $this->_credentials;
+    }
+
+    protected function getMessagingGeopermissions(): MessagingGeopermissionsList
+    {
+        if (!$this->_messagingGeopermissions) {
+            $this->_messagingGeopermissions = new MessagingGeopermissionsList($this);
+        }
+        return $this->_messagingGeopermissions;
     }
 
     protected function getSafelist(): SafelistList

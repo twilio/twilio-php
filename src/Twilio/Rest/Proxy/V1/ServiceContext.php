@@ -23,24 +23,20 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Proxy\V1\Service\PhoneNumberList;
-use Twilio\Rest\Proxy\V1\Service\ShortCodeList;
 use Twilio\Rest\Proxy\V1\Service\SessionList;
+use Twilio\Rest\Proxy\V1\Service\PhoneNumberList;
 
 
 /**
- * @property PhoneNumberList $phoneNumbers
- * @property ShortCodeList $shortCodes
  * @property SessionList $sessions
+ * @property PhoneNumberList $phoneNumbers
  * @method \Twilio\Rest\Proxy\V1\Service\SessionContext sessions(string $sid)
- * @method \Twilio\Rest\Proxy\V1\Service\ShortCodeContext shortCodes(string $sid)
  * @method \Twilio\Rest\Proxy\V1\Service\PhoneNumberContext phoneNumbers(string $sid)
  */
 class ServiceContext extends InstanceContext
     {
-    protected $_phoneNumbers;
-    protected $_shortCodes;
     protected $_sessions;
+    protected $_phoneNumbers;
 
     /**
      * Initialize the ServiceContext
@@ -87,7 +83,7 @@ class ServiceContext extends InstanceContext
     public function fetch(): ServiceInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new ServiceInstance(
@@ -129,7 +125,7 @@ class ServiceContext extends InstanceContext
                 $options['chatInstanceSid'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new ServiceInstance(
@@ -139,36 +135,6 @@ class ServiceContext extends InstanceContext
         );
     }
 
-
-    /**
-     * Access the phoneNumbers
-     */
-    protected function getPhoneNumbers(): PhoneNumberList
-    {
-        if (!$this->_phoneNumbers) {
-            $this->_phoneNumbers = new PhoneNumberList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_phoneNumbers;
-    }
-
-    /**
-     * Access the shortCodes
-     */
-    protected function getShortCodes(): ShortCodeList
-    {
-        if (!$this->_shortCodes) {
-            $this->_shortCodes = new ShortCodeList(
-                $this->version,
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_shortCodes;
-    }
 
     /**
      * Access the sessions
@@ -183,6 +149,21 @@ class ServiceContext extends InstanceContext
         }
 
         return $this->_sessions;
+    }
+
+    /**
+     * Access the phoneNumbers
+     */
+    protected function getPhoneNumbers(): PhoneNumberList
+    {
+        if (!$this->_phoneNumbers) {
+            $this->_phoneNumbers = new PhoneNumberList(
+                $this->version,
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_phoneNumbers;
     }
 
     /**

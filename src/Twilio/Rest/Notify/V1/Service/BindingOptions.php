@@ -55,8 +55,8 @@ abstract class BindingOptions
      */
     public static function read(
         
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         array $identity = Values::ARRAY_NONE,
         array $tag = Values::ARRAY_NONE
 
@@ -166,8 +166,8 @@ class ReadBindingOptions extends Options
      */
     public function __construct(
         
-        \DateTime $startDate = null,
-        \DateTime $endDate = null,
+        ?\DateTime $startDate = null,
+        ?\DateTime $endDate = null,
         array $identity = Values::ARRAY_NONE,
         array $tag = Values::ARRAY_NONE
 

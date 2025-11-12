@@ -30,10 +30,12 @@ use Twilio\Rest\Studio\V1\Flow\Execution\ExecutionStep\ExecutionStepContextList;
  * @property string|null $accountSid
  * @property string|null $flowSid
  * @property string|null $executionSid
+ * @property string|null $parentStepSid
  * @property string|null $name
  * @property array|null $context
  * @property string|null $transitionedFrom
  * @property string|null $transitionedTo
+ * @property string|null $type
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $url
@@ -52,7 +54,7 @@ class ExecutionStepInstance extends InstanceResource
      * @param string $executionSid The SID of the Execution resource with the Step to fetch.
      * @param string $sid The SID of the ExecutionStep resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $flowSid, string $executionSid, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -62,10 +64,12 @@ class ExecutionStepInstance extends InstanceResource
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'flowSid' => Values::array_get($payload, 'flow_sid'),
             'executionSid' => Values::array_get($payload, 'execution_sid'),
+            'parentStepSid' => Values::array_get($payload, 'parent_step_sid'),
             'name' => Values::array_get($payload, 'name'),
             'context' => Values::array_get($payload, 'context'),
             'transitionedFrom' => Values::array_get($payload, 'transitioned_from'),
             'transitionedTo' => Values::array_get($payload, 'transitioned_to'),
+            'type' => Values::array_get($payload, 'type'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'url' => Values::array_get($payload, 'url'),

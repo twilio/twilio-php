@@ -24,20 +24,20 @@ use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Serialize;
-use Twilio\Rest\Proxy\V1\Service\Session\ParticipantList;
 use Twilio\Rest\Proxy\V1\Service\Session\InteractionList;
+use Twilio\Rest\Proxy\V1\Service\Session\ParticipantList;
 
 
 /**
- * @property ParticipantList $participants
  * @property InteractionList $interactions
+ * @property ParticipantList $participants
  * @method \Twilio\Rest\Proxy\V1\Service\Session\InteractionContext interactions(string $sid)
  * @method \Twilio\Rest\Proxy\V1\Service\Session\ParticipantContext participants(string $sid)
  */
 class SessionContext extends InstanceContext
     {
-    protected $_participants;
     protected $_interactions;
+    protected $_participants;
 
     /**
      * Initialize the SessionContext
@@ -89,7 +89,7 @@ class SessionContext extends InstanceContext
     public function fetch(): SessionInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new SessionInstance(
@@ -122,7 +122,7 @@ class SessionContext extends InstanceContext
                 $options['status'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new SessionInstance(
@@ -133,22 +133,6 @@ class SessionContext extends InstanceContext
         );
     }
 
-
-    /**
-     * Access the participants
-     */
-    protected function getParticipants(): ParticipantList
-    {
-        if (!$this->_participants) {
-            $this->_participants = new ParticipantList(
-                $this->version,
-                $this->solution['serviceSid'],
-                $this->solution['sid']
-            );
-        }
-
-        return $this->_participants;
-    }
 
     /**
      * Access the interactions
@@ -164,6 +148,22 @@ class SessionContext extends InstanceContext
         }
 
         return $this->_interactions;
+    }
+
+    /**
+     * Access the participants
+     */
+    protected function getParticipants(): ParticipantList
+    {
+        if (!$this->_participants) {
+            $this->_participants = new ParticipantList(
+                $this->version,
+                $this->solution['serviceSid'],
+                $this->solution['sid']
+            );
+        }
+
+        return $this->_participants;
     }
 
     /**

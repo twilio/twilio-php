@@ -46,7 +46,7 @@ class BrandVettingInstance extends InstanceResource
      * @param string $brandSid The SID of the Brand Registration resource of the vettings to create .
      * @param string $brandVettingSid The Twilio SID of the third-party vetting record.
      */
-    public function __construct(Version $version, array $payload, string $brandSid, string $brandVettingSid = null)
+    public function __construct(Version $version, array $payload, string $brandSid, ?string $brandVettingSid = null)
     {
         parent::__construct($version);
 

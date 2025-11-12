@@ -45,7 +45,7 @@ class DeploymentInstance extends InstanceResource
      * @param string $environmentSid The SID of the Environment for the Deployment.
      * @param string $sid The SID that identifies the Deployment resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $environmentSid, ?string $sid = null)
     {
         parent::__construct($version);
 

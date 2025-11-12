@@ -31,7 +31,7 @@ class CapabilityToken {
     protected $optional = ['required' => false];
 
     public function __construct(string $accountSid, string $authToken, string $workspaceSid, string $channelId,
-                                string $resourceUrl = null, string $overrideBaseUrl = null, string $overrideBaseWSUrl = null) {
+                                ?string $resourceUrl = null, ?string $overrideBaseUrl = null, ?string $overrideBaseWSUrl = null) {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->friendlyName = $channelId;

@@ -97,6 +97,24 @@ abstract class HostedNumberOrderOptions
         );
     }
 
+    /**
+     * @param int $verificationCallDelay The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive.
+     * @param string $verificationCallExtension The numerical extension to dial when making the ownership verification call.
+     * @return UpdateHostedNumberOrderOptions Options builder
+     */
+    public static function update(
+        
+        int $verificationCallDelay = Values::INT_NONE,
+        string $verificationCallExtension = Values::NONE
+
+    ): UpdateHostedNumberOrderOptions
+    {
+        return new UpdateHostedNumberOrderOptions(
+            $verificationCallDelay,
+            $verificationCallExtension
+        );
+    }
+
 }
 
 class CreateHostedNumberOrderOptions extends Options
@@ -397,6 +415,58 @@ class ReadHostedNumberOrderOptions extends Options
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Numbers.V2.ReadHostedNumberOrderOptions ' . $options . ']';
+    }
+}
+
+class UpdateHostedNumberOrderOptions extends Options
+    {
+    /**
+     * @param int $verificationCallDelay The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive.
+     * @param string $verificationCallExtension The numerical extension to dial when making the ownership verification call.
+     */
+    public function __construct(
+        
+        int $verificationCallDelay = Values::INT_NONE,
+        string $verificationCallExtension = Values::NONE
+
+    ) {
+        $this->options['verificationCallDelay'] = $verificationCallDelay;
+        $this->options['verificationCallExtension'] = $verificationCallExtension;
+    }
+
+    /**
+     * The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive.
+     *
+     * @param int $verificationCallDelay The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive.
+     * @return $this Fluent Builder
+     */
+    public function setVerificationCallDelay(int $verificationCallDelay): self
+    {
+        $this->options['verificationCallDelay'] = $verificationCallDelay;
+        return $this;
+    }
+
+    /**
+     * The numerical extension to dial when making the ownership verification call.
+     *
+     * @param string $verificationCallExtension The numerical extension to dial when making the ownership verification call.
+     * @return $this Fluent Builder
+     */
+    public function setVerificationCallExtension(string $verificationCallExtension): self
+    {
+        $this->options['verificationCallExtension'] = $verificationCallExtension;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Numbers.V2.UpdateHostedNumberOrderOptions ' . $options . ']';
     }
 }
 

@@ -53,7 +53,7 @@ class RoomRecordingInstance extends InstanceResource
      * @param string $roomSid The SID of the room with the RoomRecording resource to delete.
      * @param string $sid The SID of the RoomRecording resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $roomSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $roomSid, ?string $sid = null)
     {
         parent::__construct($version);
 

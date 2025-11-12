@@ -36,9 +36,9 @@ class ApprovalFetchInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $contentSid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
+     * @param string $sid The Twilio-provided string that uniquely identifies the Content resource whose approval information to fetch.
      */
-    public function __construct(Version $version, array $payload, string $contentSid)
+    public function __construct(Version $version, array $payload, string $sid)
     {
         parent::__construct($version);
 
@@ -50,7 +50,7 @@ class ApprovalFetchInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['contentSid' => $contentSid, ];
+        $this->solution = ['sid' => $sid, ];
     }
 
     /**
@@ -64,7 +64,7 @@ class ApprovalFetchInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new ApprovalFetchContext(
                 $this->version,
-                $this->solution['contentSid']
+                $this->solution['sid']
             );
         }
 

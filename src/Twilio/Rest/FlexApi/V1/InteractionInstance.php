@@ -19,6 +19,7 @@ namespace Twilio\Rest\FlexApi\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
@@ -31,6 +32,7 @@ use Twilio\Rest\FlexApi\V1\Interaction\InteractionChannelList;
  * @property string|null $url
  * @property array|null $links
  * @property string|null $interactionContextSid
+ * @property string|null $webhookTtid
  */
 class InteractionInstance extends InstanceResource
 {
@@ -43,7 +45,7 @@ class InteractionInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the Interaction resource to fetch.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 
@@ -55,6 +57,7 @@ class InteractionInstance extends InstanceResource
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
             'interactionContextSid' => Values::array_get($payload, 'interaction_context_sid'),
+            'webhookTtid' => Values::array_get($payload, 'webhook_ttid'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
@@ -88,6 +91,19 @@ class InteractionInstance extends InstanceResource
     {
 
         return $this->proxy()->fetch();
+    }
+
+    /**
+     * Update the InteractionInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return InteractionInstance Updated InteractionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): InteractionInstance
+    {
+
+        return $this->proxy()->update($options);
     }
 
     /**

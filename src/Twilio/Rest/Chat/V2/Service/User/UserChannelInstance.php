@@ -48,7 +48,7 @@ class UserChannelInstance extends InstanceResource
      * @param string $userSid The SID of the [User](https://www.twilio.com/docs/api/chat/rest/users) to read the User Channel resources from.
      * @param string $channelSid The SID of the [Channel](https://www.twilio.com/docs/api/chat/rest/channels) the resource belongs to.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, string $channelSid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, string $userSid, ?string $channelSid = null)
     {
         parent::__construct($version);
 

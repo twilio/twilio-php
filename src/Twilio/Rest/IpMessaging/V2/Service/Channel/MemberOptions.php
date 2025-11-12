@@ -34,9 +34,9 @@ abstract class MemberOptions
         
         string $roleSid = Values::NONE,
         int $lastConsumedMessageIndex = Values::INT_NONE,
-        \DateTime $lastConsumptionTimestamp = null,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $lastConsumptionTimestamp = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -98,9 +98,9 @@ abstract class MemberOptions
         
         string $roleSid = Values::NONE,
         int $lastConsumedMessageIndex = Values::INT_NONE,
-        \DateTime $lastConsumptionTimestamp = null,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $lastConsumptionTimestamp = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -134,9 +134,9 @@ class CreateMemberOptions extends Options
         
         string $roleSid = Values::NONE,
         int $lastConsumedMessageIndex = Values::INT_NONE,
-        \DateTime $lastConsumptionTimestamp = null,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $lastConsumptionTimestamp = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -336,9 +336,9 @@ class UpdateMemberOptions extends Options
         
         string $roleSid = Values::NONE,
         int $lastConsumedMessageIndex = Values::INT_NONE,
-        \DateTime $lastConsumptionTimestamp = null,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $lastConsumptionTimestamp = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $attributes = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 

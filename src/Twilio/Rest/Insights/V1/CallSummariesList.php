@@ -59,7 +59,7 @@ class CallSummariesList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CallSummariesInstance[] Array of results
      */
-    public function read(array $options = [], int $limit = null, $pageSize = null): array
+    public function read(array $options = [], ?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
@@ -83,7 +83,7 @@ class CallSummariesList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return Stream stream of results
      */
-    public function stream(array $options = [], int $limit = null, $pageSize = null): Stream
+    public function stream(array $options = [], ?int $limit = null, $pageSize = null): Stream
     {
         $limits = $this->version->readLimits($limit, $pageSize);
 
@@ -163,6 +163,14 @@ class CallSummariesList extends ListResource
                 Serialize::booleanToString($options['voiceIntegrityEnabled']),
             'BrandedBundleSid' =>
                 $options['brandedBundleSid'],
+            'BrandedLogo' =>
+                Serialize::booleanToString($options['brandedLogo']),
+            'BrandedType' =>
+                $options['brandedType'],
+            'BrandedUseCase' =>
+                $options['brandedUseCase'],
+            'BrandedCallReason' =>
+                $options['brandedCallReason'],
             'VoiceIntegrityBundleSid' =>
                 $options['voiceIntegrityBundleSid'],
             'VoiceIntegrityUseCase' =>
@@ -180,7 +188,8 @@ class CallSummariesList extends ListResource
             'PageSize' => $pageSize,
         ]);
 
-        $response = $this->version->page('GET', $this->uri, $params);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
         return new CallSummariesPage($this->version, $response, $this->solution);
     }

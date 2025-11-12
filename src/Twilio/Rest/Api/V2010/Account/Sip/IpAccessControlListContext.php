@@ -83,7 +83,7 @@ class IpAccessControlListContext extends InstanceContext
     public function fetch(): IpAccessControlListInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new IpAccessControlListInstance(
@@ -110,7 +110,7 @@ class IpAccessControlListContext extends InstanceContext
                 $friendlyName,
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new IpAccessControlListInstance(

@@ -26,7 +26,7 @@ abstract class DeactivationsOptions
      */
     public static function fetch(
         
-        \DateTime $date = null
+        ?\DateTime $date = null
 
     ): FetchDeactivationsOptions
     {
@@ -44,7 +44,7 @@ class FetchDeactivationsOptions extends Options
      */
     public function __construct(
         
-        \DateTime $date = null
+        ?\DateTime $date = null
 
     ) {
         $this->options['date'] = $date;

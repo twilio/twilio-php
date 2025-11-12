@@ -50,8 +50,8 @@ abstract class Version {
 
     public function request(string $method, string $uri,
                             array $params = [], array $data = [], array $headers = [],
-                            string $username = null, string $password = null,
-                            int $timeout = null): Response {
+                            ?string $username = null, ?string $password = null,
+                            ?int $timeout = null): Response {
         $uri = $this->relativeUri($uri);
         return $this->getDomain()->request(
             $method,
@@ -96,8 +96,8 @@ abstract class Version {
      */
     public function fetch(string $method, string $uri,
                           array $params = [], array $data = [], array $headers = [],
-                          string $username = null, string $password = null,
-                          int $timeout = null) {
+                          ?string $username = null, ?string $password = null,
+                          ?int $timeout = null) {
         $response = $this->request(
             $method,
             $uri,
@@ -122,8 +122,8 @@ abstract class Version {
      */
     public function update(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
-                           string $username = null, string $password = null,
-                           int $timeout = null) {
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null) {
         $response = $this->request(
             $method,
             $uri,
@@ -147,8 +147,8 @@ abstract class Version {
      */
     public function delete(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
-                           string $username = null, string $password = null,
-                           int $timeout = null): bool {
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null): bool {
         $response = $this->request(
             $method,
             $uri,
@@ -167,7 +167,7 @@ abstract class Version {
         return $response->getStatusCode() === 204;
     }
 
-    public function readLimits(int $limit = null, int $pageSize = null): array {
+    public function readLimits(?int $limit = null, ?int $pageSize = null): array {
         if ($limit && $pageSize === null) {
             $pageSize = $limit;
         }
@@ -183,8 +183,8 @@ abstract class Version {
 
     public function page(string $method, string $uri,
                          array $params = [], array $data = [], array $headers = [],
-                         string $username = null, string $password = null,
-                         int $timeout = null): Response {
+                         ?string $username = null, ?string $password = null,
+                         ?int $timeout = null): Response {
         return $this->request(
             $method,
             $uri,
@@ -206,8 +206,8 @@ abstract class Version {
      */
     public function create(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
-                           string $username = null, string $password = null,
-                           int $timeout = null) {
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null) {
         $response = $this->request(
             $method,
             $uri,

@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class BundleCloneOptions
 {
     /**
-     * @param bool $moveToDraft This is to determine whether the cloned bundle needs to be in draft state or not.
+     * @param bool $moveToDraft If set to true, the cloned bundle will be in the DRAFT state, else it will be twilio-approved
      * @param string $friendlyName The string that you assigned to describe the cloned bundle.
      * @return CreateBundleCloneOptions Options builder
      */
@@ -43,7 +43,7 @@ abstract class BundleCloneOptions
 class CreateBundleCloneOptions extends Options
     {
     /**
-     * @param bool $moveToDraft This is to determine whether the cloned bundle needs to be in draft state or not.
+     * @param bool $moveToDraft If set to true, the cloned bundle will be in the DRAFT state, else it will be twilio-approved
      * @param string $friendlyName The string that you assigned to describe the cloned bundle.
      */
     public function __construct(
@@ -57,9 +57,9 @@ class CreateBundleCloneOptions extends Options
     }
 
     /**
-     * This is to determine whether the cloned bundle needs to be in draft state or not.
+     * If set to true, the cloned bundle will be in the DRAFT state, else it will be twilio-approved
      *
-     * @param bool $moveToDraft This is to determine whether the cloned bundle needs to be in draft state or not.
+     * @param bool $moveToDraft If set to true, the cloned bundle will be in the DRAFT state, else it will be twilio-approved
      * @return $this Fluent Builder
      */
     public function setMoveToDraft(bool $moveToDraft): self

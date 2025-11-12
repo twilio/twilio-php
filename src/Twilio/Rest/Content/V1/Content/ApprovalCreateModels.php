@@ -49,10 +49,11 @@ class ContentApprovalRequest implements \JsonSerializable
 
     public function jsonSerialize(): array
     {
-        return [
+        $jsonString = [
             'name' => $this->name,
             'category' => $this->category
         ];
+        return $jsonString;
     }
 }
 

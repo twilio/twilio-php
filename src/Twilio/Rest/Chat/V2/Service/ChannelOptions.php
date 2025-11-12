@@ -37,8 +37,8 @@ abstract class ChannelOptions
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE,
         string $type = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $createdBy = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -102,8 +102,8 @@ abstract class ChannelOptions
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $createdBy = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -140,8 +140,8 @@ class CreateChannelOptions extends Options
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE,
         string $type = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $createdBy = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 
@@ -353,8 +353,8 @@ class UpdateChannelOptions extends Options
         string $friendlyName = Values::NONE,
         string $uniqueName = Values::NONE,
         string $attributes = Values::NONE,
-        \DateTime $dateCreated = null,
-        \DateTime $dateUpdated = null,
+        ?\DateTime $dateCreated = null,
+        ?\DateTime $dateUpdated = null,
         string $createdBy = Values::NONE,
         string $xTwilioWebhookEnabled = Values::NONE
 

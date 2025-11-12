@@ -75,7 +75,7 @@ class MessagingConfigurationContext extends InstanceContext
     public function fetch(): MessagingConfigurationInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new MessagingConfigurationInstance(
@@ -102,7 +102,7 @@ class MessagingConfigurationContext extends InstanceContext
                 $messagingServiceSid,
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new MessagingConfigurationInstance(

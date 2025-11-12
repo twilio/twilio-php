@@ -52,7 +52,7 @@ class RatePlanInstance extends InstanceResource
      * @param mixed[] $payload The response payload
      * @param string $sid The SID of the RatePlan resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $sid = null)
     {
         parent::__construct($version);
 

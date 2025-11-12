@@ -28,7 +28,7 @@ use Twilio\Deserialize;
  * @property string|null $accountSid
  * @property string|null $apiVersion
  * @property string|null $asOf
- * @property string $category
+ * @property string|null $category
  * @property string|null $count
  * @property string|null $countUnit
  * @property string|null $description

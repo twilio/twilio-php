@@ -50,15 +50,15 @@ abstract class Domain {
      * @param array $params Query string arguments
      * @param array $data Post form data
      * @param array $headers HTTP headers to send with the request
-     * @param string $user User to authenticate as
-     * @param string $password Password
-     * @param int $timeout Request timeout
+     * @param ?string $user User to authenticate as
+     * @param ?string $password Password
+     * @param ?int $timeout Request timeout
      * @return Response the response for the request
      */
     public function request(string $method, string $uri,
                             array $params = [], array $data = [], array $headers = [],
-                            string $user = null, string $password = null,
-                            int $timeout = null): Response {
+                            ?string $user = null, ?string $password = null,
+                            ?int $timeout = null): Response {
         $url = $this->absoluteUrl($uri);
         return $this->client->request(
             $method,

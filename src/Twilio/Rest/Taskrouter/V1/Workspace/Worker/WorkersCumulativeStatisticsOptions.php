@@ -29,9 +29,9 @@ abstract class WorkersCumulativeStatisticsOptions
      */
     public static function fetch(
         
-        \DateTime $endDate = null,
+        ?\DateTime $endDate = null,
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
+        ?\DateTime $startDate = null,
         string $taskChannel = Values::NONE
 
     ): FetchWorkersCumulativeStatisticsOptions
@@ -56,9 +56,9 @@ class FetchWorkersCumulativeStatisticsOptions extends Options
      */
     public function __construct(
         
-        \DateTime $endDate = null,
+        ?\DateTime $endDate = null,
         int $minutes = Values::INT_NONE,
-        \DateTime $startDate = null,
+        ?\DateTime $startDate = null,
         string $taskChannel = Values::NONE
 
     ) {

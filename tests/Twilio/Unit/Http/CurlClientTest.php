@@ -4,6 +4,8 @@
 namespace Twilio\Tests\Unit\Http;
 
 
+use Twilio\AuthStrategy\NoAuthStrategy;
+use Twilio\Exceptions\EnvironmentException;
 use Twilio\Http\CurlClient;
 use Twilio\Http\File;
 use Twilio\Values;
@@ -58,6 +60,25 @@ class CurlClientTest extends UnitTest {
         $client = new CurlClient();
         $actual = $client->buildQuery($params);
         $this->assertEquals($expected, $actual, $message);
+    }
+
+    public function testNoAuthStrategy(): void
+    {
+        $client = new CurlClient();
+        $options = $client->options(
+            'GET',
+            'http://api.twilio.com',
+            [],
+            [],
+            [],
+            null,
+            null,
+            null,
+            new NoAuthStrategy()
+        );
+        $this->assertArrayHasKey(CURLOPT_HTTPHEADER, $options);
+        $headers = $options[CURLOPT_HTTPHEADER];
+        $this->assertEquals($headers, ["Authorization: "]);
     }
 
     public function buildQueryProvider(): array {
@@ -335,5 +356,13 @@ class CurlClientTest extends UnitTest {
                 ],
             ],
         ];
+    }
+
+    public function testFileProtocolThrowsException(): void {
+        $this->expectException(EnvironmentException::class);
+        $this->expectExceptionMessage('Protocol "file" not supported or disabled in libcurl');
+
+        $client = new CurlClient();
+        $client->request('GET', 'file:///tmp/test-file');
     }
 }

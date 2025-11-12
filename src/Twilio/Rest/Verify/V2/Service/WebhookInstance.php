@@ -49,7 +49,7 @@ class WebhookInstance extends InstanceResource
      * @param string $serviceSid The unique SID identifier of the Service.
      * @param string $sid The Twilio-provided string that uniquely identifies the Webhook resource to delete.
      */
-    public function __construct(Version $version, array $payload, string $serviceSid, string $sid = null)
+    public function __construct(Version $version, array $payload, string $serviceSid, ?string $sid = null)
     {
         parent::__construct($version);
 

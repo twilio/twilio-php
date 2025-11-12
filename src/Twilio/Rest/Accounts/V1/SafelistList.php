@@ -45,7 +45,7 @@ class SafelistList extends ListResource
     /**
      * Create the SafelistInstance
      *
-     * @param string $phoneNumber The phone number to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
      * @return SafelistInstance Created SafelistInstance
      * @throws TwilioException When an HTTP error occurs.
      */
@@ -57,7 +57,7 @@ class SafelistList extends ListResource
                 $phoneNumber,
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
 
         return new SafelistInstance(
@@ -106,7 +106,7 @@ class SafelistList extends ListResource
                 $options['phoneNumber'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
 
         return new SafelistInstance(

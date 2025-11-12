@@ -20,6 +20,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Marketplace\V1\AvailableAddOnList;
 use Twilio\Rest\Marketplace\V1\InstalledAddOnList;
+use Twilio\Rest\Marketplace\V1\ModuleDataList;
 use Twilio\Rest\Marketplace\V1\ModuleDataManagementList;
 use Twilio\Rest\Marketplace\V1\ReferralConversionList;
 use Twilio\Version;
@@ -27,6 +28,7 @@ use Twilio\Version;
 /**
  * @property AvailableAddOnList $availableAddOns
  * @property InstalledAddOnList $installedAddOns
+ * @property ModuleDataList $moduleData
  * @property ModuleDataManagementList $moduleDataManagement
  * @property ReferralConversionList $referralConversion
  * @method \Twilio\Rest\Marketplace\V1\AvailableAddOnContext availableAddOns(string $sid)
@@ -37,6 +39,7 @@ class V1 extends Version
 {
     protected $_availableAddOns;
     protected $_installedAddOns;
+    protected $_moduleData;
     protected $_moduleDataManagement;
     protected $_referralConversion;
 
@@ -65,6 +68,14 @@ class V1 extends Version
             $this->_installedAddOns = new InstalledAddOnList($this);
         }
         return $this->_installedAddOns;
+    }
+
+    protected function getModuleData(): ModuleDataList
+    {
+        if (!$this->_moduleData) {
+            $this->_moduleData = new ModuleDataList($this);
+        }
+        return $this->_moduleData;
     }
 
     protected function getModuleDataManagement(): ModuleDataManagementList

@@ -62,7 +62,7 @@ class InstalledAddOnExtensionContext extends InstanceContext
     public function fetch(): InstalledAddOnExtensionInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
 
         return new InstalledAddOnExtensionInstance(
@@ -89,7 +89,7 @@ class InstalledAddOnExtensionContext extends InstanceContext
                 Serialize::booleanToString($enabled),
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
 
         return new InstalledAddOnExtensionInstance(

@@ -47,9 +47,9 @@ abstract class RecordingOptions
      */
     public static function read(
         
-        string $dateCreatedBefore = null,
-        string $dateCreated = null,
-        string $dateCreatedAfter = null,
+        ?string $dateCreatedBefore = null,
+        ?string $dateCreated = null,
+        ?string $dateCreatedAfter = null,
         string $callSid = Values::NONE,
         string $conferenceSid = Values::NONE,
         bool $includeSoftDeleted = Values::BOOL_NONE
@@ -118,9 +118,9 @@ class ReadRecordingOptions extends Options
      */
     public function __construct(
         
-        string $dateCreatedBefore = null,
-        string $dateCreated = null,
-        string $dateCreatedAfter = null,
+        ?string $dateCreatedBefore = null,
+        ?string $dateCreated = null,
+        ?string $dateCreatedAfter = null,
         string $callSid = Values::NONE,
         string $conferenceSid = Values::NONE,
         bool $includeSoftDeleted = Values::BOOL_NONE

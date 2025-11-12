@@ -18,16 +18,30 @@ namespace Twilio\Rest\Lookups;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Lookups\V2\BucketList;
+use Twilio\Rest\Lookups\V2\LookupOverrideList;
 use Twilio\Rest\Lookups\V2\PhoneNumberList;
+use Twilio\Rest\Lookups\V2\QueryList;
+use Twilio\Rest\Lookups\V2\RateLimitList;
 use Twilio\Version;
 
 /**
+ * @property BucketList $bucket
+ * @property LookupOverrideList $lookupOverrides
  * @property PhoneNumberList $phoneNumbers
+ * @property QueryList $query
+ * @property RateLimitList $rateLimits
  * @method \Twilio\Rest\Lookups\V2\PhoneNumberContext phoneNumbers(string $phoneNumber)
+ * @method \Twilio\Rest\Lookups\V2\BucketContext bucket(string $field, string $bucket)
+ * @method \Twilio\Rest\Lookups\V2\LookupOverrideContext lookupOverrides(string $field, string $phoneNumber)
  */
 class V2 extends Version
 {
+    protected $_bucket;
+    protected $_lookupOverrides;
     protected $_phoneNumbers;
+    protected $_query;
+    protected $_rateLimits;
 
     /**
      * Construct the V2 version of Lookups
@@ -40,12 +54,44 @@ class V2 extends Version
         $this->version = 'v2';
     }
 
+    protected function getBucket(): BucketList
+    {
+        if (!$this->_bucket) {
+            $this->_bucket = new BucketList($this);
+        }
+        return $this->_bucket;
+    }
+
+    protected function getLookupOverrides(): LookupOverrideList
+    {
+        if (!$this->_lookupOverrides) {
+            $this->_lookupOverrides = new LookupOverrideList($this);
+        }
+        return $this->_lookupOverrides;
+    }
+
     protected function getPhoneNumbers(): PhoneNumberList
     {
         if (!$this->_phoneNumbers) {
             $this->_phoneNumbers = new PhoneNumberList($this);
         }
         return $this->_phoneNumbers;
+    }
+
+    protected function getQuery(): QueryList
+    {
+        if (!$this->_query) {
+            $this->_query = new QueryList($this);
+        }
+        return $this->_query;
+    }
+
+    protected function getRateLimits(): RateLimitList
+    {
+        if (!$this->_rateLimits) {
+            $this->_rateLimits = new RateLimitList($this);
+        }
+        return $this->_rateLimits;
     }
 
     /**
