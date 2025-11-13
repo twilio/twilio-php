@@ -64,6 +64,15 @@ class TestTokenPage extends TokenPaginationPage {
     public function buildInstance(array $payload): array {
         return $payload;
     }
+
+    public function getNextPageUrl(): ?string {
+        // If there's no next token, return null directly - handle end of page
+        if (!$this->nextToken) {
+            return null;
+        }
+
+        return parent::getNextPageUrl();
+    }
 }
 
 class VersionTest extends UnitTest {

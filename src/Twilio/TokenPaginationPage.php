@@ -71,9 +71,6 @@ abstract class TokenPaginationPage extends Page {
     }
 
     public function getPreviousPageUrl(): ?string {
-        if (!$this->url) {
-            return $this->url;
-        }
         if (!$this->previousPageUrl) {
             $this->previousPageUrl = $this->url . $this->getQueryString($this->previousToken);
         }
