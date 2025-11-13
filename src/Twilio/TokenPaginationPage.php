@@ -48,7 +48,7 @@ abstract class TokenPaginationPage extends Page {
         throw new KeyErrorException('key not found in the response');
     }
 
-    private function addQueryParam(String $query): String {
+    protected function addQueryParam(String $query): String {
         if($query === '') {
             $query .= '?';
         } else {
@@ -57,7 +57,7 @@ abstract class TokenPaginationPage extends Page {
         return $query;
     }
 
-    private function getQueryString(?String $pageToken): String {
+    protected function getQueryString(?String $pageToken): String {
         $queryString = '';
         if ($this->pageSize) {
             $queryString = $this->addQueryParam($queryString);
