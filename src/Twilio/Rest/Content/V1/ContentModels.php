@@ -589,9 +589,11 @@ class QuickReplyAction implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
             'title' => $this->title
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
         if (isset($this->id)) {
             $jsonString['id'] = $this->id;
         }
@@ -712,8 +714,10 @@ class TwilioCard implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'title' => $this->title
         ];
+        if (isset($this->title)) {
+            $jsonString['title'] = $this->title;
+        }
         if (isset($this->subtitle)) {
             $jsonString['subtitle'] = $this->subtitle;
         }
@@ -1064,11 +1068,15 @@ class TwilioFlows implements \JsonSerializable
         $jsonString = [
             'body' => $this->body,
             'button_text' => $this->buttonText,
-            'subtitle' => $this->subtitle,
-            'media_url' => $this->mediaUrl,
             'pages' => $this->pages,
             'type' => $this->type
         ];
+        if (isset($this->subtitle)) {
+            $jsonString['subtitle'] = $this->subtitle;
+        }
+        if (isset($this->mediaUrl)) {
+            $jsonString['media_url'] = $this->mediaUrl;
+        }
         return $jsonString;
     }
 }
