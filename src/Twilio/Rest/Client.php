@@ -41,6 +41,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Notify $notify
  * @property Numbers $numbers
  * @property Oauth $oauth
+ * @property OneOf $oneOf
  * @property Preview $preview
  * @property Pricing $pricing
  * @property Proxy $proxy
@@ -123,6 +124,7 @@ class Client extends BaseClient {
     protected $_notify;
     protected $_numbers;
     protected $_oauth;
+    protected $_oneOf;
     protected $_preview;
     protected $_pricing;
     protected $_proxy;
@@ -391,6 +393,17 @@ class Client extends BaseClient {
             $this->_oauth = new Oauth($this);
         }
         return $this->_oauth;
+    }
+    /**
+     * Access the OneOf Twilio Domain
+     *
+     * @return OneOf OneOf Twilio Domain
+     */
+    protected function getOneOf(): OneOf {
+        if (!$this->_oneOf) {
+            $this->_oneOf = new OneOf($this);
+        }
+        return $this->_oneOf;
     }
     /**
      * Access the Preview Twilio Domain
