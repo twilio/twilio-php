@@ -144,6 +144,46 @@ class CurlClientTest extends UnitTest {
                     'StartTime>' => '2012-06-14',
                 ],
                 'StartTime%3E=2012-06-14',
+            ],
+
+            // Test alphanumeric characters that don't need encoding
+            [
+                'Alphanumeric Characters',
+                ['param' => 'aB1cD2eF3gH4iJ5k6L7m8N9oP0'],
+                'param=aB1cD2eF3gH4iJ5k6L7m8N9oP0',
+            ],
+
+            // Test unreserved symbols that don't need encoding per RFC 3986
+            [
+                'Unreserved Symbols',
+                ['param' => '-._~'],
+                'param=-._~',
+            ],
+
+            // Test reserved characters that should be encoded
+            [
+                'Reserved Characters - General Delimiters', # these characters have special meaning in the overall URL structure, defining the boundaries between different parts of a URL
+                ['param' => ':/?#[]@'],
+                'param=%3A%2F%3F%23%5B%5D%40',
+            ],
+            [
+                'Reserved Characters - Sub-Delimiters', # these characters too have special meaning within specific URL components but don't demarcate the main structural parts
+                ['param' => '!$&\'()*+,;='],
+                'param=%21%24%26%27%28%29%2A%2B%2C%3B%3D',
+            ],
+
+            // Test percent encoding itself
+            [
+                'Percent Encoding',
+                ['param' => '%25'],
+                'param=%2525',
+            ],
+
+            // Test parameter sanitation by encoding to prevent injection and XSS attacks
+            [
+                'Redirect URL',
+                ['redirect' => 'https://malicious.com/?q=<script>alert("xss")</script>'],
+                'redirect=https%3A%2F%2Fmalicious.com%2F%3Fq%3D%3Cscript%3Ealert%28%22xss%22%29%3C%2Fscript%3E',
             ]
         ];
     }
