@@ -313,6 +313,17 @@ abstract class ContentModels
         return new ContentCreateRequest($payload);
     }
 
+    /**
+     * @property string $friendlyName User defined name of the content
+     * @property array<string,string> $variables Key value pairs of variable name to value
+     * @property string $language Language code for the content
+     * @property Types $types
+    */
+    public static function createContentUpdateRequest(array $payload = []): ContentUpdateRequest
+    {
+        return new ContentUpdateRequest($payload);
+    }
+
 }
 
 class TwilioText implements \JsonSerializable
@@ -1426,6 +1437,48 @@ class ContentCreateRequest implements \JsonSerializable
         }
         if (isset($this->variables)) {
             $jsonString['variables'] = $this->variables;
+        }
+        return $jsonString;
+    }
+}
+
+class ContentUpdateRequest implements \JsonSerializable
+{
+    /**
+     * @property string $friendlyName User defined name of the content
+     * @property array<string,string> $variables Key value pairs of variable name to value
+     * @property string $language Language code for the content
+     * @property Types $types
+    */
+        protected $friendlyName;
+        protected $variables;
+        protected $language;
+        protected $types;
+    public function __construct(array $payload = []) {
+        $this->friendlyName = Values::array_get($payload, 'friendly_name');
+        $this->variables = Values::array_get($payload, 'variables');
+        $this->language = Values::array_get($payload, 'language');
+        $this->types = Values::array_get($payload, 'types');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+            'types' => $this->types
+        ];
+        if (isset($this->friendlyName)) {
+            $jsonString['friendly_name'] = $this->friendlyName;
+        }
+        if (isset($this->variables)) {
+            $jsonString['variables'] = $this->variables;
+        }
+        if (isset($this->language)) {
+            $jsonString['language'] = $this->language;
         }
         return $jsonString;
     }

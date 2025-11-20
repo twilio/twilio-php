@@ -1,6 +1,13 @@
 twilio-php Changelog
 ====================
 
+[2025-11-20] Version 8.8.7
+--------------------------
+**Memory**
+- # Memory API Changes
+- Added initial Memory API endpoints with darkseagreen badge status
+
+
 [2025-11-11] Version 8.8.6
 --------------------------
 **Twiml**
