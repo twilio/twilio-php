@@ -170,11 +170,12 @@ abstract class Version {
             $timeout
         );
 
+        // check for 2xx status code is already present here
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw $this->exception($response, 'Unable to delete record');
         }
 
-        return $response->getStatusCode() === 204;
+        return true; // if response code is 2XX, deletion was successful
     }
 
     public function readLimits(?int $limit = null, ?int $pageSize = null): array {
