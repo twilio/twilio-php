@@ -120,6 +120,16 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
+    public function patch(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null) {
+        return $this->update($method, $uri, $params, $data, $headers, $username, $password, $timeout);
+    }
+
+    /**
+     * @throws TwilioException
+     */
     public function update(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
