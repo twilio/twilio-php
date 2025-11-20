@@ -93,6 +93,28 @@ class ContentContext extends InstanceContext
 
 
     /**
+     * Update the ContentInstance
+     *
+     * @param ContentUpdateRequest $contentUpdateRequest
+     * @return ContentInstance Updated ContentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(ContentUpdateRequest $contentUpdateRequest): ContentInstance
+    {
+
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $contentUpdateRequest->toArray();
+        $payload = $this->version->update('PUT', $this->uri, [], $data, $headers);
+
+        return new ContentInstance(
+            $this->version,
+            $payload,
+            $this->solution['sid']
+        );
+    }
+
+
+    /**
      * Access the approvalCreate
      */
     protected function getApprovalCreate(): ApprovalCreateList
