@@ -18,6 +18,7 @@ namespace Twilio\Rest\Numbers;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Numbers\V2\ApplicationList;
 use Twilio\Rest\Numbers\V2\AuthorizationDocumentList;
 use Twilio\Rest\Numbers\V2\BulkHostedNumberOrderList;
 use Twilio\Rest\Numbers\V2\BundleCloneList;
@@ -26,6 +27,7 @@ use Twilio\Rest\Numbers\V2\RegulatoryComplianceList;
 use Twilio\Version;
 
 /**
+ * @property ApplicationList $applications
  * @property AuthorizationDocumentList $authorizationDocuments
  * @property BulkHostedNumberOrderList $bulkHostedNumberOrders
  * @property BundleCloneList $bundleClone
@@ -34,9 +36,11 @@ use Twilio\Version;
  * @method \Twilio\Rest\Numbers\V2\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext bulkHostedNumberOrders(string $bulkHostingSid)
  * @method \Twilio\Rest\Numbers\V2\HostedNumberOrderContext hostedNumberOrders(string $sid)
+ * @method \Twilio\Rest\Numbers\V2\ApplicationContext applications(string $sid)
  */
 class V2 extends Version
 {
+    protected $_applications;
     protected $_authorizationDocuments;
     protected $_bulkHostedNumberOrders;
     protected $_bundleClone;
@@ -52,6 +56,14 @@ class V2 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getApplications(): ApplicationList
+    {
+        if (!$this->_applications) {
+            $this->_applications = new ApplicationList($this);
+        }
+        return $this->_applications;
     }
 
     protected function getAuthorizationDocuments(): AuthorizationDocumentList
