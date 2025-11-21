@@ -120,6 +120,16 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
+    public function patch(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null) {
+        return $this->update($method, $uri, $params, $data, $headers, $username, $password, $timeout);
+    }
+
+    /**
+     * @throws TwilioException
+     */
     public function update(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
@@ -160,11 +170,12 @@ abstract class Version {
             $timeout
         );
 
+        // check for 2xx status code is already present here
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
             throw $this->exception($response, 'Unable to delete record');
         }
 
-        return $response->getStatusCode() === 204;
+        return true; // if response code is 2XX, deletion was successful
     }
 
     public function readLimits(?int $limit = null, ?int $pageSize = null): array {
