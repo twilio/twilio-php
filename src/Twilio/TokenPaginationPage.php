@@ -71,6 +71,8 @@ abstract class TokenPaginationPage extends Page {
 
     /**
      * Load the current page of records based on the 'key' metadata.
+     *
+     * @return array Array of records from the current page.
      * @throws KeyErrorException If the 'key' metadata is missing.
      */
     protected function loadPage(): array {
