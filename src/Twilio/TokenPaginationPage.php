@@ -88,7 +88,7 @@ abstract class TokenPaginationPage extends Page {
      * @param string|null $pageToken The token for the desired page.
      * @return string The constructed query string.
      */
-    protected function getQueryString(?String $pageToken): String {
+    protected function getQueryString(?string $pageToken): string {
         $params = [];
         if ($this->pageSize) {
             $params['pageSize'] = $this->pageSize;
