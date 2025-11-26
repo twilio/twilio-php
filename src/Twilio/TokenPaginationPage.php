@@ -24,9 +24,9 @@ abstract class TokenPaginationPage extends Page {
 
         $this->url = '';
         if($http_client->lastRequest) {
-            $full_url = $http_client->lastRequest[CURLOPT_URL];
+            $fullUrl = $http_client->lastRequest[CURLOPT_URL];
             // remove query parameters from url
-            $parts = explode('?', $full_url);
+            $parts = explode('?', $fullUrl);
             $this->url = $parts[0];
         }
 
