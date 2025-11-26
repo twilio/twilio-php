@@ -46,11 +46,11 @@ abstract class TokenPaginationPage extends Page {
     public function __construct(Version $version, Response $response) {
         parent::__construct($version, $response);
 
-        $http_client = $version->getDomain()->getClient()->getHttpClient();
+        $httpClient = $version->getDomain()->getClient()->getHttpClient();
 
         $this->url = '';
-        if($http_client->lastRequest) {
-            $fullUrl = $http_client->lastRequest[CURLOPT_URL];
+        if($httpClient->lastRequest) {
+            $fullUrl = $httpClient->lastRequest[CURLOPT_URL];
             // remove query parameters from url
             $parts = explode('?', $fullUrl);
             $this->url = $parts[0];
