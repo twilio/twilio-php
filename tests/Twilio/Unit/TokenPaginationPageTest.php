@@ -40,10 +40,6 @@ class TestableTokenPaginationPage extends TokenPaginationPage {
         return $this->url;
     }
 
-    // Expose private methods for testing
-    public function testAddQueryParam(string $query): string {
-        return $this->addQueryParam($query);
-    }
 
     public function testGetQueryString(?string $pageToken): string {
         return $this->getQueryString($pageToken);
@@ -175,21 +171,6 @@ class TokenPaginationPageTest extends TestCase
 
         $result = $method->invoke($page);
         $this->assertEquals([['id' => 1]], $result);
-    }
-
-    /**
-     * Test addQueryParam method
-     */
-    public function testAddQueryParam(): void
-    {
-        $response = new Response(200, '{"meta": {"key": "items", "pageSize": 25}, "items": [{"id": 1}]}');
-        $page = new TestableTokenPaginationPage($this->version, $response);
-
-        // First parameter adds '?'
-        $this->assertEquals('?', $page->testAddQueryParam(''));
-
-        // Subsequent parameters add '&'
-        $this->assertEquals('param=value&', $page->testAddQueryParam('param=value'));
     }
 
     /**

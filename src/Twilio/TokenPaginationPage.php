@@ -48,26 +48,16 @@ abstract class TokenPaginationPage extends Page {
         throw new KeyErrorException('key not found in the response');
     }
 
-    protected function addQueryParam(String $query): String {
-        if($query === '') {
-            $query .= '?';
-        } else {
-            $query .= '&';
-        }
-        return $query;
-    }
-
     protected function getQueryString(?String $pageToken): String {
-        $queryString = '';
+        $params = [];
         if ($this->pageSize) {
-            $queryString = $this->addQueryParam($queryString);
-            $queryString .= 'pageSize=' . $this->pageSize;
+            $params['pageSize'] = $this->pageSize;
         }
         if ($pageToken && $pageToken !== '') {
-            $queryString = $this->addQueryParam($queryString);
-            $queryString .= 'pageToken=' . urlencode($pageToken);
+            $params['pageToken'] = $pageToken;
         }
-        return $queryString;
+        $queryString = http_build_query($params);
+        return $queryString ? '?' . $queryString : '';
     }
 
     public function getPreviousPageUrl(): ?string {
