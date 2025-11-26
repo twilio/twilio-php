@@ -240,9 +240,7 @@ class TokenPaginationPageTest extends TestCase
         $response = new Response(200, '{"meta": {"key": "items", "pageSize": 25}, "items": [{"id": 1}]}');
         $page = new TestableTokenPaginationPage($this->version, $response);
 
-        // This is a bug/issue with the implementation - it should return null, but returns URL with pageSize
-        $expectedUrl = 'https://test.twilio.com/v1/Accounts?pageSize=25';
-        $this->assertEquals($expectedUrl, $page->getNextPageUrl());
+        $this->assertNull($page->getNextPageUrl());
     }
 
     /**
@@ -268,9 +266,7 @@ class TokenPaginationPageTest extends TestCase
         $response = new Response(200, '{"meta": {"key": "items", "pageSize": 25}, "items": [{"id": 1}]}');
         $page = new TestableTokenPaginationPage($this->version, $response);
 
-        // This is a bug/issue with the implementation - it should return null, but returns URL with pageSize
-        $expectedUrl = 'https://test.twilio.com/v1/Accounts?pageSize=25';
-        $this->assertEquals($expectedUrl, $page->getPreviousPageUrl());
+        $this->assertNull($page->getPreviousPageUrl());
     }
 
     /**

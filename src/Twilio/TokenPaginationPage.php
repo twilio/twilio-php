@@ -61,6 +61,9 @@ abstract class TokenPaginationPage extends Page {
     }
 
     public function getPreviousPageUrl(): ?string {
+        if (!$this->previousToken) {
+            return null;
+        }
         if (!$this->previousPageUrl) {
             $this->previousPageUrl = $this->url . $this->getQueryString($this->previousToken);
         }
@@ -68,6 +71,9 @@ abstract class TokenPaginationPage extends Page {
     }
 
     public function getNextPageUrl(): ?string {
+        if (!$this->nextToken) {
+            return null;
+        }
         if (!$this->nextPageUrl) {
             $this->nextPageUrl = $this->url . $this->getQueryString($this->nextToken);
         }
