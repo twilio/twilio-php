@@ -9,8 +9,8 @@ use Twilio\Http\Response;
 
 /**
  * TokenPaginationPage is an abstract base class for handling paginated API responses
- * that use token-based pagination rather than traditional page numbers. These are the part of
- * new Twilio API Standards V1.
+ * that use token-based pagination rather than traditional page numbers. These are part of
+ * the new Twilio API Standards V1.
  *
  * Unlike the base {@see Page} class, which typically uses page numbers and URLs for navigation,
  * TokenPaginationPage manages pagination using tokens (e.g., nextToken, previousToken) provided
