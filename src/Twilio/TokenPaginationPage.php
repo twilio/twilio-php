@@ -43,6 +43,13 @@ abstract class TokenPaginationPage extends Page {
     protected $previousPageUrl;
     protected $nextPageUrl;
 
+    /**
+     * TokenPaginationPage constructor.
+     *
+     * @param Version $version The API version object.
+     * @param Response $response The HTTP response object.
+     * @throws KeyErrorException If the 'key' metadata is missing.
+     */
     public function __construct(Version $version, Response $response) {
         parent::__construct($version, $response);
 
