@@ -40,7 +40,7 @@ class TestableTokenPaginationPage extends TokenPaginationPage {
         return $this->url;
     }
 
-    public function testGetQueryString(?string $pageToken): string {
+    public function getQueryStringForTest(?string $pageToken): string {
         return $this->getQueryString($pageToken);
     }
 
@@ -180,7 +180,7 @@ class TokenPaginationPageTest extends TestCase
         $response = new Response(200, '{"meta": {"key": "items", "pageSize": 25}, "items": [{"id": 1}]}');
         $page = new TestableTokenPaginationPage($this->version, $response);
 
-        $this->assertEquals('?pageSize=25', $page->testGetQueryString(null));
+        $this->assertEquals('?pageSize=25', $page->getQueryStringForTest(null));
     }
 
     /**
@@ -191,7 +191,7 @@ class TokenPaginationPageTest extends TestCase
         $response = new Response(200, '{"meta": {"key": "items", "pageSize": 0}, "items": [{"id": 1}]}');
         $page = new TestableTokenPaginationPage($this->version, $response);
 
-        $this->assertEquals('?pageToken=test123', $page->testGetQueryString('test123'));
+        $this->assertEquals('?pageToken=test123', $page->getQueryStringForTest('test123'));
     }
 
     /**
@@ -202,7 +202,7 @@ class TokenPaginationPageTest extends TestCase
         $response = new Response(200, '{"meta": {"key": "items", "pageSize": 25}, "items": [{"id": 1}]}');
         $page = new TestableTokenPaginationPage($this->version, $response);
 
-        $this->assertEquals('?pageSize=25&pageToken=test123', $page->testGetQueryString('test123'));
+        $this->assertEquals('?pageSize=25&pageToken=test123', $page->getQueryStringForTest('test123'));
     }
 
     /**
@@ -213,7 +213,7 @@ class TokenPaginationPageTest extends TestCase
         $response = new Response(200, '{"meta": {"key": "items", "pageSize": 25}, "items": [{"id": 1}]}');
         $page = new TestableTokenPaginationPage($this->version, $response);
 
-        $this->assertEquals('?pageSize=25', $page->testGetQueryString(''));
+        $this->assertEquals('?pageSize=25', $page->getQueryStringForTest(''));
     }
 
     /**
