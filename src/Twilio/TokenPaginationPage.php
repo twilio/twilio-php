@@ -49,7 +49,7 @@ abstract class TokenPaginationPage extends Page {
         $httpClient = $version->getDomain()->getClient()->getHttpClient();
 
         $this->url = '';
-        if($httpClient->lastRequest) {
+        if ($httpClient->lastRequest) {
             $fullUrl = $httpClient->lastRequest[CURLOPT_URL];
             // remove query parameters from url
             $parts = explode('?', $fullUrl);
