@@ -40,7 +40,6 @@ class TestableTokenPaginationPage extends TokenPaginationPage {
         return $this->url;
     }
 
-
     public function testGetQueryString(?string $pageToken): string {
         return $this->getQueryString($pageToken);
     }
