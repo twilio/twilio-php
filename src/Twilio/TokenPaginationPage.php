@@ -130,7 +130,6 @@ abstract class TokenPaginationPage extends Page {
         return $this->nextPageUrl;
     }
 
-
     public function __toString(): string {
         return '[TokenPaginationPage]';
     }
