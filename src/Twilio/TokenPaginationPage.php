@@ -79,7 +79,7 @@ abstract class TokenPaginationPage extends Page {
         if ($this->pageSize) {
             $params['pageSize'] = $this->pageSize;
         }
-        if ($pageToken && $pageToken !== '') {
+        if ($pageToken !== '') {
             $params['pageToken'] = $pageToken;
         }
         $queryString = http_build_query($params);
