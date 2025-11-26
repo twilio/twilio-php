@@ -70,7 +70,8 @@ abstract class TokenPaginationPage extends Page {
     }
 
     /**
-     * @throws KeyErrorException
+     * Load the current page of records based on the 'key' metadata.
+     * @throws KeyErrorException If the 'key' metadata is missing.
      */
     protected function loadPage(): array {
         $this->key = $this->getMeta('key');
@@ -81,6 +82,12 @@ abstract class TokenPaginationPage extends Page {
         throw new KeyErrorException('key not found in the response');
     }
 
+    /**
+     * Construct the query string for pagination URLs.
+     *
+     * @param string|null $pageToken The token for the desired page.
+     * @return string The constructed query string.
+     */
     protected function getQueryString(?String $pageToken): String {
         $params = [];
         if ($this->pageSize) {
@@ -93,6 +100,11 @@ abstract class TokenPaginationPage extends Page {
         return $queryString ? '?' . $queryString : '';
     }
 
+    /**
+     * Get the URL for the previous page of results.
+     *
+     * @return string|null The URL for the previous page, or null if there is no previous page.
+     */
     public function getPreviousPageUrl(): ?string {
         if (!$this->previousToken) {
             return null;
@@ -103,6 +115,11 @@ abstract class TokenPaginationPage extends Page {
         return $this->previousPageUrl;
     }
 
+    /**
+     * Get the URL for the next page of results.
+     *
+     * @return string|null The URL for the next page, or null if there is no next page.
+     */
     public function getNextPageUrl(): ?string {
         if (!$this->nextToken) {
             return null;
