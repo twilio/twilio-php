@@ -65,7 +65,7 @@ abstract class TokenPaginationPage extends Page {
         }
         if ($pageToken && $pageToken !== '') {
             $queryString = $this->addQueryParam($queryString);
-            $queryString .= 'pageToken=' . $pageToken;
+            $queryString .= 'pageToken=' . urlencode($pageToken);
         }
         return $queryString;
     }
