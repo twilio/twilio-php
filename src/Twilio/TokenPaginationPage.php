@@ -7,6 +7,32 @@ namespace Twilio;
 use Twilio\Exceptions\KeyErrorException;
 use Twilio\Http\Response;
 
+/**
+ * TokenPaginationPage is an abstract base class for handling paginated API responses
+ * that use token-based pagination rather than traditional page numbers. These are the part of
+ * new Twilio API Standards V1.
+ *
+ * Unlike the base {@see Page} class, which typically uses page numbers and URLs for navigation,
+ * TokenPaginationPage manages pagination using tokens (e.g., nextToken, previousToken) provided
+ * in the API response metadata. This allows for more flexible and scalable pagination, especially
+ * for APIs that do not support offset-based pagination.
+ *
+ * Example expected response format with token metadata:
+ * {
+ *   "meta": {
+ *     "key": "items",
+ *     "pageSize": 50,
+ *     "nextToken": "abc123",
+ *     "previousToken": "xyz789"
+ *   },
+ *   "items": [
+ *     { "id": 1, "name": "Item 1" },
+ *     { "id": 2, "name": "Item 2" }
+ *     // ...
+ *   ]
+ * }
+ *
+ */
 abstract class TokenPaginationPage extends Page {
 
     protected $key;
