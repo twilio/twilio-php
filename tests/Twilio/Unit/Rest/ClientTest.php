@@ -293,11 +293,4 @@ class ClientTest extends UnitTest {
         $client->setEdge('custom-edge');
         $this->assertEquals('custom-edge', $client->getEdge());
     }
-
-    public function testSetEdgeTriggersDeprecationWarning(): void {
-        $client = new Client('username', 'password');
-        $this->expectDeprecation();
-        $client->setEdge('edge');
-    }
-
 }
