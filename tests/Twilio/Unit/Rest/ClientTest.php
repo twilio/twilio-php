@@ -282,4 +282,23 @@ class ClientTest extends UnitTest {
         $this->assertEquals($userAgentExtensions,$expectedExtensions);
     }
 
+    // In tests/Twilio/Unit/Rest/ClientTest.php
+
+    public function testEdgeIsSetFromRegionWhenEdgeIsNull(): void {
+        $client = new Client('username', 'password', null, 'au1');
+        $this->assertEquals('sydney', $client->getEdge());
+    }
+
+    public function testEdgeRemainsWhenBothEdgeAndRegionAreSet(): void {
+        $client = new Client('username', 'password', null, 'au1');
+        $client->setEdge('custom-edge');
+        $this->assertEquals('custom-edge', $client->getEdge());
+    }
+
+    public function testSetEdgeTriggersDeprecationWarning(): void {
+        $client = new Client('username', 'password');
+        $this->expectException(\PHPUnit\Framework\Error\Deprecated::class);
+        $client->setEdge('edge');
+    }
+
 }

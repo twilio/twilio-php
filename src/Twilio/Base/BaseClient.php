@@ -67,7 +67,22 @@ class BaseClient
         $this->edge = $this->getArg(null, self::ENV_EDGE);
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
-
+        if ($this->edge === null && $this->region !== null) {
+            $regionMap = [
+                'au1' => 'sydney',
+                'br1' => 'sao-paulo',
+                'de1' => 'frankfurt',
+                'ie1' => 'dublin',
+                'jp1' => 'tokyo',
+                'jp2' => 'osaka',
+                'sg1' => 'singapore',
+                'us1' => 'ashburn',
+                'us2' => 'umatilla'
+            ];
+            if (array_key_exists($this->region, $regionMap)) {
+                $this->edge = $regionMap[$this->region];
+            }
+        }
         $this->invalidateOAuth();
         $this->setAccountSid($accountSid ?: $this->username);
 
@@ -392,6 +407,7 @@ class BaseClient
      */
     public function setEdge(?string $edge = null): void
     {
+        trigger_error('`edge` is deprecated and will be removed in a future version.', E_USER_DEPRECATED);
         $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
 
