@@ -128,7 +128,7 @@ class ClientTest extends UnitTest {
         $network = new Holodeck();
         $client = new Client('username', 'password', null, 'ie1', $network);
         $client->request('POST', 'https://test.twilio.com/v1/Resources');
-        $expected = new Request('POST', 'https://test.ie1.twilio.com/v1/Resources');
+        $expected = new Request('POST', 'https://test.dublin.ie1.twilio.com/v1/Resources');
         $this->assertTrue($network->hasRequest($expected));
     }
 
@@ -282,7 +282,6 @@ class ClientTest extends UnitTest {
         $this->assertEquals($userAgentExtensions,$expectedExtensions);
     }
 
-    // In tests/Twilio/Unit/Rest/ClientTest.php
 
     public function testEdgeIsSetFromRegionWhenEdgeIsNull(): void {
         $client = new Client('username', 'password', null, 'au1');
@@ -297,7 +296,7 @@ class ClientTest extends UnitTest {
 
     public function testSetEdgeTriggersDeprecationWarning(): void {
         $client = new Client('username', 'password');
-        $this->expectException(\PHPUnit\Framework\Error\Deprecated::class);
+        $this->expectDeprecation();
         $client->setEdge('edge');
     }
 
