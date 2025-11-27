@@ -11,4 +11,7 @@
       <directory suffix=".php">../src</directory>
     </include>
   </coverage>
+  <php>
+    <ini name="error_reporting" value="E_ALL"/>
+  </php>
 </phpunit>
