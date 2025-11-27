@@ -9,6 +9,7 @@ use Twilio\Http\CurlClient;
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Rest\Client;
+use Twilio\TokenPaginationPage;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -56,6 +57,21 @@ class TestVersion extends Version {
 class TestPage extends Page {
     public function buildInstance(array $payload): array {
         return $payload;
+    }
+}
+
+class TestTokenPage extends TokenPaginationPage {
+    public function buildInstance(array $payload): array {
+        return $payload;
+    }
+
+    public function getNextPageUrl(): ?string {
+        // If there's no next token, return null directly - handle end of page
+        if (!$this->nextToken) {
+            return null;
+        }
+
+        return parent::getNextPageUrl();
     }
 }
 
@@ -166,6 +182,44 @@ class VersionTest extends UnitTest {
 
         $response = $this->version->page('GET', '/Accounts/AC123/Messages.json');
         $page = new TestPage($this->version, $response);
+        $messages = $this->version->stream($page, $limit, $pageLimit);
+
+        self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
+    }
+
+    /**
+     * @param string $message Case message to display on assertion error
+     * @param int|null $limit Limit provided by the user
+     * @param int|null $pageLimit Page limit provided by the user
+     * @param int $expectedCount Expected record count returned by stream
+     * @dataProvider streamProvider
+     */
+    public function testStreamWithTokenPagination(string $message, ?int $limit, ?int $pageLimit, int $expectedCount): void {
+        $this->curlClient
+            ->method('request')
+            ->will(self::onConsecutiveCalls(
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token1", "previousToken": null},
+                        "messages": [{"body": "payload0"}, {"body": "payload1"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token2", "previousToken": "token0"},
+                        "messages": [{"body": "payload2"}, {"body": "payload3"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 1, "nextToken": null, "previousToken": "token1"},
+                        "messages": [{"body": "payload4"}]
+                    }')
+            ));
+
+        $response = $this->version->page('GET', '/Accounts/AC123/Messages.json');
+        $page = new TestTokenPage($this->version, $response);
         $messages = $this->version->stream($page, $limit, $pageLimit);
 
         self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
