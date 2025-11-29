@@ -179,6 +179,8 @@ class BaseClient
                 trigger_error(' Setting default `Edge` for the provided `region`.', E_USER_DEPRECATED);
                 $this->edge = $regionMap[$this->region];
             }
+            if( $this->edge === null )
+                $this->edge = '';
         }
 
         if (!$authStrategy) {

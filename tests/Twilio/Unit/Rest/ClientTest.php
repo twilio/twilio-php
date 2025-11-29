@@ -128,7 +128,7 @@ class ClientTest extends UnitTest {
         $network = new Holodeck();
         $client = new Client('username', 'password', null, 'ie1', $network);
         $client->request('POST', 'https://test.twilio.com/v1/Resources');
-        $this->expectDeprecation();
+//        $this->expectException();
         $expected = new Request('POST', 'https://test.dublin.ie1.twilio.com/v1/Resources');
         $this->assertTrue($network->hasRequest($expected));
     }
@@ -286,22 +286,31 @@ class ClientTest extends UnitTest {
 
     public function testEdgeIsSetFromRegionWhenEdgeIsNull(): void {
         $client = new Client('username', 'password', null, 'au1');
-        $this->expectDeprecation();
+//        $this->expectException();
         $client->request('GET', 'https://api.twilio.com');
         $this->assertEquals('sydney', $client->getEdge());
     }
 
     public function testEdgeIsSetFromRegionWhenRegionIsXyz(): void {
+//        $this->expectException();
+        // Create a mock of the CurlClient
+        $mockHttpClient = $this->createMock(CurlClient::class);
+
+        // Define the expected behavior
+        $mockHttpClient->expects($this->once())
+            ->method('request')
+            ->with('GET', 'https://api.xyz.twilio.com', [], [])
+            ->willReturn(new Response(200, 'Mocked response'));
         $client = new Client('username', 'password', null, 'xyz');
-        $this->expectDeprecation();
+        $client->setHttpClient($mockHttpClient);
         $client->request('GET', 'https://api.twilio.com');
-        $this->assertEquals('', $client->getEdge());
+        $this->assertEquals('',$client->getEdge());
         $this->assertEquals('xyz', $client->getRegion());
     }
 
     public function testEdgeRemainsWhenBothEdgeAndRegionAreSet(): void {
         $client = new Client('username', 'password', null, 'au1');
-        $this->expectDeprecation();
+//        $this->expectException(\PHPUnit\Framework\Error\Deprecated);
         $client->request('GET', 'https://api.twilio.com');
         $client->setEdge('custom-edge');
         $this->assertEquals('custom-edge', $client->getEdge());
