@@ -285,12 +285,14 @@ class ClientTest extends UnitTest {
 
     public function testEdgeIsSetFromRegionWhenEdgeIsNull(): void {
         $client = new Client('username', 'password', null, 'au1');
+        $this->expectDeprecation();
         $client->request('GET', 'https://api.twilio.com');
         $this->assertEquals('sydney', $client->getEdge());
     }
 
     public function testEdgeIsSetFromRegionWhenRegionIsXyz(): void {
         $client = new Client('username', 'password', null, 'xyz');
+        $this->expectDeprecation();
         $client->request('GET', 'https://api.twilio.com');
         $this->assertEquals('', $client->getEdge());
         $this->assertEquals('xyz', $client->getRegion());
@@ -298,6 +300,7 @@ class ClientTest extends UnitTest {
 
     public function testEdgeRemainsWhenBothEdgeAndRegionAreSet(): void {
         $client = new Client('username', 'password', null, 'au1');
+        $this->expectDeprecation();
         $client->request('GET', 'https://api.twilio.com');
         $client->setEdge('custom-edge');
         $this->assertEquals('custom-edge', $client->getEdge());
