@@ -83,6 +83,9 @@ class BaseClient
                 $this->edge = $regionMap[$this->region];
             }
         }
+        if ($this->edge === null) {
+            $this->edge = '';
+        }
         $this->invalidateOAuth();
         $this->setAccountSid($accountSid ?: $this->username);
 
