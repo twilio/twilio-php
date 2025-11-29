@@ -127,8 +127,8 @@ class ClientTest extends UnitTest {
     public function testRegionInjectedWhenSet(): void {
         $network = new Holodeck();
         $client = new Client('username', 'password', null, 'ie1', $network);
-        $this->expectDeprecation();
         $client->request('POST', 'https://test.twilio.com/v1/Resources');
+        $this->expectDeprecation();
         $expected = new Request('POST', 'https://test.dublin.ie1.twilio.com/v1/Resources');
         $this->assertTrue($network->hasRequest($expected));
     }
