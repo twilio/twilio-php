@@ -67,25 +67,6 @@ class BaseClient
         $this->edge = $this->getArg(null, self::ENV_EDGE);
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
-        if ($this->edge === null && $this->region !== null) {
-            $regionMap = [
-                'au1' => 'sydney',
-                'br1' => 'sao-paulo',
-                'de1' => 'frankfurt',
-                'ie1' => 'dublin',
-                'jp1' => 'tokyo',
-                'jp2' => 'osaka',
-                'sg1' => 'singapore',
-                'us1' => 'ashburn',
-                'us2' => 'umatilla'
-            ];
-            if (array_key_exists($this->region, $regionMap)) {
-                $this->edge = $regionMap[$this->region];
-            }
-        }
-        if ($this->edge === null) {
-            $this->edge = '';
-        }
         $this->invalidateOAuth();
         $this->setAccountSid($accountSid ?: $this->username);
 
@@ -178,6 +159,26 @@ class BaseClient
         $authStrategy = $authStrategy ?: null;
         if ($this->credentialProvider) {
             $authStrategy = $this->credentialProvider->toAuthStrategy();
+        }
+
+        if( ($this->edge === null && $this->region !== null) || ($this->edge !== null && $this->region === null) )
+            trigger_error(' For regional processing, DNS is of format product.city.region.twilio.com; otherwise use product.twilio.com.', E_USER_DEPRECATED);
+        if ($this->edge === null && $this->region !== null) {
+            $regionMap = [
+                'au1' => 'sydney',
+                'br1' => 'sao-paulo',
+                'de1' => 'frankfurt',
+                'ie1' => 'dublin',
+                'jp1' => 'tokyo',
+                'jp2' => 'osaka',
+                'sg1' => 'singapore',
+                'us1' => 'ashburn',
+                'us2' => 'umatilla'
+            ];
+            if (array_key_exists($this->region, $regionMap)) {
+                trigger_error(' Setting default `Edge` for the provided `region`.', E_USER_DEPRECATED);
+                $this->edge = $regionMap[$this->region];
+            }
         }
 
         if (!$authStrategy) {
@@ -410,7 +411,6 @@ class BaseClient
      */
     public function setEdge(?string $edge = null): void
     {
-        trigger_error('`edge` is deprecated and will be removed in a future version.', E_USER_DEPRECATED);
         $this->edge = $this->getArg($edge, self::ENV_EDGE);
     }
 

@@ -288,9 +288,22 @@ class ClientTest extends UnitTest {
         $this->assertEquals('sydney', $client->getEdge());
     }
 
+    public function testEdgeIsSetFromRegionWhenRegionIsXyz(): void {
+        $client = new Client('username', 'password', null, 'xyz');
+        $this->assertEquals('', $client->getEdge());
+        $this->assertEquals('xyz', $client->getRegion());
+    }
+
     public function testEdgeRemainsWhenBothEdgeAndRegionAreSet(): void {
         $client = new Client('username', 'password', null, 'au1');
         $client->setEdge('custom-edge');
         $this->assertEquals('custom-edge', $client->getEdge());
+    }
+
+    public function testEdgeRemainsWhenBothEdgeAndRegionAreSetInConstructor(): void {
+        $client = new Client('username', 'password', null, 'au1', null, ['TWILIO_EDGE' => 'custom-edge']);
+        $this->assertEquals('custom-edge', $client->getEdge());
+        $this->assertEquals('au1', $client->getRegion());
+
     }
 }
