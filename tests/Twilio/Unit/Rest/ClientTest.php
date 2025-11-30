@@ -286,13 +286,11 @@ class ClientTest extends UnitTest {
 
     public function testEdgeIsSetFromRegionWhenEdgeIsNull(): void {
         $client = new Client('username', 'password', null, 'au1');
-//        $this->expectException();
         $client->request('GET', 'https://api.twilio.com');
         $this->assertEquals('sydney', $client->getEdge());
     }
 
     public function testEdgeIsSetFromRegionWhenRegionIsXyz(): void {
-//        $this->expectException();
         // Create a mock of the CurlClient
         $mockHttpClient = $this->createMock(CurlClient::class);
 
@@ -310,7 +308,6 @@ class ClientTest extends UnitTest {
 
     public function testEdgeRemainsWhenBothEdgeAndRegionAreSet(): void {
         $client = new Client('username', 'password', null, 'au1');
-//        $this->expectException(\PHPUnit\Framework\Error\Deprecated);
         $client->request('GET', 'https://api.twilio.com');
         $client->setEdge('custom-edge');
         $this->assertEquals('custom-edge', $client->getEdge());
