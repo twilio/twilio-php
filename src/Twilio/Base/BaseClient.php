@@ -162,7 +162,9 @@ class BaseClient
         }
 
         if( ($this->edge === null && $this->region !== null) || ($this->edge !== null && $this->region === null) )
+        {
             trigger_error(' For regional processing, DNS is of format product.city.region.twilio.com; otherwise use product.twilio.com.', E_USER_DEPRECATED);
+        }
         if ($this->edge === null && $this->region !== null) {
             $regionMap = [
                 'au1' => 'sydney',
