@@ -728,7 +728,11 @@ class CreateCallOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.CreateCallOptions ' . $options . ']';
     }
 }
@@ -902,7 +906,11 @@ class ReadCallOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.ReadCallOptions ' . $options . ']';
     }
 }
@@ -1057,7 +1065,11 @@ class UpdateCallOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.UpdateCallOptions ' . $options . ']';
     }
 }

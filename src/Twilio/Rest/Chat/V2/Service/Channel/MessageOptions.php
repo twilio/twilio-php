@@ -259,7 +259,11 @@ class CreateMessageOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Chat.V2.CreateMessageOptions ' . $options . ']';
     }
 }
@@ -296,7 +300,11 @@ class DeleteMessageOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Chat.V2.DeleteMessageOptions ' . $options . ']';
     }
 }
@@ -334,7 +342,11 @@ class ReadMessageOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Chat.V2.ReadMessageOptions ' . $options . ']';
     }
 }
@@ -461,7 +473,11 @@ class UpdateMessageOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Chat.V2.UpdateMessageOptions ' . $options . ']';
     }
 }

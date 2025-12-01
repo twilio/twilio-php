@@ -137,6 +137,9 @@ class ModuleDataManagementInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Marketplace.V1.ModuleDataManagementInstance ' . \implode(' ', $context) . ']';

@@ -96,6 +96,9 @@ class OperatorAttachmentContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Intelligence.V2.OperatorAttachmentContext ' . \implode(' ', $context) . ']';

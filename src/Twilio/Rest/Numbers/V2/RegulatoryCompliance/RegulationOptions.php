@@ -93,7 +93,11 @@ class FetchRegulationOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Numbers.V2.FetchRegulationOptions ' . $options . ']';
     }
 }
@@ -175,7 +179,11 @@ class ReadRegulationOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Numbers.V2.ReadRegulationOptions ' . $options . ']';
     }
 }

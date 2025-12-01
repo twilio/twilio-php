@@ -641,7 +641,11 @@ class CreateTollfreeVerificationOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Messaging.V1.CreateTollfreeVerificationOptions ' . $options . ']';
     }
 }
@@ -740,7 +744,11 @@ class ReadTollfreeVerificationOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Messaging.V1.ReadTollfreeVerificationOptions ' . $options . ']';
     }
 }
@@ -1255,7 +1263,11 @@ class UpdateTollfreeVerificationOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Messaging.V1.UpdateTollfreeVerificationOptions ' . $options . ']';
     }
 }

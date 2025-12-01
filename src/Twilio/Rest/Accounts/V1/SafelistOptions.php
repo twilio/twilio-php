@@ -86,7 +86,11 @@ class DeleteSafelistOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Accounts.V1.DeleteSafelistOptions ' . $options . ']';
     }
 }
@@ -123,7 +127,11 @@ class FetchSafelistOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Accounts.V1.FetchSafelistOptions ' . $options . ']';
     }
 }

@@ -156,6 +156,9 @@ class OriginationUrlInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Trunking.V1.OriginationUrlInstance ' . \implode(' ', $context) . ']';

@@ -80,6 +80,9 @@ class PluginArchiveContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.FlexApi.V1.PluginArchiveContext ' . \implode(' ', $context) . ']';

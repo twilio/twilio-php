@@ -113,6 +113,9 @@ class EncryptedSentencesInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Intelligence.V2.EncryptedSentencesInstance ' . \implode(' ', $context) . ']';

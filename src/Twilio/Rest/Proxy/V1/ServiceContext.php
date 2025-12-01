@@ -210,6 +210,9 @@ class ServiceContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Proxy.V1.ServiceContext ' . \implode(' ', $context) . ']';

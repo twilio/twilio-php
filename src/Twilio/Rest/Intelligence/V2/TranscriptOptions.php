@@ -125,7 +125,11 @@ class CreateTranscriptOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Intelligence.V2.CreateTranscriptOptions ' . $options . ']';
     }
 }
@@ -269,7 +273,11 @@ class ReadTranscriptOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Intelligence.V2.ReadTranscriptOptions ' . $options . ']';
     }
 }

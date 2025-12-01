@@ -249,6 +249,9 @@ class DomainContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Api.V2010.DomainContext ' . \implode(' ', $context) . ']';

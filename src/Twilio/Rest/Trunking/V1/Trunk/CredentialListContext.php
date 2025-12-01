@@ -96,6 +96,9 @@ class CredentialListContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Trunking.V1.CredentialListContext ' . \implode(' ', $context) . ']';

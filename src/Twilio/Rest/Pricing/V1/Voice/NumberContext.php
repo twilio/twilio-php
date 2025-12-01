@@ -76,6 +76,9 @@ class NumberContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Pricing.V1.NumberContext ' . \implode(' ', $context) . ']';

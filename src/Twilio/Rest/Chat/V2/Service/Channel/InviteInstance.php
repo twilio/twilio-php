@@ -142,6 +142,9 @@ class InviteInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Chat.V2.InviteInstance ' . \implode(' ', $context) . ']';

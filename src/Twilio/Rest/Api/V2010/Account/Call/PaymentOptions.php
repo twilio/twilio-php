@@ -315,7 +315,11 @@ class CreatePaymentOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.CreatePaymentOptions ' . $options . ']';
     }
 }
@@ -363,7 +367,11 @@ class UpdatePaymentOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.UpdatePaymentOptions ' . $options . ']';
     }
 }

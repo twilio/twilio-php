@@ -158,6 +158,9 @@ class UserChannelInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Chat.V2.UserChannelInstance ' . \implode(' ', $context) . ']';

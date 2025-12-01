@@ -104,7 +104,11 @@ class CreateActivityOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.CreateActivityOptions ' . $options . ']';
     }
 }
@@ -158,7 +162,11 @@ class ReadActivityOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.ReadActivityOptions ' . $options . ']';
     }
 }
@@ -195,7 +203,11 @@ class UpdateActivityOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateActivityOptions ' . $options . ']';
     }
 }

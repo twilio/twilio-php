@@ -76,6 +76,9 @@ class NetworkContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Supersim.V1.NetworkContext ' . \implode(' ', $context) . ']';

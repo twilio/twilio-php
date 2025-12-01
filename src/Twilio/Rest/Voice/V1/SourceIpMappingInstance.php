@@ -143,6 +143,9 @@ class SourceIpMappingInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Voice.V1.SourceIpMappingInstance ' . \implode(' ', $context) . ']';

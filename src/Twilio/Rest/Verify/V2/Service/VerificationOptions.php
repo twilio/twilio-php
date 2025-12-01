@@ -339,7 +339,11 @@ class CreateVerificationOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Verify.V2.CreateVerificationOptions ' . $options . ']';
     }
 }

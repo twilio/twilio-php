@@ -134,6 +134,9 @@ class AvailableAddOnContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Marketplace.V1.AvailableAddOnContext ' . \implode(' ', $context) . ']';

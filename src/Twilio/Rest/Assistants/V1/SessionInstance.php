@@ -131,6 +131,9 @@ class SessionInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Assistants.V1.SessionInstance ' . \implode(' ', $context) . ']';

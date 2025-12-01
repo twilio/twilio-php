@@ -147,6 +147,9 @@ class MemberContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Chat.V2.MemberContext ' . \implode(' ', $context) . ']';

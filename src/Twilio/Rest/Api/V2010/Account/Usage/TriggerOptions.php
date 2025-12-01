@@ -163,7 +163,11 @@ class CreateTriggerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.CreateTriggerOptions ' . $options . ']';
     }
 }
@@ -232,7 +236,11 @@ class ReadTriggerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.ReadTriggerOptions ' . $options . ']';
     }
 }
@@ -299,7 +307,11 @@ class UpdateTriggerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.UpdateTriggerOptions ' . $options . ']';
     }
 }

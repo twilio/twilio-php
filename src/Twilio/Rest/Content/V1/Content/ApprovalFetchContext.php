@@ -76,6 +76,9 @@ class ApprovalFetchContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Content.V1.ApprovalFetchContext ' . \implode(' ', $context) . ']';

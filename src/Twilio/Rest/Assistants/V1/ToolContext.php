@@ -111,6 +111,9 @@ class ToolContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Assistants.V1.ToolContext ' . \implode(' ', $context) . ']';

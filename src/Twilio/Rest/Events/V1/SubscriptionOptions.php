@@ -90,7 +90,11 @@ class ReadSubscriptionOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Events.V1.ReadSubscriptionOptions ' . $options . ']';
     }
 }
@@ -127,7 +131,11 @@ class UpdateSubscriptionOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Events.V1.UpdateSubscriptionOptions ' . $options . ']';
     }
 }

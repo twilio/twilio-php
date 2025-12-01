@@ -968,7 +968,11 @@ class CreateParticipantOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.CreateParticipantOptions ' . $options . ']';
     }
 }
@@ -1037,7 +1041,11 @@ class ReadParticipantOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.ReadParticipantOptions ' . $options . ']';
     }
 }
@@ -1239,7 +1247,11 @@ class UpdateParticipantOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.UpdateParticipantOptions ' . $options . ']';
     }
 }

@@ -87,6 +87,9 @@ class PortingPortabilityContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Numbers.V1.PortingPortabilityContext ' . \implode(' ', $context) . ']';

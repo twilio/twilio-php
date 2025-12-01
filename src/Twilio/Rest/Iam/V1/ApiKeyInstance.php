@@ -142,6 +142,9 @@ class ApiKeyInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Iam.V1.ApiKeyInstance ' . \implode(' ', $context) . ']';

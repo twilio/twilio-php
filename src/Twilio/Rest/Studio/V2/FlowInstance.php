@@ -194,6 +194,9 @@ class FlowInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Studio.V2.FlowInstance ' . \implode(' ', $context) . ']';

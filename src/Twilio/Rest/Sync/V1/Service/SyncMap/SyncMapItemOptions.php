@@ -169,7 +169,11 @@ class CreateSyncMapItemOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Sync.V1.CreateSyncMapItemOptions ' . $options . ']';
     }
 }
@@ -206,7 +210,11 @@ class DeleteSyncMapItemOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Sync.V1.DeleteSyncMapItemOptions ' . $options . ']';
     }
 }
@@ -274,7 +282,11 @@ class ReadSyncMapItemOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Sync.V1.ReadSyncMapItemOptions ' . $options . ']';
     }
 }
@@ -371,7 +383,11 @@ class UpdateSyncMapItemOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Sync.V1.UpdateSyncMapItemOptions ' . $options . ']';
     }
 }

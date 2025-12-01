@@ -130,6 +130,9 @@ class OperatorInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Intelligence.V2.OperatorInstance ' . \implode(' ', $context) . ']';

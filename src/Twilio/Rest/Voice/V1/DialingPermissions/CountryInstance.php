@@ -134,6 +134,9 @@ class CountryInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Voice.V1.CountryInstance ' . \implode(' ', $context) . ']';

@@ -160,6 +160,9 @@ class AssetInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Serverless.V1.AssetInstance ' . \implode(' ', $context) . ']';

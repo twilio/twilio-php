@@ -108,7 +108,11 @@ class CreateWebChannelOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateWebChannelOptions ' . $options . ']';
     }
 }
@@ -161,7 +165,11 @@ class UpdateWebChannelOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateWebChannelOptions ' . $options . ']';
     }
 }

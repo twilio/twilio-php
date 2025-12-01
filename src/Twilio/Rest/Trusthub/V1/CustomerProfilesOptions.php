@@ -116,7 +116,11 @@ class CreateCustomerProfilesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Trusthub.V1.CreateCustomerProfilesOptions ' . $options . ']';
     }
 }
@@ -185,7 +189,11 @@ class ReadCustomerProfilesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Trusthub.V1.ReadCustomerProfilesOptions ' . $options . ']';
     }
 }
@@ -265,7 +273,11 @@ class UpdateCustomerProfilesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Trusthub.V1.UpdateCustomerProfilesOptions ' . $options . ']';
     }
 }

@@ -109,6 +109,9 @@ class InsightsUserRolesInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.FlexApi.V1.InsightsUserRolesInstance ' . \implode(' ', $context) . ']';

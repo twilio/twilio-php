@@ -190,6 +190,9 @@ class SimContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Supersim.V1.SimContext ' . \implode(' ', $context) . ']';

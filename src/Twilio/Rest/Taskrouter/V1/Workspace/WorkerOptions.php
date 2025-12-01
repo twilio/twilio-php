@@ -166,7 +166,11 @@ class CreateWorkerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.CreateWorkerOptions ' . $options . ']';
     }
 }
@@ -203,7 +207,11 @@ class DeleteWorkerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.DeleteWorkerOptions ' . $options . ']';
     }
 }
@@ -346,7 +354,11 @@ class ReadWorkerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.ReadWorkerOptions ' . $options . ']';
     }
 }
@@ -443,7 +455,11 @@ class UpdateWorkerOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Taskrouter.V1.UpdateWorkerOptions ' . $options . ']';
     }
 }

@@ -90,6 +90,9 @@ class CommandContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Wireless.V1.CommandContext ' . \implode(' ', $context) . ']';

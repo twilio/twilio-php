@@ -381,7 +381,11 @@ class CreateFlexFlowOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateFlexFlowOptions ' . $options . ']';
     }
 }
@@ -420,7 +424,11 @@ class ReadFlexFlowOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.ReadFlexFlowOptions ' . $options . ']';
     }
 }
@@ -693,7 +701,11 @@ class UpdateFlexFlowOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            unset($options['authorization']);
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateFlexFlowOptions ' . $options . ']';
     }
 }

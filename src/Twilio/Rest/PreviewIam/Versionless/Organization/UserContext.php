@@ -123,6 +123,9 @@ class UserContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.PreviewIam.Versionless.UserContext ' . \implode(' ', $context) . ']';

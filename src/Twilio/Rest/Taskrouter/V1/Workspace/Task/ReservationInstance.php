@@ -146,6 +146,9 @@ class ReservationInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($key === 'authorization') {
+                continue;
+            }
             $context[] = "$key=$value";
         }
         return '[Twilio.Taskrouter.V1.ReservationInstance ' . \implode(' ', $context) . ']';
