@@ -565,13 +565,9 @@ class TwilioCallToAction implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
+            'body' => $this->body,
+            'actions' => $this->actions
         ];
-        if (isset($this->body)) {
-            $jsonString['body'] = $this->body;
-        }
-        if (isset($this->actions)) {
-            $jsonString['actions'] = $this->actions;
-        }
         return $jsonString;
     }
 }
@@ -925,18 +921,12 @@ class CarouselCard implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
+            'body' => $this->body,
+            'media' => $this->media,
+            'actions' => $this->actions
         ];
         if (isset($this->title)) {
             $jsonString['title'] = $this->title;
-        }
-        if (isset($this->body)) {
-            $jsonString['body'] = $this->body;
-        }
-        if (isset($this->media)) {
-            $jsonString['media'] = $this->media;
-        }
-        if (isset($this->actions)) {
-            $jsonString['actions'] = $this->actions;
         }
         return $jsonString;
     }
@@ -991,9 +981,11 @@ class FlowsPageComponent implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'label' => $this->label,
             'type' => $this->type
         ];
+        if (isset($this->label)) {
+            $jsonString['label'] = $this->label;
+        }
         return $jsonString;
     }
 }
@@ -1029,13 +1021,11 @@ class FlowsPage implements \JsonSerializable
     {
         $jsonString = [
             'id' => $this->id,
+            'title' => $this->title,
             'layout' => $this->layout
         ];
         if (isset($this->nextPageId)) {
             $jsonString['next_page_id'] = $this->nextPageId;
-        }
-        if (isset($this->title)) {
-            $jsonString['title'] = $this->title;
         }
         if (isset($this->subtitle)) {
             $jsonString['subtitle'] = $this->subtitle;

@@ -21,6 +21,7 @@ use Twilio\Values;
 abstract class TokenOptions
 {
     /**
+     * @param string $accountSid Optional Account SID to perform on behalf of requests.
      * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
      * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param string $clientSecret The credential for confidential OAuth App.
@@ -33,6 +34,7 @@ abstract class TokenOptions
      */
     public static function create(
         
+        string $accountSid = Values::NONE,
         string $grantType = Values::NONE,
         string $clientId = Values::NONE,
         string $clientSecret = Values::NONE,
@@ -45,6 +47,7 @@ abstract class TokenOptions
     ): CreateTokenOptions
     {
         return new CreateTokenOptions(
+            $accountSid,
             $grantType,
             $clientId,
             $clientSecret,
@@ -61,6 +64,7 @@ abstract class TokenOptions
 class CreateTokenOptions extends Options
     {
     /**
+     * @param string $accountSid Optional Account SID to perform on behalf of requests.
      * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
      * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param string $clientSecret The credential for confidential OAuth App.
@@ -72,6 +76,7 @@ class CreateTokenOptions extends Options
      */
     public function __construct(
         
+        string $accountSid = Values::NONE,
         string $grantType = Values::NONE,
         string $clientId = Values::NONE,
         string $clientSecret = Values::NONE,
@@ -82,6 +87,7 @@ class CreateTokenOptions extends Options
         string $scope = Values::NONE
 
     ) {
+        $this->options['accountSid'] = $accountSid;
         $this->options['grantType'] = $grantType;
         $this->options['clientId'] = $clientId;
         $this->options['clientSecret'] = $clientSecret;
@@ -90,6 +96,18 @@ class CreateTokenOptions extends Options
         $this->options['audience'] = $audience;
         $this->options['refreshToken'] = $refreshToken;
         $this->options['scope'] = $scope;
+    }
+
+    /**
+     * Optional Account SID to perform on behalf of requests.
+     *
+     * @param string $accountSid Optional Account SID to perform on behalf of requests.
+     * @return $this Fluent Builder
+     */
+    public function setAccountSid(string $accountSid): self
+    {
+        $this->options['accountSid'] = $accountSid;
+        return $this;
     }
 
     /**

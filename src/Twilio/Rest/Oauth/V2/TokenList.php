@@ -54,6 +54,11 @@ class TokenList extends ListResource
 
         $options = new Values($options);
 
+        $params = Values::of([
+            'account_sid' =>
+                $options['accountSid'],
+        ]);
+
         $data = Values::of([
             'grant_type' =>
                 $options['grantType'],
@@ -74,7 +79,7 @@ class TokenList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        $payload = $this->version->create('POST', $this->uri, $params, $data, $headers);
 
         return new TokenInstance(
             $this->version,

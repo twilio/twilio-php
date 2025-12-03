@@ -62,6 +62,8 @@ class ComplianceTollfreeInquiriesList extends ListResource
                 $tollfreePhoneNumber,
             'NotificationEmail' =>
                 $notificationEmail,
+            'CustomerProfileSid' =>
+                $options['customerProfileSid'],
             'BusinessName' =>
                 $options['businessName'],
             'BusinessWebsite' =>

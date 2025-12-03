@@ -21,6 +21,7 @@ use Twilio\InstanceContext;
 use Twilio\Rest\Iam\V1\ApiKeyList;
 use Twilio\Rest\Iam\V1\GetApiKeysList;
 use Twilio\Rest\Iam\V1\NewApiKeyList;
+use Twilio\Rest\Iam\V1\OAuthAppList;
 use Twilio\Rest\Iam\V1\TokenList;
 use Twilio\Version;
 
@@ -28,14 +29,17 @@ use Twilio\Version;
  * @property ApiKeyList $apiKey
  * @property GetApiKeysList $getApiKeys
  * @property NewApiKeyList $newApiKey
+ * @property OAuthAppList $oAuthApps
  * @property TokenList $token
  * @method \Twilio\Rest\Iam\V1\ApiKeyContext apiKey(string $sid)
+ * @method \Twilio\Rest\Iam\V1\OAuthAppContext oAuthApps(string $sid)
  */
 class V1 extends Version
 {
     protected $_apiKey;
     protected $_getApiKeys;
     protected $_newApiKey;
+    protected $_oAuthApps;
     protected $_token;
 
     /**
@@ -71,6 +75,14 @@ class V1 extends Version
             $this->_newApiKey = new NewApiKeyList($this);
         }
         return $this->_newApiKey;
+    }
+
+    protected function getOAuthApps(): OAuthAppList
+    {
+        if (!$this->_oAuthApps) {
+            $this->_oAuthApps = new OAuthAppList($this);
+        }
+        return $this->_oAuthApps;
     }
 
     protected function getToken(): TokenList
