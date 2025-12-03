@@ -114,7 +114,11 @@ class CreateInsightsQuestionnairesCategoryOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            $options['authorization'] = '[REDACTED]';
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateInsightsQuestionnairesCategoryOptions ' . $options . ']';
     }
 }
@@ -151,7 +155,11 @@ class DeleteInsightsQuestionnairesCategoryOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            $options['authorization'] = '[REDACTED]';
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.DeleteInsightsQuestionnairesCategoryOptions ' . $options . ']';
     }
 }
@@ -188,7 +196,11 @@ class ReadInsightsQuestionnairesCategoryOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            $options['authorization'] = '[REDACTED]';
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.ReadInsightsQuestionnairesCategoryOptions ' . $options . ']';
     }
 }
@@ -225,7 +237,11 @@ class UpdateInsightsQuestionnairesCategoryOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            $options['authorization'] = '[REDACTED]';
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateInsightsQuestionnairesCategoryOptions ' . $options . ']';
     }
 }
