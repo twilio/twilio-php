@@ -21,6 +21,7 @@ use Twilio\Values;
 abstract class ComplianceTollfreeInquiriesOptions
 {
     /**
+     * @param string $customerProfileSid The Customer Profile Sid associated with the Account.
      * @param string $businessName The name of the business or organization using the Tollfree number.
      * @param string $businessWebsite The website of the business or organization using the Tollfree number.
      * @param string[] $useCaseCategories The category of the use case for the Tollfree Number. List as many are applicable..
@@ -46,6 +47,7 @@ abstract class ComplianceTollfreeInquiriesOptions
      */
     public static function create(
         
+        string $customerProfileSid = Values::NONE,
         string $businessName = Values::NONE,
         string $businessWebsite = Values::NONE,
         array $useCaseCategories = Values::ARRAY_NONE,
@@ -71,6 +73,7 @@ abstract class ComplianceTollfreeInquiriesOptions
     ): CreateComplianceTollfreeInquiriesOptions
     {
         return new CreateComplianceTollfreeInquiriesOptions(
+            $customerProfileSid,
             $businessName,
             $businessWebsite,
             $useCaseCategories,
@@ -100,6 +103,7 @@ abstract class ComplianceTollfreeInquiriesOptions
 class CreateComplianceTollfreeInquiriesOptions extends Options
     {
     /**
+     * @param string $customerProfileSid The Customer Profile Sid associated with the Account.
      * @param string $businessName The name of the business or organization using the Tollfree number.
      * @param string $businessWebsite The website of the business or organization using the Tollfree number.
      * @param string[] $useCaseCategories The category of the use case for the Tollfree Number. List as many are applicable..
@@ -124,6 +128,7 @@ class CreateComplianceTollfreeInquiriesOptions extends Options
      */
     public function __construct(
         
+        string $customerProfileSid = Values::NONE,
         string $businessName = Values::NONE,
         string $businessWebsite = Values::NONE,
         array $useCaseCategories = Values::ARRAY_NONE,
@@ -147,6 +152,7 @@ class CreateComplianceTollfreeInquiriesOptions extends Options
         bool $skipMessagingUseCase = Values::BOOL_NONE
 
     ) {
+        $this->options['customerProfileSid'] = $customerProfileSid;
         $this->options['businessName'] = $businessName;
         $this->options['businessWebsite'] = $businessWebsite;
         $this->options['useCaseCategories'] = $useCaseCategories;
@@ -168,6 +174,18 @@ class CreateComplianceTollfreeInquiriesOptions extends Options
         $this->options['businessContactPhone'] = $businessContactPhone;
         $this->options['themeSetId'] = $themeSetId;
         $this->options['skipMessagingUseCase'] = $skipMessagingUseCase;
+    }
+
+    /**
+     * The Customer Profile Sid associated with the Account.
+     *
+     * @param string $customerProfileSid The Customer Profile Sid associated with the Account.
+     * @return $this Fluent Builder
+     */
+    public function setCustomerProfileSid(string $customerProfileSid): self
+    {
+        $this->options['customerProfileSid'] = $customerProfileSid;
+        return $this;
     }
 
     /**

@@ -1,6 +1,30 @@
 twilio-php Changelog
 ====================
 
+[2025-12-03] Version 8.9.0
+--------------------------
+**Library - Fix**
+- [PR #894](https://github.com/twilio/twilio-php/pull/894): Regional API domain processing. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Library - Feature**
+- [PR #887](https://github.com/twilio/twilio-php/pull/887): Add support for token based pagination strategy. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Chore**
+- [PR #890](https://github.com/twilio/twilio-php/pull/890): test correct percent encoding for url params. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #891](https://github.com/twilio/twilio-php/pull/891): add patch() to support update and patch operations together. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #889](https://github.com/twilio/twilio-php/pull/889): successful delete on all 2xx status codes. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Add `twiml_session` resource for calls
+- Add `twiml_session` resource for calls
+
+**Monitor**
+- Update default output properties
+
+**Trusthub**
+- Added customer_profile_sid in toll-free initialize api payload.
+
+
 [2025-11-20] Version 8.8.7
 --------------------------
 **Memory**
