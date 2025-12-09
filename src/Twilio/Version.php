@@ -134,7 +134,8 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            "fetch"
         );
     }
 
@@ -154,6 +155,7 @@ abstract class Version {
             $username,
             $password,
             $timeout,
+            "fetch",
             true
         );
     }
@@ -193,7 +195,8 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            "update"
         );
     }
 
@@ -213,6 +216,7 @@ abstract class Version {
             $username,
             $password,
             $timeout,
+            "update",
             true
         );
     }
@@ -233,7 +237,7 @@ abstract class Version {
             $username,
             $password,
             $timeout,
-            false,
+            "delete",
             true
         );
     }
@@ -254,7 +258,7 @@ abstract class Version {
             $username,
             $password,
             $timeout,
-            true,
+            "delete",
             true
         );
     }
@@ -308,7 +312,8 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            "create"
         );
     }
 
@@ -328,6 +333,7 @@ abstract class Version {
             $username,
             $password,
             $timeout,
+            "create",
             true
         );
     }
@@ -338,7 +344,7 @@ abstract class Version {
     public function handleException(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
-                           ?int $timeout = null, ?bool $isApiV1 = false, ?bool $isDelete = false) {
+                           ?int $timeout = null, ?string $operation = "", ?bool $isApiV1 = false) {
         $response = $this->request(
             $method,
             $uri,
@@ -351,14 +357,14 @@ abstract class Version {
         );
 
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            $exceptionHeader = 'Unable to create record';
+            $exceptionHeader = 'Unable to ' . $operation . ' record';
             if ($isApiV1) {
                 throw $this->exceptionV1($response, $exceptionHeader);
             }
             throw $this->exception($response, $exceptionHeader);
         }
 
-        if ($isDelete) {
+        if ($operation === "delete") {
             return true;
         }
 
