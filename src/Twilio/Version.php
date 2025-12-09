@@ -356,7 +356,7 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 400) {
             $exceptionHeader = 'Unable to ' . $operation . ' record';
             if ($isApiV1) {
                 throw $this->exceptionV1($response, $exceptionHeader);
