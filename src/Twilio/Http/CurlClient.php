@@ -74,7 +74,7 @@ class CurlClient implements Client {
 
             return $this->lastResponse;
         } catch (\ErrorException $e) {
-            if (isset($curl) && \is_resource($curl) && PHP_MAJOR_VERSION < 8) {
+            if (PHP_MAJOR_VERSION < 8 && isset($curl) && \is_resource($curl)) {
                 \curl_close($curl);
             }
 
