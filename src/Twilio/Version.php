@@ -3,6 +3,7 @@
 namespace Twilio;
 
 use Twilio\Exceptions\RestException;
+use Twilio\Exceptions\RestExceptionV1;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Response;
 
@@ -82,7 +83,7 @@ abstract class Version {
         $content = $response->getContent();
         if (\is_array($content)) {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
-            $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
+            $code = $content['code'] ?? $response->getStatusCode();
             $moreInfo = $content['more_info'] ?? '';
             $details = $content['details'] ?? [];
             return new RestException($message, $code, $response->getStatusCode(), $moreInfo, $details);
@@ -92,13 +93,40 @@ abstract class Version {
     }
 
     /**
+     * Create the best possible exception for the response as per Twilio API Standard V1.
+     *
+     * Attempts to parse the response for Twilio Standard error as defined in Twilio API Standards V1
+     * and use those to populate the exception, falls back to generic error message and
+     * HTTP status code.
+     *
+     * @param Response $response Error response
+     * @param string $header Header for exception message
+     * @return TwilioException
+     */
+    protected function exceptionV1(Response $response, string $header): TwilioException {
+        $message = '[HTTP ' . $response->getStatusCode() . '] ' . $header;
+
+        $content = $response->getContent();
+        if (\is_array($content)) {
+            $message .= isset($content['message']) ? ': ' . $content['message'] : '';
+            $code = $content['code'] ?? $response->getStatusCode();
+            $httpStatusCode = $content['httpStatusCode'] ?? $response->getStatusCode();
+            $params = $content['params'] ?? [];
+            $userError = $content['userError'] ?? false;
+            return new RestExceptionV1($code, $message, $httpStatusCode, $params, $userError);
+        }
+
+        return new RestExceptionV1($response->getStatusCode(), $message, $response->getStatusCode());
+    }
+
+    /**
      * @throws TwilioException
      */
     public function fetch(string $method, string $uri,
                           array $params = [], array $data = [], array $headers = [],
                           ?string $username = null, ?string $password = null,
                           ?int $timeout = null) {
-        $response = $this->request(
+        return $this->handleException(
             $method,
             $uri,
             $params,
@@ -108,13 +136,26 @@ abstract class Version {
             $password,
             $timeout
         );
+    }
 
-        // 3XX response codes are allowed here to allow for 307 redirect from Deactivations API.
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 400) {
-            throw $this->exception($response, 'Unable to fetch record');
-        }
-
-        return $response->getContent();
+    /**
+     * @throws TwilioException
+     */
+    public function fetchV1(string $method, string $uri,
+                            array $params = [], array $data = [], array $headers = [],
+                            ?string $username = null, ?string $password = null,
+                            ?int $timeout = null) {
+        return $this->handleException(
+            $method,
+            $uri,
+            $params,
+            $data,
+            $headers,
+            $username,
+            $password,
+            $timeout,
+            true
+        );
     }
 
     /**
@@ -130,11 +171,21 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
+    public function patchV1(string $method, string $uri,
+                          array $params = [], array $data = [], array $headers = [],
+                          ?string $username = null, ?string $password = null,
+                          ?int $timeout = null) {
+        return $this->updateV1($method, $uri, $params, $data, $headers, $username, $password, $timeout);
+    }
+
+    /**
+     * @throws TwilioException
+     */
     public function update(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null) {
-        $response = $this->request(
+        return $this->handleException(
             $method,
             $uri,
             $params,
@@ -144,12 +195,26 @@ abstract class Version {
             $password,
             $timeout
         );
+    }
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw $this->exception($response, 'Unable to update record');
-        }
-
-        return $response->getContent();
+    /**
+     * @throws TwilioException
+     */
+    public function updateV1(string $method, string $uri,
+                             array $params = [], array $data = [], array $headers = [],
+                             ?string $username = null, ?string $password = null,
+                             ?int $timeout = null) {
+        return $this->handleException(
+            $method,
+            $uri,
+            $params,
+            $data,
+            $headers,
+            $username,
+            $password,
+            $timeout,
+            true
+        );
     }
 
     /**
@@ -159,7 +224,7 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null): bool {
-        $response = $this->request(
+        return $this->handleException(
             $method,
             $uri,
             $params,
@@ -167,15 +232,31 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            false,
+            true
         );
+    }
 
-        // check for 2xx status code is already present here
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw $this->exception($response, 'Unable to delete record');
-        }
-
-        return true; // if response code is 2XX, deletion was successful
+    /**
+     * @throws TwilioException
+     */
+    public function deleteV1(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null): bool {
+        return $this->handleException(
+            $method,
+            $uri,
+            $params,
+            $data,
+            $headers,
+            $username,
+            $password,
+            $timeout,
+            true,
+            true
+        );
     }
 
     public function readLimits(?int $limit = null, ?int $pageSize = null): array {
@@ -219,6 +300,45 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null) {
+        return $this->handleException(
+            $method,
+            $uri,
+            $params,
+            $data,
+            $headers,
+            $username,
+            $password,
+            $timeout
+        );
+    }
+
+    /**
+     * @throws TwilioException
+     */
+    public function createV1(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null) {
+        return $this->handleException(
+            $method,
+            $uri,
+            $params,
+            $data,
+            $headers,
+            $username,
+            $password,
+            $timeout,
+            true
+        );
+    }
+
+    /**
+     * @throws TwilioException
+     */
+    public function handleException(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null, ?bool $isApiV1 = false, ?bool $isDelete = false) {
         $response = $this->request(
             $method,
             $uri,
@@ -231,7 +351,15 @@ abstract class Version {
         );
 
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw $this->exception($response, 'Unable to create record');
+            $exceptionHeader = 'Unable to create record';
+            if ($isApiV1) {
+                throw $this->exceptionV1($response, $exceptionHeader);
+            }
+            throw $this->exception($response, $exceptionHeader);
+        }
+
+        if ($isDelete) {
+            return true;
         }
 
         return $response->getContent();
