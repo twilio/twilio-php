@@ -40,6 +40,7 @@ abstract class TokenPaginationPage extends Page {
     protected $nextToken;
     protected $previousToken;
     protected $url;
+    protected $queryParams;
     protected $previousPageUrl;
     protected $nextPageUrl;
 
@@ -56,11 +57,15 @@ abstract class TokenPaginationPage extends Page {
         $httpClient = $version->getDomain()->getClient()->getHttpClient();
 
         $this->url = '';
+        $this->queryParams = [];
         if ($httpClient->lastRequest) {
             $fullUrl = $httpClient->lastRequest[CURLOPT_URL];
             // remove query parameters from url
             $parts = explode('?', $fullUrl);
             $this->url = $parts[0];
+            if (count($parts) > 1) {
+                parse_str($parts[1], $this->queryParams); // store existing query params
+            }
         }
 
         $this->key = $this->getMeta('key');
@@ -91,7 +96,7 @@ abstract class TokenPaginationPage extends Page {
      * @return string The constructed query string.
      */
     protected function getQueryString(?string $pageToken): string {
-        $params = [];
+        $params = $this->queryParams; // initialize with existing query params
         if ($this->pageSize) {
             $params['pageSize'] = $this->pageSize;
         }
