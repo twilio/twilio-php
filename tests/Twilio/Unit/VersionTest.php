@@ -5,6 +5,8 @@ namespace Twilio\Tests\Unit;
 
 use Twilio\Domain;
 use Twilio\Exceptions\RestException;
+use Twilio\Exceptions\RestExceptionV1;
+use Twilio\Exceptions\TwilioException;
 use Twilio\Http\CurlClient;
 use Twilio\Http\Response;
 use Twilio\Page;
@@ -387,6 +389,30 @@ class VersionTest extends UnitTest {
             self::assertEquals('[HTTP 400] Unable to fetch record', $rex->getMessage());
             self::assertEquals('', $rex->getMoreInfo());
             self::assertEmpty($rex->getDetails());
+        }
+    }
+
+    public function testRestExceptionV1(): void {
+        $this->curlClient
+            ->expects(self::once())
+            ->method('request')
+            ->willReturn(new Response(404, '{
+                                    "code": 20404,
+                                    "message": "The requested resource was not found",
+                                    "httpStatusCode": 404,
+                                    "userError": true,
+                                    "params": {
+                                        "twilioErrorCodeUrl": "https://www.twilio.com/docs/errors/20404" }
+                                    }'));
+        try {
+            $this->version->fetchV1('get', 'http://foo.bar');
+            self::fail();
+        }catch (RestExceptionV1 $rex){
+            self::assertEquals(20404, $rex->getCode());
+            self::assertEquals(404, $rex->getHttpStatusCode());
+            self::assertEquals('[HTTP 404] Unable to fetch record: The requested resource was not found', $rex->getMessage());
+            self::assertEquals(['twilioErrorCodeUrl' => 'https://www.twilio.com/docs/errors/20404'], $rex->getParams());
+            self::assertTrue($rex->getUserError());
         }
     }
 
