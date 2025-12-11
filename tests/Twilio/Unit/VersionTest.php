@@ -3,6 +3,7 @@
 
 namespace Twilio\Tests\Unit;
 
+use Twilio\ApiV1Version;
 use Twilio\Domain;
 use Twilio\Exceptions\RestException;
 use Twilio\Exceptions\RestExceptionV1;
@@ -405,7 +406,8 @@ class VersionTest extends UnitTest {
                                         "twilioErrorCodeUrl": "https://www.twilio.com/docs/errors/20404" }
                                     }'));
         try {
-            $this->version->fetchV1('get', 'http://foo.bar');
+            $this->version = new ApiV1Version($this->version->getDomain(), $this->version->version);
+            $this->version->fetch('get', 'http://foo.bar');
             self::fail();
         }catch (RestExceptionV1 $rex){
             self::assertEquals(20404, $rex->getCode());
@@ -422,7 +424,8 @@ class VersionTest extends UnitTest {
             ->method('request')
             ->willReturn(new Response(400, ''));
         try {
-            $this->version->fetchV1('get', 'http://foo.bar');
+            $this->version = new ApiV1Version($this->version->getDomain(), $this->version->version);
+            $this->version->fetch('get', 'http://foo.bar');
             self::fail();
         }catch (RestExceptionV1 $rex){
             self::assertEquals(400, $rex->getCode());
@@ -431,62 +434,6 @@ class VersionTest extends UnitTest {
             self::assertEmpty($rex->getParams());
             self::assertFalse($rex->getUserError());
         }
-    }
-
-    public function testCreateV1(): void {
-        $this->curlClient
-            ->expects(self::once())
-            ->method('request')
-            ->willReturn(new Response(201, '{
-                                    "sid": "CR123",
-                                    "status": "created"
-                                    }'));
-        $response = $this->version->createV1('post', 'http://foo.bar', ['param1' => 'value1']);
-        self::assertEquals('CR123', $response['sid']);
-        self::assertEquals('created', $response['status']);
-    }
-
-    public function testUpdateV1(): void {
-        $this->curlClient
-            ->expects(self::once())
-            ->method('request')
-            ->willReturn(new Response(200, '{
-                                    "sid": "CR123",
-                                    "param1": "value1",
-                                    "param2": "value2",
-                                    "status": "updated"
-                                    }'));
-        $response = $this->version->updateV1('post', 'http://foo.bar/CR123', ['param1' => 'value1', 'param2' => 'value2']);
-        self::assertEquals('CR123', $response['sid']);
-        self::assertEquals('value1', $response['param1']);
-        self::assertEquals('value2', $response['param2']);
-        self::assertEquals('updated', $response['status']);
-    }
-
-    public function testDeleteV1(): void {
-        $this->curlClient
-            ->expects(self::once())
-            ->method('request')
-            ->willReturn(new Response(204, ''));
-        $response = $this->version->deleteV1('delete', 'http://foo.bar/CR123');
-        self::assertTrue($response);
-    }
-
-    public function testPatchV1(): void {
-        $this->curlClient
-            ->expects(self::once())
-            ->method('request')
-            ->willReturn(new Response(200, '{
-                                    "sid": "CR123",
-                                    "param1": "value3",
-                                    "param2": "value2",
-                                    "status": "patched"
-                                    }'));
-        $response = $this->version->patchV1('patch', 'http://foo.bar/CR123', ['param1' => 'value3']);
-        self::assertEquals('CR123', $response['sid']);
-        self::assertEquals('value3', $response['param1']);
-        self::assertEquals('value2', $response['param2']);
-        self::assertEquals('patched', $response['status']);
     }
 
     public function absoluteUrlProvider(): array {
