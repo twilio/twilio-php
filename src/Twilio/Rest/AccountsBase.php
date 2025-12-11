@@ -30,7 +30,7 @@ class AccountsBase extends Domain {
     public function __construct(Client $client) {
         parent::__construct($client);
 
-        $this->baseUrl = 'https://accounts.twilio.com';
+        $this->baseUrl = 'https://accounts.twilio.com'; //update local url here
     }
 
 
