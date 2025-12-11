@@ -25,6 +25,7 @@ use Twilio\Rest\Accounts\V1\CredentialList;
 use Twilio\Rest\Accounts\V1\MessagingGeopermissionsList;
 use Twilio\Rest\Accounts\V1\SafelistList;
 use Twilio\Rest\Accounts\V1\SecondaryAuthTokenList;
+use Twilio\Rest\Accounts\V1\ServiceList;
 use Twilio\Version;
 
 /**
@@ -35,6 +36,7 @@ use Twilio\Version;
  * @property MessagingGeopermissionsList $messagingGeopermissions
  * @property SafelistList $safelist
  * @property SecondaryAuthTokenList $secondaryAuthToken
+ * @property ServiceList $service
  */
 class V1 extends Version
 {
@@ -45,6 +47,8 @@ class V1 extends Version
     protected $_messagingGeopermissions;
     protected $_safelist;
     protected $_secondaryAuthToken;
+    protected $_service;
+
 
     /**
      * Construct the V1 version of Accounts
@@ -111,6 +115,14 @@ class V1 extends Version
             $this->_secondaryAuthToken = new SecondaryAuthTokenList($this);
         }
         return $this->_secondaryAuthToken;
+    }
+
+    protected function getService(): ServiceList
+    {
+        if (!$this->_service) {
+            $this->_service = new ServiceList($this);
+        }
+        return $this->_service;
     }
 
     /**
