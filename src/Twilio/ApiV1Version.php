@@ -13,9 +13,9 @@ class ApiV1Version extends Version {
 
     /**
      * @param Domain $domain
-     * @param string $version
+     * @param ?string $version
      */
-    public function __construct(Domain $domain, string $version) {
+    public function __construct(Domain $domain, ?string $version) {
         parent::__construct($domain);
         $this->version = $version;
         $this->apiVersion = "V1";
