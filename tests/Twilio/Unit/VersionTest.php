@@ -198,6 +198,12 @@ class VersionTest extends UnitTest {
      * @dataProvider streamProvider
      */
     public function testStreamWithTokenPagination(string $message, ?int $limit, ?int $pageLimit, int $expectedCount): void {
+        $uri = '/Accounts/AC123/Messages.json';
+
+        $this->curlClient->lastRequest = [
+            CURLOPT_URL => $uri
+        ];
+
         $this->curlClient
             ->method('request')
             ->will(self::onConsecutiveCalls(
@@ -221,7 +227,51 @@ class VersionTest extends UnitTest {
                     }')
             ));
 
-        $response = $this->version->page('GET', '/Accounts/AC123/Messages.json');
+        $response = $this->version->page('GET', $uri);
+        $page = new TestTokenPage($this->version, $response);
+        $messages = $this->version->stream($page, $limit, $pageLimit);
+
+        self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
+    }
+
+    /**
+     * @param string $message Case message to display on assertion error
+     * @param int|null $limit Limit provided by the user
+     * @param int|null $pageLimit Page limit provided by the user
+     * @param int $expectedCount Expected record count returned by stream
+     * @dataProvider streamProvider
+     */
+    public function testStreamWithTokenPaginationWithQueryParams(string $message, ?int $limit, ?int $pageLimit, int $expectedCount): void {
+        $uri = '/Accounts/AC123/Messages.json?param1=value1';
+
+        $this->curlClient->lastRequest = [
+            CURLOPT_URL => $uri
+        ];
+
+        $this->curlClient
+            ->method('request')
+            ->will(self::onConsecutiveCalls(
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token1", "previousToken": null},
+                        "messages": [{"body": "payload0"}, {"body": "payload1"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token2", "previousToken": "token0"},
+                        "messages": [{"body": "payload2"}, {"body": "payload3"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 1, "nextToken": null, "previousToken": "token1"},
+                        "messages": [{"body": "payload4"}]
+                    }')
+            ));
+
+        $response = $this->version->page('GET', $uri);
         $page = new TestTokenPage($this->version, $response);
         $messages = $this->version->stream($page, $limit, $pageLimit);
 
