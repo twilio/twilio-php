@@ -20,7 +20,7 @@ abstract class Version {
     /**
      * @var string $version
      */
-    protected $version;
+    public $version;
 
     /**
      * @param Domain $domain
@@ -82,7 +82,7 @@ abstract class Version {
         $content = $response->getContent();
         if (\is_array($content)) {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
-            $code = isset($content['code']) ? $content['code'] : $response->getStatusCode();
+            $code = $content['code'] ?? $response->getStatusCode();
             $moreInfo = $content['more_info'] ?? '';
             $details = $content['details'] ?? [];
             return new RestException($message, $code, $response->getStatusCode(), $moreInfo, $details);
@@ -98,7 +98,7 @@ abstract class Version {
                           array $params = [], array $data = [], array $headers = [],
                           ?string $username = null, ?string $password = null,
                           ?int $timeout = null) {
-        $response = $this->request(
+        $response = $this->handleException(
             $method,
             $uri,
             $params,
@@ -106,14 +106,9 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            "fetch"
         );
-
-        // 3XX response codes are allowed here to allow for 307 redirect from Deactivations API.
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 400) {
-            throw $this->exception($response, 'Unable to fetch record');
-        }
-
         return $response->getContent();
     }
 
@@ -134,7 +129,7 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null) {
-        $response = $this->request(
+        $response = $this->handleException(
             $method,
             $uri,
             $params,
@@ -142,13 +137,9 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            "update"
         );
-
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw $this->exception($response, 'Unable to update record');
-        }
-
         return $response->getContent();
     }
 
@@ -159,7 +150,7 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null): bool {
-        $response = $this->request(
+        $this->handleException(
             $method,
             $uri,
             $params,
@@ -167,15 +158,10 @@ abstract class Version {
             $headers,
             $username,
             $password,
-            $timeout
+            $timeout,
+            "delete"
         );
-
-        // check for 2xx status code is already present here
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw $this->exception($response, 'Unable to delete record');
-        }
-
-        return true; // if response code is 2XX, deletion was successful
+        return true;
     }
 
     public function readLimits(?int $limit = null, ?int $pageSize = null): array {
@@ -219,6 +205,28 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null) {
+        $response = $this->handleException(
+            $method,
+            $uri,
+            $params,
+            $data,
+            $headers,
+            $username,
+            $password,
+            $timeout,
+            "create"
+        );
+        return $response->getContent();
+    }
+
+    /**
+     * @throws TwilioException
+     */
+    public function handleException(string $method, string $uri,
+                           array $params = [], array $data = [], array $headers = [],
+                           ?string $username = null, ?string $password = null,
+                           ?int $timeout = null, ?string $operation = ""): Response
+    {
         $response = $this->request(
             $method,
             $uri,
@@ -230,11 +238,12 @@ abstract class Version {
             $timeout
         );
 
-        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
-            throw $this->exception($response, 'Unable to create record');
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 400) {
+            $exceptionHeader = 'Unable to ' . $operation . ' record';
+            throw $this->exception($response, $exceptionHeader);
         }
 
-        return $response->getContent();
+        return $response;
     }
 
     public function getDomain(): Domain {
