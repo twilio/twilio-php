@@ -109,7 +109,7 @@ class WorkerContext extends InstanceContext
 
         return new WorkerInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
@@ -144,7 +144,7 @@ class WorkerContext extends InstanceContext
 
         return new WorkerInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );

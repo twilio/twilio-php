@@ -81,7 +81,7 @@ class ActivityContext extends InstanceContext
 
         return new ActivityInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
@@ -110,7 +110,7 @@ class ActivityContext extends InstanceContext
 
         return new ActivityInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
