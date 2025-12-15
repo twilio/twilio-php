@@ -98,7 +98,7 @@ abstract class Version {
                           array $params = [], array $data = [], array $headers = [],
                           ?string $username = null, ?string $password = null,
                           ?int $timeout = null) {
-        $response = $this->handleException(
+        $response = $this->handleRequest(
             $method,
             $uri,
             $params,
@@ -129,7 +129,7 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null) {
-        $response = $this->handleException(
+        $response = $this->handleRequest(
             $method,
             $uri,
             $params,
@@ -150,7 +150,7 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null): bool {
-        $this->handleException(
+        $this->handleRequest(
             $method,
             $uri,
             $params,
@@ -205,7 +205,7 @@ abstract class Version {
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null) {
-        $response = $this->handleException(
+        $response = $this->handleRequest(
             $method,
             $uri,
             $params,
@@ -222,7 +222,7 @@ abstract class Version {
     /**
      * @throws TwilioException
      */
-    public function handleException(string $method, string $uri,
+    public function handleRequest(string $method, string $uri,
                            array $params = [], array $data = [], array $headers = [],
                            ?string $username = null, ?string $password = null,
                            ?int $timeout = null, ?string $operation = ""): Response
