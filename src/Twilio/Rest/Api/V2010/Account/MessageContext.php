@@ -18,13 +18,15 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
-use Twilio\ListResource;
-use Twilio\Options;
-use Twilio\Values;
-use Twilio\Version;
+use Twilio\Http\Response;
 use Twilio\InstanceContext;
+use Twilio\ListResource;
+use Twilio\Metadata\ResourceMetadata;
+use Twilio\Options;
 use Twilio\Rest\Api\V2010\Account\Message\FeedbackList;
 use Twilio\Rest\Api\V2010\Account\Message\MediaList;
+use Twilio\Values;
+use Twilio\Version;
 
 
 /**
@@ -65,6 +67,15 @@ class MessageContext extends InstanceContext
     }
 
     /**
+     * @throws TwilioException
+     */
+    private function _delete(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers);
+    }
+
+    /**
      * Delete the MessageInstance
      *
      * @return bool True if delete succeeds, false otherwise
@@ -72,9 +83,44 @@ class MessageContext extends InstanceContext
      */
     public function delete(): bool
     {
+        $response = $this->_delete();
+        return $this->makeInstance($response);
+    }
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+    /**
+     * @throws TwilioException
+     */
+    public function deleteWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_delete();
+
+        return new ResourceMetadata(
+            $response->getContent(),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+    private function makeInstance($response)
+    {
+        if($response->getContent()) {
+            return new MessageInstance(
+                $this->version,
+                $response->getContent(),
+                $this->solution['accountSid'],
+                $this->solution['sid']
+            );
+        }
+        return true;
+    }
+
+    /**
+     * @throws TwilioException
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers);
     }
 
 
@@ -87,15 +133,47 @@ class MessageContext extends InstanceContext
     public function fetch(): MessageInstance
     {
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
+        $response = $this->_fetch();
 
-        return new MessageInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['sid']
+        return $this->makeInstance($response);
+    }
+
+    /**
+     * Fetch the MessageInstance
+     *
+     * @return ResourceMetadata Fetched MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+
+        $response = $this->_fetch();
+
+        $resource = $this->makeInstance($response);
+
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
+    }
+
+    /**
+     * @throws TwilioException
+     */
+    private function _update(array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $data = Values::of([
+            'Body' =>
+                $options['body'],
+            'Status' =>
+                $options['status'],
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers);
     }
 
 
@@ -109,23 +187,25 @@ class MessageContext extends InstanceContext
     public function update(array $options = []): MessageInstance
     {
 
-        $options = new Values($options);
+        $response = $this->_update($options);
 
-        $data = Values::of([
-            'Body' =>
-                $options['body'],
-            'Status' =>
-                $options['status'],
-        ]);
+        return $this->makeInstance($response);
+    }
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+    /**
+     * @throws TwilioException
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
 
-        return new MessageInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['sid']
+        $response = $this->_update($options);
+
+        $resource = $this->makeInstance($response);
+
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
