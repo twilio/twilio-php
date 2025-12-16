@@ -22,6 +22,8 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\VoipList;
 use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\NationalList;
 use Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileList;
@@ -78,6 +80,18 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the AvailablePhoneNumberCountryInstance
      *
      * @return AvailablePhoneNumberCountryInstance Fetched AvailablePhoneNumberCountryInstance
@@ -85,15 +99,35 @@ class AvailablePhoneNumberCountryContext extends InstanceContext
      */
     public function fetch(): AvailablePhoneNumberCountryInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new AvailablePhoneNumberCountryInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['countryCode']
+        );
+        
+    }
+
+    /**
+     * Fetch the AvailablePhoneNumberCountryInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new AvailablePhoneNumberCountryInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['countryCode']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

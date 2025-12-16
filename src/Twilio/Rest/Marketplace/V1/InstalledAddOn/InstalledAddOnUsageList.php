@@ -20,6 +20,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class InstalledAddOnUsageList extends ListResource
@@ -48,6 +50,20 @@ class InstalledAddOnUsageList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $marketplaceV1InstalledAddOnInstalledAddOnUsage->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the InstalledAddOnUsageInstance
      *
      * @param MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage
@@ -56,15 +72,34 @@ class InstalledAddOnUsageList extends ListResource
      */
     public function create(MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage): InstalledAddOnUsageInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $marketplaceV1InstalledAddOnInstalledAddOnUsage->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $marketplaceV1InstalledAddOnInstalledAddOnUsage);
         return new InstalledAddOnUsageInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['installedAddOnSid']
+        );
+        
+    }
+
+    /**
+     * Create the InstalledAddOnUsageInstance with Metadata
+     *
+     * @param MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(MarketplaceV1InstalledAddOnInstalledAddOnUsage $marketplaceV1InstalledAddOnInstalledAddOnUsage): ResourceMetadata
+    {
+        $response = $this->_create( $marketplaceV1InstalledAddOnInstalledAddOnUsage);
+        $resource = new InstalledAddOnUsageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['installedAddOnSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

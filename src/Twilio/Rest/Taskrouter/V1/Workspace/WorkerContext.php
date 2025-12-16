@@ -23,6 +23,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelList;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationList;
@@ -79,6 +81,21 @@ class WorkerContext extends InstanceContext
     }
 
     /**
+     * Helper function for Delete
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _delete(array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
+    }
+
+    /**
      * Delete the WorkerInstance
      *
      * @param array|Options $options Optional Arguments
@@ -87,13 +104,41 @@ class WorkerContext extends InstanceContext
      */
     public function delete(array $options = []): bool
     {
-
-        $options = new Values($options);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'If-Match' => $options['ifMatch']]);
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+        $response = $this->_delete($options);
+        
+        return true;
     }
 
+    /**
+     * Delete the WorkerInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function deleteWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_delete($options);
+        
+        return new ResourceMetadata(
+            null,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
 
     /**
      * Fetch the WorkerInstance
@@ -103,29 +148,48 @@ class WorkerContext extends InstanceContext
      */
     public function fetch(): WorkerInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new WorkerInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Fetch the WorkerInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new WorkerInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the WorkerInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return WorkerInstance Updated WorkerInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkerInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -140,13 +204,48 @@ class WorkerContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the WorkerInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return WorkerInstance Updated WorkerInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): WorkerInstance
+    {
+        $response = $this->_update($options);
         return new WorkerInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the WorkerInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new WorkerInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

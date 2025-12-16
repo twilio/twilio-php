@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ChannelContext extends InstanceContext
@@ -54,15 +56,14 @@ class ChannelContext extends InstanceContext
     }
 
     /**
-     * Update the ChannelInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return ChannelInstance Updated ChannelInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ChannelInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -73,13 +74,48 @@ class ChannelContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the ChannelInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ChannelInstance Updated ChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): ChannelInstance
+    {
+        $response = $this->_update($options);
         return new ChannelInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the ChannelInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new ChannelInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

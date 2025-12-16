@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -60,6 +62,18 @@ class ReservationContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the ReservationInstance
      *
      * @return ReservationInstance Fetched ReservationInstance
@@ -67,30 +81,50 @@ class ReservationContext extends InstanceContext
      */
     public function fetch(): ReservationInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new ReservationInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['taskSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Fetch the ReservationInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new ReservationInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['taskSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the ReservationInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return ReservationInstance Updated ReservationInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ReservationInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -205,14 +239,50 @@ class ReservationContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the ReservationInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ReservationInstance Updated ReservationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): ReservationInstance
+    {
+        $response = $this->_update($options);
         return new ReservationInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['taskSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the ReservationInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new ReservationInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['taskSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
