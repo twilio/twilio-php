@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class UsAppToPersonUsecaseList extends ListResource
@@ -49,15 +51,14 @@ class UsAppToPersonUsecaseList extends ListResource
     }
 
     /**
-     * Fetch the UsAppToPersonUsecaseInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return UsAppToPersonUsecaseInstance Fetched UsAppToPersonUsecaseInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): UsAppToPersonUsecaseInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -66,12 +67,46 @@ class UsAppToPersonUsecaseList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the UsAppToPersonUsecaseInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return UsAppToPersonUsecaseInstance Fetched UsAppToPersonUsecaseInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): UsAppToPersonUsecaseInstance
+    {
+        $response = $this->_fetch($options);
         return new UsAppToPersonUsecaseInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['messagingServiceSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the UsAppToPersonUsecaseInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new UsAppToPersonUsecaseInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['messagingServiceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Rest\Insights\V1\Room\ParticipantList;
 
 
@@ -56,6 +58,18 @@ class RoomContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the RoomInstance
      *
      * @return RoomInstance Fetched RoomInstance
@@ -63,14 +77,33 @@ class RoomContext extends InstanceContext
      */
     public function fetch(): RoomInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new RoomInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['roomSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the RoomInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new RoomInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['roomSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

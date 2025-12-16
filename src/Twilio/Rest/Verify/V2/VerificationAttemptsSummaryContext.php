@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,15 +47,14 @@ class VerificationAttemptsSummaryContext extends InstanceContext
     }
 
     /**
-     * Fetch the VerificationAttemptsSummaryInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return VerificationAttemptsSummaryInstance Fetched VerificationAttemptsSummaryInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): VerificationAttemptsSummaryInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -72,11 +73,44 @@ class VerificationAttemptsSummaryContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the VerificationAttemptsSummaryInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return VerificationAttemptsSummaryInstance Fetched VerificationAttemptsSummaryInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): VerificationAttemptsSummaryInstance
+    {
+        $response = $this->_fetch($options);
         return new VerificationAttemptsSummaryInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Fetch the VerificationAttemptsSummaryInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new VerificationAttemptsSummaryInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

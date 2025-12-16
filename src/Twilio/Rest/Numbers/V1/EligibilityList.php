@@ -20,6 +20,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class EligibilityList extends ListResource
@@ -42,6 +44,19 @@ class EligibilityList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $body->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the EligibilityInstance
      *
      * @return EligibilityInstance Created EligibilityInstance
@@ -49,14 +64,31 @@ class EligibilityList extends ListResource
      */
     public function create(): EligibilityInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $body->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create();
         return new EligibilityInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the EligibilityInstance with Metadata
+     *
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_create();
+        $resource = new EligibilityInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
