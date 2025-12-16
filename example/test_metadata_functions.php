@@ -299,6 +299,6 @@ $messageSid = getenv('MESSAGE_SID');
 //print "------------------------------------------------------------------------------------------------------\n";
 //streamMessageWithMetadata($client, $to);
 
-//readMessage($client, $to);
-//print "------------------------------------------------------------------------------------------------------\n";
-//readMessageWithMetadata($client, $to);
+readMessage($client, $to);
+print "------------------------------------------------------------------------------------------------------\n";
+readMessageWithMetadata($client, $to);
