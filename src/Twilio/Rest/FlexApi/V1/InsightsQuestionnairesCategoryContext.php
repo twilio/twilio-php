@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class InsightsQuestionnairesCategoryContext extends InstanceContext
@@ -49,6 +51,21 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
     }
 
     /**
+     * Helper function for Delete
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _delete(array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
+    }
+
+    /**
      * Delete the InsightsQuestionnairesCategoryInstance
      *
      * @param array|Options $options Optional Arguments
@@ -57,13 +74,50 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
      */
     public function delete(array $options = []): bool
     {
-
-        $options = new Values($options);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' , 'Authorization' => $options['authorization']]);
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+        $response = $this->_delete($options);
+        
+        return true;
     }
 
+    /**
+     * Delete the InsightsQuestionnairesCategoryInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function deleteWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_delete($options);
+        
+        return new ResourceMetadata(
+            null,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
+     * Helper function for Update
+     *
+     * @param string $name The name of this category.
+     * @param array|Options $options Optional Arguments
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _update(string $name, array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $data = Values::of([
+            'Name' =>
+                $name,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
     /**
      * Update the InsightsQuestionnairesCategoryInstance
@@ -75,21 +129,35 @@ class InsightsQuestionnairesCategoryContext extends InstanceContext
      */
     public function update(string $name, array $options = []): InsightsQuestionnairesCategoryInstance
     {
-
-        $options = new Values($options);
-
-        $data = Values::of([
-            'Name' =>
-                $name,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_update( $name, $options);
         return new InsightsQuestionnairesCategoryInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['categorySid']
+        );
+        
+    }
+
+    /**
+     * Update the InsightsQuestionnairesCategoryInstance with Metadata
+     *
+     * @param string $name The name of this category.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(string $name, array $options = []): ResourceMetadata
+    {
+        $response = $this->_update( $name, $options);
+        $resource = new InsightsQuestionnairesCategoryInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['categorySid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

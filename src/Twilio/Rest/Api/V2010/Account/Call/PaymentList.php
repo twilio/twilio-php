@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -56,17 +58,16 @@ class PaymentList extends ListResource
     }
 
     /**
-     * Create the PaymentInstance
+     * Helper function for Create
      *
      * @param string $idempotencyKey A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
      * @param string $statusCallback Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
      * @param array|Options $options Optional Arguments
-     * @return PaymentInstance Created PaymentInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance
+    private function _create(string $idempotencyKey, string $statusCallback, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -105,13 +106,52 @@ class PaymentList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the PaymentInstance
+     *
+     * @param string $idempotencyKey A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
+     * @param string $statusCallback Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
+     * @param array|Options $options Optional Arguments
+     * @return PaymentInstance Created PaymentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $idempotencyKey, string $statusCallback, array $options = []): PaymentInstance
+    {
+        $response = $this->_create( $idempotencyKey,  $statusCallback, $options);
         return new PaymentInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Create the PaymentInstance with Metadata
+     *
+     * @param string $idempotencyKey A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
+     * @param string $statusCallback Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $idempotencyKey, string $statusCallback, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $idempotencyKey,  $statusCallback, $options);
+        $resource = new PaymentInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class NumberContext extends InstanceContext
@@ -49,15 +51,14 @@ class NumberContext extends InstanceContext
     }
 
     /**
-     * Fetch the NumberInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return NumberInstance Fetched NumberInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): NumberInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -66,12 +67,46 @@ class NumberContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the NumberInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return NumberInstance Fetched NumberInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): NumberInstance
+    {
+        $response = $this->_fetch($options);
         return new NumberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['destinationNumber']
+        );
+        
+    }
+
+    /**
+     * Fetch the NumberInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new NumberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['destinationNumber']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

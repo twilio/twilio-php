@@ -20,6 +20,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ReferralConversionList extends ListResource
@@ -42,6 +44,20 @@ class ReferralConversionList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param CreateReferralConversionRequest $createReferralConversionRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(CreateReferralConversionRequest $createReferralConversionRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $createReferralConversionRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ReferralConversionInstance
      *
      * @param CreateReferralConversionRequest $createReferralConversionRequest
@@ -50,14 +66,32 @@ class ReferralConversionList extends ListResource
      */
     public function create(CreateReferralConversionRequest $createReferralConversionRequest): ReferralConversionInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $createReferralConversionRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $createReferralConversionRequest);
         return new ReferralConversionInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ReferralConversionInstance with Metadata
+     *
+     * @param CreateReferralConversionRequest $createReferralConversionRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(CreateReferralConversionRequest $createReferralConversionRequest): ResourceMetadata
+    {
+        $response = $this->_create( $createReferralConversionRequest);
+        $resource = new ReferralConversionInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

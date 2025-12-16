@@ -192,11 +192,7 @@ class CreateCredentialOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['apiKey'])) {
-            $options['apiKey'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V2.CreateCredentialOptions ' . $options . ']';
     }
 }
@@ -311,11 +307,7 @@ class UpdateCredentialOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['apiKey'])) {
-            $options['apiKey'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Chat.V2.UpdateCredentialOptions ' . $options . ']';
     }
 }
