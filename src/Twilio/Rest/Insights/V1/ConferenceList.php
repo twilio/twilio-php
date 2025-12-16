@@ -194,6 +194,7 @@ class ConferenceList extends ListResource
                 $options['detectedIssues'],
             'EndReason' =>
                 $options['endReason'],
+                                                                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

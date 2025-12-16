@@ -274,6 +274,7 @@ class TaskQueueList extends ListResource
                 $options['workerSid'],
             'Ordering' =>
                 $options['ordering'],
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

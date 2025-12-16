@@ -250,6 +250,7 @@ class BrandVettingList extends ListResource
         $params = Values::of([
             'VettingProvider' =>
                 $options['vettingProvider'],
+            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

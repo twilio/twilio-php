@@ -247,6 +247,7 @@ class CallSummariesList extends ListResource
                 $options['businessProfileBundleSid'],
             'BusinessProfileType' =>
                 $options['businessProfileType'],
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

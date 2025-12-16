@@ -183,6 +183,7 @@ class RegulationList extends ListResource
                 $options['numberType'],
             'IncludeConstraints' =>
                 Serialize::booleanToString($options['includeConstraints']),
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

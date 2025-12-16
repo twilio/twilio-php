@@ -185,6 +185,7 @@ class RoomList extends ListResource
                 Serialize::iso8601DateTime($options['createdAfter']),
             'CreatedBefore' =>
                 Serialize::iso8601DateTime($options['createdBefore']),
+                                                                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

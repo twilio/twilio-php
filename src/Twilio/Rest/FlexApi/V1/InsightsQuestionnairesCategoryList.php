@@ -232,8 +232,6 @@ class InsightsQuestionnairesCategoryList extends ListResource
     {
 
         $params = Values::of([
-            'Authorization' =>
-                $options['authorization'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

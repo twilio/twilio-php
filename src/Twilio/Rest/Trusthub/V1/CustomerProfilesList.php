@@ -256,6 +256,7 @@ class CustomerProfilesList extends ListResource
                 $options['friendlyName'],
             'PolicySid' =>
                 $options['policySid'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -246,6 +246,7 @@ class SubscriptionList extends ListResource
         $params = Values::of([
             'SinkSid' =>
                 $options['sinkSid'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

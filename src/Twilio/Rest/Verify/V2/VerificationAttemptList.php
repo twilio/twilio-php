@@ -191,6 +191,7 @@ class VerificationAttemptList extends ListResource
                 $options['verificationSid'],
             'Status' =>
                 $options['status'],
+                                                                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

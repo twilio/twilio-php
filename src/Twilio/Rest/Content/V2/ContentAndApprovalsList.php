@@ -193,6 +193,7 @@ class ContentAndApprovalsList extends ListResource
                 Serialize::map($options['contentType'], function ($e) { return $e; }),
             'ChannelEligibility' =>
                 Serialize::map($options['channelEligibility'], function ($e) { return $e; }),
+                                                                                                                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -273,6 +273,7 @@ class BindingList extends ListResource
                 Serialize::map($options['identity'], function ($e) { return $e; }),
             'Tag' =>
                 Serialize::map($options['tag'], function ($e) { return $e; }),
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

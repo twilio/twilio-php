@@ -360,6 +360,7 @@ class ParticipantList extends ListResource
                 Serialize::booleanToString($options['hold']),
             'Coaching' =>
                 Serialize::booleanToString($options['coaching']),
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

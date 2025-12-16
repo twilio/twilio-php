@@ -193,6 +193,7 @@ class MediaList extends ListResource
                 Serialize::iso8601DateTime($options['dateCreated']),
             'DateCreated>' =>
                 Serialize::iso8601DateTime($options['dateCreatedAfter']),
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

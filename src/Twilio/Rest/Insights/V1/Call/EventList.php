@@ -182,6 +182,7 @@ class EventList extends ListResource
         $params = Values::of([
             'Edge' =>
                 $options['edge'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

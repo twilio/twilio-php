@@ -231,6 +231,7 @@ class ChannelsSenderList extends ListResource
         $params = Values::of([
             'Channel' =>
                 $options['channel'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

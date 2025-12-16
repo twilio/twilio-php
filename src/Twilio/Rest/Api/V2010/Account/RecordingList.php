@@ -193,6 +193,7 @@ class RecordingList extends ListResource
                 $options['conferenceSid'],
             'IncludeSoftDeleted' =>
                 Serialize::booleanToString($options['includeSoftDeleted']),
+                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

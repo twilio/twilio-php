@@ -258,6 +258,7 @@ class CommandList extends ListResource
                 $options['status'],
             'Direction' =>
                 $options['direction'],
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

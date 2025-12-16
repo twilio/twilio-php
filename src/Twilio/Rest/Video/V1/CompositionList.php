@@ -263,6 +263,7 @@ class CompositionList extends ListResource
                 Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'RoomSid' =>
                 $options['roomSid'],
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

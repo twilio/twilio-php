@@ -191,6 +191,7 @@ class UsageRecordList extends ListResource
                 Serialize::iso8601DateTime($options['startTime']),
             'EndTime' =>
                 Serialize::iso8601DateTime($options['endTime']),
+                                                                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

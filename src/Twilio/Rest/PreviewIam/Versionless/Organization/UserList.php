@@ -239,6 +239,7 @@ class UserList extends ListResource
         $params = Values::of([
             'filter' =>
                 $options['filter'],
+            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

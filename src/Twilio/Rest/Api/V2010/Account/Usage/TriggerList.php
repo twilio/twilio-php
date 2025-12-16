@@ -270,6 +270,7 @@ class TriggerList extends ListResource
                 $options['triggerBy'],
             'UsageCategory' =>
                 $options['usageCategory'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

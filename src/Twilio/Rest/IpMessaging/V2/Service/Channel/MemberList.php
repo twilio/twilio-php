@@ -269,6 +269,7 @@ class MemberList extends ListResource
         $params = Values::of([
             'Identity' =>
                 Serialize::map($options['identity'], function ($e) { return $e; }),
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

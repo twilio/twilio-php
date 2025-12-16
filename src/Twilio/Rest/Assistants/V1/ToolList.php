@@ -231,6 +231,7 @@ class ToolList extends ListResource
         $params = Values::of([
             'AssistantId' =>
                 $options['assistantId'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

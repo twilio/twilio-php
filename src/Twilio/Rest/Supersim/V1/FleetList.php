@@ -257,6 +257,7 @@ class FleetList extends ListResource
         $params = Values::of([
             'NetworkAccessProfile' =>
                 $options['networkAccessProfile'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

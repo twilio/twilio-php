@@ -272,6 +272,7 @@ class SyncMapItemList extends ListResource
                 $options['from'],
             'Bounds' =>
                 $options['bounds'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

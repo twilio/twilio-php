@@ -269,6 +269,7 @@ class InsightsAssessmentsCommentList extends ListResource
                 $options['agentId'],
             'Authorization' =>
                 $options['authorization'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

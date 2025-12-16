@@ -178,6 +178,7 @@ class InsightsConversationsList extends ListResource
                 $options['segmentId'],
             'Authorization' =>
                 $options['authorization'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

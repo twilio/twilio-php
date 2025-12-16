@@ -181,6 +181,7 @@ class UsageRecordList extends ListResource
                 Serialize::iso8601DateTime($options['start']),
             'Granularity' =>
                 $options['granularity'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

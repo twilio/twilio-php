@@ -203,6 +203,7 @@ class EventList extends ListResource
                 $options['taskChannel'],
             'Sid' =>
                 $options['sid'],
+                                                                                                                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

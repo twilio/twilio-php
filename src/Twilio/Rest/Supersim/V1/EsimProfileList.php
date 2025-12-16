@@ -248,6 +248,7 @@ class EsimProfileList extends ListResource
                 $options['simSid'],
             'Status' =>
                 $options['status'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

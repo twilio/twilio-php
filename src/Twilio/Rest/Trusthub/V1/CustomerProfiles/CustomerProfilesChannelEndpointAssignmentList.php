@@ -250,6 +250,7 @@ class CustomerProfilesChannelEndpointAssignmentList extends ListResource
                 $options['channelEndpointSid'],
             'ChannelEndpointSids' =>
                 $options['channelEndpointSids'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

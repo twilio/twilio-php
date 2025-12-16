@@ -223,6 +223,7 @@ class TollFreeList extends ListResource
                 $options['inLocality'],
             'FaxEnabled' =>
                 Serialize::booleanToString($options['faxEnabled']),
+                                                                                                                                                                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

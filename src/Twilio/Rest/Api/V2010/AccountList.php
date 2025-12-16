@@ -239,6 +239,7 @@ class AccountList extends ListResource
                 $options['friendlyName'],
             'Status' =>
                 $options['status'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

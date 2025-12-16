@@ -232,8 +232,6 @@ class PluginReleaseList extends ListResource
     {
 
         $params = Values::of([
-            'Flex-Metadata' =>
-                $options['flexMetadata'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

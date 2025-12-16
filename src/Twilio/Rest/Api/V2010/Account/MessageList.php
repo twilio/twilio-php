@@ -303,6 +303,7 @@ class MessageList extends ListResource
                 Serialize::iso8601DateTime($options['dateSent']),
             'DateSent>' =>
                 Serialize::iso8601DateTime($options['dateSentAfter']),
+                                                                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

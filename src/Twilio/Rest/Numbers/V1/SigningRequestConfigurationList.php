@@ -230,6 +230,7 @@ class SigningRequestConfigurationList extends ListResource
                 $options['country'],
             'Product' =>
                 $options['product'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

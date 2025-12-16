@@ -271,6 +271,7 @@ class ChallengeList extends ListResource
                 $options['status'],
             'Order' =>
                 $options['order'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

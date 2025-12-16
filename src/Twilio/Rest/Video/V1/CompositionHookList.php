@@ -265,6 +265,7 @@ class CompositionHookList extends ListResource
                 Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'FriendlyName' =>
                 $options['friendlyName'],
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

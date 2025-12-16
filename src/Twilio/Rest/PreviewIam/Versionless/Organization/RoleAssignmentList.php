@@ -241,6 +241,7 @@ class RoleAssignmentList extends ListResource
                 $options['identity'],
             'Scope' =>
                 $options['scope'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

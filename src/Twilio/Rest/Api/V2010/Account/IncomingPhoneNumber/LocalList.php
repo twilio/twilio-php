@@ -299,6 +299,7 @@ class LocalList extends ListResource
                 $options['phoneNumber'],
             'Origin' =>
                 $options['origin'],
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

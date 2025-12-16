@@ -260,6 +260,7 @@ class MessageList extends ListResource
         $params = Values::of([
             'Order' =>
                 $options['order'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

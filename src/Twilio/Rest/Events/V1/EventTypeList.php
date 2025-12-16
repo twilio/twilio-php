@@ -176,6 +176,7 @@ class EventTypeList extends ListResource
         $params = Values::of([
             'SchemaId' =>
                 $options['schemaId'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

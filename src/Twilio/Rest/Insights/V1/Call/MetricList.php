@@ -184,6 +184,7 @@ class MetricList extends ListResource
                 $options['edge'],
             'Direction' =>
                 $options['direction'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

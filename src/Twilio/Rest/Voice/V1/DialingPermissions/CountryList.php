@@ -187,6 +187,7 @@ class CountryList extends ListResource
                 Serialize::booleanToString($options['highRiskSpecialNumbersEnabled']),
             'HighRiskTollfraudNumbersEnabled' =>
                 Serialize::booleanToString($options['highRiskTollfraudNumbersEnabled']),
+                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

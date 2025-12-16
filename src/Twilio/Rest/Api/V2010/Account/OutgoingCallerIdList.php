@@ -184,6 +184,7 @@ class OutgoingCallerIdList extends ListResource
                 $options['phoneNumber'],
             'FriendlyName' =>
                 $options['friendlyName'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

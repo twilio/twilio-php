@@ -253,6 +253,7 @@ class ActivityList extends ListResource
                 $options['friendlyName'],
             'Available' =>
                 $options['available'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

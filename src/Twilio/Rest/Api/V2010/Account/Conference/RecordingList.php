@@ -193,6 +193,7 @@ class RecordingList extends ListResource
                 Serialize::iso8601Date($options['dateCreated']),
             'DateCreated>' =>
                 Serialize::iso8601Date($options['dateCreatedAfter']),
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

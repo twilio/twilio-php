@@ -248,6 +248,7 @@ class SinkList extends ListResource
                 Serialize::booleanToString($options['inUse']),
             'Status' =>
                 $options['status'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

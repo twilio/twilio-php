@@ -243,6 +243,7 @@ class TrustProductsEntityAssignmentsList extends ListResource
         $params = Values::of([
             'ObjectType' =>
                 $options['objectType'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

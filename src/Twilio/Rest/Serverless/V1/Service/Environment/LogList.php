@@ -193,6 +193,7 @@ class LogList extends ListResource
                 Serialize::iso8601DateTime($options['startDate']),
             'EndDate' =>
                 Serialize::iso8601DateTime($options['endDate']),
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

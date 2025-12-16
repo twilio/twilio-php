@@ -259,6 +259,7 @@ class CommandList extends ListResource
                 $options['direction'],
             'Transport' =>
                 $options['transport'],
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

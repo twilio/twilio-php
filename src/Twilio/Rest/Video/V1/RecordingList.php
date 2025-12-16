@@ -187,6 +187,7 @@ class RecordingList extends ListResource
                 Serialize::iso8601DateTime($options['dateCreatedBefore']),
             'MediaType' =>
                 $options['mediaType'],
+                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

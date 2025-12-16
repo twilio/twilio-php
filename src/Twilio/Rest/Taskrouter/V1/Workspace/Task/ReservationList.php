@@ -190,6 +190,7 @@ class ReservationList extends ListResource
                 $options['reservationStatus'],
             'WorkerSid' =>
                 $options['workerSid'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

@@ -195,6 +195,7 @@ class NotificationList extends ListResource
                 Serialize::iso8601Date($options['messageDate']),
             'MessageDate>' =>
                 Serialize::iso8601Date($options['messageDateAfter']),
+                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

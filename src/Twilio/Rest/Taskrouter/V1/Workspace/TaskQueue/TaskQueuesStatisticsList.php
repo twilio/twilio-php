@@ -193,6 +193,7 @@ class TaskQueuesStatisticsList extends ListResource
                 $options['taskChannel'],
             'SplitByWaitTime' =>
                 $options['splitByWaitTime'],
+                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

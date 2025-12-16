@@ -185,6 +185,7 @@ class SentenceList extends ListResource
                 Serialize::booleanToString($options['redacted']),
             'WordTimestamps' =>
                 Serialize::booleanToString($options['wordTimestamps']),
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

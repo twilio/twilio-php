@@ -184,6 +184,7 @@ class ShortCodeList extends ListResource
                 $options['friendlyName'],
             'ShortCode' =>
                 $options['shortCode'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

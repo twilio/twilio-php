@@ -183,6 +183,7 @@ class OperatorResultList extends ListResource
         $params = Values::of([
             'Redacted' =>
                 Serialize::booleanToString($options['redacted']),
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

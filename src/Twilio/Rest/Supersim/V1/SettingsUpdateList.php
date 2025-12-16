@@ -178,6 +178,7 @@ class SettingsUpdateList extends ListResource
                 $options['sim'],
             'Status' =>
                 $options['status'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

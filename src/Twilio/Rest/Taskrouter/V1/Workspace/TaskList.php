@@ -280,6 +280,7 @@ class TaskList extends ListResource
                 $options['ordering'],
             'HasAddons' =>
                 Serialize::booleanToString($options['hasAddons']),
+                                                                                                                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

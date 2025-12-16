@@ -244,6 +244,7 @@ class SimList extends ListResource
                 $options['fleet'],
             'Iccid' =>
                 $options['iccid'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

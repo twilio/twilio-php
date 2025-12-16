@@ -178,6 +178,7 @@ class OperatorList extends ListResource
                 $options['availability'],
             'LanguageCode' =>
                 $options['languageCode'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

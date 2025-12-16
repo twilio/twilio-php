@@ -231,6 +231,7 @@ class KnowledgeList extends ListResource
         $params = Values::of([
             'Tags' =>
                 $options['tags'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

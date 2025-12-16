@@ -251,6 +251,7 @@ class ChannelList extends ListResource
         $params = Values::of([
             'Type' =>
                 $options['type'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

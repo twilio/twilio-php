@@ -188,6 +188,7 @@ class UserBindingList extends ListResource
         $params = Values::of([
             'BindingType' =>
                 $options['bindingType'],
+                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

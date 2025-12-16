@@ -186,6 +186,7 @@ class ConferenceParticipantList extends ListResource
                 $options['label'],
             'Events' =>
                 $options['events'],
+                                                
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

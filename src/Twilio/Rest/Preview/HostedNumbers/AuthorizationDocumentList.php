@@ -265,6 +265,7 @@ class AuthorizationDocumentList extends ListResource
                 $options['email'],
             'Status' =>
                 $options['status'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

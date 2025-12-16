@@ -187,6 +187,7 @@ class PortingAllPortInList extends ListResource
                 Serialize::iso8601DateTime($options['createdBefore']),
             'CreatedAfter' =>
                 Serialize::iso8601DateTime($options['createdAfter']),
+                                                                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

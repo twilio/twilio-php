@@ -178,6 +178,7 @@ class PolicyList extends ListResource
                 $options['toolId'],
             'KnowledgeId' =>
                 $options['knowledgeId'],
+                                    
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
