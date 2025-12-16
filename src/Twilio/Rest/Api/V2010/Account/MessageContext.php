@@ -72,7 +72,7 @@ class MessageContext extends InstanceContext
     private function _delete(): Response
     {
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
     }
 
     /**
@@ -120,7 +120,7 @@ class MessageContext extends InstanceContext
     private function _fetch(): Response
     {
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('GET', $this->uri, [], [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
     }
 
 
@@ -173,7 +173,7 @@ class MessageContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
     }
 
 
