@@ -40,11 +40,12 @@ class PageMetadata extends IteratorMetadata
 
     public function nextPage(): ?PageMetadata
     {
-        if (!$this->getPage()->getNextPageUrl()) {
+        $nextPageUrl = $this->page->getNextPageUrl();
+        if (!$nextPageUrl) {
             return null;
         }
 
-        $response = $this->page->getResponse($this->page->getNextPageUrl());
+        $response = $this->page->getResponse($nextPageUrl);
         return new static(
             $this->page->createPage($response),
             $response->getStatusCode(),
@@ -54,11 +55,12 @@ class PageMetadata extends IteratorMetadata
 
     public function previousPage(): ?PageMetadata
     {
-        if (!$this->page->getPreviousPageUrl()) {
+        $previousPageUrl = $this->page->getPreviousPageUrl();
+        if (!$previousPageUrl) {
             return null;
         }
 
-        $response = $this->page->getResponse($this->page->getPreviousPageUrl());
+        $response = $this->page->getResponse($previousPageUrl);
         return new static(
             $this->page->createPage($response),
             $response->getStatusCode(),
@@ -68,6 +70,6 @@ class PageMetadata extends IteratorMetadata
 
     public function __toString(): string
     {
-        return 'ArrayMetadata{' . parent::__toString() . '}';
+        return 'ArrayMetadata{' . parent::__toString();
     }
 }

@@ -42,6 +42,6 @@ class StreamMetadata extends IteratorMetadata
 
     public function __toString(): string
     {
-        return 'StreamMetadata{' . parent::__toString() . '}';
+        return 'StreamMetadata{' . parent::__toString();
     }
 }

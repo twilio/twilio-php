@@ -53,6 +53,6 @@ class ArrayMetadata extends IteratorMetadata
      */
     public function __toString(): string
     {
-        return 'ArrayMetadata{' . parent::__toString() . '}';
+        return 'ArrayMetadata{' . parent::__toString();
     }
 }
