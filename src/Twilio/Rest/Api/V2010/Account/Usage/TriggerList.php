@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TriggerList extends ListResource
@@ -50,18 +52,17 @@ class TriggerList extends ListResource
     }
 
     /**
-     * Create the TriggerInstance
+     * Helper function for Create
      *
      * @param string $callbackUrl The URL we should call using `callback_method` when the trigger fires.
      * @param string $triggerValue The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
      * @param string $usageCategory The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
      * @param array|Options $options Optional Arguments
-     * @return TriggerInstance Created TriggerInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): TriggerInstance
+    private function _create(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -82,12 +83,52 @@ class TriggerList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TriggerInstance
+     *
+     * @param string $callbackUrl The URL we should call using `callback_method` when the trigger fires.
+     * @param string $triggerValue The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
+     * @param string $usageCategory The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
+     * @param array|Options $options Optional Arguments
+     * @return TriggerInstance Created TriggerInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): TriggerInstance
+    {
+        $response = $this->_create( $callbackUrl,  $triggerValue,  $usageCategory, $options);
         return new TriggerInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the TriggerInstance with Metadata
+     *
+     * @param string $callbackUrl The URL we should call using `callback_method` when the trigger fires.
+     * @param string $triggerValue The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
+     * @param string $usageCategory The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $callbackUrl, string $triggerValue, string $usageCategory, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $callbackUrl,  $triggerValue,  $usageCategory, $options);
+        $resource = new TriggerInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

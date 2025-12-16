@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class FunctionList extends ListResource
@@ -49,6 +51,24 @@ class FunctionList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $friendlyName): Response
+    {
+        $data = Values::of([
+            'FriendlyName' =>
+                $friendlyName,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the FunctionInstance
      *
      * @param string $friendlyName A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters.
@@ -57,19 +77,34 @@ class FunctionList extends ListResource
      */
     public function create(string $friendlyName): FunctionInstance
     {
-
-        $data = Values::of([
-            'FriendlyName' =>
-                $friendlyName,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $friendlyName);
         return new FunctionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the FunctionInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Function resource. It can be a maximum of 255 characters.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName);
+        $resource = new FunctionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

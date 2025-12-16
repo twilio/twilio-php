@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class VariableList extends ListResource
@@ -55,6 +57,27 @@ class VariableList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
+     * @param string $value A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $key, string $value): Response
+    {
+        $data = Values::of([
+            'Key' =>
+                $key,
+            'Value' =>
+                $value,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the VariableInstance
      *
      * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
@@ -64,22 +87,37 @@ class VariableList extends ListResource
      */
     public function create(string $key, string $value): VariableInstance
     {
-
-        $data = Values::of([
-            'Key' =>
-                $key,
-            'Value' =>
-                $value,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $key,  $value);
         return new VariableInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['environmentSid']
+        );
+        
+    }
+
+    /**
+     * Create the VariableInstance with Metadata
+     *
+     * @param string $key A string by which the Variable resource can be referenced. It can be a maximum of 128 characters.
+     * @param string $value A string that contains the actual value of the Variable. It can be a maximum of 450 bytes in size.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $key, string $value): ResourceMetadata
+    {
+        $response = $this->_create( $key,  $value);
+        $resource = new VariableInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['environmentSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

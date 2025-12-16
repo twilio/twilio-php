@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PluginList extends ListResource
@@ -44,16 +46,15 @@ class PluginList extends ListResource
     }
 
     /**
-     * Create the PluginInstance
+     * Helper function for Create
      *
      * @param string $uniqueName The Flex Plugin's unique name.
      * @param array|Options $options Optional Arguments
-     * @return PluginInstance Created PluginInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): PluginInstance
+    private function _create(string $uniqueName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -66,11 +67,46 @@ class PluginList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the PluginInstance
+     *
+     * @param string $uniqueName The Flex Plugin's unique name.
+     * @param array|Options $options Optional Arguments
+     * @return PluginInstance Created PluginInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $uniqueName, array $options = []): PluginInstance
+    {
+        $response = $this->_create( $uniqueName, $options);
         return new PluginInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the PluginInstance with Metadata
+     *
+     * @param string $uniqueName The Flex Plugin's unique name.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $uniqueName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $uniqueName, $options);
+        $resource = new PluginInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

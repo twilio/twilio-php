@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,15 +53,14 @@ class MessageList extends ListResource
     }
 
     /**
-     * Create the MessageInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return MessageInstance Created MessageInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): MessageInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -84,12 +85,46 @@ class MessageList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the MessageInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return MessageInstance Created MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): MessageInstance
+    {
+        $response = $this->_create($options);
         return new MessageInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['conversationSid']
+        );
+        
+    }
+
+    /**
+     * Create the MessageInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new MessageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['conversationSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

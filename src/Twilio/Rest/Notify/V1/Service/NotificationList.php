@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -50,15 +52,14 @@ class NotificationList extends ListResource
     }
 
     /**
-     * Create the NotificationInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return NotificationInstance Created NotificationInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): NotificationInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -101,12 +102,46 @@ class NotificationList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the NotificationInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return NotificationInstance Created NotificationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): NotificationInstance
+    {
+        $response = $this->_create($options);
         return new NotificationInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the NotificationInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new NotificationInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

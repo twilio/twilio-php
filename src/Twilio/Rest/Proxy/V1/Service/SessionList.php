@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,15 +53,14 @@ class SessionList extends ListResource
     }
 
     /**
-     * Create the SessionInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return SessionInstance Created SessionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): SessionInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -78,12 +79,46 @@ class SessionList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SessionInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return SessionInstance Created SessionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): SessionInstance
+    {
+        $response = $this->_create($options);
         return new SessionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the SessionInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new SessionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

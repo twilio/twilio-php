@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class CustomerProfilesEvaluationsList extends ListResource
@@ -49,6 +51,24 @@ class CustomerProfilesEvaluationsList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $policySid The unique string of a policy that is associated to the customer_profile resource.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $policySid): Response
+    {
+        $data = Values::of([
+            'PolicySid' =>
+                $policySid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the CustomerProfilesEvaluationsInstance
      *
      * @param string $policySid The unique string of a policy that is associated to the customer_profile resource.
@@ -57,19 +77,34 @@ class CustomerProfilesEvaluationsList extends ListResource
      */
     public function create(string $policySid): CustomerProfilesEvaluationsInstance
     {
-
-        $data = Values::of([
-            'PolicySid' =>
-                $policySid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $policySid);
         return new CustomerProfilesEvaluationsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['customerProfileSid']
+        );
+        
+    }
+
+    /**
+     * Create the CustomerProfilesEvaluationsInstance with Metadata
+     *
+     * @param string $policySid The unique string of a policy that is associated to the customer_profile resource.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $policySid): ResourceMetadata
+    {
+        $response = $this->_create( $policySid);
+        $resource = new CustomerProfilesEvaluationsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['customerProfileSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

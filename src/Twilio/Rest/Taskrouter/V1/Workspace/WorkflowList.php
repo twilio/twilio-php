@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class WorkflowList extends ListResource
@@ -50,17 +52,16 @@ class WorkflowList extends ListResource
     }
 
     /**
-     * Create the WorkflowInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.
      * @param string $configuration A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.
      * @param array|Options $options Optional Arguments
-     * @return WorkflowInstance Created WorkflowInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $configuration, array $options = []): WorkflowInstance
+    private function _create(string $friendlyName, string $configuration, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -77,12 +78,50 @@ class WorkflowList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the WorkflowInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.
+     * @param string $configuration A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.
+     * @param array|Options $options Optional Arguments
+     * @return WorkflowInstance Created WorkflowInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $configuration, array $options = []): WorkflowInstance
+    {
+        $response = $this->_create( $friendlyName,  $configuration, $options);
         return new WorkflowInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid']
+        );
+        
+    }
+
+    /**
+     * Create the WorkflowInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Workflow resource. For example, `Inbound Call Workflow` or `2014 Outbound Campaign`.
+     * @param string $configuration A JSON string that contains the rules to apply to the Workflow. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $configuration, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $configuration, $options);
+        $resource = new WorkflowInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

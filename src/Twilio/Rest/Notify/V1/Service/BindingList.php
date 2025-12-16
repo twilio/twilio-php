@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,18 +53,17 @@ class BindingList extends ListResource
     }
 
     /**
-     * Create the BindingInstance
+     * Helper function for Create
      *
      * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Up to 20 Bindings can be created for the same Identity in a given Service.
      * @param string $bindingType
      * @param string $address The channel-specific address. For APNS, the device token. For FCM and GCM, the registration token. For SMS, a phone number in E.164 format. For Facebook Messenger, the Messenger ID of the user or a phone number in E.164 format.
      * @param array|Options $options Optional Arguments
-     * @return BindingInstance Created BindingInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $identity, string $bindingType, string $address, array $options = []): BindingInstance
+    private function _create(string $identity, string $bindingType, string $address, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -83,12 +84,52 @@ class BindingList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the BindingInstance
+     *
+     * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Up to 20 Bindings can be created for the same Identity in a given Service.
+     * @param string $bindingType
+     * @param string $address The channel-specific address. For APNS, the device token. For FCM and GCM, the registration token. For SMS, a phone number in E.164 format. For Facebook Messenger, the Messenger ID of the user or a phone number in E.164 format.
+     * @param array|Options $options Optional Arguments
+     * @return BindingInstance Created BindingInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $identity, string $bindingType, string $address, array $options = []): BindingInstance
+    {
+        $response = $this->_create( $identity,  $bindingType,  $address, $options);
         return new BindingInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the BindingInstance with Metadata
+     *
+     * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Up to 20 Bindings can be created for the same Identity in a given Service.
+     * @param string $bindingType
+     * @param string $address The channel-specific address. For APNS, the device token. For FCM and GCM, the registration token. For SMS, a phone number in E.164 format. For Facebook Messenger, the Messenger ID of the user or a phone number in E.164 format.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $identity, string $bindingType, string $address, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $identity,  $bindingType,  $address, $options);
+        $resource = new BindingInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

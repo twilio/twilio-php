@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class IpRecordList extends ListResource
@@ -44,16 +46,15 @@ class IpRecordList extends ListResource
     }
 
     /**
-     * Create the IpRecordInstance
+     * Helper function for Create
      *
      * @param string $ipAddress An IP address in dotted decimal notation, IPv4 only.
      * @param array|Options $options Optional Arguments
-     * @return IpRecordInstance Created IpRecordInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $ipAddress, array $options = []): IpRecordInstance
+    private function _create(string $ipAddress, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -66,11 +67,46 @@ class IpRecordList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the IpRecordInstance
+     *
+     * @param string $ipAddress An IP address in dotted decimal notation, IPv4 only.
+     * @param array|Options $options Optional Arguments
+     * @return IpRecordInstance Created IpRecordInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $ipAddress, array $options = []): IpRecordInstance
+    {
+        $response = $this->_create( $ipAddress, $options);
         return new IpRecordInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the IpRecordInstance with Metadata
+     *
+     * @param string $ipAddress An IP address in dotted decimal notation, IPv4 only.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $ipAddress, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $ipAddress, $options);
+        $resource = new IpRecordInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

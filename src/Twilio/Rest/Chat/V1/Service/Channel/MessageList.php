@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class MessageList extends ListResource
@@ -56,16 +58,15 @@ class MessageList extends ListResource
     }
 
     /**
-     * Create the MessageInstance
+     * Helper function for Create
      *
      * @param string $body The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
      * @param array|Options $options Optional Arguments
-     * @return MessageInstance Created MessageInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $body, array $options = []): MessageInstance
+    private function _create(string $body, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -78,13 +79,50 @@ class MessageList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the MessageInstance
+     *
+     * @param string $body The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     * @param array|Options $options Optional Arguments
+     * @return MessageInstance Created MessageInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $body, array $options = []): MessageInstance
+    {
+        $response = $this->_create( $body, $options);
         return new MessageInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['channelSid']
+        );
+        
+    }
+
+    /**
+     * Create the MessageInstance with Metadata
+     *
+     * @param string $body The message to send to the channel. Can also be an empty string or `null`, which sets the value as an empty string. You can send structured data in the body by serializing it as a string.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $body, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $body, $options);
+        $resource = new MessageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['channelSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,16 +53,15 @@ class MobileList extends ListResource
     }
 
     /**
-     * Create the MobileInstance
+     * Helper function for Create
      *
      * @param string $phoneNumber The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
      * @param array|Options $options Optional Arguments
-     * @return MobileInstance Created MobileInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $phoneNumber, array $options = []): MobileInstance
+    private function _create(string $phoneNumber, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -113,12 +114,48 @@ class MobileList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the MobileInstance
+     *
+     * @param string $phoneNumber The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+     * @param array|Options $options Optional Arguments
+     * @return MobileInstance Created MobileInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $phoneNumber, array $options = []): MobileInstance
+    {
+        $response = $this->_create( $phoneNumber, $options);
         return new MobileInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the MobileInstance with Metadata
+     *
+     * @param string $phoneNumber The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $phoneNumber, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $phoneNumber, $options);
+        $resource = new MobileInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

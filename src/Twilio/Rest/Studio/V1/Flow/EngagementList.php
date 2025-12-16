@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,17 +53,16 @@ class EngagementList extends ListResource
     }
 
     /**
-     * Create the EngagementInstance
+     * Helper function for Create
      *
      * @param string $to The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.
      * @param string $from The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`
      * @param array|Options $options Optional Arguments
-     * @return EngagementInstance Created EngagementInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $to, string $from, array $options = []): EngagementInstance
+    private function _create(string $to, string $from, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,12 +75,50 @@ class EngagementList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the EngagementInstance
+     *
+     * @param string $to The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.
+     * @param string $from The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`
+     * @param array|Options $options Optional Arguments
+     * @return EngagementInstance Created EngagementInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $to, string $from, array $options = []): EngagementInstance
+    {
+        $response = $this->_create( $to,  $from, $options);
         return new EngagementInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['flowSid']
+        );
+        
+    }
+
+    /**
+     * Create the EngagementInstance with Metadata
+     *
+     * @param string $to The Contact phone number to start a Studio Flow Engagement, available as variable `{{contact.channel.address}}`.
+     * @param string $from The Twilio phone number to send messages or initiate calls from during the Flow Engagement. Available as variable `{{flow.channel.address}}`
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $to, string $from, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $to,  $from, $options);
+        $resource = new EngagementInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['flowSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

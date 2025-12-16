@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,7 +53,7 @@ class UsAppToPersonList extends ListResource
     }
 
     /**
-     * Create the UsAppToPersonInstance
+     * Helper function for Create
      *
      * @param string $brandRegistrationSid A2P Brand Registration SID
      * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
@@ -61,12 +63,11 @@ class UsAppToPersonList extends ListResource
      * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
      * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.
      * @param array|Options $options Optional Arguments
-     * @return UsAppToPersonInstance Created UsAppToPersonInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): UsAppToPersonInstance
+    private function _create(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -105,12 +106,60 @@ class UsAppToPersonList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the UsAppToPersonInstance
+     *
+     * @param string $brandRegistrationSid A2P Brand Registration SID
+     * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
+     * @param string $messageFlow Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
+     * @param string[] $messageSamples An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars.
+     * @param string $usAppToPersonUsecase A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..]
+     * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
+     * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.
+     * @param array|Options $options Optional Arguments
+     * @return UsAppToPersonInstance Created UsAppToPersonInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): UsAppToPersonInstance
+    {
+        $response = $this->_create( $brandRegistrationSid,  $description,  $messageFlow, $messageSamples,  $usAppToPersonUsecase,  $hasEmbeddedLinks,  $hasEmbeddedPhone, $options);
         return new UsAppToPersonInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['messagingServiceSid']
+        );
+        
+    }
+
+    /**
+     * Create the UsAppToPersonInstance with Metadata
+     *
+     * @param string $brandRegistrationSid A2P Brand Registration SID
+     * @param string $description A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters.
+     * @param string $messageFlow Required for all Campaigns. Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
+     * @param string[] $messageSamples An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars.
+     * @param string $usAppToPersonUsecase A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING..]
+     * @param bool $hasEmbeddedLinks Indicates that this SMS campaign will send messages that contain links.
+     * @param bool $hasEmbeddedPhone Indicates that this SMS campaign will send messages that contain phone numbers.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $brandRegistrationSid, string $description, string $messageFlow, array $messageSamples, string $usAppToPersonUsecase, bool $hasEmbeddedLinks, bool $hasEmbeddedPhone, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $brandRegistrationSid,  $description,  $messageFlow, $messageSamples,  $usAppToPersonUsecase,  $hasEmbeddedLinks,  $hasEmbeddedPhone, $options);
+        $resource = new UsAppToPersonInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['messagingServiceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

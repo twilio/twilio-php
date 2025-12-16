@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PhoneNumberList extends ListResource
@@ -49,6 +51,24 @@ class PhoneNumberList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $phoneNumberSid The SID of the Phone Number being added to the Service.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $phoneNumberSid): Response
+    {
+        $data = Values::of([
+            'PhoneNumberSid' =>
+                $phoneNumberSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the PhoneNumberInstance
      *
      * @param string $phoneNumberSid The SID of the Phone Number being added to the Service.
@@ -57,19 +77,34 @@ class PhoneNumberList extends ListResource
      */
     public function create(string $phoneNumberSid): PhoneNumberInstance
     {
-
-        $data = Values::of([
-            'PhoneNumberSid' =>
-                $phoneNumberSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $phoneNumberSid);
         return new PhoneNumberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the PhoneNumberInstance with Metadata
+     *
+     * @param string $phoneNumberSid The SID of the Phone Number being added to the Service.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $phoneNumberSid): ResourceMetadata
+    {
+        $response = $this->_create( $phoneNumberSid);
+        $resource = new PhoneNumberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

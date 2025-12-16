@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -57,17 +59,16 @@ class InteractionChannelParticipantList extends ListResource
     }
 
     /**
-     * Create the InteractionChannelParticipantInstance
+     * Helper function for Create
      *
      * @param string $type
      * @param array $mediaProperties JSON representing the Media Properties for the new Participant.
      * @param array|Options $options Optional Arguments
-     * @return InteractionChannelParticipantInstance Created InteractionChannelParticipantInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $type, array $mediaProperties, array $options = []): InteractionChannelParticipantInstance
+    private function _create(string $type, array $mediaProperties, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,13 +81,52 @@ class InteractionChannelParticipantList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the InteractionChannelParticipantInstance
+     *
+     * @param string $type
+     * @param array $mediaProperties JSON representing the Media Properties for the new Participant.
+     * @param array|Options $options Optional Arguments
+     * @return InteractionChannelParticipantInstance Created InteractionChannelParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $type, array $mediaProperties, array $options = []): InteractionChannelParticipantInstance
+    {
+        $response = $this->_create( $type,  $mediaProperties, $options);
         return new InteractionChannelParticipantInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['interactionSid'],
             $this->solution['channelSid']
+        );
+        
+    }
+
+    /**
+     * Create the InteractionChannelParticipantInstance with Metadata
+     *
+     * @param string $type
+     * @param array $mediaProperties JSON representing the Media Properties for the new Participant.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $type, array $mediaProperties, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $type,  $mediaProperties, $options);
+        $resource = new InteractionChannelParticipantInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['interactionSid'],
+                        $this->solution['channelSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

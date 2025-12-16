@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class IpAccessControlListList extends ListResource
@@ -49,6 +51,24 @@ class IpAccessControlListList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $friendlyName A human readable descriptive text that describes the IpAccessControlList, up to 255 characters long.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $friendlyName): Response
+    {
+        $data = Values::of([
+            'FriendlyName' =>
+                $friendlyName,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the IpAccessControlListInstance
      *
      * @param string $friendlyName A human readable descriptive text that describes the IpAccessControlList, up to 255 characters long.
@@ -57,19 +77,34 @@ class IpAccessControlListList extends ListResource
      */
     public function create(string $friendlyName): IpAccessControlListInstance
     {
-
-        $data = Values::of([
-            'FriendlyName' =>
-                $friendlyName,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $friendlyName);
         return new IpAccessControlListInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the IpAccessControlListInstance with Metadata
+     *
+     * @param string $friendlyName A human readable descriptive text that describes the IpAccessControlList, up to 255 characters long.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName);
+        $resource = new IpAccessControlListInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

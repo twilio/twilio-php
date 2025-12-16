@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ShortCodeList extends ListResource
@@ -49,6 +51,24 @@ class ShortCodeList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $shortCodeSid The SID of the ShortCode resource being added to the Service.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $shortCodeSid): Response
+    {
+        $data = Values::of([
+            'ShortCodeSid' =>
+                $shortCodeSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ShortCodeInstance
      *
      * @param string $shortCodeSid The SID of the ShortCode resource being added to the Service.
@@ -57,19 +77,34 @@ class ShortCodeList extends ListResource
      */
     public function create(string $shortCodeSid): ShortCodeInstance
     {
-
-        $data = Values::of([
-            'ShortCodeSid' =>
-                $shortCodeSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $shortCodeSid);
         return new ShortCodeInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the ShortCodeInstance with Metadata
+     *
+     * @param string $shortCodeSid The SID of the ShortCode resource being added to the Service.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $shortCodeSid): ResourceMetadata
+    {
+        $response = $this->_create( $shortCodeSid);
+        $resource = new ShortCodeInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

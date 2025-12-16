@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SubscribedEventList extends ListResource
@@ -50,16 +52,15 @@ class SubscribedEventList extends ListResource
     }
 
     /**
-     * Create the SubscribedEventInstance
+     * Helper function for Create
      *
      * @param string $type Type of event being subscribed to.
      * @param array|Options $options Optional Arguments
-     * @return SubscribedEventInstance Created SubscribedEventInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $type, array $options = []): SubscribedEventInstance
+    private function _create(string $type, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,12 +71,48 @@ class SubscribedEventList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SubscribedEventInstance
+     *
+     * @param string $type Type of event being subscribed to.
+     * @param array|Options $options Optional Arguments
+     * @return SubscribedEventInstance Created SubscribedEventInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $type, array $options = []): SubscribedEventInstance
+    {
+        $response = $this->_create( $type, $options);
         return new SubscribedEventInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['subscriptionSid']
+        );
+        
+    }
+
+    /**
+     * Create the SubscribedEventInstance with Metadata
+     *
+     * @param string $type Type of event being subscribed to.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $type, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $type, $options);
+        $resource = new SubscribedEventInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['subscriptionSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

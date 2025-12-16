@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,19 +47,18 @@ class InsightsQuestionnairesQuestionList extends ListResource
     }
 
     /**
-     * Create the InsightsQuestionnairesQuestionInstance
+     * Helper function for Create
      *
      * @param string $categorySid The SID of the category
      * @param string $question The question.
      * @param string $answerSetId The answer_set for the question.
      * @param bool $allowNa The flag to enable for disable NA for answer.
      * @param array|Options $options Optional Arguments
-     * @return InsightsQuestionnairesQuestionInstance Created InsightsQuestionnairesQuestionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categorySid, string $question, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
+    private function _create(string $categorySid, string $question, string $answerSetId, bool $allowNa, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,11 +75,52 @@ class InsightsQuestionnairesQuestionList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the InsightsQuestionnairesQuestionInstance
+     *
+     * @param string $categorySid The SID of the category
+     * @param string $question The question.
+     * @param string $answerSetId The answer_set for the question.
+     * @param bool $allowNa The flag to enable for disable NA for answer.
+     * @param array|Options $options Optional Arguments
+     * @return InsightsQuestionnairesQuestionInstance Created InsightsQuestionnairesQuestionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $categorySid, string $question, string $answerSetId, bool $allowNa, array $options = []): InsightsQuestionnairesQuestionInstance
+    {
+        $response = $this->_create( $categorySid,  $question,  $answerSetId,  $allowNa, $options);
         return new InsightsQuestionnairesQuestionInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the InsightsQuestionnairesQuestionInstance with Metadata
+     *
+     * @param string $categorySid The SID of the category
+     * @param string $question The question.
+     * @param string $answerSetId The answer_set for the question.
+     * @param bool $allowNa The flag to enable for disable NA for answer.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $categorySid, string $question, string $answerSetId, bool $allowNa, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $categorySid,  $question,  $answerSetId,  $allowNa, $options);
+        $resource = new InsightsQuestionnairesQuestionInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

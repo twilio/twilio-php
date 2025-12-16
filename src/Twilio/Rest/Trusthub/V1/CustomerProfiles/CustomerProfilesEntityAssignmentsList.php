@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class CustomerProfilesEntityAssignmentsList extends ListResource
@@ -50,6 +52,24 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $objectSid): Response
+    {
+        $data = Values::of([
+            'ObjectSid' =>
+                $objectSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the CustomerProfilesEntityAssignmentsInstance
      *
      * @param string $objectSid The SID of an object bag that holds information of the different items.
@@ -58,19 +78,34 @@ class CustomerProfilesEntityAssignmentsList extends ListResource
      */
     public function create(string $objectSid): CustomerProfilesEntityAssignmentsInstance
     {
-
-        $data = Values::of([
-            'ObjectSid' =>
-                $objectSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $objectSid);
         return new CustomerProfilesEntityAssignmentsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['customerProfileSid']
+        );
+        
+    }
+
+    /**
+     * Create the CustomerProfilesEntityAssignmentsInstance with Metadata
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $objectSid): ResourceMetadata
+    {
+        $response = $this->_create( $objectSid);
+        $resource = new CustomerProfilesEntityAssignmentsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['customerProfileSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -23,6 +23,8 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsList;
 
 
@@ -58,16 +60,15 @@ class WorkerList extends ListResource
     }
 
     /**
-     * Create the WorkerInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the new Worker. It can be up to 64 characters long.
      * @param array|Options $options Optional Arguments
-     * @return WorkerInstance Created WorkerInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): WorkerInstance
+    private function _create(string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,12 +81,48 @@ class WorkerList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the WorkerInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the new Worker. It can be up to 64 characters long.
+     * @param array|Options $options Optional Arguments
+     * @return WorkerInstance Created WorkerInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, array $options = []): WorkerInstance
+    {
+        $response = $this->_create( $friendlyName, $options);
         return new WorkerInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid']
+        );
+        
+    }
+
+    /**
+     * Create the WorkerInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the new Worker. It can be up to 64 characters long.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName, $options);
+        $resource = new WorkerInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

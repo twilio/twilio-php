@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,16 +53,15 @@ class ActivityList extends ListResource
     }
 
     /**
-     * Create the ActivityInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.
      * @param array|Options $options Optional Arguments
-     * @return ActivityInstance Created ActivityInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): ActivityInstance
+    private function _create(string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -71,12 +72,48 @@ class ActivityList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ActivityInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.
+     * @param array|Options $options Optional Arguments
+     * @return ActivityInstance Created ActivityInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, array $options = []): ActivityInstance
+    {
+        $response = $this->_create( $friendlyName, $options);
         return new ActivityInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid']
+        );
+        
+    }
+
+    /**
+     * Create the ActivityInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Activity resource. It can be up to 64 characters long. These names are used to calculate and expose statistics about Workers, and provide visibility into the state of each Worker. Examples of friendly names include: `on-call`, `break`, and `email`.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName, $options);
+        $resource = new ActivityInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

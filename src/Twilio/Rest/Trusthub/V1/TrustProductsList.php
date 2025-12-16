@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TrustProductsList extends ListResource
@@ -44,18 +46,17 @@ class TrustProductsList extends ListResource
     }
 
     /**
-     * Create the TrustProductsInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $email The email address that will receive updates when the Trust Product resource changes status.
      * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
      * @param array|Options $options Optional Arguments
-     * @return TrustProductsInstance Created TrustProductsInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $email, string $policySid, array $options = []): TrustProductsInstance
+    private function _create(string $friendlyName, string $email, string $policySid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,11 +71,50 @@ class TrustProductsList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TrustProductsInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Trust Product resource changes status.
+     * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
+     * @param array|Options $options Optional Arguments
+     * @return TrustProductsInstance Created TrustProductsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $email, string $policySid, array $options = []): TrustProductsInstance
+    {
+        $response = $this->_create( $friendlyName,  $email,  $policySid, $options);
         return new TrustProductsInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the TrustProductsInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Trust Product resource changes status.
+     * @param string $policySid The unique string of a policy that is associated to the Trust Product resource.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $email, string $policySid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $email,  $policySid, $options);
+        $resource = new TrustProductsInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

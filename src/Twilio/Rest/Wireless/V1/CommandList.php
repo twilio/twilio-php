@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,16 +47,15 @@ class CommandList extends ListResource
     }
 
     /**
-     * Create the CommandInstance
+     * Helper function for Create
      *
      * @param string $command The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.
      * @param array|Options $options Optional Arguments
-     * @return CommandInstance Created CommandInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $command, array $options = []): CommandInstance
+    private function _create(string $command, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -75,11 +76,46 @@ class CommandList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the CommandInstance
+     *
+     * @param string $command The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.
+     * @param array|Options $options Optional Arguments
+     * @return CommandInstance Created CommandInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $command, array $options = []): CommandInstance
+    {
+        $response = $this->_create( $command, $options);
         return new CommandInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the CommandInstance with Metadata
+     *
+     * @param string $command The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $command, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $command, $options);
+        $resource = new CommandInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

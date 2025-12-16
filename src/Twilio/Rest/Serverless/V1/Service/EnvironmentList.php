@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class EnvironmentList extends ListResource
@@ -50,16 +52,15 @@ class EnvironmentList extends ListResource
     }
 
     /**
-     * Create the EnvironmentInstance
+     * Helper function for Create
      *
      * @param string $uniqueName A user-defined string that uniquely identifies the Environment resource. It can be a maximum of 100 characters.
      * @param array|Options $options Optional Arguments
-     * @return EnvironmentInstance Created EnvironmentInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): EnvironmentInstance
+    private function _create(string $uniqueName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,12 +71,48 @@ class EnvironmentList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the EnvironmentInstance
+     *
+     * @param string $uniqueName A user-defined string that uniquely identifies the Environment resource. It can be a maximum of 100 characters.
+     * @param array|Options $options Optional Arguments
+     * @return EnvironmentInstance Created EnvironmentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $uniqueName, array $options = []): EnvironmentInstance
+    {
+        $response = $this->_create( $uniqueName, $options);
         return new EnvironmentInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the EnvironmentInstance with Metadata
+     *
+     * @param string $uniqueName A user-defined string that uniquely identifies the Environment resource. It can be a maximum of 100 characters.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $uniqueName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $uniqueName, $options);
+        $resource = new EnvironmentInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

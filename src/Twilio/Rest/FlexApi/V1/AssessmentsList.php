@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class AssessmentsList extends ListResource
@@ -44,7 +46,7 @@ class AssessmentsList extends ListResource
     }
 
     /**
-     * Create the AssessmentsInstance
+     * Helper function for Create
      *
      * @param string $categorySid The SID of the category
      * @param string $categoryName The name of the category
@@ -57,12 +59,11 @@ class AssessmentsList extends ListResource
      * @param string $answerId The id of the answer selected by user
      * @param string $questionnaireSid Questionnaire SID of the associated question
      * @param array|Options $options Optional Arguments
-     * @return AssessmentsInstance Created AssessmentsInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categorySid, string $categoryName, string $segmentId, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): AssessmentsInstance
+    private function _create(string $categorySid, string $categoryName, string $segmentId, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -89,11 +90,64 @@ class AssessmentsList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the AssessmentsInstance
+     *
+     * @param string $categorySid The SID of the category
+     * @param string $categoryName The name of the category
+     * @param string $segmentId Segment Id of the conversation
+     * @param string $agentId The id of the Agent
+     * @param string $offset The offset of the conversation.
+     * @param string $metricId The question SID selected for assessment
+     * @param string $metricName The question name of the assessment
+     * @param string $answerText The answer text selected by user
+     * @param string $answerId The id of the answer selected by user
+     * @param string $questionnaireSid Questionnaire SID of the associated question
+     * @param array|Options $options Optional Arguments
+     * @return AssessmentsInstance Created AssessmentsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $categorySid, string $categoryName, string $segmentId, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): AssessmentsInstance
+    {
+        $response = $this->_create( $categorySid,  $categoryName,  $segmentId,  $agentId,  $offset,  $metricId,  $metricName,  $answerText,  $answerId,  $questionnaireSid, $options);
         return new AssessmentsInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the AssessmentsInstance with Metadata
+     *
+     * @param string $categorySid The SID of the category
+     * @param string $categoryName The name of the category
+     * @param string $segmentId Segment Id of the conversation
+     * @param string $agentId The id of the Agent
+     * @param string $offset The offset of the conversation.
+     * @param string $metricId The question SID selected for assessment
+     * @param string $metricName The question name of the assessment
+     * @param string $answerText The answer text selected by user
+     * @param string $answerId The id of the answer selected by user
+     * @param string $questionnaireSid Questionnaire SID of the associated question
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $categorySid, string $categoryName, string $segmentId, string $agentId, string $offset, string $metricId, string $metricName, string $answerText, string $answerId, string $questionnaireSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $categorySid,  $categoryName,  $segmentId,  $agentId,  $offset,  $metricId,  $metricName,  $answerText,  $answerId,  $questionnaireSid, $options);
+        $resource = new AssessmentsInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

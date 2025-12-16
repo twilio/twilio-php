@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -57,16 +59,15 @@ class InviteList extends ListResource
     }
 
     /**
-     * Create the InviteInstance
+     * Helper function for Create
      *
      * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
      * @param array|Options $options Optional Arguments
-     * @return InviteInstance Created InviteInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $identity, array $options = []): InviteInstance
+    private function _create(string $identity, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -77,13 +78,50 @@ class InviteList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the InviteInstance
+     *
+     * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+     * @param array|Options $options Optional Arguments
+     * @return InviteInstance Created InviteInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $identity, array $options = []): InviteInstance
+    {
+        $response = $this->_create( $identity, $options);
         return new InviteInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['channelSid']
+        );
+        
+    }
+
+    /**
+     * Create the InviteInstance with Metadata
+     *
+     * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $identity, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $identity, $options);
+        $resource = new InviteInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['channelSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -50,17 +52,16 @@ class RoleList extends ListResource
     }
 
     /**
-     * Create the RoleInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
      * @param string $type
      * @param string[] $permission A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type`.
-     * @return RoleInstance Created RoleInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $type, array $permission): RoleInstance
+    private function _create(string $friendlyName, string $type, array $permission): Response
     {
-
         $data = Values::of([
             'FriendlyName' =>
                 $friendlyName,
@@ -71,12 +72,50 @@ class RoleList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the RoleInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
+     * @param string $type
+     * @param string[] $permission A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type`.
+     * @return RoleInstance Created RoleInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $type, array $permission): RoleInstance
+    {
+        $response = $this->_create( $friendlyName,  $type, $permission);
         return new RoleInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the RoleInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the new resource. It can be up to 64 characters long.
+     * @param string $type
+     * @param string[] $permission A permission that you grant to the new role. Only one permission can be granted per parameter. To assign more than one permission, repeat this parameter for each permission value. The values for this parameter depend on the role's `type`.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $type, array $permission): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $type, $permission);
+        $resource = new RoleInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

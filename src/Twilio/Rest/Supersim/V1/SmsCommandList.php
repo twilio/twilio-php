@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SmsCommandList extends ListResource
@@ -44,17 +46,16 @@ class SmsCommandList extends ListResource
     }
 
     /**
-     * Create the SmsCommandInstance
+     * Helper function for Create
      *
      * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the SMS Command to.
      * @param string $payload The message body of the SMS Command.
      * @param array|Options $options Optional Arguments
-     * @return SmsCommandInstance Created SmsCommandInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $sim, string $payload, array $options = []): SmsCommandInstance
+    private function _create(string $sim, string $payload, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -69,11 +70,48 @@ class SmsCommandList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SmsCommandInstance
+     *
+     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the SMS Command to.
+     * @param string $payload The message body of the SMS Command.
+     * @param array|Options $options Optional Arguments
+     * @return SmsCommandInstance Created SmsCommandInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $sim, string $payload, array $options = []): SmsCommandInstance
+    {
+        $response = $this->_create( $sim,  $payload, $options);
         return new SmsCommandInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SmsCommandInstance with Metadata
+     *
+     * @param string $sim The `sid` or `unique_name` of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the SMS Command to.
+     * @param string $payload The message body of the SMS Command.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $sim, string $payload, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $sim,  $payload, $options);
+        $resource = new SmsCommandInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

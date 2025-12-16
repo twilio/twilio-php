@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class AssignedAddOnList extends ListResource
@@ -55,6 +57,24 @@ class AssignedAddOnList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $installedAddOnSid The SID that identifies the Add-on installation.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $installedAddOnSid): Response
+    {
+        $data = Values::of([
+            'InstalledAddOnSid' =>
+                $installedAddOnSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the AssignedAddOnInstance
      *
      * @param string $installedAddOnSid The SID that identifies the Add-on installation.
@@ -63,20 +83,36 @@ class AssignedAddOnList extends ListResource
      */
     public function create(string $installedAddOnSid): AssignedAddOnInstance
     {
-
-        $data = Values::of([
-            'InstalledAddOnSid' =>
-                $installedAddOnSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $installedAddOnSid);
         return new AssignedAddOnInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['resourceSid']
+        );
+        
+    }
+
+    /**
+     * Create the AssignedAddOnInstance with Metadata
+     *
+     * @param string $installedAddOnSid The SID that identifies the Add-on installation.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $installedAddOnSid): ResourceMetadata
+    {
+        $response = $this->_create( $installedAddOnSid);
+        $resource = new AssignedAddOnInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['resourceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

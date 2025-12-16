@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -57,17 +59,16 @@ class SyncMapItemList extends ListResource
     }
 
     /**
-     * Create the SyncMapItemInstance
+     * Helper function for Create
      *
      * @param string $key The unique, user-defined key for the Map Item. Can be up to 320 characters long.
      * @param array $data A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.
      * @param array|Options $options Optional Arguments
-     * @return SyncMapItemInstance Created SyncMapItemInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $key, array $data, array $options = []): SyncMapItemInstance
+    private function _create(string $key, array $data, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -84,13 +85,52 @@ class SyncMapItemList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SyncMapItemInstance
+     *
+     * @param string $key The unique, user-defined key for the Map Item. Can be up to 320 characters long.
+     * @param array $data A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.
+     * @param array|Options $options Optional Arguments
+     * @return SyncMapItemInstance Created SyncMapItemInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $key, array $data, array $options = []): SyncMapItemInstance
+    {
+        $response = $this->_create( $key,  $data, $options);
         return new SyncMapItemInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['mapSid']
+        );
+        
+    }
+
+    /**
+     * Create the SyncMapItemInstance with Metadata
+     *
+     * @param string $key The unique, user-defined key for the Map Item. Can be up to 320 characters long.
+     * @param array $data A JSON string that represents an arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $key, array $data, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $key,  $data, $options);
+        $resource = new SyncMapItemInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['mapSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

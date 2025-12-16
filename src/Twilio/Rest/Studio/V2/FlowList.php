@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,18 +47,17 @@ class FlowList extends ListResource
     }
 
     /**
-     * Create the FlowInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the Flow.
      * @param string $status
      * @param array $definition JSON representation of flow definition.
      * @param array|Options $options Optional Arguments
-     * @return FlowInstance Created FlowInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $status, array $definition, array $options = []): FlowInstance
+    private function _create(string $friendlyName, string $status, array $definition, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -71,11 +72,50 @@ class FlowList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the FlowInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the Flow.
+     * @param string $status
+     * @param array $definition JSON representation of flow definition.
+     * @param array|Options $options Optional Arguments
+     * @return FlowInstance Created FlowInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $status, array $definition, array $options = []): FlowInstance
+    {
+        $response = $this->_create( $friendlyName,  $status,  $definition, $options);
         return new FlowInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the FlowInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the Flow.
+     * @param string $status
+     * @param array $definition JSON representation of flow definition.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $status, array $definition, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $status,  $definition, $options);
+        $resource = new FlowInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

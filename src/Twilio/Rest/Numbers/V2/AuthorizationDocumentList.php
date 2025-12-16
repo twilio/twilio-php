@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,19 +47,18 @@ class AuthorizationDocumentList extends ListResource
     }
 
     /**
-     * Create the AuthorizationDocumentInstance
+     * Helper function for Create
      *
      * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
      * @param string $email Email that this AuthorizationDocument will be sent to for signing.
      * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
      * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
      * @param array|Options $options Optional Arguments
-     * @return AuthorizationDocumentInstance Created AuthorizationDocumentInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $addressSid, string $email, string $contactPhoneNumber, array $hostedNumberOrderSids, array $options = []): AuthorizationDocumentInstance
+    private function _create(string $addressSid, string $email, string $contactPhoneNumber, array $hostedNumberOrderSids, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -76,11 +77,52 @@ class AuthorizationDocumentList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the AuthorizationDocumentInstance
+     *
+     * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
+     * @param string $email Email that this AuthorizationDocument will be sent to for signing.
+     * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
+     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
+     * @param array|Options $options Optional Arguments
+     * @return AuthorizationDocumentInstance Created AuthorizationDocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $addressSid, string $email, string $contactPhoneNumber, array $hostedNumberOrderSids, array $options = []): AuthorizationDocumentInstance
+    {
+        $response = $this->_create( $addressSid,  $email,  $contactPhoneNumber, $hostedNumberOrderSids, $options);
         return new AuthorizationDocumentInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the AuthorizationDocumentInstance with Metadata
+     *
+     * @param string $addressSid A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
+     * @param string $email Email that this AuthorizationDocument will be sent to for signing.
+     * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
+     * @param string[] $hostedNumberOrderSids A list of HostedNumberOrder sids that this AuthorizationDocument will authorize for hosting phone number capabilities on Twilio's platform.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $addressSid, string $email, string $contactPhoneNumber, array $hostedNumberOrderSids, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $addressSid,  $email,  $contactPhoneNumber, $hostedNumberOrderSids, $options);
+        $resource = new AuthorizationDocumentInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

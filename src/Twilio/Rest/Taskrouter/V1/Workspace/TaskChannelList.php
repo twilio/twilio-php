@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,17 +53,16 @@ class TaskChannelList extends ListResource
     }
 
     /**
-     * Create the TaskChannelInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
      * @param string $uniqueName An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`.
      * @param array|Options $options Optional Arguments
-     * @return TaskChannelInstance Created TaskChannelInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $uniqueName, array $options = []): TaskChannelInstance
+    private function _create(string $friendlyName, string $uniqueName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,12 +75,50 @@ class TaskChannelList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TaskChannelInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`.
+     * @param array|Options $options Optional Arguments
+     * @return TaskChannelInstance Created TaskChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $uniqueName, array $options = []): TaskChannelInstance
+    {
+        $response = $this->_create( $friendlyName,  $uniqueName, $options);
         return new TaskChannelInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid']
+        );
+        
+    }
+
+    /**
+     * Create the TaskChannelInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the Task Channel. It can be up to 64 characters long.
+     * @param string $uniqueName An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $uniqueName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $uniqueName, $options);
+        $resource = new TaskChannelInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class UserList extends ListResource
@@ -50,16 +52,15 @@ class UserList extends ListResource
     }
 
     /**
-     * Create the UserInstance
+     * Helper function for Create
      *
      * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details.
      * @param array|Options $options Optional Arguments
-     * @return UserInstance Created UserInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $identity, array $options = []): UserInstance
+    private function _create(string $identity, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,12 +75,48 @@ class UserList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the UserInstance
+     *
+     * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details.
+     * @param array|Options $options Optional Arguments
+     * @return UserInstance Created UserInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $identity, array $options = []): UserInstance
+    {
+        $response = $this->_create( $identity, $options);
         return new UserInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the UserInstance with Metadata
+     *
+     * @param string $identity The `identity` value that uniquely identifies the new resource's [User](https://www.twilio.com/docs/api/chat/rest/v1/user) within the [Service](https://www.twilio.com/docs/api/chat/rest/v1/service). This value is often a username or email address. See the Identity documentation for more details.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $identity, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $identity, $options);
+        $resource = new UserInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

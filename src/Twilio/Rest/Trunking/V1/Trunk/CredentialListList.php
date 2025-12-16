@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class CredentialListList extends ListResource
@@ -49,6 +51,24 @@ class CredentialListList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $credentialListSid The SID of the [Credential List](https://www.twilio.com/docs/voice/sip/api/sip-credentiallist-resource) that you want to associate with the trunk. Once associated, we will authenticate access to the trunk against this list.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $credentialListSid): Response
+    {
+        $data = Values::of([
+            'CredentialListSid' =>
+                $credentialListSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the CredentialListInstance
      *
      * @param string $credentialListSid The SID of the [Credential List](https://www.twilio.com/docs/voice/sip/api/sip-credentiallist-resource) that you want to associate with the trunk. Once associated, we will authenticate access to the trunk against this list.
@@ -57,19 +77,34 @@ class CredentialListList extends ListResource
      */
     public function create(string $credentialListSid): CredentialListInstance
     {
-
-        $data = Values::of([
-            'CredentialListSid' =>
-                $credentialListSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $credentialListSid);
         return new CredentialListInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['trunkSid']
+        );
+        
+    }
+
+    /**
+     * Create the CredentialListInstance with Metadata
+     *
+     * @param string $credentialListSid The SID of the [Credential List](https://www.twilio.com/docs/voice/sip/api/sip-credentiallist-resource) that you want to associate with the trunk. Once associated, we will authenticate access to the trunk against this list.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $credentialListSid): ResourceMetadata
+    {
+        $response = $this->_create( $credentialListSid);
+        $resource = new CredentialListInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['trunkSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

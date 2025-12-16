@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class BrandRegistrationList extends ListResource
     }
 
     /**
-     * Create the BrandRegistrationInstance
+     * Helper function for Create
      *
      * @param string $customerProfileBundleSid Customer Profile Bundle Sid.
      * @param string $a2PProfileBundleSid A2P Messaging Profile Bundle Sid.
      * @param array|Options $options Optional Arguments
-     * @return BrandRegistrationInstance Created BrandRegistrationInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): BrandRegistrationInstance
+    private function _create(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -72,11 +73,48 @@ class BrandRegistrationList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the BrandRegistrationInstance
+     *
+     * @param string $customerProfileBundleSid Customer Profile Bundle Sid.
+     * @param string $a2PProfileBundleSid A2P Messaging Profile Bundle Sid.
+     * @param array|Options $options Optional Arguments
+     * @return BrandRegistrationInstance Created BrandRegistrationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): BrandRegistrationInstance
+    {
+        $response = $this->_create( $customerProfileBundleSid,  $a2PProfileBundleSid, $options);
         return new BrandRegistrationInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the BrandRegistrationInstance with Metadata
+     *
+     * @param string $customerProfileBundleSid Customer Profile Bundle Sid.
+     * @param string $a2PProfileBundleSid A2P Messaging Profile Bundle Sid.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $customerProfileBundleSid, string $a2PProfileBundleSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $customerProfileBundleSid,  $a2PProfileBundleSid, $options);
+        $resource = new BrandRegistrationInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

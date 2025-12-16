@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,18 +53,17 @@ class WebhookList extends ListResource
     }
 
     /**
-     * Create the WebhookInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.**
      * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`
      * @param string $webhookUrl The URL associated with this Webhook.
      * @param array|Options $options Optional Arguments
-     * @return WebhookInstance Created WebhookInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $eventTypes, string $webhookUrl, array $options = []): WebhookInstance
+    private function _create(string $friendlyName, array $eventTypes, string $webhookUrl, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -79,12 +80,52 @@ class WebhookList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the WebhookInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.**
+     * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`
+     * @param string $webhookUrl The URL associated with this Webhook.
+     * @param array|Options $options Optional Arguments
+     * @return WebhookInstance Created WebhookInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, array $eventTypes, string $webhookUrl, array $options = []): WebhookInstance
+    {
+        $response = $this->_create( $friendlyName, $eventTypes,  $webhookUrl, $options);
         return new WebhookInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the WebhookInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the webhook. **This value should not contain PII.**
+     * @param string[] $eventTypes The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`
+     * @param string $webhookUrl The URL associated with this Webhook.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, array $eventTypes, string $webhookUrl, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName, $eventTypes,  $webhookUrl, $options);
+        $resource = new WebhookInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class CredentialListMappingList extends ListResource
@@ -55,6 +57,24 @@ class CredentialListMappingList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $credentialListSid A 34 character string that uniquely identifies the CredentialList resource to map to the SIP domain.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $credentialListSid): Response
+    {
+        $data = Values::of([
+            'CredentialListSid' =>
+                $credentialListSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the CredentialListMappingInstance
      *
      * @param string $credentialListSid A 34 character string that uniquely identifies the CredentialList resource to map to the SIP domain.
@@ -63,20 +83,36 @@ class CredentialListMappingList extends ListResource
      */
     public function create(string $credentialListSid): CredentialListMappingInstance
     {
-
-        $data = Values::of([
-            'CredentialListSid' =>
-                $credentialListSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $credentialListSid);
         return new CredentialListMappingInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['domainSid']
+        );
+        
+    }
+
+    /**
+     * Create the CredentialListMappingInstance with Metadata
+     *
+     * @param string $credentialListSid A 34 character string that uniquely identifies the CredentialList resource to map to the SIP domain.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $credentialListSid): ResourceMetadata
+    {
+        $response = $this->_create( $credentialListSid);
+        $resource = new CredentialListMappingInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['domainSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

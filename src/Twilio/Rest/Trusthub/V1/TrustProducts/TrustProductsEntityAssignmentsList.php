@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TrustProductsEntityAssignmentsList extends ListResource
@@ -50,6 +52,24 @@ class TrustProductsEntityAssignmentsList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $objectSid): Response
+    {
+        $data = Values::of([
+            'ObjectSid' =>
+                $objectSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the TrustProductsEntityAssignmentsInstance
      *
      * @param string $objectSid The SID of an object bag that holds information of the different items.
@@ -58,19 +78,34 @@ class TrustProductsEntityAssignmentsList extends ListResource
      */
     public function create(string $objectSid): TrustProductsEntityAssignmentsInstance
     {
-
-        $data = Values::of([
-            'ObjectSid' =>
-                $objectSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $objectSid);
         return new TrustProductsEntityAssignmentsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['trustProductSid']
+        );
+        
+    }
+
+    /**
+     * Create the TrustProductsEntityAssignmentsInstance with Metadata
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $objectSid): ResourceMetadata
+    {
+        $response = $this->_create( $objectSid);
+        $resource = new TrustProductsEntityAssignmentsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['trustProductSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

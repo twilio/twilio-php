@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class CustomOperatorList extends ListResource
     }
 
     /**
-     * Create the CustomOperatorInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A human readable description of the new Operator, up to 64 characters.
      * @param string $operatorType Operator Type for this Operator. References an existing Operator Type resource.
      * @param array $config Operator configuration, following the schema defined by the Operator Type.
-     * @return CustomOperatorInstance Created CustomOperatorInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $operatorType, array $config): CustomOperatorInstance
+    private function _create(string $friendlyName, string $operatorType, array $config): Response
     {
-
         $data = Values::of([
             'FriendlyName' =>
                 $friendlyName,
@@ -66,11 +67,48 @@ class CustomOperatorList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the CustomOperatorInstance
+     *
+     * @param string $friendlyName A human readable description of the new Operator, up to 64 characters.
+     * @param string $operatorType Operator Type for this Operator. References an existing Operator Type resource.
+     * @param array $config Operator configuration, following the schema defined by the Operator Type.
+     * @return CustomOperatorInstance Created CustomOperatorInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $operatorType, array $config): CustomOperatorInstance
+    {
+        $response = $this->_create( $friendlyName,  $operatorType,  $config);
         return new CustomOperatorInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the CustomOperatorInstance with Metadata
+     *
+     * @param string $friendlyName A human readable description of the new Operator, up to 64 characters.
+     * @param string $operatorType Operator Type for this Operator. References an existing Operator Type resource.
+     * @param array $config Operator configuration, following the schema defined by the Operator Type.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $operatorType, array $config): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $operatorType,  $config);
+        $resource = new CustomOperatorInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

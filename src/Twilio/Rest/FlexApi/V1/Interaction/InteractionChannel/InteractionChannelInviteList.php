@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -56,6 +58,24 @@ class InteractionChannelInviteList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param array $routing The Interaction's routing logic.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(array $routing): Response
+    {
+        $data = Values::of([
+            'Routing' =>
+                Serialize::jsonObject($routing),
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the InteractionChannelInviteInstance
      *
      * @param array $routing The Interaction's routing logic.
@@ -64,20 +84,36 @@ class InteractionChannelInviteList extends ListResource
      */
     public function create(array $routing): InteractionChannelInviteInstance
     {
-
-        $data = Values::of([
-            'Routing' =>
-                Serialize::jsonObject($routing),
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $routing);
         return new InteractionChannelInviteInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['interactionSid'],
             $this->solution['channelSid']
+        );
+        
+    }
+
+    /**
+     * Create the InteractionChannelInviteInstance with Metadata
+     *
+     * @param array $routing The Interaction's routing logic.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $routing): ResourceMetadata
+    {
+        $response = $this->_create( $routing);
+        $resource = new InteractionChannelInviteInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['interactionSid'],
+                        $this->solution['channelSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

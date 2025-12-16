@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,17 +53,16 @@ class ExecutionList extends ListResource
     }
 
     /**
-     * Create the ExecutionInstance
+     * Helper function for Create
      *
      * @param string $to The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.
      * @param string $from The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID.
      * @param array|Options $options Optional Arguments
-     * @return ExecutionInstance Created ExecutionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $to, string $from, array $options = []): ExecutionInstance
+    private function _create(string $to, string $from, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,12 +75,50 @@ class ExecutionList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ExecutionInstance
+     *
+     * @param string $to The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.
+     * @param string $from The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID.
+     * @param array|Options $options Optional Arguments
+     * @return ExecutionInstance Created ExecutionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $to, string $from, array $options = []): ExecutionInstance
+    {
+        $response = $this->_create( $to,  $from, $options);
         return new ExecutionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['flowSid']
+        );
+        
+    }
+
+    /**
+     * Create the ExecutionInstance with Metadata
+     *
+     * @param string $to The Contact phone number to start a Studio Flow Execution, available as variable `{{contact.channel.address}}`.
+     * @param string $from The Twilio phone number to send messages or initiate calls from during the Flow's Execution. Available as variable `{{flow.channel.address}}`. For SMS, this can also be a Messaging Service SID.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $to, string $from, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $to,  $from, $options);
+        $resource = new ExecutionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['flowSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class RoleAssignmentList extends ListResource
@@ -50,6 +52,20 @@ class RoleAssignmentList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $publicApiCreateRoleAssignmentRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the RoleAssignmentInstance
      *
      * @param PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest
@@ -58,15 +74,34 @@ class RoleAssignmentList extends ListResource
      */
     public function create(PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest): RoleAssignmentInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $publicApiCreateRoleAssignmentRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $publicApiCreateRoleAssignmentRequest);
         return new RoleAssignmentInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['organizationSid']
+        );
+        
+    }
+
+    /**
+     * Create the RoleAssignmentInstance with Metadata
+     *
+     * @param PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(PublicApiCreateRoleAssignmentRequest $publicApiCreateRoleAssignmentRequest): ResourceMetadata
+    {
+        $response = $this->_create( $publicApiCreateRoleAssignmentRequest);
+        $resource = new RoleAssignmentInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['organizationSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

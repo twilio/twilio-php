@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class DestinationAlphaSenderList extends ListResource
@@ -50,16 +52,15 @@ class DestinationAlphaSenderList extends ListResource
     }
 
     /**
-     * Create the DestinationAlphaSenderInstance
+     * Helper function for Create
      *
      * @param string $alphaSender The Alphanumeric Sender ID string. Can be up to 11 characters long. Valid characters are A-Z, a-z, 0-9, space, hyphen `-`, plus `+`, underscore `_` and ampersand `&`. This value cannot contain only numbers.
      * @param array|Options $options Optional Arguments
-     * @return DestinationAlphaSenderInstance Created DestinationAlphaSenderInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $alphaSender, array $options = []): DestinationAlphaSenderInstance
+    private function _create(string $alphaSender, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,12 +71,48 @@ class DestinationAlphaSenderList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the DestinationAlphaSenderInstance
+     *
+     * @param string $alphaSender The Alphanumeric Sender ID string. Can be up to 11 characters long. Valid characters are A-Z, a-z, 0-9, space, hyphen `-`, plus `+`, underscore `_` and ampersand `&`. This value cannot contain only numbers.
+     * @param array|Options $options Optional Arguments
+     * @return DestinationAlphaSenderInstance Created DestinationAlphaSenderInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $alphaSender, array $options = []): DestinationAlphaSenderInstance
+    {
+        $response = $this->_create( $alphaSender, $options);
         return new DestinationAlphaSenderInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the DestinationAlphaSenderInstance with Metadata
+     *
+     * @param string $alphaSender The Alphanumeric Sender ID string. Can be up to 11 characters long. Valid characters are A-Z, a-z, 0-9, space, hyphen `-`, plus `+`, underscore `_` and ampersand `&`. This value cannot contain only numbers.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $alphaSender, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $alphaSender, $options);
+        $resource = new DestinationAlphaSenderInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

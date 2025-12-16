@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class FeedbackList extends ListResource
@@ -49,6 +51,20 @@ class FeedbackList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $assistantsV1ServiceCreateFeedbackRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the FeedbackInstance
      *
      * @param AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest
@@ -57,15 +73,34 @@ class FeedbackList extends ListResource
      */
     public function create(AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest): FeedbackInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $assistantsV1ServiceCreateFeedbackRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $assistantsV1ServiceCreateFeedbackRequest);
         return new FeedbackInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['id']
+        );
+        
+    }
+
+    /**
+     * Create the FeedbackInstance with Metadata
+     *
+     * @param AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(AssistantsV1ServiceCreateFeedbackRequest $assistantsV1ServiceCreateFeedbackRequest): ResourceMetadata
+    {
+        $response = $this->_create( $assistantsV1ServiceCreateFeedbackRequest);
+        $resource = new FeedbackInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['id']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

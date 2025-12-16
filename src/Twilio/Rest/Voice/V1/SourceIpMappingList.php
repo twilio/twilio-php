@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SourceIpMappingList extends ListResource
@@ -43,6 +45,27 @@ class SourceIpMappingList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $ipRecordSid The Twilio-provided string that uniquely identifies the IP Record resource to map from.
+     * @param string $sipDomainSid The SID of the SIP Domain that the IP Record should be mapped to.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $ipRecordSid, string $sipDomainSid): Response
+    {
+        $data = Values::of([
+            'IpRecordSid' =>
+                $ipRecordSid,
+            'SipDomainSid' =>
+                $sipDomainSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the SourceIpMappingInstance
      *
      * @param string $ipRecordSid The Twilio-provided string that uniquely identifies the IP Record resource to map from.
@@ -52,20 +75,33 @@ class SourceIpMappingList extends ListResource
      */
     public function create(string $ipRecordSid, string $sipDomainSid): SourceIpMappingInstance
     {
-
-        $data = Values::of([
-            'IpRecordSid' =>
-                $ipRecordSid,
-            'SipDomainSid' =>
-                $sipDomainSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $ipRecordSid,  $sipDomainSid);
         return new SourceIpMappingInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SourceIpMappingInstance with Metadata
+     *
+     * @param string $ipRecordSid The Twilio-provided string that uniquely identifies the IP Record resource to map from.
+     * @param string $sipDomainSid The SID of the SIP Domain that the IP Record should be mapped to.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $ipRecordSid, string $sipDomainSid): ResourceMetadata
+    {
+        $response = $this->_create( $ipRecordSid,  $sipDomainSid);
+        $resource = new SourceIpMappingInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

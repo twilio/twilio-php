@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class BundleList extends ListResource
     }
 
     /**
-     * Create the BundleInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $email The email address that will receive updates when the Bundle resource changes status.
      * @param array|Options $options Optional Arguments
-     * @return BundleInstance Created BundleInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $email, array $options = []): BundleInstance
+    private function _create(string $friendlyName, string $email, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -78,11 +79,48 @@ class BundleList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the BundleInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Bundle resource changes status.
+     * @param array|Options $options Optional Arguments
+     * @return BundleInstance Created BundleInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $email, array $options = []): BundleInstance
+    {
+        $response = $this->_create( $friendlyName,  $email, $options);
         return new BundleInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the BundleInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Bundle resource changes status.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $email, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $email, $options);
+        $resource = new BundleInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

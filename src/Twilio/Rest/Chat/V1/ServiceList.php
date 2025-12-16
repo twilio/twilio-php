@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ServiceList extends ListResource
@@ -43,6 +45,24 @@ class ServiceList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $friendlyName): Response
+    {
+        $data = Values::of([
+            'FriendlyName' =>
+                $friendlyName,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ServiceInstance
      *
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
@@ -51,18 +71,32 @@ class ServiceList extends ListResource
      */
     public function create(string $friendlyName): ServiceInstance
     {
-
-        $data = Values::of([
-            'FriendlyName' =>
-                $friendlyName,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $friendlyName);
         return new ServiceInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ServiceInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName);
+        $resource = new ServiceInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

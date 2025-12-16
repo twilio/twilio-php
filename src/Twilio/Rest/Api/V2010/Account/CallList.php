@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,17 +53,16 @@ class CallList extends ListResource
     }
 
     /**
-     * Create the CallInstance
+     * Helper function for Create
      *
      * @param string $to The phone number, SIP address, or client identifier to call.
      * @param string $from The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
      * @param array|Options $options Optional Arguments
-     * @return CallInstance Created CallInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $to, string $from, array $options = []): CallInstance
+    private function _create(string $to, string $from, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -138,12 +139,50 @@ class CallList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the CallInstance
+     *
+     * @param string $to The phone number, SIP address, or client identifier to call.
+     * @param string $from The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
+     * @param array|Options $options Optional Arguments
+     * @return CallInstance Created CallInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $to, string $from, array $options = []): CallInstance
+    {
+        $response = $this->_create( $to,  $from, $options);
         return new CallInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the CallInstance with Metadata
+     *
+     * @param string $to The phone number, SIP address, or client identifier to call.
+     * @param string $from The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $to, string $from, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $to,  $from, $options);
+        $resource = new CallInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

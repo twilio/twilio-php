@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,16 +53,15 @@ class ConnectionPolicyTargetList extends ListResource
     }
 
     /**
-     * Create the ConnectionPolicyTargetInstance
+     * Helper function for Create
      *
      * @param string $target The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported.
      * @param array|Options $options Optional Arguments
-     * @return ConnectionPolicyTargetInstance Created ConnectionPolicyTargetInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $target, array $options = []): ConnectionPolicyTargetInstance
+    private function _create(string $target, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -77,12 +78,48 @@ class ConnectionPolicyTargetList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ConnectionPolicyTargetInstance
+     *
+     * @param string $target The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported.
+     * @param array|Options $options Optional Arguments
+     * @return ConnectionPolicyTargetInstance Created ConnectionPolicyTargetInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $target, array $options = []): ConnectionPolicyTargetInstance
+    {
+        $response = $this->_create( $target, $options);
         return new ConnectionPolicyTargetInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['connectionPolicySid']
+        );
+        
+    }
+
+    /**
+     * Create the ConnectionPolicyTargetInstance with Metadata
+     *
+     * @param string $target The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $target, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $target, $options);
+        $resource = new ConnectionPolicyTargetInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['connectionPolicySid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

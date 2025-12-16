@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SimList extends ListResource
@@ -44,6 +46,27 @@ class SimList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account.
+     * @param string $registrationCode The 10-digit code required to claim the Super SIM for your Account.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $iccid, string $registrationCode): Response
+    {
+        $data = Values::of([
+            'Iccid' =>
+                $iccid,
+            'RegistrationCode' =>
+                $registrationCode,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the SimInstance
      *
      * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account.
@@ -53,20 +76,33 @@ class SimList extends ListResource
      */
     public function create(string $iccid, string $registrationCode): SimInstance
     {
-
-        $data = Values::of([
-            'Iccid' =>
-                $iccid,
-            'RegistrationCode' =>
-                $registrationCode,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $iccid,  $registrationCode);
         return new SimInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SimInstance with Metadata
+     *
+     * @param string $iccid The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account.
+     * @param string $registrationCode The 10-digit code required to claim the Super SIM for your Account.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $iccid, string $registrationCode): ResourceMetadata
+    {
+        $response = $this->_create( $iccid,  $registrationCode);
+        $resource = new SimInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

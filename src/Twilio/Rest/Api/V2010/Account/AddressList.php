@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,7 +53,7 @@ class AddressList extends ListResource
     }
 
     /**
-     * Create the AddressInstance
+     * Helper function for Create
      *
      * @param string $customerName The name to associate with the new address.
      * @param string $street The number and street address of the new address.
@@ -60,12 +62,11 @@ class AddressList extends ListResource
      * @param string $postalCode The postal code of the new address.
      * @param string $isoCountry The ISO country code of the new address.
      * @param array|Options $options Optional Arguments
-     * @return AddressInstance Created AddressInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $customerName, string $street, string $city, string $region, string $postalCode, string $isoCountry, array $options = []): AddressInstance
+    private function _create(string $customerName, string $street, string $city, string $region, string $postalCode, string $isoCountry, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -92,12 +93,58 @@ class AddressList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the AddressInstance
+     *
+     * @param string $customerName The name to associate with the new address.
+     * @param string $street The number and street address of the new address.
+     * @param string $city The city of the new address.
+     * @param string $region The state or region of the new address.
+     * @param string $postalCode The postal code of the new address.
+     * @param string $isoCountry The ISO country code of the new address.
+     * @param array|Options $options Optional Arguments
+     * @return AddressInstance Created AddressInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $customerName, string $street, string $city, string $region, string $postalCode, string $isoCountry, array $options = []): AddressInstance
+    {
+        $response = $this->_create( $customerName,  $street,  $city,  $region,  $postalCode,  $isoCountry, $options);
         return new AddressInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the AddressInstance with Metadata
+     *
+     * @param string $customerName The name to associate with the new address.
+     * @param string $street The number and street address of the new address.
+     * @param string $city The city of the new address.
+     * @param string $region The state or region of the new address.
+     * @param string $postalCode The postal code of the new address.
+     * @param string $isoCountry The ISO country code of the new address.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $customerName, string $street, string $city, string $region, string $postalCode, string $isoCountry, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $customerName,  $street,  $city,  $region,  $postalCode,  $isoCountry, $options);
+        $resource = new AddressInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

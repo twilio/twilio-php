@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ChannelsSenderList extends ListResource
@@ -44,6 +46,20 @@ class ChannelsSenderList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param MessagingV2ChannelsSenderRequestsCreate $messagingV2ChannelsSenderRequestsCreate
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(MessagingV2ChannelsSenderRequestsCreate $messagingV2ChannelsSenderRequestsCreate): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $messagingV2ChannelsSenderRequestsCreate->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ChannelsSenderInstance
      *
      * @param MessagingV2ChannelsSenderRequestsCreate $messagingV2ChannelsSenderRequestsCreate
@@ -52,14 +68,32 @@ class ChannelsSenderList extends ListResource
      */
     public function create(MessagingV2ChannelsSenderRequestsCreate $messagingV2ChannelsSenderRequestsCreate): ChannelsSenderInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $messagingV2ChannelsSenderRequestsCreate->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $messagingV2ChannelsSenderRequestsCreate);
         return new ChannelsSenderInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ChannelsSenderInstance with Metadata
+     *
+     * @param MessagingV2ChannelsSenderRequestsCreate $messagingV2ChannelsSenderRequestsCreate
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(MessagingV2ChannelsSenderRequestsCreate $messagingV2ChannelsSenderRequestsCreate): ResourceMetadata
+    {
+        $response = $this->_create( $messagingV2ChannelsSenderRequestsCreate);
+        $resource = new ChannelsSenderInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

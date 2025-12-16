@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,16 +47,15 @@ class FleetList extends ListResource
     }
 
     /**
-     * Create the FleetInstance
+     * Helper function for Create
      *
      * @param string $networkAccessProfile The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.
      * @param array|Options $options Optional Arguments
-     * @return FleetInstance Created FleetInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $networkAccessProfile, array $options = []): FleetInstance
+    private function _create(string $networkAccessProfile, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -79,11 +80,46 @@ class FleetList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the FleetInstance
+     *
+     * @param string $networkAccessProfile The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.
+     * @param array|Options $options Optional Arguments
+     * @return FleetInstance Created FleetInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $networkAccessProfile, array $options = []): FleetInstance
+    {
+        $response = $this->_create( $networkAccessProfile, $options);
         return new FleetInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the FleetInstance with Metadata
+     *
+     * @param string $networkAccessProfile The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $networkAccessProfile, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $networkAccessProfile, $options);
+        $resource = new FleetInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

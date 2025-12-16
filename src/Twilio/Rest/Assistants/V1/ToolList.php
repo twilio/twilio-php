@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ToolList extends ListResource
@@ -44,6 +46,20 @@ class ToolList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $assistantsV1ServiceCreateToolRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ToolInstance
      *
      * @param AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest
@@ -52,14 +68,32 @@ class ToolList extends ListResource
      */
     public function create(AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest): ToolInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $assistantsV1ServiceCreateToolRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $assistantsV1ServiceCreateToolRequest);
         return new ToolInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ToolInstance with Metadata
+     *
+     * @param AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(AssistantsV1ServiceCreateToolRequest $assistantsV1ServiceCreateToolRequest): ResourceMetadata
+    {
+        $response = $this->_create( $assistantsV1ServiceCreateToolRequest);
+        $resource = new ToolInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

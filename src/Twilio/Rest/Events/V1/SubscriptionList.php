@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class SubscriptionList extends ListResource
     }
 
     /**
-     * Create the SubscriptionInstance
+     * Helper function for Create
      *
      * @param string $description A human readable description for the Subscription **This value should not contain PII.**
      * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
      * @param array[] $types An array of objects containing the subscribed Event Types
-     * @return SubscriptionInstance Created SubscriptionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $description, string $sinkSid, array $types): SubscriptionInstance
+    private function _create(string $description, string $sinkSid, array $types): Response
     {
-
         $data = Values::of([
             'Description' =>
                 $description,
@@ -66,11 +67,48 @@ class SubscriptionList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SubscriptionInstance
+     *
+     * @param string $description A human readable description for the Subscription **This value should not contain PII.**
+     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
+     * @param array[] $types An array of objects containing the subscribed Event Types
+     * @return SubscriptionInstance Created SubscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $description, string $sinkSid, array $types): SubscriptionInstance
+    {
+        $response = $this->_create( $description,  $sinkSid, $types);
         return new SubscriptionInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SubscriptionInstance with Metadata
+     *
+     * @param string $description A human readable description for the Subscription **This value should not contain PII.**
+     * @param string $sinkSid The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
+     * @param array[] $types An array of objects containing the subscribed Event Types
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $description, string $sinkSid, array $types): ResourceMetadata
+    {
+        $response = $this->_create( $description,  $sinkSid, $types);
+        $resource = new SubscriptionInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class EvaluationList extends ListResource
@@ -49,6 +51,18 @@ class EvaluationList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+    }
+
+    /**
      * Create the EvaluationInstance
      *
      * @return EvaluationInstance Created EvaluationInstance
@@ -56,14 +70,33 @@ class EvaluationList extends ListResource
      */
     public function create(): EvaluationInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], [], $headers);
-
+        $response = $this->_create();
         return new EvaluationInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['bundleSid']
+        );
+        
+    }
+
+    /**
+     * Create the EvaluationInstance with Metadata
+     *
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_create();
+        $resource = new EvaluationInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['bundleSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class UserList extends ListResource
@@ -44,16 +46,15 @@ class UserList extends ListResource
     }
 
     /**
-     * Create the UserInstance
+     * Helper function for Create
      *
      * @param string $identity The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive.
      * @param array|Options $options Optional Arguments
-     * @return UserInstance Created UserInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $identity, array $options = []): UserInstance
+    private function _create(string $identity, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -68,11 +69,46 @@ class UserList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the UserInstance
+     *
+     * @param string $identity The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive.
+     * @param array|Options $options Optional Arguments
+     * @return UserInstance Created UserInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $identity, array $options = []): UserInstance
+    {
+        $response = $this->_create( $identity, $options);
         return new UserInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the UserInstance with Metadata
+     *
+     * @param string $identity The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $identity, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $identity, $options);
+        $resource = new UserInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TrustProductsChannelEndpointAssignmentList extends ListResource
@@ -50,6 +52,27 @@ class TrustProductsChannelEndpointAssignmentList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $channelEndpointType The type of channel endpoint. eg: phone-number
+     * @param string $channelEndpointSid The SID of an channel endpoint
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $channelEndpointType, string $channelEndpointSid): Response
+    {
+        $data = Values::of([
+            'ChannelEndpointType' =>
+                $channelEndpointType,
+            'ChannelEndpointSid' =>
+                $channelEndpointSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the TrustProductsChannelEndpointAssignmentInstance
      *
      * @param string $channelEndpointType The type of channel endpoint. eg: phone-number
@@ -59,21 +82,35 @@ class TrustProductsChannelEndpointAssignmentList extends ListResource
      */
     public function create(string $channelEndpointType, string $channelEndpointSid): TrustProductsChannelEndpointAssignmentInstance
     {
-
-        $data = Values::of([
-            'ChannelEndpointType' =>
-                $channelEndpointType,
-            'ChannelEndpointSid' =>
-                $channelEndpointSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $channelEndpointType,  $channelEndpointSid);
         return new TrustProductsChannelEndpointAssignmentInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['trustProductSid']
+        );
+        
+    }
+
+    /**
+     * Create the TrustProductsChannelEndpointAssignmentInstance with Metadata
+     *
+     * @param string $channelEndpointType The type of channel endpoint. eg: phone-number
+     * @param string $channelEndpointSid The SID of an channel endpoint
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $channelEndpointType, string $channelEndpointSid): ResourceMetadata
+    {
+        $response = $this->_create( $channelEndpointType,  $channelEndpointSid);
+        $resource = new TrustProductsChannelEndpointAssignmentInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['trustProductSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

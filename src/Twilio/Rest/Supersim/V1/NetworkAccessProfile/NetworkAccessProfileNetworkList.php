@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class NetworkAccessProfileNetworkList extends ListResource
@@ -49,6 +51,24 @@ class NetworkAccessProfileNetworkList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $network The SID of the Network resource to be added to the Network Access Profile resource.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $network): Response
+    {
+        $data = Values::of([
+            'Network' =>
+                $network,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the NetworkAccessProfileNetworkInstance
      *
      * @param string $network The SID of the Network resource to be added to the Network Access Profile resource.
@@ -57,19 +77,34 @@ class NetworkAccessProfileNetworkList extends ListResource
      */
     public function create(string $network): NetworkAccessProfileNetworkInstance
     {
-
-        $data = Values::of([
-            'Network' =>
-                $network,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $network);
         return new NetworkAccessProfileNetworkInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['networkAccessProfileSid']
+        );
+        
+    }
+
+    /**
+     * Create the NetworkAccessProfileNetworkInstance with Metadata
+     *
+     * @param string $network The SID of the Network resource to be added to the Network Access Profile resource.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $network): ResourceMetadata
+    {
+        $response = $this->_create( $network);
+        $resource = new NetworkAccessProfileNetworkInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['networkAccessProfileSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

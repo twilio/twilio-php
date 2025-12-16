@@ -18,15 +18,15 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
-use Twilio\Http\Response;
-use Twilio\InstanceContext;
 use Twilio\ListResource;
-use Twilio\Metadata\ResourceMetadata;
 use Twilio\Options;
-use Twilio\Rest\Api\V2010\Account\Message\FeedbackList;
-use Twilio\Rest\Api\V2010\Account\Message\MediaList;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
+use Twilio\Rest\Api\V2010\Account\Message\FeedbackList;
+use Twilio\Rest\Api\V2010\Account\Message\MediaList;
 
 
 /**
@@ -67,7 +67,10 @@ class MessageContext extends InstanceContext
     }
 
     /**
-     * @throws TwilioException
+     * Helper function for Delete
+     *
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
      */
     private function _delete(): Response
     {
@@ -84,45 +87,39 @@ class MessageContext extends InstanceContext
     public function delete(): bool
     {
         $response = $this->_delete();
-        return $this->makeInstance($response);
+        
+        return true;
     }
 
     /**
-     * @throws TwilioException
+     * Delete the MessageInstance with Metadata
+     *
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function deleteWithMetadata(): ResourceMetadata
     {
         $response = $this->_delete();
-
+        
         return new ResourceMetadata(
-            $response->getContent(),
+            null,
             $response->getStatusCode(),
             $response->getHeaders()
         );
     }
 
-    private function makeInstance($response)
-    {
-        if($response->getContent()) {
-            return new MessageInstance(
-                $this->version,
-                $response->getContent(),
-                $this->solution['accountSid'],
-                $this->solution['sid']
-            );
-        }
-        return true;
-    }
 
     /**
-     * @throws TwilioException
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
      */
     private function _fetch(): Response
     {
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
     }
-
 
     /**
      * Fetch the MessageInstance
@@ -132,25 +129,31 @@ class MessageContext extends InstanceContext
      */
     public function fetch(): MessageInstance
     {
-
         $response = $this->_fetch();
-
-        return $this->makeInstance($response);
+        return new MessageInstance(
+            $this->version,
+            $response->getContent(),
+            $this->solution['accountSid'],
+            $this->solution['sid']
+        );
+        
     }
 
     /**
-     * Fetch the MessageInstance
+     * Fetch the MessageInstance with Metadata
      *
-     * @return ResourceMetadata Fetched MessageInstance
+     * @return ResourceMetadata The Fetched Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
     public function fetchWithMetadata(): ResourceMetadata
     {
-
         $response = $this->_fetch();
-
-        $resource = $this->makeInstance($response);
-
+        $resource = new MessageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['sid']
+                    );
         return new ResourceMetadata(
             $resource,
             $response->getStatusCode(),
@@ -158,8 +161,13 @@ class MessageContext extends InstanceContext
         );
     }
 
+
     /**
-     * @throws TwilioException
+     * Helper function for Update
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
      */
     private function _update(array $options = []): Response
     {
@@ -176,7 +184,6 @@ class MessageContext extends InstanceContext
         return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
     }
 
-
     /**
      * Update the MessageInstance
      *
@@ -186,22 +193,32 @@ class MessageContext extends InstanceContext
      */
     public function update(array $options = []): MessageInstance
     {
-
         $response = $this->_update($options);
-
-        return $this->makeInstance($response);
+        return new MessageInstance(
+            $this->version,
+            $response->getContent(),
+            $this->solution['accountSid'],
+            $this->solution['sid']
+        );
+        
     }
 
     /**
-     * @throws TwilioException
+     * Update the MessageInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
      */
     public function updateWithMetadata(array $options = []): ResourceMetadata
     {
-
         $response = $this->_update($options);
-
-        $resource = $this->makeInstance($response);
-
+        $resource = new MessageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['sid']
+                    );
         return new ResourceMetadata(
             $resource,
             $response->getStatusCode(),

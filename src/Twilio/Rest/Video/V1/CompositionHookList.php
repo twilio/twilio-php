@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,16 +47,15 @@ class CompositionHookList extends ListResource
     }
 
     /**
-     * Create the CompositionHookInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to  100 characters long and it must be unique within the account.
      * @param array|Options $options Optional Arguments
-     * @return CompositionHookInstance Created CompositionHookInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): CompositionHookInstance
+    private function _create(string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -81,11 +82,46 @@ class CompositionHookList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the CompositionHookInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to  100 characters long and it must be unique within the account.
+     * @param array|Options $options Optional Arguments
+     * @return CompositionHookInstance Created CompositionHookInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, array $options = []): CompositionHookInstance
+    {
+        $response = $this->_create( $friendlyName, $options);
         return new CompositionHookInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the CompositionHookInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to  100 characters long and it must be unique within the account.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName, $options);
+        $resource = new CompositionHookInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

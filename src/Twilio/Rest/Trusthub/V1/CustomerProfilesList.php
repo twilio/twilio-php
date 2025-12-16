@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class CustomerProfilesList extends ListResource
@@ -44,18 +46,17 @@ class CustomerProfilesList extends ListResource
     }
 
     /**
-     * Create the CustomerProfilesInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
      * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
      * @param array|Options $options Optional Arguments
-     * @return CustomerProfilesInstance Created CustomerProfilesInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $email, string $policySid, array $options = []): CustomerProfilesInstance
+    private function _create(string $friendlyName, string $email, string $policySid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,11 +71,50 @@ class CustomerProfilesList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the CustomerProfilesInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
+     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
+     * @param array|Options $options Optional Arguments
+     * @return CustomerProfilesInstance Created CustomerProfilesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $email, string $policySid, array $options = []): CustomerProfilesInstance
+    {
+        $response = $this->_create( $friendlyName,  $email,  $policySid, $options);
         return new CustomerProfilesInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the CustomerProfilesInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $email The email address that will receive updates when the Customer-Profile resource changes status.
+     * @param string $policySid The unique string of a policy that is associated to the Customer-Profile resource.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $email, string $policySid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $email,  $policySid, $options);
+        $resource = new CustomerProfilesInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

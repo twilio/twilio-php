@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -50,6 +52,18 @@ class WebhookContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the WebhookInstance
      *
      * @return WebhookInstance Fetched WebhookInstance
@@ -57,28 +71,46 @@ class WebhookContext extends InstanceContext
      */
     public function fetch(): WebhookInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new WebhookInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['chatServiceSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the WebhookInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new WebhookInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['chatServiceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the WebhookInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return WebhookInstance Updated WebhookInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WebhookInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -93,12 +125,46 @@ class WebhookContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the WebhookInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return WebhookInstance Updated WebhookInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): WebhookInstance
+    {
+        $response = $this->_update($options);
         return new WebhookInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['chatServiceSid']
+        );
+        
+    }
+
+    /**
+     * Update the WebhookInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new WebhookInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['chatServiceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

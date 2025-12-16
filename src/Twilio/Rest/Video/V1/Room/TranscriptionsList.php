@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,15 +53,14 @@ class TranscriptionsList extends ListResource
     }
 
     /**
-     * Create the TranscriptionsInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return TranscriptionsInstance Created TranscriptionsInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): TranscriptionsInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -68,12 +69,46 @@ class TranscriptionsList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TranscriptionsInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return TranscriptionsInstance Created TranscriptionsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): TranscriptionsInstance
+    {
+        $response = $this->_create($options);
         return new TranscriptionsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['roomSid']
+        );
+        
+    }
+
+    /**
+     * Create the TranscriptionsInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new TranscriptionsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['roomSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

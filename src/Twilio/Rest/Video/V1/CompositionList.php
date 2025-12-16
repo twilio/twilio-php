@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,16 +47,15 @@ class CompositionList extends ListResource
     }
 
     /**
-     * Create the CompositionInstance
+     * Helper function for Create
      *
      * @param string $roomSid The SID of the Group Room with the media tracks to be used as composition sources.
      * @param array|Options $options Optional Arguments
-     * @return CompositionInstance Created CompositionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $roomSid, array $options = []): CompositionInstance
+    private function _create(string $roomSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -79,11 +80,46 @@ class CompositionList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the CompositionInstance
+     *
+     * @param string $roomSid The SID of the Group Room with the media tracks to be used as composition sources.
+     * @param array|Options $options Optional Arguments
+     * @return CompositionInstance Created CompositionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $roomSid, array $options = []): CompositionInstance
+    {
+        $response = $this->_create( $roomSid, $options);
         return new CompositionInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the CompositionInstance with Metadata
+     *
+     * @param string $roomSid The SID of the Group Room with the media tracks to be used as composition sources.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $roomSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $roomSid, $options);
+        $resource = new CompositionInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

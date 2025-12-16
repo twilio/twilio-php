@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -57,16 +59,15 @@ class ChallengeList extends ListResource
     }
 
     /**
-     * Create the ChallengeInstance
+     * Helper function for Create
      *
      * @param string $factorSid The unique SID identifier of the Factor.
      * @param array|Options $options Optional Arguments
-     * @return ChallengeInstance Created ChallengeInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $factorSid, array $options = []): ChallengeInstance
+    private function _create(string $factorSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -85,13 +86,50 @@ class ChallengeList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ChallengeInstance
+     *
+     * @param string $factorSid The unique SID identifier of the Factor.
+     * @param array|Options $options Optional Arguments
+     * @return ChallengeInstance Created ChallengeInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $factorSid, array $options = []): ChallengeInstance
+    {
+        $response = $this->_create( $factorSid, $options);
         return new ChallengeInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['identity']
+        );
+        
+    }
+
+    /**
+     * Create the ChallengeInstance with Metadata
+     *
+     * @param string $factorSid The unique SID identifier of the Factor.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $factorSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $factorSid, $options);
+        $resource = new ChallengeInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['identity']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

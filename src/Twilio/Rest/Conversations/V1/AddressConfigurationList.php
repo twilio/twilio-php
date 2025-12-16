@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class AddressConfigurationList extends ListResource
     }
 
     /**
-     * Create the AddressConfigurationInstance
+     * Helper function for Create
      *
      * @param string $type
      * @param string $address The unique address to be configured. The address can be a whatsapp address or phone number
      * @param array|Options $options Optional Arguments
-     * @return AddressConfigurationInstance Created AddressConfigurationInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $type, string $address, array $options = []): AddressConfigurationInstance
+    private function _create(string $type, string $address, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -86,11 +87,48 @@ class AddressConfigurationList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the AddressConfigurationInstance
+     *
+     * @param string $type
+     * @param string $address The unique address to be configured. The address can be a whatsapp address or phone number
+     * @param array|Options $options Optional Arguments
+     * @return AddressConfigurationInstance Created AddressConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $type, string $address, array $options = []): AddressConfigurationInstance
+    {
+        $response = $this->_create( $type,  $address, $options);
         return new AddressConfigurationInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the AddressConfigurationInstance with Metadata
+     *
+     * @param string $type
+     * @param string $address The unique address to be configured. The address can be a whatsapp address or phone number
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $type, string $address, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $type,  $address, $options);
+        $resource = new AddressConfigurationInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

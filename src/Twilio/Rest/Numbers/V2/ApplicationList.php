@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ApplicationList extends ListResource
@@ -43,6 +45,20 @@ class ApplicationList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param CreateShortCodeApplicationRequest $createShortCodeApplicationRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(CreateShortCodeApplicationRequest $createShortCodeApplicationRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $createShortCodeApplicationRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ApplicationInstance
      *
      * @param CreateShortCodeApplicationRequest $createShortCodeApplicationRequest
@@ -51,14 +67,32 @@ class ApplicationList extends ListResource
      */
     public function create(CreateShortCodeApplicationRequest $createShortCodeApplicationRequest): ApplicationInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $createShortCodeApplicationRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $createShortCodeApplicationRequest);
         return new ApplicationInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ApplicationInstance with Metadata
+     *
+     * @param CreateShortCodeApplicationRequest $createShortCodeApplicationRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(CreateShortCodeApplicationRequest $createShortCodeApplicationRequest): ResourceMetadata
+    {
+        $response = $this->_create( $createShortCodeApplicationRequest);
+        $resource = new ApplicationInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

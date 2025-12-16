@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class ServiceList extends ListResource
     }
 
     /**
-     * Create the ServiceInstance
+     * Helper function for Create
      *
      * @param string $uniqueName A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique.
      * @param string $friendlyName A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters.
      * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Created ServiceInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, string $friendlyName, array $options = []): ServiceInstance
+    private function _create(string $uniqueName, string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,11 +71,48 @@ class ServiceList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ServiceInstance
+     *
+     * @param string $uniqueName A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique.
+     * @param string $friendlyName A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters.
+     * @param array|Options $options Optional Arguments
+     * @return ServiceInstance Created ServiceInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $uniqueName, string $friendlyName, array $options = []): ServiceInstance
+    {
+        $response = $this->_create( $uniqueName,  $friendlyName, $options);
         return new ServiceInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ServiceInstance with Metadata
+     *
+     * @param string $uniqueName A user-defined string that uniquely identifies the Service resource. It can be used as an alternative to the `sid` in the URL path to address the Service resource. This value must be 50 characters or less in length and be unique.
+     * @param string $friendlyName A descriptive string that you create to describe the Service resource. It can be a maximum of 255 characters.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $uniqueName, string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $uniqueName,  $friendlyName, $options);
+        $resource = new ServiceInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

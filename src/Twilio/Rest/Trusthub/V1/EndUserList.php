@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class EndUserList extends ListResource
     }
 
     /**
-     * Create the EndUserInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $type The type of end user of the Bundle resource - can be `individual` or `business`.
      * @param array|Options $options Optional Arguments
-     * @return EndUserInstance Created EndUserInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $type, array $options = []): EndUserInstance
+    private function _create(string $friendlyName, string $type, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -68,11 +69,48 @@ class EndUserList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the EndUserInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $type The type of end user of the Bundle resource - can be `individual` or `business`.
+     * @param array|Options $options Optional Arguments
+     * @return EndUserInstance Created EndUserInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $type, array $options = []): EndUserInstance
+    {
+        $response = $this->_create( $friendlyName,  $type, $options);
         return new EndUserInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the EndUserInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $type The type of end user of the Bundle resource - can be `individual` or `business`.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $type, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $type, $options);
+        $resource = new EndUserInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

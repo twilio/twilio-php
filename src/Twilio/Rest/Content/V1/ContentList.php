@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ContentList extends ListResource
@@ -43,6 +45,20 @@ class ContentList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param ContentCreateRequest $contentCreateRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(ContentCreateRequest $contentCreateRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $contentCreateRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ContentInstance
      *
      * @param ContentCreateRequest $contentCreateRequest
@@ -51,14 +67,32 @@ class ContentList extends ListResource
      */
     public function create(ContentCreateRequest $contentCreateRequest): ContentInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $contentCreateRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $contentCreateRequest);
         return new ContentInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ContentInstance with Metadata
+     *
+     * @param ContentCreateRequest $contentCreateRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(ContentCreateRequest $contentCreateRequest): ResourceMetadata
+    {
+        $response = $this->_create( $contentCreateRequest);
+        $resource = new ContentInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

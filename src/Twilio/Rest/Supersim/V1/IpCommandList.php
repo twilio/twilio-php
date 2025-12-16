@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class IpCommandList extends ListResource
@@ -44,18 +46,17 @@ class IpCommandList extends ListResource
     }
 
     /**
-     * Create the IpCommandInstance
+     * Helper function for Create
      *
      * @param string $sim The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to.
      * @param string $payload The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64.
      * @param int $devicePort The device port to which the IP Command will be sent.
      * @param array|Options $options Optional Arguments
-     * @return IpCommandInstance Created IpCommandInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $sim, string $payload, int $devicePort, array $options = []): IpCommandInstance
+    private function _create(string $sim, string $payload, int $devicePort, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -74,11 +75,50 @@ class IpCommandList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the IpCommandInstance
+     *
+     * @param string $sim The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to.
+     * @param string $payload The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64.
+     * @param int $devicePort The device port to which the IP Command will be sent.
+     * @param array|Options $options Optional Arguments
+     * @return IpCommandInstance Created IpCommandInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $sim, string $payload, int $devicePort, array $options = []): IpCommandInstance
+    {
+        $response = $this->_create( $sim,  $payload,  $devicePort, $options);
         return new IpCommandInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the IpCommandInstance with Metadata
+     *
+     * @param string $sim The `sid` or `unique_name` of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) to send the IP Command to.
+     * @param string $payload The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64.
+     * @param int $devicePort The device port to which the IP Command will be sent.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $sim, string $payload, int $devicePort, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $sim,  $payload,  $devicePort, $options);
+        $resource = new IpCommandInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

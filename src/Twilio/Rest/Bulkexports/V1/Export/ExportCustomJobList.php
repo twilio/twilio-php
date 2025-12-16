@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ExportCustomJobList extends ListResource
@@ -50,18 +52,17 @@ class ExportCustomJobList extends ListResource
     }
 
     /**
-     * Create the ExportCustomJobInstance
+     * Helper function for Create
      *
      * @param string $startDay The start day for the custom export specified as a string in the format of yyyy-mm-dd
      * @param string $endDay The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day.
      * @param string $friendlyName The friendly name specified when creating the job
      * @param array|Options $options Optional Arguments
-     * @return ExportCustomJobInstance Created ExportCustomJobInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $startDay, string $endDay, string $friendlyName, array $options = []): ExportCustomJobInstance
+    private function _create(string $startDay, string $endDay, string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,12 +81,52 @@ class ExportCustomJobList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ExportCustomJobInstance
+     *
+     * @param string $startDay The start day for the custom export specified as a string in the format of yyyy-mm-dd
+     * @param string $endDay The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day.
+     * @param string $friendlyName The friendly name specified when creating the job
+     * @param array|Options $options Optional Arguments
+     * @return ExportCustomJobInstance Created ExportCustomJobInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $startDay, string $endDay, string $friendlyName, array $options = []): ExportCustomJobInstance
+    {
+        $response = $this->_create( $startDay,  $endDay,  $friendlyName, $options);
         return new ExportCustomJobInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['resourceType']
+        );
+        
+    }
+
+    /**
+     * Create the ExportCustomJobInstance with Metadata
+     *
+     * @param string $startDay The start day for the custom export specified as a string in the format of yyyy-mm-dd
+     * @param string $endDay The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day.
+     * @param string $friendlyName The friendly name specified when creating the job
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $startDay, string $endDay, string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $startDay,  $endDay,  $friendlyName, $options);
+        $resource = new ExportCustomJobInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['resourceType']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

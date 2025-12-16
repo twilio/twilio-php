@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class BucketList extends ListResource
@@ -55,6 +57,27 @@ class BucketList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param int $max Maximum number of requests permitted in during the interval.
+     * @param int $interval Number of seconds that the rate limit will be enforced over.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(int $max, int $interval): Response
+    {
+        $data = Values::of([
+            'Max' =>
+                $max,
+            'Interval' =>
+                $interval,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the BucketInstance
      *
      * @param int $max Maximum number of requests permitted in during the interval.
@@ -64,22 +87,37 @@ class BucketList extends ListResource
      */
     public function create(int $max, int $interval): BucketInstance
     {
-
-        $data = Values::of([
-            'Max' =>
-                $max,
-            'Interval' =>
-                $interval,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $max,  $interval);
         return new BucketInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['rateLimitSid']
+        );
+        
+    }
+
+    /**
+     * Create the BucketInstance with Metadata
+     *
+     * @param int $max Maximum number of requests permitted in during the interval.
+     * @param int $interval Number of seconds that the rate limit will be enforced over.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(int $max, int $interval): ResourceMetadata
+    {
+        $response = $this->_create( $max,  $interval);
+        $resource = new BucketInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['rateLimitSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

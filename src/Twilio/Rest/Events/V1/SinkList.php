@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class SinkList extends ListResource
     }
 
     /**
-     * Create the SinkInstance
+     * Helper function for Create
      *
      * @param string $description A human readable description for the Sink **This value should not contain PII.**
      * @param array $sinkConfiguration The information required for Twilio to connect to the provided Sink encoded as JSON.
      * @param string $sinkType
-     * @return SinkInstance Created SinkInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $description, array $sinkConfiguration, string $sinkType): SinkInstance
+    private function _create(string $description, array $sinkConfiguration, string $sinkType): Response
     {
-
         $data = Values::of([
             'Description' =>
                 $description,
@@ -66,11 +67,48 @@ class SinkList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SinkInstance
+     *
+     * @param string $description A human readable description for the Sink **This value should not contain PII.**
+     * @param array $sinkConfiguration The information required for Twilio to connect to the provided Sink encoded as JSON.
+     * @param string $sinkType
+     * @return SinkInstance Created SinkInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $description, array $sinkConfiguration, string $sinkType): SinkInstance
+    {
+        $response = $this->_create( $description,  $sinkConfiguration,  $sinkType);
         return new SinkInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SinkInstance with Metadata
+     *
+     * @param string $description A human readable description for the Sink **This value should not contain PII.**
+     * @param array $sinkConfiguration The information required for Twilio to connect to the provided Sink encoded as JSON.
+     * @param string $sinkType
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $description, array $sinkConfiguration, string $sinkType): ResourceMetadata
+    {
+        $response = $this->_create( $description,  $sinkConfiguration,  $sinkType);
+        $resource = new SinkInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

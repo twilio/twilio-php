@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class BrandVettingList extends ListResource
@@ -50,16 +52,15 @@ class BrandVettingList extends ListResource
     }
 
     /**
-     * Create the BrandVettingInstance
+     * Helper function for Create
      *
      * @param string $vettingProvider
      * @param array|Options $options Optional Arguments
-     * @return BrandVettingInstance Created BrandVettingInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $vettingProvider, array $options = []): BrandVettingInstance
+    private function _create(string $vettingProvider, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,12 +71,48 @@ class BrandVettingList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the BrandVettingInstance
+     *
+     * @param string $vettingProvider
+     * @param array|Options $options Optional Arguments
+     * @return BrandVettingInstance Created BrandVettingInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $vettingProvider, array $options = []): BrandVettingInstance
+    {
+        $response = $this->_create( $vettingProvider, $options);
         return new BrandVettingInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['brandSid']
+        );
+        
+    }
+
+    /**
+     * Create the BrandVettingInstance with Metadata
+     *
+     * @param string $vettingProvider
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $vettingProvider, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $vettingProvider, $options);
+        $resource = new BrandVettingInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['brandSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

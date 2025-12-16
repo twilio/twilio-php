@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class IpAccessControlListList extends ListResource
@@ -49,6 +51,24 @@ class IpAccessControlListList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $ipAccessControlListSid The SID of the [IP Access Control List](https://www.twilio.com/docs/voice/sip/api/sip-ipaccesscontrollist-resource) that you want to associate with the trunk.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $ipAccessControlListSid): Response
+    {
+        $data = Values::of([
+            'IpAccessControlListSid' =>
+                $ipAccessControlListSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the IpAccessControlListInstance
      *
      * @param string $ipAccessControlListSid The SID of the [IP Access Control List](https://www.twilio.com/docs/voice/sip/api/sip-ipaccesscontrollist-resource) that you want to associate with the trunk.
@@ -57,19 +77,34 @@ class IpAccessControlListList extends ListResource
      */
     public function create(string $ipAccessControlListSid): IpAccessControlListInstance
     {
-
-        $data = Values::of([
-            'IpAccessControlListSid' =>
-                $ipAccessControlListSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $ipAccessControlListSid);
         return new IpAccessControlListInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['trunkSid']
+        );
+        
+    }
+
+    /**
+     * Create the IpAccessControlListInstance with Metadata
+     *
+     * @param string $ipAccessControlListSid The SID of the [IP Access Control List](https://www.twilio.com/docs/voice/sip/api/sip-ipaccesscontrollist-resource) that you want to associate with the trunk.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $ipAccessControlListSid): ResourceMetadata
+    {
+        $response = $this->_create( $ipAccessControlListSid);
+        $resource = new IpAccessControlListInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['trunkSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

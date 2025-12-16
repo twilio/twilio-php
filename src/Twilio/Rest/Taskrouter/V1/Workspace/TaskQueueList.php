@@ -23,6 +23,8 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueBulkRealTimeStatisticsList;
 use Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsList;
 
@@ -60,16 +62,15 @@ class TaskQueueList extends ListResource
     }
 
     /**
-     * Create the TaskQueueInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.
      * @param array|Options $options Optional Arguments
-     * @return TaskQueueInstance Created TaskQueueInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): TaskQueueInstance
+    private function _create(string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -88,12 +89,48 @@ class TaskQueueList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TaskQueueInstance
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.
+     * @param array|Options $options Optional Arguments
+     * @return TaskQueueInstance Created TaskQueueInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, array $options = []): TaskQueueInstance
+    {
+        $response = $this->_create( $friendlyName, $options);
         return new TaskQueueInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid']
+        );
+        
+    }
+
+    /**
+     * Create the TaskQueueInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you create to describe the TaskQueue. For example `Support-Tier 1`, `Sales`, or `Escalation`.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName, $options);
+        $resource = new TaskQueueInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

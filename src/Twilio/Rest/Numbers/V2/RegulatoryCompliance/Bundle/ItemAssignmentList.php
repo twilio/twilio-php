@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ItemAssignmentList extends ListResource
@@ -49,6 +51,24 @@ class ItemAssignmentList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $objectSid): Response
+    {
+        $data = Values::of([
+            'ObjectSid' =>
+                $objectSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ItemAssignmentInstance
      *
      * @param string $objectSid The SID of an object bag that holds information of the different items.
@@ -57,19 +77,34 @@ class ItemAssignmentList extends ListResource
      */
     public function create(string $objectSid): ItemAssignmentInstance
     {
-
-        $data = Values::of([
-            'ObjectSid' =>
-                $objectSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $objectSid);
         return new ItemAssignmentInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['bundleSid']
+        );
+        
+    }
+
+    /**
+     * Create the ItemAssignmentInstance with Metadata
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $objectSid): ResourceMetadata
+    {
+        $response = $this->_create( $objectSid);
+        $resource = new ItemAssignmentInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['bundleSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

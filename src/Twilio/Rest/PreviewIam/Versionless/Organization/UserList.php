@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class UserList extends ListResource
@@ -50,6 +52,20 @@ class UserList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param ScimUser $scimUser
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(ScimUser $scimUser): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/scim+json' ]);
+        $data = $scimUser->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the UserInstance
      *
      * @param ScimUser $scimUser
@@ -58,15 +74,34 @@ class UserList extends ListResource
      */
     public function create(ScimUser $scimUser): UserInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/scim+json' ]);
-        $data = $scimUser->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $scimUser);
         return new UserInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['organizationSid']
+        );
+        
+    }
+
+    /**
+     * Create the UserInstance with Metadata
+     *
+     * @param ScimUser $scimUser
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(ScimUser $scimUser): ResourceMetadata
+    {
+        $response = $this->_create( $scimUser);
+        $resource = new UserInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['organizationSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

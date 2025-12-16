@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class BundleCopyList extends ListResource
@@ -50,15 +52,14 @@ class BundleCopyList extends ListResource
     }
 
     /**
-     * Create the BundleCopyInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return BundleCopyInstance Created BundleCopyInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): BundleCopyInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -67,12 +68,46 @@ class BundleCopyList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the BundleCopyInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return BundleCopyInstance Created BundleCopyInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): BundleCopyInstance
+    {
+        $response = $this->_create($options);
         return new BundleCopyInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['bundleSid']
+        );
+        
+    }
+
+    /**
+     * Create the BundleCopyInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new BundleCopyInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['bundleSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

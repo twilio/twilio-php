@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class RateLimitList extends ListResource
@@ -50,16 +52,15 @@ class RateLimitList extends ListResource
     }
 
     /**
-     * Create the RateLimitInstance
+     * Helper function for Create
      *
      * @param string $uniqueName Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**
      * @param array|Options $options Optional Arguments
-     * @return RateLimitInstance Created RateLimitInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): RateLimitInstance
+    private function _create(string $uniqueName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,12 +71,48 @@ class RateLimitList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the RateLimitInstance
+     *
+     * @param string $uniqueName Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**
+     * @param array|Options $options Optional Arguments
+     * @return RateLimitInstance Created RateLimitInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $uniqueName, array $options = []): RateLimitInstance
+    {
+        $response = $this->_create( $uniqueName, $options);
         return new RateLimitInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Create the RateLimitInstance with Metadata
+     *
+     * @param string $uniqueName Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $uniqueName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $uniqueName, $options);
+        $resource = new RateLimitInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

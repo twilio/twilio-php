@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class QueueList extends ListResource
@@ -50,16 +52,15 @@ class QueueList extends ListResource
     }
 
     /**
-     * Create the QueueInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
      * @param array|Options $options Optional Arguments
-     * @return QueueInstance Created QueueInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, array $options = []): QueueInstance
+    private function _create(string $friendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,12 +71,48 @@ class QueueList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the QueueInstance
+     *
+     * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+     * @param array|Options $options Optional Arguments
+     * @return QueueInstance Created QueueInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, array $options = []): QueueInstance
+    {
+        $response = $this->_create( $friendlyName, $options);
         return new QueueInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the QueueInstance with Metadata
+     *
+     * @param string $friendlyName A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName, $options);
+        $resource = new QueueInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

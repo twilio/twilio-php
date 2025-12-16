@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ChannelSenderList extends ListResource
@@ -49,6 +51,24 @@ class ChannelSenderList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $sid The SID of the Channel Sender being added to the Service.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $sid): Response
+    {
+        $data = Values::of([
+            'Sid' =>
+                $sid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the ChannelSenderInstance
      *
      * @param string $sid The SID of the Channel Sender being added to the Service.
@@ -57,19 +77,34 @@ class ChannelSenderList extends ListResource
      */
     public function create(string $sid): ChannelSenderInstance
     {
-
-        $data = Values::of([
-            'Sid' =>
-                $sid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $sid);
         return new ChannelSenderInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['messagingServiceSid']
+        );
+        
+    }
+
+    /**
+     * Create the ChannelSenderInstance with Metadata
+     *
+     * @param string $sid The SID of the Channel Sender being added to the Service.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $sid): ResourceMetadata
+    {
+        $response = $this->_create( $sid);
+        $resource = new ChannelSenderInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['messagingServiceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

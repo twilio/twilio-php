@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class InstalledAddOnList extends ListResource
     }
 
     /**
-     * Create the InstalledAddOnInstance
+     * Helper function for Create
      *
      * @param string $availableAddOnSid The SID of the AvaliableAddOn to install.
      * @param bool $acceptTermsOfService Whether the Terms of Service were accepted.
      * @param array|Options $options Optional Arguments
-     * @return InstalledAddOnInstance Created InstalledAddOnInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): InstalledAddOnInstance
+    private function _create(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,11 +71,48 @@ class InstalledAddOnList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the InstalledAddOnInstance
+     *
+     * @param string $availableAddOnSid The SID of the AvaliableAddOn to install.
+     * @param bool $acceptTermsOfService Whether the Terms of Service were accepted.
+     * @param array|Options $options Optional Arguments
+     * @return InstalledAddOnInstance Created InstalledAddOnInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): InstalledAddOnInstance
+    {
+        $response = $this->_create( $availableAddOnSid,  $acceptTermsOfService, $options);
         return new InstalledAddOnInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the InstalledAddOnInstance with Metadata
+     *
+     * @param string $availableAddOnSid The SID of the AvaliableAddOn to install.
+     * @param bool $acceptTermsOfService Whether the Terms of Service were accepted.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $availableAddOnSid, bool $acceptTermsOfService, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $availableAddOnSid,  $acceptTermsOfService, $options);
+        $resource = new InstalledAddOnInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

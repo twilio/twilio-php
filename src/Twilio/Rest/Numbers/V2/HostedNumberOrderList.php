@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,19 +47,18 @@ class HostedNumberOrderList extends ListResource
     }
 
     /**
-     * Create the HostedNumberOrderInstance
+     * Helper function for Create
      *
      * @param string $phoneNumber The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format
      * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
      * @param string $addressSid Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
      * @param string $email Optional. Email of the owner of this phone number that is being hosted.
      * @param array|Options $options Optional Arguments
-     * @return HostedNumberOrderInstance Created HostedNumberOrderInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $phoneNumber, string $contactPhoneNumber, string $addressSid, string $email, array $options = []): HostedNumberOrderInstance
+    private function _create(string $phoneNumber, string $contactPhoneNumber, string $addressSid, string $email, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -96,11 +97,52 @@ class HostedNumberOrderList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the HostedNumberOrderInstance
+     *
+     * @param string $phoneNumber The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format
+     * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
+     * @param string $addressSid Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+     * @param string $email Optional. Email of the owner of this phone number that is being hosted.
+     * @param array|Options $options Optional Arguments
+     * @return HostedNumberOrderInstance Created HostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $phoneNumber, string $contactPhoneNumber, string $addressSid, string $email, array $options = []): HostedNumberOrderInstance
+    {
+        $response = $this->_create( $phoneNumber,  $contactPhoneNumber,  $addressSid,  $email, $options);
         return new HostedNumberOrderInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the HostedNumberOrderInstance with Metadata
+     *
+     * @param string $phoneNumber The number to host in [+E.164](https://en.wikipedia.org/wiki/E.164) format
+     * @param string $contactPhoneNumber The contact phone number of the person authorized to sign the Authorization Document.
+     * @param string $addressSid Optional. A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+     * @param string $email Optional. Email of the owner of this phone number that is being hosted.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $phoneNumber, string $contactPhoneNumber, string $addressSid, string $email, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $phoneNumber,  $contactPhoneNumber,  $addressSid,  $email, $options);
+        $resource = new HostedNumberOrderInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

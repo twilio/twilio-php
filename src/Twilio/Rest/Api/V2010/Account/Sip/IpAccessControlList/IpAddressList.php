@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class IpAddressList extends ListResource
@@ -56,17 +58,16 @@ class IpAddressList extends ListResource
     }
 
     /**
-     * Create the IpAddressInstance
+     * Helper function for Create
      *
      * @param string $friendlyName A human readable descriptive text for this resource, up to 255 characters long.
      * @param string $ipAddress An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
      * @param array|Options $options Optional Arguments
-     * @return IpAddressInstance Created IpAddressInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $ipAddress, array $options = []): IpAddressInstance
+    private function _create(string $friendlyName, string $ipAddress, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -79,13 +80,52 @@ class IpAddressList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the IpAddressInstance
+     *
+     * @param string $friendlyName A human readable descriptive text for this resource, up to 255 characters long.
+     * @param string $ipAddress An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+     * @param array|Options $options Optional Arguments
+     * @return IpAddressInstance Created IpAddressInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $ipAddress, array $options = []): IpAddressInstance
+    {
+        $response = $this->_create( $friendlyName,  $ipAddress, $options);
         return new IpAddressInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['ipAccessControlListSid']
+        );
+        
+    }
+
+    /**
+     * Create the IpAddressInstance with Metadata
+     *
+     * @param string $friendlyName A human readable descriptive text for this resource, up to 255 characters long.
+     * @param string $ipAddress An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $ipAddress, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $ipAddress, $options);
+        $resource = new IpAddressInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['ipAccessControlListSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

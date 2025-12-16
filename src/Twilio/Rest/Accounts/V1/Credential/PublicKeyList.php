@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PublicKeyList extends ListResource
@@ -44,16 +46,15 @@ class PublicKeyList extends ListResource
     }
 
     /**
-     * Create the PublicKeyInstance
+     * Helper function for Create
      *
      * @param string $publicKey A URL encoded representation of the public key. For example, `-----BEGIN PUBLIC KEY-----MIIBIjANB.pa9xQIDAQAB-----END PUBLIC KEY-----`
      * @param array|Options $options Optional Arguments
-     * @return PublicKeyInstance Created PublicKeyInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $publicKey, array $options = []): PublicKeyInstance
+    private function _create(string $publicKey, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -66,11 +67,46 @@ class PublicKeyList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the PublicKeyInstance
+     *
+     * @param string $publicKey A URL encoded representation of the public key. For example, `-----BEGIN PUBLIC KEY-----MIIBIjANB.pa9xQIDAQAB-----END PUBLIC KEY-----`
+     * @param array|Options $options Optional Arguments
+     * @return PublicKeyInstance Created PublicKeyInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $publicKey, array $options = []): PublicKeyInstance
+    {
+        $response = $this->_create( $publicKey, $options);
         return new PublicKeyInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the PublicKeyInstance with Metadata
+     *
+     * @param string $publicKey A URL encoded representation of the public key. For example, `-----BEGIN PUBLIC KEY-----MIIBIjANB.pa9xQIDAQAB-----END PUBLIC KEY-----`
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $publicKey, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $publicKey, $options);
+        $resource = new PublicKeyInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

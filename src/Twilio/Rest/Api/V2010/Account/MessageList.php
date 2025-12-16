@@ -17,17 +17,14 @@
 namespace Twilio\Rest\Api\V2010\Account;
 
 use Twilio\Exceptions\TwilioException;
-use Twilio\Http\Response;
 use Twilio\ListResource;
-use Twilio\Metadata\ArrayMetadata;
-use Twilio\Metadata\PageMetadata;
-use Twilio\Metadata\ResourceMetadata;
-use Twilio\Metadata\StreamMetadata;
 use Twilio\Options;
-use Twilio\Serialize;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
+use Twilio\Serialize;
 
 
 class MessageList extends ListResource
@@ -48,7 +45,7 @@ class MessageList extends ListResource
         $this->solution = [
         'accountSid' =>
             $accountSid,
-
+        
         ];
 
         $this->uri = '/Accounts/' . \rawurlencode($accountSid)
@@ -56,7 +53,12 @@ class MessageList extends ListResource
     }
 
     /**
-     * @throws TwilioException
+     * Helper function for Create
+     *
+     * @param string $to The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/messaging/channels), e.g. `whatsapp:+15552229999`.
+     * @param array|Options $options Optional Arguments
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
      */
     private function _create(string $to, array $options = []): Response
     {
@@ -117,15 +119,6 @@ class MessageList extends ListResource
         return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
     }
 
-    private function makeInstance($response): MessageInstance
-    {
-        return new MessageInstance(
-            $this->version,
-            $response->getContent(),
-            $this->solution['accountSid']
-        );
-    }
-
     /**
      * Create the MessageInstance
      *
@@ -136,23 +129,31 @@ class MessageList extends ListResource
      */
     public function create(string $to, array $options = []): MessageInstance
     {
-        $response = $this->_create($to, $options);
-        return $this->makeInstance($response);
+        $response = $this->_create( $to, $options);
+        return new MessageInstance(
+            $this->version,
+            $response->getContent(),
+            $this->solution['accountSid']
+        );
+        
     }
 
     /**
-     * Create the MessageInstance
+     * Create the MessageInstance with Metadata
      *
      * @param string $to The recipient's phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (for SMS/MMS) or [channel address](https://www.twilio.com/docs/messaging/channels), e.g. `whatsapp:+15552229999`.
      * @param array|Options $options Optional Arguments
-     * @return ResourceMetadata Created MessageInstance
+     * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
     public function createWithMetadata(string $to, array $options = []): ResourceMetadata
     {
-
-        $response = $this->_create($to, $options);
-        $resource = $this->makeInstance($response);
+        $response = $this->_create( $to, $options);
+        $resource = new MessageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
         return new ResourceMetadata(
             $resource,
             $response->getStatusCode(),
@@ -180,17 +181,6 @@ class MessageList extends ListResource
     public function read(array $options = [], ?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
-    }
-
-    public function readWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
-    {
-        $streamWithMetadata = $this->streamWithMetadata($options, $limit, $pageSize);
-        $readResponse = \iterator_to_array($streamWithMetadata, false);
-        return new ArrayMetadata(
-            $readResponse,
-            $streamWithMetadata->getStatusCode(),
-            $streamWithMetadata->getHeaders()
-        );
     }
 
     /**
@@ -221,25 +211,21 @@ class MessageList extends ListResource
         return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
     }
 
-    public function streamWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): StreamMetadata
-    {
-        $limits = $this->version->readLimits($limit, $pageSize);
-
-        $pageWithMetadata = $this->pageWithMetadata($options, $limits['pageSize']);
-
-        $stream = $this->version->stream($pageWithMetadata->getPage(), $limits['limit'], $limits['pageLimit']);
-
-        return new StreamMetadata(
-            $stream,
-            $pageWithMetadata->getStatusCode(),
-            $pageWithMetadata->getHeaders()
-        );
-    }
-
-    private function _page(array $options = [],
-                                 $pageSize = Values::NONE,
-                           string $pageToken = Values::NONE,
-        $pageNumber = Values::NONE): Response
+    /**
+     * Retrieve a single page of MessageInstance records from the API.
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return MessagePage Page of MessageInstance
+     */
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): MessagePage
     {
         $options = new Values($options);
 
@@ -260,43 +246,9 @@ class MessageList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
-        return $this->version->page('GET', $this->uri, $params, [], $headers);
-    }
+        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
 
-    /**
-     * Retrieve a single page of MessageInstance records from the API.
-     * Request is executed immediately
-     *
-     * @param mixed $pageSize Number of records to return, defaults to 50
-     * @param string $pageToken PageToken provided by the API
-     * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return MessagePage Page of MessageInstance
-     */
-    public function page(
-        array $options = [],
-        $pageSize = Values::NONE,
-        string $pageToken = Values::NONE,
-        $pageNumber = Values::NONE
-    ): MessagePage
-    {
-        $response = $this->_page($options, $pageSize, $pageToken, $pageNumber);
         return new MessagePage($this->version, $response, $this->solution);
-    }
-
-    public function pageWithMetadata(
-        array $options = [],
-              $pageSize = Values::NONE,
-        string $pageToken = Values::NONE,
-        $pageNumber = Values::NONE
-    ): PageMetadata
-    {
-        $response = $this->_page($options, $pageSize, $pageToken, $pageNumber);
-        $resource = new MessagePage($this->version, $response, $this->solution);
-        return new PageMetadata(
-            $resource,
-            $response->getStatusCode(),
-            $response->getHeaders()
-        );
     }
 
     /**
@@ -324,7 +276,7 @@ class MessageList extends ListResource
      */
     public function getContext(
         string $sid
-
+        
     ): MessageContext
     {
         return new MessageContext(

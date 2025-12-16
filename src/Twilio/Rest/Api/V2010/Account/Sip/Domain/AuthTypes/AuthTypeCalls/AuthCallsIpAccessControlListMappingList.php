@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class AuthCallsIpAccessControlListMappingList extends ListResource
@@ -55,6 +57,24 @@ class AuthCallsIpAccessControlListMappingList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $ipAccessControlListSid The SID of the IpAccessControlList resource to map to the SIP domain.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $ipAccessControlListSid): Response
+    {
+        $data = Values::of([
+            'IpAccessControlListSid' =>
+                $ipAccessControlListSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the AuthCallsIpAccessControlListMappingInstance
      *
      * @param string $ipAccessControlListSid The SID of the IpAccessControlList resource to map to the SIP domain.
@@ -63,20 +83,36 @@ class AuthCallsIpAccessControlListMappingList extends ListResource
      */
     public function create(string $ipAccessControlListSid): AuthCallsIpAccessControlListMappingInstance
     {
-
-        $data = Values::of([
-            'IpAccessControlListSid' =>
-                $ipAccessControlListSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $ipAccessControlListSid);
         return new AuthCallsIpAccessControlListMappingInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['domainSid']
+        );
+        
+    }
+
+    /**
+     * Create the AuthCallsIpAccessControlListMappingInstance with Metadata
+     *
+     * @param string $ipAccessControlListSid The SID of the IpAccessControlList resource to map to the SIP domain.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $ipAccessControlListSid): ResourceMetadata
+    {
+        $response = $this->_create( $ipAccessControlListSid);
+        $resource = new AuthCallsIpAccessControlListMappingInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['domainSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

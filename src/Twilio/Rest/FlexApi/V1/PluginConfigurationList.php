@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,16 +47,15 @@ class PluginConfigurationList extends ListResource
     }
 
     /**
-     * Create the PluginConfigurationInstance
+     * Helper function for Create
      *
      * @param string $name The Flex Plugin Configuration's name.
      * @param array|Options $options Optional Arguments
-     * @return PluginConfigurationInstance Created PluginConfigurationInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $name, array $options = []): PluginConfigurationInstance
+    private function _create(string $name, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -67,11 +68,46 @@ class PluginConfigurationList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the PluginConfigurationInstance
+     *
+     * @param string $name The Flex Plugin Configuration's name.
+     * @param array|Options $options Optional Arguments
+     * @return PluginConfigurationInstance Created PluginConfigurationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $name, array $options = []): PluginConfigurationInstance
+    {
+        $response = $this->_create( $name, $options);
         return new PluginConfigurationInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the PluginConfigurationInstance with Metadata
+     *
+     * @param string $name The Flex Plugin Configuration's name.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $name, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $name, $options);
+        $resource = new PluginConfigurationInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ServiceList extends ListResource
@@ -44,16 +46,15 @@ class ServiceList extends ListResource
     }
 
     /**
-     * Create the ServiceInstance
+     * Helper function for Create
      *
      * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
      * @param array|Options $options Optional Arguments
-     * @return ServiceInstance Created ServiceInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $uniqueName, array $options = []): ServiceInstance
+    private function _create(string $uniqueName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -76,11 +77,46 @@ class ServiceList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ServiceInstance
+     *
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
+     * @param array|Options $options Optional Arguments
+     * @return ServiceInstance Created ServiceInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $uniqueName, array $options = []): ServiceInstance
+    {
+        $response = $this->_create( $uniqueName, $options);
         return new ServiceInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ServiceInstance with Metadata
+     *
+     * @param string $uniqueName An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. **This value should not have PII.**
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $uniqueName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $uniqueName, $options);
+        $resource = new ServiceInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

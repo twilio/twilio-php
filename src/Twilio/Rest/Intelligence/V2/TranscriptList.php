@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class TranscriptList extends ListResource
     }
 
     /**
-     * Create the TranscriptInstance
+     * Helper function for Create
      *
      * @param string $serviceSid The unique SID identifier of the Service.
      * @param array $channel JSON object describing Media Channel including Source and Participants
      * @param array|Options $options Optional Arguments
-     * @return TranscriptInstance Created TranscriptInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $serviceSid, array $channel, array $options = []): TranscriptInstance
+    private function _create(string $serviceSid, array $channel, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -70,11 +71,48 @@ class TranscriptList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TranscriptInstance
+     *
+     * @param string $serviceSid The unique SID identifier of the Service.
+     * @param array $channel JSON object describing Media Channel including Source and Participants
+     * @param array|Options $options Optional Arguments
+     * @return TranscriptInstance Created TranscriptInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $serviceSid, array $channel, array $options = []): TranscriptInstance
+    {
+        $response = $this->_create( $serviceSid,  $channel, $options);
         return new TranscriptInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the TranscriptInstance with Metadata
+     *
+     * @param string $serviceSid The unique SID identifier of the Service.
+     * @param array $channel JSON object describing Media Channel including Source and Participants
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $serviceSid, array $channel, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $serviceSid,  $channel, $options);
+        $resource = new TranscriptInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

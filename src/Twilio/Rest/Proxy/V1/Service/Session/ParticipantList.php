@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ParticipantList extends ListResource
@@ -56,16 +58,15 @@ class ParticipantList extends ListResource
     }
 
     /**
-     * Create the ParticipantInstance
+     * Helper function for Create
      *
      * @param string $identifier The phone number of the Participant.
      * @param array|Options $options Optional Arguments
-     * @return ParticipantInstance Created ParticipantInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $identifier, array $options = []): ParticipantInstance
+    private function _create(string $identifier, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -80,13 +81,50 @@ class ParticipantList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ParticipantInstance
+     *
+     * @param string $identifier The phone number of the Participant.
+     * @param array|Options $options Optional Arguments
+     * @return ParticipantInstance Created ParticipantInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $identifier, array $options = []): ParticipantInstance
+    {
+        $response = $this->_create( $identifier, $options);
         return new ParticipantInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['sessionSid']
+        );
+        
+    }
+
+    /**
+     * Create the ParticipantInstance with Metadata
+     *
+     * @param string $identifier The phone number of the Participant.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $identifier, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $identifier, $options);
+        $resource = new ParticipantInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['sessionSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

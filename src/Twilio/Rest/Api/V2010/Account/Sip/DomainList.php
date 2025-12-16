@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -51,16 +53,15 @@ class DomainList extends ListResource
     }
 
     /**
-     * Create the DomainInstance
+     * Helper function for Create
      *
      * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
      * @param array|Options $options Optional Arguments
-     * @return DomainInstance Created DomainInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $domainName, array $options = []): DomainInstance
+    private function _create(string $domainName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -93,12 +94,48 @@ class DomainList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the DomainInstance
+     *
+     * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+     * @param array|Options $options Optional Arguments
+     * @return DomainInstance Created DomainInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $domainName, array $options = []): DomainInstance
+    {
+        $response = $this->_create( $domainName, $options);
         return new DomainInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid']
+        );
+        
+    }
+
+    /**
+     * Create the DomainInstance with Metadata
+     *
+     * @param string $domainName The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $domainName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $domainName, $options);
+        $resource = new DomainInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

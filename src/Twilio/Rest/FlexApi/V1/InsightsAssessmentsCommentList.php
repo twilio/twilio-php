@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class InsightsAssessmentsCommentList extends ListResource
@@ -44,7 +46,7 @@ class InsightsAssessmentsCommentList extends ListResource
     }
 
     /**
-     * Create the InsightsAssessmentsCommentInstance
+     * Helper function for Create
      *
      * @param string $categoryId The ID of the category
      * @param string $categoryName The name of the category
@@ -53,12 +55,11 @@ class InsightsAssessmentsCommentList extends ListResource
      * @param string $agentId The id of the agent.
      * @param string $offset The offset
      * @param array|Options $options Optional Arguments
-     * @return InsightsAssessmentsCommentInstance Created InsightsAssessmentsCommentInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $categoryId, string $categoryName, string $comment, string $segmentId, string $agentId, string $offset, array $options = []): InsightsAssessmentsCommentInstance
+    private function _create(string $categoryId, string $categoryName, string $comment, string $segmentId, string $agentId, string $offset, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -77,11 +78,56 @@ class InsightsAssessmentsCommentList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the InsightsAssessmentsCommentInstance
+     *
+     * @param string $categoryId The ID of the category
+     * @param string $categoryName The name of the category
+     * @param string $comment The Assessment comment.
+     * @param string $segmentId The id of the segment.
+     * @param string $agentId The id of the agent.
+     * @param string $offset The offset
+     * @param array|Options $options Optional Arguments
+     * @return InsightsAssessmentsCommentInstance Created InsightsAssessmentsCommentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $categoryId, string $categoryName, string $comment, string $segmentId, string $agentId, string $offset, array $options = []): InsightsAssessmentsCommentInstance
+    {
+        $response = $this->_create( $categoryId,  $categoryName,  $comment,  $segmentId,  $agentId,  $offset, $options);
         return new InsightsAssessmentsCommentInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the InsightsAssessmentsCommentInstance with Metadata
+     *
+     * @param string $categoryId The ID of the category
+     * @param string $categoryName The name of the category
+     * @param string $comment The Assessment comment.
+     * @param string $segmentId The id of the segment.
+     * @param string $agentId The id of the agent.
+     * @param string $offset The offset
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $categoryId, string $categoryName, string $comment, string $segmentId, string $agentId, string $offset, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $categoryId,  $categoryName,  $comment,  $segmentId,  $agentId,  $offset, $options);
+        $resource = new InsightsAssessmentsCommentInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

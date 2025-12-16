@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class KnowledgeList extends ListResource
@@ -44,6 +46,20 @@ class KnowledgeList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $assistantsV1ServiceCreateKnowledgeRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the KnowledgeInstance
      *
      * @param AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest
@@ -52,14 +68,32 @@ class KnowledgeList extends ListResource
      */
     public function create(AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest): KnowledgeInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $assistantsV1ServiceCreateKnowledgeRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $assistantsV1ServiceCreateKnowledgeRequest);
         return new KnowledgeInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the KnowledgeInstance with Metadata
+     *
+     * @param AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(AssistantsV1ServiceCreateKnowledgeRequest $assistantsV1ServiceCreateKnowledgeRequest): ResourceMetadata
+    {
+        $response = $this->_create( $assistantsV1ServiceCreateKnowledgeRequest);
+        $resource = new KnowledgeInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

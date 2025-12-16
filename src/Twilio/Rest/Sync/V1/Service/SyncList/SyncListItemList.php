@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -57,16 +59,15 @@ class SyncListItemList extends ListResource
     }
 
     /**
-     * Create the SyncListItemInstance
+     * Helper function for Create
      *
      * @param array $data A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length.
      * @param array|Options $options Optional Arguments
-     * @return SyncListItemInstance Created SyncListItemInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $data, array $options = []): SyncListItemInstance
+    private function _create(array $data, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -81,13 +82,50 @@ class SyncListItemList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SyncListItemInstance
+     *
+     * @param array $data A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length.
+     * @param array|Options $options Optional Arguments
+     * @return SyncListItemInstance Created SyncListItemInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $data, array $options = []): SyncListItemInstance
+    {
+        $response = $this->_create( $data, $options);
         return new SyncListItemInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['listSid']
+        );
+        
+    }
+
+    /**
+     * Create the SyncListItemInstance with Metadata
+     *
+     * @param array $data A JSON string that represents an arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $data, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $data, $options);
+        $resource = new SyncListItemInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['listSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

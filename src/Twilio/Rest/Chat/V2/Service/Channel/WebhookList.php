@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -57,16 +59,15 @@ class WebhookList extends ListResource
     }
 
     /**
-     * Create the WebhookInstance
+     * Helper function for Create
      *
      * @param string $type
      * @param array|Options $options Optional Arguments
-     * @return WebhookInstance Created WebhookInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $type, array $options = []): WebhookInstance
+    private function _create(string $type, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -87,13 +88,50 @@ class WebhookList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the WebhookInstance
+     *
+     * @param string $type
+     * @param array|Options $options Optional Arguments
+     * @return WebhookInstance Created WebhookInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $type, array $options = []): WebhookInstance
+    {
+        $response = $this->_create( $type, $options);
         return new WebhookInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['channelSid']
+        );
+        
+    }
+
+    /**
+     * Create the WebhookInstance with Metadata
+     *
+     * @param string $type
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $type, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $type, $options);
+        $resource = new WebhookInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['channelSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

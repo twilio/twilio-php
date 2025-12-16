@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,7 +47,7 @@ class TollfreeVerificationList extends ListResource
     }
 
     /**
-     * Create the TollfreeVerificationInstance
+     * Helper function for Create
      *
      * @param string $businessName The name of the business or organization using the Tollfree number.
      * @param string $businessWebsite The website of the business or organization using the Tollfree number.
@@ -58,12 +60,11 @@ class TollfreeVerificationList extends ListResource
      * @param string $messageVolume Estimate monthly volume of messages from the Tollfree Number.
      * @param string $tollfreePhoneNumberSid The SID of the Phone Number associated with the Tollfree Verification.
      * @param array|Options $options Optional Arguments
-     * @return TollfreeVerificationInstance Created TollfreeVerificationInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $businessName, string $businessWebsite, string $notificationEmail, array $useCaseCategories, string $useCaseSummary, string $productionMessageSample, array $optInImageUrls, string $optInType, string $messageVolume, string $tollfreePhoneNumberSid, array $options = []): TollfreeVerificationInstance
+    private function _create(string $businessName, string $businessWebsite, string $notificationEmail, array $useCaseCategories, string $useCaseSummary, string $productionMessageSample, array $optInImageUrls, string $optInType, string $messageVolume, string $tollfreePhoneNumberSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -140,11 +141,64 @@ class TollfreeVerificationList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TollfreeVerificationInstance
+     *
+     * @param string $businessName The name of the business or organization using the Tollfree number.
+     * @param string $businessWebsite The website of the business or organization using the Tollfree number.
+     * @param string $notificationEmail The email address to receive the notification about the verification result. .
+     * @param string[] $useCaseCategories The category of the use case for the Tollfree Number. List as many are applicable..
+     * @param string $useCaseSummary Use this to further explain how messaging is used by the business or organization.
+     * @param string $productionMessageSample An example of message content, i.e. a sample message.
+     * @param string[] $optInImageUrls Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL.
+     * @param string $optInType
+     * @param string $messageVolume Estimate monthly volume of messages from the Tollfree Number.
+     * @param string $tollfreePhoneNumberSid The SID of the Phone Number associated with the Tollfree Verification.
+     * @param array|Options $options Optional Arguments
+     * @return TollfreeVerificationInstance Created TollfreeVerificationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $businessName, string $businessWebsite, string $notificationEmail, array $useCaseCategories, string $useCaseSummary, string $productionMessageSample, array $optInImageUrls, string $optInType, string $messageVolume, string $tollfreePhoneNumberSid, array $options = []): TollfreeVerificationInstance
+    {
+        $response = $this->_create( $businessName,  $businessWebsite,  $notificationEmail, $useCaseCategories,  $useCaseSummary,  $productionMessageSample, $optInImageUrls,  $optInType,  $messageVolume,  $tollfreePhoneNumberSid, $options);
         return new TollfreeVerificationInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the TollfreeVerificationInstance with Metadata
+     *
+     * @param string $businessName The name of the business or organization using the Tollfree number.
+     * @param string $businessWebsite The website of the business or organization using the Tollfree number.
+     * @param string $notificationEmail The email address to receive the notification about the verification result. .
+     * @param string[] $useCaseCategories The category of the use case for the Tollfree Number. List as many are applicable..
+     * @param string $useCaseSummary Use this to further explain how messaging is used by the business or organization.
+     * @param string $productionMessageSample An example of message content, i.e. a sample message.
+     * @param string[] $optInImageUrls Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL.
+     * @param string $optInType
+     * @param string $messageVolume Estimate monthly volume of messages from the Tollfree Number.
+     * @param string $tollfreePhoneNumberSid The SID of the Phone Number associated with the Tollfree Verification.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $businessName, string $businessWebsite, string $notificationEmail, array $useCaseCategories, string $useCaseSummary, string $productionMessageSample, array $optInImageUrls, string $optInType, string $messageVolume, string $tollfreePhoneNumberSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $businessName,  $businessWebsite,  $notificationEmail, $useCaseCategories,  $useCaseSummary,  $productionMessageSample, $optInImageUrls,  $optInType,  $messageVolume,  $tollfreePhoneNumberSid, $options);
+        $resource = new TollfreeVerificationInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

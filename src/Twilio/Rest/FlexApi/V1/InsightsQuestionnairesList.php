@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,16 +47,15 @@ class InsightsQuestionnairesList extends ListResource
     }
 
     /**
-     * Create the InsightsQuestionnairesInstance
+     * Helper function for Create
      *
      * @param string $name The name of this questionnaire
      * @param array|Options $options Optional Arguments
-     * @return InsightsQuestionnairesInstance Created InsightsQuestionnairesInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $name, array $options = []): InsightsQuestionnairesInstance
+    private function _create(string $name, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -69,11 +70,46 @@ class InsightsQuestionnairesList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Authorization' => $options['authorization']]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the InsightsQuestionnairesInstance
+     *
+     * @param string $name The name of this questionnaire
+     * @param array|Options $options Optional Arguments
+     * @return InsightsQuestionnairesInstance Created InsightsQuestionnairesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $name, array $options = []): InsightsQuestionnairesInstance
+    {
+        $response = $this->_create( $name, $options);
         return new InsightsQuestionnairesInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the InsightsQuestionnairesInstance with Metadata
+     *
+     * @param string $name The name of this questionnaire
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $name, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $name, $options);
+        $resource = new InsightsQuestionnairesInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,17 +47,16 @@ class SupportingDocumentList extends ListResource
     }
 
     /**
-     * Create the SupportingDocumentInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The string that you assigned to describe the resource.
      * @param string $type The type of the Supporting Document.
      * @param array|Options $options Optional Arguments
-     * @return SupportingDocumentInstance Created SupportingDocumentInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $type, array $options = []): SupportingDocumentInstance
+    private function _create(string $friendlyName, string $type, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -68,11 +69,48 @@ class SupportingDocumentList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SupportingDocumentInstance
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $type The type of the Supporting Document.
+     * @param array|Options $options Optional Arguments
+     * @return SupportingDocumentInstance Created SupportingDocumentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $type, array $options = []): SupportingDocumentInstance
+    {
+        $response = $this->_create( $friendlyName,  $type, $options);
         return new SupportingDocumentInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SupportingDocumentInstance with Metadata
+     *
+     * @param string $friendlyName The string that you assigned to describe the resource.
+     * @param string $type The type of the Supporting Document.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $type, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $type, $options);
+        $resource = new SupportingDocumentInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

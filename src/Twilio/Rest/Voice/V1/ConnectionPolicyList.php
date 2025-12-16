@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ConnectionPolicyList extends ListResource
@@ -44,15 +46,14 @@ class ConnectionPolicyList extends ListResource
     }
 
     /**
-     * Create the ConnectionPolicyInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return ConnectionPolicyInstance Created ConnectionPolicyInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ConnectionPolicyInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -61,11 +62,44 @@ class ConnectionPolicyList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ConnectionPolicyInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ConnectionPolicyInstance Created ConnectionPolicyInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): ConnectionPolicyInstance
+    {
+        $response = $this->_create($options);
         return new ConnectionPolicyInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ConnectionPolicyInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new ConnectionPolicyInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

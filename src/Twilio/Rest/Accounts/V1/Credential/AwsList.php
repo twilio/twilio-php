@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class AwsList extends ListResource
@@ -44,16 +46,15 @@ class AwsList extends ListResource
     }
 
     /**
-     * Create the AwsInstance
+     * Helper function for Create
      *
      * @param string $credentials A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`
      * @param array|Options $options Optional Arguments
-     * @return AwsInstance Created AwsInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $credentials, array $options = []): AwsInstance
+    private function _create(string $credentials, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -66,11 +67,46 @@ class AwsList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the AwsInstance
+     *
+     * @param string $credentials A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`
+     * @param array|Options $options Optional Arguments
+     * @return AwsInstance Created AwsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $credentials, array $options = []): AwsInstance
+    {
+        $response = $this->_create( $credentials, $options);
         return new AwsInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the AwsInstance with Metadata
+     *
+     * @param string $credentials A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $credentials, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $credentials, $options);
+        $resource = new AwsInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -45,19 +47,18 @@ class ChannelList extends ListResource
     }
 
     /**
-     * Create the ChannelInstance
+     * Helper function for Create
      *
      * @param string $flexFlowSid The SID of the Flex Flow.
      * @param string $identity The `identity` value that uniquely identifies the new resource's chat User.
      * @param string $chatUserFriendlyName The chat participant's friendly name.
      * @param string $chatFriendlyName The chat channel's friendly name.
      * @param array|Options $options Optional Arguments
-     * @return ChannelInstance Created ChannelInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $flexFlowSid, string $identity, string $chatUserFriendlyName, string $chatFriendlyName, array $options = []): ChannelInstance
+    private function _create(string $flexFlowSid, string $identity, string $chatUserFriendlyName, string $chatFriendlyName, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -84,11 +85,52 @@ class ChannelList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ChannelInstance
+     *
+     * @param string $flexFlowSid The SID of the Flex Flow.
+     * @param string $identity The `identity` value that uniquely identifies the new resource's chat User.
+     * @param string $chatUserFriendlyName The chat participant's friendly name.
+     * @param string $chatFriendlyName The chat channel's friendly name.
+     * @param array|Options $options Optional Arguments
+     * @return ChannelInstance Created ChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $flexFlowSid, string $identity, string $chatUserFriendlyName, string $chatFriendlyName, array $options = []): ChannelInstance
+    {
+        $response = $this->_create( $flexFlowSid,  $identity,  $chatUserFriendlyName,  $chatFriendlyName, $options);
         return new ChannelInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ChannelInstance with Metadata
+     *
+     * @param string $flexFlowSid The SID of the Flex Flow.
+     * @param string $identity The `identity` value that uniquely identifies the new resource's chat User.
+     * @param string $chatUserFriendlyName The chat participant's friendly name.
+     * @param string $chatFriendlyName The chat channel's friendly name.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $flexFlowSid, string $identity, string $chatUserFriendlyName, string $chatFriendlyName, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $flexFlowSid,  $identity,  $chatUserFriendlyName,  $chatFriendlyName, $options);
+        $resource = new ChannelInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
