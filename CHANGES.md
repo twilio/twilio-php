@@ -1,6 +1,25 @@
 twilio-php Changelog
 ====================
 
+[2025-12-17] Version 8.10.0
+---------------------------
+**Library - Chore**
+- [PR #898](https://github.com/twilio/twilio-php/pull/898): add support for new twilio error response. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #900](https://github.com/twilio/twilio-php/pull/900): handle existing query params in token pagination. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Fix**
+- [PR #893](https://github.com/twilio/twilio-php/pull/893): Fix curl_close deprecation warning on PHP 8.5. Thanks to [@adrianbj](https://github.com/adrianbj)!
+
+**Trunking**
+- Corrected the type used for phone number capabilities when accessed through a Trunk. **(breaking change)**
+- Corrected the type used for phone number capabilities when accessed through a Trunk. **(breaking change)**
+
+**Trusthub**
+- Added new parameters in in toll-free initialize api payload.
+- Remove the invalid status transition to Draft from the examples
+- Change the value of email to a valid one in the examples.
+
+
 [2025-12-03] Version 8.9.0
 --------------------------
 **Library - Fix**

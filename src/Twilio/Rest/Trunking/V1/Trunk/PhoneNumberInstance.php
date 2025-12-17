@@ -22,6 +22,7 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
+use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
@@ -29,7 +30,7 @@ use Twilio\Deserialize;
  * @property string $addressRequirements
  * @property string|null $apiVersion
  * @property bool|null $beta
- * @property array|null $capabilities
+ * @property PhoneNumberCapabilities|null $capabilities
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
  * @property string|null $friendlyName
@@ -72,7 +73,7 @@ class PhoneNumberInstance extends InstanceResource
             'addressRequirements' => Values::array_get($payload, 'address_requirements'),
             'apiVersion' => Values::array_get($payload, 'api_version'),
             'beta' => Values::array_get($payload, 'beta'),
-            'capabilities' => Values::array_get($payload, 'capabilities'),
+            'capabilities' => Deserialize::phoneNumberCapabilities(Values::array_get($payload, 'capabilities')),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),
             'friendlyName' => Values::array_get($payload, 'friendly_name'),

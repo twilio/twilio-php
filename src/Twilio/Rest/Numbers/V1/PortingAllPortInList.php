@@ -21,7 +21,6 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\Serialize;
 
 
 class PortingAllPortInList extends ListResource
@@ -120,9 +119,9 @@ class PortingAllPortInList extends ListResource
             'PortInRequestStatus' =>
                 $options['portInRequestStatus'],
             'CreatedBefore' =>
-                Serialize::iso8601DateTime($options['createdBefore']),
+                $options['createdBefore'],
             'CreatedAfter' =>
-                Serialize::iso8601DateTime($options['createdAfter']),
+                $options['createdAfter'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

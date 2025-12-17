@@ -25,8 +25,8 @@ abstract class PortingAllPortInOptions
      * @param int $size Number of items per page
      * @param string $portInRequestSid Filter by Port in request SID, supports multiple values separated by comma
      * @param string $portInRequestStatus Filter by Port In request status
-     * @param \DateTime $createdBefore Find all created before a certain date
-     * @param \DateTime $createdAfter Find all created after a certain date
+     * @param string $createdBefore Find all created before a certain date
+     * @param string $createdAfter Find all created after a certain date
      * @return ReadPortingAllPortInOptions Options builder
      */
     public static function read(
@@ -35,8 +35,8 @@ abstract class PortingAllPortInOptions
         int $size = Values::INT_NONE,
         string $portInRequestSid = Values::NONE,
         string $portInRequestStatus = Values::NONE,
-        ?\DateTime $createdBefore = null,
-        ?\DateTime $createdAfter = null
+        string $createdBefore = Values::NONE,
+        string $createdAfter = Values::NONE
 
     ): ReadPortingAllPortInOptions
     {
@@ -59,8 +59,8 @@ class ReadPortingAllPortInOptions extends Options
      * @param int $size Number of items per page
      * @param string $portInRequestSid Filter by Port in request SID, supports multiple values separated by comma
      * @param string $portInRequestStatus Filter by Port In request status
-     * @param \DateTime $createdBefore Find all created before a certain date
-     * @param \DateTime $createdAfter Find all created after a certain date
+     * @param string $createdBefore Find all created before a certain date
+     * @param string $createdAfter Find all created after a certain date
      */
     public function __construct(
         
@@ -68,8 +68,8 @@ class ReadPortingAllPortInOptions extends Options
         int $size = Values::INT_NONE,
         string $portInRequestSid = Values::NONE,
         string $portInRequestStatus = Values::NONE,
-        ?\DateTime $createdBefore = null,
-        ?\DateTime $createdAfter = null
+        string $createdBefore = Values::NONE,
+        string $createdAfter = Values::NONE
 
     ) {
         $this->options['token'] = $token;
@@ -131,10 +131,10 @@ class ReadPortingAllPortInOptions extends Options
     /**
      * Find all created before a certain date
      *
-     * @param \DateTime $createdBefore Find all created before a certain date
+     * @param string $createdBefore Find all created before a certain date
      * @return $this Fluent Builder
      */
-    public function setCreatedBefore(\DateTime $createdBefore): self
+    public function setCreatedBefore(string $createdBefore): self
     {
         $this->options['createdBefore'] = $createdBefore;
         return $this;
@@ -143,10 +143,10 @@ class ReadPortingAllPortInOptions extends Options
     /**
      * Find all created after a certain date
      *
-     * @param \DateTime $createdAfter Find all created after a certain date
+     * @param string $createdAfter Find all created after a certain date
      * @return $this Fluent Builder
      */
-    public function setCreatedAfter(\DateTime $createdAfter): self
+    public function setCreatedAfter(string $createdAfter): self
     {
         $this->options['createdAfter'] = $createdAfter;
         return $this;
