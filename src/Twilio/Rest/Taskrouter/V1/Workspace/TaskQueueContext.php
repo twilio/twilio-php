@@ -97,7 +97,7 @@ class TaskQueueContext extends InstanceContext
 
         return new TaskQueueInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
@@ -136,7 +136,7 @@ class TaskQueueContext extends InstanceContext
 
         return new TaskQueueInstance(
             $this->version,
-            $payload,
+            $payload ?? [],
             $this->solution['workspaceSid'],
             $this->solution['sid']
         );
