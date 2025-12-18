@@ -21,6 +21,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SecondaryAuthTokenContext extends InstanceContext
@@ -43,6 +45,18 @@ class SecondaryAuthTokenContext extends InstanceContext
     }
 
     /**
+     * Helper function for Create
+     *
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+    }
+
+    /**
      * Create the SecondaryAuthTokenInstance
      *
      * @return SecondaryAuthTokenInstance Created SecondaryAuthTokenInstance
@@ -50,16 +64,46 @@ class SecondaryAuthTokenContext extends InstanceContext
      */
     public function create(): SecondaryAuthTokenInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], [], $headers);
-
+        $response = $this->_create();
         return new SecondaryAuthTokenInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SecondaryAuthTokenInstance with Metadata
+     *
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_create();
+        $resource = new SecondaryAuthTokenInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
+
+    /**
+     * Helper function for Delete
+     *
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _delete(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
+    }
 
     /**
      * Delete the SecondaryAuthTokenInstance
@@ -69,9 +113,26 @@ class SecondaryAuthTokenContext extends InstanceContext
      */
     public function delete(): bool
     {
+        $response = $this->_delete();
+        
+        return true;
+    }
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+    /**
+     * Delete the SecondaryAuthTokenInstance with Metadata
+     *
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function deleteWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_delete();
+        
+        return new ResourceMetadata(
+            null,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
 

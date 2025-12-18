@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PhoneNumberContext extends InstanceContext
@@ -49,15 +51,14 @@ class PhoneNumberContext extends InstanceContext
     }
 
     /**
-     * Fetch the PhoneNumberInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return PhoneNumberInstance Fetched PhoneNumberInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): PhoneNumberInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -94,12 +95,46 @@ class PhoneNumberContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the PhoneNumberInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return PhoneNumberInstance Fetched PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): PhoneNumberInstance
+    {
+        $response = $this->_fetch($options);
         return new PhoneNumberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['phoneNumber']
+        );
+        
+    }
+
+    /**
+     * Fetch the PhoneNumberInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new PhoneNumberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['phoneNumber']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

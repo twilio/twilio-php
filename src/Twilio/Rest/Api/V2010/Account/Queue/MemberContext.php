@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class MemberContext extends InstanceContext
@@ -59,6 +61,18 @@ class MemberContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the MemberInstance
      *
      * @return MemberInstance Fetched MemberInstance
@@ -66,19 +80,63 @@ class MemberContext extends InstanceContext
      */
     public function fetch(): MemberInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new MemberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['queueSid'],
             $this->solution['callSid']
         );
+        
     }
 
+    /**
+     * Fetch the MemberInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new MemberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['queueSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
+     * Helper function for Update
+     *
+     * @param string $url The absolute URL of the Queue resource.
+     * @param array|Options $options Optional Arguments
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _update(string $url, array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $data = Values::of([
+            'Url' =>
+                $url,
+            'Method' =>
+                $options['method'],
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
     /**
      * Update the MemberInstance
@@ -90,25 +148,39 @@ class MemberContext extends InstanceContext
      */
     public function update(string $url, array $options = []): MemberInstance
     {
-
-        $options = new Values($options);
-
-        $data = Values::of([
-            'Url' =>
-                $url,
-            'Method' =>
-                $options['method'],
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_update( $url, $options);
         return new MemberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['queueSid'],
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Update the MemberInstance with Metadata
+     *
+     * @param string $url The absolute URL of the Queue resource.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(string $url, array $options = []): ResourceMetadata
+    {
+        $response = $this->_update( $url, $options);
+        $resource = new MemberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['queueSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

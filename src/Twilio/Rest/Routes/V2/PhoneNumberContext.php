@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PhoneNumberContext extends InstanceContext
@@ -49,6 +51,18 @@ class PhoneNumberContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the PhoneNumberInstance
      *
      * @return PhoneNumberInstance Fetched PhoneNumberInstance
@@ -56,28 +70,46 @@ class PhoneNumberContext extends InstanceContext
      */
     public function fetch(): PhoneNumberInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new PhoneNumberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['phoneNumber']
+        );
+        
+    }
+
+    /**
+     * Fetch the PhoneNumberInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new PhoneNumberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['phoneNumber']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the PhoneNumberInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return PhoneNumberInstance Updated PhoneNumberInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): PhoneNumberInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -88,12 +120,46 @@ class PhoneNumberContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the PhoneNumberInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return PhoneNumberInstance Updated PhoneNumberInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): PhoneNumberInstance
+    {
+        $response = $this->_update($options);
         return new PhoneNumberInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['phoneNumber']
+        );
+        
+    }
+
+    /**
+     * Update the PhoneNumberInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new PhoneNumberInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['phoneNumber']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

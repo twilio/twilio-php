@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TrunkContext extends InstanceContext
@@ -49,6 +51,18 @@ class TrunkContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the TrunkInstance
      *
      * @return TrunkInstance Fetched TrunkInstance
@@ -56,28 +70,46 @@ class TrunkContext extends InstanceContext
      */
     public function fetch(): TrunkInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new TrunkInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['sipTrunkDomain']
+        );
+        
+    }
+
+    /**
+     * Fetch the TrunkInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new TrunkInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['sipTrunkDomain']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the TrunkInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return TrunkInstance Updated TrunkInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): TrunkInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -88,12 +120,46 @@ class TrunkContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the TrunkInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return TrunkInstance Updated TrunkInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): TrunkInstance
+    {
+        $response = $this->_update($options);
         return new TrunkInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['sipTrunkDomain']
+        );
+        
+    }
+
+    /**
+     * Update the TrunkInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new TrunkInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['sipTrunkDomain']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

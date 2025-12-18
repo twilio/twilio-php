@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -50,6 +52,18 @@ class AnnotationContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the AnnotationInstance
      *
      * @return AnnotationInstance Fetched AnnotationInstance
@@ -57,28 +71,46 @@ class AnnotationContext extends InstanceContext
      */
     public function fetch(): AnnotationInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new AnnotationInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the AnnotationInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new AnnotationInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the AnnotationInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return AnnotationInstance Updated AnnotationInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): AnnotationInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -99,12 +131,46 @@ class AnnotationContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the AnnotationInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return AnnotationInstance Updated AnnotationInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): AnnotationInstance
+    {
+        $response = $this->_update($options);
         return new AnnotationInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Update the AnnotationInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new AnnotationInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

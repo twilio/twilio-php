@@ -21,6 +21,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -54,6 +56,18 @@ class InstalledAddOnExtensionContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the InstalledAddOnExtensionInstance
      *
      * @return InstalledAddOnExtensionInstance Fetched InstalledAddOnExtensionInstance
@@ -61,18 +75,56 @@ class InstalledAddOnExtensionContext extends InstanceContext
      */
     public function fetch(): InstalledAddOnExtensionInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new InstalledAddOnExtensionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['installedAddOnSid'],
             $this->solution['sid']
         );
+        
     }
 
+    /**
+     * Fetch the InstalledAddOnExtensionInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new InstalledAddOnExtensionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['installedAddOnSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
+     * Helper function for Update
+     *
+     * @param bool $enabled Whether the Extension should be invoked.
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _update(bool $enabled): Response
+    {
+        $data = Values::of([
+            'Enabled' =>
+                Serialize::booleanToString($enabled),
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
     /**
      * Update the InstalledAddOnExtensionInstance
@@ -83,20 +135,36 @@ class InstalledAddOnExtensionContext extends InstanceContext
      */
     public function update(bool $enabled): InstalledAddOnExtensionInstance
     {
-
-        $data = Values::of([
-            'Enabled' =>
-                Serialize::booleanToString($enabled),
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_update( $enabled);
         return new InstalledAddOnExtensionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['installedAddOnSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the InstalledAddOnExtensionInstance with Metadata
+     *
+     * @param bool $enabled Whether the Extension should be invoked.
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(bool $enabled): ResourceMetadata
+    {
+        $response = $this->_update( $enabled);
+        $resource = new InstalledAddOnExtensionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['installedAddOnSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

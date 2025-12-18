@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class UserDefinedMessageSubscriptionList extends ListResource
@@ -55,16 +57,15 @@ class UserDefinedMessageSubscriptionList extends ListResource
     }
 
     /**
-     * Create the UserDefinedMessageSubscriptionInstance
+     * Helper function for Create
      *
      * @param string $callback The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted).
      * @param array|Options $options Optional Arguments
-     * @return UserDefinedMessageSubscriptionInstance Created UserDefinedMessageSubscriptionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $callback, array $options = []): UserDefinedMessageSubscriptionInstance
+    private function _create(string $callback, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -77,13 +78,50 @@ class UserDefinedMessageSubscriptionList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the UserDefinedMessageSubscriptionInstance
+     *
+     * @param string $callback The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted).
+     * @param array|Options $options Optional Arguments
+     * @return UserDefinedMessageSubscriptionInstance Created UserDefinedMessageSubscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $callback, array $options = []): UserDefinedMessageSubscriptionInstance
+    {
+        $response = $this->_create( $callback, $options);
         return new UserDefinedMessageSubscriptionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Create the UserDefinedMessageSubscriptionInstance with Metadata
+     *
+     * @param string $callback The URL we should call using the `method` to send user defined events to your application. URLs must contain a valid hostname (underscores are not permitted).
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $callback, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $callback, $options);
+        $resource = new UserDefinedMessageSubscriptionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
