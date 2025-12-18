@@ -19,17 +19,20 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Messaging\V2\ChannelsSenderList;
+use Twilio\Rest\Messaging\V2\DomainCertsList;
 use Twilio\Rest\Messaging\V2\TypingIndicatorList;
 use Twilio\Version;
 
 /**
  * @property ChannelsSenderList $channelsSenders
+ * @property DomainCertsList $domainCerts
  * @property TypingIndicatorList $typingIndicator
  * @method \Twilio\Rest\Messaging\V2\ChannelsSenderContext channelsSenders(string $sid)
  */
 class V2 extends Version
 {
     protected $_channelsSenders;
+    protected $_domainCerts;
     protected $_typingIndicator;
 
     /**
@@ -49,6 +52,14 @@ class V2 extends Version
             $this->_channelsSenders = new ChannelsSenderList($this);
         }
         return $this->_channelsSenders;
+    }
+
+    protected function getDomainCerts(): DomainCertsList
+    {
+        if (!$this->_domainCerts) {
+            $this->_domainCerts = new DomainCertsList($this);
+        }
+        return $this->_domainCerts;
     }
 
     protected function getTypingIndicator(): TypingIndicatorList
