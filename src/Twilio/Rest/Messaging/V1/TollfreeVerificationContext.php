@@ -162,6 +162,10 @@ class TollfreeVerificationContext extends InstanceContext
                 Serialize::booleanToString($options['ageGatedContent']),
             'OptInKeywords' =>
                 Serialize::map($options['optInKeywords'], function ($e) { return $e; }),
+            'VettingProvider' =>
+                $options['vettingProvider'],
+            'VettingId' =>
+                $options['vettingId'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);

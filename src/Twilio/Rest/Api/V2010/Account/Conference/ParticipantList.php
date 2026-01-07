@@ -167,6 +167,8 @@ class ParticipantList extends ListResource
                 $options['trim'],
             'CallToken' =>
                 $options['callToken'],
+            'ClientNotificationUrl' =>
+                $options['clientNotificationUrl'],
             'CallerDisplayName' =>
                 $options['callerDisplayName'],
         ]);

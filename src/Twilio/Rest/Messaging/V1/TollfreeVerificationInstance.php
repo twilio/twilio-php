@@ -76,6 +76,9 @@ use Twilio\Deserialize;
  * @property array[]|null $rejectionReasons
  * @property array|null $resourceLinks
  * @property string|null $externalReferenceId
+ * @property string|null $vettingId
+ * @property string|null $vettingProvider
+ * @property \DateTime|null $vettingIdExpiration
  */
 class TollfreeVerificationInstance extends InstanceResource
 {
@@ -142,6 +145,9 @@ class TollfreeVerificationInstance extends InstanceResource
             'rejectionReasons' => Values::array_get($payload, 'rejection_reasons'),
             'resourceLinks' => Values::array_get($payload, 'resource_links'),
             'externalReferenceId' => Values::array_get($payload, 'external_reference_id'),
+            'vettingId' => Values::array_get($payload, 'vetting_id'),
+            'vettingProvider' => Values::array_get($payload, 'vetting_provider'),
+            'vettingIdExpiration' => Deserialize::dateTime(Values::array_get($payload, 'vetting_id_expiration')),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
