@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PluginVersionArchiveContext extends InstanceContext
@@ -54,6 +56,21 @@ class PluginVersionArchiveContext extends InstanceContext
     }
 
     /**
+     * Helper function for Update
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _update(array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
+        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "update");
+    }
+
+    /**
      * Update the PluginVersionArchiveInstance
      *
      * @param array|Options $options Optional Arguments
@@ -62,17 +79,36 @@ class PluginVersionArchiveContext extends InstanceContext
      */
     public function update(array $options = []): PluginVersionArchiveInstance
     {
-
-        $options = new Values($options);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
-        $payload = $this->version->update('POST', $this->uri, [], [], $headers);
-
+        $response = $this->_update($options);
         return new PluginVersionArchiveInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['pluginSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the PluginVersionArchiveInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new PluginVersionArchiveInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['pluginSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

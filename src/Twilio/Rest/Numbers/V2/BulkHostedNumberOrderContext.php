@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class BulkHostedNumberOrderContext extends InstanceContext
@@ -49,15 +51,14 @@ class BulkHostedNumberOrderContext extends InstanceContext
     }
 
     /**
-     * Fetch the BulkHostedNumberOrderInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return BulkHostedNumberOrderInstance Fetched BulkHostedNumberOrderInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): BulkHostedNumberOrderInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -66,12 +67,46 @@ class BulkHostedNumberOrderContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the BulkHostedNumberOrderInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return BulkHostedNumberOrderInstance Fetched BulkHostedNumberOrderInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): BulkHostedNumberOrderInstance
+    {
+        $response = $this->_fetch($options);
         return new BulkHostedNumberOrderInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['bulkHostingSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the BulkHostedNumberOrderInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new BulkHostedNumberOrderInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['bulkHostingSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

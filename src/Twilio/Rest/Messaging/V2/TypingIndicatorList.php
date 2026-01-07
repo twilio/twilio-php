@@ -20,6 +20,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TypingIndicatorList extends ListResource
@@ -42,6 +44,27 @@ class TypingIndicatorList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $channel Shared channel identifier
+     * @param string $messageId Message SID that identifies the conversation thread for the typing indicator. Must be a valid Twilio Message SID (SM*) or Media SID (MM*) from an existing WhatsApp conversation.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $channel, string $messageId): Response
+    {
+        $data = Values::of([
+            'channel' =>
+                $channel,
+            'messageId' =>
+                $messageId,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the TypingIndicatorInstance
      *
      * @param string $channel Shared channel identifier
@@ -51,20 +74,33 @@ class TypingIndicatorList extends ListResource
      */
     public function create(string $channel, string $messageId): TypingIndicatorInstance
     {
-
-        $data = Values::of([
-            'channel' =>
-                $channel,
-            'messageId' =>
-                $messageId,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $channel,  $messageId);
         return new TypingIndicatorInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the TypingIndicatorInstance with Metadata
+     *
+     * @param string $channel Shared channel identifier
+     * @param string $messageId Message SID that identifies the conversation thread for the typing indicator. Must be a valid Twilio Message SID (SM*) or Media SID (MM*) from an existing WhatsApp conversation.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $channel, string $messageId): ResourceMetadata
+    {
+        $response = $this->_create( $channel,  $messageId);
+        $resource = new TypingIndicatorInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

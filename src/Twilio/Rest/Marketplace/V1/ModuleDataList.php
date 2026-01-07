@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ModuleDataList extends ListResource
@@ -43,15 +45,14 @@ class ModuleDataList extends ListResource
     }
 
     /**
-     * Create the ModuleDataInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return ModuleDataInstance Created ModuleDataInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): ModuleDataInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -62,14 +63,59 @@ class ModuleDataList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ModuleDataInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ModuleDataInstance Created ModuleDataInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): ModuleDataInstance
+    {
+        $response = $this->_create($options);
         return new ModuleDataInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ModuleDataInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new ModuleDataInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
+
+    /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
 
     /**
      * Fetch the ModuleDataInstance
@@ -79,13 +125,31 @@ class ModuleDataList extends ListResource
      */
     public function fetch(): ModuleDataInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new ModuleDataInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Fetch the ModuleDataInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new ModuleDataInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

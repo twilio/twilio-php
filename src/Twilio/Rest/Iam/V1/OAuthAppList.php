@@ -20,6 +20,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class OAuthAppList extends ListResource
@@ -42,6 +44,20 @@ class OAuthAppList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param IamV1AccountVendorOauthAppCreateRequest $iamV1AccountVendorOauthAppCreateRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(IamV1AccountVendorOauthAppCreateRequest $iamV1AccountVendorOauthAppCreateRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $iamV1AccountVendorOauthAppCreateRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the OAuthAppInstance
      *
      * @param IamV1AccountVendorOauthAppCreateRequest $iamV1AccountVendorOauthAppCreateRequest
@@ -50,14 +66,32 @@ class OAuthAppList extends ListResource
      */
     public function create(IamV1AccountVendorOauthAppCreateRequest $iamV1AccountVendorOauthAppCreateRequest): OAuthAppInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $iamV1AccountVendorOauthAppCreateRequest->toArray();
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $iamV1AccountVendorOauthAppCreateRequest);
         return new OAuthAppInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the OAuthAppInstance with Metadata
+     *
+     * @param IamV1AccountVendorOauthAppCreateRequest $iamV1AccountVendorOauthAppCreateRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(IamV1AccountVendorOauthAppCreateRequest $iamV1AccountVendorOauthAppCreateRequest): ResourceMetadata
+    {
+        $response = $this->_create( $iamV1AccountVendorOauthAppCreateRequest);
+        $resource = new OAuthAppInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

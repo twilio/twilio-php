@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class PluginVersionsContext extends InstanceContext
@@ -54,6 +56,21 @@ class PluginVersionsContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the PluginVersionsInstance
      *
      * @param array|Options $options Optional Arguments
@@ -62,17 +79,36 @@ class PluginVersionsContext extends InstanceContext
      */
     public function fetch(array $options = []): PluginVersionsInstance
     {
-
-        $options = new Values($options);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' , 'Flex-Metadata' => $options['flexMetadata']]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch($options);
         return new PluginVersionsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['pluginSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Fetch the PluginVersionsInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new PluginVersionsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['pluginSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

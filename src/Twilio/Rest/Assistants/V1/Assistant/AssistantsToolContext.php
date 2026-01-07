@@ -21,6 +21,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class AssistantsToolContext extends InstanceContext
@@ -53,6 +55,18 @@ class AssistantsToolContext extends InstanceContext
     }
 
     /**
+     * Helper function for Create
+     *
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+    }
+
+    /**
      * Create the AssistantsToolInstance
      *
      * @return AssistantsToolInstance Created AssistantsToolInstance
@@ -60,18 +74,50 @@ class AssistantsToolContext extends InstanceContext
      */
     public function create(): AssistantsToolInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        $payload = $this->version->create('POST', $this->uri, [], [], $headers);
-
+        $response = $this->_create();
         return new AssistantsToolInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['assistantId'],
             $this->solution['id']
         );
+        
     }
 
+    /**
+     * Create the AssistantsToolInstance with Metadata
+     *
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_create();
+        $resource = new AssistantsToolInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['assistantId'],
+                        $this->solution['id']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
+     * Helper function for Delete
+     *
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _delete(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
+    }
 
     /**
      * Delete the AssistantsToolInstance
@@ -81,9 +127,26 @@ class AssistantsToolContext extends InstanceContext
      */
     public function delete(): bool
     {
+        $response = $this->_delete();
+        
+        return true;
+    }
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        return $this->version->delete('DELETE', $this->uri, [], [], $headers);
+    /**
+     * Delete the AssistantsToolInstance with Metadata
+     *
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function deleteWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_delete();
+        
+        return new ResourceMetadata(
+            null,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
 

@@ -90,11 +90,7 @@ class CreateInsightsAssessmentsCommentOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateInsightsAssessmentsCommentOptions ' . $options . ']';
     }
 }
@@ -161,11 +157,7 @@ class ReadInsightsAssessmentsCommentOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.ReadInsightsAssessmentsCommentOptions ' . $options . ']';
     }
 }

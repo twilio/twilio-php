@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SiprecList extends ListResource
@@ -55,15 +57,14 @@ class SiprecList extends ListResource
     }
 
     /**
-     * Create the SiprecInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return SiprecInstance Created SiprecInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): SiprecInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -476,13 +477,48 @@ class SiprecList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the SiprecInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return SiprecInstance Created SiprecInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): SiprecInstance
+    {
+        $response = $this->_create($options);
         return new SiprecInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Create the SiprecInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new SiprecInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

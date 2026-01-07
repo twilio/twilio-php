@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -44,15 +46,14 @@ class RateLimitList extends ListResource
     }
 
     /**
-     * Fetch the RateLimitInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return RateLimitInstance Fetched RateLimitInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): RateLimitInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -61,11 +62,44 @@ class RateLimitList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the RateLimitInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return RateLimitInstance Fetched RateLimitInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): RateLimitInstance
+    {
+        $response = $this->_fetch($options);
         return new RateLimitInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Fetch the RateLimitInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new RateLimitInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -21,6 +21,11 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ArrayMetadata;
+use Twilio\Metadata\PageMetadata;
+use Twilio\Metadata\ResourceMetadata;
+use Twilio\Metadata\StreamMetadata;
 use Twilio\Serialize;
 
 
@@ -50,19 +55,18 @@ class OriginationUrlList extends ListResource
     }
 
     /**
-     * Create the OriginationUrlInstance
+     * Helper function for Create
      *
      * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
      * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
      * @param bool $enabled Whether the URL is enabled. The default is `true`.
      * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
      * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema.
-     * @return OriginationUrlInstance Created OriginationUrlInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(int $weight, int $priority, bool $enabled, string $friendlyName, string $sipUrl): OriginationUrlInstance
+    private function _create(int $weight, int $priority, bool $enabled, string $friendlyName, string $sipUrl): Response
     {
-
         $data = Values::of([
             'Weight' =>
                 $weight,
@@ -77,12 +81,54 @@ class OriginationUrlList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the OriginationUrlInstance
+     *
+     * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
+     * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
+     * @param bool $enabled Whether the URL is enabled. The default is `true`.
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema.
+     * @return OriginationUrlInstance Created OriginationUrlInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(int $weight, int $priority, bool $enabled, string $friendlyName, string $sipUrl): OriginationUrlInstance
+    {
+        $response = $this->_create( $weight,  $priority,  $enabled,  $friendlyName,  $sipUrl);
         return new OriginationUrlInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['trunkSid']
+        );
+        
+    }
+
+    /**
+     * Create the OriginationUrlInstance with Metadata
+     *
+     * @param int $weight The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
+     * @param int $priority The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
+     * @param bool $enabled Whether the URL is enabled. The default is `true`.
+     * @param string $friendlyName A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+     * @param string $sipUrl The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(int $weight, int $priority, bool $enabled, string $friendlyName, string $sipUrl): ResourceMetadata
+    {
+        $response = $this->_create( $weight,  $priority,  $enabled,  $friendlyName,  $sipUrl);
+        $resource = new OriginationUrlInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['trunkSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
@@ -105,6 +151,32 @@ class OriginationUrlList extends ListResource
     public function read(?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
+    }
+
+    /**
+     * Reads OriginationUrlInstance records from the API as a list
+     * Unlike stream(), this operation is eager and will load `limit` records into
+     * memory before returning.
+     *
+     * @param int $limit Upper limit for the number of records to return. read()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return ArrayMetadata Array of results along with metadata
+     */
+    public function readWithMetadata(?int $limit = null, $pageSize = null): ArrayMetadata
+    {
+        $streamWithMetadata = $this->streamWithMetadata($limit, $pageSize);
+        $readResponse = \iterator_to_array($streamWithMetadata, false);
+        return new ArrayMetadata(
+            $readResponse,
+            $streamWithMetadata->getStatusCode(),
+            $streamWithMetadata->getHeaders()
+        );
     }
 
     /**
@@ -135,6 +207,64 @@ class OriginationUrlList extends ListResource
     }
 
     /**
+     * Streams OriginationUrlInstance records from the API as a generator stream and returns result with Metadata
+     * This operation lazily loads records as efficiently as possible until the
+     * limit
+     * is reached.
+     * The results are returned as a generator, so this operation is memory
+     * efficient.
+     *
+     * @param int $limit Upper limit for the number of records to return. stream()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return StreamMetadata stream of results with metadata
+     */
+    public function streamWithMetadata(?int $limit = null, $pageSize = null): StreamMetadata
+    {
+        $limits = $this->version->readLimits($limit, $pageSize);
+
+        $pageWithMetadata = $this->pageWithMetadata($limits['pageSize']);
+
+        $stream = $this->version->stream($pageWithMetadata->getPage(), $limits['limit'], $limits['pageLimit']);
+
+        return new StreamMetadata(
+            $stream,
+            $pageWithMetadata->getStatusCode(),
+            $pageWithMetadata->getHeaders()
+        );
+    }
+
+    /**
+     * Helper function for Page
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return Response Paged Response
+     */
+    private function _page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): Response
+    {
+
+        $params = Values::of([
+            'PageToken' => $pageToken,
+            'Page' => $pageNumber,
+            'PageSize' => $pageSize,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        return $this->version->page('GET', $this->uri, $params, [], $headers);
+    }
+
+    /**
      * Retrieve a single page of OriginationUrlInstance records from the API.
      * Request is executed immediately
      *
@@ -149,17 +279,35 @@ class OriginationUrlList extends ListResource
         $pageNumber = Values::NONE
     ): OriginationUrlPage
     {
-
-        $params = Values::of([
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
-        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
+        $response = $this->_page( $pageSize, $pageToken, $pageNumber);
 
         return new OriginationUrlPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a single page of OriginationUrlInstance records with metadata
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return PageMetadata of OriginationUrlInstance
+     */
+    public function pageWithMetadata(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PageMetadata
+    {
+        $response = $this->_page( $pageSize, $pageToken, $pageNumber);
+
+        $resource =  new OriginationUrlPage($this->version, $response, $this->solution);
+
+        return new PageMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
     /**

@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class UserDefinedMessageList extends ListResource
@@ -55,16 +57,15 @@ class UserDefinedMessageList extends ListResource
     }
 
     /**
-     * Create the UserDefinedMessageInstance
+     * Helper function for Create
      *
      * @param string $content The User Defined Message in the form of URL-encoded JSON string.
      * @param array|Options $options Optional Arguments
-     * @return UserDefinedMessageInstance Created UserDefinedMessageInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $content, array $options = []): UserDefinedMessageInstance
+    private function _create(string $content, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -75,13 +76,50 @@ class UserDefinedMessageList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the UserDefinedMessageInstance
+     *
+     * @param string $content The User Defined Message in the form of URL-encoded JSON string.
+     * @param array|Options $options Optional Arguments
+     * @return UserDefinedMessageInstance Created UserDefinedMessageInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $content, array $options = []): UserDefinedMessageInstance
+    {
+        $response = $this->_create( $content, $options);
         return new UserDefinedMessageInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Create the UserDefinedMessageInstance with Metadata
+     *
+     * @param string $content The User Defined Message in the form of URL-encoded JSON string.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $content, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $content, $options);
+        $resource = new UserDefinedMessageInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

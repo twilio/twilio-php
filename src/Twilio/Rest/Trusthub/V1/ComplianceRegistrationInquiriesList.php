@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -44,17 +46,16 @@ class ComplianceRegistrationInquiriesList extends ListResource
     }
 
     /**
-     * Create the ComplianceRegistrationInquiriesInstance
+     * Helper function for Create
      *
      * @param string $endUserType
      * @param string $phoneNumberType
      * @param array|Options $options Optional Arguments
-     * @return ComplianceRegistrationInquiriesInstance Created ComplianceRegistrationInquiriesInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $endUserType, string $phoneNumberType, array $options = []): ComplianceRegistrationInquiriesInstance
+    private function _create(string $endUserType, string $phoneNumberType, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -139,11 +140,48 @@ class ComplianceRegistrationInquiriesList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ComplianceRegistrationInquiriesInstance
+     *
+     * @param string $endUserType
+     * @param string $phoneNumberType
+     * @param array|Options $options Optional Arguments
+     * @return ComplianceRegistrationInquiriesInstance Created ComplianceRegistrationInquiriesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $endUserType, string $phoneNumberType, array $options = []): ComplianceRegistrationInquiriesInstance
+    {
+        $response = $this->_create( $endUserType,  $phoneNumberType, $options);
         return new ComplianceRegistrationInquiriesInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ComplianceRegistrationInquiriesInstance with Metadata
+     *
+     * @param string $endUserType
+     * @param string $phoneNumberType
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $endUserType, string $phoneNumberType, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $endUserType,  $phoneNumberType, $options);
+        $resource = new ComplianceRegistrationInquiriesInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

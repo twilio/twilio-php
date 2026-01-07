@@ -21,6 +21,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class DeliveryReceiptContext extends InstanceContext
@@ -63,6 +65,18 @@ class DeliveryReceiptContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the DeliveryReceiptInstance
      *
      * @return DeliveryReceiptInstance Fetched DeliveryReceiptInstance
@@ -70,17 +84,39 @@ class DeliveryReceiptContext extends InstanceContext
      */
     public function fetch(): DeliveryReceiptInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new DeliveryReceiptInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['chatServiceSid'],
             $this->solution['conversationSid'],
             $this->solution['messageSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Fetch the DeliveryReceiptInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new DeliveryReceiptInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['chatServiceSid'],
+                        $this->solution['conversationSid'],
+                        $this->solution['messageSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

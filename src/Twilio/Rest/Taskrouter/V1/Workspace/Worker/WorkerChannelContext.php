@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -60,6 +62,18 @@ class WorkerChannelContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the WorkerChannelInstance
      *
      * @return WorkerChannelInstance Fetched WorkerChannelInstance
@@ -67,30 +81,50 @@ class WorkerChannelContext extends InstanceContext
      */
     public function fetch(): WorkerChannelInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new WorkerChannelInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['workerSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Fetch the WorkerChannelInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new WorkerChannelInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['workerSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the WorkerChannelInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return WorkerChannelInstance Updated WorkerChannelInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): WorkerChannelInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -101,14 +135,50 @@ class WorkerChannelContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the WorkerChannelInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return WorkerChannelInstance Updated WorkerChannelInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): WorkerChannelInstance
+    {
+        $response = $this->_update($options);
         return new WorkerChannelInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['workerSid'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the WorkerChannelInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new WorkerChannelInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['workerSid'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

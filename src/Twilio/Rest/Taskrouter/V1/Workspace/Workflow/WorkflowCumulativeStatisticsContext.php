@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -55,15 +57,14 @@ class WorkflowCumulativeStatisticsContext extends InstanceContext
     }
 
     /**
-     * Fetch the WorkflowCumulativeStatisticsInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return WorkflowCumulativeStatisticsInstance Fetched WorkflowCumulativeStatisticsInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): WorkflowCumulativeStatisticsInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -80,13 +81,48 @@ class WorkflowCumulativeStatisticsContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the WorkflowCumulativeStatisticsInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return WorkflowCumulativeStatisticsInstance Fetched WorkflowCumulativeStatisticsInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): WorkflowCumulativeStatisticsInstance
+    {
+        $response = $this->_fetch($options);
         return new WorkflowCumulativeStatisticsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['workspaceSid'],
             $this->solution['workflowSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the WorkflowCumulativeStatisticsInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new WorkflowCumulativeStatisticsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['workspaceSid'],
+                        $this->solution['workflowSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
