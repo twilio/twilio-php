@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class TokenList extends ListResource
@@ -43,17 +45,16 @@ class TokenList extends ListResource
     }
 
     /**
-     * Create the TokenInstance
+     * Helper function for Create
      *
      * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
      * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param array|Options $options Optional Arguments
-     * @return TokenInstance Created TokenInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $grantType, string $clientId, array $options = []): TokenInstance
+    private function _create(string $grantType, string $clientId, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -76,11 +77,48 @@ class TokenList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TokenInstance
+     *
+     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
+     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
+     * @param array|Options $options Optional Arguments
+     * @return TokenInstance Created TokenInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $grantType, string $clientId, array $options = []): TokenInstance
+    {
+        $response = $this->_create( $grantType,  $clientId, $options);
         return new TokenInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the TokenInstance with Metadata
+     *
+     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
+     * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $grantType, string $clientId, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $grantType,  $clientId, $options);
+        $resource = new TokenInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -102,4 +102,8 @@ class Stream implements \Iterator {
             && $this->pageLimit < $this->currentPage);
     }
 
+    public function __toString(): string {
+        return '[Stream]';
+    }
+
 }

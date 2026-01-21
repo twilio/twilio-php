@@ -21,6 +21,11 @@ use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ArrayMetadata;
+use Twilio\Metadata\PageMetadata;
+use Twilio\Metadata\ResourceMetadata;
+use Twilio\Metadata\StreamMetadata;
 
 
 class IpAccessControlListMappingList extends ListResource
@@ -55,6 +60,24 @@ class IpAccessControlListMappingList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $ipAccessControlListSid The unique id of the IP access control list to map to the SIP domain.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $ipAccessControlListSid): Response
+    {
+        $data = Values::of([
+            'IpAccessControlListSid' =>
+                $ipAccessControlListSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the IpAccessControlListMappingInstance
      *
      * @param string $ipAccessControlListSid The unique id of the IP access control list to map to the SIP domain.
@@ -63,20 +86,36 @@ class IpAccessControlListMappingList extends ListResource
      */
     public function create(string $ipAccessControlListSid): IpAccessControlListMappingInstance
     {
-
-        $data = Values::of([
-            'IpAccessControlListSid' =>
-                $ipAccessControlListSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $ipAccessControlListSid);
         return new IpAccessControlListMappingInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['domainSid']
+        );
+        
+    }
+
+    /**
+     * Create the IpAccessControlListMappingInstance with Metadata
+     *
+     * @param string $ipAccessControlListSid The unique id of the IP access control list to map to the SIP domain.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $ipAccessControlListSid): ResourceMetadata
+    {
+        $response = $this->_create( $ipAccessControlListSid);
+        $resource = new IpAccessControlListMappingInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['domainSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
@@ -99,6 +138,32 @@ class IpAccessControlListMappingList extends ListResource
     public function read(?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
+    }
+
+    /**
+     * Reads IpAccessControlListMappingInstance records from the API as a list
+     * Unlike stream(), this operation is eager and will load `limit` records into
+     * memory before returning.
+     *
+     * @param int $limit Upper limit for the number of records to return. read()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return ArrayMetadata Array of results along with metadata
+     */
+    public function readWithMetadata(?int $limit = null, $pageSize = null): ArrayMetadata
+    {
+        $streamWithMetadata = $this->streamWithMetadata($limit, $pageSize);
+        $readResponse = \iterator_to_array($streamWithMetadata, false);
+        return new ArrayMetadata(
+            $readResponse,
+            $streamWithMetadata->getStatusCode(),
+            $streamWithMetadata->getHeaders()
+        );
     }
 
     /**
@@ -129,6 +194,64 @@ class IpAccessControlListMappingList extends ListResource
     }
 
     /**
+     * Streams IpAccessControlListMappingInstance records from the API as a generator stream and returns result with Metadata
+     * This operation lazily loads records as efficiently as possible until the
+     * limit
+     * is reached.
+     * The results are returned as a generator, so this operation is memory
+     * efficient.
+     *
+     * @param int $limit Upper limit for the number of records to return. stream()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return StreamMetadata stream of results with metadata
+     */
+    public function streamWithMetadata(?int $limit = null, $pageSize = null): StreamMetadata
+    {
+        $limits = $this->version->readLimits($limit, $pageSize);
+
+        $pageWithMetadata = $this->pageWithMetadata($limits['pageSize']);
+
+        $stream = $this->version->stream($pageWithMetadata->getPage(), $limits['limit'], $limits['pageLimit']);
+
+        return new StreamMetadata(
+            $stream,
+            $pageWithMetadata->getStatusCode(),
+            $pageWithMetadata->getHeaders()
+        );
+    }
+
+    /**
+     * Helper function for Page
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return Response Paged Response
+     */
+    private function _page(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): Response
+    {
+
+        $params = Values::of([
+            'PageToken' => $pageToken,
+            'Page' => $pageNumber,
+            'PageSize' => $pageSize,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        return $this->version->page('GET', $this->uri, $params, [], $headers);
+    }
+
+    /**
      * Retrieve a single page of IpAccessControlListMappingInstance records from the API.
      * Request is executed immediately
      *
@@ -143,17 +266,35 @@ class IpAccessControlListMappingList extends ListResource
         $pageNumber = Values::NONE
     ): IpAccessControlListMappingPage
     {
-
-        $params = Values::of([
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
-        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
+        $response = $this->_page( $pageSize, $pageToken, $pageNumber);
 
         return new IpAccessControlListMappingPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a single page of IpAccessControlListMappingInstance records with metadata
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return PageMetadata of IpAccessControlListMappingInstance
+     */
+    public function pageWithMetadata(
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PageMetadata
+    {
+        $response = $this->_page( $pageSize, $pageToken, $pageNumber);
+
+        $resource =  new IpAccessControlListMappingPage($this->version, $response, $this->solution);
+
+        return new PageMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
     /**

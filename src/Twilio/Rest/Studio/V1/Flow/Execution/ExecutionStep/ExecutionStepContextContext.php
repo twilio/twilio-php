@@ -21,6 +21,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ExecutionStepContextContext extends InstanceContext
@@ -58,6 +60,18 @@ class ExecutionStepContextContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the ExecutionStepContextInstance
      *
      * @return ExecutionStepContextInstance Fetched ExecutionStepContextInstance
@@ -65,16 +79,37 @@ class ExecutionStepContextContext extends InstanceContext
      */
     public function fetch(): ExecutionStepContextInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new ExecutionStepContextInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['flowSid'],
             $this->solution['executionSid'],
             $this->solution['stepSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the ExecutionStepContextInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new ExecutionStepContextInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['flowSid'],
+                        $this->solution['executionSid'],
+                        $this->solution['stepSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

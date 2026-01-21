@@ -120,22 +120,32 @@ abstract class Page implements \Iterator {
         return null;
     }
 
-    public function nextPage(): ?Page {
-        if (!$this->getNextPageUrl()) {
+    public function getResponse(?string $url): ?Response {
+        if (!$url) {
             return null;
         }
 
-        $response = $this->getVersion()->getDomain()->getClient()->request('GET', $this->getNextPageUrl());
+        return $this->getVersion()->getDomain()->getClient()->request('GET', $url);
+    }
+
+    public function createPage(Response $response): Page {
         return new static($this->getVersion(), $response, $this->solution);
     }
 
-    public function previousPage(): ?Page {
-        if (!$this->getPreviousPageUrl()) {
+    public function nextPage(): ?Page {
+        $response = $this->getResponse($this->getNextPageUrl());
+        if (!$response) {
             return null;
         }
+        return $this->createPage($response);
+    }
 
-        $response = $this->getVersion()->getDomain()->getClient()->request('GET', $this->getPreviousPageUrl());
-        return new static($this->getVersion(), $response, $this->solution);
+    public function previousPage(): ?Page {
+        $response = $this->getResponse($this->getPreviousPageUrl());
+        if (!$response) {
+            return null;
+        }
+        return $this->createPage($response);
     }
 
     /**

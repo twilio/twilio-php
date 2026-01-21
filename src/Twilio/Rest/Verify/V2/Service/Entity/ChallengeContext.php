@@ -23,6 +23,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 use Twilio\Rest\Verify\V2\Service\Entity\Challenge\NotificationList;
 
@@ -67,6 +69,18 @@ class ChallengeContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the ChallengeInstance
      *
      * @return ChallengeInstance Fetched ChallengeInstance
@@ -74,30 +88,50 @@ class ChallengeContext extends InstanceContext
      */
     public function fetch(): ChallengeInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new ChallengeInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['identity'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Fetch the ChallengeInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new ChallengeInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['identity'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the ChallengeInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return ChallengeInstance Updated ChallengeInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): ChallengeInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -108,14 +142,50 @@ class ChallengeContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the ChallengeInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ChallengeInstance Updated ChallengeInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): ChallengeInstance
+    {
+        $response = $this->_update($options);
         return new ChallengeInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['identity'],
             $this->solution['sid']
+        );
+        
+    }
+
+    /**
+     * Update the ChallengeInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new ChallengeInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['identity'],
+                        $this->solution['sid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

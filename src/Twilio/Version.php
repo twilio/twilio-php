@@ -91,78 +91,6 @@ abstract class Version {
         return new RestException($message, $response->getStatusCode(), $response->getStatusCode());
     }
 
-    /**
-     * @throws TwilioException
-     */
-    public function fetch(string $method, string $uri,
-                          array $params = [], array $data = [], array $headers = [],
-                          ?string $username = null, ?string $password = null,
-                          ?int $timeout = null) {
-        $response = $this->handleException(
-            $method,
-            $uri,
-            $params,
-            $data,
-            $headers,
-            $username,
-            $password,
-            $timeout,
-            "fetch"
-        );
-        return $response->getContent();
-    }
-
-    /**
-     * @throws TwilioException
-     */
-    public function patch(string $method, string $uri,
-                           array $params = [], array $data = [], array $headers = [],
-                           ?string $username = null, ?string $password = null,
-                           ?int $timeout = null) {
-        return $this->update($method, $uri, $params, $data, $headers, $username, $password, $timeout);
-    }
-
-    /**
-     * @throws TwilioException
-     */
-    public function update(string $method, string $uri,
-                           array $params = [], array $data = [], array $headers = [],
-                           ?string $username = null, ?string $password = null,
-                           ?int $timeout = null) {
-        $response = $this->handleException(
-            $method,
-            $uri,
-            $params,
-            $data,
-            $headers,
-            $username,
-            $password,
-            $timeout,
-            "update"
-        );
-        return $response->getContent();
-    }
-
-    /**
-     * @throws TwilioException
-     */
-    public function delete(string $method, string $uri,
-                           array $params = [], array $data = [], array $headers = [],
-                           ?string $username = null, ?string $password = null,
-                           ?int $timeout = null): bool {
-        $this->handleException(
-            $method,
-            $uri,
-            $params,
-            $data,
-            $headers,
-            $username,
-            $password,
-            $timeout,
-            "delete"
-        );
-        return true;
-    }
 
     public function readLimits(?int $limit = null, ?int $pageSize = null): array {
         if ($limit && $pageSize === null) {
@@ -198,34 +126,14 @@ abstract class Version {
         return new Stream($page, $limit, $pageLimit);
     }
 
-    /**
-     * @throws TwilioException
-     */
-    public function create(string $method, string $uri,
-                           array $params = [], array $data = [], array $headers = [],
-                           ?string $username = null, ?string $password = null,
-                           ?int $timeout = null) {
-        $response = $this->handleException(
-            $method,
-            $uri,
-            $params,
-            $data,
-            $headers,
-            $username,
-            $password,
-            $timeout,
-            "create"
-        );
-        return $response->getContent();
-    }
 
     /**
      * @throws TwilioException
      */
-    public function handleException(string $method, string $uri,
-                           array $params = [], array $data = [], array $headers = [],
-                           ?string $username = null, ?string $password = null,
-                           ?int $timeout = null, ?string $operation = ""): Response
+    public function handleRequest(string $method, string $uri,
+                                  array $params = [], array $data = [], array $headers = [],
+                                  ?string $operation = "", ?string $username = null, ?string $password = null,
+                                  ?int $timeout = null): Response
     {
         $response = $this->request(
             $method,

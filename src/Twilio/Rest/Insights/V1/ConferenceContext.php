@@ -22,6 +22,8 @@ use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Rest\Insights\V1\Conference\ConferenceParticipantList;
 
 
@@ -56,6 +58,18 @@ class ConferenceContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the ConferenceInstance
      *
      * @return ConferenceInstance Fetched ConferenceInstance
@@ -63,14 +77,33 @@ class ConferenceContext extends InstanceContext
      */
     public function fetch(): ConferenceInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new ConferenceInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['conferenceSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the ConferenceInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new ConferenceInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['conferenceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

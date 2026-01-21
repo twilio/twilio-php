@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -50,16 +52,15 @@ class BundleCloneContext extends InstanceContext
     }
 
     /**
-     * Create the BundleCloneInstance
+     * Helper function for Create
      *
      * @param string $targetAccountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned.
      * @param array|Options $options Optional Arguments
-     * @return BundleCloneInstance Created BundleCloneInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $targetAccountSid, array $options = []): BundleCloneInstance
+    private function _create(string $targetAccountSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -72,12 +73,48 @@ class BundleCloneContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the BundleCloneInstance
+     *
+     * @param string $targetAccountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned.
+     * @param array|Options $options Optional Arguments
+     * @return BundleCloneInstance Created BundleCloneInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $targetAccountSid, array $options = []): BundleCloneInstance
+    {
+        $response = $this->_create( $targetAccountSid, $options);
         return new BundleCloneInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['bundleSid']
+        );
+        
+    }
+
+    /**
+     * Create the BundleCloneInstance with Metadata
+     *
+     * @param string $targetAccountSid The SID of the [Account](https://www.twilio.com/docs/iam/api/account) where the bundle needs to be cloned.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $targetAccountSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $targetAccountSid, $options);
+        $resource = new BundleCloneInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['bundleSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

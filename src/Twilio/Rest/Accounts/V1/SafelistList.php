@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SafelistList extends ListResource
@@ -43,6 +45,24 @@ class SafelistList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $phoneNumber): Response
+    {
+        $data = Values::of([
+            'PhoneNumber' =>
+                $phoneNumber,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the SafelistInstance
      *
      * @param string $phoneNumber The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
@@ -51,21 +71,55 @@ class SafelistList extends ListResource
      */
     public function create(string $phoneNumber): SafelistInstance
     {
-
-        $data = Values::of([
-            'PhoneNumber' =>
-                $phoneNumber,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $phoneNumber);
         return new SafelistInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the SafelistInstance with Metadata
+     *
+     * @param string $phoneNumber The phone number or phone number 1k prefix to be added in SafeList. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $phoneNumber): ResourceMetadata
+    {
+        $response = $this->_create( $phoneNumber);
+        $resource = new SafelistInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
+
+    /**
+     * Helper function for Delete
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _delete(array $options = []): Response
+    {
+        $options = new Values($options);
+
+        $params = Values::of([
+            'PhoneNumber' =>
+                $options['phoneNumber'],
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->handleRequest('DELETE', $this->uri, $params, [], $headers, "delete");
+    }
 
     /**
      * Delete the SafelistInstance
@@ -76,7 +130,39 @@ class SafelistList extends ListResource
      */
     public function delete(array $options = []): bool
     {
+        $response = $this->_delete($options);
+        
+        return true;
+    }
 
+    /**
+     * Delete the SafelistInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function deleteWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_delete($options);
+        
+        return new ResourceMetadata(
+            null,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
+     * Helper function for Fetch
+     *
+     * @param array|Options $options Optional Arguments
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(array $options = []): Response
+    {
         $options = new Values($options);
 
         $params = Values::of([
@@ -84,10 +170,9 @@ class SafelistList extends ListResource
                 $options['phoneNumber'],
         ]);
 
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        return $this->version->delete('DELETE', $this->uri, $params, [], $headers);
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
     }
-
 
     /**
      * Fetch the SafelistInstance
@@ -98,20 +183,32 @@ class SafelistList extends ListResource
      */
     public function fetch(array $options = []): SafelistInstance
     {
-
-        $options = new Values($options);
-
-        $params = Values::of([
-            'PhoneNumber' =>
-                $options['phoneNumber'],
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
-
+        $response = $this->_fetch($options);
         return new SafelistInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Fetch the SafelistInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new SafelistInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

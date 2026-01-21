@@ -21,6 +21,10 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ArrayMetadata;
+use Twilio\Metadata\PageMetadata;
+use Twilio\Metadata\StreamMetadata;
 use Twilio\Serialize;
 
 
@@ -65,6 +69,33 @@ class UsageRecordList extends ListResource
     }
 
     /**
+     * Reads UsageRecordInstance records from the API as a list
+     * Unlike stream(), this operation is eager and will load `limit` records into
+     * memory before returning.
+     *
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. read()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return ArrayMetadata Array of results along with metadata
+     */
+    public function readWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
+    {
+        $streamWithMetadata = $this->streamWithMetadata($options, $limit, $pageSize);
+        $readResponse = \iterator_to_array($streamWithMetadata, false);
+        return new ArrayMetadata(
+            $readResponse,
+            $streamWithMetadata->getStatusCode(),
+            $streamWithMetadata->getHeaders()
+        );
+    }
+
+    /**
      * Streams UsageRecordInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
@@ -93,20 +124,53 @@ class UsageRecordList extends ListResource
     }
 
     /**
-     * Retrieve a single page of UsageRecordInstance records from the API.
-     * Request is executed immediately
+     * Streams UsageRecordInstance records from the API as a generator stream and returns result with Metadata
+     * This operation lazily loads records as efficiently as possible until the
+     * limit
+     * is reached.
+     * The results are returned as a generator, so this operation is memory
+     * efficient.
+     *
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. stream()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return StreamMetadata stream of results with metadata
+     */
+    public function streamWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): StreamMetadata
+    {
+        $limits = $this->version->readLimits($limit, $pageSize);
+
+        $pageWithMetadata = $this->pageWithMetadata($options, $limits['pageSize']);
+
+        $stream = $this->version->stream($pageWithMetadata->getPage(), $limits['limit'], $limits['pageLimit']);
+
+        return new StreamMetadata(
+            $stream,
+            $pageWithMetadata->getStatusCode(),
+            $pageWithMetadata->getHeaders()
+        );
+    }
+
+    /**
+     * Helper function for Page
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return UsageRecordPage Page of UsageRecordInstance
+     * @return Response Paged Response
      */
-    public function page(
+    private function _page(
         array $options = [],
         $pageSize = Values::NONE,
         string $pageToken = Values::NONE,
         $pageNumber = Values::NONE
-    ): UsageRecordPage
+    ): Response
     {
         $options = new Values($options);
 
@@ -127,15 +191,62 @@ class UsageRecordList extends ListResource
                 Serialize::iso8601DateTime($options['startTime']),
             'EndTime' =>
                 Serialize::iso8601DateTime($options['endTime']),
+                                                                                                            
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
-        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
+        return $this->version->page('GET', $this->uri, $params, [], $headers);
+    }
+
+    /**
+     * Retrieve a single page of UsageRecordInstance records from the API.
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return UsageRecordPage Page of UsageRecordInstance
+     */
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): UsageRecordPage
+    {
+        $response = $this->_page($options, $pageSize, $pageToken, $pageNumber);
 
         return new UsageRecordPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a single page of UsageRecordInstance records with metadata
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return PageMetadata of UsageRecordInstance
+     */
+    public function pageWithMetadata(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PageMetadata
+    {
+        $response = $this->_page($options, $pageSize, $pageToken, $pageNumber);
+
+        $resource =  new UsageRecordPage($this->version, $response, $this->solution);
+
+        return new PageMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
     /**

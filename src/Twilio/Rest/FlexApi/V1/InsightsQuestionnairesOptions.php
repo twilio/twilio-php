@@ -195,11 +195,7 @@ class CreateInsightsQuestionnairesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.CreateInsightsQuestionnairesOptions ' . $options . ']';
     }
 }
@@ -236,11 +232,7 @@ class DeleteInsightsQuestionnairesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.DeleteInsightsQuestionnairesOptions ' . $options . ']';
     }
 }
@@ -277,11 +269,7 @@ class FetchInsightsQuestionnairesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.FetchInsightsQuestionnairesOptions ' . $options . ']';
     }
 }
@@ -333,11 +321,7 @@ class ReadInsightsQuestionnairesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.ReadInsightsQuestionnairesOptions ' . $options . ']';
     }
 }
@@ -419,11 +403,7 @@ class UpdateInsightsQuestionnairesOptions extends Options
      */
     public function __toString(): string
     {
-        $options = $this->options;
-        if (isset($options['authorization'])) {
-            $options['authorization'] = '[REDACTED]';
-        }
-        $options = \http_build_query(Values::of($options), '', ' ');
+        $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.FlexApi.V1.UpdateInsightsQuestionnairesOptions ' . $options . ']';
     }
 }

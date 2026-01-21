@@ -20,6 +20,8 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ApproveChallengeList extends ListResource
@@ -48,6 +50,20 @@ class ApproveChallengeList extends ListResource
     }
 
     /**
+     * Helper function for Update
+     *
+     * @param ApprovePasskeysChallengeRequest $approvePasskeysChallengeRequest
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _update(ApprovePasskeysChallengeRequest $approvePasskeysChallengeRequest): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $approvePasskeysChallengeRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
+
+    /**
      * Update the ApproveChallengeInstance
      *
      * @param ApprovePasskeysChallengeRequest $approvePasskeysChallengeRequest
@@ -56,15 +72,34 @@ class ApproveChallengeList extends ListResource
      */
     public function update(ApprovePasskeysChallengeRequest $approvePasskeysChallengeRequest): ApproveChallengeInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
-        $data = $approvePasskeysChallengeRequest->toArray();
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_update( $approvePasskeysChallengeRequest);
         return new ApproveChallengeInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid']
+        );
+        
+    }
+
+    /**
+     * Update the ApproveChallengeInstance with Metadata
+     *
+     * @param ApprovePasskeysChallengeRequest $approvePasskeysChallengeRequest
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(ApprovePasskeysChallengeRequest $approvePasskeysChallengeRequest): ResourceMetadata
+    {
+        $response = $this->_update( $approvePasskeysChallengeRequest);
+        $resource = new ApproveChallengeInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
