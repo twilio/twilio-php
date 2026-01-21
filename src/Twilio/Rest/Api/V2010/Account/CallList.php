@@ -133,6 +133,8 @@ class CallList extends ListResource
                 $options['recordingTrack'],
             'TimeLimit' =>
                 $options['timeLimit'],
+            'ClientNotificationUrl' =>
+                $options['clientNotificationUrl'],
             'Url' =>
                 $options['url'],
             'Twiml' =>

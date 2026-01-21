@@ -46,6 +46,8 @@ abstract class TollfreeVerificationOptions
      * @param string $termsAndConditionsUrl The URL to the terms and conditions for the business or organization.
      * @param bool $ageGatedContent Indicates if the content is age gated.
      * @param string[] $optInKeywords List of keywords that users can text in to opt in to receive messages.
+     * @param string $vettingProvider
+     * @param string $vettingId The unique ID of the vetting
      * @return CreateTollfreeVerificationOptions Options builder
      */
     public static function create(
@@ -74,7 +76,9 @@ abstract class TollfreeVerificationOptions
         string $privacyPolicyUrl = Values::NONE,
         string $termsAndConditionsUrl = Values::NONE,
         bool $ageGatedContent = Values::BOOL_NONE,
-        array $optInKeywords = Values::ARRAY_NONE
+        array $optInKeywords = Values::ARRAY_NONE,
+        string $vettingProvider = Values::NONE,
+        string $vettingId = Values::NONE
 
     ): CreateTollfreeVerificationOptions
     {
@@ -103,7 +107,9 @@ abstract class TollfreeVerificationOptions
             $privacyPolicyUrl,
             $termsAndConditionsUrl,
             $ageGatedContent,
-            $optInKeywords
+            $optInKeywords,
+            $vettingProvider,
+            $vettingId
         );
     }
 
@@ -170,6 +176,8 @@ abstract class TollfreeVerificationOptions
      * @param string $termsAndConditionsUrl The URL to the terms and conditions for the business or organization.
      * @param bool $ageGatedContent Indicates if the content is age gated.
      * @param string[] $optInKeywords List of keywords that users can text in to opt in to receive messages.
+     * @param string $vettingProvider
+     * @param string $vettingId The unique ID of the vetting
      * @return UpdateTollfreeVerificationOptions Options builder
      */
     public static function update(
@@ -206,7 +214,9 @@ abstract class TollfreeVerificationOptions
         string $privacyPolicyUrl = Values::NONE,
         string $termsAndConditionsUrl = Values::NONE,
         bool $ageGatedContent = Values::BOOL_NONE,
-        array $optInKeywords = Values::ARRAY_NONE
+        array $optInKeywords = Values::ARRAY_NONE,
+        string $vettingProvider = Values::NONE,
+        string $vettingId = Values::NONE
 
     ): UpdateTollfreeVerificationOptions
     {
@@ -243,7 +253,9 @@ abstract class TollfreeVerificationOptions
             $privacyPolicyUrl,
             $termsAndConditionsUrl,
             $ageGatedContent,
-            $optInKeywords
+            $optInKeywords,
+            $vettingProvider,
+            $vettingId
         );
     }
 
@@ -277,6 +289,8 @@ class CreateTollfreeVerificationOptions extends Options
      * @param string $termsAndConditionsUrl The URL to the terms and conditions for the business or organization.
      * @param bool $ageGatedContent Indicates if the content is age gated.
      * @param string[] $optInKeywords List of keywords that users can text in to opt in to receive messages.
+     * @param string $vettingProvider
+     * @param string $vettingId The unique ID of the vetting
      */
     public function __construct(
         
@@ -304,7 +318,9 @@ class CreateTollfreeVerificationOptions extends Options
         string $privacyPolicyUrl = Values::NONE,
         string $termsAndConditionsUrl = Values::NONE,
         bool $ageGatedContent = Values::BOOL_NONE,
-        array $optInKeywords = Values::ARRAY_NONE
+        array $optInKeywords = Values::ARRAY_NONE,
+        string $vettingProvider = Values::NONE,
+        string $vettingId = Values::NONE
 
     ) {
         $this->options['customerProfileSid'] = $customerProfileSid;
@@ -332,6 +348,8 @@ class CreateTollfreeVerificationOptions extends Options
         $this->options['termsAndConditionsUrl'] = $termsAndConditionsUrl;
         $this->options['ageGatedContent'] = $ageGatedContent;
         $this->options['optInKeywords'] = $optInKeywords;
+        $this->options['vettingProvider'] = $vettingProvider;
+        $this->options['vettingId'] = $vettingId;
     }
 
     /**
@@ -635,6 +653,28 @@ class CreateTollfreeVerificationOptions extends Options
     }
 
     /**
+     * @param string $vettingProvider
+     * @return $this Fluent Builder
+     */
+    public function setVettingProvider(string $vettingProvider): self
+    {
+        $this->options['vettingProvider'] = $vettingProvider;
+        return $this;
+    }
+
+    /**
+     * The unique ID of the vetting
+     *
+     * @param string $vettingId The unique ID of the vetting
+     * @return $this Fluent Builder
+     */
+    public function setVettingId(string $vettingId): self
+    {
+        $this->options['vettingId'] = $vettingId;
+        return $this;
+    }
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
@@ -781,6 +821,8 @@ class UpdateTollfreeVerificationOptions extends Options
      * @param string $termsAndConditionsUrl The URL to the terms and conditions for the business or organization.
      * @param bool $ageGatedContent Indicates if the content is age gated.
      * @param string[] $optInKeywords List of keywords that users can text in to opt in to receive messages.
+     * @param string $vettingProvider
+     * @param string $vettingId The unique ID of the vetting
      */
     public function __construct(
         
@@ -816,7 +858,9 @@ class UpdateTollfreeVerificationOptions extends Options
         string $privacyPolicyUrl = Values::NONE,
         string $termsAndConditionsUrl = Values::NONE,
         bool $ageGatedContent = Values::BOOL_NONE,
-        array $optInKeywords = Values::ARRAY_NONE
+        array $optInKeywords = Values::ARRAY_NONE,
+        string $vettingProvider = Values::NONE,
+        string $vettingId = Values::NONE
 
     ) {
         $this->options['businessName'] = $businessName;
@@ -852,6 +896,8 @@ class UpdateTollfreeVerificationOptions extends Options
         $this->options['termsAndConditionsUrl'] = $termsAndConditionsUrl;
         $this->options['ageGatedContent'] = $ageGatedContent;
         $this->options['optInKeywords'] = $optInKeywords;
+        $this->options['vettingProvider'] = $vettingProvider;
+        $this->options['vettingId'] = $vettingId;
     }
 
     /**
@@ -1245,6 +1291,28 @@ class UpdateTollfreeVerificationOptions extends Options
     public function setOptInKeywords(array $optInKeywords): self
     {
         $this->options['optInKeywords'] = $optInKeywords;
+        return $this;
+    }
+
+    /**
+     * @param string $vettingProvider
+     * @return $this Fluent Builder
+     */
+    public function setVettingProvider(string $vettingProvider): self
+    {
+        $this->options['vettingProvider'] = $vettingProvider;
+        return $this;
+    }
+
+    /**
+     * The unique ID of the vetting
+     *
+     * @param string $vettingId The unique ID of the vetting
+     * @return $this Fluent Builder
+     */
+    public function setVettingId(string $vettingId): self
+    {
+        $this->options['vettingId'] = $vettingId;
         return $this;
     }
 
