@@ -67,6 +67,7 @@ class BaseClient
         $this->edge = $this->getArg(null, self::ENV_EDGE);
         $this->logLevel = $this->getArg(null, self::ENV_LOG);
         $this->userAgentExtensions = $userAgentExtensions ?: [];
+
         $this->invalidateOAuth();
         $this->setAccountSid($accountSid ?: $this->username);
 
