@@ -161,30 +161,6 @@ class BaseClient
             $authStrategy = $this->credentialProvider->toAuthStrategy();
         }
 
-        if( ($this->edge === null && $this->region !== null) || ($this->edge !== null && $this->region === null) )
-        {
-            trigger_error(' For regional processing, DNS is of format product.city.region.twilio.com; otherwise use product.twilio.com.', E_USER_DEPRECATED);
-        }
-        if ($this->edge === null && $this->region !== null) {
-            $regionMap = [
-                'au1' => 'sydney',
-                'br1' => 'sao-paulo',
-                'de1' => 'frankfurt',
-                'ie1' => 'dublin',
-                'jp1' => 'tokyo',
-                'jp2' => 'osaka',
-                'sg1' => 'singapore',
-                'us1' => 'ashburn',
-                'us2' => 'umatilla'
-            ];
-            if (array_key_exists($this->region, $regionMap)) {
-                trigger_error(' Setting default `Edge` for the provided `region`.', E_USER_DEPRECATED);
-                $this->edge = $regionMap[$this->region];
-            }
-            if( $this->edge === null )
-                $this->edge = '';
-        }
-
         if (!$authStrategy) {
             if (!$username) {
                 throw new ConfigurationException('username is required');
