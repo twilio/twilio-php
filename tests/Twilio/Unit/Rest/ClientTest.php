@@ -128,6 +128,7 @@ class ClientTest extends UnitTest {
         $network = new Holodeck();
         $client = new Client('username', 'password', null, 'ie1', $network);
         $client->request('POST', 'https://test.twilio.com/v1/Resources');
+        $this->expectException();
         $expected = new Request('POST', 'https://test.ie1.twilio.com/v1/Resources');
         $this->assertTrue($network->hasRequest($expected));
     }
