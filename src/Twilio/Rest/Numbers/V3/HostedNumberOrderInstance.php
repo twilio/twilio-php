@@ -21,46 +21,70 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\ApiV1Version;
 use Twilio\Deserialize;
 use Twilio\Base\PhoneNumberCapabilities;
 
 
 /**
  * @property string|null $sid
+ *//**
  * @property string|null $accountSid
+ *//**
  * @property string|null $incomingPhoneNumberSid
+ *//**
  * @property string|null $addressSid
+ *//**
  * @property string|null $signingDocumentSid
+ *//**
  * @property string|null $phoneNumber
+ *//**
  * @property PhoneNumberCapabilities|null $capabilities
+ *//**
  * @property string|null $friendlyName
+ *//**
  * @property string|null $uniqueName
+ *//**
  * @property string $status
+ *//**
  * @property string|null $failureReason
+ *//**
  * @property \DateTime|null $dateCreated
+ *//**
  * @property \DateTime|null $dateUpdated
+ *//**
  * @property int $verificationAttempts
+ *//**
  * @property string|null $email
+ *//**
  * @property string[]|null $ccEmails
+ *//**
  * @property string|null $url
+ *//**
  * @property string $verificationType
+ *//**
  * @property string|null $verificationDocumentSid
+ *//**
  * @property string|null $extension
+ *//**
  * @property int $callDelay
+ *//**
  * @property string|null $verificationCode
+ *//**
  * @property string[]|null $verificationCallSids
  */
-class HostedNumberOrderInstance extends InstanceResource
+class NumbersV3HostedNumbersHostedNumberOrderInstance extends InstanceResource
 {
     /**
-     * Initialize the HostedNumberOrderInstance
+     * Initialize the NumbersV3HostedNumbersHostedNumberOrderInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      */
     public function __construct(Version $version, array $payload)
     {
-        parent::__construct($version);
+        $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
+        parent::__construct($apiV1Version);
 
         // Marshaled Properties
         $this->properties = [
@@ -120,7 +144,8 @@ class HostedNumberOrderInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Numbers.V3.HostedNumberOrderInstance]';
+        return '[Twilio.Numbers.V3.NumbersV3HostedNumbersHostedNumberOrderInstance]';
     }
 }
+
 

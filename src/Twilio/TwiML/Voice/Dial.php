@@ -83,7 +83,7 @@ class Dial extends TwiML {
      * @param array $attributes Optional attributes
      * @return Sip Child element.
      */
-    public function sip($sipUrl, $attributes = []): Sip {
+    public function sip($sipUrl = null, $attributes = []): Sip {
         return $this->nest(new Sip($sipUrl, $attributes));
     }
 

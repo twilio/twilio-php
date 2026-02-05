@@ -34,10 +34,10 @@ abstract class TollfreeVerificationOptions
      * @param string $businessContactEmail The email address of the contact for the business or organization using the Tollfree number.
      * @param string $businessContactPhone The E.164 formatted phone number of the contact for the business or organization using the Tollfree number.
      * @param string $externalReferenceId An optional external reference ID supplied by customer and echoed back on status retrieval.
-     * @param string $businessRegistrationNumber A legally recognized business registration number
-     * @param string $businessRegistrationAuthority The organizational authority for business registrations
-     * @param string $businessRegistrationCountry Country business is registered in
-     * @param string $businessType The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT
+     * @param string $businessRegistrationNumber A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR.
+     * @param string $businessRegistrationAuthority The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR.
+     * @param string $businessRegistrationCountry The country where the business is registered. Required for all business types except SOLE_PROPRIETOR.
+     * @param string $businessType The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field.
      * @param string $businessRegistrationPhoneNumber The E.164 formatted number associated with the business.
      * @param string $doingBusinessAs Trade name, sub entity, or downstream business name of business being submitted for verification
      * @param string $optInConfirmationMessage The confirmation message sent to users when they opt in to receive messages.
@@ -277,10 +277,10 @@ class CreateTollfreeVerificationOptions extends Options
      * @param string $businessContactEmail The email address of the contact for the business or organization using the Tollfree number.
      * @param string $businessContactPhone The E.164 formatted phone number of the contact for the business or organization using the Tollfree number.
      * @param string $externalReferenceId An optional external reference ID supplied by customer and echoed back on status retrieval.
-     * @param string $businessRegistrationNumber A legally recognized business registration number
-     * @param string $businessRegistrationAuthority The organizational authority for business registrations
-     * @param string $businessRegistrationCountry Country business is registered in
-     * @param string $businessType The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT
+     * @param string $businessRegistrationNumber A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR.
+     * @param string $businessRegistrationAuthority The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR.
+     * @param string $businessRegistrationCountry The country where the business is registered. Required for all business types except SOLE_PROPRIETOR.
+     * @param string $businessType The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field.
      * @param string $businessRegistrationPhoneNumber The E.164 formatted number associated with the business.
      * @param string $doingBusinessAs Trade name, sub entity, or downstream business name of business being submitted for verification
      * @param string $optInConfirmationMessage The confirmation message sent to users when they opt in to receive messages.
@@ -509,9 +509,9 @@ class CreateTollfreeVerificationOptions extends Options
     }
 
     /**
-     * A legally recognized business registration number
+     * A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR.
      *
-     * @param string $businessRegistrationNumber A legally recognized business registration number
+     * @param string $businessRegistrationNumber A legally recognized business registration number. Required for all business types except SOLE_PROPRIETOR.
      * @return $this Fluent Builder
      */
     public function setBusinessRegistrationNumber(string $businessRegistrationNumber): self
@@ -521,9 +521,9 @@ class CreateTollfreeVerificationOptions extends Options
     }
 
     /**
-     * The organizational authority for business registrations
+     * The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR.
      *
-     * @param string $businessRegistrationAuthority The organizational authority for business registrations
+     * @param string $businessRegistrationAuthority The organizational authority for business registrations. Required for all business types except SOLE_PROPRIETOR.
      * @return $this Fluent Builder
      */
     public function setBusinessRegistrationAuthority(string $businessRegistrationAuthority): self
@@ -533,9 +533,9 @@ class CreateTollfreeVerificationOptions extends Options
     }
 
     /**
-     * Country business is registered in
+     * The country where the business is registered. Required for all business types except SOLE_PROPRIETOR.
      *
-     * @param string $businessRegistrationCountry Country business is registered in
+     * @param string $businessRegistrationCountry The country where the business is registered. Required for all business types except SOLE_PROPRIETOR.
      * @return $this Fluent Builder
      */
     public function setBusinessRegistrationCountry(string $businessRegistrationCountry): self
@@ -545,9 +545,9 @@ class CreateTollfreeVerificationOptions extends Options
     }
 
     /**
-     * The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT
+     * The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field.
      *
-     * @param string $businessType The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT
+     * @param string $businessType The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT, SOLE_PROPRIETOR, GOVERNMENT. Required field.
      * @return $this Fluent Builder
      */
     public function setBusinessType(string $businessType): self

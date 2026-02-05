@@ -18,8 +18,28 @@ class Sip extends TwiML {
      * @param string $sipUrl SIP URL
      * @param array $attributes Optional attributes
      */
-    public function __construct($sipUrl, $attributes = []) {
+    public function __construct($sipUrl = null, $attributes = []) {
         parent::__construct('Sip', $sipUrl, $attributes);
+    }
+
+    /**
+     * Add Uri child.
+     *
+     * @param string $sipUrl The SIP URI
+     * @param array $attributes Optional attributes
+     * @return SipUri Child element.
+     */
+    public function uri($sipUrl = null, $attributes = []): SipUri {
+        return $this->nest(new SipUri($sipUrl, $attributes));
+    }
+
+    /**
+     * Add Headers child.
+     *
+     * @return Headers Child element.
+     */
+    public function headers(): Headers {
+        return $this->nest(new Headers());
     }
 
     /**

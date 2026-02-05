@@ -18,14 +18,17 @@ namespace Twilio\Rest\Oauth;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Oauth\V2\AuthorizeList;
 use Twilio\Rest\Oauth\V2\TokenList;
 use Twilio\Version;
 
 /**
+ * @property AuthorizeList $authorize
  * @property TokenList $token
  */
 class V2 extends Version
 {
+    protected $_authorize;
     protected $_token;
 
     /**
@@ -37,6 +40,14 @@ class V2 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v2';
+    }
+
+    protected function getAuthorize(): AuthorizeList
+    {
+        if (!$this->_authorize) {
+            $this->_authorize = new AuthorizeList($this);
+        }
+        return $this->_authorize;
     }
 
     protected function getToken(): TokenList

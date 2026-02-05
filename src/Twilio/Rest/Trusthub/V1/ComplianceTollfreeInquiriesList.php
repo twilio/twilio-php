@@ -131,6 +131,10 @@ class ComplianceTollfreeInquiriesList extends ListResource
                 $options['externalReferenceId'],
             'OptInKeywords' =>
                 Serialize::map($options['optInKeywords'], function ($e) { return $e; }),
+            'VettingId' =>
+                $options['vettingId'],
+            'VettingProvider' =>
+                $options['vettingProvider'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
