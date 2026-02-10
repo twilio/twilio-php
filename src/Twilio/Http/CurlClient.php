@@ -62,7 +62,9 @@ class CurlClient implements Client {
                 $responseHeaders[$key] = $value;
             }
 
-            \curl_close($curl);
+            if (PHP_MAJOR_VERSION < 8) {
+                \curl_close($curl);
+            }
 
             if (isset($options[CURLOPT_INFILE]) && \is_resource($options[CURLOPT_INFILE])) {
                 \fclose($options[CURLOPT_INFILE]);
@@ -72,7 +74,7 @@ class CurlClient implements Client {
 
             return $this->lastResponse;
         } catch (\ErrorException $e) {
-            if (isset($curl) && \is_resource($curl)) {
+            if (PHP_MAJOR_VERSION < 8 && isset($curl) && \is_resource($curl)) {
                 \curl_close($curl);
             }
 
@@ -168,14 +170,31 @@ class CurlClient implements Client {
         foreach ($params as $key => $value) {
             if (\is_array($value)) {
                 foreach ($value as $item) {
-                    $parts[] = \urlencode((string)$key) . '=' . \urlencode((string)$item);
+                    $parts[] = $this->encodeQueryComponent((string)$key) . '=' .
+                        $this->encodeQueryComponent((string)$item);
                 }
             } else {
-                $parts[] = \urlencode((string)$key) . '=' . \urlencode((string)$value);
+                $parts[] = $this->encodeQueryComponent((string)$key) . '=' .
+                    $this->encodeQueryComponent((string)$value);
             }
         }
 
         return \implode('&', $parts);
+    }
+
+    /**
+     * Custom encoder for query string components that:
+     * 1. Encodes spaces as '+' (like urlencode)
+     * 2. Preserves unreserved characters including tilde (like rawurlencode)
+     */
+    private function encodeQueryComponent(string $string): string {
+        // Start with rawurlencode to encode as per RFC 3986
+        $encoded = \rawurlencode($string);
+
+        // Convert %20 back to + for query string compatibility
+        $encoded = \str_replace('%20', '+', $encoded);
+
+        return $encoded;
     }
 
     private function hasFile(array $data): bool {

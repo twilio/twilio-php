@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -56,17 +58,16 @@ class NewFactorList extends ListResource
     }
 
     /**
-     * Create the NewFactorInstance
+     * Helper function for Create
      *
      * @param string $friendlyName The friendly name of this Factor. This can be any string up to 64 characters, meant for humans to distinguish between Factors. For `factor_type` `push`, this could be a device name. For `factor_type` `totp`, this value is used as the “account name” in constructing the `binding.uri` property. At the same time, we recommend avoiding providing PII.
      * @param string $factorType
      * @param array|Options $options Optional Arguments
-     * @return NewFactorInstance Created NewFactorInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $friendlyName, string $factorType, array $options = []): NewFactorInstance
+    private function _create(string $friendlyName, string $factorType, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -101,13 +102,52 @@ class NewFactorList extends ListResource
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the NewFactorInstance
+     *
+     * @param string $friendlyName The friendly name of this Factor. This can be any string up to 64 characters, meant for humans to distinguish between Factors. For `factor_type` `push`, this could be a device name. For `factor_type` `totp`, this value is used as the “account name” in constructing the `binding.uri` property. At the same time, we recommend avoiding providing PII.
+     * @param string $factorType
+     * @param array|Options $options Optional Arguments
+     * @return NewFactorInstance Created NewFactorInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $friendlyName, string $factorType, array $options = []): NewFactorInstance
+    {
+        $response = $this->_create( $friendlyName,  $factorType, $options);
         return new NewFactorInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['serviceSid'],
             $this->solution['identity']
+        );
+        
+    }
+
+    /**
+     * Create the NewFactorInstance with Metadata
+     *
+     * @param string $friendlyName The friendly name of this Factor. This can be any string up to 64 characters, meant for humans to distinguish between Factors. For `factor_type` `push`, this could be a device name. For `factor_type` `totp`, this value is used as the “account name” in constructing the `binding.uri` property. At the same time, we recommend avoiding providing PII.
+     * @param string $factorType
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $friendlyName, string $factorType, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $friendlyName,  $factorType, $options);
+        $resource = new NewFactorInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['serviceSid'],
+                        $this->solution['identity']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

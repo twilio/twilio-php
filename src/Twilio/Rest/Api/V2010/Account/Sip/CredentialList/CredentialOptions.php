@@ -77,7 +77,11 @@ class UpdateCredentialOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['password'])) {
+            $options['password'] = '[REDACTED]';
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.Api.V2010.UpdateCredentialOptions ' . $options . ']';
     }
 }

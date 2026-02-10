@@ -105,7 +105,11 @@ class ReadInsightsSegmentsOptions extends Options
      */
     public function __toString(): string
     {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
+        $options = $this->options;
+        if (isset($options['authorization'])) {
+            $options['authorization'] = '[REDACTED]';
+        }
+        $options = \http_build_query(Values::of($options), '', ' ');
         return '[Twilio.FlexApi.V1.ReadInsightsSegmentsOptions ' . $options . ']';
     }
 }

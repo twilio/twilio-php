@@ -29,6 +29,7 @@ use Twilio\Deserialize;
  * @property string|null $ttid
  * @property string|null $accountSid
  * @property string|null $roomSid
+ * @property string|null $sourceSid
  * @property string $status
  * @property \DateTime|null $dateCreated
  * @property \DateTime|null $dateUpdated
@@ -57,6 +58,7 @@ class TranscriptionsInstance extends InstanceResource
             'ttid' => Values::array_get($payload, 'ttid'),
             'accountSid' => Values::array_get($payload, 'account_sid'),
             'roomSid' => Values::array_get($payload, 'room_sid'),
+            'sourceSid' => Values::array_get($payload, 'source_sid'),
             'status' => Values::array_get($payload, 'status'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'dateUpdated' => Deserialize::dateTime(Values::array_get($payload, 'date_updated')),

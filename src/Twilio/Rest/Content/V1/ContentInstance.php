@@ -114,6 +114,19 @@ class ContentInstance extends InstanceResource
     }
 
     /**
+     * Update the ContentInstance
+     *
+     * @param ContentUpdateRequest $contentUpdateRequest
+     * @return ContentInstance Updated ContentInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(ContentUpdateRequest $contentUpdateRequest): ContentInstance
+    {
+
+        return $this->proxy()->update($contentUpdateRequest);
+    }
+
+    /**
      * Access the approvalCreate
      */
     protected function getApprovalCreate(): ApprovalCreateList

@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class CallSummaryContext extends InstanceContext
@@ -49,15 +51,14 @@ class CallSummaryContext extends InstanceContext
     }
 
     /**
-     * Fetch the CallSummaryInstance
+     * Helper function for Fetch
      *
      * @param array|Options $options Optional Arguments
-     * @return CallSummaryInstance Fetched CallSummaryInstance
+     * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(array $options = []): CallSummaryInstance
+    private function _fetch(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $params = Values::of([
@@ -66,12 +67,46 @@ class CallSummaryContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, $params, [], $headers);
+        return $this->version->handleRequest('GET', $this->uri, $params, [], $headers, "fetch");
+    }
 
+    /**
+     * Fetch the CallSummaryInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return CallSummaryInstance Fetched CallSummaryInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(array $options = []): CallSummaryInstance
+    {
+        $response = $this->_fetch($options);
         return new CallSummaryInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Fetch the CallSummaryInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_fetch($options);
+        $resource = new CallSummaryInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

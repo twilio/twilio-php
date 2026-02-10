@@ -3,12 +3,16 @@
 
 namespace Twilio\Tests\Unit;
 
+use Twilio\ApiV1Version;
 use Twilio\Domain;
 use Twilio\Exceptions\RestException;
+use Twilio\Exceptions\RestExceptionV1;
+use Twilio\Exceptions\TwilioException;
 use Twilio\Http\CurlClient;
 use Twilio\Http\Response;
 use Twilio\Page;
 use Twilio\Rest\Client;
+use Twilio\TokenPaginationPage;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -56,6 +60,21 @@ class TestVersion extends Version {
 class TestPage extends Page {
     public function buildInstance(array $payload): array {
         return $payload;
+    }
+}
+
+class TestTokenPage extends TokenPaginationPage {
+    public function buildInstance(array $payload): array {
+        return $payload;
+    }
+
+    public function getNextPageUrl(): ?string {
+        // If there's no next token, return null directly - handle end of page
+        if (!$this->nextToken) {
+            return null;
+        }
+
+        return parent::getNextPageUrl();
     }
 }
 
@@ -171,6 +190,94 @@ class VersionTest extends UnitTest {
         self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
     }
 
+    /**
+     * @param string $message Case message to display on assertion error
+     * @param int|null $limit Limit provided by the user
+     * @param int|null $pageLimit Page limit provided by the user
+     * @param int $expectedCount Expected record count returned by stream
+     * @dataProvider streamProvider
+     */
+    public function testStreamWithTokenPagination(string $message, ?int $limit, ?int $pageLimit, int $expectedCount): void {
+        $uri = '/Accounts/AC123/Messages.json';
+
+        $this->curlClient->lastRequest = [
+            CURLOPT_URL => $uri
+        ];
+
+        $this->curlClient
+            ->method('request')
+            ->will(self::onConsecutiveCalls(
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token1", "previousToken": null},
+                        "messages": [{"body": "payload0"}, {"body": "payload1"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token2", "previousToken": "token0"},
+                        "messages": [{"body": "payload2"}, {"body": "payload3"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 1, "nextToken": null, "previousToken": "token1"},
+                        "messages": [{"body": "payload4"}]
+                    }')
+            ));
+
+        $response = $this->version->page('GET', $uri);
+        $page = new TestTokenPage($this->version, $response);
+        $messages = $this->version->stream($page, $limit, $pageLimit);
+
+        self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
+    }
+
+    /**
+     * @param string $message Case message to display on assertion error
+     * @param int|null $limit Limit provided by the user
+     * @param int|null $pageLimit Page limit provided by the user
+     * @param int $expectedCount Expected record count returned by stream
+     * @dataProvider streamProvider
+     */
+    public function testStreamWithTokenPaginationWithQueryParams(string $message, ?int $limit, ?int $pageLimit, int $expectedCount): void {
+        $uri = '/Accounts/AC123/Messages.json?param1=value1';
+
+        $this->curlClient->lastRequest = [
+            CURLOPT_URL => $uri
+        ];
+
+        $this->curlClient
+            ->method('request')
+            ->will(self::onConsecutiveCalls(
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token1", "previousToken": null},
+                        "messages": [{"body": "payload0"}, {"body": "payload1"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 2, "nextToken": "token2", "previousToken": "token0"},
+                        "messages": [{"body": "payload2"}, {"body": "payload3"}]
+                    }'),
+                new Response(
+                    200,
+                    '{
+                        "meta": {"key": "messages", "pageSize": 1, "nextToken": null, "previousToken": "token1"},
+                        "messages": [{"body": "payload4"}]
+                    }')
+            ));
+
+        $response = $this->version->page('GET', $uri);
+        $page = new TestTokenPage($this->version, $response);
+        $messages = $this->version->stream($page, $limit, $pageLimit);
+
+        self::assertEquals($expectedCount, \iterator_count($messages), "$message: Count does not match");
+    }
+
     public function streamProvider(): array {
         return [
             ['No limits', null, null, 5],
@@ -189,7 +296,7 @@ class VersionTest extends UnitTest {
             ->willReturn(new Response(307, '{
                 "redirect_to": "https://com-twilio-dev-messaging-deactivations.s3.amazonaws.com"
             }'));
-        $response = $this->version->fetch('GET', 'http://foo.bar/Deactivations');
+        $response = $this->version->handleRequest('GET', 'http://foo.bar/Deactivations', [], [], [], "fetch");
     }
 
     /**
@@ -286,7 +393,7 @@ class VersionTest extends UnitTest {
                                         "foo": "bar" }
                                     }'));
         try {
-            $this->version->fetch('get', 'http://foo.bar');
+            $this->version->handleRequest('get', 'http://foo.bar' , [], [], [], "fetch");
             self::fail();
         }catch (RestException $rex){
             self::assertEquals(20001, $rex->getCode());
@@ -308,7 +415,7 @@ class VersionTest extends UnitTest {
                                     "status": 400
                                     }'));
         try {
-            $this->version->fetch('get', 'http://foo.bar');
+            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
             self::fail();
         }catch (RestException $rex){
             self::assertEquals(20001, $rex->getCode());
@@ -325,7 +432,7 @@ class VersionTest extends UnitTest {
             ->method('request')
             ->willReturn(new Response(400, ''));
         try {
-            $this->version->fetch('get', 'http://foo.bar');
+            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
             self::fail();
         }catch (RestException $rex){
             self::assertEquals(400, $rex->getCode());
@@ -333,6 +440,49 @@ class VersionTest extends UnitTest {
             self::assertEquals('[HTTP 400] Unable to fetch record', $rex->getMessage());
             self::assertEquals('', $rex->getMoreInfo());
             self::assertEmpty($rex->getDetails());
+        }
+    }
+
+    public function testRestExceptionV1(): void {
+        $this->curlClient
+            ->expects(self::once())
+            ->method('request')
+            ->willReturn(new Response(404, '{
+                                    "code": 20404,
+                                    "message": "The requested resource was not found",
+                                    "httpStatusCode": 404,
+                                    "userError": true,
+                                    "params": {
+                                        "twilioErrorCodeUrl": "https://www.twilio.com/docs/errors/20404" }
+                                    }'));
+        try {
+            $this->version = new ApiV1Version($this->version->getDomain(), $this->version->version);
+            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
+            self::fail();
+        }catch (RestExceptionV1 $rex){
+            self::assertEquals(20404, $rex->getCode());
+            self::assertEquals(404, $rex->getHttpStatusCode());
+            self::assertEquals('[HTTP 404] Unable to fetch record: The requested resource was not found', $rex->getMessage());
+            self::assertEquals(['twilioErrorCodeUrl' => 'https://www.twilio.com/docs/errors/20404'], $rex->getParams());
+            self::assertTrue($rex->getUserError());
+        }
+    }
+
+    public function testRestExceptionV1WithoutParams(): void {
+        $this->curlClient
+            ->expects(self::once())
+            ->method('request')
+            ->willReturn(new Response(400, ''));
+        try {
+            $this->version = new ApiV1Version($this->version->getDomain(), $this->version->version);
+            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
+            self::fail();
+        }catch (RestExceptionV1 $rex){
+            self::assertEquals(400, $rex->getCode());
+            self::assertEquals(400, $rex->getHttpStatusCode());
+            self::assertEquals('[HTTP 400] Unable to fetch record', $rex->getMessage());
+            self::assertEmpty($rex->getParams());
+            self::assertFalse($rex->getUserError());
         }
     }
 

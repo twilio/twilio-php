@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -56,15 +58,14 @@ class TranscriptionList extends ListResource
     }
 
     /**
-     * Create the TranscriptionInstance
+     * Helper function for Create
      *
      * @param array|Options $options Optional Arguments
-     * @return TranscriptionInstance Created TranscriptionInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): TranscriptionInstance
+    private function _create(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -96,16 +97,53 @@ class TranscriptionList extends ListResource
                 Serialize::booleanToString($options['enableAutomaticPunctuation']),
             'IntelligenceService' =>
                 $options['intelligenceService'],
+            'EnableProviderData' =>
+                Serialize::booleanToString($options['enableProviderData']),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the TranscriptionInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return TranscriptionInstance Created TranscriptionInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(array $options = []): TranscriptionInstance
+    {
+        $response = $this->_create($options);
         return new TranscriptionInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['accountSid'],
             $this->solution['callSid']
+        );
+        
+    }
+
+    /**
+     * Create the TranscriptionInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_create($options);
+        $resource = new TranscriptionInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['accountSid'],
+                        $this->solution['callSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

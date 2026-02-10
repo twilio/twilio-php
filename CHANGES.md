@@ -1,6 +1,156 @@
 twilio-php Changelog
 ====================
 
+[2026-02-05] Version 8.11.0
+---------------------------
+**Library - Fix**
+- [PR #908](https://github.com/twilio/twilio-php/pull/908): Revert "fix: Regional API domain processing". Thanks to [@shrutiburman](https://github.com/shrutiburman)!
+
+**Library - Feature**
+- [PR #902](https://github.com/twilio/twilio-php/pull/902): return response headers. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Twiml**
+- Add `recording_configuration` attribute to `<Recording>` noun
+- Added support for <Uri> and <Headers> inside <Dial><Sip>
+
+**Api**
+- Clarify the behavior of date filters with the Calls API
+- Added Phone Number `type` property to `/IncomingPhoneNumbers` resource
+
+**Assistants**
+- AI Assistants v1 release
+
+**Autopilot**
+- Remove Export resource from Autopilot Assistant
+- Add dialogue_sid param to Query list resource
+- Add Restore resource to Autopilot Assistant
+- Add one new property in Query i.e dialogue_sid
+- Add Export resource to Autopilot Assistant.
+- Adds two new properties in Assistant i.e needs_model_build and development_stage
+- Add Webhooks resource to Autopilot Assistant.
+- Introduce `autopilot` subdomain with all resources from `preview.understand`
+
+**Compliance**
+- Added the new InventoryComplianceInsights API under version `/v1`.
+
+**Content**
+- changes for adding v2 endpoints
+
+**Marketplace**
+- Initial transition to Marketplace domain
+
+**Memory**
+- # API Changes
+- ## 2026-01-23
+- No path changes (updated metadata only)
+- ## 2026-01-22
+- No path changes (updated metadata only)
+- ## 2026-01-22
+- **Modified 1 path(s)**:
+- `/v1/Stores/{storeId}/Profiles/{profileId}` (added delete)
+- ## 2026-01-15
+- No path changes (updated metadata only)
+- ## 2026-01-13
+- **Added 1 new path(s)**:
+- `/v1/Stores/{storeId}/Profiles/{profileId}/ConversationSummaries/{summaryId}` (DeleteProfileConversationSummary)
+- ## 2026-01-12
+- No path changes (updated metadata only)
+- ## 2026-01-12
+- No path changes (updated metadata only)
+- ## 2026-01-12
+- No path changes (updated metadata only)
+- ## 2026-01-12
+- **Added 2 new path(s)**:
+- `/v1/Stores/{storeId}/Profiles/Imports` (ListProfileImportsV2, ImportProfilesV2)
+- `/v1/Stores/{storeId}/Profiles/Imports/{importId}` (GetProfileImportV2)
+- ## 2026-01-13
+- No path changes (updated metadata only)
+- ## 2026-01-07
+- No path changes (updated metadata only)
+- ## 2026-01-05
+- No path changes (updated metadata only)
+- ## 2025-12-17
+- No path changes (updated metadata only)
+- ## 2025-12-17
+- No path changes (updated metadata only)
+- ## 2025-12-17
+- **Added 1 new path(s)**:
+- `/v1/Stores/{storeId}/Profiles/{profileId}/Observations/{observationId}/Revisions` (ListObservationRevisions)
+
+**Sender-ids**
+- Added all v2 sender-id-service endpoints
+
+**Trusthub**
+- Add new delete endpoint for compliance_registration.
+
+**Voice**
+- Add ProvisioningStatus public API endpoints.
+
+**Wise_owl**
+- Init API as open-api spec
+- Updated Get Chat, Send Message and Create Chat to include `contexts` in Message, instead of root Chat
+
+**Www**
+- Port APIs from oauth.twilio.com to www.twilio.com
+
+
+[2026-01-07] Version 8.10.1
+---------------------------
+**Api**
+- Added optional parameter `clientNotificationUrl` for create call api
+- Added optional parameter `clientNotificationUrl` for create participant api
+
+
+[2025-12-17] Version 8.10.0
+---------------------------
+**Library - Chore**
+- [PR #898](https://github.com/twilio/twilio-php/pull/898): add support for new twilio error response. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #900](https://github.com/twilio/twilio-php/pull/900): handle existing query params in token pagination. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Fix**
+- [PR #893](https://github.com/twilio/twilio-php/pull/893): Fix curl_close deprecation warning on PHP 8.5. Thanks to [@adrianbj](https://github.com/adrianbj)!
+
+**Trunking**
+- Corrected the type used for phone number capabilities when accessed through a Trunk. **(breaking change)**
+- Corrected the type used for phone number capabilities when accessed through a Trunk. **(breaking change)**
+
+**Trusthub**
+- Added new parameters in in toll-free initialize api payload.
+- Remove the invalid status transition to Draft from the examples
+- Change the value of email to a valid one in the examples.
+
+
+[2025-12-03] Version 8.9.0
+--------------------------
+**Library - Fix**
+- [PR #894](https://github.com/twilio/twilio-php/pull/894): Regional API domain processing. Thanks to [@manisha1997](https://github.com/manisha1997)!
+
+**Library - Feature**
+- [PR #887](https://github.com/twilio/twilio-php/pull/887): Add support for token based pagination strategy. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Library - Chore**
+- [PR #890](https://github.com/twilio/twilio-php/pull/890): test correct percent encoding for url params. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #891](https://github.com/twilio/twilio-php/pull/891): add patch() to support update and patch operations together. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+- [PR #889](https://github.com/twilio/twilio-php/pull/889): successful delete on all 2xx status codes. Thanks to [@tiwarishubham635](https://github.com/tiwarishubham635)!
+
+**Api**
+- Add `twiml_session` resource for calls
+- Add `twiml_session` resource for calls
+
+**Monitor**
+- Update default output properties
+
+**Trusthub**
+- Added customer_profile_sid in toll-free initialize api payload.
+
+
+[2025-11-20] Version 8.8.7
+--------------------------
+**Memory**
+- # Memory API Changes
+- Added initial Memory API endpoints with darkseagreen badge status
+
+
 [2025-11-11] Version 8.8.6
 --------------------------
 **Twiml**

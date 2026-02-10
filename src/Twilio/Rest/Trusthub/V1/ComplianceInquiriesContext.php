@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ComplianceInquiriesContext extends InstanceContext
@@ -49,16 +51,15 @@ class ComplianceInquiriesContext extends InstanceContext
     }
 
     /**
-     * Update the ComplianceInquiriesInstance
+     * Helper function for Update
      *
      * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
      * @param array|Options $options Optional Arguments
-     * @return ComplianceInquiriesInstance Updated ComplianceInquiriesInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $primaryProfileSid, array $options = []): ComplianceInquiriesInstance
+    private function _update(string $primaryProfileSid, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -69,12 +70,48 @@ class ComplianceInquiriesContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the ComplianceInquiriesInstance
+     *
+     * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
+     * @param array|Options $options Optional Arguments
+     * @return ComplianceInquiriesInstance Updated ComplianceInquiriesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(string $primaryProfileSid, array $options = []): ComplianceInquiriesInstance
+    {
+        $response = $this->_update( $primaryProfileSid, $options);
         return new ComplianceInquiriesInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['customerId']
+        );
+        
+    }
+
+    /**
+     * Update the ComplianceInquiriesInstance with Metadata
+     *
+     * @param string $primaryProfileSid The unique SID identifier of the Primary Customer Profile that should be used as a parent. Only necessary when creating a secondary Customer Profile.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(string $primaryProfileSid, array $options = []): ResourceMetadata
+    {
+        $response = $this->_update( $primaryProfileSid, $options);
+        $resource = new ComplianceInquiriesInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['customerId']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

@@ -21,7 +21,7 @@ use Twilio\Values;
 abstract class AddressOptions
 {
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long.
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      * @param bool $emergencyEnabled Whether to enable emergency calling on the new address. Can be: `true` or `false`.
      * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
      * @param string $streetSecondary The additional number and street address of the address.
@@ -114,7 +114,7 @@ abstract class AddressOptions
 class CreateAddressOptions extends Options
     {
     /**
-     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long.
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      * @param bool $emergencyEnabled Whether to enable emergency calling on the new address. Can be: `true` or `false`.
      * @param bool $autoCorrectAddress Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
      * @param string $streetSecondary The additional number and street address of the address.
@@ -134,9 +134,9 @@ class CreateAddressOptions extends Options
     }
 
     /**
-     * A descriptive string that you create to describe the new address. It can be up to 64 characters long.
+     * A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      *
-     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long.
+     * @param string $friendlyName A descriptive string that you create to describe the new address. It can be up to 64 characters long for Regulatory Compliance addresses and 32 characters long for Emergency addresses.
      * @return $this Fluent Builder
      */
     public function setFriendlyName(string $friendlyName): self

@@ -21,6 +21,7 @@ use Twilio\InstanceContext;
 use Twilio\Rest\FlexApi\V1\AssessmentsList;
 use Twilio\Rest\FlexApi\V1\ChannelList;
 use Twilio\Rest\FlexApi\V1\ConfigurationList;
+use Twilio\Rest\FlexApi\V1\CreateFlexInstanceList;
 use Twilio\Rest\FlexApi\V1\FlexFlowList;
 use Twilio\Rest\FlexApi\V1\InsightsAssessmentsCommentList;
 use Twilio\Rest\FlexApi\V1\InsightsConversationsList;
@@ -47,6 +48,7 @@ use Twilio\Version;
  * @property AssessmentsList $assessments
  * @property ChannelList $channel
  * @property ConfigurationList $configuration
+ * @property CreateFlexInstanceList $createFlexInstance
  * @property FlexFlowList $flexFlow
  * @property InsightsAssessmentsCommentList $insightsAssessmentsComment
  * @property InsightsConversationsList $insightsConversations
@@ -84,6 +86,7 @@ class V1 extends Version
     protected $_assessments;
     protected $_channel;
     protected $_configuration;
+    protected $_createFlexInstance;
     protected $_flexFlow;
     protected $_insightsAssessmentsComment;
     protected $_insightsConversations;
@@ -138,6 +141,14 @@ class V1 extends Version
             $this->_configuration = new ConfigurationList($this);
         }
         return $this->_configuration;
+    }
+
+    protected function getCreateFlexInstance(): CreateFlexInstanceList
+    {
+        if (!$this->_createFlexInstance) {
+            $this->_createFlexInstance = new CreateFlexInstanceList($this);
+        }
+        return $this->_createFlexInstance;
     }
 
     protected function getFlexFlow(): FlexFlowList

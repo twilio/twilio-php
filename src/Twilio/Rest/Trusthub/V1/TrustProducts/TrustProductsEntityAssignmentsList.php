@@ -22,6 +22,11 @@ use Twilio\Options;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ArrayMetadata;
+use Twilio\Metadata\PageMetadata;
+use Twilio\Metadata\ResourceMetadata;
+use Twilio\Metadata\StreamMetadata;
 
 
 class TrustProductsEntityAssignmentsList extends ListResource
@@ -50,6 +55,24 @@ class TrustProductsEntityAssignmentsList extends ListResource
     }
 
     /**
+     * Helper function for Create
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(string $objectSid): Response
+    {
+        $data = Values::of([
+            'ObjectSid' =>
+                $objectSid,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
      * Create the TrustProductsEntityAssignmentsInstance
      *
      * @param string $objectSid The SID of an object bag that holds information of the different items.
@@ -58,19 +81,34 @@ class TrustProductsEntityAssignmentsList extends ListResource
      */
     public function create(string $objectSid): TrustProductsEntityAssignmentsInstance
     {
-
-        $data = Values::of([
-            'ObjectSid' =>
-                $objectSid,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
+        $response = $this->_create( $objectSid);
         return new TrustProductsEntityAssignmentsInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['trustProductSid']
+        );
+        
+    }
+
+    /**
+     * Create the TrustProductsEntityAssignmentsInstance with Metadata
+     *
+     * @param string $objectSid The SID of an object bag that holds information of the different items.
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $objectSid): ResourceMetadata
+    {
+        $response = $this->_create( $objectSid);
+        $resource = new TrustProductsEntityAssignmentsInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['trustProductSid']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
@@ -94,6 +132,33 @@ class TrustProductsEntityAssignmentsList extends ListResource
     public function read(array $options = [], ?int $limit = null, $pageSize = null): array
     {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    }
+
+    /**
+     * Reads TrustProductsEntityAssignmentsInstance records from the API as a list
+     * Unlike stream(), this operation is eager and will load `limit` records into
+     * memory before returning.
+     *
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. read()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return ArrayMetadata Array of results along with metadata
+     */
+    public function readWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
+    {
+        $streamWithMetadata = $this->streamWithMetadata($options, $limit, $pageSize);
+        $readResponse = \iterator_to_array($streamWithMetadata, false);
+        return new ArrayMetadata(
+            $readResponse,
+            $streamWithMetadata->getStatusCode(),
+            $streamWithMetadata->getHeaders()
+        );
     }
 
     /**
@@ -125,6 +190,70 @@ class TrustProductsEntityAssignmentsList extends ListResource
     }
 
     /**
+     * Streams TrustProductsEntityAssignmentsInstance records from the API as a generator stream and returns result with Metadata
+     * This operation lazily loads records as efficiently as possible until the
+     * limit
+     * is reached.
+     * The results are returned as a generator, so this operation is memory
+     * efficient.
+     *
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. stream()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return StreamMetadata stream of results with metadata
+     */
+    public function streamWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): StreamMetadata
+    {
+        $limits = $this->version->readLimits($limit, $pageSize);
+
+        $pageWithMetadata = $this->pageWithMetadata($options, $limits['pageSize']);
+
+        $stream = $this->version->stream($pageWithMetadata->getPage(), $limits['limit'], $limits['pageLimit']);
+
+        return new StreamMetadata(
+            $stream,
+            $pageWithMetadata->getStatusCode(),
+            $pageWithMetadata->getHeaders()
+        );
+    }
+
+    /**
+     * Helper function for Page
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return Response Paged Response
+     */
+    private function _page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): Response
+    {
+        $options = new Values($options);
+
+        $params = Values::of([
+            'ObjectType' =>
+                $options['objectType'],
+                        
+            'PageToken' => $pageToken,
+            'Page' => $pageNumber,
+            'PageSize' => $pageSize,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        return $this->version->page('GET', $this->uri, $params, [], $headers);
+    }
+
+    /**
      * Retrieve a single page of TrustProductsEntityAssignmentsInstance records from the API.
      * Request is executed immediately
      *
@@ -140,20 +269,36 @@ class TrustProductsEntityAssignmentsList extends ListResource
         $pageNumber = Values::NONE
     ): TrustProductsEntityAssignmentsPage
     {
-        $options = new Values($options);
-
-        $params = Values::of([
-            'ObjectType' =>
-                $options['objectType'],
-            'PageToken' => $pageToken,
-            'Page' => $pageNumber,
-            'PageSize' => $pageSize,
-        ]);
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
-        $response = $this->version->page('GET', $this->uri, $params, [], $headers);
+        $response = $this->_page($options, $pageSize, $pageToken, $pageNumber);
 
         return new TrustProductsEntityAssignmentsPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a single page of TrustProductsEntityAssignmentsInstance records with metadata
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * @param string $pageToken PageToken provided by the API
+     * @param mixed $pageNumber Page Number, this value is simply for client state
+     * @return PageMetadata of TrustProductsEntityAssignmentsInstance
+     */
+    public function pageWithMetadata(
+        array $options = [],
+        $pageSize = Values::NONE,
+        string $pageToken = Values::NONE,
+        $pageNumber = Values::NONE
+    ): PageMetadata
+    {
+        $response = $this->_page($options, $pageSize, $pageToken, $pageNumber);
+
+        $resource =  new TrustProductsEntityAssignmentsPage($this->version, $response, $this->solution);
+
+        return new PageMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
     }
 
     /**

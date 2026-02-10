@@ -22,6 +22,8 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SipDomainContext extends InstanceContext
@@ -49,6 +51,18 @@ class SipDomainContext extends InstanceContext
     }
 
     /**
+     * Helper function for Fetch
+     *
+     * @return Response Fetched Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _fetch(): Response
+    {
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
+        return $this->version->handleRequest('GET', $this->uri, [], [], $headers, "fetch");
+    }
+
+    /**
      * Fetch the SipDomainInstance
      *
      * @return SipDomainInstance Fetched SipDomainInstance
@@ -56,28 +70,46 @@ class SipDomainContext extends InstanceContext
      */
     public function fetch(): SipDomainInstance
     {
-
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->fetch('GET', $this->uri, [], [], $headers);
-
+        $response = $this->_fetch();
         return new SipDomainInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['sipDomain']
+        );
+        
+    }
+
+    /**
+     * Fetch the SipDomainInstance with Metadata
+     *
+     * @return ResourceMetadata The Fetched Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetchWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_fetch();
+        $resource = new SipDomainInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['sipDomain']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
 
     /**
-     * Update the SipDomainInstance
+     * Helper function for Update
      *
      * @param array|Options $options Optional Arguments
-     * @return SipDomainInstance Updated SipDomainInstance
+     * @return Response Updated Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(array $options = []): SipDomainInstance
+    private function _update(array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -88,12 +120,46 @@ class SipDomainContext extends InstanceContext
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->update('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "update");
+    }
 
+    /**
+     * Update the SipDomainInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return SipDomainInstance Updated SipDomainInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(array $options = []): SipDomainInstance
+    {
+        $response = $this->_update($options);
         return new SipDomainInstance(
             $this->version,
-            $payload,
+            $response->getContent(),
             $this->solution['sipDomain']
+        );
+        
+    }
+
+    /**
+     * Update the SipDomainInstance with Metadata
+     *
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(array $options = []): ResourceMetadata
+    {
+        $response = $this->_update($options);
+        $resource = new SipDomainInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['sipDomain']
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 

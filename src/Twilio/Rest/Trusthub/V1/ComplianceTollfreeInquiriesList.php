@@ -21,6 +21,8 @@ use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 use Twilio\Serialize;
 
 
@@ -44,17 +46,16 @@ class ComplianceTollfreeInquiriesList extends ListResource
     }
 
     /**
-     * Create the ComplianceTollfreeInquiriesInstance
+     * Helper function for Create
      *
      * @param string $tollfreePhoneNumber The Tollfree phone number to be verified
      * @param string $notificationEmail The email address to receive the notification about the verification result.
      * @param array|Options $options Optional Arguments
-     * @return ComplianceTollfreeInquiriesInstance Created ComplianceTollfreeInquiriesInstance
+     * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $tollfreePhoneNumber, string $notificationEmail, array $options = []): ComplianceTollfreeInquiriesInstance
+    private function _create(string $tollfreePhoneNumber, string $notificationEmail, array $options = []): Response
     {
-
         $options = new Values($options);
 
         $data = Values::of([
@@ -62,6 +63,8 @@ class ComplianceTollfreeInquiriesList extends ListResource
                 $tollfreePhoneNumber,
             'NotificationEmail' =>
                 $notificationEmail,
+            'CustomerProfileSid' =>
+                $options['customerProfileSid'],
             'BusinessName' =>
                 $options['businessName'],
             'BusinessWebsite' =>
@@ -104,14 +107,79 @@ class ComplianceTollfreeInquiriesList extends ListResource
                 $options['themeSetId'],
             'SkipMessagingUseCase' =>
                 Serialize::booleanToString($options['skipMessagingUseCase']),
+            'BusinessRegistrationNumber' =>
+                $options['businessRegistrationNumber'],
+            'BusinessRegistrationAuthority' =>
+                $options['businessRegistrationAuthority'],
+            'BusinessRegistrationCountry' =>
+                $options['businessRegistrationCountry'],
+            'BusinessType' =>
+                $options['businessType'],
+            'DoingBusinessAs' =>
+                $options['doingBusinessAs'],
+            'OptInConfirmationMessage' =>
+                $options['optInConfirmationMessage'],
+            'HelpMessageSample' =>
+                $options['helpMessageSample'],
+            'PrivacyPolicyUrl' =>
+                $options['privacyPolicyUrl'],
+            'TermsAndConditionsUrl' =>
+                $options['termsAndConditionsUrl'],
+            'AgeGatedContent' =>
+                Serialize::booleanToString($options['ageGatedContent']),
+            'ExternalReferenceId' =>
+                $options['externalReferenceId'],
+            'OptInKeywords' =>
+                Serialize::map($options['optInKeywords'], function ($e) { return $e; }),
+            'VettingId' =>
+                $options['vettingId'],
+            'VettingProvider' =>
+                $options['vettingProvider'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
 
+    /**
+     * Create the ComplianceTollfreeInquiriesInstance
+     *
+     * @param string $tollfreePhoneNumber The Tollfree phone number to be verified
+     * @param string $notificationEmail The email address to receive the notification about the verification result.
+     * @param array|Options $options Optional Arguments
+     * @return ComplianceTollfreeInquiriesInstance Created ComplianceTollfreeInquiriesInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $tollfreePhoneNumber, string $notificationEmail, array $options = []): ComplianceTollfreeInquiriesInstance
+    {
+        $response = $this->_create( $tollfreePhoneNumber,  $notificationEmail, $options);
         return new ComplianceTollfreeInquiriesInstance(
             $this->version,
-            $payload
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ComplianceTollfreeInquiriesInstance with Metadata
+     *
+     * @param string $tollfreePhoneNumber The Tollfree phone number to be verified
+     * @param string $notificationEmail The email address to receive the notification about the verification result.
+     * @param array|Options $options Optional Arguments
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $tollfreePhoneNumber, string $notificationEmail, array $options = []): ResourceMetadata
+    {
+        $response = $this->_create( $tollfreePhoneNumber,  $notificationEmail, $options);
+        $resource = new ComplianceTollfreeInquiriesInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
         );
     }
 
