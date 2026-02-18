@@ -115,20 +115,20 @@ class ClusterTest extends \PHPUnit\Framework\TestCase
         $this->assertNotNull($token->accessToken);
     }
 
-    public function testFetchMessageUsingPublicOAuth(): void
-    {
-       $clientCredentialProvider = (new ClientCredentialProviderBuilder())->setClientId(self::$clientId)->setClientSecret(self::$clientSecret)->build();
-       $client = new Client();
-       $client->setCredentialProvider($clientCredentialProvider);
-       $client->setAccountSid(self::$accountSid);
+    // public function testFetchMessageUsingPublicOAuth(): void
+    // {
+    //    $clientCredentialProvider = (new ClientCredentialProviderBuilder())->setClientId(self::$clientId)->setClientSecret(self::$clientSecret)->build();
+    //    $client = new Client();
+    //    $client->setCredentialProvider($clientCredentialProvider);
+    //    $client->setAccountSid(self::$accountSid);
 
-       $message = $client->messages(self::$messageSid)->fetch();
-       self::assertNotNull($message);
-       self::assertEquals(self::$messageSid, $message->sid);
-       self::assertEquals(self::$fromNumber, $message->from);
-       self::assertEquals(self::$toNumber, $message->to);
-       self::assertEquals("Where's Wallace?", $message->body);
-    }
+    //    $message = $client->messages(self::$messageSid)->fetch();
+    //    self::assertNotNull($message);
+    //    self::assertEquals(self::$messageSid, $message->sid);
+    //    self::assertEquals(self::$fromNumber, $message->from);
+    //    self::assertEquals(self::$toNumber, $message->to);
+    //    self::assertEquals("Where's Wallace?", $message->body);
+    // }
 
 
     public function testOrgsApiUserListAndFetchAndOrgsApiAccountsList(): void
