@@ -39,16 +39,19 @@ abstract class TranscriptionsOptions
 
     /**
      * @param string $status
+     * @param array $configuration A collection of properties that describe transcription behaviour.
      * @return UpdateTranscriptionsOptions Options builder
      */
     public static function update(
         
-        string $status = Values::NONE
+        string $status = Values::NONE,
+        array $configuration = Values::ARRAY_NONE
 
     ): UpdateTranscriptionsOptions
     {
         return new UpdateTranscriptionsOptions(
-            $status
+            $status,
+            $configuration
         );
     }
 
@@ -97,13 +100,16 @@ class UpdateTranscriptionsOptions extends Options
     {
     /**
      * @param string $status
+     * @param array $configuration A collection of properties that describe transcription behaviour.
      */
     public function __construct(
         
-        string $status = Values::NONE
+        string $status = Values::NONE,
+        array $configuration = Values::ARRAY_NONE
 
     ) {
         $this->options['status'] = $status;
+        $this->options['configuration'] = $configuration;
     }
 
     /**
@@ -113,6 +119,18 @@ class UpdateTranscriptionsOptions extends Options
     public function setStatus(string $status): self
     {
         $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * A collection of properties that describe transcription behaviour.
+     *
+     * @param array $configuration A collection of properties that describe transcription behaviour.
+     * @return $this Fluent Builder
+     */
+    public function setConfiguration(array $configuration): self
+    {
+        $this->options['configuration'] = $configuration;
         return $this;
     }
 

@@ -41,7 +41,7 @@ class CreateFlexInstanceContext extends InstanceContext
         $this->solution = [
         ];
 
-        $this->uri = '/instances';
+        $this->uri = '/Instances';
     }
 
     /**

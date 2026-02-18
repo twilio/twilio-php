@@ -258,6 +258,8 @@ class BundleList extends ListResource
         $params = Values::of([
             'Status' =>
                 $options['status'],
+            'BundleSids' =>
+                $options['bundleSids'],
             'FriendlyName' =>
                 $options['friendlyName'],
             'RegulationSid' =>
@@ -266,6 +268,8 @@ class BundleList extends ListResource
                 $options['isoCountry'],
             'NumberType' =>
                 $options['numberType'],
+            'EndUserType' =>
+                $options['endUserType'],
             'HasValidUntilDate' =>
                 Serialize::booleanToString($options['hasValidUntilDate']),
             'SortBy' =>
@@ -278,7 +282,7 @@ class BundleList extends ListResource
                 Serialize::iso8601DateTime($options['validUntilDate']),
             'ValidUntilDate>' =>
                 Serialize::iso8601DateTime($options['validUntilDateAfter']),
-                                                                                                                                                
+                                                                                                                                                                        
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,

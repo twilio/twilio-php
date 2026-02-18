@@ -24,6 +24,7 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Http\Response;
 use Twilio\Metadata\ResourceMetadata;
+use Twilio\Serialize;
 
 
 class TranscriptionsContext extends InstanceContext
@@ -122,6 +123,8 @@ class TranscriptionsContext extends InstanceContext
         $data = Values::of([
             'Status' =>
                 $options['status'],
+            'Configuration' =>
+                Serialize::jsonObject($options['configuration']),
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);

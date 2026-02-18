@@ -52,7 +52,7 @@ abstract class ChannelsSenderModels
      * @property string|null $privacyUrl The privacy URL of the sender. Must be a publicly accessible HTTP or HTTPS URI associated with the sender.
      * @property string|null $termsOfServiceUrl The terms of service URL of the sender.
      * @property string|null $accentColor The color theme of the sender. Must be in hex format and have at least a 4:5:1 contrast ratio against white.
-     * @property string|null $vertical The vertical of the sender. Allowed values are: - `Automotive` - `Beauty, Spa and Salon` - `Clothing and Apparel` - `Education` - `Entertainment` - `Event Planning and Service` - `Finance and Banking` - `Food and Grocery` - `Public Service` - `Hotel and Lodging` - `Medical and Health` - `Non-profit` - `Professional Services` - `Shopping and Retail` - `Travel and Transportation` - `Restaurant` - `Other`
+     * @property string|null $vertical The vertical of the sender. Allowed values are: - `Alcohol` - `Automotive` - `Beauty, Spa and Salon` - `Clothing and Apparel` - `Education` - `Entertainment` - `Event Planning and Service` - `Finance and Banking` - `Food and Grocery` - `Hotel and Lodging` - `Matrimony Service` - `Medical and Health` - `Non-profit` - `Online Gambling` - `OTC Drugs` - `Other` - `Physical Gambling` - `Professional Services` - `Public Service` - `Restaurant` - `Shopping and Retail` - `Travel and Transportation`
      * @property array|null $websites The websites of the sender.
      * @property array|null $emails The emails of the sender.
      * @property array|null $phoneNumbers The phone numbers of the sender.
@@ -197,7 +197,7 @@ class MessagingV2ChannelsSenderProfile implements \JsonSerializable
      * @property string|null $privacyUrl The privacy URL of the sender. Must be a publicly accessible HTTP or HTTPS URI associated with the sender.
      * @property string|null $termsOfServiceUrl The terms of service URL of the sender.
      * @property string|null $accentColor The color theme of the sender. Must be in hex format and have at least a 4:5:1 contrast ratio against white.
-     * @property string|null $vertical The vertical of the sender. Allowed values are: - `Automotive` - `Beauty, Spa and Salon` - `Clothing and Apparel` - `Education` - `Entertainment` - `Event Planning and Service` - `Finance and Banking` - `Food and Grocery` - `Public Service` - `Hotel and Lodging` - `Medical and Health` - `Non-profit` - `Professional Services` - `Shopping and Retail` - `Travel and Transportation` - `Restaurant` - `Other`
+     * @property string|null $vertical The vertical of the sender. Allowed values are: - `Alcohol` - `Automotive` - `Beauty, Spa and Salon` - `Clothing and Apparel` - `Education` - `Entertainment` - `Event Planning and Service` - `Finance and Banking` - `Food and Grocery` - `Hotel and Lodging` - `Matrimony Service` - `Medical and Health` - `Non-profit` - `Online Gambling` - `OTC Drugs` - `Other` - `Physical Gambling` - `Professional Services` - `Public Service` - `Restaurant` - `Shopping and Retail` - `Travel and Transportation`
      * @property array|null $websites The websites of the sender.
      * @property array|null $emails The emails of the sender.
      * @property array|null $phoneNumbers The phone numbers of the sender.
