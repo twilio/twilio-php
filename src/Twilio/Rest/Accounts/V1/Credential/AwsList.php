@@ -51,7 +51,7 @@ class AwsList extends ListResource
     /**
      * Helper function for Create
      *
-     * @param string $credentials A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`. For example, `AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`
+     * @param string $credentials A string that contains the AWS access credentials in the format `<AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>`.
      * @param array|Options $options Optional Arguments
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
