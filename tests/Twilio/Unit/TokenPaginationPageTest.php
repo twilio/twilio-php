@@ -130,16 +130,17 @@ class TokenPaginationPageTest extends TestCase
     }
 
     /**
-     * Test constructor with no metadata
+     * Test constructor with no metadata infers key from single non-meta field
      */
     public function testConstructorWithNoMetadata(): void
     {
-        // Create a response without metadata
         $response = new Response(200, '{"items": [{"id": 1}]}');
 
-        // This should throw since key is required
-        $this->expectException(KeyErrorException::class);
         $page = new TestableTokenPaginationPage($this->version, $response);
+
+        $this->assertEquals('items', $page->getKey());
+        $this->assertNull($page->getNextToken());
+        $this->assertNull($page->getPreviousToken());
     }
 
     /**
