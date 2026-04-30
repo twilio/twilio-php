@@ -39,6 +39,13 @@ class ApiV1Version extends Version {
         if (\is_array($content)) {
             $message .= isset($content['message']) ? ': ' . $content['message'] : '';
             $code = $content['code'] ?? $response->getStatusCode();
+
+            if (isset($content['more_info']) || isset($content['status'])) {
+                $moreInfo = $content['more_info'] ?? '';
+                $details = $content['details'] ?? [];
+                return new RestException($message, $code, $response->getStatusCode(), $moreInfo, $details);
+            }
+
             $httpStatusCode = $content['httpStatusCode'] ?? $response->getStatusCode();
             $params = $content['params'] ?? [];
             $userError = $content['userError'] ?? false;

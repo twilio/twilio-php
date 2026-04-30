@@ -86,6 +86,12 @@ abstract class TokenPaginationPage extends Page {
             return $this->payload[$this->key];
         }
 
+        $keys = \array_diff(\array_keys($this->payload), ['meta']);
+        if (\count($keys) === 1) {
+            $this->key = \array_values($keys)[0];
+            return $this->payload[$this->key];
+        }
+
         throw new KeyErrorException('key not found in the response');
     }
 
@@ -135,6 +141,15 @@ abstract class TokenPaginationPage extends Page {
             $this->nextPageUrl = $this->url . $this->getQueryString($this->nextToken);
         }
         return $this->nextPageUrl;
+    }
+
+    #[\ReturnTypeWillChange]
+    public function current() {
+        $record = $this->records->current();
+        if (!\is_array($record)) {
+            $record = ['id' => $record];
+        }
+        return $this->buildInstance($record);
     }
 
     public function __toString(): string {
