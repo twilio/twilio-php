@@ -69,6 +69,9 @@ abstract class TokenPaginationPage extends Page {
         }
 
         $this->key = $this->getMeta('key');
+        if (!$this->key) {
+            throw new KeyErrorException('key not found in the response metadata');
+        }
         $this->pageSize = (int) $this->getMeta('pageSize');
         $this->nextToken = $this->getMeta('nextToken');
         $this->previousToken = $this->getMeta('previousToken');
