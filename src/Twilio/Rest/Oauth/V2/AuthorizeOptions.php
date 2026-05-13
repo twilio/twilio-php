@@ -26,6 +26,8 @@ abstract class AuthorizeOptions
      * @param string $redirectUri
      * @param string $scope
      * @param string $state
+     * @param string $codeChallenge
+     * @param string $codeChallengeMethod
      * @return FetchAuthorizeOptions Options builder
      */
     public static function fetch(
@@ -34,7 +36,9 @@ abstract class AuthorizeOptions
         string $clientId = Values::NONE,
         string $redirectUri = Values::NONE,
         string $scope = Values::NONE,
-        string $state = Values::NONE
+        string $state = Values::NONE,
+        string $codeChallenge = Values::NONE,
+        string $codeChallengeMethod = Values::NONE
 
     ): FetchAuthorizeOptions
     {
@@ -43,7 +47,9 @@ abstract class AuthorizeOptions
             $clientId,
             $redirectUri,
             $scope,
-            $state
+            $state,
+            $codeChallenge,
+            $codeChallengeMethod
         );
     }
 
@@ -57,6 +63,8 @@ class FetchAuthorizeOptions extends Options
      * @param string $redirectUri
      * @param string $scope
      * @param string $state
+     * @param string $codeChallenge
+     * @param string $codeChallengeMethod
      */
     public function __construct(
         
@@ -64,7 +72,9 @@ class FetchAuthorizeOptions extends Options
         string $clientId = Values::NONE,
         string $redirectUri = Values::NONE,
         string $scope = Values::NONE,
-        string $state = Values::NONE
+        string $state = Values::NONE,
+        string $codeChallenge = Values::NONE,
+        string $codeChallengeMethod = Values::NONE
 
     ) {
         $this->options['responseType'] = $responseType;
@@ -72,6 +82,8 @@ class FetchAuthorizeOptions extends Options
         $this->options['redirectUri'] = $redirectUri;
         $this->options['scope'] = $scope;
         $this->options['state'] = $state;
+        $this->options['codeChallenge'] = $codeChallenge;
+        $this->options['codeChallengeMethod'] = $codeChallengeMethod;
     }
 
     /**
@@ -121,6 +133,26 @@ class FetchAuthorizeOptions extends Options
     public function setState(string $state): self
     {
         $this->options['state'] = $state;
+        return $this;
+    }
+
+    /**
+     * @param string $codeChallenge
+     * @return $this Fluent Builder
+     */
+    public function setCodeChallenge(string $codeChallenge): self
+    {
+        $this->options['codeChallenge'] = $codeChallenge;
+        return $this;
+    }
+
+    /**
+     * @param string $codeChallengeMethod
+     * @return $this Fluent Builder
+     */
+    public function setCodeChallengeMethod(string $codeChallengeMethod): self
+    {
+        $this->options['codeChallengeMethod'] = $codeChallengeMethod;
         return $this;
     }
 

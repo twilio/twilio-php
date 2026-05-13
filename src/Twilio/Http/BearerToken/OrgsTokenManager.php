@@ -42,6 +42,7 @@ class OrgsTokenManager extends TokenManager {
 
         try {
             return $tokenList->create(
+                "client_credentials",
                 $this->options
             )->accessToken;
         }
