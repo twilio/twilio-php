@@ -46,11 +46,13 @@ class TokenList extends ListResource
     /**
      * Helper function for Create
      *
+     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
+     
      * @param array|Options $options Optional Arguments
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(array $options = []): Response
+    private function _create(string $grantType, array $options = []): Response
     {
         
         $options = new Values($options);
@@ -62,7 +64,7 @@ class TokenList extends ListResource
 
         $data = Values::of([
             'grant_type' =>
-                $options['grantType'],
+                $grantType,
             'client_id' =>
                 $options['clientId'],
             'client_secret' =>
@@ -77,6 +79,8 @@ class TokenList extends ListResource
                 $options['refreshToken'],
             'scope' =>
                 $options['scope'],
+            'code_verifier' =>
+                $options['codeVerifier'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
@@ -86,13 +90,15 @@ class TokenList extends ListResource
     /**
      * Create the TokenInstance
      *
+     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
+     
      * @param array|Options $options Optional Arguments
      * @return TokenInstance Created TokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(array $options = []): TokenInstance
+    public function create(string $grantType, array $options = []): TokenInstance
     {
-        $response = $this->_create($options);
+        $response = $this->_create( $grantType, $options);
         return new TokenInstance(
             $this->version,
             $response->getContent()
@@ -103,13 +109,15 @@ class TokenList extends ListResource
     /**
      * Create the TokenInstance with Metadata
      *
+     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
+     
      * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(array $options = []): ResourceMetadata
+    public function createWithMetadata(string $grantType, array $options = []): ResourceMetadata
     {
-        $response = $this->_create($options);
+        $response = $this->_create( $grantType, $options);
         $resource = new TokenInstance(
                         $this->version,
                         $response->getContent()

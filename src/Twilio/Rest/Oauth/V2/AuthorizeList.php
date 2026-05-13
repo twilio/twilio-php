@@ -66,6 +66,10 @@ class AuthorizeList extends ListResource
                 $options['scope'],
             'state' =>
                 $options['state'],
+            'code_challenge' =>
+                $options['codeChallenge'],
+            'code_challenge_method' =>
+                $options['codeChallengeMethod'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
