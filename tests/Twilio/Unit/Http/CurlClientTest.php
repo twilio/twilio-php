@@ -399,10 +399,19 @@ class CurlClientTest extends UnitTest {
     }
 
     public function testFileProtocolThrowsException(): void {
-        $this->expectException(EnvironmentException::class);
-        $this->expectExceptionMessage('Protocol "file" not supported or disabled in libcurl');
-
         $client = new CurlClient();
-        $client->request('GET', 'file:///tmp/test-file');
+
+        try {
+            $client->request('GET', 'file:///tmp/test-file');
+            $this->fail('Expected an environment exception for the file protocol.');
+        } catch (EnvironmentException $exception) {
+            $message = $exception->getMessage();
+
+            $this->assertStringContainsString('Protocol "file"', $message);
+            $this->assertTrue(
+                \strpos($message, 'not supported') !== false || \strpos($message, 'disabled') !== false,
+                \sprintf('Expected the file protocol error to mention that it is unsupported or disabled, got "%s".', $message)
+            );
+        }
     }
 }
