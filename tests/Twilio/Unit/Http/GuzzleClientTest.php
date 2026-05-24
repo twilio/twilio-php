@@ -86,6 +86,36 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertSame([], $response->getHeaders());
     }
 
+    public function testHeaderStringValueIsAccepted(): void {
+        $this->mockHandler->append(new Response());
+
+        $this->client->request('GET', 'https://www.whatever.com', [], [], [
+            'X-Test' => 'value',
+        ]);
+
+        $request = $this->mockHandler->getLastRequest();
+
+        $this->assertSame(['value'], $request->getHeader('X-Test'));
+    }
+
+    public function testRejectsNonStringHeaderValue(): void {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Header values must be strings.');
+
+        $this->client->request('GET', 'https://www.whatever.com', [], [], [
+            'X-Test' => 123,
+        ]);
+    }
+
+    public function testRejectsArrayHeaderValue(): void {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Header values must be strings.');
+
+        $this->client->request('GET', 'https://www.whatever.com', [], [], [
+            'X-Test' => ['value'],
+        ]);
+    }
+
     public function testPostMethodArray(): void {
         $this->mockHandler->append(new Response());
         $response = $this->client->request('POST', 'https://www.whatever.com', [], ['key' => ['value1', 'value2']]);
