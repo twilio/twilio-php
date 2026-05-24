@@ -121,7 +121,7 @@ final class GuzzleClientTest extends UnitTest {
     }
 
     public function testPostMethodThatThrowsBadResponseException(): void {
-        $this->mockHandler->append(new BadResponseException('Not found', new Request('get', 'https://www.whatever.com'), new Response(404)));
+        $this->mockHandler->append(new BadResponseException('Not found', new Request('GET', 'https://www.whatever.com'), new Response(404)));
         $response = $this->client->request('POST', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
         $this->assertNull($response->getContent());
         $this->assertSame(404, $response->getStatusCode());
@@ -135,14 +135,14 @@ final class GuzzleClientTest extends UnitTest {
     }
 
     public function testPostMethodThatThrowsException(): void {
-        $this->mockHandler->append(new RequestException('Not found', new Request('get', 'https://www.whatever.com')));
+        $this->mockHandler->append(new RequestException('Not found', new Request('GET', 'https://www.whatever.com')));
         $this->expectException(HttpException::class, 'Unable to complete the HTTP request');
         $this->client->request('POST', 'https://www.whatever.com', ['myquerykey' => 'myqueryvalue'], ['myparamkey' => 'myparamvalue']);
     }
 
     public function testQueryParams(): void {
         $this->mockHandler->append(new Response());
-        $this->client->request('get', 'https://www.whatever.com?foo=bar');
+        $this->client->request('GET', 'https://www.whatever.com?foo=bar');
         $request = $this->mockHandler->getLastRequest();
 
         $this->assertSame('https://www.whatever.com?foo=bar', (string)$request->getUri());
