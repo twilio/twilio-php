@@ -54,6 +54,17 @@ class ClientTest extends UnitTest {
         $this->assertEquals("", $client->getUsername());
     }
 
+    public function testRejectsNonStringHeaderValue(): void {
+        $client = new Client('username', 'password', null, null, new Holodeck());
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Header values must be strings.');
+
+        $client->request('GET', 'https://api.twilio.com', [], [], [
+            'X-Test' => 123,
+        ]);
+    }
+
     public function testUsernamePulledFromEnvironment(): void {
         $client = new Client(null, 'password', null, null, null, [
             Client::ENV_ACCOUNT_SID => 'username',
