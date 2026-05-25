@@ -114,6 +114,10 @@ class ArchivedCallContext extends InstanceContext
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($value instanceof \DateTimeInterface) {
+                $value = $value->format('Y-m-d');
+            }
+
             $context[] = "$key=$value";
         }
         return '[Twilio.Voice.V1.ArchivedCallContext ' . \implode(' ', $context) . ']';

@@ -19,6 +19,7 @@ namespace Twilio\Rest\Numbers\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -34,6 +35,11 @@ class PortingWebhookConfigurationDeleteInstance extends InstanceResource
     public function __construct(Version $version, array $payload, ?string $webhookType = null)
     {
         parent::__construct($version);
+
+        // Marshaled Properties
+        $this->properties = [
+            'webhookType' => Values::array_get($payload, 'webhook_type'),
+        ];
 
         $this->solution = ['webhookType' => $webhookType ?: $this->properties['webhookType'], ];
     }
@@ -103,4 +109,3 @@ class PortingWebhookConfigurationDeleteInstance extends InstanceResource
         return '[Twilio.Numbers.V1.PortingWebhookConfigurationDeleteInstance ' . \implode(' ', $context) . ']';
     }
 }
-

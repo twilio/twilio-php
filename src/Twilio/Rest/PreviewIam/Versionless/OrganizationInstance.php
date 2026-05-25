@@ -19,6 +19,7 @@ namespace Twilio\Rest\PreviewIam\Versionless;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\Rest\PreviewIam\Versionless\Organization\AccountList;
 use Twilio\Rest\PreviewIam\Versionless\Organization\UserList;
@@ -43,6 +44,11 @@ class OrganizationInstance extends InstanceResource
     public function __construct(Version $version, array $payload, ?string $organizationSid = null)
     {
         parent::__construct($version);
+
+        // Marshaled Properties
+        $this->properties = [
+            'organizationSid' => Values::array_get($payload, 'organization_sid') ?: Values::array_get($payload, 'id'),
+        ];
 
         $this->solution = ['organizationSid' => $organizationSid ?: $this->properties['organizationSid'], ];
     }
@@ -144,4 +150,3 @@ class OrganizationInstance extends InstanceResource
         return '[Twilio.PreviewIam.Versionless.OrganizationInstance ' . \implode(' ', $context) . ']';
     }
 }
-

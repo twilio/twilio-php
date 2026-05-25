@@ -18,7 +18,9 @@
 namespace Twilio\Rest\Voice\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Deserialize;
 use Twilio\InstanceResource;
+use Twilio\Values;
 use Twilio\Version;
 
 
@@ -35,6 +37,12 @@ class ArchivedCallInstance extends InstanceResource
     public function __construct(Version $version, array $payload, ?\DateTime $date = null, ?string $sid = null)
     {
         parent::__construct($version);
+
+        // Marshaled Properties
+        $this->properties = [
+            'date' => Deserialize::dateTime(Values::array_get($payload, 'date')),
+            'sid' => Values::array_get($payload, 'sid'),
+        ];
 
         $this->solution = ['date' => $date ?: $this->properties['date'], 'sid' => $sid ?: $this->properties['sid'], ];
     }
@@ -100,9 +108,12 @@ class ArchivedCallInstance extends InstanceResource
     {
         $context = [];
         foreach ($this->solution as $key => $value) {
+            if ($value instanceof \DateTimeInterface) {
+                $value = $value->format('Y-m-d');
+            }
+
             $context[] = "$key=$value";
         }
         return '[Twilio.Voice.V1.ArchivedCallInstance ' . \implode(' ', $context) . ']';
     }
 }
-
