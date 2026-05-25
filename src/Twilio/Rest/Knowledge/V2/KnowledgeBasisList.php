@@ -233,8 +233,7 @@ class KnowledgeBasisList extends ListResource
      */
     private function _page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
         $options = new Values($options);
@@ -265,11 +264,10 @@ class KnowledgeBasisList extends ListResource
      */
     public function page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): KnowledgeBasisPage
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         return new KnowledgeBasisPage($this->version, $response, $this->solution);
     }
@@ -284,11 +282,10 @@ class KnowledgeBasisList extends ListResource
      */
     public function pageWithMetadata(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         $resource =  new KnowledgeBasisPage($this->version, $response, $this->solution);
 

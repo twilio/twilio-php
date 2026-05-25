@@ -177,8 +177,7 @@ class VersionList extends ListResource
      */
     private function _page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
         $options = new Values($options);
@@ -207,11 +206,10 @@ class VersionList extends ListResource
      */
     public function page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): VersionPage
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         return new VersionPage($this->version, $response, $this->solution);
     }
@@ -226,11 +224,10 @@ class VersionList extends ListResource
      */
     public function pageWithMetadata(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         $resource =  new VersionPage($this->version, $response, $this->solution);
 

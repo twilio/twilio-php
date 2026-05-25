@@ -249,8 +249,7 @@ class IdentifierList extends ListResource
      * @return Response Paged Response
      */
     private function _page(
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
 
@@ -272,11 +271,10 @@ class IdentifierList extends ListResource
      * @return IdentifierPage Page of IdentifierInstance
      */
     public function page(
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): IdentifierPage
     {
-        $response = $this->_page( $pageSize,);
+        $response = $this->_page($pageSize);
 
         return new IdentifierPage($this->version, $response, $this->solution);
     }
@@ -290,11 +288,10 @@ class IdentifierList extends ListResource
      * @return PageMetadata of IdentifierInstance
      */
     public function pageWithMetadata(
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page( $pageSize,);
+        $response = $this->_page($pageSize);
 
         $resource =  new IdentifierPage($this->version, $response, $this->solution);
 

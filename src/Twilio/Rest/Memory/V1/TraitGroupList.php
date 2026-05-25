@@ -243,8 +243,7 @@ class TraitGroupList extends ListResource
      */
     private function _page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
         $options = new Values($options);
@@ -277,11 +276,10 @@ class TraitGroupList extends ListResource
      */
     public function page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): TraitGroupPage
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         return new TraitGroupPage($this->version, $response, $this->solution);
     }
@@ -296,11 +294,10 @@ class TraitGroupList extends ListResource
      */
     public function pageWithMetadata(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         $resource =  new TraitGroupPage($this->version, $response, $this->solution);
 

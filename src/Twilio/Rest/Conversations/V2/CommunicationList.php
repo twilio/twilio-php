@@ -242,8 +242,7 @@ class CommunicationList extends ListResource
      */
     private function _page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
         $options = new Values($options);
@@ -274,11 +273,10 @@ class CommunicationList extends ListResource
      */
     public function page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): CommunicationPage
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         return new CommunicationPage($this->version, $response, $this->solution);
     }
@@ -293,11 +291,10 @@ class CommunicationList extends ListResource
      */
     public function pageWithMetadata(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         $resource =  new CommunicationPage($this->version, $response, $this->solution);
 

@@ -262,8 +262,7 @@ class ConversationSummaryList extends ListResource
      */
     private function _page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
         $options = new Values($options);
@@ -294,11 +293,10 @@ class ConversationSummaryList extends ListResource
      */
     public function page(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): ConversationSummaryPage
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         return new ConversationSummaryPage($this->version, $response, $this->solution);
     }
@@ -313,11 +311,10 @@ class ConversationSummaryList extends ListResource
      */
     public function pageWithMetadata(
         array $options = [],
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page($options, $pageSize,);
+        $response = $this->_page($options, $pageSize);
 
         $resource =  new ConversationSummaryPage($this->version, $response, $this->solution);
 

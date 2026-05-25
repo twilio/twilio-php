@@ -237,8 +237,7 @@ class ImportList extends ListResource
      * @return Response Paged Response
      */
     private function _page(
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): Response
     {
 
@@ -260,11 +259,10 @@ class ImportList extends ListResource
      * @return ImportPage Page of ImportInstance
      */
     public function page(
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): ImportPage
     {
-        $response = $this->_page( $pageSize,);
+        $response = $this->_page($pageSize);
 
         return new ImportPage($this->version, $response, $this->solution);
     }
@@ -278,11 +276,10 @@ class ImportList extends ListResource
      * @return PageMetadata of ImportInstance
      */
     public function pageWithMetadata(
-        $pageSize = Values::NONE,
-        
+        $pageSize = Values::NONE
     ): PageMetadata
     {
-        $response = $this->_page( $pageSize,);
+        $response = $this->_page($pageSize);
 
         $resource =  new ImportPage($this->version, $response, $this->solution);
 
