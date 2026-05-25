@@ -47,14 +47,14 @@ class ScopeURI {
                 'Not a scope URI according to scheme');
         }
 
-        $parts = \explode('?', $uri, 1);
-        $params = null;
+        $queryParts = \explode('?', $uri, 2);
+        $params = [];
 
-        if (\count($parts) > 1) {
-            \parse_str($parts[1], $params);
+        if (\count($queryParts) > 1) {
+            \parse_str($queryParts[1], $params);
         }
 
-        $parts = \explode(':', $parts[0], 2);
+        $parts = \explode(':', $queryParts[0]);
 
         if (\count($parts) !== 3) {
             throw new \UnexpectedValueException(
