@@ -86,6 +86,36 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertSame([], $response->getHeaders());
     }
 
+    public function testConfiguredGuzzleTimeoutIsUsedWhenRequestTimeoutIsNull(): void {
+        $this->mockHandler->append(new Response());
+        $client = new GuzzleClient(new Client([
+            'handler' => HandlerStack::create($this->mockHandler),
+            'timeout' => 30,
+        ]));
+
+        $client->request('GET', 'https://www.whatever.com');
+
+        $options = $this->mockHandler->getLastOptions();
+
+        $this->assertSame(30, $options['timeout']);
+        $this->assertFalse($options['allow_redirects']);
+    }
+
+    public function testRequestTimeoutOverridesConfiguredGuzzleTimeout(): void {
+        $this->mockHandler->append(new Response());
+        $client = new GuzzleClient(new Client([
+            'handler' => HandlerStack::create($this->mockHandler),
+            'timeout' => 30,
+        ]));
+
+        $client->request('GET', 'https://www.whatever.com', [], [], [], null, null, 5);
+
+        $options = $this->mockHandler->getLastOptions();
+
+        $this->assertSame(5, $options['timeout']);
+        $this->assertFalse($options['allow_redirects']);
+    }
+
     public function testPostMethodArray(): void {
         $this->mockHandler->append(new Response());
         $response = $this->client->request('POST', 'https://www.whatever.com', [], ['key' => ['value1', 'value2']]);
