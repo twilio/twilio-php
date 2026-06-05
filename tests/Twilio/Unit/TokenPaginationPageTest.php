@@ -68,6 +68,7 @@ class TokenPaginationPageTest extends TestCase
     protected $version;
     protected $httpClient;
     protected $curlClient;
+    protected $mockClient;
 
     protected function setUp(): void {
         // Create the CurlClient mock
