@@ -18,7 +18,7 @@ class Holodeck implements Client {
                             ?int $timeout = null, ?AuthStrategy $authStrategy = null): Response {
         $this->requests[] = new Request($method, $url, $params, $data, $headers, $user, $password, $authStrategy);
         if (\count($this->responses) === 0) {
-            return new Response(404, null, null);
+            return new Response(404, null, []);
         }
 
         return \array_shift($this->responses);
