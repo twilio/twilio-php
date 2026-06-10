@@ -20,10 +20,10 @@ class PhoneNumberCapabilities
 
     public function __construct(array $capabilities)
     {
-        $this->mms = Values::array_get($capabilities, 'mms', "false");
-        $this->sms = Values::array_get($capabilities, 'sms', "false");
-        $this->voice = Values::array_get($capabilities, 'voice', "false");
-        $this->fax = Values::array_get($capabilities, 'fax', "false");
+        $this->mms = Values::array_get($capabilities, 'MMS', false);
+        $this->sms = Values::array_get($capabilities, 'SMS', false);
+        $this->voice = Values::array_get($capabilities, 'voice', false);
+        $this->fax = Values::array_get($capabilities, 'fax', false);
     }
 
     /**
