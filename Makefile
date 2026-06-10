@@ -11,7 +11,7 @@ PHPVERSION = $(shell php -r 'echo PHP_VERSION;')
 all: test
 
 clean:
-	@rm -rf docs venv vendor composer.lock
+	@rm -rf docs venv vendor
 
 install: clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
@@ -26,13 +26,11 @@ test-docker:
 	docker build -t twilio/twilio-php .
 	docker run twilio/twilio-php phpunit -d memory_limit=512M --disallow-test-output --colors --configuration tests/phpunit.xml
 
-PHPDOX_DIR=vendor-theseer
+PHPDOX_PHAR=phpdox.phar
 docs-install:
-	COMPOSER_VENDOR_DIR=${PHPDOX_DIR} composer require --dev theseer/phpdox:\^0.12.0
-	composer remove --dev theseer/phpdox
 
 docs:
-	${PHPDOX_DIR}/bin/phpdox
+	php ${PHPDOX_PHAR}
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
