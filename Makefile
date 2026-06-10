@@ -28,8 +28,6 @@ test-docker:
 
 PHPDOX_PHAR=phpdox.phar
 docs-install:
-	curl -fsSL https://github.com/theseer/phpdox/releases/download/0.12.0/phpdox-0.12.0.phar -o ${PHPDOX_PHAR}
-	chmod +x ${PHPDOX_PHAR}
 
 docs:
 	php ${PHPDOX_PHAR}
