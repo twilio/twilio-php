@@ -110,9 +110,11 @@ jobs:
 
       - name: Create GitHub Release
         # Fires the Packagist `release` webhook. Point of no return.
-        uses: sendgrid/dx-automator/actions/release@08b601b726671445abc798ed59881766ec8fefc6 # main @ 2026-07
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # First-party action: sendgrid/dx-automator is not on the org
+        # allow-list, so referencing it fails the run at startup.
+        uses: twilio/sdk-actions/github-release@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        with:
+          changelog-file: CHANGES.md
 
       - name: Confirm Packagist picked up the release
         run: |
@@ -158,36 +160,25 @@ jobs:
 
       - run: composer install --no-interaction --no-progress
 
+      # docker/login-action is not on the org allow-list, and it is a one-line
+      # replacement anyway. --password-stdin keeps the token out of argv.
       - name: Login to Docker Hub
-        uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef # v3.6.0
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$DOCKER_AUTH_TOKEN" \
+            | docker login --username "$DOCKER_USERNAME" --password-stdin
 
       - name: Build and push
         env:
           GITHUB_TAG: ${{ github.ref_name }}
         run: make docker-build docker-push
 
-      - name: Submit metric to Datadog
-        uses: sendgrid/dx-automator/actions/datadog-release-metric@08b601b726671445abc798ed59881766ec8fefc6 # main @ 2026-07
-        env:
-          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-
-  notify-on-failure:
-    name: Slack notify on failure
-    if: failure()
-    needs: [verify, publish, docker]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
-        env:
-          SLACK_COLOR: failure
-          SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Release {0} failed — verify *{1}*, publish *{2}*, docker *{3}*, {4}/{5}/actions/runs/{6}', github.ref_name, needs.verify.result, needs.publish.result, needs.docker.result, github.server_url, github.repository, github.run_id) }}
-          SLACK_TITLE: Release Failure - ${{ github.repository }}
-          SLACK_USERNAME: GitHub Actions
-          SLACK_MSG_AUTHOR: twilio-dx
-          SLACK_FOOTER: Posted automatically using GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          MSG_MINIMAL: true
+      # NOTE: the Datadog release metric previously submitted here used
+      # sendgrid/dx-automator/actions/datadog-release-metric, which is not on the
+      # org allow-list. It is NOT reimplemented: the metric name and tags it
+      # emitted are unknown to us, and guessing them would silently break any
+      # dashboard or monitor built on them. Re-add deliberately, with the real
+      # metric name, if the release metric is still wanted.

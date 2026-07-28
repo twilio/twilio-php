@@ -100,21 +100,3 @@ jobs:
           TWILIO_CLIENT_SECRET: ${{ secrets.TWILIO_CLIENT_SECRET }}
           TWILIO_MESSAGE_SID: ${{ secrets.TWILIO_MESSAGE_SID }}
         run: make cluster-test
-
-  notify-on-failure:
-    name: Slack notify on failure
-    if: ${{ failure() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
-    needs: [composer-lockfile-hygiene, test, cluster-test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
-        env:
-          SLACK_COLOR: failure
-          SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('CI failed on main — {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
-          SLACK_TITLE: CI Failure - ${{ github.repository }}
-          SLACK_USERNAME: GitHub Actions
-          SLACK_MSG_AUTHOR: twilio-dx
-          SLACK_FOOTER: Posted automatically using GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          MSG_MINIMAL: true
