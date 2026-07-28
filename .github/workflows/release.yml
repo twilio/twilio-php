@@ -1,0 +1,193 @@
+name: Release
+
+# PHP publishing has no `publish` command. Packagist is a metadata index: it
+# learns about a new version from the repo's `release` webhook, then fetches the
+# code from GitHub. That makes CREATING THE GITHUB RELEASE the irreversible
+# publish action — so that is the job we gate, not a registry upload.
+#
+#   push tag 8.11.7 → verify → [production approval] → create Release
+#                   → Packagist webhook → published to 100M+ installs
+on:
+  push:
+    tags:
+      # twilio-php uses BARE semver tags (8.11.6), not v-prefixed.
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-rc.[0-9]+'
+
+permissions:
+  contents: read
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Pre-publish guards. Everything that can fail cheaply fails here, before the
+  # approval gate — reviewers should only ever be asked about a green candidate.
+  # ---------------------------------------------------------------------------
+  verify:
+    name: Verify release candidate
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Tag must be reachable from main
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          if ! git merge-base --is-ancestor "${GITHUB_SHA}" origin/main; then
+            echo "::error::Tag ${GITHUB_REF_NAME} points at ${GITHUB_SHA}, which is not an ancestor of origin/main. Refusing to release un-merged code."
+            exit 1
+          fi
+          echo "Tag is reachable from main."
+
+      # Same secret-less gate CI runs, re-run here so a tag can never publish
+      # something that would be unresolvable for external consumers.
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@PENDING_SDK_ACTIONS_SHA # v1.1.0
+
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: Validate composer.json
+        run: composer validate --strict --no-check-publish
+
+      - uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        with:
+          ecosystem: php
+
+      - run: composer install --no-interaction --no-progress
+
+      - name: Run tests
+        run: make test
+
+  # ---------------------------------------------------------------------------
+  # THE PUBLISH GATE. Creating the Release fires the Packagist webhook, so this
+  # job is the point of no return. Gated by the `production` environment, per the
+  # sdk-actions convention.
+  # ---------------------------------------------------------------------------
+  publish:
+    name: Publish to Packagist
+    needs: [verify]
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    environment: production
+    permissions:
+      contents: write      # create the GitHub Release
+      id-token: write      # OIDC, for attestation
+      attestations: write  # build provenance
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+
+      # -----------------------------------------------------------------------
+      # Best-effort provenance. Packagist has no attestation field and Composer
+      # verifies nothing, so this is a GitHub-native attestation over the zipball
+      # Composer actually downloads.
+      #
+      # CAVEAT: GitHub does NOT guarantee byte-stability of auto-generated source
+      # archives. If the archive format changes, previously-issued attestations
+      # stop matching. This is deliberately best-effort and must NOT be described
+      # as parity with npm provenance.
+      # -----------------------------------------------------------------------
+      - name: Download the zipball Composer will install
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/zipball/${GITHUB_SHA}" > release.zip
+          echo "zipball sha256: $(sha256sum release.zip | cut -d' ' -f1)"
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a # v3.0.0
+        with:
+          subject-path: release.zip
+
+      - name: Create GitHub Release
+        # Fires the Packagist `release` webhook. Point of no return.
+        uses: sendgrid/dx-automator/actions/release@08b601b726671445abc798ed59881766ec8fefc6 # main @ 2026-07
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Confirm Packagist picked up the release
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          for i in $(seq 1 12); do
+            if curl -sf "https://repo.packagist.org/p2/twilio/sdk.json" \
+                 | jq -e --arg v "$TAG" '.packages["twilio/sdk"][] | select(.version == $v)' >/dev/null; then
+              echo "::notice::Packagist is serving twilio/sdk ${TAG}"
+              exit 0
+            fi
+            echo "Not yet indexed (attempt ${i}/12); waiting 15s..."
+            sleep 15
+          done
+          echo "::warning::Packagist has not indexed ${TAG} after 3 minutes. The release itself succeeded — check the repo's Packagist webhook. See docs: artifacts/setup-php-publishing."
+
+  # ---------------------------------------------------------------------------
+  # Docker Hub is a separate distribution channel and still uses a long-lived
+  # token. Out of scope for this change; flagged for an OIDC follow-up.
+  # ---------------------------------------------------------------------------
+  docker:
+    name: Publish Docker image
+    needs: [publish]
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        with:
+          ecosystem: php
+
+      - run: composer install --no-interaction --no-progress
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef # v3.6.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
+
+      - name: Build and push
+        env:
+          GITHUB_TAG: ${{ github.ref_name }}
+        run: make docker-build docker-push
+
+      - name: Submit metric to Datadog
+        uses: sendgrid/dx-automator/actions/datadog-release-metric@08b601b726671445abc798ed59881766ec8fefc6 # main @ 2026-07
+        env:
+          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+
+  notify-on-failure:
+    name: Slack notify on failure
+    if: failure()
+    needs: [verify, publish, docker]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_COLOR: failure
+          SLACK_ICON_EMOJI: ':github:'
+          SLACK_MESSAGE: ${{ format('Release {0} failed — verify *{1}*, publish *{2}*, docker *{3}*, {4}/{5}/actions/runs/{6}', github.ref_name, needs.verify.result, needs.publish.result, needs.docker.result, github.server_url, github.repository, github.run_id) }}
+          SLACK_TITLE: Release Failure - ${{ github.repository }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_MSG_AUTHOR: twilio-dx
+          SLACK_FOOTER: Posted automatically using GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          MSG_MINIMAL: true

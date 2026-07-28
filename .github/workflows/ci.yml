@@ -1,0 +1,120 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Run automatically at 8AM PST Monday-Friday
+    - cron: '0 15 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Secret-less supply-chain gate — its own job so the clean-room install is
+  # truly isolated, and so it runs identically on fork and same-repo PRs.
+  composer-lockfile-hygiene:
+    name: Composer lockfile hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@PENDING_SDK_ACTIONS_SHA # v1.1.0
+
+  test:
+    name: Test
+    # Forks can't use the internal runner group; fall back to ubuntu-latest.
+    runs-on: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork) && 'ubuntu-latest' || 'ubuntu-x64' }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4']
+        dependencies: [lowest, highest]
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0 # full history for analysis relevance
+
+      # setup-php FIRST — artifactory-oidc shells out to `composer`.
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+
+      # Forks have no Artifactory secret; skip login and resolve from public Packagist.
+      - if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork) }}
+        uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        with:
+          ecosystem: php
+
+      - name: Install dependencies (lowest)
+        if: matrix.dependencies == 'lowest'
+        run: composer update --prefer-lowest --prefer-stable --no-interaction --no-progress
+
+      - name: Install dependencies (highest)
+        if: matrix.dependencies == 'highest'
+        run: composer install --no-interaction --no-progress
+
+      - name: Run tests
+        run: make test
+
+  # Cluster test hits live Twilio APIs, so it needs secrets — never on forks.
+  cluster-test:
+    name: Cluster test
+    if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork) }}
+    runs-on: ubuntu-x64
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        with:
+          ecosystem: php
+
+      - run: composer install --no-interaction --no-progress
+
+      - name: Run cluster test
+        env:
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_API_KEY: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY }}
+          TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
+          TWILIO_ORGS_CLIENT_ID: ${{ secrets.TWILIO_ORGS_CLIENT_ID }}
+          TWILIO_ORGS_CLIENT_SECRET: ${{ secrets.TWILIO_ORGS_CLIENT_SECRET }}
+          TWILIO_ORG_SID: ${{ secrets.TWILIO_ORG_SID }}
+          TWILIO_CLIENT_ID: ${{ secrets.TWILIO_CLIENT_ID }}
+          TWILIO_CLIENT_SECRET: ${{ secrets.TWILIO_CLIENT_SECRET }}
+          TWILIO_MESSAGE_SID: ${{ secrets.TWILIO_MESSAGE_SID }}
+        run: make cluster-test
+
+  notify-on-failure:
+    name: Slack notify on failure
+    if: ${{ failure() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+    needs: [composer-lockfile-hygiene, test, cluster-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
+        env:
+          SLACK_COLOR: failure
+          SLACK_ICON_EMOJI: ':github:'
+          SLACK_MESSAGE: ${{ format('CI failed on main — {0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
+          SLACK_TITLE: CI Failure - ${{ github.repository }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_MSG_AUTHOR: twilio-dx
+          SLACK_FOOTER: Posted automatically using GitHub Actions
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          MSG_MINIMAL: true
