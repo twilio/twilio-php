@@ -48,7 +48,7 @@ jobs:
       # something that would be unresolvable for external consumers.
       - uses: twilio/sdk-actions/composer-lockfile-hygiene@PENDING_SDK_ACTIONS_SHA # v1.1.0
 
-      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: '8.3'
           coverage: none
@@ -149,7 +149,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: '8.3'
           coverage: none
