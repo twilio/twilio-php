@@ -46,7 +46,7 @@ jobs:
 
       # Same secret-less gate CI runs, re-run here so a tag can never publish
       # something that would be unresolvable for external consumers.
-      - uses: twilio/sdk-actions/composer-lockfile-hygiene@PENDING_SDK_ACTIONS_SHA # v1.1.0
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
 
       - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
@@ -56,7 +56,7 @@ jobs:
       - name: Validate composer.json
         run: composer validate --strict --no-check-publish
 
-      - uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+      - uses: twilio/sdk-actions/artifactory-oidc@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
         with:
           ecosystem: php
 
@@ -112,7 +112,7 @@ jobs:
         # Fires the Packagist `release` webhook. Point of no return.
         # First-party action: sendgrid/dx-automator is not on the org
         # allow-list, so referencing it fails the run at startup.
-        uses: twilio/sdk-actions/github-release@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        uses: twilio/sdk-actions/github-release@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
         with:
           changelog-file: CHANGES.md
 
@@ -154,7 +154,7 @@ jobs:
           php-version: '8.3'
           coverage: none
 
-      - uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+      - uses: twilio/sdk-actions/artifactory-oidc@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
         with:
           ecosystem: php
 

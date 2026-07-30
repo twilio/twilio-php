@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-      - uses: twilio/sdk-actions/composer-lockfile-hygiene@PENDING_SDK_ACTIONS_SHA # v1.1.0
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
 
   test:
     name: Test
@@ -48,7 +48,7 @@ jobs:
 
       # Forks have no Artifactory secret; skip login and resolve from public Packagist.
       - if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork) }}
-        uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+        uses: twilio/sdk-actions/artifactory-oidc@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
         with:
           ecosystem: php
 
@@ -80,7 +80,7 @@ jobs:
           php-version: '8.3'
           coverage: none
 
-      - uses: twilio/sdk-actions/artifactory-oidc@PENDING_SDK_ACTIONS_SHA # v1.1.0
+      - uses: twilio/sdk-actions/artifactory-oidc@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
         with:
           ecosystem: php
 
