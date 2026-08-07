@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-x64
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-      - uses: twilio/sdk-actions/semantic-pr-title@07f75561c932361528edeac6eeda58bd130fd74b # feat/php-composer-support @ 07f7556 (pre-release; repin to v1.1.0 tag before merge)
+      - uses: twilio/sdk-actions/semantic-pr-title@09631bfa50f14d276170d45bc4f49a80da201cc6 # main @ 09631bf — sdk-actions#10; repin to the v1.1.0 tag once cut
         with:
           types: |
             chore
