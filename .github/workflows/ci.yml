@@ -33,8 +33,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # The library's only runtime requirement is PHP itself
+        # (`require: { php: ">=7.1.0" }`), so PHP version IS the matrix.
+        #
+        # There is deliberately no `lowest` / `highest` dependency axis. The old
+        # workflow had one, but it never ran: `make install` depended on `clean`,
+        # which did `rm -rf ... composer.lock`, so the lockfile that
+        # `composer update --prefer-lowest` had just written was deleted and the
+        # following `composer install` resolved newest again. #928 dropped
+        # composer.lock from `clean`, which made the axis real for the first time
+        # — and it cannot pass: `--prefer-lowest` selects phpunit 7.0.0, which
+        # dies on PHP >= 8.1 with "Cannot acquire reference to $GLOBALS".
+        #
+        # No single constraint set can fix that. The floor would have to be old
+        # enough for PHP 7.2 (phpunit 8 is its ceiling) and new enough to run on
+        # PHP 8.4 (needs phpunit >= 9.6). Since the axis only ever varied *dev*
+        # tooling — nothing a consumer of this package resolves — it buys no
+        # signal worth per-PHP-version pinning.
         php: ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4']
-        dependencies: [lowest, highest]
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
@@ -53,20 +69,16 @@ jobs:
           ecosystem: php
 
       # The committed composer.lock pins php-cs-fixer's symfony 7.4.x deps, which
-      # require PHP >= 8.2. On older PHP the lock is simply not installable, so
-      # those cells resolve a compatible dev toolchain instead. The library's own
-      # contract (`require.php: >=7.1.0`) is what the matrix is testing; the dev
+      # require PHP >= 8.2, so on older PHP the lock is not installable at all.
+      # Those versions resolve a compatible dev toolchain instead. What the matrix
+      # is testing is the library's own contract (`require.php: >=7.1.0`); the dev
       # toolchain is incidental to that.
       - name: Install dependencies
         env:
-          DEPS: ${{ matrix.dependencies }}
           PHP: ${{ matrix.php }}
         run: |
           set -euo pipefail
-          if [ "$DEPS" = "lowest" ]; then
-            echo "::notice::Resolving oldest allowed dependencies"
-            composer update --prefer-lowest --prefer-stable --no-interaction --no-progress
-          elif printf '%s\n' 8.2 8.3 8.4 | grep -qx "$PHP"; then
+          if printf '%s\n' 8.2 8.3 8.4 | grep -qx "$PHP"; then
             echo "::notice::Installing from the committed composer.lock"
             composer install --no-interaction --no-progress
           else
