@@ -3,14 +3,24 @@ name: Twilio Public release-packagist
 on:
   push:
     tags:
-      - '*'
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: read
 
 env:
   ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
 
 jobs:
-  test:
-    name: Test - PHP ${{ matrix.php }}
+  composer-lockfile-hygiene:
+    runs-on: ubuntu-x64
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+
+  verify:
+    name: Verify - PHP ${{ matrix.php }}
+    needs: [composer-lockfile-hygiene]
     runs-on: ubuntu-x64
     if: github.repository_owner == 'twilio'
     timeout-minutes: 20
@@ -26,44 +36,45 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Tag must be reachable from main
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "${GITHUB_SHA}" origin/main \
+            || { echo "::error::${GITHUB_REF_NAME} is not an ancestor of main"; exit 1; }
+
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+
       - name: Artifactory OIDC Auth
         uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
         with:
           ecosystem: php
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
-        with:
-          php-version: ${{ matrix.php }}
-          coverage: xdebug
-
       - name: Install dependencies
-        run: |
-          composer --version || (curl -s https://getcomposer.org/installer | php)
-          composer install
+        run: composer install --no-interaction --no-progress
 
       - name: Run tests
         run: make test
 
-  deploy:
+  publish:
     name: Publish to Packagist
-    needs: [test]
+    needs: [verify]
     runs-on: ubuntu-x64
     if: success() && github.ref_type == 'tag' && github.repository_owner == 'twilio'
     environment: production
     permissions:
       contents: write
       id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-
-      - name: Artifactory OIDC Auth
-        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
         with:
-          ecosystem: php
+          fetch-depth: 0
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: "8.3"
 
@@ -83,19 +94,28 @@ jobs:
             exit 1
           fi
 
-#      - name: Get tagged version
-#        run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+#      - name: Download the zipball Composer will install
+#        env:
+#          GH_TOKEN: ${{ github.token }}
+#        run: gh api "repos/${GITHUB_REPOSITORY}/zipball/${GITHUB_SHA}" > release.zip
+#
+#      - uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v2
+#        with:
+#          subject-path: release.zip
 #
 #      - name: Create GitHub Release
-#        uses: sendgrid/dx-automator/actions/release@08b601b726671445abc798ed59881766ec8fefc6
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#      - name: Notify Packagist
-#        run: |
-#          curl -s -X POST "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}" \
-#            -d '{"repository":{"url":"https://github.com/twilio/twilio-php"}}'
+#        uses: twilio/sdk-actions/github-release@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+#        with:
+#          changelog-file: CHANGES.md
 #
-#      - name: Summary
+#      - name: Confirm Packagist picked up the release
 #        run: |
-#          echo "Published version $PKG_VERSION to Packagist"
+#          set -euo pipefail
+#          for i in $(seq 1 12); do
+#            curl -sf "https://repo.packagist.org/p2/twilio/sdk.json" \
+#              | jq -e --arg v "$GITHUB_REF_NAME" \
+#                  '.packages["twilio/sdk"][] | select(.version == $v)' >/dev/null \
+#              && { echo "::notice::Packagist is serving $GITHUB_REF_NAME"; exit 0; }
+#            sleep 15
+#          done
+#          echo "::warning::Not indexed after 3 minutes — check the Packagist webhook."
