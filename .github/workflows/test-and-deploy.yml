@@ -51,7 +51,7 @@ jobs:
           coverage: xdebug
 
       - name: Artifactory OIDC Auth
-        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+        uses: twilio/sdk-actions/artifactory-oidc@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
         with:
           ecosystem: php
 
