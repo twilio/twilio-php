@@ -1,0 +1,101 @@
+name: Twilio Public release-packagist
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
+jobs:
+  test:
+    name: Test - PHP ${{ matrix.php }}
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+        with:
+          ecosystem: php
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: |
+          composer --version || (curl -s https://getcomposer.org/installer | php)
+          composer install
+
+      - name: Run tests
+        run: make test
+
+  deploy:
+    name: Publish to Packagist
+    needs: [test]
+    runs-on: ubuntu-x64
+    if: success() && github.ref_type == 'tag' && github.repository_owner == 'twilio'
+    environment: production
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+        with:
+          ecosystem: php
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: "8.3"
+
+      - name: Validate tag format and version match
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          if [[ ! "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "::error::Release tag must be in the form 1.2.3 (got '$TAG')"
+            exit 1
+          fi
+          VERSION="$TAG"
+          PKG_VERSION=$(php -r "require 'src/Twilio/VersionInfo.php'; echo Twilio\VersionInfo::string();")
+          echo "Package version: $PKG_VERSION"
+          echo "PKG_VERSION=$PKG_VERSION" >> "$GITHUB_ENV"
+          if [ "$VERSION" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $TAG does not match VersionInfo.php version $PKG_VERSION"
+            exit 1
+          fi
+
+#      - name: Get tagged version
+#        run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+#
+#      - name: Create GitHub Release
+#        uses: sendgrid/dx-automator/actions/release@08b601b726671445abc798ed59881766ec8fefc6
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Notify Packagist
+#        run: |
+#          curl -s -X POST "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}" \
+#            -d '{"repository":{"url":"https://github.com/twilio/twilio-php"}}'
+#
+#      - name: Summary
+#        run: |
+#          echo "Published version $PKG_VERSION to Packagist"
