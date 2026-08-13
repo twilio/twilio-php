@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-x64
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - uses: twilio/sdk-actions/composer-lockfile-hygiene@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
 
   verify:
     name: Verify - PHP ${{ matrix.php }}
