@@ -105,28 +105,28 @@ jobs:
             exit 1
           fi
 
-#      - name: Download the zipball Composer will install
-#        env:
-#          GH_TOKEN: ${{ github.token }}
-#        run: gh api "repos/${GITHUB_REPOSITORY}/zipball/${GITHUB_SHA}" > release.zip
-#
-#      - uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v2
-#        with:
-#          subject-path: release.zip
-#
-#      - name: Create GitHub Release
-#        uses: twilio/sdk-actions/github-release@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
-#        with:
-#          changelog-file: CHANGES.md
-#
-#      - name: Confirm Packagist picked up the release
-#        run: |
-#          set -euo pipefail
-#          for i in $(seq 1 12); do
-#            curl -sf "https://repo.packagist.org/p2/twilio/sdk.json" \
-#              | jq -e --arg v "$GITHUB_REF_NAME" \
-#                  '.packages["twilio/sdk"][] | select(.version == $v)' >/dev/null \
-#              && { echo "::notice::Packagist is serving $GITHUB_REF_NAME"; exit 0; }
-#            sleep 15
-#          done
-#          echo "::warning::Not indexed after 3 minutes — check the Packagist webhook."
+      - name: Download the zipball Composer will install
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/${GITHUB_REPOSITORY}/zipball/${GITHUB_SHA}" > release.zip
+
+      - uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v2
+        with:
+          subject-path: release.zip
+
+      - name: Create GitHub Release
+        uses: twilio/sdk-actions/github-release@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+        with:
+          changelog-file: CHANGES.md
+
+      - name: Confirm Packagist picked up the release
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 12); do
+            curl -sf "https://repo.packagist.org/p2/twilio/sdk.json" \
+              | jq -e --arg v "$GITHUB_REF_NAME" \
+                  '.packages["twilio/sdk"][] | select(.version == $v)' >/dev/null \
+              && { echo "::notice::Packagist is serving $GITHUB_REF_NAME"; exit 0; }
+            sleep 15
+          done
+          echo "::warning::Not indexed after 3 minutes — check the Packagist webhook."
