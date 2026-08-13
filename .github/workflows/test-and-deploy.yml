@@ -56,7 +56,15 @@ jobs:
           ecosystem: php
 
       - name: Install dependencies
-        run: composer install --no-interaction --no-progress
+        env:
+          PHP: ${{ matrix.php }}
+        run: |
+          set -euo pipefail
+          if printf '%s\n' 8.2 8.3 8.4 | grep -qx "$PHP"; then
+            composer install --no-interaction --no-progress
+          else
+            composer update --no-interaction --no-progress
+          fi
 
       - name: Run tests
         run: make test
