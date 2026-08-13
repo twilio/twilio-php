@@ -1,4 +1,4 @@
-FROM php:7.4
+FROM php:8.3
 
 RUN apt-get update -y && apt-get install -y zip
 
