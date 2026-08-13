@@ -20,9 +20,6 @@ The PHP library documentation can be found [here][libdocs].
 
 This library supports the following PHP implementations:
 
-- PHP 7.2
-- PHP 7.3
-- PHP 7.4
 - PHP 8.0
 - PHP 8.1
 - PHP 8.2
