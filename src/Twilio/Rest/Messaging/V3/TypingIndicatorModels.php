@@ -19,11 +19,11 @@ use Twilio\Values;
 abstract class TypingIndicatorModels
 {
     /**
-     * @property string $channel The messaging channel. Must be \"APPLE\".
+     * @property string $channel The messaging channel. Must be \"RCS\".
      * @property string $messageId The SID of a recent inbound message from the recipient. Must be an SM or MM SID format.
-     * @property string $from The Apple Messages for Business identifier of the sender (business).
-     * @property string $to The Apple Messages for Business identifier of the recipient (customer).
-     * @property string $event The type of typing event. \"START\" indicates the agent began typing, \"END\" indicates the agent stopped typing. Defaults to \"START\".
+     * @property string $from The RCS agent identifier of the sender (business).
+     * @property string $to The RCS recipient identifier in E.164 format prefixed with \"rcs:\".
+     * @property string $event The type of typing event. Currently only \"START\" is supported for RCS, indicating the agent began typing. Defaults to \"START\".
     */
     public static function createTypingIndicatorRequest(array $payload = []): TypingIndicatorRequest
     {
@@ -35,11 +35,11 @@ abstract class TypingIndicatorModels
 class TypingIndicatorRequest implements \JsonSerializable
 {
     /**
-     * @property string $channel The messaging channel. Must be \"APPLE\".
+     * @property string $channel The messaging channel. Must be \"RCS\".
      * @property string $messageId The SID of a recent inbound message from the recipient. Must be an SM or MM SID format.
-     * @property string $from The Apple Messages for Business identifier of the sender (business).
-     * @property string $to The Apple Messages for Business identifier of the recipient (customer).
-     * @property string $event The type of typing event. \"START\" indicates the agent began typing, \"END\" indicates the agent stopped typing. Defaults to \"START\".
+     * @property string $from The RCS agent identifier of the sender (business).
+     * @property string $to The RCS recipient identifier in E.164 format prefixed with \"rcs:\".
+     * @property string $event The type of typing event. Currently only \"START\" is supported for RCS, indicating the agent began typing. Defaults to \"START\".
     */
         protected $channel;
         protected $messageId;

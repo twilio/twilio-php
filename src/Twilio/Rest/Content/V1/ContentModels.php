@@ -525,9 +525,11 @@ class CallToActionAction implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'title' => $this->title
+            'type' => $this->type
         ];
+        if (isset($this->title)) {
+            $jsonString['title'] = $this->title;
+        }
         if (isset($this->url)) {
             $jsonString['url'] = $this->url;
         }

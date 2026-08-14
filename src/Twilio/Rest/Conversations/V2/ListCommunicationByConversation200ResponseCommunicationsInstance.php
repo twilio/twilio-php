@@ -45,10 +45,10 @@ class ListCommunicationByConversation200ResponseCommunicationsInstance extends I
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $conversationSid
-     * @param string $sid
+     * @param string $conversationId
+     * @param string $id
      */
-    public function __construct(Version $version, array $payload, ?string $conversationSid = null, ?string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $conversationId = null, ?string $id = null)
     {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
@@ -68,7 +68,7 @@ class ListCommunicationByConversation200ResponseCommunicationsInstance extends I
             'occurredAt' => Deserialize::dateTime(Values::array_get($payload, 'occurredAt')),
         ];
 
-        $this->solution = ['conversationSid' => $conversationSid ?: ($this->properties['conversationSid'] ?? null), 'sid' => $sid ?: ($this->properties['sid'] ?? null), ];
+        $this->solution = ['conversationId' => $conversationId ?: ($this->properties['conversationId'] ?? null), 'id' => $id ?: ($this->properties['id'] ?? null), ];
     }
 
     /**
@@ -82,8 +82,8 @@ class ListCommunicationByConversation200ResponseCommunicationsInstance extends I
         if (!$this->context) {
             $this->context = new CommunicationContext(
                 $this->version,
-                $this->solution['conversationSid'],
-                $this->solution['sid']
+                $this->solution['conversationId'],
+                $this->solution['id']
             );
         }
 

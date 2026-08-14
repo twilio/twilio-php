@@ -19,6 +19,7 @@ namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
@@ -75,13 +76,14 @@ class AuthTokenPromotionInstance extends InstanceResource
     /**
      * Update the AuthTokenPromotionInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return AuthTokenPromotionInstance Updated AuthTokenPromotionInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(): AuthTokenPromotionInstance
+    public function update(array $options = []): AuthTokenPromotionInstance
     {
 
-        return $this->proxy()->update();
+        return $this->proxy()->update($options);
     }
 
     /**

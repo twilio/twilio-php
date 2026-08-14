@@ -23,7 +23,6 @@ use Twilio\Version;
 use Twilio\Rest\PreviewIam\Versionless\Organization\AccountList;
 use Twilio\Rest\PreviewIam\Versionless\Organization\UserList;
 use Twilio\Rest\PreviewIam\Versionless\Organization\RoleAssignmentList;
-use Twilio\Rest\PreviewIam\Versionless\Organization\ResourceTypeList;
 
 
 class OrganizationInstance extends InstanceResource
@@ -31,7 +30,6 @@ class OrganizationInstance extends InstanceResource
     protected $_accounts;
     protected $_users;
     protected $_roleAssignments;
-    protected $_resourceTypes;
 
     /**
      * Initialize the OrganizationInstance
@@ -99,14 +97,6 @@ class OrganizationInstance extends InstanceResource
     protected function getRoleAssignments(): RoleAssignmentList
     {
         return $this->proxy()->roleAssignments;
-    }
-
-    /**
-     * Access the resourceTypes
-     */
-    protected function getResourceTypes(): ResourceTypeList
-    {
-        return $this->proxy()->resourceTypes;
     }
 
     /**

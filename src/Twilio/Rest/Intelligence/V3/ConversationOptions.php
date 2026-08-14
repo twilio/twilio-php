@@ -24,8 +24,8 @@ abstract class ConversationOptions
     /**
      * @param int $pageSize The maximum number of resources to return
      * @param string $pageToken Token for pagination
-     * @param \DateTime $createdAtBefore Filter by Conversations created before this timestamp.
-     * @param \DateTime $createdAtAfter Filter by Conversations created after this timestamp.
+     * @param \DateTime $createdAtBefore Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
+     * @param \DateTime $createdAtAfter Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
      * @param string $status Filter by Conversation status.
      * @param string $channelId Filters Conversations by the underlying channel resource ID, such as a Call ID or Message ID.
      * @param string[] $channels Filters Conversations that include one or more of the specified communication channels (`OR` match).
@@ -71,8 +71,8 @@ class ReadConversationOptions extends Options
     /**
      * @param int $pageSize The maximum number of resources to return
      * @param string $pageToken Token for pagination
-     * @param \DateTime $createdAtBefore Filter by Conversations created before this timestamp.
-     * @param \DateTime $createdAtAfter Filter by Conversations created after this timestamp.
+     * @param \DateTime $createdAtBefore Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
+     * @param \DateTime $createdAtAfter Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
      * @param string $status Filter by Conversation status.
      * @param string $channelId Filters Conversations by the underlying channel resource ID, such as a Call ID or Message ID.
      * @param string[] $channels Filters Conversations that include one or more of the specified communication channels (`OR` match).
@@ -131,9 +131,9 @@ class ReadConversationOptions extends Options
     }
 
     /**
-     * Filter by Conversations created before this timestamp.
+     * Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
      *
-     * @param \DateTime $createdAtBefore Filter by Conversations created before this timestamp.
+     * @param \DateTime $createdAtBefore Filter by Conversations created before this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
      * @return $this Fluent Builder
      */
     public function setCreatedAtBefore(\DateTime $createdAtBefore): self
@@ -143,9 +143,9 @@ class ReadConversationOptions extends Options
     }
 
     /**
-     * Filter by Conversations created after this timestamp.
+     * Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
      *
-     * @param \DateTime $createdAtAfter Filter by Conversations created after this timestamp.
+     * @param \DateTime $createdAtAfter Filter by Conversations created after this timestamp. The maximum allowed time range between `createdAtBefore` and `createdAtAfter` is 31 days.
      * @return $this Fluent Builder
      */
     public function setCreatedAtAfter(\DateTime $createdAtAfter): self

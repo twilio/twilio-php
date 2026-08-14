@@ -21,6 +21,7 @@ abstract class ApprovalCreateModels
     /**
      * @property string $name Name of the template.
      * @property string $category A WhatsApp recognized template category.
+     * @property int $sendTtlSeconds Time-to-live in seconds for attempting to send a message with this Content
     */
     public static function createContentApprovalRequest(array $payload = []): ContentApprovalRequest
     {
@@ -34,12 +35,15 @@ class ContentApprovalRequest implements \JsonSerializable
     /**
      * @property string $name Name of the template.
      * @property string $category A WhatsApp recognized template category.
+     * @property int $sendTtlSeconds Time-to-live in seconds for attempting to send a message with this Content
     */
         protected $name;
         protected $category;
+        protected $sendTtlSeconds;
     public function __construct(array $payload = []) {
         $this->name = Values::array_get($payload, 'name');
         $this->category = Values::array_get($payload, 'category');
+        $this->sendTtlSeconds = Values::array_get($payload, 'send_ttl_seconds');
     }
 
     public function toArray(): array
@@ -53,6 +57,9 @@ class ContentApprovalRequest implements \JsonSerializable
             'name' => $this->name,
             'category' => $this->category
         ];
+        if (isset($this->sendTtlSeconds)) {
+            $jsonString['send_ttl_seconds'] = $this->sendTtlSeconds;
+        }
         return $jsonString;
     }
 }

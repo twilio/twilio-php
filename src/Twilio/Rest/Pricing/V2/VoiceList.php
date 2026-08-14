@@ -21,19 +21,16 @@ use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Rest\Pricing\V2\Voice\CountryList;
-use Twilio\Rest\Pricing\V2\Voice\NumberList;
 
 
 /**
  * @property CountryList $countries
- * @property NumberList $numbers
  * @method \Twilio\Rest\Pricing\V2\Voice\CountryContext countries(string $isoCountry)
  * @method \Twilio\Rest\Pricing\V2\Voice\NumberContext numbers(string $destinationNumber)
  */
 class VoiceList extends ListResource
     {
     protected $_countries = null;
-    protected $_numbers = null;
 
     /**
      * Construct the VoiceList
@@ -61,19 +58,6 @@ class VoiceList extends ListResource
             );
         }
         return $this->_countries;
-    }
-
-    /**
-     * Access the numbers
-     */
-    protected function getNumbers(): NumberList
-    {
-        if (!$this->_numbers) {
-            $this->_numbers = new NumberList(
-                $this->version
-            );
-        }
-        return $this->_numbers;
     }
 
     /**

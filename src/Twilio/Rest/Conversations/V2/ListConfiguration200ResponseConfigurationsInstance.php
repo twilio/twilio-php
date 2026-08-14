@@ -48,9 +48,9 @@ class ListConfiguration200ResponseConfigurationsInstance extends InstanceResourc
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid
+     * @param string $id
      */
-    public function __construct(Version $version, array $payload, ?string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
@@ -72,7 +72,7 @@ class ListConfiguration200ResponseConfigurationsInstance extends InstanceResourc
             'version' => Values::array_get($payload, 'version'),
         ];
 
-        $this->solution = ['sid' => $sid ?: ($this->properties['sid'] ?? null), ];
+        $this->solution = ['id' => $id ?: ($this->properties['id'] ?? null), ];
     }
 
     /**
@@ -86,7 +86,7 @@ class ListConfiguration200ResponseConfigurationsInstance extends InstanceResourc
         if (!$this->context) {
             $this->context = new ConfigurationContext(
                 $this->version,
-                $this->solution['sid']
+                $this->solution['id']
             );
         }
 

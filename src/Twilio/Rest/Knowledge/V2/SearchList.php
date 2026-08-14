@@ -16,9 +16,13 @@
 
 namespace Twilio\Rest\Knowledge\V2;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
 use Twilio\ApiV1Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class SearchList extends ListResource
@@ -40,20 +44,67 @@ class SearchList extends ListResource
     }
 
     /**
-     * Constructs a SearchContext
+     * Helper function for Create
      *
-     * @param string $kbId A unique Knowledge Base ID using Twilio Type ID (TTID) format
+     
+     * @param ?KnowledgeSearch $knowledgeSearch
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
      */
-    public function getContext(
-        string $kbId
-        
-    ): SearchContext
+    private function _create(string $kbId, ?KnowledgeSearch $knowledgeSearch = null): Response
     {
-        return new SearchContext(
+        
+        $uri = '/KnowledgeBases/' . \rawurlencode($kbId)
+        .'/Search';
+        
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $knowledgeSearch ? $knowledgeSearch->toArray() : [];
+        return $this->version->handleRequest('POST', $uri, [], $data, $headers, "create");
+    }
+
+    /**
+     * Create the CreateKnowledgeSearch200ResponseInstance
+     *
+     
+     * @param ?KnowledgeSearch $knowledgeSearch
+     * @return CreateKnowledgeSearch200ResponseInstance Created CreateKnowledgeSearch200ResponseInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(string $kbId, ?KnowledgeSearch $knowledgeSearch = null): CreateKnowledgeSearch200ResponseInstance
+    {
+        $response = $this->_create($kbId, $knowledgeSearch);
+        return new CreateKnowledgeSearch200ResponseInstance(
             $this->version,
+            $response->getContent(),
             $kbId
         );
+        
     }
+
+    /**
+     * Create the CreateKnowledgeSearch200ResponseInstance with Metadata
+     *
+     
+     * @param ?KnowledgeSearch $knowledgeSearch
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(string $kbId, ?KnowledgeSearch $knowledgeSearch = null): ResourceMetadata
+    {
+        $response = $this->_create($kbId, $knowledgeSearch);
+        $resource = new CreateKnowledgeSearch200ResponseInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $kbId
+                    );
+        
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
 
     /**
      * Provide a friendly representation

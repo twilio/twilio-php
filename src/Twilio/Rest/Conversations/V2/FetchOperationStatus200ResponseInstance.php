@@ -41,9 +41,9 @@ class FetchOperationStatus200ResponseInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $sid
+     * @param string $id
      */
-    public function __construct(Version $version, array $payload, ?string $sid = null)
+    public function __construct(Version $version, array $payload, ?string $id = null)
     {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
@@ -59,7 +59,7 @@ class FetchOperationStatus200ResponseInstance extends InstanceResource
             'related' => Values::array_get($payload, 'related'),
         ];
 
-        $this->solution = ['sid' => $sid ?: ($this->properties['sid'] ?? null), ];
+        $this->solution = ['id' => $id ?: ($this->properties['id'] ?? null), ];
     }
 
     /**
@@ -73,7 +73,7 @@ class FetchOperationStatus200ResponseInstance extends InstanceResource
         if (!$this->context) {
             $this->context = new OperationContext(
                 $this->version,
-                $this->solution['sid']
+                $this->solution['id']
             );
         }
 

@@ -18,11 +18,13 @@
 namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Http\Response;
 use Twilio\Metadata\ResourceMetadata;
+use Twilio\Serialize;
 
 
 class SecondaryAuthTokenContext extends InstanceContext
@@ -47,25 +49,34 @@ class SecondaryAuthTokenContext extends InstanceContext
     /**
      * Helper function for Create
      *
+     * @param array|Options $options Optional Arguments
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(): Response
+    private function _create(array $options = []): Response
     {
         
+        $options = new Values($options);
+
+        $data = Values::of([
+            'SuppressEmailNotification' =>
+                Serialize::booleanToString($options['suppressEmailNotification']),
+        ]);
+
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
     }
 
     /**
      * Create the SecondaryAuthTokenInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return SecondaryAuthTokenInstance Created SecondaryAuthTokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): SecondaryAuthTokenInstance
+    public function create(array $options = []): SecondaryAuthTokenInstance
     {
-        $response = $this->_create();
+        $response = $this->_create($options);
         return new SecondaryAuthTokenInstance(
             $this->version,
             $response->getContent()
@@ -76,12 +87,13 @@ class SecondaryAuthTokenContext extends InstanceContext
     /**
      * Create the SecondaryAuthTokenInstance with Metadata
      *
+     * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(): ResourceMetadata
+    public function createWithMetadata(array $options = []): ResourceMetadata
     {
-        $response = $this->_create();
+        $response = $this->_create($options);
         $resource = new SecondaryAuthTokenInstance(
                         $this->version,
                         $response->getContent()
@@ -98,25 +110,34 @@ class SecondaryAuthTokenContext extends InstanceContext
     /**
      * Helper function for Delete
      *
+     * @param array|Options $options Optional Arguments
      * @return Response Deleted Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _delete(): Response
+    private function _delete(array $options = []): Response
     {
         
+        $options = new Values($options);
+
+        $params = Values::of([
+            'SuppressEmailNotification' =>
+                Serialize::booleanToString($options['suppressEmailNotification']),
+        ]);
+
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
-        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
+        return $this->version->handleRequest('DELETE', $this->uri, $params, [], $headers, "delete");
     }
 
     /**
      * Delete the SecondaryAuthTokenInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool
+    public function delete(array $options = []): bool
     {
-        $response = $this->_delete();
+        $response = $this->_delete($options);
         
         return true;
     }
@@ -124,12 +145,13 @@ class SecondaryAuthTokenContext extends InstanceContext
     /**
      * Delete the SecondaryAuthTokenInstance with Metadata
      *
+     * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Deleted Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function deleteWithMetadata(): ResourceMetadata
+    public function deleteWithMetadata(array $options = []): ResourceMetadata
     {
-        $response = $this->_delete();
+        $response = $this->_delete($options);
         
         
         return new ResourceMetadata(

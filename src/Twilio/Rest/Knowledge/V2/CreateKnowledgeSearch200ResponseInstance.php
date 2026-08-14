@@ -50,36 +50,6 @@ class CreateKnowledgeSearch200ResponseInstance extends InstanceResource
     }
 
     /**
-     * Generate an instance context for the instance, the context is capable of
-     * performing various actions.  All instance actions are proxied to the context
-     *
-     * @return SearchContext Context for this SearchInstance
-     */
-    protected function proxy(): SearchContext
-    {
-        if (!$this->context) {
-            $this->context = new SearchContext(
-                $this->version,
-                $this->solution['kbId']
-            );
-        }
-
-        return $this->context;
-    }
-
-    /**
-     * Create the CreateKnowledgeSearch200ResponseInstance
-     *
-     * @return CreateKnowledgeSearch200ResponseInstance Created CreateKnowledgeSearch200ResponseInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(): CreateKnowledgeSearch200ResponseInstance
-    {
-
-        return $this->proxy()->create();
-    }
-
-    /**
      * Magic getter to access properties
      *
      * @param string $name Property to access
@@ -107,10 +77,6 @@ class CreateKnowledgeSearch200ResponseInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Knowledge.V2.CreateKnowledgeSearch200ResponseInstance ' . \implode(' ', $context) . ']';
+        return '[Twilio.Knowledge.V2.CreateKnowledgeSearch200ResponseInstance]';
     }
 }

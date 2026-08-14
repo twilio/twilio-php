@@ -56,10 +56,10 @@ class ParticipantList extends ListResource
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(string $conversationSid, ?CreateParticipantInConversationRequest $createParticipantInConversationRequest = null): Response
+    private function _create(string $conversationId, ?CreateParticipantInConversationRequest $createParticipantInConversationRequest = null): Response
     {
         
-        $uri = '/Conversations/' . \rawurlencode($conversationSid)
+        $uri = '/Conversations/' . \rawurlencode($conversationId)
         .'/Participants';
         
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
@@ -75,13 +75,13 @@ class ParticipantList extends ListResource
      * @return ListParticipantByConversation200ResponseParticipantsInstance Created ListParticipantByConversation200ResponseParticipantsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $conversationSid, ?CreateParticipantInConversationRequest $createParticipantInConversationRequest = null): ListParticipantByConversation200ResponseParticipantsInstance
+    public function create(string $conversationId, ?CreateParticipantInConversationRequest $createParticipantInConversationRequest = null): ListParticipantByConversation200ResponseParticipantsInstance
     {
-        $response = $this->_create($conversationSid, $createParticipantInConversationRequest);
+        $response = $this->_create($conversationId, $createParticipantInConversationRequest);
         return new ListParticipantByConversation200ResponseParticipantsInstance(
             $this->version,
             $response->getContent(),
-            $conversationSid
+            $conversationId
         );
         
     }
@@ -94,13 +94,13 @@ class ParticipantList extends ListResource
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(string $conversationSid, ?CreateParticipantInConversationRequest $createParticipantInConversationRequest = null): ResourceMetadata
+    public function createWithMetadata(string $conversationId, ?CreateParticipantInConversationRequest $createParticipantInConversationRequest = null): ResourceMetadata
     {
-        $response = $this->_create($conversationSid, $createParticipantInConversationRequest);
+        $response = $this->_create($conversationId, $createParticipantInConversationRequest);
         $resource = new ListParticipantByConversation200ResponseParticipantsInstance(
                         $this->version,
                         $response->getContent(),
-                        $conversationSid
+                        $conversationId
                     );
         
         return new ResourceMetadata(
@@ -117,7 +117,7 @@ class ParticipantList extends ListResource
      * memory before returning.
      *
      
-     * @param string $conversationSid
+     * @param string $conversationId
      
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
@@ -130,9 +130,9 @@ class ParticipantList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ParticipantInstance[] Array of results
      */
-    public function read(string $conversationSid, array $options = [], ?int $limit = null, $pageSize = null): array
+    public function read(string $conversationId, array $options = [], ?int $limit = null, $pageSize = null): array
     {
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        $this->uri = '/Conversations/' . \rawurlencode($conversationId)
         .'/Participants';
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
@@ -143,7 +143,7 @@ class ParticipantList extends ListResource
      * memory before returning.
      *
      
-     * @param string $conversationSid
+     * @param string $conversationId
      
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
@@ -156,9 +156,9 @@ class ParticipantList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ArrayMetadata Array of results along with metadata
      */
-    public function readWithMetadata(string $conversationSid, array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
+    public function readWithMetadata(string $conversationId, array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
     {
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        $this->uri = '/Conversations/' . \rawurlencode($conversationId)
         .'/Participants';
         $streamWithMetadata = $this->streamWithMetadata($options, $limit, $pageSize);
         $readResponse = \iterator_to_array($streamWithMetadata, false);
@@ -327,20 +327,20 @@ class ParticipantList extends ListResource
     /**
      * Constructs a ParticipantContext
      *
-     * @param string $conversationSid
+     * @param string $conversationId
      *
-     * @param string $sid
+     * @param string $id
      */
     public function getContext(
-        string $conversationSid
-        , string $sid
+        string $conversationId
+        , string $id
         
     ): ParticipantContext
     {
         return new ParticipantContext(
             $this->version,
-            $conversationSid,
-            $sid
+            $conversationId,
+            $id
         );
     }
 

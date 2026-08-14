@@ -27,14 +27,12 @@ use Twilio\Metadata\ResourceMetadata;
 use Twilio\Rest\PreviewIam\Versionless\Organization\AccountList;
 use Twilio\Rest\PreviewIam\Versionless\Organization\UserList;
 use Twilio\Rest\PreviewIam\Versionless\Organization\RoleAssignmentList;
-use Twilio\Rest\PreviewIam\Versionless\Organization\ResourceTypeList;
 
 
 /**
  * @property AccountList $accounts
  * @property UserList $users
  * @property RoleAssignmentList $roleAssignments
- * @property ResourceTypeList $resourceTypes
  * @method \Twilio\Rest\PreviewIam\Versionless\Organization\RoleAssignmentContext roleAssignments(string $sid)
  * @method \Twilio\Rest\PreviewIam\Versionless\Organization\AccountContext accounts(string $accountSid)
  * @method \Twilio\Rest\PreviewIam\Versionless\Organization\UserContext users(string $id)
@@ -44,7 +42,6 @@ class OrganizationContext extends InstanceContext
     protected $_accounts;
     protected $_users;
     protected $_roleAssignments;
-    protected $_resourceTypes;
 
     /**
      * Initialize the OrganizationContext
@@ -167,21 +164,6 @@ class OrganizationContext extends InstanceContext
         }
 
         return $this->_roleAssignments;
-    }
-
-    /**
-     * Access the resourceTypes
-     */
-    protected function getResourceTypes(): ResourceTypeList
-    {
-        if (!$this->_resourceTypes) {
-            $this->_resourceTypes = new ResourceTypeList(
-                $this->version,
-                $this->solution['organizationSid']
-            );
-        }
-
-        return $this->_resourceTypes;
     }
 
     /**
