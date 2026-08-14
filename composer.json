@@ -38,5 +38,10 @@
             "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
             "vendor/bin/php-cs-fixer -vvv fix --using-cache=no ."
         ]
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
     }
 }
