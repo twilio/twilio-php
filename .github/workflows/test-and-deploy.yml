@@ -70,9 +70,41 @@ jobs:
       - name: Run tests
         run: make test
 
+  validate-release:
+    name: Validate Release
+    needs: [verify]
+    runs-on: ubuntu-x64
+    if: success() && github.ref_type == 'tag' && github.repository_owner == 'twilio'
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: "8.3"
+
+      - name: Validate tag matches VersionInfo
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          PKG_VERSION=$(php -r "require 'src/Twilio/VersionInfo.php'; echo Twilio\VersionInfo::string();")
+          echo "Tag: $TAG"
+          echo "Package version: $PKG_VERSION"
+          if [ "$TAG" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $TAG does not match VersionInfo.php version $PKG_VERSION"
+            exit 1
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Verify release type
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          case "$TAG" in
+            *-*) echo "::notice::Release type: PRE-RELEASE ($TAG)" ;;
+            *)   echo "::notice::Release type: STABLE ($TAG)" ;;
+          esac
+
   publish:
     name: Publish to Packagist
-    needs: [verify]
+    needs: [validate-release]
     runs-on: ubuntu-x64
     if: success() && github.repository_owner == 'twilio'
     environment: production
