@@ -148,7 +148,7 @@ jobs:
           subject-path: release.zip
 
       - name: Create GitHub Release
-        uses: twilio/sdk-actions/github-release@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+        uses: twilio/sdk-actions/github-release@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
         with:
           changelog-file: CHANGES.md
 
