@@ -56,10 +56,10 @@ class CommunicationList extends ListResource
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(string $conversationSid, ?CreateCommunicationInConversationRequest $createCommunicationInConversationRequest = null): Response
+    private function _create(string $conversationId, ?CreateCommunicationInConversationRequest $createCommunicationInConversationRequest = null): Response
     {
         
-        $uri = '/Conversations/' . \rawurlencode($conversationSid)
+        $uri = '/Conversations/' . \rawurlencode($conversationId)
         .'/Communications';
         
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
@@ -75,13 +75,13 @@ class CommunicationList extends ListResource
      * @return ListCommunicationByConversation200ResponseCommunicationsInstance Created ListCommunicationByConversation200ResponseCommunicationsInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $conversationSid, ?CreateCommunicationInConversationRequest $createCommunicationInConversationRequest = null): ListCommunicationByConversation200ResponseCommunicationsInstance
+    public function create(string $conversationId, ?CreateCommunicationInConversationRequest $createCommunicationInConversationRequest = null): ListCommunicationByConversation200ResponseCommunicationsInstance
     {
-        $response = $this->_create($conversationSid, $createCommunicationInConversationRequest);
+        $response = $this->_create($conversationId, $createCommunicationInConversationRequest);
         return new ListCommunicationByConversation200ResponseCommunicationsInstance(
             $this->version,
             $response->getContent(),
-            $conversationSid
+            $conversationId
         );
         
     }
@@ -94,13 +94,13 @@ class CommunicationList extends ListResource
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(string $conversationSid, ?CreateCommunicationInConversationRequest $createCommunicationInConversationRequest = null): ResourceMetadata
+    public function createWithMetadata(string $conversationId, ?CreateCommunicationInConversationRequest $createCommunicationInConversationRequest = null): ResourceMetadata
     {
-        $response = $this->_create($conversationSid, $createCommunicationInConversationRequest);
+        $response = $this->_create($conversationId, $createCommunicationInConversationRequest);
         $resource = new ListCommunicationByConversation200ResponseCommunicationsInstance(
                         $this->version,
                         $response->getContent(),
-                        $conversationSid
+                        $conversationId
                     );
         
         return new ResourceMetadata(
@@ -117,7 +117,7 @@ class CommunicationList extends ListResource
      * memory before returning.
      *
      
-     * @param string $conversationSid
+     * @param string $conversationId
      
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
@@ -130,9 +130,9 @@ class CommunicationList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return CommunicationInstance[] Array of results
      */
-    public function read(string $conversationSid, array $options = [], ?int $limit = null, $pageSize = null): array
+    public function read(string $conversationId, array $options = [], ?int $limit = null, $pageSize = null): array
     {
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        $this->uri = '/Conversations/' . \rawurlencode($conversationId)
         .'/Communications';
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
@@ -143,7 +143,7 @@ class CommunicationList extends ListResource
      * memory before returning.
      *
      
-     * @param string $conversationSid
+     * @param string $conversationId
      
      * @param array|Options $options Optional Arguments
      * @param int $limit Upper limit for the number of records to return. read()
@@ -156,9 +156,9 @@ class CommunicationList extends ListResource
      *                        efficient page size, i.e. min(limit, 1000)
      * @return ArrayMetadata Array of results along with metadata
      */
-    public function readWithMetadata(string $conversationSid, array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
+    public function readWithMetadata(string $conversationId, array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
     {
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
+        $this->uri = '/Conversations/' . \rawurlencode($conversationId)
         .'/Communications';
         $streamWithMetadata = $this->streamWithMetadata($options, $limit, $pageSize);
         $readResponse = \iterator_to_array($streamWithMetadata, false);
@@ -329,20 +329,20 @@ class CommunicationList extends ListResource
     /**
      * Constructs a CommunicationContext
      *
-     * @param string $conversationSid
+     * @param string $conversationId
      *
-     * @param string $sid
+     * @param string $id
      */
     public function getContext(
-        string $conversationSid
-        , string $sid
+        string $conversationId
+        , string $id
         
     ): CommunicationContext
     {
         return new CommunicationContext(
             $this->version,
-            $conversationSid,
-            $sid
+            $conversationId,
+            $id
         );
     }
 

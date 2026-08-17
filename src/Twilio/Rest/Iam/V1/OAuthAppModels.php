@@ -33,6 +33,7 @@ abstract class OAuthAppModels
      * @property string|null $ownerSid
      * @property string $description
      * @property string|null $clientSid
+     * @property string $tokenEndpointAuthMethod Determines how the client authenticates. Account OAuth apps on v1 only support 'client_secret_basic'. For PKCE (none), use the v2 API.
      * @property IamV1OrganizationVendoroauthappPolicy $policy
      * @property int $accessTokenTtl
     */
@@ -104,6 +105,7 @@ class IamV1AccountVendorOauthAppCreateRequest implements \JsonSerializable
      * @property string|null $ownerSid
      * @property string $description
      * @property string|null $clientSid
+     * @property string $tokenEndpointAuthMethod Determines how the client authenticates. Account OAuth apps on v1 only support 'client_secret_basic'. For PKCE (none), use the v2 API.
      * @property IamV1OrganizationVendoroauthappPolicy $policy
      * @property int $accessTokenTtl
     */
@@ -112,6 +114,7 @@ class IamV1AccountVendorOauthAppCreateRequest implements \JsonSerializable
         protected $ownerSid;
         protected $description;
         protected $clientSid;
+        protected $tokenEndpointAuthMethod;
         protected $policy;
         protected $accessTokenTtl;
     public function __construct(array $payload = []) {
@@ -120,6 +123,7 @@ class IamV1AccountVendorOauthAppCreateRequest implements \JsonSerializable
         $this->ownerSid = Values::array_get($payload, 'owner_sid');
         $this->description = Values::array_get($payload, 'description');
         $this->clientSid = Values::array_get($payload, 'client_sid');
+        $this->tokenEndpointAuthMethod = Values::array_get($payload, 'token_endpoint_auth_method');
         $this->policy = Values::array_get($payload, 'policy');
         $this->accessTokenTtl = Values::array_get($payload, 'access_token_ttl');
     }
@@ -147,6 +151,9 @@ class IamV1AccountVendorOauthAppCreateRequest implements \JsonSerializable
         }
         if (isset($this->clientSid)) {
             $jsonString['client_sid'] = $this->clientSid;
+        }
+        if (isset($this->tokenEndpointAuthMethod)) {
+            $jsonString['token_endpoint_auth_method'] = $this->tokenEndpointAuthMethod;
         }
         if (isset($this->policy)) {
             $jsonString['policy'] = $this->policy;

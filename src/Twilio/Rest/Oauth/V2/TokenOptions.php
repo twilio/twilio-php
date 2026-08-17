@@ -30,6 +30,7 @@ abstract class TokenOptions
      * @param string $audience The targeted audience uri
      * @param string $refreshToken JWT token related to refresh access token.
      * @param string $scope The scope of token
+     * @param string $codeVerifier The PKCE code verifier used to generate the code_challenge in the authorization request.
      * @return CreateTokenOptions Options builder
      */
     public static function create(
@@ -42,7 +43,8 @@ abstract class TokenOptions
         string $redirectUri = Values::NONE,
         string $audience = Values::NONE,
         string $refreshToken = Values::NONE,
-        string $scope = Values::NONE
+        string $scope = Values::NONE,
+        string $codeVerifier = Values::NONE
 
     ): CreateTokenOptions
     {
@@ -55,7 +57,8 @@ abstract class TokenOptions
             $redirectUri,
             $audience,
             $refreshToken,
-            $scope
+            $scope,
+            $codeVerifier
         );
     }
 
@@ -73,6 +76,7 @@ class CreateTokenOptions extends Options
      * @param string $audience The targeted audience uri
      * @param string $refreshToken JWT token related to refresh access token.
      * @param string $scope The scope of token
+     * @param string $codeVerifier The PKCE code verifier used to generate the code_challenge in the authorization request.
      */
     public function __construct(
         
@@ -84,7 +88,8 @@ class CreateTokenOptions extends Options
         string $redirectUri = Values::NONE,
         string $audience = Values::NONE,
         string $refreshToken = Values::NONE,
-        string $scope = Values::NONE
+        string $scope = Values::NONE,
+        string $codeVerifier = Values::NONE
 
     ) {
         $this->options['accountSid'] = $accountSid;
@@ -96,6 +101,7 @@ class CreateTokenOptions extends Options
         $this->options['audience'] = $audience;
         $this->options['refreshToken'] = $refreshToken;
         $this->options['scope'] = $scope;
+        $this->options['codeVerifier'] = $codeVerifier;
     }
 
     /**
@@ -203,6 +209,18 @@ class CreateTokenOptions extends Options
     public function setScope(string $scope): self
     {
         $this->options['scope'] = $scope;
+        return $this;
+    }
+
+    /**
+     * The PKCE code verifier used to generate the code_challenge in the authorization request.
+     *
+     * @param string $codeVerifier The PKCE code verifier used to generate the code_challenge in the authorization request.
+     * @return $this Fluent Builder
+     */
+    public function setCodeVerifier(string $codeVerifier): self
+    {
+        $this->options['codeVerifier'] = $codeVerifier;
         return $this;
     }
 

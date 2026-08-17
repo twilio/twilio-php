@@ -31,6 +31,7 @@ use Twilio\Deserialize;
  * @property string $description
  * @property \DateTime $dateCreated
  * @property string $createdBy
+ * @property string $creatorSid
  * @property string $secret
  * @property string $status
  * @property string $policy
@@ -57,6 +58,7 @@ class OAuthAppInstance extends InstanceResource
             'description' => Values::array_get($payload, 'description'),
             'dateCreated' => Deserialize::dateTime(Values::array_get($payload, 'date_created')),
             'createdBy' => Values::array_get($payload, 'created_by'),
+            'creatorSid' => Values::array_get($payload, 'creator_sid'),
             'secret' => Values::array_get($payload, 'secret'),
             'status' => Values::array_get($payload, 'status'),
             'policy' => Values::array_get($payload, 'policy'),

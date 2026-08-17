@@ -48,6 +48,7 @@ use Twilio\Deserialize;
  * @property array|null $properties
  * @property array|null $trust
  * @property array|null $annotation
+ * @property string[]|null $agentSessionSummaries
  */
 class CallSummariesInstance extends InstanceResource
 {
@@ -86,6 +87,7 @@ class CallSummariesInstance extends InstanceResource
             'properties' => Values::array_get($payload, 'properties'),
             'trust' => Values::array_get($payload, 'trust'),
             'annotation' => Values::array_get($payload, 'annotation'),
+            'agentSessionSummaries' => Values::array_get($payload, 'agent_session_summaries'),
         ];
 
         $this->solution = [];

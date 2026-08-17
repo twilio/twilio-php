@@ -22,6 +22,7 @@ use Twilio\Rest\Numbers\V2\ApplicationList;
 use Twilio\Rest\Numbers\V2\AuthorizationDocumentList;
 use Twilio\Rest\Numbers\V2\BulkHostedNumberOrderList;
 use Twilio\Rest\Numbers\V2\BundleCloneList;
+use Twilio\Rest\Numbers\V2\CallerIdList;
 use Twilio\Rest\Numbers\V2\HostedNumberOrderList;
 use Twilio\Rest\Numbers\V2\RegulatoryComplianceList;
 use Twilio\Version;
@@ -31,12 +32,14 @@ use Twilio\Version;
  * @property AuthorizationDocumentList $authorizationDocuments
  * @property BulkHostedNumberOrderList $bulkHostedNumberOrders
  * @property BundleCloneList $bundleClone
+ * @property CallerIdList $callerIds
  * @property HostedNumberOrderList $hostedNumberOrders
  * @property RegulatoryComplianceList $regulatoryCompliance
  * @method \Twilio\Rest\Numbers\V2\AuthorizationDocumentContext authorizationDocuments(string $sid)
  * @method \Twilio\Rest\Numbers\V2\BulkHostedNumberOrderContext bulkHostedNumberOrders(string $bulkHostingSid)
  * @method \Twilio\Rest\Numbers\V2\HostedNumberOrderContext hostedNumberOrders(string $sid)
  * @method \Twilio\Rest\Numbers\V2\ApplicationContext applications(string $sid)
+ * @method \Twilio\Rest\Numbers\V2\CallerIdContext callerIds(string $callerIdSid)
  */
 class V2 extends Version
 {
@@ -44,6 +47,7 @@ class V2 extends Version
     protected $_authorizationDocuments;
     protected $_bulkHostedNumberOrders;
     protected $_bundleClone;
+    protected $_callerIds;
     protected $_hostedNumberOrders;
     protected $_regulatoryCompliance;
 
@@ -88,6 +92,14 @@ class V2 extends Version
             $this->_bundleClone = new BundleCloneList($this);
         }
         return $this->_bundleClone;
+    }
+
+    protected function getCallerIds(): CallerIdList
+    {
+        if (!$this->_callerIds) {
+            $this->_callerIds = new CallerIdList($this);
+        }
+        return $this->_callerIds;
     }
 
     protected function getHostedNumberOrders(): HostedNumberOrderList

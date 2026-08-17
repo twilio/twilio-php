@@ -66,6 +66,7 @@ abstract class ChannelsSenderModels
 
     /**
      * @property string $senderId The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format.
+     * @property string|null $friendlyName Optional display label for the sender in the Twilio Console.
      * @property MessagingV2ChannelsSenderConfiguration $configuration
      * @property MessagingV2ChannelsSenderWebhook $webhook
      * @property MessagingV2ChannelsSenderProfile $profile
@@ -76,6 +77,7 @@ abstract class ChannelsSenderModels
     }
 
     /**
+     * @property string|null $friendlyName Optional display label for the sender in the Twilio Console.
      * @property MessagingV2ChannelsSenderConfiguration $configuration
      * @property MessagingV2ChannelsSenderWebhook $webhook
      * @property MessagingV2ChannelsSenderProfile $profile
@@ -301,16 +303,19 @@ class MessagingV2ChannelsSenderRequestsCreate implements \JsonSerializable
 {
     /**
      * @property string $senderId The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format.
+     * @property string|null $friendlyName Optional display label for the sender in the Twilio Console.
      * @property MessagingV2ChannelsSenderConfiguration $configuration
      * @property MessagingV2ChannelsSenderWebhook $webhook
      * @property MessagingV2ChannelsSenderProfile $profile
     */
         protected $senderId;
+        protected $friendlyName;
         protected $configuration;
         protected $webhook;
         protected $profile;
     public function __construct(array $payload = []) {
         $this->senderId = Values::array_get($payload, 'sender_id');
+        $this->friendlyName = Values::array_get($payload, 'friendly_name');
         $this->configuration = Values::array_get($payload, 'configuration');
         $this->webhook = Values::array_get($payload, 'webhook');
         $this->profile = Values::array_get($payload, 'profile');
@@ -326,6 +331,9 @@ class MessagingV2ChannelsSenderRequestsCreate implements \JsonSerializable
         $jsonString = [
             'sender_id' => $this->senderId
         ];
+        if (isset($this->friendlyName)) {
+            $jsonString['friendly_name'] = $this->friendlyName;
+        }
         if (isset($this->configuration)) {
             $jsonString['configuration'] = $this->configuration;
         }
@@ -342,14 +350,17 @@ class MessagingV2ChannelsSenderRequestsCreate implements \JsonSerializable
 class MessagingV2ChannelsSenderRequestsUpdate implements \JsonSerializable
 {
     /**
+     * @property string|null $friendlyName Optional display label for the sender in the Twilio Console.
      * @property MessagingV2ChannelsSenderConfiguration $configuration
      * @property MessagingV2ChannelsSenderWebhook $webhook
      * @property MessagingV2ChannelsSenderProfile $profile
     */
+        protected $friendlyName;
         protected $configuration;
         protected $webhook;
         protected $profile;
     public function __construct(array $payload = []) {
+        $this->friendlyName = Values::array_get($payload, 'friendly_name');
         $this->configuration = Values::array_get($payload, 'configuration');
         $this->webhook = Values::array_get($payload, 'webhook');
         $this->profile = Values::array_get($payload, 'profile');
@@ -364,6 +375,9 @@ class MessagingV2ChannelsSenderRequestsUpdate implements \JsonSerializable
     {
         $jsonString = [
         ];
+        if (isset($this->friendlyName)) {
+            $jsonString['friendly_name'] = $this->friendlyName;
+        }
         if (isset($this->configuration)) {
             $jsonString['configuration'] = $this->configuration;
         }

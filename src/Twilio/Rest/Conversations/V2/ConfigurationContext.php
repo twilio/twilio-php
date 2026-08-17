@@ -33,22 +33,22 @@ class ConfigurationContext extends InstanceContext
      * Initialize the ConfigurationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid
+     * @param string $id
      */
     public function __construct(
         Version $version,
-        $sid
+        $id
     ) {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
 
         // Path Solution
         $this->solution = [
-        'sid' =>
-            $sid,
+        'id' =>
+            $id,
         ];
 
-        $this->uri = '/ControlPlane/Configurations/' . \rawurlencode($sid)
+        $this->uri = '/ControlPlane/Configurations/' . \rawurlencode($id)
         .'';
     }
 
@@ -84,7 +84,7 @@ class ConfigurationContext extends InstanceContext
         return new CreateConfiguration202ResponseInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
     }
 
@@ -103,7 +103,7 @@ class ConfigurationContext extends InstanceContext
         $resource = new CreateConfiguration202ResponseInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         return new ResourceMetadata(
             $resource,
@@ -140,7 +140,7 @@ class ConfigurationContext extends InstanceContext
         return new ListConfiguration200ResponseConfigurationsInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
         
     }
@@ -158,7 +158,7 @@ class ConfigurationContext extends InstanceContext
         $resource = new ListConfiguration200ResponseConfigurationsInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(
@@ -203,7 +203,7 @@ class ConfigurationContext extends InstanceContext
         return new CreateConfiguration202ResponseInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
         
     }
@@ -223,7 +223,7 @@ class ConfigurationContext extends InstanceContext
         $resource = new CreateConfiguration202ResponseInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(

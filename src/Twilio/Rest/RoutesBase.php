@@ -15,12 +15,15 @@ namespace Twilio\Rest;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Routes\V2;
+use Twilio\Rest\Routes\V3;
 
 /**
  * @property \Twilio\Rest\Routes\V2 $v2
+ * @property \Twilio\Rest\Routes\V3 $v3
  */
 class RoutesBase extends Domain {
     protected $_v2;
+    protected $_v3;
 
     /**
      * Construct the Routes Domain
@@ -42,6 +45,16 @@ class RoutesBase extends Domain {
             $this->_v2 = new V2($this);
         }
         return $this->_v2;
+    }
+
+    /**
+     * @return V3 Version v3 of routes
+     */
+    protected function getV3(): V3 {
+        if (!$this->_v3) {
+            $this->_v3 = new V3($this);
+        }
+        return $this->_v3;
     }
 
     /**

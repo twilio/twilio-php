@@ -33,22 +33,22 @@ class ConversationContext extends InstanceContext
      * Initialize the ConversationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid
+     * @param string $id
      */
     public function __construct(
         Version $version,
-        $sid
+        $id
     ) {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
 
         // Path Solution
         $this->solution = [
-        'sid' =>
-            $sid,
+        'id' =>
+            $id,
         ];
 
-        $this->uri = '/Conversations/' . \rawurlencode($sid)
+        $this->uri = '/Conversations/' . \rawurlencode($id)
         .'';
     }
 
@@ -84,7 +84,7 @@ class ConversationContext extends InstanceContext
         return new CreateConfiguration202ResponseInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
     }
 
@@ -103,7 +103,7 @@ class ConversationContext extends InstanceContext
         $resource = new CreateConfiguration202ResponseInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         return new ResourceMetadata(
             $resource,
@@ -140,7 +140,7 @@ class ConversationContext extends InstanceContext
         return new ListConversationByAccount200ResponseConversationsInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
         
     }
@@ -158,7 +158,7 @@ class ConversationContext extends InstanceContext
         $resource = new ListConversationByAccount200ResponseConversationsInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(
@@ -199,7 +199,7 @@ class ConversationContext extends InstanceContext
         return new ListConversationByAccount200ResponseConversationsInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
         
     }
@@ -218,7 +218,7 @@ class ConversationContext extends InstanceContext
         $resource = new ListConversationByAccount200ResponseConversationsInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(
@@ -259,7 +259,7 @@ class ConversationContext extends InstanceContext
         return new ListConversationByAccount200ResponseConversationsInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
         
     }
@@ -278,7 +278,7 @@ class ConversationContext extends InstanceContext
         $resource = new ListConversationByAccount200ResponseConversationsInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(

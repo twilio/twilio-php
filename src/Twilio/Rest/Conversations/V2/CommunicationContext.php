@@ -32,27 +32,27 @@ class CommunicationContext extends InstanceContext
      * Initialize the CommunicationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $conversationSid
-     * @param string $sid
+     * @param string $conversationId
+     * @param string $id
      */
     public function __construct(
         Version $version,
-        $conversationSid,
-        $sid
+        $conversationId,
+        $id
     ) {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
 
         // Path Solution
         $this->solution = [
-        'conversationSid' =>
-            $conversationSid,
-        'sid' =>
-            $sid,
+        'conversationId' =>
+            $conversationId,
+        'id' =>
+            $id,
         ];
 
-        $this->uri = '/Conversations/' . \rawurlencode($conversationSid)
-        .'/Communications/' . \rawurlencode($sid)
+        $this->uri = '/Conversations/' . \rawurlencode($conversationId)
+        .'/Communications/' . \rawurlencode($id)
         .'';
     }
 
@@ -85,8 +85,8 @@ class CommunicationContext extends InstanceContext
         return new ListCommunicationByConversation200ResponseCommunicationsInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['conversationSid'],
-            $this->solution['sid']
+            $this->solution['conversationId'],
+            $this->solution['id']
         );
         
     }
@@ -105,8 +105,8 @@ class CommunicationContext extends InstanceContext
         $resource = new ListCommunicationByConversation200ResponseCommunicationsInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['conversationSid'],
-                        $this->solution['sid']
+                        $this->solution['conversationId'],
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(

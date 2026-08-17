@@ -28,6 +28,10 @@ use Twilio\Deserialize;
 /**
  * @property string $content
  * @property \DateTime $createdAt
+ * @property int $chunkIndex
+ * @property string $documentTitle
+ * @property string $documentUrl
+ * @property int $documentNumber
  */
 class KnowledgeChunkInstance extends InstanceResource
 {
@@ -48,6 +52,10 @@ class KnowledgeChunkInstance extends InstanceResource
         $this->properties = [
             'content' => Values::array_get($payload, 'content'),
             'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'createdAt')),
+            'chunkIndex' => Values::array_get($payload, 'chunkIndex'),
+            'documentTitle' => Values::array_get($payload, 'documentTitle'),
+            'documentUrl' => Values::array_get($payload, 'documentUrl'),
+            'documentNumber' => Values::array_get($payload, 'documentNumber'),
         ];
 
         $this->solution = ['kbId' => $kbId ?: ($this->properties['kbId'] ?? null), 'knowledgeId' => $knowledgeId ?: ($this->properties['knowledgeId'] ?? null), ];

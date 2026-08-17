@@ -77,6 +77,8 @@ class TokenList extends ListResource
                 $options['refreshToken'],
             'scope' =>
                 $options['scope'],
+            'code_verifier' =>
+                $options['codeVerifier'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);

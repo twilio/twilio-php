@@ -176,10 +176,28 @@ class ParticipantList extends ListResource
                 $options['trim'],
             'CallToken' =>
                 $options['callToken'],
+            'Passports' =>
+                $options['passports'],
             'ClientNotificationUrl' =>
                 $options['clientNotificationUrl'],
             'CallerDisplayName' =>
                 $options['callerDisplayName'],
+            'EmergencyCallerPosition' =>
+                $options['emergencyCallerPosition'],
+            'EmergencyCallerLocation' =>
+                $options['emergencyCallerLocation'],
+            'EmergencyName' =>
+                $options['emergencyName'],
+            'EmergencyAddress' =>
+                $options['emergencyAddress'],
+            'EmergencyZipCode' =>
+                $options['emergencyZipCode'],
+            'EmergencyCity' =>
+                $options['emergencyCity'],
+            'EmergencyState' =>
+                $options['emergencyState'],
+            'EmergencyCountry' =>
+                $options['emergencyCountry'],
         ]);
 
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);

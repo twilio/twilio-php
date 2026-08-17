@@ -35,6 +35,7 @@ use Twilio\Version;
  * @property array|null $sipEdge
  * @property array|null $sdkEdge
  * @property array|null $clientEdge
+ * @property string|null $conversationRelayData
  */
 class EventInstance extends InstanceResource
 {
@@ -62,6 +63,7 @@ class EventInstance extends InstanceResource
             'sipEdge' => Values::array_get($payload, 'sip_edge'),
             'sdkEdge' => Values::array_get($payload, 'sdk_edge'),
             'clientEdge' => Values::array_get($payload, 'client_edge'),
+            'conversationRelayData' => Values::array_get($payload, 'conversation_relay_data'),
         ];
 
         $this->solution = ['callSid' => $callSid, ];

@@ -288,4 +288,14 @@ class Dial extends TwiML {
     public function setEvents($events): self {
         return $this->setAttribute('events', $events);
     }
+
+    /**
+     * Add Passports attribute.
+     *
+     * @param string $passports Base64-encoded comma-separated identity passports
+     *                          (e.g. shaken, div)
+     */
+    public function setPassports($passports): self {
+        return $this->setAttribute('passports', $passports);
+    }
 }

@@ -33,12 +33,12 @@ use Twilio\Version;
  * @property ConversationList $conversations
  * @property OperationList $operations
  * @property ParticipantList $participants
- * @method \Twilio\Rest\Conversations\V2\ConfigurationContext configurations(string $sid)
- * @method \Twilio\Rest\Conversations\V2\ConversationContext conversations(string $sid)
+ * @method \Twilio\Rest\Conversations\V2\ConfigurationContext configurations(string $id)
+ * @method \Twilio\Rest\Conversations\V2\ConversationContext conversations(string $id)
  * @method \Twilio\Rest\Conversations\V2\ActionContext actions(string $conversationId, string $actionId)
- * @method \Twilio\Rest\Conversations\V2\ParticipantContext participants(string $conversationSid, string $sid)
- * @method \Twilio\Rest\Conversations\V2\CommunicationContext communications(string $conversationSid, string $sid)
- * @method \Twilio\Rest\Conversations\V2\OperationContext operations(string $sid)
+ * @method \Twilio\Rest\Conversations\V2\ParticipantContext participants(string $conversationId, string $id)
+ * @method \Twilio\Rest\Conversations\V2\CommunicationContext communications(string $conversationId, string $id)
+ * @method \Twilio\Rest\Conversations\V2\OperationContext operations(string $id)
  */
 class V2 extends Version
 {
