@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-*'
   workflow_dispatch:
 
 permissions:
@@ -31,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["8.0", "8.1", "8.2", "8.3", "8.4"]
+        php: ["8.2", "8.3", "8.4"]
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
@@ -69,9 +70,41 @@ jobs:
       - name: Run tests
         run: make test
 
+  validate-release:
+    name: Validate Release
+    needs: [verify]
+    runs-on: ubuntu-x64
+    if: success() && github.ref_type == 'tag' && github.repository_owner == 'twilio'
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: "8.3"
+
+      - name: Validate tag matches VersionInfo
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          PKG_VERSION=$(php -r "require 'src/Twilio/VersionInfo.php'; echo Twilio\VersionInfo::string();")
+          echo "Tag: $TAG"
+          echo "Package version: $PKG_VERSION"
+          if [ "$TAG" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $TAG does not match VersionInfo.php version $PKG_VERSION"
+            exit 1
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Verify release type
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          case "$TAG" in
+            *-*) echo "::notice::Release type: PRE-RELEASE ($TAG)" ;;
+            *)   echo "::notice::Release type: STABLE ($TAG)" ;;
+          esac
+
   publish:
     name: Publish to Packagist
-    needs: [verify]
+    needs: [validate-release]
     runs-on: ubuntu-x64
     if: success() && github.repository_owner == 'twilio'
     environment: production
@@ -115,7 +148,7 @@ jobs:
           subject-path: release.zip
 
       - name: Create GitHub Release
-        uses: twilio/sdk-actions/github-release@23b656b843d2a3461cf38e4fd466c07a822d5fc0 # v1
+        uses: twilio/sdk-actions/github-release@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
         with:
           changelog-file: CHANGES.md
 
