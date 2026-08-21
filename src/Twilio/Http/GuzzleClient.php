@@ -25,6 +25,8 @@ final class GuzzleClient implements Client {
                             array $params = [], array $data = [], array $headers = [],
                             ?string $user = null, ?string $password = null,
                             ?int $timeout = null, ?AuthStrategy $authStrategy = null): Response {
+        $headers = RequestHeaders::validate($headers);
+
         try {
             $options = [
                 'timeout' => $timeout,
