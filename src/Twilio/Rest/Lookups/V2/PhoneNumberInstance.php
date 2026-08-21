@@ -34,7 +34,7 @@ use Twilio\Version;
  * @property string $callerName
  * @property string $simSwap
  * @property string $callForwarding
- * @property string $lineTypeIntelligence
+ * @property array|null $lineTypeIntelligence
  * @property string $lineStatus
  * @property string $identityMatch
  * @property string $reassignedNumber
@@ -146,4 +146,3 @@ class PhoneNumberInstance extends InstanceResource
         return '[Twilio.Lookups.V2.PhoneNumberInstance ' . \implode(' ', $context) . ']';
     }
 }
-
