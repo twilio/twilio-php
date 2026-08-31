@@ -16,6 +16,7 @@ clean:
 install: clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
 	$(COMPOSER) install
+	@test -f phpDocumentor.phar || curl -sL https://phpdoc.org/phpDocumentor.phar -o phpDocumentor.phar
 
 vendor: install
 
