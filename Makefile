@@ -1,6 +1,6 @@
 # Twilio API helper library.
 # See LICENSE file for copyright and license details.
-.PHONY: all clean install test test-docker docs authors docker-dev-build docker-dev-clean docker-dev-test
+.PHONY: all clean install test test-docker docs docs-new authors docker-dev-build docker-dev-clean docker-dev-test
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
@@ -32,6 +32,10 @@ docs-install:
 
 docs:
 	${PHP74} ${PHPDOX_PHAR}
+
+# phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
+docs-new:
+	docker run --rm -v $(PWD):/data phpdoc/phpdoc -d /data/src -t /data/docs/api
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
