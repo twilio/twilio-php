@@ -27,10 +27,11 @@ test-docker:
 	docker run twilio/twilio-php phpunit -d memory_limit=512M --disallow-test-output --colors --configuration tests/phpunit.xml
 
 PHPDOX_PHAR=phpdox.phar
+PHP74 = $(shell command -v /opt/homebrew/opt/php@7.4/bin/php 2>/dev/null || echo php)
 docs-install:
 
 docs:
-	php ${PHPDOX_PHAR}
+	${PHP74} ${PHPDOX_PHAR}
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
