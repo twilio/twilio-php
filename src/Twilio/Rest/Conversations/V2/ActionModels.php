@@ -21,7 +21,7 @@ abstract class ActionModels
     /**
      * @property string $participantId Participant ID to resolve address from.
      * @property string $address Explicit address formatted according to channel type.
-     * @property string $channel Channel type for address resolution.
+     * @property string $channel
     */
     public static function createConversationsV2SendMessageParticipant(array $payload = []): ConversationsV2SendMessageParticipant
     {
@@ -66,7 +66,7 @@ class ConversationsV2SendMessageParticipant implements \JsonSerializable
     /**
      * @property string $participantId Participant ID to resolve address from.
      * @property string $address Explicit address formatted according to channel type.
-     * @property string $channel Channel type for address resolution.
+     * @property string $channel
     */
         protected $participantId;
         protected $address;

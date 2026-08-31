@@ -18,29 +18,41 @@ namespace Twilio\Rest\Trusthub;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Trusthub\V1\A2PBrandRegistrationList;
+use Twilio\Rest\Trusthub\V1\A2PBrandRegistrationEmbeddedSessionList;
+use Twilio\Rest\Trusthub\V1\A2PCampaignRegistrationList;
+use Twilio\Rest\Trusthub\V1\A2PCampaignRegistrationEmbeddedSessionList;
 use Twilio\Rest\Trusthub\V1\ComplianceInquiriesList;
 use Twilio\Rest\Trusthub\V1\ComplianceRegistrationInquiriesList;
 use Twilio\Rest\Trusthub\V1\ComplianceTollfreeInquiriesList;
 use Twilio\Rest\Trusthub\V1\CustomerProfilesList;
+use Twilio\Rest\Trusthub\V1\CustomerProfilesProvisionalCopyList;
 use Twilio\Rest\Trusthub\V1\EndUserList;
 use Twilio\Rest\Trusthub\V1\EndUserTypeList;
 use Twilio\Rest\Trusthub\V1\PoliciesList;
 use Twilio\Rest\Trusthub\V1\SupportingDocumentList;
 use Twilio\Rest\Trusthub\V1\SupportingDocumentTypeList;
 use Twilio\Rest\Trusthub\V1\TrustProductsList;
+use Twilio\Rest\Trusthub\V1\TrustProductsProvisionalCopyList;
 use Twilio\Version;
 
 /**
+ * @property A2PBrandRegistrationList $a2PBrandRegistrations
+ * @property A2PBrandRegistrationEmbeddedSessionList $a2PBrandRegistrationEmbeddedSessions
+ * @property A2PCampaignRegistrationList $a2PCampaignRegistrations
+ * @property A2PCampaignRegistrationEmbeddedSessionList $a2PCampaignRegistrationEmbeddedSessions
  * @property ComplianceInquiriesList $complianceInquiries
  * @property ComplianceRegistrationInquiriesList $complianceRegistrationInquiries
  * @property ComplianceTollfreeInquiriesList $complianceTollfreeInquiries
  * @property CustomerProfilesList $customerProfiles
+ * @property CustomerProfilesProvisionalCopyList $customerProfilesProvisionalCopy
  * @property EndUserList $endUsers
  * @property EndUserTypeList $endUserTypes
  * @property PoliciesList $policies
  * @property SupportingDocumentList $supportingDocuments
  * @property SupportingDocumentTypeList $supportingDocumentTypes
  * @property TrustProductsList $trustProducts
+ * @property TrustProductsProvisionalCopyList $trustProductsProvisionalCopy
  * @method \Twilio\Rest\Trusthub\V1\CustomerProfilesContext customerProfiles(string $sid)
  * @method \Twilio\Rest\Trusthub\V1\EndUserContext endUsers(string $sid)
  * @method \Twilio\Rest\Trusthub\V1\EndUserTypeContext endUserTypes(string $sid)
@@ -51,16 +63,22 @@ use Twilio\Version;
  */
 class V1 extends Version
 {
+    protected $_a2PBrandRegistrations;
+    protected $_a2PBrandRegistrationEmbeddedSessions;
+    protected $_a2PCampaignRegistrations;
+    protected $_a2PCampaignRegistrationEmbeddedSessions;
     protected $_complianceInquiries;
     protected $_complianceRegistrationInquiries;
     protected $_complianceTollfreeInquiries;
     protected $_customerProfiles;
+    protected $_customerProfilesProvisionalCopy;
     protected $_endUsers;
     protected $_endUserTypes;
     protected $_policies;
     protected $_supportingDocuments;
     protected $_supportingDocumentTypes;
     protected $_trustProducts;
+    protected $_trustProductsProvisionalCopy;
 
     /**
      * Construct the V1 version of Trusthub
@@ -71,6 +89,38 @@ class V1 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v1';
+    }
+
+    protected function getA2PBrandRegistrations(): A2PBrandRegistrationList
+    {
+        if (!$this->_a2PBrandRegistrations) {
+            $this->_a2PBrandRegistrations = new A2PBrandRegistrationList($this);
+        }
+        return $this->_a2PBrandRegistrations;
+    }
+
+    protected function getA2PBrandRegistrationEmbeddedSessions(): A2PBrandRegistrationEmbeddedSessionList
+    {
+        if (!$this->_a2PBrandRegistrationEmbeddedSessions) {
+            $this->_a2PBrandRegistrationEmbeddedSessions = new A2PBrandRegistrationEmbeddedSessionList($this);
+        }
+        return $this->_a2PBrandRegistrationEmbeddedSessions;
+    }
+
+    protected function getA2PCampaignRegistrations(): A2PCampaignRegistrationList
+    {
+        if (!$this->_a2PCampaignRegistrations) {
+            $this->_a2PCampaignRegistrations = new A2PCampaignRegistrationList($this);
+        }
+        return $this->_a2PCampaignRegistrations;
+    }
+
+    protected function getA2PCampaignRegistrationEmbeddedSessions(): A2PCampaignRegistrationEmbeddedSessionList
+    {
+        if (!$this->_a2PCampaignRegistrationEmbeddedSessions) {
+            $this->_a2PCampaignRegistrationEmbeddedSessions = new A2PCampaignRegistrationEmbeddedSessionList($this);
+        }
+        return $this->_a2PCampaignRegistrationEmbeddedSessions;
     }
 
     protected function getComplianceInquiries(): ComplianceInquiriesList
@@ -103,6 +153,14 @@ class V1 extends Version
             $this->_customerProfiles = new CustomerProfilesList($this);
         }
         return $this->_customerProfiles;
+    }
+
+    protected function getCustomerProfilesProvisionalCopy(): CustomerProfilesProvisionalCopyList
+    {
+        if (!$this->_customerProfilesProvisionalCopy) {
+            $this->_customerProfilesProvisionalCopy = new CustomerProfilesProvisionalCopyList($this);
+        }
+        return $this->_customerProfilesProvisionalCopy;
     }
 
     protected function getEndUsers(): EndUserList
@@ -151,6 +209,14 @@ class V1 extends Version
             $this->_trustProducts = new TrustProductsList($this);
         }
         return $this->_trustProducts;
+    }
+
+    protected function getTrustProductsProvisionalCopy(): TrustProductsProvisionalCopyList
+    {
+        if (!$this->_trustProductsProvisionalCopy) {
+            $this->_trustProductsProvisionalCopy = new TrustProductsProvisionalCopyList($this);
+        }
+        return $this->_trustProductsProvisionalCopy;
     }
 
     /**

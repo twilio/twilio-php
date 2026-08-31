@@ -27,7 +27,7 @@ abstract class ConversationModels
     }
 
     /**
-     * @property string $channel
+     * @property string $channel Channel type for a Communication address.
      * @property string $address
      * @property string $channelId
     */
@@ -77,7 +77,7 @@ abstract class ConversationModels
 
     /**
      * @property string $name The name of the Conversation.
-     * @property string $status The state of the Conversation.
+     * @property string $status Lifecycle status of a Conversation.
      * @property PatchConversationByIdRequestConfiguration $configuration
     */
     public static function createPatchConversationByIdRequest(array $payload = []): PatchConversationByIdRequest
@@ -87,7 +87,7 @@ abstract class ConversationModels
 
     /**
      * @property string $name The name of the Conversation.
-     * @property string $status The state of the Conversation.
+     * @property string $status Lifecycle status of a Conversation.
     */
     public static function createUpdateConversationByIdRequest(array $payload = []): UpdateConversationByIdRequest
     {
@@ -105,7 +105,7 @@ abstract class ConversationModels
     /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the Configuration.
-     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+     * @property ConversationsV2ConversationGroupingType $conversationGroupingType
      * @property string $memoryStoreId Memory Store ID for Profile resolution.
      * @property array<string,mixed> $channelSettings Channel-specific parameters forwarded as-is to the downstream sending service. Allows passing backend-specific fields without requiring API changes.
      * @property ConversationsV2StatusCallbackConfig[] $statusCallbacks List of default webhook configurations applied to Conversations under this Configuration.
@@ -149,7 +149,7 @@ class CreateConversationWithConfigRequestConfiguration implements \JsonSerializa
 class CreateConversationWithConfigRequestParticipantsAddresses implements \JsonSerializable
 {
     /**
-     * @property string $channel
+     * @property string $channel Channel type for a Communication address.
      * @property string $address
      * @property string $channelId
     */
@@ -326,7 +326,7 @@ class PatchConversationByIdRequest implements \JsonSerializable
 {
     /**
      * @property string $name The name of the Conversation.
-     * @property string $status The state of the Conversation.
+     * @property string $status Lifecycle status of a Conversation.
      * @property PatchConversationByIdRequestConfiguration $configuration
     */
         protected $name;
@@ -364,7 +364,7 @@ class UpdateConversationByIdRequest implements \JsonSerializable
 {
     /**
      * @property string $name The name of the Conversation.
-     * @property string $status The state of the Conversation.
+     * @property string $status Lifecycle status of a Conversation.
     */
         protected $name;
         protected $status;
@@ -419,7 +419,7 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
     /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the Configuration.
-     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+     * @property ConversationsV2ConversationGroupingType $conversationGroupingType
      * @property string $memoryStoreId Memory Store ID for Profile resolution.
      * @property array<string,mixed> $channelSettings Channel-specific parameters forwarded as-is to the downstream sending service. Allows passing backend-specific fields without requiring API changes.
      * @property ConversationsV2StatusCallbackConfig[] $statusCallbacks List of default webhook configurations applied to Conversations under this Configuration.

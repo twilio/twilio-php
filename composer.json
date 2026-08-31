@@ -15,9 +15,9 @@
         "php": ">=7.1.0"
     },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "phpunit/phpunit": ">=7.0 < 10",
-        "friendsofphp/php-cs-fixer": "^3.0"
+        "guzzlehttp/guzzle": "7.15.3",
+        "phpunit/phpunit": "9.6.34",
+        "friendsofphp/php-cs-fixer": "3.94.2"
     },
     "suggest": {
         "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
@@ -40,6 +40,8 @@
         ]
     },
     "config": {
-        "lock": false
+        "platform": {
+            "php": "8.2.0"
+        }
     }
 }

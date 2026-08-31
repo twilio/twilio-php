@@ -19,6 +19,7 @@ namespace Twilio\Rest\Accounts\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\Deserialize;
@@ -75,25 +76,27 @@ class SecondaryAuthTokenInstance extends InstanceResource
     /**
      * Create the SecondaryAuthTokenInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return SecondaryAuthTokenInstance Created SecondaryAuthTokenInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): SecondaryAuthTokenInstance
+    public function create(array $options = []): SecondaryAuthTokenInstance
     {
 
-        return $this->proxy()->create();
+        return $this->proxy()->create($options);
     }
 
     /**
      * Delete the SecondaryAuthTokenInstance
      *
+     * @param array|Options $options Optional Arguments
      * @return bool True if delete succeeds, false otherwise
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function delete(): bool
+    public function delete(array $options = []): bool
     {
 
-        return $this->proxy()->delete();
+        return $this->proxy()->delete($options);
     }
 
     /**

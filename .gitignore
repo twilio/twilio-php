@@ -1,7 +1,6 @@
 vendor/
 vendor-theseer/
 composer.phar
-composer.lock
 coverage.xml
 package.xml
 *.tgz

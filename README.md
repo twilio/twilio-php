@@ -20,11 +20,6 @@ The PHP library documentation can be found [here][libdocs].
 
 This library supports the following PHP implementations:
 
-- PHP 7.2
-- PHP 7.3
-- PHP 7.4
-- PHP 8.0
-- PHP 8.1
 - PHP 8.2
 - PHP 8.3
 - PHP 8.4
@@ -98,7 +93,7 @@ $client->messages->create(
 ```
 
 ## OAuth Feature for Twilio APIs
-We are introducing Client Credentials Flow-based OAuth 2.0 authentication. This feature is currently in beta and its implementation is subject to change.
+We are introducing Client Credentials Flow-based OAuth 2.0 authentication.
 
 API examples [here](https://github.com/twilio/twilio-php/blob/main/example/public_oauth_example.php)
 

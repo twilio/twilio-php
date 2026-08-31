@@ -20,17 +20,13 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Version;
 use Twilio\InstanceContext;
-use Twilio\Rest\Bulkexports\V1\Export\JobList;
 
 
 /**
- * @property JobList $jobs
  * @method \Twilio\Rest\Bulkexports\V1\Export\JobContext jobs(string $jobSid)
  */
 class ExportList extends ListResource
     {
-    protected $_jobs = null;
-
     /**
      * Construct the ExportList
      *
@@ -60,19 +56,6 @@ class ExportList extends ListResource
             $this->version,
             $resourceType
         );
-    }
-
-    /**
-     * Access the jobs
-     */
-    protected function getJobs(): JobList
-    {
-        if (!$this->_jobs) {
-            $this->_jobs = new JobList(
-                $this->version
-            );
-        }
-        return $this->_jobs;
     }
 
     /**

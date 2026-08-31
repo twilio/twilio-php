@@ -320,16 +320,16 @@ class ConversationList extends ListResource
     /**
      * Constructs a ConversationContext
      *
-     * @param string $sid
+     * @param string $id
      */
     public function getContext(
-        string $sid
+        string $id
         
     ): ConversationContext
     {
         return new ConversationContext(
             $this->version,
-            $sid
+            $id
         );
     }
 

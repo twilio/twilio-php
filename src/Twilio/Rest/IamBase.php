@@ -14,10 +14,13 @@ namespace Twilio\Rest;
 
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Iam\V1;
 
 /**
+ * @property \Twilio\Rest\Iam\V1 $v1
  */
 class IamBase extends Domain {
+    protected $_v1;
 
     /**
      * Construct the Iam Domain
@@ -30,6 +33,16 @@ class IamBase extends Domain {
         $this->baseUrl = 'https://iam.twilio.com';
     }
 
+
+    /**
+     * @return V1 Version v1 of iam
+     */
+    protected function getV1(): V1 {
+        if (!$this->_v1) {
+            $this->_v1 = new V1($this);
+        }
+        return $this->_v1;
+    }
 
     /**
      * Magic getter to lazy load version

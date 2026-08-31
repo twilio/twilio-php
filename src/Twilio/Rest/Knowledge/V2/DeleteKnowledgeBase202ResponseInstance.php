@@ -27,6 +27,7 @@ use Twilio\ApiV1Version;
 
 /**
  * @property string $message
+ * @property string $statusUrl
  */
 class DeleteKnowledgeBase202ResponseInstance extends InstanceResource
 {
@@ -45,6 +46,7 @@ class DeleteKnowledgeBase202ResponseInstance extends InstanceResource
         // Marshaled Properties
         $this->properties = [
             'message' => Values::array_get($payload, 'message'),
+            'statusUrl' => Values::array_get($payload, 'statusUrl'),
         ];
 
         $this->solution = ['kbId' => $kbId ?: ($this->properties['kbId'] ?? null), ];

@@ -19,15 +19,36 @@ use Twilio\Values;
 abstract class KnowledgeModels
 {
     /**
+     * @property string $type A URI reference identifying the problem type, resolving to human-readable documentation (e.g., https://www.twilio.com/docs/api/errors/420018).
+     * @property int $code Twilio-specific numeric error code for programmatic handling.
+     * @property string $instance The specific URL or resource that caused the error.
+     * @property string $detail Detailed explanation of the error.
+    */
+    public static function createKnowledgeErrorInstance(array $payload = []): KnowledgeErrorInstance
+    {
+        return new KnowledgeErrorInstance($payload);
+    }
+
+    /**
+     * @property string $title The error type or reason (e.g., \"404 Not Found\", \"500 Internal Server Error\").
+     * @property KnowledgeErrorInstance[] $instances Array of error instances for this error title. Required when an error group is present.
+    */
+    public static function createKnowledgeErrorGroup(array $payload = []): KnowledgeErrorGroup
+    {
+        return new KnowledgeErrorGroup($payload);
+    }
+
+    /**
      * @property string $type Raw text knowledge sources
      * @property string $content The raw text content to be processed
      * @property string $url The URL to crawl for web content
      * @property int $crawlDepth The maximum depth to crawl from the source URL
      * @property string $crawlPeriod Frequency of re-crawling the website for updated content
+     * @property KnowledgeErrorGroup[] $errors Processing errors encountered during web crawling, grouped by title. Array of error groups, where each group has a title and list of error instances. Only present when crawl errors occurred.
      * @property string $fileName Name of the file to be uploaded
      * @property int $fileSize Expected size of the file in bytes
      * @property string $mimeType
-     * @property string $importUrl Presigned S3 URL for file upload (when status is SCHEDULED) or the permanent S3 location after upload completes. Use PUT method to upload the file to this URL when status is SCHEDULED.
+     * @property string $importUrl Presigned S3 URL for file upload (when status is SCHEDULED).  Use PUT method to upload the file to this URL when status is SCHEDULED.
      * @property \DateTime $uploadExpiration Expiration time of the presigned upload URL in ISO 8601 format (only present when status is SCHEDULED)
     */
     public static function createKnowledgeSourceTypes(array $payload = []): KnowledgeSourceTypes
@@ -47,6 +68,72 @@ abstract class KnowledgeModels
 
 }
 
+class KnowledgeErrorInstance implements \JsonSerializable
+{
+    /**
+     * @property string $type A URI reference identifying the problem type, resolving to human-readable documentation (e.g., https://www.twilio.com/docs/api/errors/420018).
+     * @property int $code Twilio-specific numeric error code for programmatic handling.
+     * @property string $instance The specific URL or resource that caused the error.
+     * @property string $detail Detailed explanation of the error.
+    */
+        protected $type;
+        protected $code;
+        protected $instance;
+        protected $detail;
+    public function __construct(array $payload = []) {
+        $this->type = Values::array_get($payload, 'type');
+        $this->code = Values::array_get($payload, 'code');
+        $this->instance = Values::array_get($payload, 'instance');
+        $this->detail = Values::array_get($payload, 'detail');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+            'type' => $this->type,
+            'code' => $this->code,
+            'instance' => $this->instance
+        ];
+        if (isset($this->detail)) {
+            $jsonString['detail'] = $this->detail;
+        }
+        return $jsonString;
+    }
+}
+
+class KnowledgeErrorGroup implements \JsonSerializable
+{
+    /**
+     * @property string $title The error type or reason (e.g., \"404 Not Found\", \"500 Internal Server Error\").
+     * @property KnowledgeErrorInstance[] $instances Array of error instances for this error title. Required when an error group is present.
+    */
+        protected $title;
+        protected $instances;
+    public function __construct(array $payload = []) {
+        $this->title = Values::array_get($payload, 'title');
+        $this->instances = Values::array_get($payload, 'instances');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+            'title' => $this->title,
+            'instances' => $this->instances
+        ];
+        return $jsonString;
+    }
+}
+
 class KnowledgeSourceTypes implements \JsonSerializable
 {
     /**
@@ -55,10 +142,11 @@ class KnowledgeSourceTypes implements \JsonSerializable
      * @property string $url The URL to crawl for web content
      * @property int $crawlDepth The maximum depth to crawl from the source URL
      * @property string $crawlPeriod Frequency of re-crawling the website for updated content
+     * @property KnowledgeErrorGroup[] $errors Processing errors encountered during web crawling, grouped by title. Array of error groups, where each group has a title and list of error instances. Only present when crawl errors occurred.
      * @property string $fileName Name of the file to be uploaded
      * @property int $fileSize Expected size of the file in bytes
      * @property string $mimeType
-     * @property string $importUrl Presigned S3 URL for file upload (when status is SCHEDULED) or the permanent S3 location after upload completes. Use PUT method to upload the file to this URL when status is SCHEDULED.
+     * @property string $importUrl Presigned S3 URL for file upload (when status is SCHEDULED).  Use PUT method to upload the file to this URL when status is SCHEDULED.
      * @property \DateTime $uploadExpiration Expiration time of the presigned upload URL in ISO 8601 format (only present when status is SCHEDULED)
     */
         protected $type;
@@ -66,6 +154,7 @@ class KnowledgeSourceTypes implements \JsonSerializable
         protected $url;
         protected $crawlDepth;
         protected $crawlPeriod;
+        protected $errors;
         protected $fileName;
         protected $fileSize;
         protected $mimeType;
@@ -77,6 +166,7 @@ class KnowledgeSourceTypes implements \JsonSerializable
         $this->url = Values::array_get($payload, 'url');
         $this->crawlDepth = Values::array_get($payload, 'crawlDepth');
         $this->crawlPeriod = Values::array_get($payload, 'crawlPeriod');
+        $this->errors = Values::array_get($payload, 'errors');
         $this->fileName = Values::array_get($payload, 'fileName');
         $this->fileSize = Values::array_get($payload, 'fileSize');
         $this->mimeType = Values::array_get($payload, 'mimeType');
@@ -104,6 +194,9 @@ class KnowledgeSourceTypes implements \JsonSerializable
         }
         if (isset($this->crawlPeriod)) {
             $jsonString['crawlPeriod'] = $this->crawlPeriod;
+        }
+        if (isset($this->errors)) {
+            $jsonString['errors'] = $this->errors;
         }
         if (isset($this->importUrl)) {
             $jsonString['importUrl'] = $this->importUrl;

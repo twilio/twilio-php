@@ -322,16 +322,16 @@ class ConfigurationList extends ListResource
     /**
      * Constructs a ConfigurationContext
      *
-     * @param string $sid
+     * @param string $id
      */
     public function getContext(
-        string $sid
+        string $id
         
     ): ConfigurationContext
     {
         return new ConfigurationContext(
             $this->version,
-            $sid
+            $id
         );
     }
 

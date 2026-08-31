@@ -28,14 +28,23 @@ abstract class ConfigurationModels
     }
 
     /**
+     * @property string $serviceId The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.
+    */
+    public static function createCreateConfigurationRequestConversationsV1Bridge(array $payload = []): CreateConfigurationRequestConversationsV1Bridge
+    {
+        return new CreateConfigurationRequestConversationsV1Bridge($payload);
+    }
+
+    /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the configuration.
-     * @property string $conversationGroupingType The strategy Conversation Orchestrator uses to assign communications to conversations.
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
      * @property string $memoryStoreId The memory store ID that Conversation Orchestrator uses for profile resolution.
      * @property string $channelSettings
      * @property CreateConfigurationRequestStatusCallbacks[] $statusCallbacks A list of webhook configurations.
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+     * @property CreateConfigurationRequestConversationsV1Bridge $conversationsV1Bridge
     */
     public static function createCreateConfigurationRequest(array $payload = []): CreateConfigurationRequest
     {
@@ -54,12 +63,13 @@ abstract class ConfigurationModels
     /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the configuration.
-     * @property string $conversationGroupingType The strategy Conversation Orchestrator uses to assign communications to conversations.
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
      * @property string $memoryStoreId The Memory Store ID for profile resolution.
      * @property string $channelSettings
      * @property UpdateConfigurationRequestStatusCallbacks[] $statusCallbacks
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+     * @property CreateConfigurationRequestConversationsV1Bridge $conversationsV1Bridge
     */
     public static function createUpdateConfigurationRequest(array $payload = []): UpdateConfigurationRequest
     {
@@ -106,17 +116,42 @@ class CreateConfigurationRequestStatusCallbacks implements \JsonSerializable
     }
 }
 
+class CreateConfigurationRequestConversationsV1Bridge implements \JsonSerializable
+{
+    /**
+     * @property string $serviceId The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.
+    */
+        protected $serviceId;
+    public function __construct(array $payload = []) {
+        $this->serviceId = Values::array_get($payload, 'serviceId');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+            'serviceId' => $this->serviceId
+        ];
+        return $jsonString;
+    }
+}
+
 class CreateConfigurationRequest implements \JsonSerializable
 {
     /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the configuration.
-     * @property string $conversationGroupingType The strategy Conversation Orchestrator uses to assign communications to conversations.
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
      * @property string $memoryStoreId The memory store ID that Conversation Orchestrator uses for profile resolution.
      * @property string $channelSettings
      * @property CreateConfigurationRequestStatusCallbacks[] $statusCallbacks A list of webhook configurations.
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+     * @property CreateConfigurationRequestConversationsV1Bridge $conversationsV1Bridge
     */
         protected $displayName;
         protected $description;
@@ -126,6 +161,7 @@ class CreateConfigurationRequest implements \JsonSerializable
         protected $statusCallbacks;
         protected $intelligenceConfigurationIds;
         protected $memoryExtractionEnabled;
+        protected $conversationsV1Bridge;
     public function __construct(array $payload = []) {
         $this->displayName = Values::array_get($payload, 'displayName');
         $this->description = Values::array_get($payload, 'description');
@@ -135,6 +171,7 @@ class CreateConfigurationRequest implements \JsonSerializable
         $this->statusCallbacks = Values::array_get($payload, 'statusCallbacks');
         $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
         $this->memoryExtractionEnabled = Values::array_get($payload, 'memoryExtractionEnabled');
+        $this->conversationsV1Bridge = Values::array_get($payload, 'conversationsV1Bridge');
     }
 
     public function toArray(): array
@@ -161,6 +198,9 @@ class CreateConfigurationRequest implements \JsonSerializable
         }
         if (isset($this->memoryExtractionEnabled)) {
             $jsonString['memoryExtractionEnabled'] = $this->memoryExtractionEnabled;
+        }
+        if (isset($this->conversationsV1Bridge)) {
+            $jsonString['conversationsV1Bridge'] = $this->conversationsV1Bridge;
         }
         return $jsonString;
     }
@@ -201,12 +241,13 @@ class UpdateConfigurationRequest implements \JsonSerializable
     /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the configuration.
-     * @property string $conversationGroupingType The strategy Conversation Orchestrator uses to assign communications to conversations.
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
      * @property string $memoryStoreId The Memory Store ID for profile resolution.
      * @property string $channelSettings
      * @property UpdateConfigurationRequestStatusCallbacks[] $statusCallbacks
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+     * @property CreateConfigurationRequestConversationsV1Bridge $conversationsV1Bridge
     */
         protected $displayName;
         protected $description;
@@ -216,6 +257,7 @@ class UpdateConfigurationRequest implements \JsonSerializable
         protected $statusCallbacks;
         protected $intelligenceConfigurationIds;
         protected $memoryExtractionEnabled;
+        protected $conversationsV1Bridge;
     public function __construct(array $payload = []) {
         $this->displayName = Values::array_get($payload, 'displayName');
         $this->description = Values::array_get($payload, 'description');
@@ -225,6 +267,7 @@ class UpdateConfigurationRequest implements \JsonSerializable
         $this->statusCallbacks = Values::array_get($payload, 'statusCallbacks');
         $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
         $this->memoryExtractionEnabled = Values::array_get($payload, 'memoryExtractionEnabled');
+        $this->conversationsV1Bridge = Values::array_get($payload, 'conversationsV1Bridge');
     }
 
     public function toArray(): array
@@ -251,6 +294,9 @@ class UpdateConfigurationRequest implements \JsonSerializable
         }
         if (isset($this->memoryExtractionEnabled)) {
             $jsonString['memoryExtractionEnabled'] = $this->memoryExtractionEnabled;
+        }
+        if (isset($this->conversationsV1Bridge)) {
+            $jsonString['conversationsV1Bridge'] = $this->conversationsV1Bridge;
         }
         return $jsonString;
     }

@@ -32,22 +32,22 @@ class OperationContext extends InstanceContext
      * Initialize the OperationContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid
+     * @param string $id
      */
     public function __construct(
         Version $version,
-        $sid
+        $id
     ) {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
 
         // Path Solution
         $this->solution = [
-        'sid' =>
-            $sid,
+        'id' =>
+            $id,
         ];
 
-        $this->uri = '/ControlPlane/Operations/' . \rawurlencode($sid)
+        $this->uri = '/ControlPlane/Operations/' . \rawurlencode($id)
         .'';
     }
 
@@ -78,7 +78,7 @@ class OperationContext extends InstanceContext
         return new FetchOperationStatus200ResponseInstance(
             $this->version,
             $response->getContent(),
-            $this->solution['sid']
+            $this->solution['id']
         );
         
     }
@@ -96,7 +96,7 @@ class OperationContext extends InstanceContext
         $resource = new FetchOperationStatus200ResponseInstance(
                         $this->version,
                         $response->getContent(),
-                        $this->solution['sid']
+                        $this->solution['id']
                     );
         
         return new ResourceMetadata(

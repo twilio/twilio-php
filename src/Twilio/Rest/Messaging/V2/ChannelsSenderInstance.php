@@ -27,6 +27,7 @@ use Twilio\Version;
  * @property string|null $sid
  * @property string $status
  * @property string|null $senderId
+ * @property string|null $friendlyName
  * @property string|null $configuration
  * @property string|null $webhook
  * @property string|null $profile
@@ -53,6 +54,7 @@ class ChannelsSenderInstance extends InstanceResource
             'sid' => Values::array_get($payload, 'sid'),
             'status' => Values::array_get($payload, 'status'),
             'senderId' => Values::array_get($payload, 'sender_id'),
+            'friendlyName' => Values::array_get($payload, 'friendly_name'),
             'configuration' => Values::array_get($payload, 'configuration'),
             'webhook' => Values::array_get($payload, 'webhook'),
             'profile' => Values::array_get($payload, 'profile'),

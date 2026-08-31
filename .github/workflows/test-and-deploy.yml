@@ -1,128 +1,165 @@
-name: Test and Deploy
+name: Twilio Public release-packagist
+
 on:
   push:
-    branches: [ '*' ]
-    tags: [ '*' ]
-  pull_request:
-    branches: [ main ]
-  schedule:
-    # Run automatically at 8AM PST Monday-Friday
-    - cron: '0 15 * * 1-5'
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-*'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+env:
+  ARTIFACTORY_URL: ${{ vars.ARTIFACTORY_URL }}
+
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
+  composer-lockfile-hygiene:
+    runs-on: ubuntu-x64
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: twilio/sdk-actions/composer-lockfile-hygiene@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
+
+  verify:
+    name: Verify - PHP ${{ matrix.php }}
+    needs: [composer-lockfile-hygiene]
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
     timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
     strategy:
+      fail-fast: false
       matrix:
-        php: [ 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4 ]
-        dependencies:
-          - "lowest"
-          - "highest"
+        php: ["8.2", "8.3", "8.4"]
     steps:
-      - name: Checkout twilio-php
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: Setup PHP Action
-        uses: shivammathur/setup-php@2.15.0
-        with:
-          php-version: ${{ matrix.php }}
-          coverage: xdebug
-        id: php
-
-      - name: Composer webhook config
-        run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update Dependencies
-        if: matrix.dependencies == 'lowest'
-        run: composer update --prefer-lowest --prefer-stable -n
-
-      - name: Run Tests
-        run: make install test
-
-      - name: Fix code coverage paths
-        run: |
-          if [ -f "coverage.xml" ]; then
-            sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
-          fi
-      - name: Run Cluster Test
-        if: (!github.event.pull_request.head.repo.fork)
-        env:
-          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          TWILIO_API_KEY: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY}}
-          TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
-          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
-          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
-          TWILIO_ORGS_CLIENT_ID: ${{ secrets.TWILIO_ORGS_CLIENT_ID }}
-          TWILIO_ORGS_CLIENT_SECRET: ${{ secrets.TWILIO_ORGS_CLIENT_SECRET }}
-          TWILIO_ORG_SID: ${{ secrets.TWILIO_ORG_SID }}
-          TWILIO_CLIENT_ID: ${{ secrets.TWILIO_CLIENT_ID }}
-          TWILIO_CLIENT_SECRET: ${{ secrets.TWILIO_CLIENT_SECRET }}
-          TWILIO_MESSAGE_SID: ${{ secrets.TWILIO_MESSAGE_SID }}
-        run: make cluster-test
-
-      - name: Install SonarCloud scanner and run analysis
-        uses: SonarSource/sonarcloud-github-action@master
-        if: (github.event_name == 'pull_request' || github.ref_type == 'branch') && !github.event.pull_request.head.repo.fork && matrix.php == '8.1' && matrix.dependencies == 'highest'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  deploy:
-    name: Deploy
-    if: success() && github.ref_type == 'tag'
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout twilio-php
-        uses: actions/checkout@v3
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
 
-      - name: Install dependencies
-        run: composer install
+      - name: Tag must be reachable from main
+        if: github.ref_type == 'tag'
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "${GITHUB_SHA}" origin/main \
+            || { echo "::error::${GITHUB_REF_NAME} is not an ancestor of main"; exit 1; }
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
 
-      # The expression strips off the shortest match from the front of the string to yield just the tag name as the output
-      - name: Get tagged version
-        run: echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Artifactory OIDC Auth
+        uses: twilio/sdk-actions/artifactory-oidc@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
+        with:
+          ecosystem: php
+
+      - name: Install dependencies
+        env:
+          PHP: ${{ matrix.php }}
+        run: |
+          set -euo pipefail
+          if printf '%s\n' 8.2 8.3 8.4 | grep -qx "$PHP"; then
+            composer install --no-interaction --no-progress
+          else
+            composer update --no-interaction --no-progress
+          fi
+
+      - name: Run tests
+        run: make test
+
+  validate-release:
+    name: Validate Release
+    needs: [verify]
+    runs-on: ubuntu-x64
+    if: success() && github.ref_type == 'tag' && github.repository_owner == 'twilio'
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: "8.3"
+
+      - name: Validate tag matches VersionInfo
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          PKG_VERSION=$(php -r "require 'src/Twilio/VersionInfo.php'; echo Twilio\VersionInfo::string();")
+          echo "Tag: $TAG"
+          echo "Package version: $PKG_VERSION"
+          if [ "$TAG" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $TAG does not match VersionInfo.php version $PKG_VERSION"
+            exit 1
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Verify release type
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          case "$TAG" in
+            *-*) echo "::notice::Release type: PRE-RELEASE ($TAG)" ;;
+            *)   echo "::notice::Release type: STABLE ($TAG)" ;;
+          esac
+
+  publish:
+    name: Publish to Packagist
+    needs: [validate-release]
+    runs-on: ubuntu-x64
+    if: success() && github.repository_owner == 'twilio'
+    environment: production
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: "8.3"
+
+      - name: Validate tag format and version match
+        if: github.ref_type == 'tag'
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          if [[ ! "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "::error::Release tag must be in the form 1.2.3 (got '$TAG')"
+            exit 1
+          fi
+          VERSION="$TAG"
+          PKG_VERSION=$(php -r "require 'src/Twilio/VersionInfo.php'; echo Twilio\VersionInfo::string();")
+          echo "Package version: $PKG_VERSION"
+          echo "PKG_VERSION=$PKG_VERSION" >> "$GITHUB_ENV"
+          if [ "$VERSION" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $TAG does not match VersionInfo.php version $PKG_VERSION"
+            exit 1
+          fi
+
+      - name: Download the zipball Composer will install
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/${GITHUB_REPOSITORY}/zipball/${GITHUB_SHA}" > release.zip
+
+      - uses: actions/attest-build-provenance@ef244123eb79f2f7a7e75d99086184180e6d0018 # v2
+        with:
+          subject-path: release.zip
 
       - name: Create GitHub Release
-        uses: sendgrid/dx-automator/actions/release@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: twilio/sdk-actions/github-release@f293ed2cd776fd9476360826a78b7b33e692b261 # main (pending v1 tag update)
+        with:
+          changelog-file: CHANGES.md
 
-      - name: Build & Push docker image
-        run: make docker-build docker-push
-
-      - name: Submit metric to Datadog
-        uses: sendgrid/dx-automator/actions/datadog-release-metric@main
-        env:
-          DD_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-
-  notify-on-failure:
-    name: Slack notify on failure
-    if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
-    needs: [ test, deploy ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_COLOR: failure
-          SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Test *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
-          SLACK_TITLE: Action Failure - ${{ github.repository }}
-          SLACK_USERNAME: GitHub Actions
-          SLACK_MSG_AUTHOR: twilio-dx
-          SLACK_FOOTER: Posted automatically using GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          MSG_MINIMAL: true
+      - name: Confirm Packagist picked up the release
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 12); do
+            curl -sf "https://repo.packagist.org/p2/twilio/sdk.json" \
+              | jq -e --arg v "$GITHUB_REF_NAME" \
+                  '.packages["twilio/sdk"][] | select(.version == $v)' >/dev/null \
+              && { echo "::notice::Packagist is serving $GITHUB_REF_NAME"; exit 0; }
+            sleep 15
+          done
+          echo "::warning::Not indexed after 3 minutes — check the Packagist webhook."

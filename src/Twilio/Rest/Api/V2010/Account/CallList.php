@@ -127,6 +127,8 @@ class CallList extends ListResource
                 $options['asyncAmdStatusCallback'],
             'AsyncAmdStatusCallbackMethod' =>
                 $options['asyncAmdStatusCallbackMethod'],
+            'Passports' =>
+                $options['passports'],
             'Byoc' =>
                 $options['byoc'],
             'CallReason' =>

@@ -48,7 +48,8 @@ class ClientTest extends UnitTest {
     }
 
     public function testRequestWithAuthStrategy(): void {
-        $client = new Client();
+        $network = new Holodeck();
+        $client = new Client(null, null, null, null, $network);
         $client->setCredentialProvider(new NoAuthCredentialProvider());
         $client->request("GET", "https://api.twilio.com");
         $this->assertEquals("", $client->getUsername());
@@ -249,7 +250,8 @@ class ClientTest extends UnitTest {
     public function testDebugLogging(): void {
         $capturedLogging = tmpfile();
         ini_set('error_log', stream_get_meta_data($capturedLogging)['uri']);
-        $client = new Client('username', 'password', null, null, null, [
+        $network = new Holodeck();
+        $client = new Client('username', 'password', null, null, $network, [
             Client::ENV_LOG => 'debug'
         ]);
         $client->request('GET', 'http://api.twilio.com', [], [], ['test-header' => 'test header value'], 'test-user', 'test-password');
@@ -259,25 +261,43 @@ class ClientTest extends UnitTest {
     public function testAuthorizationHeaderRemoval(): void {
         $capturedLogging = tmpfile();
         ini_set('error_log', stream_get_meta_data($capturedLogging)['uri']);
-        $client = new Client('username', 'password', null, null, null, [
+        $network = new Holodeck();
+        $client = new Client('username', 'password', null, null, $network, [
             Client::ENV_LOG => 'debug'
         ]);
         $client->request('GET', 'http://api.twilio.com', [], [], ['Authorization-header' => 'auth header value','test-header' => 'test header value'], 'test-user', 'test-password');
         $this->assertStringNotContainsString('Authorization-header', stream_get_contents($capturedLogging));
     }
 
+    private function makeCurlClientStub(): CurlClient {
+        $stub = $this->getMockBuilder(CurlClient::class)
+            ->onlyMethods(['request'])
+            ->getMock();
+        $stub->method('request')->willReturnCallback(
+            function(string $method, string $url, array $params = [], array $data = [],
+                     array $headers = [], ?string $user = null, ?string $password = null,
+                     ?int $timeout = null, $authStrategy = null) use ($stub): \Twilio\Http\Response {
+                $stub->lastRequest = $stub->options($method, $url, $params, $data, $headers, $user, $password, $timeout, $authStrategy);
+                return new \Twilio\Http\Response(200, '');
+            }
+        );
+        return $stub;
+    }
+
     public function testDefaultUserAgent(): void {
-        $client = new Client('username', 'password');
+        $curlClient = $this->makeCurlClientStub();
+        $client = new Client('username', 'password', null, null, $curlClient);
         $client->request('GET', 'https://api.twilio.com');
-        $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
+        $userAgent = $curlClient->lastRequest[CURLOPT_HTTPHEADER][0];
         $this->assertRegExp('/^User-Agent: twilio-php\/[0-9.]+(-rc\.[0-9]+)?\s\(\w+\s\w+\)\sPHP\/[^\s]+$/',$userAgent);
     }
 
     public function testUserAgentExtensionsWhenSet(): void {
         $expectedExtensions = ['twilio-run/2.0.0-test', 'flex-plugin/3.4.0'];
-        $client = new Client('username', 'password', null,null,null,null,$expectedExtensions);
+        $curlClient = $this->makeCurlClientStub();
+        $client = new Client('username', 'password', null, null, $curlClient, null, $expectedExtensions);
         $client->request('GET', 'https://api.twilio.com');
-        $userAgent = $client->getHttpClient()->{'lastRequest'}[CURLOPT_HTTPHEADER][0];
+        $userAgent = $curlClient->lastRequest[CURLOPT_HTTPHEADER][0];
         $userAgentExtensions = array_slice(explode(" ",$userAgent),-count($expectedExtensions));
         $this->assertEquals($userAgentExtensions,$expectedExtensions);
     }

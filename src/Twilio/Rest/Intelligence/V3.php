@@ -22,6 +22,7 @@ use Twilio\Rest\Intelligence\V3\ConfigurationList;
 use Twilio\Rest\Intelligence\V3\ConversationList;
 use Twilio\Rest\Intelligence\V3\OperatorList;
 use Twilio\Rest\Intelligence\V3\OperatorResultList;
+use Twilio\Rest\Intelligence\V3\RuleExecutionList;
 use Twilio\Rest\Intelligence\V3\VersionList;
 use Twilio\Version;
 
@@ -30,6 +31,7 @@ use Twilio\Version;
  * @property ConversationList $conversations
  * @property OperatorList $operators
  * @property OperatorResultList $operatorResults
+ * @property RuleExecutionList $ruleExecutions
  * @property VersionList $versions
  * @method \Twilio\Rest\Intelligence\V3\ConfigurationContext configurations(string $id)
  * @method \Twilio\Rest\Intelligence\V3\OperatorContext operators(string $id)
@@ -43,6 +45,7 @@ class V3 extends Version
     protected $_conversations;
     protected $_operators;
     protected $_operatorResults;
+    protected $_ruleExecutions;
     protected $_versions;
 
     /**
@@ -86,6 +89,14 @@ class V3 extends Version
             $this->_operatorResults = new OperatorResultList($this);
         }
         return $this->_operatorResults;
+    }
+
+    protected function getRuleExecutions(): RuleExecutionList
+    {
+        if (!$this->_ruleExecutions) {
+            $this->_ruleExecutions = new RuleExecutionList($this);
+        }
+        return $this->_ruleExecutions;
     }
 
     protected function getVersions(): VersionList

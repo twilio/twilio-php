@@ -42,16 +42,16 @@ class OperationList extends ListResource
     /**
      * Constructs a OperationContext
      *
-     * @param string $sid
+     * @param string $id
      */
     public function getContext(
-        string $sid
+        string $id
         
     ): OperationContext
     {
         return new OperationContext(
             $this->version,
-            $sid
+            $id
         );
     }
 
