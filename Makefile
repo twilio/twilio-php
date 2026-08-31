@@ -33,9 +33,10 @@ docs-install:
 docs:
 	${PHP74} ${PHPDOX_PHAR}
 
+PHPDOC_PHAR=phpDocumentor.phar
 # phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
 docs-new:
-	docker run --rm -v $(PWD):/data phpdoc/phpdoc -d /data/src -t /data/docs/api
+	php ${PHPDOC_PHAR} -d src/ -t docs/api
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
