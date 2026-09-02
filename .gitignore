@@ -20,3 +20,6 @@ nbproject
 venv
 **/.openapi-generator*
 **/.openapi-generator-ignore*
+
+# phpDocumentor cache
+.phpdoc/
