@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      php-version:
+        description: "PHP version to test with (or 'all' for full matrix)"
+        required: false
+        default: "all"
+  schedule:
+    - cron: '30 3 * * 1'  # Monday 9AM IST
+
+jobs:
+  test:
+    name: Test - PHP ${{ matrix.php }} (${{ matrix.dependencies }})
+    runs-on: ubuntu-x64
+    if: github.repository_owner == 'twilio'
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ${{ (github.event_name == 'schedule' || github.event.inputs.php-version == 'all') && fromJson('["8.1","8.2","8.3","8.4"]') || fromJson(format('["{0}"]', github.event.inputs.php-version || '8.3')) }}
+        dependencies:
+          - "lowest"
+          - "highest"
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+
+      - name: Update Dependencies (lowest)
+        if: matrix.dependencies == 'lowest'
+        run: composer update --prefer-lowest --prefer-stable -n
+
+      - name: Install Dependencies (highest)
+        if: matrix.dependencies == 'highest'
+        run: make install
+
+      - name: Run Tests
+        run: make test
+
+      - name: Run Cluster Tests
+        if: ${{ !github.event.pull_request.head.repo.fork && matrix.dependencies == 'highest' }}
+        env:
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_API_KEY: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY }}
+          TWILIO_API_SECRET: ${{ secrets.TWILIO_CLUSTER_TEST_API_KEY_SECRET }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          TWILIO_TO_NUMBER: ${{ secrets.TWILIO_TO_NUMBER }}
+          TWILIO_ORGS_CLIENT_ID: ${{ secrets.TWILIO_ORGS_CLIENT_ID }}
+          TWILIO_ORGS_CLIENT_SECRET: ${{ secrets.TWILIO_ORGS_CLIENT_SECRET }}
+          TWILIO_ORG_SID: ${{ secrets.TWILIO_ORG_SID }}
+          TWILIO_CLIENT_ID: ${{ secrets.TWILIO_CLIENT_ID }}
+          TWILIO_CLIENT_SECRET: ${{ secrets.TWILIO_CLIENT_SECRET }}
+          TWILIO_MESSAGE_SID: ${{ secrets.TWILIO_MESSAGE_SID }}
+        run: make cluster-test

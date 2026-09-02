@@ -33,7 +33,7 @@ docs-install:
 docs:
 	${PHP74} ${PHPDOX_PHAR}
 
-# todo: enable later
+# todo: enable locally
 # PHPDOC_PHAR=phpDocumentor.phar
 # # phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
 # docs-new:
