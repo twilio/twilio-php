@@ -27,9 +27,12 @@ final class GuzzleClient implements Client {
                             ?int $timeout = null, ?AuthStrategy $authStrategy = null): Response {
         try {
             $options = [
-                'timeout' => $timeout,
                 'allow_redirects' => false,
             ];
+
+            if ($timeout !== null) {
+                $options['timeout'] = $timeout;
+            }
 
             if($user && $password) {
                 $headers['Authorization'] = 'Basic ' . base64_encode($user . ':' . $password);
