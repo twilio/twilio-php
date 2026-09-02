@@ -22,7 +22,6 @@ abstract class TokenOptions
 {
     /**
      * @param string $accountSid Optional Account SID to perform on behalf of requests.
-     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
      * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param string $clientSecret The credential for confidential OAuth App.
      * @param string $code JWT token related to the authorization code grant type.
@@ -36,7 +35,6 @@ abstract class TokenOptions
     public static function create(
         
         string $accountSid = Values::NONE,
-        string $grantType = Values::NONE,
         string $clientId = Values::NONE,
         string $clientSecret = Values::NONE,
         string $code = Values::NONE,
@@ -50,7 +48,6 @@ abstract class TokenOptions
     {
         return new CreateTokenOptions(
             $accountSid,
-            $grantType,
             $clientId,
             $clientSecret,
             $code,
@@ -68,7 +65,6 @@ class CreateTokenOptions extends Options
     {
     /**
      * @param string $accountSid Optional Account SID to perform on behalf of requests.
-     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
      * @param string $clientId A 34 character string that uniquely identifies this OAuth App.
      * @param string $clientSecret The credential for confidential OAuth App.
      * @param string $code JWT token related to the authorization code grant type.
@@ -81,7 +77,6 @@ class CreateTokenOptions extends Options
     public function __construct(
         
         string $accountSid = Values::NONE,
-        string $grantType = Values::NONE,
         string $clientId = Values::NONE,
         string $clientSecret = Values::NONE,
         string $code = Values::NONE,
@@ -93,7 +88,6 @@ class CreateTokenOptions extends Options
 
     ) {
         $this->options['accountSid'] = $accountSid;
-        $this->options['grantType'] = $grantType;
         $this->options['clientId'] = $clientId;
         $this->options['clientSecret'] = $clientSecret;
         $this->options['code'] = $code;
@@ -113,18 +107,6 @@ class CreateTokenOptions extends Options
     public function setAccountSid(string $accountSid): self
     {
         $this->options['accountSid'] = $accountSid;
-        return $this;
-    }
-
-    /**
-     * Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     *
-     * @param string $grantType Grant type is a credential representing resource owner's authorization which can be used by client to obtain access token.
-     * @return $this Fluent Builder
-     */
-    public function setGrantType(string $grantType): self
-    {
-        $this->options['grantType'] = $grantType;
         return $this;
     }
 
