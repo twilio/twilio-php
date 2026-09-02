@@ -16,7 +16,6 @@ clean:
 install: clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
 	$(COMPOSER) install
-	@test -f phpDocumentor.phar || curl -sL https://phpdoc.org/phpDocumentor.phar -o phpDocumentor.phar
 
 vendor: install
 
@@ -34,10 +33,12 @@ docs-install:
 docs:
 	${PHP74} ${PHPDOX_PHAR}
 
-PHPDOC_PHAR=phpDocumentor.phar
-# phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
-docs-new:
-	php ${PHPDOC_PHAR} -d src/ -t docs/api
+# todo: enable later
+# PHPDOC_PHAR=phpDocumentor.phar
+# # phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
+# docs-new:
+# 	@test -f ${PHPDOC_PHAR} || curl -sL https://phpdoc.org/${PHPDOC_PHAR} -o ${PHPDOC_PHAR}
+# 	php ${PHPDOC_PHAR} -d src/ -t docs/api
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
