@@ -118,6 +118,8 @@ abstract class TwiML {
         foreach ($twiml->children as $child) {
             if (\is_string($child)) {
                 $element->appendChild($document->createTextNode($child));
+            } elseif (\is_a($child, \Twilio\TwiML\Comment::class)) {
+                $element->appendChild($document->createComment($child->children[0]));
             } else {
                 $element->appendChild($this->buildElement($child, $document));
             }
