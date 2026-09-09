@@ -16,8 +16,12 @@
 
 namespace Twilio\Rest\Insights\V2;
 
+use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Values;
 use Twilio\Version;
+use Twilio\Http\Response;
+use Twilio\Metadata\ResourceMetadata;
 
 
 class ReportList extends ListResource
@@ -35,7 +39,63 @@ class ReportList extends ListResource
         // Path Solution
         $this->solution = [
         ];
+        $this->uri = '/Voice/Reports';
     }
+
+    /**
+     * Helper function for Create
+     *
+     * @param ?InsightsV2CreateAccountReportRequest $insightsV2CreateAccountReportRequest
+     * @return Response Created Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _create(?InsightsV2CreateAccountReportRequest $insightsV2CreateAccountReportRequest = null): Response
+    {
+        
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $insightsV2CreateAccountReportRequest ? $insightsV2CreateAccountReportRequest->toArray() : [];
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
+    }
+
+    /**
+     * Create the ReportInstance
+     *
+     * @param ?InsightsV2CreateAccountReportRequest $insightsV2CreateAccountReportRequest
+     * @return ReportInstance Created ReportInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function create(?InsightsV2CreateAccountReportRequest $insightsV2CreateAccountReportRequest = null): ReportInstance
+    {
+        $response = $this->_create($insightsV2CreateAccountReportRequest);
+        return new ReportInstance(
+            $this->version,
+            $response->getContent()
+        );
+        
+    }
+
+    /**
+     * Create the ReportInstance with Metadata
+     *
+     * @param ?InsightsV2CreateAccountReportRequest $insightsV2CreateAccountReportRequest
+     * @return ResourceMetadata The Created Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function createWithMetadata(?InsightsV2CreateAccountReportRequest $insightsV2CreateAccountReportRequest = null): ResourceMetadata
+    {
+        $response = $this->_create($insightsV2CreateAccountReportRequest);
+        $resource = new ReportInstance(
+                        $this->version,
+                        $response->getContent()
+                    );
+        
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
 
     /**
      * Constructs a ReportContext

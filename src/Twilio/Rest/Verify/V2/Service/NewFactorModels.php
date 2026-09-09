@@ -157,9 +157,13 @@ class CreateNewPasskeysFactorRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'friendly_name' => $this->friendlyName,
-            'identity' => $this->identity
         ];
+        if (isset($this->friendlyName)) {
+            $jsonString['friendly_name'] = $this->friendlyName;
+        }
+        if (isset($this->identity)) {
+            $jsonString['identity'] = $this->identity;
+        }
         if (isset($this->config)) {
             $jsonString['config'] = $this->config;
         }

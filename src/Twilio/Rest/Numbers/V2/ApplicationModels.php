@@ -65,8 +65,10 @@ class CreateShortCodeApplicationRequestBusinessInformation implements \JsonSeria
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'customer_facing_profile' => $this->customerFacingProfile
         ];
+        if (isset($this->customerFacingProfile)) {
+            $jsonString['customer_facing_profile'] = $this->customerFacingProfile;
+        }
         return $jsonString;
     }
 }
@@ -89,8 +91,10 @@ class CreateShortCodeApplicationRequestSetup implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'charges_apply' => $this->chargesApply
         ];
+        if (isset($this->chargesApply)) {
+            $jsonString['charges_apply'] = $this->chargesApply;
+        }
         return $jsonString;
     }
 }
@@ -122,11 +126,19 @@ class CreateShortCodeApplicationRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'friendly_name' => $this->friendlyName,
-            'iso_country' => $this->isoCountry,
-            'business_information' => $this->businessInformation,
-            'setup' => $this->setup
         ];
+        if (isset($this->friendlyName)) {
+            $jsonString['friendly_name'] = $this->friendlyName;
+        }
+        if (isset($this->isoCountry)) {
+            $jsonString['iso_country'] = $this->isoCountry;
+        }
+        if (isset($this->businessInformation)) {
+            $jsonString['business_information'] = $this->businessInformation;
+        }
+        if (isset($this->setup)) {
+            $jsonString['setup'] = $this->setup;
+        }
         return $jsonString;
     }
 }

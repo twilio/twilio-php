@@ -78,18 +78,6 @@ class ReportInstance extends InstanceResource
     }
 
     /**
-     * Create the ReportInstance
-     *
-     * @return ReportInstance Created ReportInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(): ReportInstance
-    {
-
-        return $this->proxy()->create();
-    }
-
-    /**
      * Fetch the ReportInstance
      *
      * @return ReportInstance Fetched ReportInstance

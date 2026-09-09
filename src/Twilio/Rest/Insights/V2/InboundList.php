@@ -243,22 +243,6 @@ class InboundList extends ListResource
 
 
     /**
-     * Constructs a InboundContext
-     *
-     * @param string $reportId A unique Report Id.
-     */
-    public function getContext(
-        string $reportId
-        
-    ): InboundContext
-    {
-        return new InboundContext(
-            $this->version,
-            $reportId
-        );
-    }
-
-    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

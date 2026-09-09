@@ -14,37 +14,31 @@
  * Do not edit the class manually.
  */
 
-
 namespace Twilio\Rest\Insights\V2;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\ListResource;
 use Twilio\Values;
 use Twilio\Version;
-use Twilio\InstanceContext;
 use Twilio\Http\Response;
 use Twilio\Metadata\ResourceMetadata;
 
 
-class InboundContext extends InstanceContext
+class InboundReportList extends ListResource
     {
     /**
-     * Initialize the InboundContext
+     * Construct the InboundReportList
      *
      * @param Version $version Version that contains the resource
-     * @param string $reportId A unique Report Id.
      */
     public function __construct(
-        Version $version,
-        $reportId
+        Version $version
     ) {
         parent::__construct($version);
 
         // Path Solution
         $this->solution = [
-        'reportId' =>
-            $reportId,
         ];
-
         $this->uri = '/Voice/Reports/PhoneNumbers/Inbound';
     }
 
@@ -64,16 +58,16 @@ class InboundContext extends InstanceContext
     }
 
     /**
-     * Create the InboundInstance
+     * Create the InboundReportInstance
      *
      * @param ?InsightsV2CreatePhoneNumbersReportRequest $insightsV2CreatePhoneNumbersReportRequest
-     * @return InboundInstance Created InboundInstance
+     * @return InboundReportInstance Created InboundReportInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(?InsightsV2CreatePhoneNumbersReportRequest $insightsV2CreatePhoneNumbersReportRequest = null): InboundInstance
+    public function create(?InsightsV2CreatePhoneNumbersReportRequest $insightsV2CreatePhoneNumbersReportRequest = null): InboundReportInstance
     {
         $response = $this->_create($insightsV2CreatePhoneNumbersReportRequest);
-        return new InboundInstance(
+        return new InboundReportInstance(
             $this->version,
             $response->getContent()
         );
@@ -81,7 +75,7 @@ class InboundContext extends InstanceContext
     }
 
     /**
-     * Create the InboundInstance with Metadata
+     * Create the InboundReportInstance with Metadata
      *
      * @param ?InsightsV2CreatePhoneNumbersReportRequest $insightsV2CreatePhoneNumbersReportRequest
      * @return ResourceMetadata The Created Resource with Metadata
@@ -90,7 +84,7 @@ class InboundContext extends InstanceContext
     public function createWithMetadata(?InsightsV2CreatePhoneNumbersReportRequest $insightsV2CreatePhoneNumbersReportRequest = null): ResourceMetadata
     {
         $response = $this->_create($insightsV2CreatePhoneNumbersReportRequest);
-        $resource = new InboundInstance(
+        $resource = new InboundReportInstance(
                         $this->version,
                         $response->getContent()
                     );
@@ -110,10 +104,6 @@ class InboundContext extends InstanceContext
      */
     public function __toString(): string
     {
-        $context = [];
-        foreach ($this->solution as $key => $value) {
-            $context[] = "$key=$value";
-        }
-        return '[Twilio.Insights.V2.InboundContext ' . \implode(' ', $context) . ']';
+        return '[Twilio.Insights.V2.InboundReportList]';
     }
 }

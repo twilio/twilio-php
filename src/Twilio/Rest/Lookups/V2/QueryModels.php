@@ -243,8 +243,10 @@ class LookupBatchRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'phone_number' => $this->phoneNumber
         ];
+        if (isset($this->phoneNumber)) {
+            $jsonString['phone_number'] = $this->phoneNumber;
+        }
         if (isset($this->correlationId)) {
             $jsonString['correlation_id'] = $this->correlationId;
         }

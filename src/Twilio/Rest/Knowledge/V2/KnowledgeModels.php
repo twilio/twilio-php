@@ -95,10 +95,16 @@ class KnowledgeErrorInstance implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'code' => $this->code,
-            'instance' => $this->instance
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->code)) {
+            $jsonString['code'] = $this->code;
+        }
+        if (isset($this->instance)) {
+            $jsonString['instance'] = $this->instance;
+        }
         if (isset($this->detail)) {
             $jsonString['detail'] = $this->detail;
         }
@@ -127,9 +133,13 @@ class KnowledgeErrorGroup implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'title' => $this->title,
-            'instances' => $this->instances
         ];
+        if (isset($this->title)) {
+            $jsonString['title'] = $this->title;
+        }
+        if (isset($this->instances)) {
+            $jsonString['instances'] = $this->instances;
+        }
         return $jsonString;
     }
 }
@@ -182,13 +192,25 @@ class KnowledgeSourceTypes implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'content' => $this->content,
-            'url' => $this->url,
-            'fileName' => $this->fileName,
-            'fileSize' => $this->fileSize,
-            'mimeType' => $this->mimeType
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->content)) {
+            $jsonString['content'] = $this->content;
+        }
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
+        if (isset($this->fileName)) {
+            $jsonString['fileName'] = $this->fileName;
+        }
+        if (isset($this->fileSize)) {
+            $jsonString['fileSize'] = $this->fileSize;
+        }
+        if (isset($this->mimeType)) {
+            $jsonString['mimeType'] = $this->mimeType;
+        }
         if (isset($this->crawlDepth)) {
             $jsonString['crawlDepth'] = $this->crawlDepth;
         }
@@ -232,8 +254,10 @@ class KnowledgeCore implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'name' => $this->name
         ];
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
         if (isset($this->description)) {
             $jsonString['description'] = $this->description;
         }

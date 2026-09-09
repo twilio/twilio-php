@@ -119,6 +119,19 @@ class ListConfiguration200ResponseConfigurationsInstance extends InstanceResourc
     }
 
     /**
+     * Patch the CreateConfiguration202ResponseInstance
+     *
+     * @param array|Options $options Optional Arguments
+     * @return CreateConfiguration202ResponseInstance Patchd CreateConfiguration202ResponseInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function patch(array $options = []): CreateConfiguration202ResponseInstance
+    {
+
+        return $this->proxy()->patch($options);
+    }
+
+    /**
      * Update the CreateConfiguration202ResponseInstance
      *
      * @param array|Options $options Optional Arguments

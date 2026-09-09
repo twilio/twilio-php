@@ -19,11 +19,16 @@ namespace Twilio\Rest\Voice\V3;
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\ApiV1Version;
 use Twilio\Http\Response;
+use Twilio\Metadata\ArrayMetadata;
+use Twilio\Metadata\PageMetadata;
 use Twilio\Metadata\ResourceMetadata;
+use Twilio\Metadata\StreamMetadata;
+use Twilio\Serialize;
 
 
 class TranscriptionList extends ListResource
@@ -106,6 +111,223 @@ class TranscriptionList extends ListResource
             $response->getStatusCode(),
             $response->getHeaders()
         );
+    }
+
+
+    /**
+     * Reads TranscriptionInstance records from the API as a list.
+     * Unlike stream(), this operation is eager and will load `limit` records into
+     * memory before returning.
+     *
+     
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. read()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return TranscriptionInstance[] Array of results
+     */
+    public function read(array $options = [], ?int $limit = null, $pageSize = null): array
+    {
+        $this->uri = '/Transcriptions';
+        return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
+    }
+
+    /**
+     * Reads TranscriptionInstance records from the API as a list
+     * Unlike stream(), this operation is eager and will load `limit` records into
+     * memory before returning.
+     *
+     
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. read()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, read()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return ArrayMetadata Array of results along with metadata
+     */
+    public function readWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): ArrayMetadata
+    {
+        $this->uri = '/Transcriptions';
+        $streamWithMetadata = $this->streamWithMetadata($options, $limit, $pageSize);
+        $readResponse = \iterator_to_array($streamWithMetadata, false);
+        return new ArrayMetadata(
+            $readResponse,
+            $streamWithMetadata->getStatusCode(),
+            $streamWithMetadata->getHeaders()
+        );
+    }
+
+    /**
+     * Streams TranscriptionInstance records from the API as a generator stream.
+     * This operation lazily loads records as efficiently as possible until the
+     * limit
+     * is reached.
+     * The results are returned as a generator, so this operation is memory
+     * efficient.
+     *
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. stream()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return Stream stream of results
+     */
+    public function stream(array $options = [], ?int $limit = null, $pageSize = null): Stream
+    {
+        $pageSize = $options['pageSize'] ?? $pageSize;
+        $limits = $this->version->readLimits($limit, $pageSize);
+
+        $page = $this->page($options, $limits['pageSize']);
+
+        return $this->version->stream($page, $limits['limit'], $limits['pageLimit']);
+    }
+
+    /**
+     * Streams TranscriptionInstance records from the API as a generator stream and returns result with Metadata
+     * This operation lazily loads records as efficiently as possible until the
+     * limit
+     * is reached.
+     * The results are returned as a generator, so this operation is memory
+     * efficient.
+     *
+     * @param array|Options $options Optional Arguments
+     * @param int $limit Upper limit for the number of records to return. stream()
+     *                   guarantees to never return more than limit.  Default is no
+     *                   limit
+     * @param mixed $pageSize Number of records to fetch per request, when not set
+     *                        will use the default value of 50 records.  If no
+     *                        page_size is defined but a limit is defined, stream()
+     *                        will attempt to read the limit with the most
+     *                        efficient page size, i.e. min(limit, 1000)
+     * @return StreamMetadata stream of results with metadata
+     */
+    public function streamWithMetadata(array $options = [], ?int $limit = null, $pageSize = null): StreamMetadata
+    {
+        $pageSize = $options['pageSize'] ?? $pageSize;
+        $limits = $this->version->readLimits($limit, $pageSize);
+
+        $pageWithMetadata = $this->pageWithMetadata($options, $limits['pageSize']);
+
+        $stream = $this->version->stream($pageWithMetadata->getPage(), $limits['limit'], $limits['pageLimit']);
+
+        return new StreamMetadata(
+            $stream,
+            $pageWithMetadata->getStatusCode(),
+            $pageWithMetadata->getHeaders()
+        );
+    }
+
+    /**
+     * Helper function for Page
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * 
+     * @return Response Paged Response
+     */
+    private function _page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        
+    ): Response
+    {
+        $options = new Values($options);
+
+        $params = Values::of([
+            'createdAfter' =>
+                Serialize::iso8601DateTime($options['createdAfter']),
+            'createdBefore' =>
+                Serialize::iso8601DateTime($options['createdBefore']),
+            'languageCode' =>
+                $options['languageCode'],
+            'sourceId' =>
+                $options['sourceId'],
+            'status' =>
+                $options['status'],
+            'pageSize' =>
+                $options['pageSize'],
+            'pageToken' =>
+                $options['pageToken'],
+                                                                                    
+            
+            'PageSize' => $pageSize,
+        ]);
+
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json']);
+        return $this->version->page('GET', $this->uri, $params, [], $headers);
+    }
+
+    /**
+     * Retrieve a single page of TranscriptionInstance records from the API.
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * 
+     * @return TranscriptionPage Page of TranscriptionInstance
+     */
+    public function page(
+        array $options = [],
+        $pageSize = Values::NONE,
+        
+    ): TranscriptionPage
+    {
+        $response = $this->_page($options, $pageSize,);
+
+        return new TranscriptionPage($this->version, $response, $this->solution);
+    }
+
+    /**
+     * Retrieve a single page of TranscriptionInstance records with metadata
+     * Request is executed immediately
+     *
+     * @param mixed $pageSize Number of records to return, defaults to 50
+     * 
+     * @return PageMetadata of TranscriptionInstance
+     */
+    public function pageWithMetadata(
+        array $options = [],
+        $pageSize = Values::NONE,
+        
+    ): PageMetadata
+    {
+        $response = $this->_page($options, $pageSize,);
+
+        $resource =  new TranscriptionPage($this->version, $response, $this->solution);
+
+        return new PageMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+    /**
+     * Retrieve a specific page of TranscriptionInstance records from the API.
+     * Request is executed immediately
+     *
+     * @param string $targetUrl API-generated URL for the requested results page
+     * @return TranscriptionPage Page of TranscriptionInstance
+     */
+    public function getPage(string $targetUrl): TranscriptionPage
+    {
+        $response = $this->version->getDomain()->getClient()->request(
+            'GET',
+            $targetUrl
+        );
+
+        return new TranscriptionPage($this->version, $response, $this->solution);
     }
 
 

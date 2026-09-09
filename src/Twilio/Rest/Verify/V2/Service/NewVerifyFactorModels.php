@@ -110,8 +110,10 @@ class VerifyPasskeysFactorRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'response' => $this->response
         ];
+        if (isset($this->response)) {
+            $jsonString['response'] = $this->response;
+        }
         if (isset($this->id)) {
             $jsonString['id'] = $this->id;
         }

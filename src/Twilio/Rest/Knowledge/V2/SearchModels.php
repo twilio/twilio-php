@@ -54,9 +54,13 @@ class KnowledgeSearch implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'query' => $this->query,
-            'top' => $this->top
         ];
+        if (isset($this->query)) {
+            $jsonString['query'] = $this->query;
+        }
+        if (isset($this->top)) {
+            $jsonString['top'] = $this->top;
+        }
         if (isset($this->knowledgeIds)) {
             $jsonString['knowledgeIds'] = $this->knowledgeIds;
         }

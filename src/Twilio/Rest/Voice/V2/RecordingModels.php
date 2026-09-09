@@ -172,9 +172,13 @@ class VoiceV2ConfigurationRecordingFeature implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'featureId' => $this->featureId
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->featureId)) {
+            $jsonString['featureId'] = $this->featureId;
+        }
         if (isset($this->description)) {
             $jsonString['description'] = $this->description;
         }
@@ -212,8 +216,10 @@ class VoiceV2ConfigurationRecordingConfiguration implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'configurationType' => $this->configurationType
         ];
+        if (isset($this->configurationType)) {
+            $jsonString['configurationType'] = $this->configurationType;
+        }
         if (isset($this->compositionPolicy)) {
             $jsonString['compositionPolicy'] = $this->compositionPolicy;
         }
@@ -254,8 +260,10 @@ class VoiceV2ConfigurationRecordingRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'configuration' => $this->configuration
         ];
+        if (isset($this->configuration)) {
+            $jsonString['configuration'] = $this->configuration;
+        }
         if (isset($this->uniqueName)) {
             $jsonString['unique_name'] = $this->uniqueName;
         }

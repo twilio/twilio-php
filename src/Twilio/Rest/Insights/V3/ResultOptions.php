@@ -18,48 +18,65 @@ namespace Twilio\Rest\Insights\V3;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class QueryOptions
+abstract class ResultOptions
 {
     /**
-     * @param int $pageSize Number of items per page
-     * @return CreateQueryOptions Options builder
+     * @param int $pageSize The maximum number of resources to return
+     * @param string $pageToken Token for pagination
+     * @return FetchResultOptions Options builder
      */
-    public static function create(
+    public static function fetch(
         
-        int $pageSize = Values::INT_NONE
+        int $pageSize = Values::INT_NONE,
+        string $pageToken = Values::NONE
 
-    ): CreateQueryOptions
+    ): FetchResultOptions
     {
-        return new CreateQueryOptions(
-            $pageSize
+        return new FetchResultOptions(
+            $pageSize,
+            $pageToken
         );
     }
 
-
 }
 
-class CreateQueryOptions extends Options
+class FetchResultOptions extends Options
     {
     /**
-     * @param int $pageSize Number of items per page
+     * @param int $pageSize The maximum number of resources to return
+     * @param string $pageToken Token for pagination
      */
     public function __construct(
         
-        int $pageSize = Values::INT_NONE
+        int $pageSize = Values::INT_NONE,
+        string $pageToken = Values::NONE
 
     ) {
         $this->options['pageSize'] = $pageSize;
+        $this->options['pageToken'] = $pageToken;
     }
 
     /**
-     * Number of items per page
+     * The maximum number of resources to return
      *
-     * @param int $pageSize Number of items per page
+     * @param int $pageSize The maximum number of resources to return
      * @return $this Fluent Builder
      */
     public function setPageSize(int $pageSize): self
     {
         $this->options['pageSize'] = $pageSize;
+        return $this;
+    }
+
+    /**
+     * Token for pagination
+     *
+     * @param string $pageToken Token for pagination
+     * @return $this Fluent Builder
+     */
+    public function setPageToken(string $pageToken): self
+    {
+        $this->options['pageToken'] = $pageToken;
         return $this;
     }
 
@@ -71,8 +88,7 @@ class CreateQueryOptions extends Options
     public function __toString(): string
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.Insights.V3.CreateQueryOptions ' . $options . ']';
+        return '[Twilio.Insights.V3.FetchResultOptions ' . $options . ']';
     }
 }
-
 

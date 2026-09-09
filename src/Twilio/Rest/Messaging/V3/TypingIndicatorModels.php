@@ -62,11 +62,19 @@ class TypingIndicatorRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'channel' => $this->channel,
-            'messageId' => $this->messageId,
-            'from' => $this->from,
-            'to' => $this->to
         ];
+        if (isset($this->channel)) {
+            $jsonString['channel'] = $this->channel;
+        }
+        if (isset($this->messageId)) {
+            $jsonString['messageId'] = $this->messageId;
+        }
+        if (isset($this->from)) {
+            $jsonString['from'] = $this->from;
+        }
+        if (isset($this->to)) {
+            $jsonString['to'] = $this->to;
+        }
         if (isset($this->event)) {
             $jsonString['event'] = $this->event;
         }

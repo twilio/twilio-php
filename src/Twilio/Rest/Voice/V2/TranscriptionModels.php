@@ -115,9 +115,13 @@ class VoiceV2ConfigurationTranscriptionParticipantDefault implements \JsonSerial
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'audioChannelIndex' => $this->audioChannelIndex,
-            'type' => $this->type
         ];
+        if (isset($this->audioChannelIndex)) {
+            $jsonString['audioChannelIndex'] = $this->audioChannelIndex;
+        }
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
         return $jsonString;
     }
 }
@@ -158,11 +162,19 @@ class VoiceV2ConfigurationTranscriptionConfiguration implements \JsonSerializabl
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'configurationType' => $this->configurationType,
-            'transcriptionEngine' => $this->transcriptionEngine,
-            'language' => $this->language,
-            'participantDefaults' => $this->participantDefaults
         ];
+        if (isset($this->configurationType)) {
+            $jsonString['configurationType'] = $this->configurationType;
+        }
+        if (isset($this->transcriptionEngine)) {
+            $jsonString['transcriptionEngine'] = $this->transcriptionEngine;
+        }
+        if (isset($this->language)) {
+            $jsonString['language'] = $this->language;
+        }
+        if (isset($this->participantDefaults)) {
+            $jsonString['participantDefaults'] = $this->participantDefaults;
+        }
         if (isset($this->speechModel)) {
             $jsonString['speechModel'] = $this->speechModel;
         }
@@ -200,8 +212,10 @@ class VoiceV2ConfigurationTranscriptionRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'configuration' => $this->configuration
         ];
+        if (isset($this->configuration)) {
+            $jsonString['configuration'] = $this->configuration;
+        }
         if (isset($this->uniqueName)) {
             $jsonString['unique_name'] = $this->uniqueName;
         }

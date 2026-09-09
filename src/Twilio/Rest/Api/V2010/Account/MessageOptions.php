@@ -43,6 +43,7 @@ abstract class MessageOptions
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be in ISO 8601 format.
      * @param bool $sendAsMms If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media.
      * @param string $contentVariables For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used.
+     * @param string $messageIntent 
      * @param string $riskCheck
      * @param string $fallbackFrom A fallback SMS sender to use when the recipient cannot be reached over RCS. This parameter may only be used when also providing a [Messaging Service](https://twilio.com/docs/messaging/services) containing an RCS sender. The fallback SMS sender must be either a Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), or [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), hosted within Twilio and belong to the Account creating the Message.
      * @return CreateMessageOptions Options builder
@@ -71,6 +72,7 @@ abstract class MessageOptions
         ?\DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
+        string $messageIntent = Values::NONE,
         string $riskCheck = Values::NONE,
         string $fallbackFrom = Values::NONE
 
@@ -99,6 +101,7 @@ abstract class MessageOptions
             $sendAt,
             $sendAsMms,
             $contentVariables,
+            $messageIntent,
             $riskCheck,
             $fallbackFrom
         );
@@ -178,6 +181,7 @@ class CreateMessageOptions extends Options
      * @param \DateTime $sendAt The time that Twilio will send the message. Must be in ISO 8601 format.
      * @param bool $sendAsMms If set to `true`, Twilio delivers the message as a single MMS message, regardless of the presence of media.
      * @param string $contentVariables For [Content Editor/API](https://www.twilio.com/docs/content) only: Key-value pairs of [Template variables](https://www.twilio.com/docs/content/using-variables-with-content-api) and their substitution values. `content_sid` parameter must also be provided. If values are not defined in the `content_variables` parameter, the [Template's default placeholder values](https://www.twilio.com/docs/content/content-api-resources#create-templates) are used.
+     * @param string $messageIntent 
      * @param string $riskCheck
      * @param string $fallbackFrom A fallback SMS sender to use when the recipient cannot be reached over RCS. This parameter may only be used when also providing a [Messaging Service](https://twilio.com/docs/messaging/services) containing an RCS sender. The fallback SMS sender must be either a Twilio phone number (in [E.164](https://en.wikipedia.org/wiki/E.164) format), [alphanumeric sender ID](https://www.twilio.com/docs/sms/quickstart), or [short code](https://www.twilio.com/en-us/messaging/channels/sms/short-codes), hosted within Twilio and belong to the Account creating the Message.
      */
@@ -205,6 +209,7 @@ class CreateMessageOptions extends Options
         ?\DateTime $sendAt = null,
         bool $sendAsMms = Values::BOOL_NONE,
         string $contentVariables = Values::NONE,
+        string $messageIntent = Values::NONE,
         string $riskCheck = Values::NONE,
         string $fallbackFrom = Values::NONE
 
@@ -231,6 +236,7 @@ class CreateMessageOptions extends Options
         $this->options['sendAt'] = $sendAt;
         $this->options['sendAsMms'] = $sendAsMms;
         $this->options['contentVariables'] = $contentVariables;
+        $this->options['messageIntent'] = $messageIntent;
         $this->options['riskCheck'] = $riskCheck;
         $this->options['fallbackFrom'] = $fallbackFrom;
     }
@@ -488,6 +494,18 @@ class CreateMessageOptions extends Options
     public function setContentVariables(string $contentVariables): self
     {
         $this->options['contentVariables'] = $contentVariables;
+        return $this;
+    }
+
+    /**
+     * 
+     *
+     * @param string $messageIntent 
+     * @return $this Fluent Builder
+     */
+    public function setMessageIntent(string $messageIntent): self
+    {
+        $this->options['messageIntent'] = $messageIntent;
         return $this;
     }
 

@@ -22,17 +22,24 @@ use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\ApiV1Version;
+use Twilio\Deserialize;
 
 
 /**
- * @property string $domain
- * @property array<string,mixed>[] $items
- * @property string $meta
+ * @property string $operationId
+ * @property string $status
+ * @property string $statusUrl
+ * @property \DateTime $createdAt
+ * @property \DateTime|null $completedAt
+ * @property string|null $error
+ * @property string|null $resultUrl
+ * @property string|null $resultId
+ * @property string|null $resultRetentionPeriod
  */
-class InsightsQueryResponseInstance extends InstanceResource
+class QueryJobStatusResponseInstance extends InstanceResource
 {
     /**
-     * Initialize the InsightsQueryResponseInstance
+     * Initialize the QueryJobStatusResponseInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
@@ -45,12 +52,48 @@ class InsightsQueryResponseInstance extends InstanceResource
 
         // Marshaled Properties
         $this->properties = [
-            'domain' => Values::array_get($payload, 'domain'),
-            'items' => Values::array_get($payload, 'items'),
-            'meta' => Values::array_get($payload, 'meta'),
+            'operationId' => Values::array_get($payload, 'operationId'),
+            'status' => Values::array_get($payload, 'status'),
+            'statusUrl' => Values::array_get($payload, 'statusUrl'),
+            'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'createdAt')),
+            'completedAt' => Deserialize::dateTime(Values::array_get($payload, 'completedAt')),
+            'error' => Values::array_get($payload, 'error'),
+            'resultUrl' => Values::array_get($payload, 'resultUrl'),
+            'resultId' => Values::array_get($payload, 'resultId'),
+            'resultRetentionPeriod' => Values::array_get($payload, 'resultRetentionPeriod'),
         ];
 
         $this->solution = ['operationId' => $operationId ?: ($this->properties['operationId'] ?? null), ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return QueryJobContext Context for this QueryJobInstance
+     */
+    protected function proxy(): QueryJobContext
+    {
+        if (!$this->context) {
+            $this->context = new QueryJobContext(
+                $this->version,
+                $this->solution['operationId']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Fetch the QueryJobStatusResponseInstance
+     *
+     * @return QueryJobStatusResponseInstance Fetched QueryJobStatusResponseInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): QueryJobStatusResponseInstance
+    {
+
+        return $this->proxy()->fetch();
     }
 
     /**
@@ -81,6 +124,10 @@ class InsightsQueryResponseInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Insights.V3.InsightsQueryResponseInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Insights.V3.QueryJobStatusResponseInstance ' . \implode(' ', $context) . ']';
     }
 }

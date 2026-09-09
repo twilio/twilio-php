@@ -70,16 +70,17 @@ abstract class TranscriptionModels
      * @property string $accountId Twilio Account SID
      * @property string $status The current status of the transcription operation
      * @property string $transcriptionConfigurationId Unique identifier for a Transcription configuration.
-     * @property string $mediaUrl The third party media URL
-     * @property string $sourceId The source ID (recording ID) - used for tracking only
-     * @property DateTime $audioStartedAt The call/recording start time. When the transcription was created using a sourceId, this value is inferred from the recording resource's start time. When created using a mediaUrl, this reflects the value supplied by the caller.
-     * @property string $conversationId Maestro conversation ID, populated once the transcription has been stored in Maestro.
-     * @property VoiceV3TranscriptionParticipant[] $participants Array of participants in the conversation
-     * @property int $duration Audio duration in seconds
-     * @property VoiceV3TranscriptionResolvedConfiguration $resolvedConfiguration
-     * @property DateTime $createdAt When this transcript was created
-     * @property DateTime $updatedAt When this transcript was last updated
+     * @property string|null $mediaUrl The third party media URL
+     * @property string|null $sourceId The source ID (recording ID) - used for tracking only
+     * @property \DateTime $audioStartedAt The call/recording start time. When the transcription was created using a sourceId, this value is inferred from the recording resource's start time. When created using a mediaUrl, this reflects the value supplied by the caller.
+     * @property string|null $conversationId Maestro conversation ID, populated once the transcription has been stored in Maestro.
+     * @property string[] $participants Array of participants in the conversation
+     * @property int|null $duration Audio duration in seconds
+     * @property string $resolvedConfiguration
+     * @property \DateTime $createdAt When this transcript was created
+     * @property \DateTime $updatedAt When this transcript was last updated
      * @property string $url The URL of this resource
+     * @property array|null $links Absolute URLs of resources related to this Transcription. Includes `conversation`, the Conversations API resource for this Transcription's `conversationId`, once the transcript has been stored. Omitted entirely when there is no related resource to link to.
     */
     public static function createVoiceV3TranscriptionTranscription(array $payload = []): VoiceV3TranscriptionTranscription
     {
@@ -115,8 +116,10 @@ class VoiceV3TranscriptionParticipant implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'audioChannelIndex' => $this->audioChannelIndex
         ];
+        if (isset($this->audioChannelIndex)) {
+            $jsonString['audioChannelIndex'] = $this->audioChannelIndex;
+        }
         if (isset($this->type)) {
             $jsonString['type'] = $this->type;
         }
@@ -163,15 +166,21 @@ class CreateV3TranscriptionsRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'transcriptionConfigurationId' => $this->transcriptionConfigurationId,
-            'sourceId' => $this->sourceId,
-            'mediaUrl' => $this->mediaUrl
         ];
+        if (isset($this->transcriptionConfigurationId)) {
+            $jsonString['transcriptionConfigurationId'] = $this->transcriptionConfigurationId;
+        }
+        if (isset($this->sourceId)) {
+            $jsonString['sourceId'] = $this->sourceId;
+        }
         if (isset($this->inputSource)) {
             $jsonString['inputSource'] = $this->inputSource;
         }
         if (isset($this->participants)) {
             $jsonString['participants'] = $this->participants;
+        }
+        if (isset($this->mediaUrl)) {
+            $jsonString['mediaUrl'] = $this->mediaUrl;
         }
         if (isset($this->audioStartedAt)) {
             $jsonString['audioStartedAt'] = $this->audioStartedAt;
@@ -281,16 +290,17 @@ class VoiceV3TranscriptionTranscription implements \JsonSerializable
      * @property string $accountId Twilio Account SID
      * @property string $status The current status of the transcription operation
      * @property string $transcriptionConfigurationId Unique identifier for a Transcription configuration.
-     * @property string $mediaUrl The third party media URL
-     * @property string $sourceId The source ID (recording ID) - used for tracking only
-     * @property DateTime $audioStartedAt The call/recording start time. When the transcription was created using a sourceId, this value is inferred from the recording resource's start time. When created using a mediaUrl, this reflects the value supplied by the caller.
-     * @property string $conversationId Maestro conversation ID, populated once the transcription has been stored in Maestro.
-     * @property VoiceV3TranscriptionParticipant[] $participants Array of participants in the conversation
-     * @property int $duration Audio duration in seconds
-     * @property VoiceV3TranscriptionResolvedConfiguration $resolvedConfiguration
-     * @property DateTime $createdAt When this transcript was created
-     * @property DateTime $updatedAt When this transcript was last updated
+     * @property string|null $mediaUrl The third party media URL
+     * @property string|null $sourceId The source ID (recording ID) - used for tracking only
+     * @property \DateTime $audioStartedAt The call/recording start time. When the transcription was created using a sourceId, this value is inferred from the recording resource's start time. When created using a mediaUrl, this reflects the value supplied by the caller.
+     * @property string|null $conversationId Maestro conversation ID, populated once the transcription has been stored in Maestro.
+     * @property string[] $participants Array of participants in the conversation
+     * @property int|null $duration Audio duration in seconds
+     * @property string $resolvedConfiguration
+     * @property \DateTime $createdAt When this transcript was created
+     * @property \DateTime $updatedAt When this transcript was last updated
      * @property string $url The URL of this resource
+     * @property array|null $links Absolute URLs of resources related to this Transcription. Includes `conversation`, the Conversations API resource for this Transcription's `conversationId`, once the transcript has been stored. Omitted entirely when there is no related resource to link to.
     */
         protected $id;
         protected $accountId;
@@ -306,6 +316,7 @@ class VoiceV3TranscriptionTranscription implements \JsonSerializable
         protected $createdAt;
         protected $updatedAt;
         protected $url;
+        protected $links;
     public function __construct(array $payload = []) {
         $this->id = Values::array_get($payload, 'id');
         $this->accountId = Values::array_get($payload, 'accountId');
@@ -321,6 +332,7 @@ class VoiceV3TranscriptionTranscription implements \JsonSerializable
         $this->createdAt = Values::array_get($payload, 'createdAt');
         $this->updatedAt = Values::array_get($payload, 'updatedAt');
         $this->url = Values::array_get($payload, 'url');
+        $this->links = Values::array_get($payload, 'links');
     }
 
     public function toArray(): array
@@ -331,14 +343,28 @@ class VoiceV3TranscriptionTranscription implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'id' => $this->id,
-            'accountId' => $this->accountId,
-            'status' => $this->status,
-            'transcriptionConfigurationId' => $this->transcriptionConfigurationId,
-            'createdAt' => $this->createdAt,
-            'updatedAt' => $this->updatedAt,
-            'url' => $this->url
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->accountId)) {
+            $jsonString['accountId'] = $this->accountId;
+        }
+        if (isset($this->status)) {
+            $jsonString['status'] = $this->status;
+        }
+        if (isset($this->transcriptionConfigurationId)) {
+            $jsonString['transcriptionConfigurationId'] = $this->transcriptionConfigurationId;
+        }
+        if (isset($this->createdAt)) {
+            $jsonString['createdAt'] = $this->createdAt;
+        }
+        if (isset($this->updatedAt)) {
+            $jsonString['updatedAt'] = $this->updatedAt;
+        }
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
         if (isset($this->mediaUrl)) {
             $jsonString['mediaUrl'] = $this->mediaUrl;
         }
@@ -359,6 +385,9 @@ class VoiceV3TranscriptionTranscription implements \JsonSerializable
         }
         if (isset($this->resolvedConfiguration)) {
             $jsonString['resolvedConfiguration'] = $this->resolvedConfiguration;
+        }
+        if (isset($this->links)) {
+            $jsonString['links'] = $this->links;
         }
         return $jsonString;
     }

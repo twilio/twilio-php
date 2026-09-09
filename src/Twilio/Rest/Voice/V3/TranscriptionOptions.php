@@ -36,6 +36,39 @@ abstract class TranscriptionOptions
     }
 
 
+    /**
+     * @param \DateTime $createdAfter Only include transcriptions created at or after this time (inclusive)
+     * @param \DateTime $createdBefore Only include transcriptions created strictly before this time (exclusive)
+     * @param string $languageCode Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US.
+     * @param string $sourceId Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400.
+     * @param string $status Only include transcriptions in this status
+     * @param int $pageSize Number of results per page. This endpoint caps at 100, which is lower than the shared pagination component's ceiling and matches what the service enforces.
+     * @param string $pageToken Opaque cursor for retrieving the next or previous page of results
+     * @return ReadTranscriptionOptions Options builder
+     */
+    public static function read(
+        
+        ?\DateTime $createdAfter = null,
+        ?\DateTime $createdBefore = null,
+        string $languageCode = Values::NONE,
+        string $sourceId = Values::NONE,
+        string $status = Values::NONE,
+        int $pageSize = Values::INT_NONE,
+        string $pageToken = Values::NONE
+
+    ): ReadTranscriptionOptions
+    {
+        return new ReadTranscriptionOptions(
+            $createdAfter,
+            $createdBefore,
+            $languageCode,
+            $sourceId,
+            $status,
+            $pageSize,
+            $pageToken
+        );
+    }
+
 }
 
 class CreateTranscriptionOptions extends Options
@@ -75,4 +108,131 @@ class CreateTranscriptionOptions extends Options
     }
 }
 
+
+class ReadTranscriptionOptions extends Options
+    {
+    /**
+     * @param \DateTime $createdAfter Only include transcriptions created at or after this time (inclusive)
+     * @param \DateTime $createdBefore Only include transcriptions created strictly before this time (exclusive)
+     * @param string $languageCode Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US.
+     * @param string $sourceId Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400.
+     * @param string $status Only include transcriptions in this status
+     * @param int $pageSize Number of results per page. This endpoint caps at 100, which is lower than the shared pagination component's ceiling and matches what the service enforces.
+     * @param string $pageToken Opaque cursor for retrieving the next or previous page of results
+     */
+    public function __construct(
+        
+        ?\DateTime $createdAfter = null,
+        ?\DateTime $createdBefore = null,
+        string $languageCode = Values::NONE,
+        string $sourceId = Values::NONE,
+        string $status = Values::NONE,
+        int $pageSize = Values::INT_NONE,
+        string $pageToken = Values::NONE
+
+    ) {
+        $this->options['createdAfter'] = $createdAfter;
+        $this->options['createdBefore'] = $createdBefore;
+        $this->options['languageCode'] = $languageCode;
+        $this->options['sourceId'] = $sourceId;
+        $this->options['status'] = $status;
+        $this->options['pageSize'] = $pageSize;
+        $this->options['pageToken'] = $pageToken;
+    }
+
+    /**
+     * Only include transcriptions created at or after this time (inclusive)
+     *
+     * @param \DateTime $createdAfter Only include transcriptions created at or after this time (inclusive)
+     * @return $this Fluent Builder
+     */
+    public function setCreatedAfter(\DateTime $createdAfter): self
+    {
+        $this->options['createdAfter'] = $createdAfter;
+        return $this;
+    }
+
+    /**
+     * Only include transcriptions created strictly before this time (exclusive)
+     *
+     * @param \DateTime $createdBefore Only include transcriptions created strictly before this time (exclusive)
+     * @return $this Fluent Builder
+     */
+    public function setCreatedBefore(\DateTime $createdBefore): self
+    {
+        $this->options['createdBefore'] = $createdBefore;
+        return $this;
+    }
+
+    /**
+     * Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US.
+     *
+     * @param string $languageCode Only include transcriptions whose resolved language matches this value exactly. The comparison is case sensitive, so use the stored form, for example en-US.
+     * @return $this Fluent Builder
+     */
+    public function setLanguageCode(string $languageCode): self
+    {
+        $this->options['languageCode'] = $languageCode;
+        return $this;
+    }
+
+    /**
+     * Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400.
+     *
+     * @param string $sourceId Only include transcriptions for this source audio. Must be a Recording SID in lowercase hex; anything else is rejected with a 400.
+     * @return $this Fluent Builder
+     */
+    public function setSourceId(string $sourceId): self
+    {
+        $this->options['sourceId'] = $sourceId;
+        return $this;
+    }
+
+    /**
+     * Only include transcriptions in this status
+     *
+     * @param string $status Only include transcriptions in this status
+     * @return $this Fluent Builder
+     */
+    public function setStatus(string $status): self
+    {
+        $this->options['status'] = $status;
+        return $this;
+    }
+
+    /**
+     * Number of results per page. This endpoint caps at 100, which is lower than the shared pagination component's ceiling and matches what the service enforces.
+     *
+     * @param int $pageSize Number of results per page. This endpoint caps at 100, which is lower than the shared pagination component's ceiling and matches what the service enforces.
+     * @return $this Fluent Builder
+     */
+    public function setPageSize(int $pageSize): self
+    {
+        $this->options['pageSize'] = $pageSize;
+        return $this;
+    }
+
+    /**
+     * Opaque cursor for retrieving the next or previous page of results
+     *
+     * @param string $pageToken Opaque cursor for retrieving the next or previous page of results
+     * @return $this Fluent Builder
+     */
+    public function setPageToken(string $pageToken): self
+    {
+        $this->options['pageToken'] = $pageToken;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Voice.V3.ReadTranscriptionOptions ' . $options . ']';
+    }
+}
 

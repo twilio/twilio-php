@@ -70,10 +70,16 @@ class ApprovePasskeysChallengeRequestResponse implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'authenticatorData' => $this->authenticatorData,
-            'clientDataJSON' => $this->clientDataJSON,
-            'signature' => $this->signature
         ];
+        if (isset($this->authenticatorData)) {
+            $jsonString['authenticatorData'] = $this->authenticatorData;
+        }
+        if (isset($this->clientDataJSON)) {
+            $jsonString['clientDataJSON'] = $this->clientDataJSON;
+        }
+        if (isset($this->signature)) {
+            $jsonString['signature'] = $this->signature;
+        }
         if (isset($this->userHandle)) {
             $jsonString['userHandle'] = $this->userHandle;
         }
@@ -111,11 +117,19 @@ class ApprovePasskeysChallengeRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'id' => $this->id,
-            'rawId' => $this->rawId,
-            'authenticatorAttachment' => $this->authenticatorAttachment,
-            'response' => $this->response
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->rawId)) {
+            $jsonString['rawId'] = $this->rawId;
+        }
+        if (isset($this->authenticatorAttachment)) {
+            $jsonString['authenticatorAttachment'] = $this->authenticatorAttachment;
+        }
+        if (isset($this->response)) {
+            $jsonString['response'] = $this->response;
+        }
         if (isset($this->type)) {
             $jsonString['type'] = $this->type;
         }

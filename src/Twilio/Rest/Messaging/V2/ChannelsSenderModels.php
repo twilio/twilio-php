@@ -329,8 +329,10 @@ class MessagingV2ChannelsSenderRequestsCreate implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'sender_id' => $this->senderId
         ];
+        if (isset($this->senderId)) {
+            $jsonString['sender_id'] = $this->senderId;
+        }
         if (isset($this->friendlyName)) {
             $jsonString['friendly_name'] = $this->friendlyName;
         }

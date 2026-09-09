@@ -18,6 +18,7 @@ namespace Twilio\Rest\Insights\V3;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\ApiV1Version;
@@ -25,10 +26,10 @@ use Twilio\Http\Response;
 use Twilio\Metadata\ResourceMetadata;
 
 
-class MetadataList extends ListResource
+class ResultList extends ListResource
     {
     /**
-     * Construct the MetadataList
+     * Construct the ResultList
      *
      * @param Version $version Version that contains the resource
      */
@@ -46,46 +47,64 @@ class MetadataList extends ListResource
     /**
      * Helper function for Fetch
      *
+     
+     * @param array|Options $options Optional Arguments
      * @return Response Fetched Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _fetch(): Response
+    private function _fetch(string $operationId, array $options = []): Response
     {
         
-        $uri = '/InsightsDomains/Conversations/Metadata';
+        $uri = '/InsightsDomains/Conversations/QueryJobs/' . \rawurlencode($operationId)
+        .'/Results';
         
+        $options = new Values($options);
+
+        $params = Values::of([
+            'pageSize' =>
+                $options['pageSize'],
+            'pageToken' =>
+                $options['pageToken'],
+        ]);
+
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('GET', $uri, [], [], $headers, "fetch");
+        return $this->version->handleRequest('GET', $uri, $params, [], $headers, "fetch");
     }
 
     /**
-     * Fetch the InsightsMetadataResponseInstance
+     * Fetch the InsightsQueryResponseInstance
      *
-     * @return InsightsMetadataResponseInstance Fetched InsightsMetadataResponseInstance
+     
+     * @param array|Options $options Optional Arguments
+     * @return InsightsQueryResponseInstance Fetched InsightsQueryResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetch(): InsightsMetadataResponseInstance
+    public function fetch(string $operationId, array $options = []): InsightsQueryResponseInstance
     {
-        $response = $this->_fetch();
-        return new InsightsMetadataResponseInstance(
+        $response = $this->_fetch($operationId, $options);
+        return new InsightsQueryResponseInstance(
             $this->version,
-            $response->getContent()
+            $response->getContent(),
+            $operationId
         );
         
     }
 
     /**
-     * Fetch the InsightsMetadataResponseInstance with Metadata
+     * Fetch the InsightsQueryResponseInstance with Metadata
      *
+     
+     * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Fetched Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function fetchWithMetadata(): ResourceMetadata
+    public function fetchWithMetadata(string $operationId, array $options = []): ResourceMetadata
     {
-        $response = $this->_fetch();
-        $resource = new InsightsMetadataResponseInstance(
+        $response = $this->_fetch($operationId, $options);
+        $resource = new InsightsQueryResponseInstance(
                         $this->version,
-                        $response->getContent()
+                        $response->getContent(),
+                        $operationId
                     );
         
         return new ResourceMetadata(
@@ -103,6 +122,6 @@ class MetadataList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Insights.V3.MetadataList]';
+        return '[Twilio.Insights.V3.ResultList]';
     }
 }

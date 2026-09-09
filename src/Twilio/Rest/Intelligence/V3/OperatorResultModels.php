@@ -148,10 +148,16 @@ class IntelligenceConfigurationReference implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'id' => $this->id,
-            'ruleId' => $this->ruleId,
-            'version' => $this->version
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->ruleId)) {
+            $jsonString['ruleId'] = $this->ruleId;
+        }
+        if (isset($this->version)) {
+            $jsonString['version'] = $this->version;
+        }
         return $jsonString;
     }
 }
@@ -180,10 +186,16 @@ class OperatorReference implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'id' => $this->id,
-            'version' => $this->version,
-            'parameters' => $this->parameters
         ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->version)) {
+            $jsonString['version'] = $this->version;
+        }
+        if (isset($this->parameters)) {
+            $jsonString['parameters'] = $this->parameters;
+        }
         return $jsonString;
     }
 }
@@ -209,9 +221,13 @@ class ExecutionDetailsTrigger implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'on' => $this->on,
-            'timestamp' => $this->timestamp
         ];
+        if (isset($this->on)) {
+            $jsonString['on'] = $this->on;
+        }
+        if (isset($this->timestamp)) {
+            $jsonString['timestamp'] = $this->timestamp;
+        }
         return $jsonString;
     }
 }
@@ -237,9 +253,13 @@ class ExecutionDetailsCommunications implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'first' => $this->first,
-            'last' => $this->last
         ];
+        if (isset($this->first)) {
+            $jsonString['first'] = $this->first;
+        }
+        if (isset($this->last)) {
+            $jsonString['last'] = $this->last;
+        }
         return $jsonString;
     }
 }
@@ -265,9 +285,13 @@ class ResolvedContextMemory implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'profileId' => $this->profileId,
-            'memoryStoreId' => $this->memoryStoreId
         ];
+        if (isset($this->profileId)) {
+            $jsonString['profileId'] = $this->profileId;
+        }
+        if (isset($this->memoryStoreId)) {
+            $jsonString['memoryStoreId'] = $this->memoryStoreId;
+        }
         return $jsonString;
     }
 }
@@ -290,8 +314,10 @@ class ResolvedContextKnowledge implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'sources' => $this->sources
         ];
+        if (isset($this->sources)) {
+            $jsonString['sources'] = $this->sources;
+        }
         return $jsonString;
     }
 }
@@ -358,11 +384,19 @@ class ExecutionDetails implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'trigger' => $this->trigger,
-            'communications' => $this->communications,
-            'channels' => $this->channels,
-            'participants' => $this->participants
         ];
+        if (isset($this->trigger)) {
+            $jsonString['trigger'] = $this->trigger;
+        }
+        if (isset($this->communications)) {
+            $jsonString['communications'] = $this->communications;
+        }
+        if (isset($this->channels)) {
+            $jsonString['channels'] = $this->channels;
+        }
+        if (isset($this->participants)) {
+            $jsonString['participants'] = $this->participants;
+        }
         if (isset($this->resolvedContext)) {
             $jsonString['resolvedContext'] = $this->resolvedContext;
         }
@@ -400,11 +434,19 @@ class SystemMetaData implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'latencyMs' => $this->latencyMs,
-            'inputCharacters' => $this->inputCharacters,
-            'outputCharacters' => $this->outputCharacters,
-            'inputTruncated' => $this->inputTruncated
         ];
+        if (isset($this->latencyMs)) {
+            $jsonString['latencyMs'] = $this->latencyMs;
+        }
+        if (isset($this->inputCharacters)) {
+            $jsonString['inputCharacters'] = $this->inputCharacters;
+        }
+        if (isset($this->outputCharacters)) {
+            $jsonString['outputCharacters'] = $this->outputCharacters;
+        }
+        if (isset($this->inputTruncated)) {
+            $jsonString['inputTruncated'] = $this->inputTruncated;
+        }
         if (isset($this->resolvedModel)) {
             $jsonString['resolvedModel'] = $this->resolvedModel;
         }
@@ -430,8 +472,10 @@ class OperatorResultsResponseBaseMetadata implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'system' => $this->system
         ];
+        if (isset($this->system)) {
+            $jsonString['system'] = $this->system;
+        }
         return $jsonString;
     }
 }
@@ -454,8 +498,10 @@ class ExtractionResultResult implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'entities' => $this->entities
         ];
+        if (isset($this->entities)) {
+            $jsonString['entities'] = $this->entities;
+        }
         return $jsonString;
     }
 }

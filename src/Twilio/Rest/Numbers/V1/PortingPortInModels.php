@@ -100,8 +100,10 @@ class NumbersV1PortingPortInCreatePhoneNumbers implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'phone_number' => $this->phoneNumber
         ];
+        if (isset($this->phoneNumber)) {
+            $jsonString['phone_number'] = $this->phoneNumber;
+        }
         if (isset($this->pin)) {
             $jsonString['pin'] = $this->pin;
         }
@@ -142,12 +144,22 @@ class NumbersV1PortingAddress implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'street' => $this->street,
-            'city' => $this->city,
-            'state' => $this->state,
-            'zip' => $this->zip,
-            'country' => $this->country
         ];
+        if (isset($this->street)) {
+            $jsonString['street'] = $this->street;
+        }
+        if (isset($this->city)) {
+            $jsonString['city'] = $this->city;
+        }
+        if (isset($this->state)) {
+            $jsonString['state'] = $this->state;
+        }
+        if (isset($this->zip)) {
+            $jsonString['zip'] = $this->zip;
+        }
+        if (isset($this->country)) {
+            $jsonString['country'] = $this->country;
+        }
         if (isset($this->street2)) {
             $jsonString['street_2'] = $this->street2;
         }
@@ -206,10 +218,16 @@ class NumbersV1PortingLosingCarrierInformation implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'customer_name' => $this->customerName,
-            'authorized_representative' => $this->authorizedRepresentative,
-            'authorized_representative_email' => $this->authorizedRepresentativeEmail
         ];
+        if (isset($this->customerName)) {
+            $jsonString['customer_name'] = $this->customerName;
+        }
+        if (isset($this->authorizedRepresentative)) {
+            $jsonString['authorized_representative'] = $this->authorizedRepresentative;
+        }
+        if (isset($this->authorizedRepresentativeEmail)) {
+            $jsonString['authorized_representative_email'] = $this->authorizedRepresentativeEmail;
+        }
         if (isset($this->accountNumber)) {
             $jsonString['account_number'] = $this->accountNumber;
         }
@@ -289,10 +307,16 @@ class NumbersV1PortingPortInCreate implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'account_sid' => $this->accountSid,
-            'documents' => $this->documents,
-            'losing_carrier_information' => $this->losingCarrierInformation
         ];
+        if (isset($this->accountSid)) {
+            $jsonString['account_sid'] = $this->accountSid;
+        }
+        if (isset($this->documents)) {
+            $jsonString['documents'] = $this->documents;
+        }
+        if (isset($this->losingCarrierInformation)) {
+            $jsonString['losing_carrier_information'] = $this->losingCarrierInformation;
+        }
         if (isset($this->phoneNumbers)) {
             $jsonString['phone_numbers'] = $this->phoneNumbers;
         }

@@ -61,9 +61,13 @@ class OperationResultResourceId implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'id' => $this->id
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
         return $jsonString;
     }
 }

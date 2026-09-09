@@ -54,9 +54,13 @@ class ContentApprovalRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'name' => $this->name,
-            'category' => $this->category
         ];
+        if (isset($this->name)) {
+            $jsonString['name'] = $this->name;
+        }
+        if (isset($this->category)) {
+            $jsonString['category'] = $this->category;
+        }
         if (isset($this->sendTtlSeconds)) {
             $jsonString['send_ttl_seconds'] = $this->sendTtlSeconds;
         }

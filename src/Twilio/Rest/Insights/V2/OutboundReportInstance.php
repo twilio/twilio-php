@@ -24,35 +24,34 @@ use Twilio\Version;
 
 
 /**
- * @property string $handle
- * @property int $totalCalls
- * @property string $callAnswerScore
- * @property string $callStatePercentage
- * @property string $silentCallsPercentage
+ * @property string $accountSid
+ * @property string $reportId
+ * @property string $status
+ * @property string $requestMeta
+ * @property string|null $url
  */
-class InboundInstance extends InstanceResource
+class OutboundReportInstance extends InstanceResource
 {
     /**
-     * Initialize the InboundInstance
+     * Initialize the OutboundReportInstance
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $reportId A unique Report Id.
      */
-    public function __construct(Version $version, array $payload, ?string $reportId = null)
+    public function __construct(Version $version, array $payload)
     {
         parent::__construct($version);
 
         // Marshaled Properties
         $this->properties = [
-            'handle' => Values::array_get($payload, 'handle'),
-            'totalCalls' => Values::array_get($payload, 'total_calls'),
-            'callAnswerScore' => Values::array_get($payload, 'call_answer_score'),
-            'callStatePercentage' => Values::array_get($payload, 'call_state_percentage'),
-            'silentCallsPercentage' => Values::array_get($payload, 'silent_calls_percentage'),
+            'accountSid' => Values::array_get($payload, 'account_sid'),
+            'reportId' => Values::array_get($payload, 'report_id'),
+            'status' => Values::array_get($payload, 'status'),
+            'requestMeta' => Values::array_get($payload, 'request_meta'),
+            'url' => Values::array_get($payload, 'url'),
         ];
 
-        $this->solution = ['reportId' => $reportId ?: $this->properties['reportId'], ];
+        $this->solution = [];
     }
 
     /**
@@ -83,7 +82,7 @@ class InboundInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Insights.V2.InboundInstance]';
+        return '[Twilio.Insights.V2.OutboundReportInstance]';
     }
 }
 

@@ -19,13 +19,17 @@ use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
 use Twilio\Rest\Insights\V2\InboundList;
+use Twilio\Rest\Insights\V2\InboundReportList;
 use Twilio\Rest\Insights\V2\OutboundList;
+use Twilio\Rest\Insights\V2\OutboundReportList;
 use Twilio\Rest\Insights\V2\ReportList;
 use Twilio\Version;
 
 /**
  * @property InboundList $inbound
+ * @property InboundReportList $inboundReports
  * @property OutboundList $outbound
+ * @property OutboundReportList $outboundReports
  * @property ReportList $reports
  * @method \Twilio\Rest\Insights\V2\ReportContext reports(string $reportId)
  * @method \Twilio\Rest\Insights\V2\InboundContext inbound(string $reportId)
@@ -34,7 +38,9 @@ use Twilio\Version;
 class V2 extends Version
 {
     protected $_inbound;
+    protected $_inboundReports;
     protected $_outbound;
+    protected $_outboundReports;
     protected $_reports;
 
     /**
@@ -56,12 +62,28 @@ class V2 extends Version
         return $this->_inbound;
     }
 
+    protected function getInboundReports(): InboundReportList
+    {
+        if (!$this->_inboundReports) {
+            $this->_inboundReports = new InboundReportList($this);
+        }
+        return $this->_inboundReports;
+    }
+
     protected function getOutbound(): OutboundList
     {
         if (!$this->_outbound) {
             $this->_outbound = new OutboundList($this);
         }
         return $this->_outbound;
+    }
+
+    protected function getOutboundReports(): OutboundReportList
+    {
+        if (!$this->_outboundReports) {
+            $this->_outboundReports = new OutboundReportList($this);
+        }
+        return $this->_outboundReports;
     }
 
     protected function getReports(): ReportList

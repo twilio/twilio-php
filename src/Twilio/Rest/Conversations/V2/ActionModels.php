@@ -170,10 +170,16 @@ class ConversationsV2SendMessagePayload implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'from' => $this->from,
-            'to' => $this->to,
-            'content' => $this->content
         ];
+        if (isset($this->from)) {
+            $jsonString['from'] = $this->from;
+        }
+        if (isset($this->to)) {
+            $jsonString['to'] = $this->to;
+        }
+        if (isset($this->content)) {
+            $jsonString['content'] = $this->content;
+        }
         if (isset($this->channelSettings)) {
             $jsonString['channelSettings'] = $this->channelSettings;
         }
@@ -202,9 +208,13 @@ class CreateConversationActionRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'payload' => $this->payload
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->payload)) {
+            $jsonString['payload'] = $this->payload;
+        }
         return $jsonString;
     }
 }

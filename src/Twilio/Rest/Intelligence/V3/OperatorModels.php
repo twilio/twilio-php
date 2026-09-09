@@ -93,9 +93,13 @@ class OperatorTrainingExample implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'input' => $this->input,
-            'output' => $this->output
         ];
+        if (isset($this->input)) {
+            $jsonString['input'] = $this->input;
+        }
+        if (isset($this->output)) {
+            $jsonString['output'] = $this->output;
+        }
         return $jsonString;
     }
 }

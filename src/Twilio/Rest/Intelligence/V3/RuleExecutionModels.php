@@ -54,10 +54,16 @@ class CreateRuleExecutionRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'intelligenceConfigurationId' => $this->intelligenceConfigurationId,
-            'ruleId' => $this->ruleId,
-            'conversationId' => $this->conversationId
         ];
+        if (isset($this->intelligenceConfigurationId)) {
+            $jsonString['intelligenceConfigurationId'] = $this->intelligenceConfigurationId;
+        }
+        if (isset($this->ruleId)) {
+            $jsonString['ruleId'] = $this->ruleId;
+        }
+        if (isset($this->conversationId)) {
+            $jsonString['conversationId'] = $this->conversationId;
+        }
         return $jsonString;
     }
 }

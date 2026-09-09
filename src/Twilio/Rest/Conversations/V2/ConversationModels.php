@@ -76,7 +76,7 @@ abstract class ConversationModels
     }
 
     /**
-     * @property string $name The name of the Conversation.
+     * @property string|null $name The name of the Conversation.
      * @property string $status Lifecycle status of a Conversation.
      * @property PatchConversationByIdRequestConfiguration $configuration
     */
@@ -170,9 +170,13 @@ class CreateConversationWithConfigRequestParticipantsAddresses implements \JsonS
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'channel' => $this->channel,
-            'address' => $this->address
         ];
+        if (isset($this->channel)) {
+            $jsonString['channel'] = $this->channel;
+        }
+        if (isset($this->address)) {
+            $jsonString['address'] = $this->address;
+        }
         if (isset($this->channelId)) {
             $jsonString['channelId'] = $this->channelId;
         }
@@ -251,8 +255,10 @@ class CreateConversationWithConfigRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'configurationId' => $this->configurationId
         ];
+        if (isset($this->configurationId)) {
+            $jsonString['configurationId'] = $this->configurationId;
+        }
         if (isset($this->name)) {
             $jsonString['name'] = $this->name;
         }
@@ -287,8 +293,10 @@ class ConversationsV2StatusCallbackConfig implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'url' => $this->url
         ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
         if (isset($this->method)) {
             $jsonString['method'] = $this->method;
         }
@@ -325,7 +333,7 @@ class PatchConversationByIdRequestConfiguration implements \JsonSerializable
 class PatchConversationByIdRequest implements \JsonSerializable
 {
     /**
-     * @property string $name The name of the Conversation.
+     * @property string|null $name The name of the Conversation.
      * @property string $status Lifecycle status of a Conversation.
      * @property PatchConversationByIdRequestConfiguration $configuration
     */
@@ -381,8 +389,10 @@ class UpdateConversationByIdRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'status' => $this->status
         ];
+        if (isset($this->status)) {
+            $jsonString['status'] = $this->status;
+        }
         if (isset($this->name)) {
             $jsonString['name'] = $this->name;
         }
@@ -408,8 +418,10 @@ class ConversationsV2ConversationsV1Bridge implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'serviceId' => $this->serviceId
         ];
+        if (isset($this->serviceId)) {
+            $jsonString['serviceId'] = $this->serviceId;
+        }
         return $jsonString;
     }
 }

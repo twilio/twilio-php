@@ -16,7 +16,7 @@
 namespace Twilio\Rest\Insights\V3;
 
 use Twilio\Values;
-abstract class QueryModels
+abstract class QueryJobModels
 {
     /**
      * @property string $op
@@ -67,14 +67,14 @@ abstract class QueryModels
     }
 
     /**
-     * @property string $key The key of the list property contains the actual data items. This enables programmatic iteration over paginated results.
-     * @property int $pageSize The actual number of items returned in this response. May be less than the requested pageSize for the last page.
-     * @property string $previousToken Token to fetch the previous page of results. Only included if there is a previous page, otherwise omitted.
-     * @property string $nextToken Token to fetch the next page of results. Only included if there is a next page, otherwise omitted.
+     * @property int $code Twilio-specific error code
+     * @property string $message A human readable error message
+     * @property int $httpStatusCode HTTP status code that would have been returned for a synchronous failure
+     * @property string $detail Additional context about the failure
     */
-    public static function createPaginationMeta(array $payload = []): PaginationMeta
+    public static function createOperationError(array $payload = []): OperationError
     {
-        return new PaginationMeta($payload);
+        return new OperationError($payload);
     }
 
 }
@@ -257,23 +257,23 @@ class InsightsQueryRequest implements \JsonSerializable
     }
 }
 
-class PaginationMeta implements \JsonSerializable
+class OperationError implements \JsonSerializable
 {
     /**
-     * @property string $key The key of the list property contains the actual data items. This enables programmatic iteration over paginated results.
-     * @property int $pageSize The actual number of items returned in this response. May be less than the requested pageSize for the last page.
-     * @property string $previousToken Token to fetch the previous page of results. Only included if there is a previous page, otherwise omitted.
-     * @property string $nextToken Token to fetch the next page of results. Only included if there is a next page, otherwise omitted.
+     * @property int $code Twilio-specific error code
+     * @property string $message A human readable error message
+     * @property int $httpStatusCode HTTP status code that would have been returned for a synchronous failure
+     * @property string $detail Additional context about the failure
     */
-        protected $key;
-        protected $pageSize;
-        protected $previousToken;
-        protected $nextToken;
+        protected $code;
+        protected $message;
+        protected $httpStatusCode;
+        protected $detail;
     public function __construct(array $payload = []) {
-        $this->key = Values::array_get($payload, 'key');
-        $this->pageSize = Values::array_get($payload, 'pageSize');
-        $this->previousToken = Values::array_get($payload, 'previousToken');
-        $this->nextToken = Values::array_get($payload, 'nextToken');
+        $this->code = Values::array_get($payload, 'code');
+        $this->message = Values::array_get($payload, 'message');
+        $this->httpStatusCode = Values::array_get($payload, 'httpStatusCode');
+        $this->detail = Values::array_get($payload, 'detail');
     }
 
     public function toArray(): array
@@ -285,17 +285,17 @@ class PaginationMeta implements \JsonSerializable
     {
         $jsonString = [
         ];
-        if (isset($this->key)) {
-            $jsonString['key'] = $this->key;
+        if (isset($this->code)) {
+            $jsonString['code'] = $this->code;
         }
-        if (isset($this->pageSize)) {
-            $jsonString['pageSize'] = $this->pageSize;
+        if (isset($this->message)) {
+            $jsonString['message'] = $this->message;
         }
-        if (isset($this->previousToken)) {
-            $jsonString['previousToken'] = $this->previousToken;
+        if (isset($this->httpStatusCode)) {
+            $jsonString['httpStatusCode'] = $this->httpStatusCode;
         }
-        if (isset($this->nextToken)) {
-            $jsonString['nextToken'] = $this->nextToken;
+        if (isset($this->detail)) {
+            $jsonString['detail'] = $this->detail;
         }
         return $jsonString;
     }

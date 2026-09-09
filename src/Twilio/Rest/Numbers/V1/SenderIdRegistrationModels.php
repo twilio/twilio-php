@@ -74,11 +74,19 @@ class NumbersV1CreateEmbeddedRegistrationRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'regulationId' => $this->regulationId,
-            'regulationVersion' => $this->regulationVersion,
-            'friendlyName' => $this->friendlyName,
-            'data' => $this->data
         ];
+        if (isset($this->regulationId)) {
+            $jsonString['regulationId'] = $this->regulationId;
+        }
+        if (isset($this->regulationVersion)) {
+            $jsonString['regulationVersion'] = $this->regulationVersion;
+        }
+        if (isset($this->friendlyName)) {
+            $jsonString['friendlyName'] = $this->friendlyName;
+        }
+        if (isset($this->data)) {
+            $jsonString['data'] = $this->data;
+        }
         if (isset($this->statusNotificationEmail)) {
             $jsonString['statusNotificationEmail'] = $this->statusNotificationEmail;
         }

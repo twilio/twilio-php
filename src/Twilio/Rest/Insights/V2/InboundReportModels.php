@@ -16,7 +16,7 @@
 namespace Twilio\Rest\Insights\V2;
 
 use Twilio\Values;
-abstract class InboundModels
+abstract class InboundReportModels
 {
     /**
      * @property \DateTime $startDatetime Start date time of the report

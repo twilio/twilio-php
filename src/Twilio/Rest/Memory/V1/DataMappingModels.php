@@ -96,10 +96,16 @@ class MappingTraitItem implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'expression' => $this->expression,
-            'traitGroup' => $this->traitGroup,
-            'traitName' => $this->traitName
         ];
+        if (isset($this->expression)) {
+            $jsonString['expression'] = $this->expression;
+        }
+        if (isset($this->traitGroup)) {
+            $jsonString['traitGroup'] = $this->traitGroup;
+        }
+        if (isset($this->traitName)) {
+            $jsonString['traitName'] = $this->traitName;
+        }
         return $jsonString;
     }
 }
@@ -125,9 +131,13 @@ class DataMappingToTraits implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'mappings' => $this->mappings
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->mappings)) {
+            $jsonString['mappings'] = $this->mappings;
+        }
         return $jsonString;
     }
 }
@@ -156,10 +166,16 @@ class DataMappingFromTypes implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'type' => $this->type,
-            'columns' => $this->columns,
-            'datasetId' => $this->datasetId
         ];
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
+        }
+        if (isset($this->columns)) {
+            $jsonString['columns'] = $this->columns;
+        }
+        if (isset($this->datasetId)) {
+            $jsonString['datasetId'] = $this->datasetId;
+        }
         return $jsonString;
     }
 }
@@ -194,10 +210,16 @@ class CreateDataMappingInput implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'displayName' => $this->displayName,
-            'mappingTo' => $this->mappingTo,
-            'mappingFrom' => $this->mappingFrom
         ];
+        if (isset($this->displayName)) {
+            $jsonString['displayName'] = $this->displayName;
+        }
+        if (isset($this->mappingTo)) {
+            $jsonString['mappingTo'] = $this->mappingTo;
+        }
+        if (isset($this->mappingFrom)) {
+            $jsonString['mappingFrom'] = $this->mappingFrom;
+        }
         if (isset($this->description)) {
             $jsonString['description'] = $this->description;
         }

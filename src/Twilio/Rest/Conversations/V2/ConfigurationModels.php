@@ -61,6 +61,30 @@ abstract class ConfigurationModels
     }
 
     /**
+     * @property string $serviceId The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.
+    */
+    public static function createPatchConfigurationRequestConversationsV1Bridge(array $payload = []): PatchConfigurationRequestConversationsV1Bridge
+    {
+        return new PatchConfigurationRequestConversationsV1Bridge($payload);
+    }
+
+    /**
+     * @property string|null $displayName A human-readable name for the configuration. Limited to 32 characters.
+     * @property string|null $description Human-readable description for the configuration.
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+     * @property string|null $memoryStoreId The Memory Store ID for profile resolution.
+     * @property string $channelSettings Channel-specific settings to merge onto the existing channelSettings map. A channel key mapped to a value replaces that channel's settings; a channel key explicitly mapped to null removes it; an omitted channel key is left untouched.
+     * @property UpdateConfigurationRequestStatusCallbacks[] $statusCallbacks
+     * @property string[]|null $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
+     * @property bool|null $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration.
+     * @property PatchConfigurationRequestConversationsV1Bridge $conversationsV1Bridge
+    */
+    public static function createPatchConfigurationRequest(array $payload = []): PatchConfigurationRequest
+    {
+        return new PatchConfigurationRequest($payload);
+    }
+
+    /**
      * @property string $displayName A human-readable name for the configuration. Limited to 32 characters.
      * @property string $description Human-readable description for the configuration.
      * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
@@ -107,8 +131,10 @@ class CreateConfigurationRequestStatusCallbacks implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'url' => $this->url
         ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
         if (isset($this->method)) {
             $jsonString['method'] = $this->method;
         }
@@ -134,8 +160,10 @@ class CreateConfigurationRequestConversationsV1Bridge implements \JsonSerializab
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'serviceId' => $this->serviceId
         ];
+        if (isset($this->serviceId)) {
+            $jsonString['serviceId'] = $this->serviceId;
+        }
         return $jsonString;
     }
 }
@@ -182,11 +210,19 @@ class CreateConfigurationRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'displayName' => $this->displayName,
-            'description' => $this->description,
-            'conversationGroupingType' => $this->conversationGroupingType,
-            'memoryStoreId' => $this->memoryStoreId
         ];
+        if (isset($this->displayName)) {
+            $jsonString['displayName'] = $this->displayName;
+        }
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->conversationGroupingType)) {
+            $jsonString['conversationGroupingType'] = $this->conversationGroupingType;
+        }
+        if (isset($this->memoryStoreId)) {
+            $jsonString['memoryStoreId'] = $this->memoryStoreId;
+        }
         if (isset($this->channelSettings)) {
             $jsonString['channelSettings'] = $this->channelSettings;
         }
@@ -227,10 +263,112 @@ class UpdateConfigurationRequestStatusCallbacks implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'url' => $this->url
         ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
         if (isset($this->method)) {
             $jsonString['method'] = $this->method;
+        }
+        return $jsonString;
+    }
+}
+
+class PatchConfigurationRequestConversationsV1Bridge implements \JsonSerializable
+{
+    /**
+     * @property string $serviceId The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.
+    */
+        protected $serviceId;
+    public function __construct(array $payload = []) {
+        $this->serviceId = Values::array_get($payload, 'serviceId');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->serviceId)) {
+            $jsonString['serviceId'] = $this->serviceId;
+        }
+        return $jsonString;
+    }
+}
+
+class PatchConfigurationRequest implements \JsonSerializable
+{
+    /**
+     * @property string|null $displayName A human-readable name for the configuration. Limited to 32 characters.
+     * @property string|null $description Human-readable description for the configuration.
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+     * @property string|null $memoryStoreId The Memory Store ID for profile resolution.
+     * @property string $channelSettings Channel-specific settings to merge onto the existing channelSettings map. A channel key mapped to a value replaces that channel's settings; a channel key explicitly mapped to null removes it; an omitted channel key is left untouched.
+     * @property UpdateConfigurationRequestStatusCallbacks[] $statusCallbacks
+     * @property string[]|null $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
+     * @property bool|null $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration.
+     * @property PatchConfigurationRequestConversationsV1Bridge $conversationsV1Bridge
+    */
+        protected $displayName;
+        protected $description;
+        protected $conversationGroupingType;
+        protected $memoryStoreId;
+        protected $channelSettings;
+        protected $statusCallbacks;
+        protected $intelligenceConfigurationIds;
+        protected $memoryExtractionEnabled;
+        protected $conversationsV1Bridge;
+    public function __construct(array $payload = []) {
+        $this->displayName = Values::array_get($payload, 'displayName');
+        $this->description = Values::array_get($payload, 'description');
+        $this->conversationGroupingType = Values::array_get($payload, 'conversationGroupingType');
+        $this->memoryStoreId = Values::array_get($payload, 'memoryStoreId');
+        $this->channelSettings = Values::array_get($payload, 'channelSettings');
+        $this->statusCallbacks = Values::array_get($payload, 'statusCallbacks');
+        $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
+        $this->memoryExtractionEnabled = Values::array_get($payload, 'memoryExtractionEnabled');
+        $this->conversationsV1Bridge = Values::array_get($payload, 'conversationsV1Bridge');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->displayName)) {
+            $jsonString['displayName'] = $this->displayName;
+        }
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->conversationGroupingType)) {
+            $jsonString['conversationGroupingType'] = $this->conversationGroupingType;
+        }
+        if (isset($this->memoryStoreId)) {
+            $jsonString['memoryStoreId'] = $this->memoryStoreId;
+        }
+        if (isset($this->channelSettings)) {
+            $jsonString['channelSettings'] = $this->channelSettings;
+        }
+        if (isset($this->statusCallbacks)) {
+            $jsonString['statusCallbacks'] = $this->statusCallbacks;
+        }
+        if (isset($this->intelligenceConfigurationIds)) {
+            $jsonString['intelligenceConfigurationIds'] = $this->intelligenceConfigurationIds;
+        }
+        if (isset($this->memoryExtractionEnabled)) {
+            $jsonString['memoryExtractionEnabled'] = $this->memoryExtractionEnabled;
+        }
+        if (isset($this->conversationsV1Bridge)) {
+            $jsonString['conversationsV1Bridge'] = $this->conversationsV1Bridge;
         }
         return $jsonString;
     }
@@ -278,11 +416,19 @@ class UpdateConfigurationRequest implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'description' => $this->description,
-            'conversationGroupingType' => $this->conversationGroupingType,
-            'memoryStoreId' => $this->memoryStoreId,
-            'channelSettings' => $this->channelSettings
         ];
+        if (isset($this->description)) {
+            $jsonString['description'] = $this->description;
+        }
+        if (isset($this->conversationGroupingType)) {
+            $jsonString['conversationGroupingType'] = $this->conversationGroupingType;
+        }
+        if (isset($this->memoryStoreId)) {
+            $jsonString['memoryStoreId'] = $this->memoryStoreId;
+        }
+        if (isset($this->channelSettings)) {
+            $jsonString['channelSettings'] = $this->channelSettings;
+        }
         if (isset($this->displayName)) {
             $jsonString['displayName'] = $this->displayName;
         }
@@ -320,8 +466,10 @@ class ConversationsV2ConversationsV1Bridge implements \JsonSerializable
     public function jsonSerialize(): array
     {
         $jsonString = [
-            'serviceId' => $this->serviceId
         ];
+        if (isset($this->serviceId)) {
+            $jsonString['serviceId'] = $this->serviceId;
+        }
         return $jsonString;
     }
 }

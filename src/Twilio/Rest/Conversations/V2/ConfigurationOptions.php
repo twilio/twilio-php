@@ -74,6 +74,21 @@ abstract class ConfigurationOptions
 
     /**
      * @param string $idempotencyKey Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL.
+     * @return PatchConfigurationOptions Options builder
+     */
+    public static function patch(
+        
+        string $idempotencyKey = Values::NONE
+
+    ): PatchConfigurationOptions
+    {
+        return new PatchConfigurationOptions(
+            $idempotencyKey
+        );
+    }
+
+    /**
+     * @param string $idempotencyKey Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL.
      * @return UpdateConfigurationOptions Options builder
      */
     public static function update(
@@ -228,6 +243,43 @@ class ReadConfigurationOptions extends Options
     {
         $options = \http_build_query(Values::of($this->options), '', ' ');
         return '[Twilio.Conversations.V2.ReadConfigurationOptions ' . $options . ']';
+    }
+}
+
+class PatchConfigurationOptions extends Options
+    {
+    /**
+     * @param string $idempotencyKey Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL.
+     */
+    public function __construct(
+        
+        string $idempotencyKey = Values::NONE
+
+    ) {
+        $this->options['idempotencyKey'] = $idempotencyKey;
+    }
+
+    /**
+     * Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL.
+     *
+     * @param string $idempotencyKey Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the original response without creating a duplicate operation. Keys are scoped to account + region with a 24-hour TTL.
+     * @return $this Fluent Builder
+     */
+    public function setIdempotencyKey(string $idempotencyKey): self
+    {
+        $this->options['idempotencyKey'] = $idempotencyKey;
+        return $this;
+    }
+
+    /**
+     * Provide a friendly representation
+     *
+     * @return string Machine friendly representation
+     */
+    public function __toString(): string
+    {
+        $options = \http_build_query(Values::of($this->options), '', ' ');
+        return '[Twilio.Conversations.V2.PatchConfigurationOptions ' . $options . ']';
     }
 }
 

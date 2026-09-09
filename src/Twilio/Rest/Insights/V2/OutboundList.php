@@ -243,22 +243,6 @@ class OutboundList extends ListResource
 
 
     /**
-     * Constructs a OutboundContext
-     *
-     * @param string $reportId A unique Report Id.
-     */
-    public function getContext(
-        string $reportId
-        
-    ): OutboundContext
-    {
-        return new OutboundContext(
-            $this->version,
-            $reportId
-        );
-    }
-
-    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation
