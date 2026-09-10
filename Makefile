@@ -1,6 +1,6 @@
 # Twilio API helper library.
 # See LICENSE file for copyright and license details.
-.PHONY: all clean install test test-docker docs docs-new authors docker-dev-build docker-dev-clean docker-dev-test
+.PHONY: all clean install test test-docker docs docs-phpdox authors docker-dev-build docker-dev-clean docker-dev-test
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
@@ -26,19 +26,17 @@ test-docker:
 	docker build -t twilio/twilio-php .
 	docker run twilio/twilio-php phpunit -d memory_limit=512M --disallow-test-output --colors --configuration tests/phpunit.xml
 
+PHPDOC_PHAR=phpDocumentor.phar
 PHPDOX_PHAR=phpdox.phar
 PHP74 = $(shell command -v /opt/homebrew/opt/php@7.4/bin/php 2>/dev/null || echo php)
 docs-install:
 
 docs:
-	${PHP74} ${PHPDOX_PHAR}
+	php ${PHPDOC_PHAR} -d src/ -t docs/api
 
-# todo: enable locally
-# PHPDOC_PHAR=phpDocumentor.phar
-# # phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
-# docs-new:
-# 	@test -f ${PHPDOC_PHAR} || curl -sL https://phpdoc.org/${PHPDOC_PHAR} -o ${PHPDOC_PHAR}
-# 	php ${PHPDOC_PHAR} -d src/ -t docs/api
+# phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
+docs-phpdox:
+	${PHP74} ${PHPDOX_PHAR}
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
