@@ -1,0 +1,52 @@
+if git diff --cached --name-only | grep -q '^composer\.json$'; then
+  # A committed composer.json must not carry a "repositories" override pointing at
+  # the internal Artifactory mirror (enforced in CI by composer-lockfile-hygiene) -
+  # external consumers can't reach it. Strip it before it lands in the commit.
+  STRIPPED=$(python3 - <<'PY'
+import json
+
+with open('composer.json') as f:
+    data = json.load(f)
+
+repos = data.get('repositories')
+if repos:
+    entries = repos if isinstance(repos, list) else repos.values()
+    if any('artifactory' in str(r).lower() or 'jfrog' in str(r).lower() for r in entries):
+        del data['repositories']
+        with open('composer.json', 'w') as f:
+            json.dump(data, f, indent=4)
+            f.write('\n')
+        print('stripped')
+PY
+)
+  if [ "$STRIPPED" = "stripped" ]; then
+    git add composer.json
+    echo "pre-commit: stripped internal Artifactory 'repositories' override from composer.json"
+  fi
+fi
+
+if git diff --cached --name-only | grep -q '^composer\.lock$'; then
+  # composer.lock's dist/source hosts must all be public (same allow-list as the
+  # composer-lockfile-hygiene CI gate). Unlike npm's single registry.npmjs.org,
+  # there's no one substitute host to rewrite a bad dist URL to here, so block the
+  # commit instead of guessing - a human needs to regenerate against public
+  # Packagist.
+  ALLOW='repo\.packagist\.org|packagist\.org|github\.com|api\.github\.com|codeload\.github\.com|gitlab\.com|bitbucket\.org'
+  BAD=$(python3 -c "
+import json
+d = json.load(open('composer.lock'))
+for section in ('packages', 'packages-dev'):
+    for pkg in d.get(section, []):
+        for key in ('dist', 'source'):
+            url = (pkg.get(key) or {}).get('url', '')
+            if url:
+                print(url)
+" | grep -vE "https?://($ALLOW)/")
+  if [ -n "$BAD" ]; then
+    echo "composer.lock references non-public hosts - regenerate against public Packagist before committing:"
+    echo "$BAD"
+    exit 1
+  fi
+fi
+
+make test

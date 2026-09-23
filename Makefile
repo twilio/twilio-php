@@ -1,6 +1,6 @@
 # Twilio API helper library.
 # See LICENSE file for copyright and license details.
-.PHONY: all clean install test test-docker docs docs-new authors docker-dev-build docker-dev-clean docker-dev-test
+.PHONY: githooks all clean install test test-docker docs docs-new authors docker-dev-build docker-dev-clean docker-dev-test
 
 COMPOSER = $(shell which composer)
 ifeq ($(strip $(COMPOSER)),)
@@ -8,12 +8,15 @@ ifeq ($(strip $(COMPOSER)),)
 endif
 PHPVERSION = $(shell php -r 'echo PHP_VERSION;')
 
+githooks:
+	ln -sf ../../githooks/pre-commit .git/hooks/pre-commit
+
 all: test
 
 clean:
 	@rm -rf docs venv vendor
 
-install: clean
+install: githooks clean
 	@composer --version || (curl -s https://getcomposer.org/installer | php);
 	$(COMPOSER) install
 
