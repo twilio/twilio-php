@@ -19,9 +19,27 @@ use Twilio\Values;
 abstract class RuleExecutionModels
 {
     /**
+     * @property string $id The operator id (as configured in the stored rule) to override.
+     * @property array<string,mixed> $parameters Parameter overrides merged into the stored operator's parameters.
+    */
+    public static function createOperatorOverride(array $payload = []): OperatorOverride
+    {
+        return new OperatorOverride($payload);
+    }
+
+    /**
+     * @property OperatorOverride[] $operators Operator parameter overrides, merged key-by-key into the stored operator's parameters (override wins on matching keys; unspecified keys retain their stored values). Operators in the stored rule not referenced here execute with their stored parameters unchanged.
+    */
+    public static function createRuleOverride(array $payload = []): RuleOverride
+    {
+        return new RuleOverride($payload);
+    }
+
+    /**
      * @property string $intelligenceConfigurationId The Intelligence Configuration identifier to execute the Rule within.
      * @property string $ruleId The rule identifier to execute within the selected Intelligence Configuration.
      * @property string $conversationId The Conversation identifier to execute the Rule against.
+     * @property RuleOverride $rule
     */
     public static function createCreateRuleExecutionRequest(array $payload = []): CreateRuleExecutionRequest
     {
@@ -30,20 +48,81 @@ abstract class RuleExecutionModels
 
 }
 
+class OperatorOverride implements \JsonSerializable
+{
+    /**
+     * @property string $id The operator id (as configured in the stored rule) to override.
+     * @property array<string,mixed> $parameters Parameter overrides merged into the stored operator's parameters.
+    */
+        protected $id;
+        protected $parameters;
+    public function __construct(array $payload = []) {
+        $this->id = Values::array_get($payload, 'id');
+        $this->parameters = Values::array_get($payload, 'parameters');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->id)) {
+            $jsonString['id'] = $this->id;
+        }
+        if (isset($this->parameters)) {
+            $jsonString['parameters'] = $this->parameters;
+        }
+        return $jsonString;
+    }
+}
+
+class RuleOverride implements \JsonSerializable
+{
+    /**
+     * @property OperatorOverride[] $operators Operator parameter overrides, merged key-by-key into the stored operator's parameters (override wins on matching keys; unspecified keys retain their stored values). Operators in the stored rule not referenced here execute with their stored parameters unchanged.
+    */
+        protected $operators;
+    public function __construct(array $payload = []) {
+        $this->operators = Values::array_get($payload, 'operators');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->operators)) {
+            $jsonString['operators'] = $this->operators;
+        }
+        return $jsonString;
+    }
+}
+
 class CreateRuleExecutionRequest implements \JsonSerializable
 {
     /**
      * @property string $intelligenceConfigurationId The Intelligence Configuration identifier to execute the Rule within.
      * @property string $ruleId The rule identifier to execute within the selected Intelligence Configuration.
      * @property string $conversationId The Conversation identifier to execute the Rule against.
+     * @property RuleOverride $rule
     */
         protected $intelligenceConfigurationId;
         protected $ruleId;
         protected $conversationId;
+        protected $rule;
     public function __construct(array $payload = []) {
         $this->intelligenceConfigurationId = Values::array_get($payload, 'intelligenceConfigurationId');
         $this->ruleId = Values::array_get($payload, 'ruleId');
         $this->conversationId = Values::array_get($payload, 'conversationId');
+        $this->rule = Values::array_get($payload, 'rule');
     }
 
     public function toArray(): array
@@ -63,6 +142,9 @@ class CreateRuleExecutionRequest implements \JsonSerializable
         }
         if (isset($this->conversationId)) {
             $jsonString['conversationId'] = $this->conversationId;
+        }
+        if (isset($this->rule)) {
+            $jsonString['rule'] = $this->rule;
         }
         return $jsonString;
     }

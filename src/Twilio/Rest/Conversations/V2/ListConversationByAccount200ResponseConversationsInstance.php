@@ -35,6 +35,7 @@ use Twilio\Deserialize;
  * @property \DateTime $createdAt
  * @property \DateTime $updatedAt
  * @property string $configuration
+ * @property array<string,string> $metadata
  * @property string[] $participants
  */
 class ListConversationByAccount200ResponseConversationsInstance extends InstanceResource
@@ -61,6 +62,7 @@ class ListConversationByAccount200ResponseConversationsInstance extends Instance
             'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'createdAt')),
             'updatedAt' => Deserialize::dateTime(Values::array_get($payload, 'updatedAt')),
             'configuration' => Values::array_get($payload, 'configuration'),
+            'metadata' => Values::array_get($payload, 'metadata'),
             'participants' => Values::array_get($payload, 'participants'),
         ];
 

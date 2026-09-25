@@ -21,6 +21,7 @@ use Twilio\InstanceContext;
 use Twilio\Rest\Voice\V2\AccountDefaultConfigurationList;
 use Twilio\Rest\Voice\V2\ConfigurationList;
 use Twilio\Rest\Voice\V2\RecordingList;
+use Twilio\Rest\Voice\V2\RecordingAccountDefaultConfigurationList;
 use Twilio\Rest\Voice\V2\TranscriptionList;
 use Twilio\Rest\Voice\V2\TypeList;
 use Twilio\Version;
@@ -29,6 +30,7 @@ use Twilio\Version;
  * @property AccountDefaultConfigurationList $accountDefaultConfiguration
  * @property ConfigurationList $configurations
  * @property RecordingList $recording
+ * @property RecordingAccountDefaultConfigurationList $recordingAccountDefaultConfiguration
  * @property TranscriptionList $transcription
  * @property TypeList $type
  * @method \Twilio\Rest\Voice\V2\RecordingContext recording(string $idOrUniqueName)
@@ -42,6 +44,7 @@ class V2 extends Version
     protected $_accountDefaultConfiguration;
     protected $_configurations;
     protected $_recording;
+    protected $_recordingAccountDefaultConfiguration;
     protected $_transcription;
     protected $_type;
 
@@ -78,6 +81,14 @@ class V2 extends Version
             $this->_recording = new RecordingList($this);
         }
         return $this->_recording;
+    }
+
+    protected function getRecordingAccountDefaultConfiguration(): RecordingAccountDefaultConfigurationList
+    {
+        if (!$this->_recordingAccountDefaultConfiguration) {
+            $this->_recordingAccountDefaultConfiguration = new RecordingAccountDefaultConfigurationList($this);
+        }
+        return $this->_recordingAccountDefaultConfiguration;
     }
 
     protected function getTranscription(): TranscriptionList

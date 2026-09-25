@@ -105,14 +105,15 @@ class StoreInstance extends InstanceResource
     /**
      * Patch the PatchStore202ResponseInstance
      *
+     * @param PatchStoreRequest $patchStoreRequest
      * @param array|Options $options Optional Arguments
      * @return PatchStore202ResponseInstance Patchd PatchStore202ResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patch(array $options = []): PatchStore202ResponseInstance
+    public function patch(PatchStoreRequest $patchStoreRequest, array $options = []): PatchStore202ResponseInstance
     {
 
-        return $this->proxy()->patch($options);
+        return $this->proxy()->patch($patchStoreRequest, $options);
     }
 
     /**

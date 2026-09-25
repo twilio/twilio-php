@@ -168,18 +168,19 @@ class StoreContext extends InstanceContext
      * Helper function for Patch
      *
      
-     * @param ?PatchStoreRequest $patchStoreRequest
+     * @param PatchStoreRequest $patchStoreRequest
+     
      * @param array|Options $options Optional Arguments
      * @return Response Patchd Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _patch(?PatchStoreRequest $patchStoreRequest = null, array $options = []): Response
+    private function _patch(PatchStoreRequest $patchStoreRequest, array $options = []): Response
     {
         
         $options = new Values($options);
 
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
-        $data = $patchStoreRequest ? $patchStoreRequest->toArray() : [];
+        $data = $patchStoreRequest->toArray();
         return $this->version->handleRequest('PATCH', $this->uri, [], $data, $headers, "patch");
     }
 
@@ -187,14 +188,15 @@ class StoreContext extends InstanceContext
      * Patch the PatchStore202ResponseInstance
      *
      
-     * @param ?PatchStoreRequest $patchStoreRequest
+     * @param PatchStoreRequest $patchStoreRequest
+     
      * @param array|Options $options Optional Arguments
      * @return PatchStore202ResponseInstance Patchd PatchStore202ResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patch(?PatchStoreRequest $patchStoreRequest = null, array $options = []): PatchStore202ResponseInstance
+    public function patch(PatchStoreRequest $patchStoreRequest, array $options = []): PatchStore202ResponseInstance
     {
-        $response = $this->_patch($patchStoreRequest, $options);
+        $response = $this->_patch( $patchStoreRequest, $options);
         return new PatchStore202ResponseInstance(
             $this->version,
             $response->getContent(),
@@ -207,14 +209,15 @@ class StoreContext extends InstanceContext
      * Patch the PatchStore202ResponseInstance with Metadata
      *
      
-     * @param ?PatchStoreRequest $patchStoreRequest
+     * @param PatchStoreRequest $patchStoreRequest
+     
      * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Patchd Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patchWithMetadata(?PatchStoreRequest $patchStoreRequest = null, array $options = []): ResourceMetadata
+    public function patchWithMetadata(PatchStoreRequest $patchStoreRequest, array $options = []): ResourceMetadata
     {
-        $response = $this->_patch($patchStoreRequest, $options);
+        $response = $this->_patch( $patchStoreRequest, $options);
         $resource = new PatchStore202ResponseInstance(
                         $this->version,
                         $response->getContent(),

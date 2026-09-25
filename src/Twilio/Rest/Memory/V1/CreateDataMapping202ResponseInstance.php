@@ -99,14 +99,15 @@ class CreateDataMapping202ResponseInstance extends InstanceResource
     /**
      * Patch the PatchDataMapping202ResponseInstance
      *
+     * @param DataMappingCore $dataMappingCore
      * @param array|Options $options Optional Arguments
      * @return PatchDataMapping202ResponseInstance Patchd PatchDataMapping202ResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patch(array $options = []): PatchDataMapping202ResponseInstance
+    public function patch(DataMappingCore $dataMappingCore, array $options = []): PatchDataMapping202ResponseInstance
     {
 
-        return $this->proxy()->patch($options);
+        return $this->proxy()->patch($dataMappingCore, $options);
     }
 
     /**
