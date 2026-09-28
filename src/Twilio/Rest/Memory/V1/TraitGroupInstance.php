@@ -104,14 +104,15 @@ class TraitGroupInstance extends InstanceResource
     /**
      * Patch the PatchTraitGroup202ResponseInstance
      *
+     * @param PatchTraitGroupRequest $patchTraitGroupRequest
      * @param array|Options $options Optional Arguments
      * @return PatchTraitGroup202ResponseInstance Patchd PatchTraitGroup202ResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patch(array $options = []): PatchTraitGroup202ResponseInstance
+    public function patch(PatchTraitGroupRequest $patchTraitGroupRequest, array $options = []): PatchTraitGroup202ResponseInstance
     {
 
-        return $this->proxy()->patch($options);
+        return $this->proxy()->patch($patchTraitGroupRequest, $options);
     }
 
     /**

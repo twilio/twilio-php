@@ -19,7 +19,16 @@ use Twilio\Values;
 abstract class ConversationModels
 {
     /**
+     * @property string $flowId The Studio Flow to run.
+    */
+    public static function createConversationWorkflow(array $payload = []): ConversationWorkflow
+    {
+        return new ConversationWorkflow($payload);
+    }
+
+    /**
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
+     * @property ConversationWorkflow[] $workflows The Workflows to associate with this Conversation. Overrides the Configuration's own.
     */
     public static function createCreateConversationWithConfigRequestConfiguration(array $payload = []): CreateConversationWithConfigRequestConfiguration
     {
@@ -52,6 +61,7 @@ abstract class ConversationModels
      * @property string $name The name of the conversation.
      * @property CreateConversationWithConfigRequestConfiguration $configuration
      * @property CreateConversationWithConfigRequestParticipants[] $participants Optional list of Participants to create with the Conversation.
+     * @property array<string,string> $metadata Optional customer-managed key-value metadata for this Conversation. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters.
     */
     public static function createCreateConversationWithConfigRequest(array $payload = []): CreateConversationWithConfigRequest
     {
@@ -79,6 +89,7 @@ abstract class ConversationModels
      * @property string|null $name The name of the Conversation.
      * @property string $status Lifecycle status of a Conversation.
      * @property PatchConversationByIdRequestConfiguration $configuration
+     * @property array<string,string> $metadata Merge patch for customer-managed metadata (max 8 entries after merge). Provided keys are added or updated; keys set to null are removed; keys not mentioned are preserved.
     */
     public static function createPatchConversationByIdRequest(array $payload = []): PatchConversationByIdRequest
     {
@@ -88,6 +99,7 @@ abstract class ConversationModels
     /**
      * @property string $name The name of the Conversation.
      * @property string $status Lifecycle status of a Conversation.
+     * @property array<string,string> $metadata Customer-managed key-value metadata for this Conversation. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters.
     */
     public static function createUpdateConversationByIdRequest(array $payload = []): UpdateConversationByIdRequest
     {
@@ -120,14 +132,43 @@ abstract class ConversationModels
 
 }
 
+class ConversationWorkflow implements \JsonSerializable
+{
+    /**
+     * @property string $flowId The Studio Flow to run.
+    */
+        protected $flowId;
+    public function __construct(array $payload = []) {
+        $this->flowId = Values::array_get($payload, 'flowId');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->flowId)) {
+            $jsonString['flowId'] = $this->flowId;
+        }
+        return $jsonString;
+    }
+}
+
 class CreateConversationWithConfigRequestConfiguration implements \JsonSerializable
 {
     /**
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
+     * @property ConversationWorkflow[] $workflows The Workflows to associate with this Conversation. Overrides the Configuration's own.
     */
         protected $intelligenceConfigurationIds;
+        protected $workflows;
     public function __construct(array $payload = []) {
         $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
+        $this->workflows = Values::array_get($payload, 'workflows');
     }
 
     public function toArray(): array
@@ -141,6 +182,9 @@ class CreateConversationWithConfigRequestConfiguration implements \JsonSerializa
         ];
         if (isset($this->intelligenceConfigurationIds)) {
             $jsonString['intelligenceConfigurationIds'] = $this->intelligenceConfigurationIds;
+        }
+        if (isset($this->workflows)) {
+            $jsonString['workflows'] = $this->workflows;
         }
         return $jsonString;
     }
@@ -235,16 +279,19 @@ class CreateConversationWithConfigRequest implements \JsonSerializable
      * @property string $name The name of the conversation.
      * @property CreateConversationWithConfigRequestConfiguration $configuration
      * @property CreateConversationWithConfigRequestParticipants[] $participants Optional list of Participants to create with the Conversation.
+     * @property array<string,string> $metadata Optional customer-managed key-value metadata for this Conversation. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters.
     */
         protected $configurationId;
         protected $name;
         protected $configuration;
         protected $participants;
+        protected $metadata;
     public function __construct(array $payload = []) {
         $this->configurationId = Values::array_get($payload, 'configurationId');
         $this->name = Values::array_get($payload, 'name');
         $this->configuration = Values::array_get($payload, 'configuration');
         $this->participants = Values::array_get($payload, 'participants');
+        $this->metadata = Values::array_get($payload, 'metadata');
     }
 
     public function toArray(): array
@@ -267,6 +314,9 @@ class CreateConversationWithConfigRequest implements \JsonSerializable
         }
         if (isset($this->participants)) {
             $jsonString['participants'] = $this->participants;
+        }
+        if (isset($this->metadata)) {
+            $jsonString['metadata'] = $this->metadata;
         }
         return $jsonString;
     }
@@ -336,14 +386,17 @@ class PatchConversationByIdRequest implements \JsonSerializable
      * @property string|null $name The name of the Conversation.
      * @property string $status Lifecycle status of a Conversation.
      * @property PatchConversationByIdRequestConfiguration $configuration
+     * @property array<string,string> $metadata Merge patch for customer-managed metadata (max 8 entries after merge). Provided keys are added or updated; keys set to null are removed; keys not mentioned are preserved.
     */
         protected $name;
         protected $status;
         protected $configuration;
+        protected $metadata;
     public function __construct(array $payload = []) {
         $this->name = Values::array_get($payload, 'name');
         $this->status = Values::array_get($payload, 'status');
         $this->configuration = Values::array_get($payload, 'configuration');
+        $this->metadata = Values::array_get($payload, 'metadata');
     }
 
     public function toArray(): array
@@ -364,6 +417,9 @@ class PatchConversationByIdRequest implements \JsonSerializable
         if (isset($this->configuration)) {
             $jsonString['configuration'] = $this->configuration;
         }
+        if (isset($this->metadata)) {
+            $jsonString['metadata'] = $this->metadata;
+        }
         return $jsonString;
     }
 }
@@ -373,12 +429,15 @@ class UpdateConversationByIdRequest implements \JsonSerializable
     /**
      * @property string $name The name of the Conversation.
      * @property string $status Lifecycle status of a Conversation.
+     * @property array<string,string> $metadata Customer-managed key-value metadata for this Conversation. Maximum 8 entries; keys up to 128 characters allowing alphanumeric characters, periods, underscores, and dashes; values up to 512 characters.
     */
         protected $name;
         protected $status;
+        protected $metadata;
     public function __construct(array $payload = []) {
         $this->name = Values::array_get($payload, 'name');
         $this->status = Values::array_get($payload, 'status');
+        $this->metadata = Values::array_get($payload, 'metadata');
     }
 
     public function toArray(): array
@@ -395,6 +454,9 @@ class UpdateConversationByIdRequest implements \JsonSerializable
         }
         if (isset($this->name)) {
             $jsonString['name'] = $this->name;
+        }
+        if (isset($this->metadata)) {
+            $jsonString['metadata'] = $this->metadata;
         }
         return $jsonString;
     }
