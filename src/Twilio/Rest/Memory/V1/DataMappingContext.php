@@ -184,18 +184,19 @@ class DataMappingContext extends InstanceContext
      *
      
      
-     * @param ?DataMappingCore $dataMappingCore
+     * @param DataMappingCore $dataMappingCore
+     
      * @param array|Options $options Optional Arguments
      * @return Response Patchd Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _patch(?DataMappingCore $dataMappingCore = null, array $options = []): Response
+    private function _patch(DataMappingCore $dataMappingCore, array $options = []): Response
     {
         
         $options = new Values($options);
 
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
-        $data = $dataMappingCore ? $dataMappingCore->toArray() : [];
+        $data = $dataMappingCore->toArray();
         return $this->version->handleRequest('PATCH', $this->uri, [], $data, $headers, "patch");
     }
 
@@ -204,14 +205,15 @@ class DataMappingContext extends InstanceContext
      *
      
      
-     * @param ?DataMappingCore $dataMappingCore
+     * @param DataMappingCore $dataMappingCore
+     
      * @param array|Options $options Optional Arguments
      * @return PatchDataMapping202ResponseInstance Patchd PatchDataMapping202ResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patch(?DataMappingCore $dataMappingCore = null, array $options = []): PatchDataMapping202ResponseInstance
+    public function patch(DataMappingCore $dataMappingCore, array $options = []): PatchDataMapping202ResponseInstance
     {
-        $response = $this->_patch($dataMappingCore, $options);
+        $response = $this->_patch( $dataMappingCore, $options);
         return new PatchDataMapping202ResponseInstance(
             $this->version,
             $response->getContent(),
@@ -226,14 +228,15 @@ class DataMappingContext extends InstanceContext
      *
      
      
-     * @param ?DataMappingCore $dataMappingCore
+     * @param DataMappingCore $dataMappingCore
+     
      * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Patchd Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patchWithMetadata(?DataMappingCore $dataMappingCore = null, array $options = []): ResourceMetadata
+    public function patchWithMetadata(DataMappingCore $dataMappingCore, array $options = []): ResourceMetadata
     {
-        $response = $this->_patch($dataMappingCore, $options);
+        $response = $this->_patch( $dataMappingCore, $options);
         $resource = new PatchDataMapping202ResponseInstance(
                         $this->version,
                         $response->getContent(),

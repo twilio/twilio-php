@@ -201,18 +201,19 @@ class TraitGroupContext extends InstanceContext
      *
      
      
-     * @param ?PatchTraitGroupRequest $patchTraitGroupRequest
+     * @param PatchTraitGroupRequest $patchTraitGroupRequest
+     
      * @param array|Options $options Optional Arguments
      * @return Response Patchd Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _patch(?PatchTraitGroupRequest $patchTraitGroupRequest = null, array $options = []): Response
+    private function _patch(PatchTraitGroupRequest $patchTraitGroupRequest, array $options = []): Response
     {
         
         $options = new Values($options);
 
         $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' , 'If-Match' => $options['ifMatch']]);
-        $data = $patchTraitGroupRequest ? $patchTraitGroupRequest->toArray() : [];
+        $data = $patchTraitGroupRequest->toArray();
         return $this->version->handleRequest('PATCH', $this->uri, [], $data, $headers, "patch");
     }
 
@@ -221,14 +222,15 @@ class TraitGroupContext extends InstanceContext
      *
      
      
-     * @param ?PatchTraitGroupRequest $patchTraitGroupRequest
+     * @param PatchTraitGroupRequest $patchTraitGroupRequest
+     
      * @param array|Options $options Optional Arguments
      * @return PatchTraitGroup202ResponseInstance Patchd PatchTraitGroup202ResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patch(?PatchTraitGroupRequest $patchTraitGroupRequest = null, array $options = []): PatchTraitGroup202ResponseInstance
+    public function patch(PatchTraitGroupRequest $patchTraitGroupRequest, array $options = []): PatchTraitGroup202ResponseInstance
     {
-        $response = $this->_patch($patchTraitGroupRequest, $options);
+        $response = $this->_patch( $patchTraitGroupRequest, $options);
         return new PatchTraitGroup202ResponseInstance(
             $this->version,
             $response->getContent(),
@@ -243,14 +245,15 @@ class TraitGroupContext extends InstanceContext
      *
      
      
-     * @param ?PatchTraitGroupRequest $patchTraitGroupRequest
+     * @param PatchTraitGroupRequest $patchTraitGroupRequest
+     
      * @param array|Options $options Optional Arguments
      * @return ResourceMetadata The Patchd Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function patchWithMetadata(?PatchTraitGroupRequest $patchTraitGroupRequest = null, array $options = []): ResourceMetadata
+    public function patchWithMetadata(PatchTraitGroupRequest $patchTraitGroupRequest, array $options = []): ResourceMetadata
     {
-        $response = $this->_patch($patchTraitGroupRequest, $options);
+        $response = $this->_patch( $patchTraitGroupRequest, $options);
         $resource = new PatchTraitGroup202ResponseInstance(
                         $this->version,
                         $response->getContent(),

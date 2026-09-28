@@ -84,4 +84,22 @@ class Stream extends TwiML {
     public function setStatusCallbackMethod($statusCallbackMethod): self {
         return $this->setAttribute('statusCallbackMethod', $statusCallbackMethod);
     }
+
+    /**
+     * Add AudioFormat attribute.
+     *
+     * @param string $audioFormat Required Audio Format
+     */
+    public function setAudioFormat($audioFormat): self {
+        return $this->setAttribute('audioFormat', $audioFormat);
+    }
+
+    /**
+     * Add SampleRate attribute.
+     *
+     * @param string $sampleRate Sample Rate for HD Codec
+     */
+    public function setSampleRate($sampleRate): self {
+        return $this->setAttribute('sampleRate', $sampleRate);
+    }
 }
