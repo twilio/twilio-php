@@ -29,19 +29,13 @@ test-docker:
 	docker build -t twilio/twilio-php .
 	docker run twilio/twilio-php phpunit -d memory_limit=512M --disallow-test-output --colors --configuration tests/phpunit.xml
 
-PHPDOX_PHAR=phpdox.phar
-PHP74 = $(shell command -v /opt/homebrew/opt/php@7.4/bin/php 2>/dev/null || echo php)
+PHPDOC_PHAR=phpDocumentor.phar
 docs-install:
 
+# phpDocumentor works on PHP 8.x; phpdox needed PHP 7.4, which is no longer installed.
 docs:
-	${PHP74} ${PHPDOX_PHAR}
-
-# todo: enable locally
-# PHPDOC_PHAR=phpDocumentor.phar
-# # phpDocumentor: alternative to phpdox, works with PHP 8.x (no PHP 7.4 required)
-# docs-new:
-# 	@test -f ${PHPDOC_PHAR} || curl -sL https://phpdoc.org/${PHPDOC_PHAR} -o ${PHPDOC_PHAR}
-# 	php ${PHPDOC_PHAR} -d src/ -t docs/api
+	@test -f ${PHPDOC_PHAR} || curl -sL https://phpdoc.org/${PHPDOC_PHAR} -o ${PHPDOC_PHAR}
+	php ${PHPDOC_PHAR} -d src/ -t docs/api
 
 authors:
 	echo "Authors\n=======\n\nA huge thanks to all of our contributors:\n\n" > AUTHORS.md
