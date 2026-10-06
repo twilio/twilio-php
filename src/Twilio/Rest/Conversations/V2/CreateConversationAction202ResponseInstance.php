@@ -34,6 +34,7 @@ use Twilio\Deserialize;
  * @property \DateTime $createdAt
  * @property \DateTime $updatedAt
  * @property \DateTime $completedAt
+ * @property string|null $failureReason
  */
 class CreateConversationAction202ResponseInstance extends InstanceResource
 {
@@ -60,6 +61,7 @@ class CreateConversationAction202ResponseInstance extends InstanceResource
             'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'createdAt')),
             'updatedAt' => Deserialize::dateTime(Values::array_get($payload, 'updatedAt')),
             'completedAt' => Deserialize::dateTime(Values::array_get($payload, 'completedAt')),
+            'failureReason' => Values::array_get($payload, 'failureReason'),
         ];
 
         $this->solution = ['conversationId' => $conversationId ?: ($this->properties['conversationId'] ?? null), 'actionId' => $actionId ?: ($this->properties['actionId'] ?? null), ];

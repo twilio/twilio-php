@@ -18,15 +18,19 @@ namespace Twilio\Rest\Routes;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Routes\V3\IsoCountryCodeList;
 use Twilio\Rest\Routes\V3\PhoneNumberList;
 use Twilio\Version;
 
 /**
+ * @property IsoCountryCodeList $isoCountryCode
  * @property PhoneNumberList $phoneNumbers
  * @method \Twilio\Rest\Routes\V3\PhoneNumberContext phoneNumbers(string $phoneNumber)
+ * @method \Twilio\Rest\Routes\V3\IsoCountryCodeContext isoCountryCode(string $isoCountryCode, string $shortCode)
  */
 class V3 extends Version
 {
+    protected $_isoCountryCode;
     protected $_phoneNumbers;
 
     /**
@@ -38,6 +42,14 @@ class V3 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v3';
+    }
+
+    protected function getIsoCountryCode(): IsoCountryCodeList
+    {
+        if (!$this->_isoCountryCode) {
+            $this->_isoCountryCode = new IsoCountryCodeList($this);
+        }
+        return $this->_isoCountryCode;
     }
 
     protected function getPhoneNumbers(): PhoneNumberList

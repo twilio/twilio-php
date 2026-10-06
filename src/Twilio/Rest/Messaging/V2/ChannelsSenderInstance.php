@@ -21,6 +21,7 @@ use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Values;
 use Twilio\Version;
+use Twilio\Deserialize;
 
 
 /**
@@ -31,10 +32,14 @@ use Twilio\Version;
  * @property string|null $configuration
  * @property string|null $webhook
  * @property string|null $profile
+ * @property string|null $pendingDisplayName
+ * @property string|null $pendingDisplayNameStatus
+ * @property \DateTime|null $pendingDisplayNameStatusDate
  * @property string|null $properties
  * @property string[]|null $offlineReasons
  * @property string|null $compliance
  * @property string|null $url
+ * @property string|null $displayNameStatus
  */
 class ChannelsSenderInstance extends InstanceResource
 {
@@ -58,10 +63,14 @@ class ChannelsSenderInstance extends InstanceResource
             'configuration' => Values::array_get($payload, 'configuration'),
             'webhook' => Values::array_get($payload, 'webhook'),
             'profile' => Values::array_get($payload, 'profile'),
+            'pendingDisplayName' => Values::array_get($payload, 'pending_display_name'),
+            'pendingDisplayNameStatus' => Values::array_get($payload, 'pending_display_name_status'),
+            'pendingDisplayNameStatusDate' => Deserialize::dateTime(Values::array_get($payload, 'pending_display_name_status_date')),
             'properties' => Values::array_get($payload, 'properties'),
             'offlineReasons' => Values::array_get($payload, 'offline_reasons'),
             'compliance' => Values::array_get($payload, 'compliance'),
             'url' => Values::array_get($payload, 'url'),
+            'displayNameStatus' => Values::array_get($payload, 'display_name_status'),
         ];
 
         $this->solution = ['sid' => $sid ?: $this->properties['sid'], ];
