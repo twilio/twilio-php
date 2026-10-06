@@ -44,7 +44,7 @@ abstract class ChannelsSenderModels
     }
 
     /**
-     * @property string|null $name The name of the sender. Required for WhatsApp senders and must follow [Meta's display name guidelines](https://www.facebook.com/business/help/757569725593362).
+     * @property string|null $name The name of the sender. Required for WhatsApp senders and must follow [Meta's display name guidelines](https://www.facebook.com/business/help/757569725593362). On update, a WhatsApp sender's name is not changed synchronously: it is submitted to Meta for review, and `profile.name` continues to report the current active name until Meta approves the new one and the sender is automatically re-registered. Track progress with `pending_display_name_status` on Fetch Sender, and see `display_name_status` on the update response for the immediate outcome. Re-submitting the same name is how you retry applying a name Meta has already approved, for example after correcting the sender's two-step verification PIN. Meta permits a limited number of display name changes per 30-day period.
      * @property string|null $about The profile about text for the sender.
      * @property string|null $address The address of the sender.
      * @property string|null $description The description of the sender.
@@ -198,7 +198,7 @@ class MessagingV2ChannelsSenderWebhook implements \JsonSerializable
 class MessagingV2ChannelsSenderProfile implements \JsonSerializable
 {
     /**
-     * @property string|null $name The name of the sender. Required for WhatsApp senders and must follow [Meta's display name guidelines](https://www.facebook.com/business/help/757569725593362).
+     * @property string|null $name The name of the sender. Required for WhatsApp senders and must follow [Meta's display name guidelines](https://www.facebook.com/business/help/757569725593362). On update, a WhatsApp sender's name is not changed synchronously: it is submitted to Meta for review, and `profile.name` continues to report the current active name until Meta approves the new one and the sender is automatically re-registered. Track progress with `pending_display_name_status` on Fetch Sender, and see `display_name_status` on the update response for the immediate outcome. Re-submitting the same name is how you retry applying a name Meta has already approved, for example after correcting the sender's two-step verification PIN. Meta permits a limited number of display name changes per 30-day period.
      * @property string|null $about The profile about text for the sender.
      * @property string|null $address The address of the sender.
      * @property string|null $description The description of the sender.

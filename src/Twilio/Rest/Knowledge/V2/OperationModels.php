@@ -19,8 +19,8 @@ use Twilio\Values;
 abstract class OperationModels
 {
     /**
-     * @property string $type
      * @property string $id The identifier of the created or affected resource.
+     * @property string $type
     */
     public static function createOperationResultResourceId(array $payload = []): OperationResultResourceId
     {
@@ -43,14 +43,14 @@ abstract class OperationModels
 class OperationResultResourceId implements \JsonSerializable
 {
     /**
-     * @property string $type
      * @property string $id The identifier of the created or affected resource.
+     * @property string $type
     */
-        protected $type;
         protected $id;
+        protected $type;
     public function __construct(array $payload = []) {
-        $this->type = Values::array_get($payload, 'type');
         $this->id = Values::array_get($payload, 'id');
+        $this->type = Values::array_get($payload, 'type');
     }
 
     public function toArray(): array
@@ -62,11 +62,11 @@ class OperationResultResourceId implements \JsonSerializable
     {
         $jsonString = [
         ];
-        if (isset($this->type)) {
-            $jsonString['type'] = $this->type;
-        }
         if (isset($this->id)) {
             $jsonString['id'] = $this->id;
+        }
+        if (isset($this->type)) {
+            $jsonString['type'] = $this->type;
         }
         return $jsonString;
     }

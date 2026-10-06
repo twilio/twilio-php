@@ -21,7 +21,7 @@ abstract class ObservationModels
     /**
      * @property string $content The main content of the observation.
      * @property \DateTime $occurredAt The timestamp when the observation originally occurred.
-     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string[] $conversationIds Array of conversation IDs associated with this observation.
     */
     public static function createObservationCreateRequest(array $payload = []): ObservationCreateRequest
@@ -40,7 +40,7 @@ abstract class ObservationModels
     /**
      * @property string $content The main content of the observation.
      * @property \DateTime $occurredAt The timestamp when the observation originally occurred.
-     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string[] $conversationIds Array of conversation IDs associated with this observation.
     */
     public static function createObservationBase(array $payload = []): ObservationBase
@@ -55,7 +55,7 @@ class ObservationCreateRequest implements \JsonSerializable
     /**
      * @property string $content The main content of the observation.
      * @property \DateTime $occurredAt The timestamp when the observation originally occurred.
-     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string[] $conversationIds Array of conversation IDs associated with this observation.
     */
         protected $content;
@@ -125,7 +125,7 @@ class ObservationBase implements \JsonSerializable
     /**
      * @property string $content The main content of the observation.
      * @property \DateTime $occurredAt The timestamp when the observation originally occurred.
-     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated this observation. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string[] $conversationIds Array of conversation IDs associated with this observation.
     */
         protected $content;

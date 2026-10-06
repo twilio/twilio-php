@@ -28,6 +28,8 @@ abstract class ConversationModels
 
     /**
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
+     * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
+     * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
      * @property ConversationWorkflow[] $workflows The Workflows to associate with this Conversation. Overrides the Configuration's own.
     */
     public static function createCreateConversationWithConfigRequestConfiguration(array $payload = []): CreateConversationWithConfigRequestConfiguration
@@ -122,6 +124,8 @@ abstract class ConversationModels
      * @property array<string,mixed> $channelSettings Channel-specific parameters forwarded as-is to the downstream sending service. Allows passing backend-specific fields without requiring API changes.
      * @property ConversationsV2StatusCallbackConfig[] $statusCallbacks List of default webhook configurations applied to Conversations under this Configuration.
      * @property string[] $intelligenceConfigurationIds List of Intelligence Configuration IDs configured for this Configuration.
+     * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
+     * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
      * @property ConversationsV2ConversationsV1Bridge $conversationsV1Bridge
     */
@@ -162,12 +166,18 @@ class CreateConversationWithConfigRequestConfiguration implements \JsonSerializa
 {
     /**
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
+     * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
+     * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
      * @property ConversationWorkflow[] $workflows The Workflows to associate with this Conversation. Overrides the Configuration's own.
     */
         protected $intelligenceConfigurationIds;
+        protected $traitExtractionStrategyIds;
+        protected $observationExtractionStrategyIds;
         protected $workflows;
     public function __construct(array $payload = []) {
         $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
+        $this->traitExtractionStrategyIds = Values::array_get($payload, 'traitExtractionStrategyIds');
+        $this->observationExtractionStrategyIds = Values::array_get($payload, 'observationExtractionStrategyIds');
         $this->workflows = Values::array_get($payload, 'workflows');
     }
 
@@ -182,6 +192,12 @@ class CreateConversationWithConfigRequestConfiguration implements \JsonSerializa
         ];
         if (isset($this->intelligenceConfigurationIds)) {
             $jsonString['intelligenceConfigurationIds'] = $this->intelligenceConfigurationIds;
+        }
+        if (isset($this->traitExtractionStrategyIds)) {
+            $jsonString['traitExtractionStrategyIds'] = $this->traitExtractionStrategyIds;
+        }
+        if (isset($this->observationExtractionStrategyIds)) {
+            $jsonString['observationExtractionStrategyIds'] = $this->observationExtractionStrategyIds;
         }
         if (isset($this->workflows)) {
             $jsonString['workflows'] = $this->workflows;
@@ -498,6 +514,8 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
      * @property array<string,mixed> $channelSettings Channel-specific parameters forwarded as-is to the downstream sending service. Allows passing backend-specific fields without requiring API changes.
      * @property ConversationsV2StatusCallbackConfig[] $statusCallbacks List of default webhook configurations applied to Conversations under this Configuration.
      * @property string[] $intelligenceConfigurationIds List of Intelligence Configuration IDs configured for this Configuration.
+     * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
+     * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
      * @property ConversationsV2ConversationsV1Bridge $conversationsV1Bridge
     */
@@ -508,6 +526,8 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
         protected $channelSettings;
         protected $statusCallbacks;
         protected $intelligenceConfigurationIds;
+        protected $traitExtractionStrategyIds;
+        protected $observationExtractionStrategyIds;
         protected $memoryExtractionEnabled;
         protected $conversationsV1Bridge;
     public function __construct(array $payload = []) {
@@ -518,6 +538,8 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
         $this->channelSettings = Values::array_get($payload, 'channelSettings');
         $this->statusCallbacks = Values::array_get($payload, 'statusCallbacks');
         $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
+        $this->traitExtractionStrategyIds = Values::array_get($payload, 'traitExtractionStrategyIds');
+        $this->observationExtractionStrategyIds = Values::array_get($payload, 'observationExtractionStrategyIds');
         $this->memoryExtractionEnabled = Values::array_get($payload, 'memoryExtractionEnabled');
         $this->conversationsV1Bridge = Values::array_get($payload, 'conversationsV1Bridge');
     }
@@ -551,6 +573,12 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
         }
         if (isset($this->intelligenceConfigurationIds)) {
             $jsonString['intelligenceConfigurationIds'] = $this->intelligenceConfigurationIds;
+        }
+        if (isset($this->traitExtractionStrategyIds)) {
+            $jsonString['traitExtractionStrategyIds'] = $this->traitExtractionStrategyIds;
+        }
+        if (isset($this->observationExtractionStrategyIds)) {
+            $jsonString['observationExtractionStrategyIds'] = $this->observationExtractionStrategyIds;
         }
         if (isset($this->memoryExtractionEnabled)) {
             $jsonString['memoryExtractionEnabled'] = $this->memoryExtractionEnabled;

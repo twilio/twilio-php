@@ -19,7 +19,7 @@ use Twilio\Values;
 abstract class ConversationSummaryModels
 {
     /**
-     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string $content The main content of the summary.
      * @property \DateTime $occurredAt The timestamp when the summary was originally created.
      * @property string $conversationId A unique identifier for the conversation using Twilio Type ID (TTID) format.
@@ -38,7 +38,7 @@ abstract class ConversationSummaryModels
     }
 
     /**
-     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string $content The main content of the summary.
      * @property \DateTime $occurredAt The timestamp when the summary was originally created. If not provided, defaults to the time the summary was received.
      * @property string $conversationId A unique identifier for the conversation using Twilio Type ID (TTID) format.
@@ -53,7 +53,7 @@ abstract class ConversationSummaryModels
 class SummaryCore implements \JsonSerializable
 {
     /**
-     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string $content The main content of the summary.
      * @property \DateTime $occurredAt The timestamp when the summary was originally created.
      * @property string $conversationId A unique identifier for the conversation using Twilio Type ID (TTID) format.
@@ -123,7 +123,7 @@ class CreateSummariesRequest implements \JsonSerializable
 class SummaryCorePatch implements \JsonSerializable
 {
     /**
-     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @property string $source The source system that generated the summary. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @property string $content The main content of the summary.
      * @property \DateTime $occurredAt The timestamp when the summary was originally created. If not provided, defaults to the time the summary was received.
      * @property string $conversationId A unique identifier for the conversation using Twilio Type ID (TTID) format.
