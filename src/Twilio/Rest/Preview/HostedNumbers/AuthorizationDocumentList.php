@@ -362,7 +362,7 @@ class AuthorizationDocumentList extends ListResource
     /**
      * Constructs a AuthorizationDocumentContext
      *
-     * @param string $sid A 34 character string that uniquely identifies this AuthorizationDocument.
+     * @param string $sid The SID of the AuthorizationDocument resource to delete.
      */
     public function getContext(
         string $sid

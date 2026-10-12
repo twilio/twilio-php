@@ -62,6 +62,7 @@ abstract class CommunicationModels
      * @property CreateCommunicationInConversationRequestAuthor $author
      * @property CreateCommunicationInConversationRequestContent $content
      * @property string $channelId
+     * @property string $resourceId External resource identifier for this Communication (e.g. MessageSid for SMS/RCS/WhatsApp, TranscriptionSid + MessageIndex for Voice). If a Communication with the same resourceId already exists in the Conversation, it is updated instead of a new one being created.
      * @property CreateCommunicationInConversationRequestRecipients[] $recipients
      * @property \DateTime $occurredAt Timestamp when this Communication occurred. If omitted, the server uses the current time.
     */
@@ -261,18 +262,21 @@ class CreateCommunicationInConversationRequest implements \JsonSerializable
      * @property CreateCommunicationInConversationRequestAuthor $author
      * @property CreateCommunicationInConversationRequestContent $content
      * @property string $channelId
+     * @property string $resourceId External resource identifier for this Communication (e.g. MessageSid for SMS/RCS/WhatsApp, TranscriptionSid + MessageIndex for Voice). If a Communication with the same resourceId already exists in the Conversation, it is updated instead of a new one being created.
      * @property CreateCommunicationInConversationRequestRecipients[] $recipients
      * @property \DateTime $occurredAt Timestamp when this Communication occurred. If omitted, the server uses the current time.
     */
         protected $author;
         protected $content;
         protected $channelId;
+        protected $resourceId;
         protected $recipients;
         protected $occurredAt;
     public function __construct(array $payload = []) {
         $this->author = Values::array_get($payload, 'author');
         $this->content = Values::array_get($payload, 'content');
         $this->channelId = Values::array_get($payload, 'channelId');
+        $this->resourceId = Values::array_get($payload, 'resourceId');
         $this->recipients = Values::array_get($payload, 'recipients');
         $this->occurredAt = Values::array_get($payload, 'occurredAt');
     }
@@ -297,6 +301,9 @@ class CreateCommunicationInConversationRequest implements \JsonSerializable
         }
         if (isset($this->channelId)) {
             $jsonString['channelId'] = $this->channelId;
+        }
+        if (isset($this->resourceId)) {
+            $jsonString['resourceId'] = $this->resourceId;
         }
         if (isset($this->occurredAt)) {
             $jsonString['occurredAt'] = $this->occurredAt;

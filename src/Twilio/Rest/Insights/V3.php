@@ -18,25 +18,26 @@ namespace Twilio\Rest\Insights;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
-use Twilio\Rest\Insights\V3\CapacityList;
 use Twilio\Rest\Insights\V3\CustomFieldMappingList;
+use Twilio\Rest\Insights\V3\CustomFieldMappingsCapacityList;
 use Twilio\Rest\Insights\V3\MetadataList;
 use Twilio\Rest\Insights\V3\QueryList;
 use Twilio\Rest\Insights\V3\QueryJobList;
 use Twilio\Version;
 
 /**
- * @property CapacityList $capacity
  * @property CustomFieldMappingList $customFieldMappings
+ * @property CustomFieldMappingsCapacityList $customFieldMappingsCapacity
  * @property MetadataList $metadata
  * @property QueryList $query
  * @property QueryJobList $queryJobs
  * @method \Twilio\Rest\Insights\V3\QueryJobContext queryJobs(string $operationId)
+ * @method \Twilio\Rest\Insights\V3\CustomFieldMappingContext customFieldMappings(string $mappingId)
  */
 class V3 extends Version
 {
-    protected $_capacity;
     protected $_customFieldMappings;
+    protected $_customFieldMappingsCapacity;
     protected $_metadata;
     protected $_query;
     protected $_queryJobs;
@@ -52,20 +53,20 @@ class V3 extends Version
         $this->version = 'v3';
     }
 
-    protected function getCapacity(): CapacityList
-    {
-        if (!$this->_capacity) {
-            $this->_capacity = new CapacityList($this);
-        }
-        return $this->_capacity;
-    }
-
     protected function getCustomFieldMappings(): CustomFieldMappingList
     {
         if (!$this->_customFieldMappings) {
             $this->_customFieldMappings = new CustomFieldMappingList($this);
         }
         return $this->_customFieldMappings;
+    }
+
+    protected function getCustomFieldMappingsCapacity(): CustomFieldMappingsCapacityList
+    {
+        if (!$this->_customFieldMappingsCapacity) {
+            $this->_customFieldMappingsCapacity = new CustomFieldMappingsCapacityList($this);
+        }
+        return $this->_customFieldMappingsCapacity;
     }
 
     protected function getMetadata(): MetadataList

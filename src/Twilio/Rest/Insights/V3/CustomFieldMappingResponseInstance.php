@@ -19,6 +19,7 @@ namespace Twilio\Rest\Insights\V3;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
+use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\ApiV1Version;
@@ -41,8 +42,9 @@ class CustomFieldMappingResponseInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
+     * @param string $mappingId The unique identifier of the custom field mapping, as returned in `id` when the mapping was created.
      */
-    public function __construct(Version $version, array $payload)
+    public function __construct(Version $version, array $payload, ?string $mappingId = null)
     {
         $apiV1Version = new ApiV1Version($version->getDomain(), $version->version);
         parent::__construct($apiV1Version);
@@ -58,7 +60,51 @@ class CustomFieldMappingResponseInstance extends InstanceResource
             'updatedAt' => Deserialize::dateTime(Values::array_get($payload, 'updatedAt')),
         ];
 
-        $this->solution = [];
+        $this->solution = ['mappingId' => $mappingId ?: ($this->properties['mappingId'] ?? null), ];
+    }
+
+    /**
+     * Generate an instance context for the instance, the context is capable of
+     * performing various actions.  All instance actions are proxied to the context
+     *
+     * @return CustomFieldMappingContext Context for this CustomFieldMappingInstance
+     */
+    protected function proxy(): CustomFieldMappingContext
+    {
+        if (!$this->context) {
+            $this->context = new CustomFieldMappingContext(
+                $this->version,
+                $this->solution['mappingId']
+            );
+        }
+
+        return $this->context;
+    }
+
+    /**
+     * Fetch the CustomFieldMappingResponseInstance
+     *
+     * @return CustomFieldMappingResponseInstance Fetched CustomFieldMappingResponseInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function fetch(): CustomFieldMappingResponseInstance
+    {
+
+        return $this->proxy()->fetch();
+    }
+
+    /**
+     * Patch the CustomFieldMappingResponseInstance
+     *
+     * @param CustomFieldMappingUpdateRequest $customFieldMappingUpdateRequest
+     * @param array|Options $options Optional Arguments
+     * @return CustomFieldMappingResponseInstance Patchd CustomFieldMappingResponseInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function patch(CustomFieldMappingUpdateRequest $customFieldMappingUpdateRequest, array $options = []): CustomFieldMappingResponseInstance
+    {
+
+        return $this->proxy()->patch($customFieldMappingUpdateRequest, $options);
     }
 
     /**
@@ -89,6 +135,10 @@ class CustomFieldMappingResponseInstance extends InstanceResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Insights.V3.CustomFieldMappingResponseInstance]';
+        $context = [];
+        foreach ($this->solution as $key => $value) {
+            $context[] = "$key=$value";
+        }
+        return '[Twilio.Insights.V3.CustomFieldMappingResponseInstance ' . \implode(' ', $context) . ']';
     }
 }

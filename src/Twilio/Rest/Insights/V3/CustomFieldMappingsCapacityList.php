@@ -25,10 +25,10 @@ use Twilio\Http\Response;
 use Twilio\Metadata\ResourceMetadata;
 
 
-class CapacityList extends ListResource
+class CustomFieldMappingsCapacityList extends ListResource
     {
     /**
-     * Construct the CapacityList
+     * Construct the CustomFieldMappingsCapacityList
      *
      * @param Version $version Version that contains the resource
      */
@@ -52,7 +52,7 @@ class CapacityList extends ListResource
     private function _fetch(): Response
     {
         
-        $uri = '/ControlPlane/ConversationInsights/CustomFieldMappings/Capacity';
+        $uri = '/ControlPlane/ConversationInsights/CustomFieldMappingsCapacity';
         
         $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
         return $this->version->handleRequest('GET', $uri, [], [], $headers, "fetch");
@@ -103,6 +103,6 @@ class CapacityList extends ListResource
      */
     public function __toString(): string
     {
-        return '[Twilio.Insights.V3.CapacityList]';
+        return '[Twilio.Insights.V3.CustomFieldMappingsCapacityList]';
     }
 }

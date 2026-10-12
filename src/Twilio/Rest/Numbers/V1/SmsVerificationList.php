@@ -45,25 +45,30 @@ class SmsVerificationList extends ListResource
     /**
      * Helper function for Create
      *
+     * @param NumbersV1SmsVerificationRequest $numbersV1SmsVerificationRequest
+     
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(): Response
+    private function _create(NumbersV1SmsVerificationRequest $numbersV1SmsVerificationRequest): Response
     {
         
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $numbersV1SmsVerificationRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
     }
 
     /**
      * Create the SmsVerificationInstance
      *
+     * @param NumbersV1SmsVerificationRequest $numbersV1SmsVerificationRequest
+     
      * @return SmsVerificationInstance Created SmsVerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): SmsVerificationInstance
+    public function create(NumbersV1SmsVerificationRequest $numbersV1SmsVerificationRequest): SmsVerificationInstance
     {
-        $response = $this->_create();
+        $response = $this->_create( $numbersV1SmsVerificationRequest);
         return new SmsVerificationInstance(
             $this->version,
             $response->getContent()
@@ -74,12 +79,14 @@ class SmsVerificationList extends ListResource
     /**
      * Create the SmsVerificationInstance with Metadata
      *
+     * @param NumbersV1SmsVerificationRequest $numbersV1SmsVerificationRequest
+     
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(): ResourceMetadata
+    public function createWithMetadata(NumbersV1SmsVerificationRequest $numbersV1SmsVerificationRequest): ResourceMetadata
     {
-        $response = $this->_create();
+        $response = $this->_create( $numbersV1SmsVerificationRequest);
         $resource = new SmsVerificationInstance(
                         $this->version,
                         $response->getContent()

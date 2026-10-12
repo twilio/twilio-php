@@ -38,11 +38,11 @@ class CustomFieldMappingPage extends TokenPaginationPage
 
     /**
      * @param array $payload Payload response from the API
-     * @return CustomFieldMappingInstance \Twilio\Rest\Insights\V3\CustomFieldMappingInstance
+     * @return CustomFieldMappingResponseInstance \Twilio\Rest\Insights\V3\CustomFieldMappingResponseInstance
      */
-    public function buildInstance(array $payload): CustomFieldMappingInstance
+    public function buildInstance(array $payload): CustomFieldMappingResponseInstance
     {
-        return new CustomFieldMappingInstance($this->version, $payload);
+        return new CustomFieldMappingResponseInstance($this->version, $payload);
     }
 
 
