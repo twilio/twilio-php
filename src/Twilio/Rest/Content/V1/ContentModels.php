@@ -1163,7 +1163,7 @@ class TwilioSchedule implements \JsonSerializable
     public function __construct(array $payload = []) {
         $this->id = Values::array_get($payload, 'id');
         $this->title = Values::array_get($payload, 'title');
-        $this->timeSlots = Values::array_get($payload, 'timeSlots');
+        $this->timeSlots = Values::array_get($payload, 'time_slots');
     }
 
     public function toArray(): array
@@ -1182,7 +1182,7 @@ class TwilioSchedule implements \JsonSerializable
             $jsonString['title'] = $this->title;
         }
         if (isset($this->timeSlots)) {
-            $jsonString['timeSlots'] = $this->timeSlots;
+            $jsonString['time_slots'] = $this->timeSlots;
         }
         return $jsonString;
     }

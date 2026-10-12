@@ -44,7 +44,7 @@ abstract class ObservationOptions
      * @param int $pageSize The maximum number of items to return per page, maximum of 1000.
      * @param string $pageToken The token for the page of results to retrieve.
      * @param string $orderBy Either 'ASC' or 'DESC' to sort results ascending or descending respectively.
-     * @param string $source Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @param string $source Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @param \DateTime $createdAfter Filter observations created after this timestamp (inclusive).
      * @param \DateTime $createdBefore Filter observations created before this timestamp (exclusive).
      * @param string $conversationId Filter by conversation ID. Returns only items associated with the specified conversation.
@@ -139,7 +139,7 @@ class ReadObservationOptions extends Options
      * @param int $pageSize The maximum number of items to return per page, maximum of 1000.
      * @param string $pageToken The token for the page of results to retrieve.
      * @param string $orderBy Either 'ASC' or 'DESC' to sort results ascending or descending respectively.
-     * @param string $source Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @param string $source Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @param \DateTime $createdAfter Filter observations created after this timestamp (inclusive).
      * @param \DateTime $createdBefore Filter observations created before this timestamp (exclusive).
      * @param string $conversationId Filter by conversation ID. Returns only items associated with the specified conversation.
@@ -204,9 +204,9 @@ class ReadObservationOptions extends Options
     }
 
     /**
-     * Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      *
-     * @param string $source Filter by source. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+     * @param string $source Filter by source. Allows letters, numbers, spaces, periods, underscores, hyphens, and forward slashes.
      * @return $this Fluent Builder
      */
     public function setSource(string $source): self

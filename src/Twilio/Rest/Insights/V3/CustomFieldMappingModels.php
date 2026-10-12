@@ -19,43 +19,73 @@ use Twilio\Values;
 abstract class CustomFieldMappingModels
 {
     /**
-     * @property string $sourceType
-     * @property string $operatorId The Intelligence operator ID. Part of the owner check for idempotent upserts — a mismatch against the existing registration's `(sourceType, operatorId)` returns `409`.
-     * @property string $operatorName Optional, display-only name of the operator as supplied at registration time. Not part of any uniqueness or validation logic.
-     * @property string $field Annotation fieldPath key; generic identifier that determines the output-schema field. Resolved against the operator identified by `operatorId`.
+     * @property string $operatorId The ID of the Conversational Intelligence operator whose output supplies this field's value. Must match `^intelligence_operator_[0-7][0-9a-z]{25}$`. Cannot be changed after registration.
+     * @property string $operatorName Optional, display-only name of the operator. Stored as supplied and not validated against the operator.
+     * @property string $field Path to the property in the operator's output schema that supplies this field's value. Rules: - one or two segments separated by `.` — a top-level property   (`leadScore`) or one level of nesting (`scores.leadScore`); - each segment contains only letters, digits and `_`; array   indexing (such as `items[0]`) is not supported; - the path must exist in the output schema of the operator's   latest active version and resolve to a property of type `number`   or `integer`.
     */
-    public static function createIntelligenceOperatorEntityMetadata(array $payload = []): IntelligenceOperatorEntityMetadata
+    public static function createIntelligenceOperatorSource(array $payload = []): IntelligenceOperatorSource
     {
-        return new IntelligenceOperatorEntityMetadata($payload);
+        return new IntelligenceOperatorSource($payload);
+    }
+
+    /**
+     * @property string $sourceType
+     * @property IntelligenceOperatorSource $intelligenceOperator
+    */
+    public static function createEntityMetadata(array $payload = []): EntityMetadata
+    {
+        return new EntityMetadata($payload);
     }
 
     /**
      * @property string $category
-     * @property string $name Customer-facing name for the field; becomes the ClickHouse Map key and the platform field alias. Unique per account across every `sourceType` — the Map key namespace is account-global.
-     * @property string $description Optional, free-text description of this custom field mapping. Display-only — not part of any uniqueness check.
-     * @property IntelligenceOperatorEntityMetadata $entityMetadata
+     * @property string $name Name of the custom field, used to reference it in Insights queries. Contains only letters, digits and `_`, and must not be empty. Must be unique within the account across every `sourceType`; registering an existing name returns `409`. Cannot be changed after registration.
+     * @property string $description Optional, free-text description of this custom field mapping, up to 150 characters. Display-only — not part of any uniqueness check.
+     * @property EntityMetadata $entityMetadata
     */
     public static function createCustomFieldMappingRequest(array $payload = []): CustomFieldMappingRequest
     {
         return new CustomFieldMappingRequest($payload);
     }
 
-}
+    /**
+     * @property string $field New path to the property in the operator's output schema. Follows the same rules as `field` at registration: one or two `.`-separated segments of letters, digits and `_`, resolving to a `number` or `integer` property on the operator's latest active version.
+    */
+    public static function createIntelligenceOperatorSourceUpdate(array $payload = []): IntelligenceOperatorSourceUpdate
+    {
+        return new IntelligenceOperatorSourceUpdate($payload);
+    }
 
-class IntelligenceOperatorEntityMetadata implements \JsonSerializable
-{
     /**
      * @property string $sourceType
-     * @property string $operatorId The Intelligence operator ID. Part of the owner check for idempotent upserts — a mismatch against the existing registration's `(sourceType, operatorId)` returns `409`.
-     * @property string $operatorName Optional, display-only name of the operator as supplied at registration time. Not part of any uniqueness or validation logic.
-     * @property string $field Annotation fieldPath key; generic identifier that determines the output-schema field. Resolved against the operator identified by `operatorId`.
+     * @property IntelligenceOperatorSourceUpdate $intelligenceOperator
     */
-        protected $sourceType;
+    public static function createEntityMetadataUpdate(array $payload = []): EntityMetadataUpdate
+    {
+        return new EntityMetadataUpdate($payload);
+    }
+
+    /**
+     * @property EntityMetadataUpdate $entityMetadata
+    */
+    public static function createCustomFieldMappingUpdateRequest(array $payload = []): CustomFieldMappingUpdateRequest
+    {
+        return new CustomFieldMappingUpdateRequest($payload);
+    }
+
+}
+
+class IntelligenceOperatorSource implements \JsonSerializable
+{
+    /**
+     * @property string $operatorId The ID of the Conversational Intelligence operator whose output supplies this field's value. Must match `^intelligence_operator_[0-7][0-9a-z]{25}$`. Cannot be changed after registration.
+     * @property string $operatorName Optional, display-only name of the operator. Stored as supplied and not validated against the operator.
+     * @property string $field Path to the property in the operator's output schema that supplies this field's value. Rules: - one or two segments separated by `.` — a top-level property   (`leadScore`) or one level of nesting (`scores.leadScore`); - each segment contains only letters, digits and `_`; array   indexing (such as `items[0]`) is not supported; - the path must exist in the output schema of the operator's   latest active version and resolve to a property of type `number`   or `integer`.
+    */
         protected $operatorId;
         protected $operatorName;
         protected $field;
     public function __construct(array $payload = []) {
-        $this->sourceType = Values::array_get($payload, 'sourceType');
         $this->operatorId = Values::array_get($payload, 'operatorId');
         $this->operatorName = Values::array_get($payload, 'operatorName');
         $this->field = Values::array_get($payload, 'field');
@@ -70,9 +100,6 @@ class IntelligenceOperatorEntityMetadata implements \JsonSerializable
     {
         $jsonString = [
         ];
-        if (isset($this->sourceType)) {
-            $jsonString['sourceType'] = $this->sourceType;
-        }
         if (isset($this->operatorId)) {
             $jsonString['operatorId'] = $this->operatorId;
         }
@@ -86,13 +113,45 @@ class IntelligenceOperatorEntityMetadata implements \JsonSerializable
     }
 }
 
+class EntityMetadata implements \JsonSerializable
+{
+    /**
+     * @property string $sourceType
+     * @property IntelligenceOperatorSource $intelligenceOperator
+    */
+        protected $sourceType;
+        protected $intelligenceOperator;
+    public function __construct(array $payload = []) {
+        $this->sourceType = Values::array_get($payload, 'sourceType');
+        $this->intelligenceOperator = Values::array_get($payload, 'intelligenceOperator');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->sourceType)) {
+            $jsonString['sourceType'] = $this->sourceType;
+        }
+        if (isset($this->intelligenceOperator)) {
+            $jsonString['intelligenceOperator'] = $this->intelligenceOperator;
+        }
+        return $jsonString;
+    }
+}
+
 class CustomFieldMappingRequest implements \JsonSerializable
 {
     /**
      * @property string $category
-     * @property string $name Customer-facing name for the field; becomes the ClickHouse Map key and the platform field alias. Unique per account across every `sourceType` — the Map key namespace is account-global.
-     * @property string $description Optional, free-text description of this custom field mapping. Display-only — not part of any uniqueness check.
-     * @property IntelligenceOperatorEntityMetadata $entityMetadata
+     * @property string $name Name of the custom field, used to reference it in Insights queries. Contains only letters, digits and `_`, and must not be empty. Must be unique within the account across every `sourceType`; registering an existing name returns `409`. Cannot be changed after registration.
+     * @property string $description Optional, free-text description of this custom field mapping, up to 150 characters. Display-only — not part of any uniqueness check.
+     * @property EntityMetadata $entityMetadata
     */
         protected $category;
         protected $name;
@@ -125,6 +184,90 @@ class CustomFieldMappingRequest implements \JsonSerializable
         }
         if (isset($this->description)) {
             $jsonString['description'] = $this->description;
+        }
+        return $jsonString;
+    }
+}
+
+class IntelligenceOperatorSourceUpdate implements \JsonSerializable
+{
+    /**
+     * @property string $field New path to the property in the operator's output schema. Follows the same rules as `field` at registration: one or two `.`-separated segments of letters, digits and `_`, resolving to a `number` or `integer` property on the operator's latest active version.
+    */
+        protected $field;
+    public function __construct(array $payload = []) {
+        $this->field = Values::array_get($payload, 'field');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->field)) {
+            $jsonString['field'] = $this->field;
+        }
+        return $jsonString;
+    }
+}
+
+class EntityMetadataUpdate implements \JsonSerializable
+{
+    /**
+     * @property string $sourceType
+     * @property IntelligenceOperatorSourceUpdate $intelligenceOperator
+    */
+        protected $sourceType;
+        protected $intelligenceOperator;
+    public function __construct(array $payload = []) {
+        $this->sourceType = Values::array_get($payload, 'sourceType');
+        $this->intelligenceOperator = Values::array_get($payload, 'intelligenceOperator');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->sourceType)) {
+            $jsonString['sourceType'] = $this->sourceType;
+        }
+        if (isset($this->intelligenceOperator)) {
+            $jsonString['intelligenceOperator'] = $this->intelligenceOperator;
+        }
+        return $jsonString;
+    }
+}
+
+class CustomFieldMappingUpdateRequest implements \JsonSerializable
+{
+    /**
+     * @property EntityMetadataUpdate $entityMetadata
+    */
+        protected $entityMetadata;
+    public function __construct(array $payload = []) {
+        $this->entityMetadata = Values::array_get($payload, 'entityMetadata');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->entityMetadata)) {
+            $jsonString['entityMetadata'] = $this->entityMetadata;
         }
         return $jsonString;
     }

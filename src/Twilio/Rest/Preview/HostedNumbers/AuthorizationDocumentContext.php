@@ -40,7 +40,7 @@ class AuthorizationDocumentContext extends InstanceContext
      * Initialize the AuthorizationDocumentContext
      *
      * @param Version $version Version that contains the resource
-     * @param string $sid A 34 character string that uniquely identifies this AuthorizationDocument.
+     * @param string $sid The SID of the AuthorizationDocument resource to delete.
      */
     public function __construct(
         Version $version,
@@ -57,6 +57,54 @@ class AuthorizationDocumentContext extends InstanceContext
         $this->uri = '/AuthorizationDocuments/' . \rawurlencode($sid)
         .'';
     }
+
+    /**
+     * Helper function for Delete
+     *
+     
+     * @return Response Deleted Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _delete(): Response
+    {
+        
+        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded' ]);
+        return $this->version->handleRequest('DELETE', $this->uri, [], [], $headers, "delete");
+    }
+
+    /**
+     * Delete the AuthorizationDocumentInstance
+     *
+     
+     * @return bool True if delete succeeds, false otherwise
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function delete(): bool
+    {
+        $response = $this->_delete();
+        
+        return true;
+    }
+
+    /**
+     * Delete the AuthorizationDocumentInstance with Metadata
+     *
+     
+     * @return ResourceMetadata The Deleted Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function deleteWithMetadata(): ResourceMetadata
+    {
+        $response = $this->_delete();
+        
+        
+        return new ResourceMetadata(
+            null,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
 
     /**
      * Helper function for Fetch

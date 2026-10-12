@@ -45,25 +45,30 @@ class VoiceVerificationList extends ListResource
     /**
      * Helper function for Create
      *
+     * @param NumbersV1VoiceVerificationRequest $numbersV1VoiceVerificationRequest
+     
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(): Response
+    private function _create(NumbersV1VoiceVerificationRequest $numbersV1VoiceVerificationRequest): Response
     {
         
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $numbersV1VoiceVerificationRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
     }
 
     /**
      * Create the VoiceVerificationInstance
      *
+     * @param NumbersV1VoiceVerificationRequest $numbersV1VoiceVerificationRequest
+     
      * @return VoiceVerificationInstance Created VoiceVerificationInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): VoiceVerificationInstance
+    public function create(NumbersV1VoiceVerificationRequest $numbersV1VoiceVerificationRequest): VoiceVerificationInstance
     {
-        $response = $this->_create();
+        $response = $this->_create( $numbersV1VoiceVerificationRequest);
         return new VoiceVerificationInstance(
             $this->version,
             $response->getContent()
@@ -74,12 +79,14 @@ class VoiceVerificationList extends ListResource
     /**
      * Create the VoiceVerificationInstance with Metadata
      *
+     * @param NumbersV1VoiceVerificationRequest $numbersV1VoiceVerificationRequest
+     
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(): ResourceMetadata
+    public function createWithMetadata(NumbersV1VoiceVerificationRequest $numbersV1VoiceVerificationRequest): ResourceMetadata
     {
-        $response = $this->_create();
+        $response = $this->_create( $numbersV1VoiceVerificationRequest);
         $resource = new VoiceVerificationInstance(
                         $this->version,
                         $response->getContent()

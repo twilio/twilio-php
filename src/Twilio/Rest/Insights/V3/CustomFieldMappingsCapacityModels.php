@@ -16,7 +16,7 @@
 namespace Twilio\Rest\Insights\V3;
 
 use Twilio\Values;
-abstract class CapacityModels
+abstract class CustomFieldMappingsCapacityModels
 {
     /**
      * @property int $consumed Number of custom field mapping slots already registered.

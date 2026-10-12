@@ -45,25 +45,30 @@ class SmsVerificationCheckList extends ListResource
     /**
      * Helper function for Create
      *
+     * @param NumbersV1SmsVerificationCheckRequest $numbersV1SmsVerificationCheckRequest
+     
      * @return Response Created Response
      * @throws TwilioException When an HTTP error occurs.
      */
-    private function _create(): Response
+    private function _create(NumbersV1SmsVerificationCheckRequest $numbersV1SmsVerificationCheckRequest): Response
     {
         
-        $headers = Values::of(['Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json' ]);
-        return $this->version->handleRequest('POST', $this->uri, [], [], $headers, "create");
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $numbersV1SmsVerificationCheckRequest->toArray();
+        return $this->version->handleRequest('POST', $this->uri, [], $data, $headers, "create");
     }
 
     /**
      * Create the SmsVerificationCheckInstance
      *
+     * @param NumbersV1SmsVerificationCheckRequest $numbersV1SmsVerificationCheckRequest
+     
      * @return SmsVerificationCheckInstance Created SmsVerificationCheckInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(): SmsVerificationCheckInstance
+    public function create(NumbersV1SmsVerificationCheckRequest $numbersV1SmsVerificationCheckRequest): SmsVerificationCheckInstance
     {
-        $response = $this->_create();
+        $response = $this->_create( $numbersV1SmsVerificationCheckRequest);
         return new SmsVerificationCheckInstance(
             $this->version,
             $response->getContent()
@@ -74,12 +79,14 @@ class SmsVerificationCheckList extends ListResource
     /**
      * Create the SmsVerificationCheckInstance with Metadata
      *
+     * @param NumbersV1SmsVerificationCheckRequest $numbersV1SmsVerificationCheckRequest
+     
      * @return ResourceMetadata The Created Resource with Metadata
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function createWithMetadata(): ResourceMetadata
+    public function createWithMetadata(NumbersV1SmsVerificationCheckRequest $numbersV1SmsVerificationCheckRequest): ResourceMetadata
     {
-        $response = $this->_create();
+        $response = $this->_create( $numbersV1SmsVerificationCheckRequest);
         $resource = new SmsVerificationCheckInstance(
                         $this->version,
                         $response->getContent()

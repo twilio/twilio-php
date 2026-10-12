@@ -35,6 +35,8 @@ use Twilio\Deserialize;
  * @property string $channelSettings
  * @property string[] $statusCallbacks
  * @property string[] $intelligenceConfigurationIds
+ * @property string[] $traitExtractionStrategyIds
+ * @property string[] $observationExtractionStrategyIds
  * @property bool $memoryExtractionEnabled
  * @property string $conversationsV1Bridge
  * @property \DateTime $createdAt
@@ -65,6 +67,8 @@ class ListConfiguration200ResponseConfigurationsInstance extends InstanceResourc
             'channelSettings' => Values::array_get($payload, 'channelSettings'),
             'statusCallbacks' => Values::array_get($payload, 'statusCallbacks'),
             'intelligenceConfigurationIds' => Values::array_get($payload, 'intelligenceConfigurationIds'),
+            'traitExtractionStrategyIds' => Values::array_get($payload, 'traitExtractionStrategyIds'),
+            'observationExtractionStrategyIds' => Values::array_get($payload, 'observationExtractionStrategyIds'),
             'memoryExtractionEnabled' => Values::array_get($payload, 'memoryExtractionEnabled'),
             'conversationsV1Bridge' => Values::array_get($payload, 'conversationsV1Bridge'),
             'createdAt' => Deserialize::dateTime(Values::array_get($payload, 'createdAt')),
