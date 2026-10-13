@@ -83,9 +83,8 @@ class RequestValidator {
 
         if (!\is_array($data)) {
             // handling if the data was passed through as a string instead of an array of params
-            $queryString = \explode('?', $url);
-            $queryString = $queryString[1];
-            \parse_str($queryString, $params);
+            $params = [];
+            \parse_str($parsedUrl['query'] ?? '', $params);
 
             $validBodyHash = self::compare(self::computeBodyHash($data), Values::array_get($params, 'bodySHA256'));
             $data = [];

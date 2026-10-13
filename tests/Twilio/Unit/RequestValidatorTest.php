@@ -23,6 +23,18 @@ class RequestValidatorTest extends UnitTest {
         $this->validator = new RequestValidator('12345');
     }
 
+    private function withoutWarnings(callable $callback) {
+        \set_error_handler(function (int $severity, string $message, string $file, int $line): void {
+            throw new \ErrorException($message, 0, $severity, $file, $line);
+        });
+
+        try {
+            return $callback();
+        } finally {
+            \restore_error_handler();
+        }
+    }
+
     public function testValidate(): void {
         $isValid = $this->validator->validate($this->signature, $this->url, $this->params);
         $this->assertTrue($isValid);
@@ -59,6 +71,18 @@ class RequestValidatorTest extends UnitTest {
 
     public function testValidateBodyWithoutSignature(): void {
         $isValid = $this->validator->validate($this->signature, $this->url, $this->body);
+
+        $this->assertFalse($isValid);
+    }
+
+    public function testValidateBodyWithoutQueryString(): void {
+        $isValid = $this->withoutWarnings(function (): bool {
+            return $this->validator->validate(
+                $this->signature,
+                'https://mycompany.com/myapp.php',
+                $this->body
+            );
+        });
 
         $this->assertFalse($isValid);
     }
