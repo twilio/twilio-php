@@ -393,7 +393,7 @@ class VersionTest extends UnitTest {
                                         "foo": "bar" }
                                     }'));
         try {
-            $this->version->handleRequest('get', 'http://foo.bar' , [], [], [], "fetch");
+            $this->version->handleRequest('GET', 'http://foo.bar' , [], [], [], "fetch");
             self::fail();
         }catch (RestException $rex){
             self::assertEquals(20001, $rex->getCode());
@@ -415,7 +415,7 @@ class VersionTest extends UnitTest {
                                     "status": 400
                                     }'));
         try {
-            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
+            $this->version->handleRequest('GET', 'http://foo.bar', [], [], [], "fetch");
             self::fail();
         }catch (RestException $rex){
             self::assertEquals(20001, $rex->getCode());
@@ -432,7 +432,7 @@ class VersionTest extends UnitTest {
             ->method('request')
             ->willReturn(new Response(400, ''));
         try {
-            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
+            $this->version->handleRequest('GET', 'http://foo.bar', [], [], [], "fetch");
             self::fail();
         }catch (RestException $rex){
             self::assertEquals(400, $rex->getCode());
@@ -457,7 +457,7 @@ class VersionTest extends UnitTest {
                                     }'));
         try {
             $this->version = new ApiV1Version($this->version->getDomain(), $this->version->version);
-            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
+            $this->version->handleRequest('GET', 'http://foo.bar', [], [], [], "fetch");
             self::fail();
         }catch (RestExceptionV1 $rex){
             self::assertEquals(20404, $rex->getCode());
@@ -475,7 +475,7 @@ class VersionTest extends UnitTest {
             ->willReturn(new Response(400, ''));
         try {
             $this->version = new ApiV1Version($this->version->getDomain(), $this->version->version);
-            $this->version->handleRequest('get', 'http://foo.bar', [], [], [], "fetch");
+            $this->version->handleRequest('GET', 'http://foo.bar', [], [], [], "fetch");
             self::fail();
         }catch (RestExceptionV1 $rex){
             self::assertEquals(400, $rex->getCode());
