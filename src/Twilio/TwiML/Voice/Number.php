@@ -52,9 +52,10 @@ class Number extends TwiML {
     /**
      * Add StatusCallbackEvent attribute.
      *
-     * @param string[] $statusCallbackEvent Events to call status callback
+     * @param string[]|string $statusCallbackEvent Events to call status callback
      */
     public function setStatusCallbackEvent($statusCallbackEvent): self {
+        $statusCallbackEvent = is_array($statusCallbackEvent) ? implode(' ', $statusCallbackEvent) : $statusCallbackEvent;
         return $this->setAttribute('statusCallbackEvent', $statusCallbackEvent);
     }
 
