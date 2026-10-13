@@ -101,9 +101,10 @@ class CurlClient implements Client {
             CURLOPT_PROTOCOLS => CURLPROTO_HTTPS | CURLPROTO_HTTP
         ];
 
-        foreach ($headers as $key => $value) {
-            $options[CURLOPT_HTTPHEADER][] = "$key: $value";
-        }
+        $options[CURLOPT_HTTPHEADER] = \array_merge(
+            $options[CURLOPT_HTTPHEADER],
+            RequestHeaders::toCurlHeaders($headers)
+        );
 
         if ($user && $password) {
             $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . \base64_encode("$user:$password");
