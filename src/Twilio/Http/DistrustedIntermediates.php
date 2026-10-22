@@ -42,7 +42,7 @@ final class DistrustedIntermediates {
      */
     public static function checkChain(array $derCertificates, ?array $distrusted = null): void {
         if (self::containsDistrusted($derCertificates, $distrusted)) {
-            throw new EnvironmentException('Certificate chain contains a distrusted intermediate certificate');
+            throw new EnvironmentException('Certificate chain which you are using contains a distrusted intermediate certificate');
         }
     }
 
