@@ -401,8 +401,8 @@ class CurlClientTest extends UnitTest {
     public function testFileProtocolThrowsException(): void {
         $this->expectException(EnvironmentException::class);
         // libcurl's wording for this varies by version ("not supported or disabled in
-        // libcurl" on older builds, "is disabled" on newer ones) - match either.
-        $this->expectExceptionMessageMatches('/Protocol "file" (not supported or disabled in libcurl|is disabled)/');
+        // libcurl" on older builds, "is disabled" or just "disabled" on newer ones) - match any.
+        $this->expectExceptionMessageMatches('/Protocol "file" (not supported or disabled in libcurl|is disabled|disabled)/');
 
         $client = new CurlClient();
         $client->request('GET', 'file:///tmp/test-file');

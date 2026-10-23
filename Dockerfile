@@ -1,4 +1,4 @@
-FROM php:8.3
+FROM registry.twilio.com/library/base-php/8.3:8.3.36
 
 RUN apt-get update -y && apt-get install -y zip
 
