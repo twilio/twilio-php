@@ -81,6 +81,33 @@ class CurlClientTest extends UnitTest {
         $this->assertEquals($headers, ["Authorization: "]);
     }
 
+    public function testHeaderStringValueIsAccepted(): void {
+        $client = new CurlClient();
+        $options = $client->options('GET', 'url', [], [], [
+            'X-Test' => 'value',
+        ]);
+
+        $this->assertContains('X-Test: value', $options[CURLOPT_HTTPHEADER]);
+    }
+
+    public function testRejectsNonStringHeaderValue(): void {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Header values must be strings.');
+
+        (new CurlClient())->options('GET', 'url', [], [], [
+            'X-Test' => 123,
+        ]);
+    }
+
+    public function testRejectsArrayHeaderValue(): void {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Header values must be strings.');
+
+        (new CurlClient())->options('GET', 'url', [], [], [
+            'X-Test' => ['value'],
+        ]);
+    }
+
     public function buildQueryProvider(): array {
         return [
             [

@@ -7,6 +7,7 @@ use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Http\Client as HttpClient;
 use Twilio\Http\CurlClient;
+use Twilio\Http\RequestHeaders;
 use Twilio\Rest\Api;
 use Twilio\Security\RequestValidator;
 use Twilio\VersionInfo;
@@ -187,6 +188,8 @@ class BaseClient
         if ($method !== "DELETE" && !\array_key_exists('Accept', $headers)) {
             $headers['Accept'] = 'application/json';
         }
+
+        $headers = RequestHeaders::validate($headers);
 
         $uri = $this->buildUri($uri);
 
