@@ -110,4 +110,88 @@ class RequestValidatorTest extends UnitTest {
         $isValid = $this->validator->validate($signature, $url, $this->params);
         $this->assertTrue($isValid);
     }
+
+    private function sha256Signature(string $data): string {
+        return \base64_encode(\hash_hmac('sha256', $data, '12345', true));
+    }
+
+    public function testComputeSignatureSha256(): void {
+        $data = $this->url;
+        $params = $this->params;
+        \ksort($params);
+        foreach ($params as $key => $value) {
+            $data .= $key . $value;
+        }
+
+        $this->assertSame(
+            $this->sha256Signature($data),
+            $this->validator->computeSignature($this->url, $this->params, RequestValidator::HMAC_SHA256)
+        );
+    }
+
+    public function testValidateSha256(): void {
+        $signature = $this->validator->computeSignature($this->url, $this->params, RequestValidator::HMAC_SHA256);
+
+        $this->assertTrue($this->validator->validate($signature, $this->url, $this->params, RequestValidator::HMAC_SHA256));
+        $this->assertTrue($this->validator->validate($signature, $this->url, $this->params, 'hmac_sha256'));
+    }
+
+    public function testSha256AndSha1AreNotInterchangeable(): void {
+        $sha256Signature = $this->validator->computeSignature($this->url, $this->params, RequestValidator::HMAC_SHA256);
+
+        $this->assertFalse($this->validator->validate($sha256Signature, $this->url, $this->params));
+        $this->assertFalse($this->validator->validate($this->signature, $this->url, $this->params, RequestValidator::HMAC_SHA256));
+    }
+
+    public function testValidateDefaultsToSha1(): void {
+        $this->assertTrue($this->validator->validate($this->signature, $this->url, $this->params, null));
+        $this->assertTrue($this->validator->validate($this->signature, $this->url, $this->params, ''));
+        $this->assertTrue($this->validator->validate($this->signature, $this->url, $this->params, RequestValidator::HMAC_SHA1));
+    }
+
+    public function testValidateUnsupportedAlgorithmReturnsFalseAndLogs(): void {
+        $logFile = \tempnam(\sys_get_temp_dir(), 'twilio-log');
+        $previous = \ini_set('error_log', $logFile);
+
+        try {
+            $isValid = $this->validator->validate($this->signature, $this->url, $this->params, 'HMAC_SHA512');
+        } finally {
+            \ini_set('error_log', $previous === false ? '' : $previous);
+        }
+
+        $this->assertFalse($isValid);
+        $this->assertStringContainsString('HMAC_SHA512', (string)\file_get_contents($logFile));
+        \unlink($logFile);
+    }
+
+    public function testComputeSignatureUnsupportedAlgorithmThrows(): void {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->validator->computeSignature($this->url, $this->params, 'MD5');
+    }
+
+    public function testValidateBodySha256(): void {
+        $url = $this->url . '&bodySHA256=' . $this->bodyHash;
+        $signature = $this->validator->computeSignature($url, [], RequestValidator::HMAC_SHA256);
+
+        $this->assertTrue($this->validator->validate($signature, $url, $this->body, RequestValidator::HMAC_SHA256));
+        $this->assertFalse($this->validator->validate($signature, $url, '{}', RequestValidator::HMAC_SHA256));
+        $this->assertFalse($this->validator->validate($signature, $url, $this->body));
+    }
+
+    public function testGetSignatureAlgorithm(): void {
+        $this->assertSame('HMAC_SHA256', RequestValidator::getSignatureAlgorithm('key=webhooks_sharedkey_1,algorithm=HMAC_SHA256'));
+        $this->assertSame('HMAC_SHA1', RequestValidator::getSignatureAlgorithm('algorithm=HMAC_SHA1,key=k'));
+        $this->assertSame('HMAC_SHA256', RequestValidator::getSignatureAlgorithm(' key=k , algorithm = HMAC_SHA256 '));
+    }
+
+    public function testGetSignatureAlgorithmDefaultsToSha1(): void {
+        foreach ([null, '', 'key=k', 'key=k,algorithm='] as $header) {
+            $this->assertSame('HMAC_SHA1', RequestValidator::getSignatureAlgorithm($header));
+        }
+    }
+
+    public function testHeaderConstants(): void {
+        $this->assertSame('X-Twilio-Signature', RequestValidator::SIGNATURE_HEADER);
+        $this->assertSame('X-Twilio-Webhooks-Signature-Settings', RequestValidator::SIGNATURE_SETTINGS_HEADER);
+    }
 }
