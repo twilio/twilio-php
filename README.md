@@ -398,6 +398,22 @@ print $client->lastResponse->body;
 
 To use a custom HTTP client with this helper library, please see the [advanced example of how to do so](./advanced-examples/custom-http-client.md).
 
+### Distrusted intermediate certificates
+
+The default `CurlClient` refuses TLS connections whose certificate chain contains one of eight intermediate certificates with compromised keys (CVE-2026-111943). It checks the chain the server sends before making the request, and checks the chain curl verified afterwards.
+
+A custom client, including `GuzzleClient`, doesn't get this check. To keep it, pass the DER-encoded certificates of the server's chain to `DistrustedIntermediates::checkChain()` before sending a request. It throws an `EnvironmentException` if any certificate is distrusted:
+
+```php
+use Twilio\Http\DistrustedIntermediates;
+
+// $derCertificates is an array of DER-encoded certificates from the server's TLS handshake,
+// for example from a stream context with the `capture_peer_cert_chain` SSL option.
+DistrustedIntermediates::checkChain($derCertificates);
+```
+
+Requests that go through a proxy are only checked after the response arrives, so the request has already been sent by then.
+
 ## Docker image
 
 The `Dockerfile` present in this repository and its respective `twilio/twilio-php` Docker image are currently used by Twilio for testing purposes only.

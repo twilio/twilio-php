@@ -10,13 +10,24 @@ use Twilio\Exceptions\EnvironmentException;
 
 class CurlClient implements Client {
     public const DEFAULT_TIMEOUT = 60;
+    // How long a clean chain check for a host is reused before the chain is fetched again.
+    private const CHAIN_CHECK_TTL = 300;
+
     protected $curlOptions = [];
+    private $distrustedSpki;
+    private $checkedHosts = [];
 
     public $lastRequest;
     public $lastResponse;
 
-    public function __construct(array $options = []) {
+    /**
+     * @param array $options cURL options
+     * @param string[]|null $distrustedSpki SPKI SHA-256 hashes to refuse, defaults to
+     *                                      DistrustedIntermediates::DISTRUSTED_SPKI_SHA256
+     */
+    public function __construct(array $options = [], ?array $distrustedSpki = null) {
         $this->curlOptions = $options;
+        $this->distrustedSpki = $distrustedSpki;
     }
 
     public function request(string $method, string $url,
@@ -30,8 +41,15 @@ class CurlClient implements Client {
         $this->lastResponse = null;
 
         try {
+            $this->checkServerChain($options);
+
             if (!$curl = \curl_init()) {
                 throw new EnvironmentException('Unable to initialize cURL');
+            }
+
+            if ($this->isHttps($options[CURLOPT_URL])) {
+                // Lets us check the chain curl verified, which also covers requests that go through a proxy.
+                $options[CURLOPT_CERTINFO] = true;
             }
 
             if (!\curl_setopt_array($curl, $options)) {
@@ -41,6 +59,8 @@ class CurlClient implements Client {
             if (!$response = \curl_exec($curl)) {
                 throw new EnvironmentException(\curl_error($curl));
             }
+
+            $this->checkVerifiedChain($curl);
 
             $parts = \explode("\r\n\r\n", $response, 3);
 
@@ -84,6 +104,89 @@ class CurlClient implements Client {
 
             throw $e;
         }
+    }
+
+    /**
+     * Refuse a server whose certificate chain contains a distrusted intermediate before anything, including the
+     * credentials, is sent. This opens its own TLS connection and reads the chain the server sends; a clean result
+     * is reused for CHAIN_CHECK_TTL seconds. If that connection can't be made the check is skipped and curl reports
+     * the failure itself. Requests through a proxy are covered by checkVerifiedChain() instead.
+     */
+    private function checkServerChain(array $options): void {
+        $url = $options[CURLOPT_URL];
+        if (!$this->isHttps($url) || !empty($options[CURLOPT_PROXY])) {
+            return;
+        }
+
+        $host = \parse_url($url, PHP_URL_HOST);
+        $port = \parse_url($url, PHP_URL_PORT) ?: 443;
+        $key = $host . ':' . $port;
+        if (isset($this->checkedHosts[$key]) && $this->checkedHosts[$key] > \time()) {
+            return;
+        }
+
+        $verifyHost = $options[CURLOPT_SSL_VERIFYHOST] ?? 2;
+        $ssl = [
+            'capture_peer_cert_chain' => true,
+            'verify_peer' => (bool)($options[CURLOPT_SSL_VERIFYPEER] ?? true),
+            'verify_peer_name' => $verifyHost !== 0 && $verifyHost !== false,
+            'peer_name' => $host,
+            'SNI_enabled' => true,
+        ];
+        if (isset($options[CURLOPT_CAINFO])) {
+            $ssl['cafile'] = $options[CURLOPT_CAINFO];
+        }
+
+        $stream = @\stream_socket_client(
+            'ssl://' . $host . ':' . $port,
+            $errno,
+            $errstr,
+            $options[CURLOPT_TIMEOUT] ?? self::DEFAULT_TIMEOUT,
+            STREAM_CLIENT_CONNECT,
+            \stream_context_create(['ssl' => $ssl])
+        );
+        if (!$stream) {
+            return;
+        }
+
+        $params = \stream_context_get_params($stream);
+        \fclose($stream);
+
+        $der = [];
+        foreach ($params['options']['ssl']['peer_certificate_chain'] ?? [] as $certificate) {
+            if (\openssl_x509_export($certificate, $pem)) {
+                $der[] = DistrustedIntermediates::pemToDer($pem);
+            }
+        }
+
+        DistrustedIntermediates::checkChain($der, $this->distrustedSpki);
+        $this->checkedHosts[$key] = \time() + self::CHAIN_CHECK_TTL;
+    }
+
+    /**
+     * Backstop for checkServerChain(): check the chain curl verified for the connection it just made. By now the
+     * request has been sent, so this discards the response rather than preventing the request.
+     *
+     * @param resource|\CurlHandle $curl
+     */
+    private function checkVerifiedChain($curl): void {
+        $certInfo = \curl_getinfo($curl, CURLINFO_CERTINFO);
+        if (!\is_array($certInfo)) {
+            return;
+        }
+
+        $der = [];
+        foreach ($certInfo as $certificate) {
+            if (isset($certificate['Cert'])) {
+                $der[] = DistrustedIntermediates::pemToDer($certificate['Cert']);
+            }
+        }
+
+        DistrustedIntermediates::checkChain($der, $this->distrustedSpki);
+    }
+
+    private function isHttps(string $url): bool {
+        return \strtolower((string)\parse_url($url, PHP_URL_SCHEME)) === 'https';
     }
 
     public function options(string $method, string $url,
