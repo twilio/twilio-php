@@ -58,6 +58,7 @@ use Twilio\Rest\Api\V2010\Account\Call\PaymentList;
  * @property string|null $groupSid
  * @property string|null $callerName
  * @property string|null $queueTime
+ * @property string|null $stirVerstat
  * @property string|null $trunkSid
  * @property string|null $uri
  * @property array|null $subresourceUris
@@ -111,6 +112,7 @@ class CallInstance extends InstanceResource
             'groupSid' => Values::array_get($payload, 'group_sid'),
             'callerName' => Values::array_get($payload, 'caller_name'),
             'queueTime' => Values::array_get($payload, 'queue_time'),
+            'stirVerstat' => Values::array_get($payload, 'stir_verstat'),
             'trunkSid' => Values::array_get($payload, 'trunk_sid'),
             'uri' => Values::array_get($payload, 'uri'),
             'subresourceUris' => Values::array_get($payload, 'subresource_uris'),

@@ -18,16 +18,25 @@ namespace Twilio\Rest\PreviewIam;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\PreviewIam\Versionless\AccountList;
 use Twilio\Rest\PreviewIam\Versionless\OrganizationList;
+use Twilio\Rest\PreviewIam\Versionless\RoleAssignmentList;
+use Twilio\Rest\PreviewIam\Versionless\UserList;
 use Twilio\Version;
 
 /**
+ * @property AccountList $accounts
  * @property OrganizationList $organization
+ * @property RoleAssignmentList $roleAssignments
+ * @property UserList $users
  * @method \Twilio\Rest\PreviewIam\Versionless\OrganizationContext organization(string $organizationSid)
  */
 class Versionless extends Version
 {
+    protected $_accounts;
     protected $_organization;
+    protected $_roleAssignments;
+    protected $_users;
 
     /**
      * Construct the Versionless version of PreviewIam
@@ -40,12 +49,36 @@ class Versionless extends Version
         $this->version = 'Organizations';
     }
 
+    protected function getAccounts(): AccountList
+    {
+        if (!$this->_accounts) {
+            $this->_accounts = new AccountList($this);
+        }
+        return $this->_accounts;
+    }
+
     protected function getOrganization(): OrganizationList
     {
         if (!$this->_organization) {
             $this->_organization = new OrganizationList($this);
         }
         return $this->_organization;
+    }
+
+    protected function getRoleAssignments(): RoleAssignmentList
+    {
+        if (!$this->_roleAssignments) {
+            $this->_roleAssignments = new RoleAssignmentList($this);
+        }
+        return $this->_roleAssignments;
+    }
+
+    protected function getUsers(): UserList
+    {
+        if (!$this->_users) {
+            $this->_users = new UserList($this);
+        }
+        return $this->_users;
     }
 
     /**

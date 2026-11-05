@@ -116,6 +116,7 @@ abstract class ContentModels
      * @property string $id
      * @property string $code
      * @property string $webviewSize
+     * @property string $digitableLine
     */
     public static function createCardAction(array $payload = []): CardAction
     {
@@ -678,6 +679,7 @@ class CardAction implements \JsonSerializable
      * @property string $id
      * @property string $code
      * @property string $webviewSize
+     * @property string $digitableLine
     */
         protected $type;
         protected $title;
@@ -686,6 +688,7 @@ class CardAction implements \JsonSerializable
         protected $id;
         protected $code;
         protected $webviewSize;
+        protected $digitableLine;
     public function __construct(array $payload = []) {
         $this->type = Values::array_get($payload, 'type');
         $this->title = Values::array_get($payload, 'title');
@@ -694,6 +697,7 @@ class CardAction implements \JsonSerializable
         $this->id = Values::array_get($payload, 'id');
         $this->code = Values::array_get($payload, 'code');
         $this->webviewSize = Values::array_get($payload, 'webview_size');
+        $this->digitableLine = Values::array_get($payload, 'digitable_line');
     }
 
     public function toArray(): array
@@ -725,6 +729,9 @@ class CardAction implements \JsonSerializable
         }
         if (isset($this->webviewSize)) {
             $jsonString['webview_size'] = $this->webviewSize;
+        }
+        if (isset($this->digitableLine)) {
+            $jsonString['digitable_line'] = $this->digitableLine;
         }
         return $jsonString;
     }

@@ -19,6 +19,15 @@ use Twilio\Values;
 abstract class ConversationModels
 {
     /**
+     * @property string $url Destination URL for webhooks.
+     * @property string $method HTTP method used to invoke the webhook URL.
+    */
+    public static function createCreateConversationWithConfigRequestConfigurationStatusCallbacks(array $payload = []): CreateConversationWithConfigRequestConfigurationStatusCallbacks
+    {
+        return new CreateConversationWithConfigRequestConfigurationStatusCallbacks($payload);
+    }
+
+    /**
      * @property string $flowId The Studio Flow to run.
     */
     public static function createConversationWorkflow(array $payload = []): ConversationWorkflow
@@ -27,9 +36,14 @@ abstract class ConversationModels
     }
 
     /**
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+     * @property string $memoryStoreId The memory store ID that Conversation Orchestrator uses for profile resolution.
+     * @property string $channelSettings Status timeouts by channel type. Capture rules can only be set on a Configuration.
+     * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for this Conversation. Without `configurationId`, defaults to false; with it, defaults to the Configuration's value.
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
      * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
      * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
+     * @property CreateConversationWithConfigRequestConfigurationStatusCallbacks[] $statusCallbacks The webhook configurations for this Conversation. Overrides the Configuration's own.
      * @property ConversationWorkflow[] $workflows The Workflows to associate with this Conversation. Overrides the Configuration's own.
     */
     public static function createCreateConversationWithConfigRequestConfiguration(array $payload = []): CreateConversationWithConfigRequestConfiguration
@@ -59,7 +73,7 @@ abstract class ConversationModels
     }
 
     /**
-     * @property string $configurationId The ID of an existing configuration.
+     * @property string $configurationId The ID of an existing configuration. Omit it to define the configuration inline in `configuration`.
      * @property string $name The name of the conversation.
      * @property CreateConversationWithConfigRequestConfiguration $configuration
      * @property CreateConversationWithConfigRequestParticipants[] $participants Optional list of Participants to create with the Conversation.
@@ -127,6 +141,7 @@ abstract class ConversationModels
      * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
      * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+     * @property string $redactionConfigurationId The ID of the redaction configuration applied to communications in this configuration's conversations.
      * @property ConversationsV2ConversationsV1Bridge $conversationsV1Bridge
     */
     public static function createListConversationByAccount200ResponseConversationsConfiguration(array $payload = []): ListConversationByAccount200ResponseConversationsConfiguration
@@ -134,6 +149,38 @@ abstract class ConversationModels
         return new ListConversationByAccount200ResponseConversationsConfiguration($payload);
     }
 
+}
+
+class CreateConversationWithConfigRequestConfigurationStatusCallbacks implements \JsonSerializable
+{
+    /**
+     * @property string $url Destination URL for webhooks.
+     * @property string $method HTTP method used to invoke the webhook URL.
+    */
+        protected $url;
+        protected $method;
+    public function __construct(array $payload = []) {
+        $this->url = Values::array_get($payload, 'url');
+        $this->method = Values::array_get($payload, 'method');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->url)) {
+            $jsonString['url'] = $this->url;
+        }
+        if (isset($this->method)) {
+            $jsonString['method'] = $this->method;
+        }
+        return $jsonString;
+    }
 }
 
 class ConversationWorkflow implements \JsonSerializable
@@ -165,19 +212,34 @@ class ConversationWorkflow implements \JsonSerializable
 class CreateConversationWithConfigRequestConfiguration implements \JsonSerializable
 {
     /**
+     * @property string $conversationGroupingType Type of Conversation grouping strategy: - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.   A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel. - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.   A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS. - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.   A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+     * @property string $memoryStoreId The memory store ID that Conversation Orchestrator uses for profile resolution.
+     * @property string $channelSettings Status timeouts by channel type. Capture rules can only be set on a Configuration.
+     * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for this Conversation. Without `configurationId`, defaults to false; with it, defaults to the Configuration's value.
      * @property string[] $intelligenceConfigurationIds A list of Conversational Intelligence configuration IDs.
      * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
      * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
+     * @property CreateConversationWithConfigRequestConfigurationStatusCallbacks[] $statusCallbacks The webhook configurations for this Conversation. Overrides the Configuration's own.
      * @property ConversationWorkflow[] $workflows The Workflows to associate with this Conversation. Overrides the Configuration's own.
     */
+        protected $conversationGroupingType;
+        protected $memoryStoreId;
+        protected $channelSettings;
+        protected $memoryExtractionEnabled;
         protected $intelligenceConfigurationIds;
         protected $traitExtractionStrategyIds;
         protected $observationExtractionStrategyIds;
+        protected $statusCallbacks;
         protected $workflows;
     public function __construct(array $payload = []) {
+        $this->conversationGroupingType = Values::array_get($payload, 'conversationGroupingType');
+        $this->memoryStoreId = Values::array_get($payload, 'memoryStoreId');
+        $this->channelSettings = Values::array_get($payload, 'channelSettings');
+        $this->memoryExtractionEnabled = Values::array_get($payload, 'memoryExtractionEnabled');
         $this->intelligenceConfigurationIds = Values::array_get($payload, 'intelligenceConfigurationIds');
         $this->traitExtractionStrategyIds = Values::array_get($payload, 'traitExtractionStrategyIds');
         $this->observationExtractionStrategyIds = Values::array_get($payload, 'observationExtractionStrategyIds');
+        $this->statusCallbacks = Values::array_get($payload, 'statusCallbacks');
         $this->workflows = Values::array_get($payload, 'workflows');
     }
 
@@ -190,6 +252,18 @@ class CreateConversationWithConfigRequestConfiguration implements \JsonSerializa
     {
         $jsonString = [
         ];
+        if (isset($this->conversationGroupingType)) {
+            $jsonString['conversationGroupingType'] = $this->conversationGroupingType;
+        }
+        if (isset($this->memoryStoreId)) {
+            $jsonString['memoryStoreId'] = $this->memoryStoreId;
+        }
+        if (isset($this->channelSettings)) {
+            $jsonString['channelSettings'] = $this->channelSettings;
+        }
+        if (isset($this->memoryExtractionEnabled)) {
+            $jsonString['memoryExtractionEnabled'] = $this->memoryExtractionEnabled;
+        }
         if (isset($this->intelligenceConfigurationIds)) {
             $jsonString['intelligenceConfigurationIds'] = $this->intelligenceConfigurationIds;
         }
@@ -198,6 +272,9 @@ class CreateConversationWithConfigRequestConfiguration implements \JsonSerializa
         }
         if (isset($this->observationExtractionStrategyIds)) {
             $jsonString['observationExtractionStrategyIds'] = $this->observationExtractionStrategyIds;
+        }
+        if (isset($this->statusCallbacks)) {
+            $jsonString['statusCallbacks'] = $this->statusCallbacks;
         }
         if (isset($this->workflows)) {
             $jsonString['workflows'] = $this->workflows;
@@ -291,7 +368,7 @@ class CreateConversationWithConfigRequestParticipants implements \JsonSerializab
 class CreateConversationWithConfigRequest implements \JsonSerializable
 {
     /**
-     * @property string $configurationId The ID of an existing configuration.
+     * @property string $configurationId The ID of an existing configuration. Omit it to define the configuration inline in `configuration`.
      * @property string $name The name of the conversation.
      * @property CreateConversationWithConfigRequestConfiguration $configuration
      * @property CreateConversationWithConfigRequestParticipants[] $participants Optional list of Participants to create with the Conversation.
@@ -517,6 +594,7 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
      * @property string[] $traitExtractionStrategyIds A list of Trait Extraction Strategy IDs.
      * @property string[] $observationExtractionStrategyIds A list of Observation Extraction Strategy IDs.
      * @property bool $memoryExtractionEnabled Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+     * @property string $redactionConfigurationId The ID of the redaction configuration applied to communications in this configuration's conversations.
      * @property ConversationsV2ConversationsV1Bridge $conversationsV1Bridge
     */
         protected $displayName;
@@ -529,6 +607,7 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
         protected $traitExtractionStrategyIds;
         protected $observationExtractionStrategyIds;
         protected $memoryExtractionEnabled;
+        protected $redactionConfigurationId;
         protected $conversationsV1Bridge;
     public function __construct(array $payload = []) {
         $this->displayName = Values::array_get($payload, 'displayName');
@@ -541,6 +620,7 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
         $this->traitExtractionStrategyIds = Values::array_get($payload, 'traitExtractionStrategyIds');
         $this->observationExtractionStrategyIds = Values::array_get($payload, 'observationExtractionStrategyIds');
         $this->memoryExtractionEnabled = Values::array_get($payload, 'memoryExtractionEnabled');
+        $this->redactionConfigurationId = Values::array_get($payload, 'redactionConfigurationId');
         $this->conversationsV1Bridge = Values::array_get($payload, 'conversationsV1Bridge');
     }
 
@@ -582,6 +662,9 @@ class ListConversationByAccount200ResponseConversationsConfiguration implements 
         }
         if (isset($this->memoryExtractionEnabled)) {
             $jsonString['memoryExtractionEnabled'] = $this->memoryExtractionEnabled;
+        }
+        if (isset($this->redactionConfigurationId)) {
+            $jsonString['redactionConfigurationId'] = $this->redactionConfigurationId;
         }
         if (isset($this->conversationsV1Bridge)) {
             $jsonString['conversationsV1Bridge'] = $this->conversationsV1Bridge;

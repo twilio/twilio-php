@@ -64,18 +64,18 @@ class BulkList extends ListResource
     }
 
     /**
-     * Update the UpdateProfilesBulk202ResponseInstance
+     * Update the BulkOperationCreatedResponseInstance
      *
      
      * @param UpdateProfilesBulkRequest $updateProfilesBulkRequest
      
-     * @return UpdateProfilesBulk202ResponseInstance Updated UpdateProfilesBulk202ResponseInstance
+     * @return BulkOperationCreatedResponseInstance Updated BulkOperationCreatedResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function update(string $storeId, UpdateProfilesBulkRequest $updateProfilesBulkRequest): UpdateProfilesBulk202ResponseInstance
+    public function update(string $storeId, UpdateProfilesBulkRequest $updateProfilesBulkRequest): BulkOperationCreatedResponseInstance
     {
         $response = $this->_update($storeId,  $updateProfilesBulkRequest);
-        return new UpdateProfilesBulk202ResponseInstance(
+        return new BulkOperationCreatedResponseInstance(
             $this->version,
             $response->getContent(),
             $storeId
@@ -84,7 +84,7 @@ class BulkList extends ListResource
     }
 
     /**
-     * Update the UpdateProfilesBulk202ResponseInstance with Metadata
+     * Update the BulkOperationCreatedResponseInstance with Metadata
      *
      
      * @param UpdateProfilesBulkRequest $updateProfilesBulkRequest
@@ -95,7 +95,7 @@ class BulkList extends ListResource
     public function updateWithMetadata(string $storeId, UpdateProfilesBulkRequest $updateProfilesBulkRequest): ResourceMetadata
     {
         $response = $this->_update($storeId,  $updateProfilesBulkRequest);
-        $resource = new UpdateProfilesBulk202ResponseInstance(
+        $resource = new BulkOperationCreatedResponseInstance(
                         $this->version,
                         $response->getContent(),
                         $storeId

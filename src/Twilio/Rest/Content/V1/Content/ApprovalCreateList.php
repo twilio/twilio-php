@@ -112,6 +112,69 @@ class ApprovalCreateList extends ListResource
 
 
     /**
+     * Helper function for Update
+     *
+     
+     * @param ContentApprovalUpdateRequest $contentApprovalUpdateRequest
+     
+     * @return Response Updated Response
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    private function _update(ContentApprovalUpdateRequest $contentApprovalUpdateRequest): Response
+    {
+        
+        $headers = Values::of(['Content-Type' => 'application/json', 'Accept' => 'application/json' ]);
+        $data = $contentApprovalUpdateRequest->toArray();
+        return $this->version->handleRequest('PATCH', $this->uri, [], $data, $headers, "update");
+    }
+
+    /**
+     * Update the ApprovalCreateInstance
+     *
+     
+     * @param ContentApprovalUpdateRequest $contentApprovalUpdateRequest
+     
+     * @return ApprovalCreateInstance Updated ApprovalCreateInstance
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function update(ContentApprovalUpdateRequest $contentApprovalUpdateRequest): ApprovalCreateInstance
+    {
+        $response = $this->_update( $contentApprovalUpdateRequest);
+        return new ApprovalCreateInstance(
+            $this->version,
+            $response->getContent(),
+            $this->solution['contentSid']
+        );
+        
+    }
+
+    /**
+     * Update the ApprovalCreateInstance with Metadata
+     *
+     
+     * @param ContentApprovalUpdateRequest $contentApprovalUpdateRequest
+     
+     * @return ResourceMetadata The Updated Resource with Metadata
+     * @throws TwilioException When an HTTP error occurs.
+     */
+    public function updateWithMetadata(ContentApprovalUpdateRequest $contentApprovalUpdateRequest): ResourceMetadata
+    {
+        $response = $this->_update( $contentApprovalUpdateRequest);
+        $resource = new ApprovalCreateInstance(
+                        $this->version,
+                        $response->getContent(),
+                        $this->solution['contentSid']
+                    );
+        
+        return new ResourceMetadata(
+            $resource,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        );
+    }
+
+
+    /**
      * Provide a friendly representation
      *
      * @return string Machine friendly representation

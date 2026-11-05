@@ -24,25 +24,15 @@ use Twilio\Version;
 use Twilio\InstanceContext;
 use Twilio\Http\Response;
 use Twilio\Metadata\ResourceMetadata;
-use Twilio\Rest\PreviewIam\Versionless\Organization\AccountList;
-use Twilio\Rest\PreviewIam\Versionless\Organization\UserList;
-use Twilio\Rest\PreviewIam\Versionless\Organization\RoleAssignmentList;
 
 
 /**
- * @property AccountList $accounts
- * @property UserList $users
- * @property RoleAssignmentList $roleAssignments
  * @method \Twilio\Rest\PreviewIam\Versionless\Organization\RoleAssignmentContext roleAssignments(string $sid)
  * @method \Twilio\Rest\PreviewIam\Versionless\Organization\AccountContext accounts(string $accountSid)
  * @method \Twilio\Rest\PreviewIam\Versionless\Organization\UserContext users(string $id)
  */
 class OrganizationContext extends InstanceContext
     {
-    protected $_accounts;
-    protected $_users;
-    protected $_roleAssignments;
-
     /**
      * Initialize the OrganizationContext
      *
@@ -120,51 +110,6 @@ class OrganizationContext extends InstanceContext
         );
     }
 
-
-    /**
-     * Access the accounts
-     */
-    protected function getAccounts(): AccountList
-    {
-        if (!$this->_accounts) {
-            $this->_accounts = new AccountList(
-                $this->version,
-                $this->solution['organizationSid']
-            );
-        }
-
-        return $this->_accounts;
-    }
-
-    /**
-     * Access the users
-     */
-    protected function getUsers(): UserList
-    {
-        if (!$this->_users) {
-            $this->_users = new UserList(
-                $this->version,
-                $this->solution['organizationSid']
-            );
-        }
-
-        return $this->_users;
-    }
-
-    /**
-     * Access the roleAssignments
-     */
-    protected function getRoleAssignments(): RoleAssignmentList
-    {
-        if (!$this->_roleAssignments) {
-            $this->_roleAssignments = new RoleAssignmentList(
-                $this->version,
-                $this->solution['organizationSid']
-            );
-        }
-
-        return $this->_roleAssignments;
-    }
 
     /**
      * Magic getter to lazy load subresources

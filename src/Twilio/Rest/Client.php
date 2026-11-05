@@ -55,6 +55,7 @@ use Twilio\Base\BaseClient as BaseClient;
  * @property Verify $verify
  * @property Video $video
  * @property Voice $voice
+ * @property Webhooks $webhooks
  * @property Wireless $wireless
  * @property \Twilio\Rest\Api\V2010\Account\AddressList $addresses
  * @property \Twilio\Rest\Api\V2010\Account\ApplicationList $applications
@@ -137,6 +138,7 @@ class Client extends BaseClient {
     protected $_verify;
     protected $_video;
     protected $_voice;
+    protected $_webhooks;
     protected $_wireless;
 
     /**
@@ -545,6 +547,17 @@ class Client extends BaseClient {
             $this->_voice = new Voice($this);
         }
         return $this->_voice;
+    }
+    /**
+     * Access the Webhooks Twilio Domain
+     *
+     * @return Webhooks Webhooks Twilio Domain
+     */
+    protected function getWebhooks(): Webhooks {
+        if (!$this->_webhooks) {
+            $this->_webhooks = new Webhooks($this);
+        }
+        return $this->_webhooks;
     }
     /**
      * Access the Wireless Twilio Domain

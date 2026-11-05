@@ -69,18 +69,18 @@ class ImportList extends ListResource
     }
 
     /**
-     * Create the CreateProfilesImportV2201ResponseInstance
+     * Create the ProfileImportCreatedResponseInstance
      *
      
      * @param CreateProfilesImportV2Request $createProfilesImportV2Request
      
-     * @return CreateProfilesImportV2201ResponseInstance Created CreateProfilesImportV2201ResponseInstance
+     * @return ProfileImportCreatedResponseInstance Created ProfileImportCreatedResponseInstance
      * @throws TwilioException When an HTTP error occurs.
      */
-    public function create(string $storeId, CreateProfilesImportV2Request $createProfilesImportV2Request): CreateProfilesImportV2201ResponseInstance
+    public function create(string $storeId, CreateProfilesImportV2Request $createProfilesImportV2Request): ProfileImportCreatedResponseInstance
     {
         $response = $this->_create($storeId,  $createProfilesImportV2Request);
-        return new CreateProfilesImportV2201ResponseInstance(
+        return new ProfileImportCreatedResponseInstance(
             $this->version,
             $response->getContent(),
             $storeId
@@ -89,7 +89,7 @@ class ImportList extends ListResource
     }
 
     /**
-     * Create the CreateProfilesImportV2201ResponseInstance with Metadata
+     * Create the ProfileImportCreatedResponseInstance with Metadata
      *
      
      * @param CreateProfilesImportV2Request $createProfilesImportV2Request
@@ -100,7 +100,7 @@ class ImportList extends ListResource
     public function createWithMetadata(string $storeId, CreateProfilesImportV2Request $createProfilesImportV2Request): ResourceMetadata
     {
         $response = $this->_create($storeId,  $createProfilesImportV2Request);
-        $resource = new CreateProfilesImportV2201ResponseInstance(
+        $resource = new ProfileImportCreatedResponseInstance(
                         $this->version,
                         $response->getContent(),
                         $storeId

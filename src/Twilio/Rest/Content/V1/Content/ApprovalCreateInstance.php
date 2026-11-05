@@ -31,6 +31,7 @@ use Twilio\Version;
  * @property string|null $rejectionReason
  * @property bool|null $allowCategoryChange
  * @property int|null $sendTtlSeconds
+ * @property int|null $bidAmount
  */
 class ApprovalCreateInstance extends InstanceResource
 {
@@ -54,6 +55,7 @@ class ApprovalCreateInstance extends InstanceResource
             'rejectionReason' => Values::array_get($payload, 'rejection_reason'),
             'allowCategoryChange' => Values::array_get($payload, 'allow_category_change'),
             'sendTtlSeconds' => Values::array_get($payload, 'send_ttl_seconds'),
+            'bidAmount' => Values::array_get($payload, 'bid_amount'),
         ];
 
         $this->solution = ['contentSid' => $contentSid, ];
