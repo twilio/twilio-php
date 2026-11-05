@@ -13,6 +13,18 @@ use Twilio\Values;
  */
 class RequestValidator {
 
+    /** Header that carries the webhook signature. */
+    public const SIGNATURE_HEADER = 'X-Twilio-Signature';
+    /** Header Twilio adds to webhooks signed with a SharedKey: key=<sharedKeyId>,algorithm=<algorithm> */
+    public const SIGNATURE_SETTINGS_HEADER = 'X-Twilio-Webhooks-Signature-Settings';
+    public const HMAC_SHA1 = 'HMAC_SHA1';
+    public const HMAC_SHA256 = 'HMAC_SHA256';
+
+    private const HASH_ALGORITHMS = [
+        self::HMAC_SHA1 => 'sha1',
+        self::HMAC_SHA256 => 'sha256',
+    ];
+
     /**
      * @access private
      * @var string The auth token to the Twilio Account
@@ -22,21 +34,56 @@ class RequestValidator {
     /**
      * constructor
      * @access public
-     * @param string $authToken the auth token of the Twilio user's account
-     * Sets the account auth token to be used by the rest of the class
+     * @param string $authToken the secret the webhook was signed with: the auth token of the Twilio user's account,
+     * or the SharedKey secret when the request carries the X-Twilio-Webhooks-Signature-Settings header
+     * Sets the secret to be used by the rest of the class
      */
     public function __construct(string $authToken) {
         $this->authToken = $authToken;
     }
 
     /**
-     * Creates the actual base64 encoded signature of the sha1 hash of the concatenated URL and your auth token
+     * Returns the signing algorithm named in the X-Twilio-Webhooks-Signature-Settings header. A missing or empty
+     * header (or one without "algorithm=") means the legacy Auth Token signature, HMAC_SHA1.
+     *
+     * @param string|null $signatureSettingsHeader e.g. "key=webhooks_sharedkey_...,algorithm=HMAC_SHA256"
+     * @return string the algorithm name
+     */
+    public static function getSignatureAlgorithm(?string $signatureSettingsHeader): string {
+        foreach (\explode(',', (string)$signatureSettingsHeader) as $part) {
+            $keyValue = \explode('=', $part, 2);
+            if (\count($keyValue) === 2 && \trim($keyValue[0]) === 'algorithm' && \trim($keyValue[1]) !== '') {
+                return \trim($keyValue[1]);
+            }
+        }
+        return self::HMAC_SHA1;
+    }
+
+    /**
+     * Maps an algorithm name to a PHP hash name, or null when unsupported. Null or empty means HMAC_SHA1.
+     */
+    private static function hashName(?string $algorithm): ?string {
+        if ($algorithm === null || $algorithm === '') {
+            return self::HASH_ALGORITHMS[self::HMAC_SHA1];
+        }
+        return self::HASH_ALGORITHMS[\strtoupper($algorithm)] ?? null;
+    }
+
+    /**
+     * Creates the actual base64 encoded signature of the HMAC hash of the concatenated URL and your secret
      *
      * @param string $url the full URL of the request URL you specify for your phone number or app, from the protocol (https...) through the end of the query string (everything after the ?)
      * @param array $data the Twilio parameters the request was made with
+     * @param string|null $algorithm HMAC_SHA1 (default) or HMAC_SHA256
      * @return string
+     * @throws \InvalidArgumentException if the algorithm is not supported
      */
-    public function computeSignature(string $url, array $data = []): string {
+    public function computeSignature(string $url, array $data = [], ?string $algorithm = null): string {
+        $hashName = self::hashName($algorithm);
+        if ($hashName === null) {
+            throw new \InvalidArgumentException('Unsupported webhook signature algorithm: ' . $algorithm);
+        }
+
         // sort the array by keys
         \ksort($data);
 
@@ -52,8 +99,8 @@ class RequestValidator {
             }
         }
 
-        // sha1 then base64 the url to the auth token and return the base64-ed string
-        return \base64_encode(\hash_hmac('sha1', $url, $this->authToken, true));
+        // hmac the url with the secret and return the base64-ed string
+        return \base64_encode(\hash_hmac($hashName, $url, $this->authToken, true));
     }
 
     /**
@@ -72,9 +119,19 @@ class RequestValidator {
      * @param string $expectedSignature
      * @param string $url
      * @param array|string $data
+     * @param string|null $algorithm HMAC_SHA1 (default) or HMAC_SHA256, see getSignatureAlgorithm().
+     *                               An unsupported algorithm fails validation and is logged.
      * @return bool
      */
-    public function validate(string $expectedSignature, string $url, $data = []): bool {
+    public function validate(string $expectedSignature, string $url, $data = [], ?string $algorithm = null): bool {
+        if (self::hashName($algorithm) === null) {
+            \error_log(
+                "[Twilio] Unsupported webhook signature algorithm '" . $algorithm . "'. Supported: "
+                . self::HMAC_SHA1 . ', ' . self::HMAC_SHA256 . '. Upgrade twilio-php if Twilio added a new one.'
+            );
+            return false;
+        }
+
         $parsedUrl = \parse_url($url);
 
         $urlWithPort = self::addPort($parsedUrl);
@@ -97,11 +154,11 @@ class RequestValidator {
          */
         $validSignatureWithPort = self::compare(
             $expectedSignature,
-            $this->computeSignature($urlWithPort, $data)
+            $this->computeSignature($urlWithPort, $data, $algorithm)
         );
         $validSignatureWithoutPort = self::compare(
             $expectedSignature,
-            $this->computeSignature($urlWithoutPort, $data)
+            $this->computeSignature($urlWithoutPort, $data, $algorithm)
         );
 
         return $validBodyHash && ($validSignatureWithPort || $validSignatureWithoutPort);
