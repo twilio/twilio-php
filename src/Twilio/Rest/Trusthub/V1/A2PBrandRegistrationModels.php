@@ -24,14 +24,14 @@ abstract class A2PBrandRegistrationModels
      * @property string $friendlyName A human-readable name for the brand registration.
      * @property string $notificationEmail The email address to receive notifications about the registration.
      * @property string $businessName The legal name of the business.
-     * @property string $businessRegistrationAuthority The authority with which the business is registered.
+     * @property string $businessRegistrationAuthority The authority with which the business is registered. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $businessRegistrationNumber The business registration number (e.g., EIN, CBN, ACN). Maximum 21 characters.
-     * @property string $businessIndustry The industry of the business.
+     * @property string $businessIndustry The industry of the business. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $businessWebsite The business website URL (must use https://).
-     * @property string $businessType The type of business entity.
+     * @property string $businessType The type of business entity. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $businessStockSymbol The stock symbol for publicly traded companies.
-     * @property string $businessStockExchange The stock exchange where the business is listed.
-     * @property string $businessTaxExemptStatus Nonprofit/political organization tax-exempt status per the U.S. tax code (e.g. 501c3, 501c1, 527). A value of 527 (political organization) requires a Campaign Verify token in brandExternalVettingToken.
+     * @property string $businessStockExchange The stock exchange where the business is listed. The value is validated by the service; see the Twilio docs for accepted values.
+     * @property string $businessTaxExemptStatus Nonprofit/political organization tax-exempt status per the U.S. tax code (e.g. 501c3, 501c1, 527). A value of 527 (political organization) requires a Campaign Verify token in brandExternalVettingToken. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $brandExternalVettingToken Campaign Verify token for externally vetted brands.
      * @property string $businessStreetAddress The street address of the business.
      * @property string $businessStreetAddress2 Additional street address information.
@@ -63,14 +63,14 @@ class TrusthubV1A2pBrandRegistrationRequest implements \JsonSerializable
      * @property string $friendlyName A human-readable name for the brand registration.
      * @property string $notificationEmail The email address to receive notifications about the registration.
      * @property string $businessName The legal name of the business.
-     * @property string $businessRegistrationAuthority The authority with which the business is registered.
+     * @property string $businessRegistrationAuthority The authority with which the business is registered. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $businessRegistrationNumber The business registration number (e.g., EIN, CBN, ACN). Maximum 21 characters.
-     * @property string $businessIndustry The industry of the business.
+     * @property string $businessIndustry The industry of the business. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $businessWebsite The business website URL (must use https://).
-     * @property string $businessType The type of business entity.
+     * @property string $businessType The type of business entity. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $businessStockSymbol The stock symbol for publicly traded companies.
-     * @property string $businessStockExchange The stock exchange where the business is listed.
-     * @property string $businessTaxExemptStatus Nonprofit/political organization tax-exempt status per the U.S. tax code (e.g. 501c3, 501c1, 527). A value of 527 (political organization) requires a Campaign Verify token in brandExternalVettingToken.
+     * @property string $businessStockExchange The stock exchange where the business is listed. The value is validated by the service; see the Twilio docs for accepted values.
+     * @property string $businessTaxExemptStatus Nonprofit/political organization tax-exempt status per the U.S. tax code (e.g. 501c3, 501c1, 527). A value of 527 (political organization) requires a Campaign Verify token in brandExternalVettingToken. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $brandExternalVettingToken Campaign Verify token for externally vetted brands.
      * @property string $businessStreetAddress The street address of the business.
      * @property string $businessStreetAddress2 Additional street address information.

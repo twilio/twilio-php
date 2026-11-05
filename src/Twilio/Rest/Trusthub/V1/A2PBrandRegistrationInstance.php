@@ -24,9 +24,9 @@ use Twilio\Version;
 
 
 /**
- * @property string|null $id
- * @property string|null $sessionId
- * @property string|null $sessionToken
+ * @property string $id
+ * @property string $sessionId
+ * @property string $sessionToken
  */
 class A2PBrandRegistrationInstance extends InstanceResource
 {

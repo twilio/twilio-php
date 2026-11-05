@@ -19,18 +19,9 @@ namespace Twilio\Rest\PreviewIam\Versionless\Organization;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
-use Twilio\Values;
 use Twilio\Version;
 
 
-/**
- * @property string $sid
- * @property string $roleSid
- * @property string $scope
- * @property string $identity
- * @property string|null $resourceType
- * @property string|null $resourceId
- */
 class RoleAssignmentInstance extends InstanceResource
 {
     /**
@@ -44,16 +35,6 @@ class RoleAssignmentInstance extends InstanceResource
     public function __construct(Version $version, array $payload, string $organizationSid, ?string $sid = null)
     {
         parent::__construct($version);
-
-        // Marshaled Properties
-        $this->properties = [
-            'sid' => Values::array_get($payload, 'sid'),
-            'roleSid' => Values::array_get($payload, 'role_sid'),
-            'scope' => Values::array_get($payload, 'scope'),
-            'identity' => Values::array_get($payload, 'identity'),
-            'resourceType' => Values::array_get($payload, 'resource_type'),
-            'resourceId' => Values::array_get($payload, 'resource_id'),
-        ];
 
         $this->solution = ['organizationSid' => $organizationSid, 'sid' => $sid ?: $this->properties['sid'], ];
     }

@@ -13,14 +13,13 @@
  * Do not edit the class manually.
  */
 
-namespace Twilio\Rest\PreviewIam\Versionless\Organization;
+namespace Twilio\Rest\PreviewIam\Versionless;
 
 use Twilio\Options;
 use Twilio\Values;
 
 abstract class RoleAssignmentOptions
 {
-
 
     /**
      * @param string $identity
@@ -47,7 +46,6 @@ abstract class RoleAssignmentOptions
     }
 
 }
-
 
 
 class ReadRoleAssignmentOptions extends Options

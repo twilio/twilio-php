@@ -19,17 +19,17 @@ use Twilio\Values;
 abstract class A2PCampaignRegistrationModels
 {
     /**
-     * @property string $a2pBrandRegistrationSid The legacy Twilio A2P Brand SID (BN-prefixed) for the brand this campaign is registered under. This is a different identifier from the `id` returned by the Initialize Brand endpoint (which is formatted as `tri1.us1.account.AC.../registration.BU...`). Retrieve the BN brand SID via [GET /v1/a2p/BrandRegistrations/{Sid}](https://www.twilio.com/docs/messaging/api/brand-registration-resource) on `messaging.twilio.com`.
-     * @property string $messagingServiceSid The SID of the Messaging Service.
+     * @property string $a2pBrandRegistrationSid The legacy Twilio A2P Brand SID (BN-prefixed) for the brand this campaign is registered under. This is a different identifier from the `id` returned by the Initialize Brand endpoint (which is formatted as `tri1.us1.account.AC.../registration.BU...`). Retrieve the BN brand SID via [GET /v1/a2p/BrandRegistrations/{Sid}](https://www.twilio.com/docs/messaging/api/brand-registration-resource) on `messaging.twilio.com`. This field keeps the legacy Sid name because it carries a legacy Twilio SID (BN prefix) from messaging.twilio.com.
+     * @property string $messagingServiceSid The SID of the Messaging Service. This field keeps the legacy Sid name because it carries a legacy Twilio SID (MG prefix) from messaging.twilio.com.
      * @property string $themeSetId Theme ID for styling the inquiry form.
-     * @property string[] $useCaseCategories The categories of the messaging use case.
+     * @property string[] $useCaseCategories The categories of the messaging use case. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $useCaseDescription A description of the messaging use case.
      * @property string $useCaseSampleMessage1 A sample message for the use case.
      * @property string $useCaseSampleMessage2 A second sample message for the use case.
      * @property string $useCaseSampleMessage3 A third sample message for the use case.
      * @property string $useCaseSampleMessage4 A fourth sample message for the use case.
      * @property string $useCaseSampleMessage5 A fifth sample message for the use case.
-     * @property string[] $useCaseOptInTypes The opt-in methods for the use case.
+     * @property string[] $useCaseOptInTypes The opt-in methods for the use case. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $useCaseOptInDescription A description of the opt-in process.
      * @property bool $hasEmbeddedLinks Whether messages will contain embedded links.
      * @property bool $hasEmbeddedPhone Whether messages will contain embedded phone numbers.
@@ -55,17 +55,17 @@ abstract class A2PCampaignRegistrationModels
 class TrusthubV1A2pCampaignRegistrationRequest implements \JsonSerializable
 {
     /**
-     * @property string $a2pBrandRegistrationSid The legacy Twilio A2P Brand SID (BN-prefixed) for the brand this campaign is registered under. This is a different identifier from the `id` returned by the Initialize Brand endpoint (which is formatted as `tri1.us1.account.AC.../registration.BU...`). Retrieve the BN brand SID via [GET /v1/a2p/BrandRegistrations/{Sid}](https://www.twilio.com/docs/messaging/api/brand-registration-resource) on `messaging.twilio.com`.
-     * @property string $messagingServiceSid The SID of the Messaging Service.
+     * @property string $a2pBrandRegistrationSid The legacy Twilio A2P Brand SID (BN-prefixed) for the brand this campaign is registered under. This is a different identifier from the `id` returned by the Initialize Brand endpoint (which is formatted as `tri1.us1.account.AC.../registration.BU...`). Retrieve the BN brand SID via [GET /v1/a2p/BrandRegistrations/{Sid}](https://www.twilio.com/docs/messaging/api/brand-registration-resource) on `messaging.twilio.com`. This field keeps the legacy Sid name because it carries a legacy Twilio SID (BN prefix) from messaging.twilio.com.
+     * @property string $messagingServiceSid The SID of the Messaging Service. This field keeps the legacy Sid name because it carries a legacy Twilio SID (MG prefix) from messaging.twilio.com.
      * @property string $themeSetId Theme ID for styling the inquiry form.
-     * @property string[] $useCaseCategories The categories of the messaging use case.
+     * @property string[] $useCaseCategories The categories of the messaging use case. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $useCaseDescription A description of the messaging use case.
      * @property string $useCaseSampleMessage1 A sample message for the use case.
      * @property string $useCaseSampleMessage2 A second sample message for the use case.
      * @property string $useCaseSampleMessage3 A third sample message for the use case.
      * @property string $useCaseSampleMessage4 A fourth sample message for the use case.
      * @property string $useCaseSampleMessage5 A fifth sample message for the use case.
-     * @property string[] $useCaseOptInTypes The opt-in methods for the use case.
+     * @property string[] $useCaseOptInTypes The opt-in methods for the use case. The value is validated by the service; see the Twilio docs for accepted values.
      * @property string $useCaseOptInDescription A description of the opt-in process.
      * @property bool $hasEmbeddedLinks Whether messages will contain embedded links.
      * @property bool $hasEmbeddedPhone Whether messages will contain embedded phone numbers.

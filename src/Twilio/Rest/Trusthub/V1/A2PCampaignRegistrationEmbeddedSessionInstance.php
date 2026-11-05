@@ -24,9 +24,9 @@ use Twilio\Version;
 
 
 /**
- * @property string|null $id
- * @property string|null $sessionId
- * @property string|null $sessionToken
+ * @property string $id
+ * @property string $sessionId
+ * @property string $sessionToken
  */
 class A2PCampaignRegistrationEmbeddedSessionInstance extends InstanceResource
 {
@@ -35,7 +35,7 @@ class A2PCampaignRegistrationEmbeddedSessionInstance extends InstanceResource
      *
      * @param Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
-     * @param string $id The unique identifier for the A2P Campaign Registration. This can be either an A2P Campaign Registration ID (formatted `tri1.us1.account.AC.../registration.BU...`) returned from the Initialize Campaign endpoint, or a Messaging Service SID (`MG...`) for campaigns created outside the embeddable.
+     * @param string $id The unique identifier for the A2P Campaign Registration. This is the A2P Campaign Registration ID (formatted `tri1.us1.account.AC.../registration.BU...`) returned in the `id` field when the campaign registration was created. For a campaign in FAILED status, use the Messaging Service SID (`MG...`) of the campaign instead.
      */
     public function __construct(Version $version, array $payload, ?string $id = null)
     {

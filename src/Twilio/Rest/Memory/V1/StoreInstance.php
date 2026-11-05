@@ -23,6 +23,7 @@ use Twilio\Options;
 use Twilio\Values;
 use Twilio\Version;
 use Twilio\ApiV1Version;
+use Twilio\Deserialize;
 
 
 /**
@@ -32,6 +33,7 @@ use Twilio\ApiV1Version;
  * @property string $status
  * @property string $intelligenceServiceId
  * @property int $version
+ * @property \DateTime $dataAsOf
  */
 class StoreInstance extends InstanceResource
 {
@@ -55,6 +57,7 @@ class StoreInstance extends InstanceResource
             'status' => Values::array_get($payload, 'status'),
             'intelligenceServiceId' => Values::array_get($payload, 'intelligenceServiceId'),
             'version' => Values::array_get($payload, 'version'),
+            'dataAsOf' => Deserialize::dateTime(Values::array_get($payload, 'dataAsOf')),
         ];
 
         $this->solution = ['storeId' => $storeId ?: ($this->properties['storeId'] ?? null), ];

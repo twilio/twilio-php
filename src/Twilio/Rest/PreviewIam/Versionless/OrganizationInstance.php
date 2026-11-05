@@ -20,17 +20,10 @@ namespace Twilio\Rest\PreviewIam\Versionless;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceResource;
 use Twilio\Version;
-use Twilio\Rest\PreviewIam\Versionless\Organization\AccountList;
-use Twilio\Rest\PreviewIam\Versionless\Organization\UserList;
-use Twilio\Rest\PreviewIam\Versionless\Organization\RoleAssignmentList;
 
 
 class OrganizationInstance extends InstanceResource
 {
-    protected $_accounts;
-    protected $_users;
-    protected $_roleAssignments;
-
     /**
      * Initialize the OrganizationInstance
      *
@@ -73,30 +66,6 @@ class OrganizationInstance extends InstanceResource
     {
 
         return $this->proxy()->fetch();
-    }
-
-    /**
-     * Access the accounts
-     */
-    protected function getAccounts(): AccountList
-    {
-        return $this->proxy()->accounts;
-    }
-
-    /**
-     * Access the users
-     */
-    protected function getUsers(): UserList
-    {
-        return $this->proxy()->users;
-    }
-
-    /**
-     * Access the roleAssignments
-     */
-    protected function getRoleAssignments(): RoleAssignmentList
-    {
-        return $this->proxy()->roleAssignments;
     }
 
     /**

@@ -29,7 +29,7 @@ use Twilio\Deserialize;
 /**
  * @property string $id
  * @property string $accountId
- * @property string $configurationId
+ * @property string|null $configurationId
  * @property string $status
  * @property string|null $name
  * @property \DateTime $createdAt

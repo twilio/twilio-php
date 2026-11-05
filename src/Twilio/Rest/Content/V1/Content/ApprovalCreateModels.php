@@ -22,10 +22,19 @@ abstract class ApprovalCreateModels
      * @property string $name Name of the template.
      * @property string $category A WhatsApp recognized template category.
      * @property int $sendTtlSeconds Time-to-live in seconds for attempting to send a message with this Content
+     * @property int $bidAmount Maximum price per 1,000 message deliveries, expressed in the WABA currency's smallest unit (cents for USD). Only valid for MARKETING templates onboarded to Max Pricing.
     */
     public static function createContentApprovalRequest(array $payload = []): ContentApprovalRequest
     {
         return new ContentApprovalRequest($payload);
+    }
+
+    /**
+     * @property int $bidAmount Maximum price per 1,000 message deliveries, expressed in the WABA currency's smallest unit (cents for USD). Only valid for MARKETING templates onboarded to Max Pricing.
+    */
+    public static function createContentApprovalUpdateRequest(array $payload = []): ContentApprovalUpdateRequest
+    {
+        return new ContentApprovalUpdateRequest($payload);
     }
 
 }
@@ -36,14 +45,17 @@ class ContentApprovalRequest implements \JsonSerializable
      * @property string $name Name of the template.
      * @property string $category A WhatsApp recognized template category.
      * @property int $sendTtlSeconds Time-to-live in seconds for attempting to send a message with this Content
+     * @property int $bidAmount Maximum price per 1,000 message deliveries, expressed in the WABA currency's smallest unit (cents for USD). Only valid for MARKETING templates onboarded to Max Pricing.
     */
         protected $name;
         protected $category;
         protected $sendTtlSeconds;
+        protected $bidAmount;
     public function __construct(array $payload = []) {
         $this->name = Values::array_get($payload, 'name');
         $this->category = Values::array_get($payload, 'category');
         $this->sendTtlSeconds = Values::array_get($payload, 'send_ttl_seconds');
+        $this->bidAmount = Values::array_get($payload, 'bid_amount');
     }
 
     public function toArray(): array
@@ -63,6 +75,35 @@ class ContentApprovalRequest implements \JsonSerializable
         }
         if (isset($this->sendTtlSeconds)) {
             $jsonString['send_ttl_seconds'] = $this->sendTtlSeconds;
+        }
+        if (isset($this->bidAmount)) {
+            $jsonString['bid_amount'] = $this->bidAmount;
+        }
+        return $jsonString;
+    }
+}
+
+class ContentApprovalUpdateRequest implements \JsonSerializable
+{
+    /**
+     * @property int $bidAmount Maximum price per 1,000 message deliveries, expressed in the WABA currency's smallest unit (cents for USD). Only valid for MARKETING templates onboarded to Max Pricing.
+    */
+        protected $bidAmount;
+    public function __construct(array $payload = []) {
+        $this->bidAmount = Values::array_get($payload, 'bid_amount');
+    }
+
+    public function toArray(): array
+    {
+        return $this->jsonSerialize();
+    }
+
+    public function jsonSerialize(): array
+    {
+        $jsonString = [
+        ];
+        if (isset($this->bidAmount)) {
+            $jsonString['bid_amount'] = $this->bidAmount;
         }
         return $jsonString;
     }

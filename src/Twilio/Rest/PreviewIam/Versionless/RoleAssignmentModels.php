@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 
-namespace Twilio\Rest\PreviewIam\Versionless\Organization;
+namespace Twilio\Rest\PreviewIam\Versionless;
 
 use Twilio\Values;
 abstract class RoleAssignmentModels

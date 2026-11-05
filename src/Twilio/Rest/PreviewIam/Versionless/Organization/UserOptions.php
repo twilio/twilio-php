@@ -22,22 +22,6 @@ abstract class UserOptions
 {
 
 
-
-    /**
-     * @param string $filter
-     * @return ReadUserOptions Options builder
-     */
-    public static function read(
-        
-        string $filter = Values::NONE
-
-    ): ReadUserOptions
-    {
-        return new ReadUserOptions(
-            $filter
-        );
-    }
-
     /**
      * @param string $ifMatch
      * @return PatchUserOptions Options builder
@@ -71,42 +55,6 @@ abstract class UserOptions
 }
 
 
-
-
-class ReadUserOptions extends Options
-    {
-    /**
-     * @param string $filter
-     */
-    public function __construct(
-        
-        string $filter = Values::NONE
-
-    ) {
-        $this->options['filter'] = $filter;
-    }
-
-    /**
-     * @param string $filter
-     * @return $this Fluent Builder
-     */
-    public function setFilter(string $filter): self
-    {
-        $this->options['filter'] = $filter;
-        return $this;
-    }
-
-    /**
-     * Provide a friendly representation
-     *
-     * @return string Machine friendly representation
-     */
-    public function __toString(): string
-    {
-        $options = \http_build_query(Values::of($this->options), '', ' ');
-        return '[Twilio.PreviewIam.Versionless.ReadUserOptions ' . $options . ']';
-    }
-}
 
 class PatchUserOptions extends Options
     {

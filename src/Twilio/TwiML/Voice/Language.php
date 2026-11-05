@@ -68,4 +68,46 @@ class Language extends TwiML {
     public function setSpeechModel($speechModel): self {
         return $this->setAttribute('speechModel', $speechModel);
     }
+
+    /**
+     * Add Hints attribute.
+     *
+     * @param string $hints Phrases to help better accuracy in speech recognition
+     *                      of this language
+     */
+    public function setHints($hints): self {
+        return $this->setAttribute('hints', $hints);
+    }
+
+    /**
+     * Add AsrSmartFormat attribute.
+     *
+     * @param bool $asrSmartFormat Whether smart formatting should be applied to
+     *                             transcripts of this language
+     */
+    public function setAsrSmartFormat($asrSmartFormat): self {
+        return $this->setAttribute('asrSmartFormat', $asrSmartFormat);
+    }
+
+    /**
+     * Add TtsTextNormalization attribute.
+     *
+     * @param string $ttsTextNormalization Text normalization for text-to-speech of
+     *                                     this language. The value can be auto,
+     *                                     on, or off
+     */
+    public function setTtsTextNormalization($ttsTextNormalization): self {
+        return $this->setAttribute('ttsTextNormalization', $ttsTextNormalization);
+    }
+
+    /**
+     * Add TtsLanguageTextNormalization attribute.
+     *
+     * @param bool $ttsLanguageTextNormalization Whether language-specific text
+     *                                           normalization should be applied
+     *                                           for text-to-speech of this language
+     */
+    public function setTtsLanguageTextNormalization($ttsLanguageTextNormalization): self {
+        return $this->setAttribute('ttsLanguageTextNormalization', $ttsLanguageTextNormalization);
+    }
 }

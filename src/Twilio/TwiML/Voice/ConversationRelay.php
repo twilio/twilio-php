@@ -311,4 +311,126 @@ class ConversationRelay extends TwiML {
     public function setEvents($events): self {
         return $this->setAttribute('events', $events);
     }
+
+    /**
+     * Add PartialPromptOnHangup attribute.
+     *
+     * @param bool $partialPromptOnHangup Whether the in-progress partial
+     *                                    transcript should be reported as a prompt
+     *                                    when the call hangs up
+     */
+    public function setPartialPromptOnHangup($partialPromptOnHangup): self {
+        return $this->setAttribute('partialPromptOnHangup', $partialPromptOnHangup);
+    }
+
+    /**
+     * Add EagerEotThreshold attribute.
+     *
+     * @param string $eagerEotThreshold Eager end-of-turn confidence threshold,
+     *                                  which fires before the end-of-turn
+     *                                  threshold. The value can be between 0.3 and
+     *                                  0.9
+     */
+    public function setEagerEotThreshold($eagerEotThreshold): self {
+        return $this->setAttribute('eagerEotThreshold', $eagerEotThreshold);
+    }
+
+    /**
+     * Add AsrSmartFormat attribute.
+     *
+     * @param bool $asrSmartFormat Whether smart formatting should be applied to
+     *                             transcripts. Takes precedence over
+     *                             deepgramSmartFormat
+     */
+    public function setAsrSmartFormat($asrSmartFormat): self {
+        return $this->setAttribute('asrSmartFormat', $asrSmartFormat);
+    }
+
+    /**
+     * Add TtsTextNormalization attribute.
+     *
+     * @param string $ttsTextNormalization Text normalization for text-to-speech.
+     *                                     The value can be auto, on, or off. Takes
+     *                                     precedence over
+     *                                     elevenlabsTextNormalization
+     */
+    public function setTtsTextNormalization($ttsTextNormalization): self {
+        return $this->setAttribute('ttsTextNormalization', $ttsTextNormalization);
+    }
+
+    /**
+     * Add TtsLanguageTextNormalization attribute.
+     *
+     * @param bool $ttsLanguageTextNormalization Whether language-specific text
+     *                                           normalization should be applied
+     *                                           for text-to-speech
+     */
+    public function setTtsLanguageTextNormalization($ttsLanguageTextNormalization): self {
+        return $this->setAttribute('ttsLanguageTextNormalization', $ttsLanguageTextNormalization);
+    }
+
+    /**
+     * Add ElevenlabsLanguageTextNormalization attribute.
+     *
+     * @param bool $elevenlabsLanguageTextNormalization Legacy alias of
+     *                                                  ttsLanguageTextNormalization
+     */
+    public function setElevenlabsLanguageTextNormalization($elevenlabsLanguageTextNormalization): self {
+        return $this->setAttribute('elevenlabsLanguageTextNormalization', $elevenlabsLanguageTextNormalization);
+    }
+
+    /**
+     * Add IncludeInPrompt attribute.
+     *
+     * @param string $includeInPrompt Extra fields to be included in prompt
+     *                                messages. The value can be turn-state or
+     *                                prompt-segments
+     */
+    public function setIncludeInPrompt($includeInPrompt): self {
+        return $this->setAttribute('includeInPrompt', $includeInPrompt);
+    }
+
+    /**
+     * Add CustomerName attribute.
+     *
+     * @param string $customerName Customer name sent to Conversations and
+     *                             Conversational Intelligence. Defaults to the
+     *                             caller ID
+     */
+    public function setCustomerName($customerName): self {
+        return $this->setAttribute('customerName', $customerName);
+    }
+
+    /**
+     * Add ApplicationReconnect attribute.
+     *
+     * @param bool $applicationReconnect Whether the WebSocket connection to the
+     *                                   application should be reconnected if it
+     *                                   drops during the call. Defaults to false
+     */
+    public function setApplicationReconnect($applicationReconnect): self {
+        return $this->setAttribute('applicationReconnect', $applicationReconnect);
+    }
+
+    /**
+     * Add EchoPromptFiltering attribute.
+     *
+     * @param bool $echoPromptFiltering Whether transcripts that echo the agent's
+     *                                  own text-to-speech should be dropped.
+     *                                  Defaults to false
+     */
+    public function setEchoPromptFiltering($echoPromptFiltering): self {
+        return $this->setAttribute('echoPromptFiltering', $echoPromptFiltering);
+    }
+
+    /**
+     * Add TurnDetection attribute.
+     *
+     * @param bool $turnDetection Whether turn detection should be used to decide
+     *                            when the caller has finished speaking. Defaults
+     *                            to false
+     */
+    public function setTurnDetection($turnDetection): self {
+        return $this->setAttribute('turnDetection', $turnDetection);
+    }
 }
