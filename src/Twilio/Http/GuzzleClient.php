@@ -42,9 +42,11 @@ final class GuzzleClient implements Client {
                 $options['query'] = Query::build($params, PHP_QUERY_RFC1738);
             }
 
-            if ($method === 'POST' || $method === 'PUT') {
+            if ($method === 'POST' || $method === 'PUT' || $method === 'PATCH') {
                 if ($this->hasFile($data)) {
                     $options['multipart'] = $this->buildMultipartParam($data);
+                } elseif (isset($headers['Content-Type']) && $headers['Content-Type'] === 'application/json') {
+                    $options['body'] = \json_encode($data);
                 } else {
                     $options['body'] = Query::build($data, PHP_QUERY_RFC1738);
                     $headers['Content-Type'] = 'application/x-www-form-urlencoded';
