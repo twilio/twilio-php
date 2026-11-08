@@ -56,6 +56,36 @@ final class GuzzleClientTest extends UnitTest {
         $this->assertFalse($options['allow_redirects']);
     }
 
+    /**
+     * @dataProvider jsonMethods
+     */
+    public function testJsonBody(string $method): void {
+        $this->mockHandler->append(new Response());
+        $data = ['content' => 'new observation', 'nested' => ['enabled' => true]];
+        $this->client->request($method, 'https://www.whatever.com', [], $data,
+            ['Content-Type' => 'application/json']);
+
+        $request = $this->mockHandler->getLastRequest();
+        $this->assertSame($method, $request->getMethod());
+        $this->assertSame('application/json', $request->getHeaderLine('Content-Type'));
+        $this->assertSame($data, json_decode((string)$request->getBody(), true));
+    }
+
+    public function jsonMethods(): array {
+        return [['POST'], ['PUT'], ['PATCH']];
+    }
+
+    public function testPatchFormBody(): void {
+        $this->mockHandler->append(new Response());
+        $this->client->request('PATCH', 'https://www.whatever.com', [],
+            ['key' => ['value one', 'value two']]);
+
+        $request = $this->mockHandler->getLastRequest();
+        $this->assertSame('PATCH', $request->getMethod());
+        $this->assertSame('application/x-www-form-urlencoded', $request->getHeaderLine('Content-Type'));
+        $this->assertSame('key=value+one&key=value+two', (string)$request->getBody());
+    }
+
     public function testBasicAuth(): void
     {
         $this->mockHandler->append(new Response());
