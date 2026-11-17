@@ -30,6 +30,7 @@ use Twilio\Deserialize;
  * @property array|null $value
  * @property string $traitGroup
  * @property \DateTime $timestamp
+ * @property string $source
  */
 class FullTraitInstance extends InstanceResource
 {
@@ -52,6 +53,7 @@ class FullTraitInstance extends InstanceResource
             'value' => Values::array_get($payload, 'value'),
             'traitGroup' => Values::array_get($payload, 'traitGroup'),
             'timestamp' => Deserialize::dateTime(Values::array_get($payload, 'timestamp')),
+            'source' => Values::array_get($payload, 'source'),
         ];
 
         $this->solution = ['storeId' => $storeId ?: ($this->properties['storeId'] ?? null), 'profileId' => $profileId ?: ($this->properties['profileId'] ?? null), ];

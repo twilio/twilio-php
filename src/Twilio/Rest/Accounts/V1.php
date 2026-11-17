@@ -21,6 +21,7 @@ use Twilio\InstanceContext;
 use Twilio\Rest\Accounts\V1\AuthTokenPromotionList;
 use Twilio\Rest\Accounts\V1\BulkConsentsList;
 use Twilio\Rest\Accounts\V1\BulkContactsList;
+use Twilio\Rest\Accounts\V1\ComplianceSignalsCheckList;
 use Twilio\Rest\Accounts\V1\CredentialList;
 use Twilio\Rest\Accounts\V1\MessagingGeopermissionsList;
 use Twilio\Rest\Accounts\V1\SafelistList;
@@ -31,6 +32,7 @@ use Twilio\Version;
  * @property AuthTokenPromotionList $authTokenPromotion
  * @property BulkConsentsList $bulkConsents
  * @property BulkContactsList $bulkContacts
+ * @property ComplianceSignalsCheckList $complianceSignalsCheck
  * @property CredentialList $credentials
  * @property MessagingGeopermissionsList $messagingGeopermissions
  * @property SafelistList $safelist
@@ -41,6 +43,7 @@ class V1 extends Version
     protected $_authTokenPromotion;
     protected $_bulkConsents;
     protected $_bulkContacts;
+    protected $_complianceSignalsCheck;
     protected $_credentials;
     protected $_messagingGeopermissions;
     protected $_safelist;
@@ -79,6 +82,14 @@ class V1 extends Version
             $this->_bulkContacts = new BulkContactsList($this);
         }
         return $this->_bulkContacts;
+    }
+
+    protected function getComplianceSignalsCheck(): ComplianceSignalsCheckList
+    {
+        if (!$this->_complianceSignalsCheck) {
+            $this->_complianceSignalsCheck = new ComplianceSignalsCheckList($this);
+        }
+        return $this->_complianceSignalsCheck;
     }
 
     protected function getCredentials(): CredentialList

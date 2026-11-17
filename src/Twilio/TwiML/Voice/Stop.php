@@ -48,4 +48,14 @@ class Stop extends TwiML {
     public function transcription($attributes = []): Transcription {
         return $this->nest(new Transcription($attributes));
     }
+
+    /**
+     * Add MediaFilter child.
+     *
+     * @param array $attributes Optional attributes
+     * @return MediaFilter Child element.
+     */
+    public function mediaFilter($attributes = []): MediaFilter {
+        return $this->nest(new MediaFilter($attributes));
+    }
 }
