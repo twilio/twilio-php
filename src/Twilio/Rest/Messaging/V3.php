@@ -18,14 +18,17 @@ namespace Twilio\Rest\Messaging;
 use Twilio\Domain;
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Messaging\V3\MessageCostEstimateList;
 use Twilio\Rest\Messaging\V3\TypingIndicatorList;
 use Twilio\Version;
 
 /**
+ * @property MessageCostEstimateList $messageCostEstimate
  * @property TypingIndicatorList $typingIndicator
  */
 class V3 extends Version
 {
+    protected $_messageCostEstimate;
     protected $_typingIndicator;
 
     /**
@@ -37,6 +40,14 @@ class V3 extends Version
     {
         parent::__construct($domain);
         $this->version = 'v3';
+    }
+
+    protected function getMessageCostEstimate(): MessageCostEstimateList
+    {
+        if (!$this->_messageCostEstimate) {
+            $this->_messageCostEstimate = new MessageCostEstimateList($this);
+        }
+        return $this->_messageCostEstimate;
     }
 
     protected function getTypingIndicator(): TypingIndicatorList

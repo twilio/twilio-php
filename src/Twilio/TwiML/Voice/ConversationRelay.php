@@ -433,4 +433,24 @@ class ConversationRelay extends TwiML {
     public function setTurnDetection($turnDetection): self {
         return $this->setAttribute('turnDetection', $turnDetection);
     }
+
+    /**
+     * Add ConversationId attribute.
+     *
+     * @param string $conversationId The ID of the Conversation
+     */
+    public function setConversationId($conversationId): self {
+        return $this->setAttribute('conversationId', $conversationId);
+    }
+
+    /**
+     * Add ConversationConfiguration attribute.
+     *
+     * @param string $conversationConfiguration The ID or the unique name of the
+     *                                          Conversation configuration to be
+     *                                          used
+     */
+    public function setConversationConfiguration($conversationConfiguration): self {
+        return $this->setAttribute('conversationConfiguration', $conversationConfiguration);
+    }
 }

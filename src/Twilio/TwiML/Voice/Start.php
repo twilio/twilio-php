@@ -52,6 +52,16 @@ class Start extends TwiML {
     }
 
     /**
+     * Add MediaFilter child.
+     *
+     * @param array $attributes Optional attributes
+     * @return MediaFilter Child element.
+     */
+    public function mediaFilter($attributes = []): MediaFilter {
+        return $this->nest(new MediaFilter($attributes));
+    }
+
+    /**
      * Add Recording child.
      *
      * @param array $attributes Optional attributes
