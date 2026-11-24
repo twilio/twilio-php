@@ -132,6 +132,16 @@ class RequestValidator {
             return false;
         }
 
+        if (\is_array($data)) {
+            foreach ($data as $value) {
+                if (\is_array($value)) {
+                    // Twilio signs each parameter once; arrays can collide with a single signed value
+                    \error_log('[Twilio] Rejecting webhook with duplicate or array-valued parameters.');
+                    return false;
+                }
+            }
+        }
+
         $parsedUrl = \parse_url($url);
 
         $urlWithPort = self::addPort($parsedUrl);

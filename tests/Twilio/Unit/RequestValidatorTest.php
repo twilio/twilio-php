@@ -33,15 +33,16 @@ class RequestValidatorTest extends UnitTest {
         $this->assertFalse($isValid);
     }
 
-    public function testValidateWithArrayAndDuplicates(): void {
+    public function testRejectsArrayAndDuplicates(): void {
         $paramsWithArray = [
             'Sid' => 'CA123',
             'SidAccount' => 'AC123',
             'Digits' => ['5678', '1234', '1234'],
         ];
         $signatureWithArray = 'IK+Dwps556ElfBT0I3Rgjkr1wJU=';
+        // Twilio signs each parameter once; arrays can collide with a single signed value
         $isValid = $this->validator->validate($signatureWithArray, $this->url, $paramsWithArray);
-        $this->assertTrue($isValid);
+        $this->assertFalse($isValid);
     }
 
     public function testValidateBody(): void {
@@ -188,6 +189,22 @@ class RequestValidatorTest extends UnitTest {
         foreach ([null, '', 'key=k', 'key=k,algorithm='] as $header) {
             $this->assertSame('HMAC_SHA1', RequestValidator::getSignatureAlgorithm($header));
         }
+    }
+
+    public function testRejectsArrayValuedParams(): void {
+        $url = 'https://mycompany.com/myapp.php';
+        $signature = $this->validator->computeSignature($url, ['Body' => 'hello']);
+
+        $this->assertTrue($this->validator->validate($signature, $url, ['Body' => 'hello']));
+        $this->assertFalse($this->validator->validate($signature, $url, ['Body' => ['hello', 'hello']]));
+        $this->assertFalse($this->validator->validate($signature, $url, ['Body' => ['hello']]));
+    }
+
+    public function testRejectsArrayThatCollidesWithSingleValue(): void {
+        $url = 'https://mycompany.com/myapp.php';
+        $signature = $this->validator->computeSignature($url, ['a' => 'bac']);
+
+        $this->assertFalse($this->validator->validate($signature, $url, ['a' => ['b', 'c']]));
     }
 
     public function testHeaderConstants(): void {
