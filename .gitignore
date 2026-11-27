@@ -20,3 +20,5 @@ nbproject
 venv
 **/.openapi-generator*
 **/.openapi-generator-ignore*
+phpDocumentor.phar
+.phpdoc/
